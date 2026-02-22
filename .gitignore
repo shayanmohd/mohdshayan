@@ -1,0 +1,19 @@
+# Mohd Shayan - Portfolio Website
+
+# Dependencies
+node_modules/
+.DS_Store
+*.log
+
+# Build outputs
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+Thumbs.db

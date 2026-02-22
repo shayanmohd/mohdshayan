@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohd Shayan | Product Engineer & Entrepreneur</title>
+    <meta name="description" content="Mohd Shayan: Product Engineer, Socialsure founder & DTU CS Grad. Specializing in Web Development, DevOps, Web3, and AI/ML to scale digital solutions.">
+    <meta name="keywords" content="Product Engineer, Web Development, DevOps, Web3, AI/ML, Socialsure, Delhi Technological University">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.jpg" type="image/jpeg">
+    <link rel="icon" href="favicon.jpg" type="image/jpeg">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .skill-bar {
+            background: linear-gradient(90deg, #0ea5e9 0%, #06b6d4 100%);
+        }
+        
+        .timeline-line {
+            background: linear-gradient(180deg, #0ea5e9 0%, #06b6d4 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900/95 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-2xl font-bold text-white">
+                        Mohd<span class="text-primary-400">Shayan</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-white hover:text-primary-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Bio</a>
+                        <a href="#experience" class="text-gray-300 hover:text-primary-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Experience</a>
+                        <a href="#projects" class="text-gray-300 hover:text-primary-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
+                        <a href="mailto:mohdshayan@duck.com" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-gray-300 hover:text-white focus:outline-none" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 border-t border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#home" class="text-white hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium">Bio</a>
+                <a href="#experience" class="text-gray-300 hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+                <a href="#projects" class="text-gray-300 hover:text-primary-400 block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+                <a href="mailto:mohdshayan@duck.com" class="text-primary-400 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center gradient-bg pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div class="text-center lg:text-left">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+                        Hi, I'm <span class="text-primary-400">Mohd Shayan</span>
+                    </h1>
+                    <p class="text-xl sm:text-2xl text-gray-300 mb-6">
+                        Product Engineer & Entrepreneur
+                    </p>
+                    <p class="text-gray-400 text-lg mb-8 max-w-2xl">
+                        Founder of Socialsure | DTU CS Grad | Specializing in Web Development, DevOps, Web3, and AI/ML to build scalable digital solutions.
+                    </p>
+                    
+                    <!-- Social Links -->
+                    <div class="flex justify-center lg:justify-start space-x-4 mb-8">
+                        <a href="mailto:mohdshayan@duck.com" class="text-gray-400 hover:text-primary-400 text-2xl transition-colors">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/shreezy" class="text-gray-400 hover:text-primary-400 text-2xl transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/shreezyx" class="text-gray-400 hover:text-primary-400 text-2xl transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://x.com/SocialSureX" class="text-gray-400 hover:text-primary-400 text-2xl transition-colors">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="uploads/resume.pdf" class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2">
+                            <i class="fas fa-download"></i>
+                            Download CV
+                        </a>
+                        <a href="mailto:mohdshayan@duck.com" class="border-2 border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-white px-8 py-3 rounded-lg font-semibold transition-colors">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Profile Image -->
+                <div class="flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-primary-500 rounded-full blur-3xl opacity-20"></div>
+                        <img src="assets/avatar.jpg" alt="Mohd Shayan" class="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full object-cover border-4 border-primary-500/30 shadow-2xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">About Me</h2>
+                <div class="w-20 h-1 bg-primary-500 mx-auto"></div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="text-gray-300 text-lg leading-relaxed mb-6">
+                    Mohd Shayan is a Product Engineer and a CS Grad from DTU with a versatile technical stack spanning Web Development, DevOps, Web3, and AI/ML. As the founder of Socialsure, he combines his engineering background with an entrepreneurial drive to architect, build, and scale innovative digital solutions. Whether he is deploying robust web applications, exploring new frontiers in artificial intelligence, or channeling his creativity into producing music, Shayan is driven by a deep passion for creating and problem-solving.
+                </p>
+            </div>
+            
+            <!-- Skills -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center p-6 glass-card rounded-lg hover-lift">
+                    <i class="fab fa-react text-4xl text-primary-400 mb-4"></i>
+                    <h3 class="text-white font-semibold">Web Development</h3>
+                </div>
+                <div class="text-center p-6 glass-card rounded-lg hover-lift">
+                    <i class="fas fa-server text-4xl text-primary-400 mb-4"></i>
+                    <h3 class="text-white font-semibold">DevOps</h3>
+                </div>
+                <div class="text-center p-6 glass-card rounded-lg hover-lift">
+                    <i class="fab fa-ethereum text-4xl text-primary-400 mb-4"></i>
+                    <h3 class="text-white font-semibold">Web3</h3>
+                </div>
+                <div class="text-center p-6 glass-card rounded-lg hover-lift">
+                    <i class="fas fa-brain text-4xl text-primary-400 mb-4"></i>
+                    <h3 class="text-white font-semibold">AI/ML</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Experience & Education</h2>
+                <div class="w-20 h-1 bg-primary-500 mx-auto"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <!-- Timeline -->
+                <div class="relative">
+                    <!-- Timeline line -->
+                    <div class="absolute left-8 top-0 bottom-0 w-0.5 timeline-line"></div>
+                    
+                    <!-- Experience Items -->
+                    <div class="space-y-12">
+                        <!-- Socialsure -->
+                        <div class="relative flex items-start gap-8">
+                            <div class="flex-shrink-0 w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center relative z-10 border-4 border-gray-900">
+                                <i class="fas fa-rocket text-white text-xl"></i>
+                            </div>
+                            <div class="flex-1 pt-2">
+                                <h3 class="text-xl font-bold text-white">Founder & Product Engineer</h3>
+                                <p class="text-primary-400 font-medium">Socialsure</p>
+                                <p class="text-gray-400 text-sm mb-2">New Delhi, India</p>
+                                <p class="text-gray-300">Creating an AI powered and Blockchain-enabled OS for the creator economy.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- DTU -->
+                        <div class="relative flex items-start gap-8">
+                            <div class="flex-shrink-0 w-16 h-16 bg-primary-600 rounded-full flex items-center justify-center relative z-10 border-4 border-gray-900">
+                                <i class="fas fa-graduation-cap text-white text-xl"></i>
+                            </div>
+                            <div class="flex-1 pt-2">
+                                <h3 class="text-xl font-bold text-white">BTech in Mathematics & Computer Science</h3>
+                                <p class="text-primary-400 font-medium">Delhi Technological University (formerly DCE)</p>
+                                <p class="text-gray-400 text-sm mb-2">New Delhi, India • Graduated 2026</p>
+                                <p class="text-gray-300">Comprehensive education in mathematics, computer science fundamentals, software engineering, and emerging technologies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Projects</h2>
+                <div class="w-20 h-1 bg-primary-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: Pandas -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift">
+                    <div class="h-48 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+                        <i class="fab fa-python text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Pandas Data Analysis</h3>
+                        <p class="text-gray-400 mb-4">Data manipulation and analysis using Python Pandas library for complex datasets.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 bg-blue-600/30 text-blue-400 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-blue-600/30 text-blue-400 rounded-full text-sm">Pandas</span>
+                        </div>
+                        <a href="#" class="text-primary-400 hover:text-primary-300 font-medium">View Project →</a>
+                    </div>
+                </div>
+                
+                <!-- Project 2: PyTorch -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift">
+                    <div class="h-48 bg-gradient-to-br from-orange-600 to-red-800 flex items-center justify-center">
+                        <i class="fas fa-fire text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">PyTorch Machine Learning</h3>
+                        <p class="text-gray-400 mb-4">Deep learning models and neural networks implemented with PyTorch framework.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 bg-orange-600/30 text-orange-400 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-orange-600/30 text-orange-400 rounded-full text-sm">PyTorch</span>
+                        </div>
+                        <a href="#" class="text-primary-400 hover:text-primary-300 font-medium">View Project →</a>
+                    </div>
+                </div>
+                
+                <!-- Project 3: Scikit -->
+                <div class="glass-card rounded-xl overflow-hidden hover-lift">
+                    <div class="h-48 bg-gradient-to-br from-green-600 to-teal-800 flex items-center justify-center">
+                        <i class="fas fa-robot text-6xl text-white"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Scikit-Learn Models</h3>
+                        <p class="text-gray-400 mb-4">Machine learning pipelines and predictive models using scikit-learn.</p>
+                        <div class="flex gap-2 mb-4">
+                            <span class="px-3 py-1 bg-green-600/30 text-green-400 rounded-full text-sm">Python</span>
+                            <span class="px-3 py-1 bg-green-600/30 text-green-400 rounded-full text-sm">ML</span>
+                        </div>
+                        <a href="#" class="text-primary-400 hover:text-primary-300 font-medium">View Project →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 gradient-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Let's Work Together</h2>
+            <p class="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+                I'm always interested in hearing about new projects and opportunities. Feel free to reach out if you'd like to collaborate.
+            </p>
+            <a href="mailto:mohdshayan@duck.com" class="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-gray-400">
+                    © 2026 SocialSure Private Limited. Made with 💙
+                </div>
+                <div class="flex space-x-6">
+                    <a href="mailto:mohdshayan@duck.com" class="text-gray-400 hover:text-primary-400 transition-colors">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-primary-400 transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobile-menu');
+            const button = document.querySelector('button[onclick="toggleMobileMenu()"]');
+            if (!menu.contains(e.target) && !button.contains(e.target)) {
+                menu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

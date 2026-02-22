@@ -1,0 +1,24 @@
+{
+  "name": "mohd-shayan-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website for Mohd Shayan - Product Engineer & Entrepreneur",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "echo 'Deploy to your hosting platform'"
+  },
+  "keywords": [
+    "portfolio",
+    "personal-website",
+    "product-engineer",
+    "entrepreneur",
+    "web-development"
+  ],
+  "author": "Mohd Shayan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/mohd-shayan-portfolio"
+  }
+}
