@@ -53,11 +53,11 @@ mohd-shayan-portfolio/
 ├── favicon.jpg         # Website favicon
 ├── robots.txt          # AI/LLM scraping allowance + SEO
 ├── sitemap.xml         # SEO sitemap
+├── image-sitemap.xml   # Image SEO sitemap
 ├── assets/
 │   └── avatar.jpg      # Profile photo
 ├── uploads/
 │   └── resume.pdf      # CV/Resume
-├── netlify.toml        # Deployment config with SEO headers
 ├── README.md           # This file
 └── package.json        # Project metadata
 ```
@@ -80,8 +80,9 @@ python3 -m http.server 8000
 
 ### Deployment
 
-This is a static website optimized for deployment to:
-- GitHub Pages
+This is a static website deployed to **GitHub Pages** with custom domain (mohdshayan.com).
+
+Alternative deployment options:
 - Netlify
 - Vercel
 - Any web hosting service
