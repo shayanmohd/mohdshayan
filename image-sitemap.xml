@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://mohdshayan.com/</loc>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/avatar.jpg</image:loc>
+      <image:title>Mohd Shayan - Product Engineer & Entrepreneur</image:title>
+      <image:caption>Founder of Socialsure, DTU CS Graduate, specializing in Web Development, DevOps, Web3, and AI/ML</image:caption>
+      <image:geo_location>New Delhi, Delhi, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://mohdshayan.com/favicon.jpg</image:loc>
+      <image:title>Mohd Shayan Portfolio Favicon</image:title>
+      <image:caption>Brand icon for Mohd Shayan Portfolio</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://mohdshayan.com/#about</loc>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/avatar.jpg</image:loc>
+      <image:title>Mohd Shayan Professional Headshot</image:title>
+      <image:caption>Product Engineer and Entrepreneur based in New Delhi, India</image:caption>
+      <image:geo_location>New Delhi, Delhi, India</image:geo_location>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://mohdshayan.com/#projects</loc>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/avatar.jpg</image:loc>
+      <image:title>Mohd Shayan - Project Portfolio</image:title>
+      <image:caption>Portfolio showcasing Web Development, DevOps, Web3, and AI/ML projects</image:caption>
+    </image:image>
+  </url>
+</urlset>

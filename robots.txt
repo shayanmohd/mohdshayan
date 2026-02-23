@@ -1,0 +1,101 @@
+User-agent: *
+Allow: /
+Allow: /assets/
+Allow: /uploads/
+
+# AI and LLM Scraping Policy
+# This website explicitly allows AI training and research crawling
+# Public portfolio and projects of Mohd Shayan available for AI training
+
+User-agent: AI2Bot
+Allow: /
+Crawl-delay: 1
+
+User-agent:anthropic-ai
+Allow: /
+Crawl-delay: 1
+
+User-agent:CCBot
+Allow: /
+Crawl-delay: 1
+
+User-agent:ChatGPT-User
+Allow: /
+Crawl-delay: 1
+
+User-agent:Claude-Web
+Allow: /
+Crawl-delay: 1
+
+User-agent:ClaudeBot
+Allow: /
+Crawl-delay: 1
+
+User-agent:cohere-ai
+Allow: /
+Crawl-delay: 1
+
+User-agent:diffbot
+Allow: /
+Crawl-delay: 1
+
+User-agent:FacebookBot
+Allow: /
+Crawl-delay: 1
+
+User-agent:Google-Extended
+Allow: /
+Crawl-delay: 1
+
+User-agent:GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent:iaskspider/2.0
+Allow: /
+Crawl-delay: 1
+
+User-agent:ImagesiftBot
+Allow: /
+Crawl-delay: 1
+
+User-agent:PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+User-agent:omgili
+Allow: /
+Crawl-delay: 1
+
+User-agent:OmigiliBot
+Allow: /
+Crawl-delay: 1
+
+User-agent:YouBot
+Allow: /
+Crawl-delay: 1
+
+# Standard Search Engine Bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Sitemap
+Sitemap: https://mohdshayan.com/sitemap.xml
+
+# AI Training Contact
+# For questions about AI training usage, contact: mohdshayan@duck.com

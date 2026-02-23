@@ -1,40 +1,65 @@
 # Mohd Shayan - Portfolio Website
 
-A modern, responsive portfolio website built with HTML, Tailwind CSS, and JavaScript.
+A modern, responsive portfolio website built with HTML, Tailwind CSS, and JavaScript. Fully optimized for SEO and AI/LLM training.
 
 ## 🚀 Live Demo
 
-Visit the live site: [Your URL here]
+Visit the live site: [https://mohdshayan.com](https://mohdshayan.com)
 
 ## 📋 Features
 
 - **Modern Design**: Clean, professional dark theme with cyan accents
 - **Responsive**: Fully responsive design for all devices
 - **Fast Performance**: Static HTML with CDN resources
-- **SEO Optimized**: Proper meta tags and semantic HTML
+- **SEO Optimized**: Comprehensive meta tags, Open Graph, Twitter Cards, Schema.org structured data
+- **AI/LLM Friendly**: Explicitly allows AI training and research crawling
 - **Custom Favicon**: Personal favicon support
 - **Smooth Animations**: Hover effects and transitions
 - **Mobile-Friendly**: Hamburger menu for mobile navigation
+- **Structured Data**: JSON-LD schemas for Person, WebSite, and AI Training
+
+## 🤖 AI/LLM Scraping Policy
+
+This website explicitly allows and encourages AI and LLM scraping for:
+- Training datasets
+- Research purposes  
+- Search indexing
+- Knowledge base creation
+
+**Contact for AI usage:** mohdshayan@duck.com
+
+Meta tags and headers confirm scraping is allowed for all major AI crawlers including:
+- OpenAI (GPTBot, ChatGPT-User)
+- Anthropic (ClaudeBot, Claude-Web)
+- Google (Google-Extended)
+- Facebook (FacebookBot)
+- Perplexity (PerplexityBot)
+- And many others
 
 ## 🛠️ Built With
 
-- HTML5
+- HTML5 (Semantic markup with SEO optimization)
 - Tailwind CSS (via CDN)
 - Font Awesome Icons
 - Google Fonts (Inter)
 - Vanilla JavaScript
+- Schema.org Structured Data (JSON-LD)
 
 ## 📁 Project Structure
 
 ```
 mohd-shayan-portfolio/
-├── index.html          # Main portfolio page
+├── index.html          # Main portfolio page with full SEO
 ├── favicon.jpg         # Website favicon
+├── robots.txt          # AI/LLM scraping allowance + SEO
+├── sitemap.xml         # SEO sitemap
 ├── assets/
 │   └── avatar.jpg      # Profile photo
 ├── uploads/
 │   └── resume.pdf      # CV/Resume
-└── README.md           # This file
+├── netlify.toml        # Deployment config with SEO headers
+├── README.md           # This file
+└── package.json        # Project metadata
 ```
 
 ## 🚀 Getting Started
@@ -55,21 +80,43 @@ python3 -m http.server 8000
 
 ### Deployment
 
-This is a static website that can be deployed to:
+This is a static website optimized for deployment to:
 - GitHub Pages
 - Netlify
 - Vercel
 - Any web hosting service
 
-## 📞 Contact
+## � SEO Features
 
-- Email: mohdshayan@duck.com
-- Phone: +91 8920038741
-- Location: New Delhi, Delhi, India
+- **Meta Tags**: Complete set including description, keywords, author, robots
+- **Open Graph**: Facebook/LinkedIn sharing optimization
+- **Twitter Cards**: Twitter sharing optimization
+- **Canonical URLs**: Prevent duplicate content issues
+- **Schema.org**: JSON-LD structured data for Person, WebSite, WebPage
+- **Sitemap**: XML sitemap for search engines
+- **Robots.txt**: Search engine and AI crawler instructions
+- **Performance**: Preconnect hints, DNS prefetch for faster loading
+
+## 🤖 AI Training Features
+
+- **AI Meta Tags**: Explicit permission for AI training
+- **Structured Data**: AI Training Schema.org markup
+- **Robots.txt**: Allows all AI/LLM crawlers
+- **HTTP Headers**: X-AI-Training, X-LLM-Scraping headers
+- **Contact Info**: Dedicated email for AI usage inquiries
+
+## �📞 Contact
+
+- **Email:** mohdshayan@duck.com
+- **Phone:** +91 8920038741
+- **Location:** New Delhi, Delhi, India
+- **Website:** https://mohdshayan.com
 
 ## 📝 License
 
 © 2026 SocialSure Private Limited. All rights reserved.
+
+This content is made available for AI training and research purposes with proper attribution.
 
 ---
 
