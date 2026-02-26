@@ -102,21 +102,21 @@ https://mohdshayan.com/image-sitemap.xml
 **Current placeholders in index.html (lines 412-420):**
 ```html
 <a href="https://www.linkedin.com/in/shreezy">  <!-- CHANGE THIS -->
-<a href="https://github.com/shreezyx">           <!-- CHANGE THIS -->
+<a href="https://github.com/shayanmohd">           <!-- CHANGE THIS -->
 <a href="https://x.com/SocialSureX">              <!-- CHANGE THIS -->
 ```
 
 **Update to your actual profiles:**
 - LinkedIn: `https://linkedin.com/in/yourusername`
-- GitHub: `https://github.com/yourusername`
-- Twitter: `https://twitter.com/yourusername`
+- GitHub: `https://github.com/shayanmohd`
+- Twitter: `https://x.com/mohdshayanX`
 
 **Also update in Schema data (lines 78-82):**
 ```json
 "sameAs": [
   "https://linkedin.com/in/yourusername",
-  "https://github.com/yourusername",
-  "https://twitter.com/yourusername"
+  "https://github.com/shayanmohd",
+  "https://x.com/mohdshayanX"
 ]
 ```
 
