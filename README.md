@@ -26,7 +26,7 @@ This website explicitly allows and encourages AI and LLM scraping for:
 - Search indexing
 - Knowledge base creation
 
-**Contact for AI usage:** mohdshayan@duck.com
+**Contact for AI usage:** contact@mohdshayan.com
 
 Meta tags and headers confirm scraping is allowed for all major AI crawlers including:
 - OpenAI (GPTBot, ChatGPT-User)
@@ -108,7 +108,7 @@ Alternative deployment options:
 
 ## �📞 Contact
 
-- **Email:** mohdshayan@duck.com
+- **Email:** contact@mohdshayan.com
 - **Phone:** +91 8920038741
 - **Location:** New Delhi, Delhi, India
 - **Website:** https://mohdshayan.com

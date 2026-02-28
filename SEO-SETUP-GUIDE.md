@@ -101,7 +101,7 @@ https://mohdshayan.com/image-sitemap.xml
 
 **Current placeholders in index.html (lines 412-420):**
 ```html
-<a href="https://www.linkedin.com/in/shreezy">  <!-- CHANGE THIS -->
+<a href="https://www.linkedin.com/in/shayanmohd">  <!-- CHANGE THIS -->
 <a href="https://github.com/shayanmohd">           <!-- CHANGE THIS -->
 <a href="https://x.com/SocialSureX">              <!-- CHANGE THIS -->
 ```

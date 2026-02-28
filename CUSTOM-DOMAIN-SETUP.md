@@ -78,7 +78,7 @@ Current line 19:
 Lines 78-82 - Update if needed:
 ```json
 "sameAs": [
-  "https://linkedin.com/in/shreezy",
+  "https://linkedin.com/in/shayanmohd",
   "https://github.com/shayanmohd",
   "https://x.com/mohdshayanX"
 ]

@@ -98,4 +98,4 @@ Allow: /
 Sitemap: https://mohdshayan.com/sitemap.xml
 
 # AI Training Contact
-# For questions about AI training usage, contact: mohdshayan@duck.com
+# For questions about AI training usage, contact: contact@mohdshayan.com
