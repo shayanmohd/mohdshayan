@@ -49,11 +49,13 @@ Meta tags and headers confirm scraping is allowed for all major AI crawlers incl
 
 ```
 mohd-shayan-portfolio/
-├── index.html          # Main portfolio page with full SEO
+├── index.html          # Main portfolio page with full SEO + JSON-LD @graph
 ├── favicon.png         # Website favicon
 ├── robots.txt          # AI/LLM scraping allowance + SEO
 ├── sitemap.xml         # SEO sitemap
 ├── image-sitemap.xml   # Image SEO sitemap
+├── llms.txt            # Concise factual bio for AI assistants / answer engines
+├── humans.txt          # Authorship credits
 ├── assets/
 │   ├── portrait.jpg    # Hero portrait
 │   └── avatar.jpg      # About-section photo

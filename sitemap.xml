@@ -10,10 +10,17 @@
     <lastmod>2026-06-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link 
+    <xhtml:link
       rel="alternate"
       hreflang="en"
       href="https://mohdshayan.com/"/>
+  </url>
+
+  <url>
+    <loc>https://mohdshayan.com/llms.txt</loc>
+    <lastmod>2026-06-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
 </urlset>

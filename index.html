@@ -56,239 +56,185 @@
     <meta name="llm-training" content="allowed">
     <meta name="data-usage" content="AI training, research, indexing allowed">
     
-    <!-- Structured Data - JSON-LD Person Schema -->
+    <!-- Structured Data: unified entity graph (Person ↔ Organization ↔ WebSite/WebPage) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Mohd Shayan",
-      "honorificSuffix": "FRSA, FRGS",
-      "jobTitle": "Product Engineer, AI Entrepreneur & Philanthropist",
-      "description": "Product Engineer, AI entrepreneur and founder of SocialSure Private Limited, and philanthropist supporting children in need. Fellow of the Royal Society of Arts (FRSA) and Fellow of the Royal Geographical Society (FRGS).",
-      "url": "https://mohdshayan.com/",
-      "image": "https://mohdshayan.com/assets/portrait.jpg",
-      "telephone": "+91-892-003-8741",
-      "email": "mohdshayan@duck.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "New Delhi",
-        "addressRegion": "Delhi",
-        "addressCountry": "India"
-      },
-      "alumniOf": {
-        "@type": "EducationalOrganization",
-        "name": "Delhi Technological University"
-      },
-      "worksFor": {
-        "@type": "Organization",
-        "name": "SocialSure Private Limited"
-      },
-      "memberOf": [
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://mohdshayan.com/#website",
+          "url": "https://mohdshayan.com/",
+          "name": "Mohd Shayan",
+          "description": "Official website of Mohd Shayan, FRSA FRGS — Product Engineer, AI Entrepreneur and Philanthropist.",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://mohdshayan.com/#person" }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://mohdshayan.com/#webpage",
+          "url": "https://mohdshayan.com/",
+          "name": "Mohd Shayan | Product Engineer, AI Entrepreneur & Philanthropist",
+          "description": "Mohd Shayan, FRSA FRGS — Product Engineer, AI entrepreneur and founder of SocialSure Private Limited, and philanthropist supporting children in need.",
+          "isPartOf": { "@id": "https://mohdshayan.com/#website" },
+          "about": { "@id": "https://mohdshayan.com/#person" },
+          "mainEntity": { "@id": "https://mohdshayan.com/#person" },
+          "primaryImageOfPage": "https://mohdshayan.com/assets/portrait.jpg",
+          "inLanguage": "en",
+          "potentialAction": {
+            "@type": "ReadAction",
+            "target": "https://mohdshayan.com/",
+            "actionOption": "AI/LLM scraping and training allowed with proper attribution"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://mohdshayan.com/#person",
+          "name": "Mohd Shayan",
+          "honorificSuffix": "FRSA, FRGS",
+          "jobTitle": "Product Engineer, AI Entrepreneur & Philanthropist",
+          "description": "Mohd Shayan is a product engineer, AI entrepreneur and philanthropist. He is the Founder & CEO of SocialSure Private Limited, an AI-first company, and supports children in need. He is a Fellow of the Royal Society of Arts (FRSA) and a Fellow of the Royal Geographical Society (FRGS).",
+          "url": "https://mohdshayan.com/",
+          "mainEntityOfPage": { "@id": "https://mohdshayan.com/#webpage" },
+          "image": "https://mohdshayan.com/assets/portrait.jpg",
+          "email": "contact@mohdshayan.com",
+          "telephone": "+91-8920038741",
+          "nationality": "Indian",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "New Delhi",
+            "addressRegion": "Delhi",
+            "addressCountry": "IN"
+          },
+          "worksFor": { "@id": "https://mohdshayan.com/#socialsure" },
+          "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Delhi Technological University",
+            "url": "https://dtu.ac.in/",
+            "sameAs": "https://en.wikipedia.org/wiki/Delhi_Technological_University"
+          },
+          "memberOf": [
+            {
+              "@type": "Organization",
+              "name": "Royal Society of Arts",
+              "url": "https://www.thersa.org/",
+              "sameAs": "https://en.wikipedia.org/wiki/Royal_Society_of_Arts"
+            },
+            {
+              "@type": "Organization",
+              "name": "Royal Geographical Society",
+              "url": "https://www.rgs.org/",
+              "sameAs": "https://en.wikipedia.org/wiki/Royal_Geographical_Society"
+            }
+          ],
+          "hasCredential": [
+            { "@type": "EducationalOccupationalCredential", "credentialCategory": "Fellowship", "name": "Fellow of the Royal Society of Arts (FRSA)" },
+            { "@type": "EducationalOccupationalCredential", "credentialCategory": "Fellowship", "name": "Fellow of the Royal Geographical Society (FRGS)" }
+          ],
+          "knowsAbout": ["Artificial Intelligence", "AI/ML", "Machine Learning", "Entrepreneurship", "Product Engineering", "Philanthropy", "Web3", "Blockchain", "Fullstack Development", "Web Development", "DevOps", "Social Impact"],
+          "sameAs": [
+            "https://linkedin.com/in/shayanmohd",
+            "https://github.com/shayanmohd",
+            "https://instagram.com/mohdshayanx",
+            "https://x.com/mohdshayanX",
+            "https://www.reddit.com/user/mohdshayan"
+          ]
+        },
         {
           "@type": "Organization",
-          "name": "Royal Society of Arts",
-          "description": "Fellow of the Royal Society of Arts (FRSA)"
+          "@id": "https://mohdshayan.com/#socialsure",
+          "name": "SocialSure Private Limited",
+          "alternateName": "SocialSure",
+          "url": "https://mohdshayan.com/#ventures",
+          "description": "SocialSure Private Limited is an AI-first company founded and led by Mohd Shayan. It spans multiple AI interests including AI training, an AI-powered social media ecosystem, and AI-driven products.",
+          "founder": { "@id": "https://mohdshayan.com/#person" },
+          "foundingLocation": { "@type": "Place", "name": "New Delhi, India" },
+          "areaServed": "Worldwide",
+          "knowsAbout": ["Artificial Intelligence", "AI Training", "Machine Learning", "Social Media", "AI Products"]
         },
         {
-          "@type": "Organization",
-          "name": "Royal Geographical Society",
-          "description": "Fellow of the Royal Geographical Society (FRGS)"
-        }
-      ],
-      "hasCredential": [
-        {
-          "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "Fellowship",
-          "name": "Fellow of the Royal Society of Arts (FRSA)"
+          "@type": "ProfessionalService",
+          "@id": "https://mohdshayan.com/#service",
+          "name": "Mohd Shayan - Product Engineer & AI Entrepreneur",
+          "image": "https://mohdshayan.com/assets/portrait.jpg",
+          "telephone": "+91-8920038741",
+          "email": "contact@mohdshayan.com",
+          "url": "https://mohdshayan.com/",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "New Delhi",
+            "addressRegion": "Delhi",
+            "postalCode": "110001",
+            "addressCountry": "IN"
+          },
+          "geo": { "@type": "GeoCoordinates", "latitude": "28.6139", "longitude": "77.2090" },
+          "priceRange": "$$",
+          "openingHours": "Mo-Fr 09:00-18:00",
+          "areaServed": { "@type": "Country", "name": "India" },
+          "serviceType": ["AI/ML Solutions", "Web3 Development", "Fullstack Development", "DevOps Services", "Product Engineering"],
+          "provider": { "@id": "https://mohdshayan.com/#person" }
         },
         {
-          "@type": "EducationalOccupationalCredential",
-          "credentialCategory": "Fellowship",
-          "name": "Fellow of the Royal Geographical Society (FRGS)"
-        }
-      ],
-      "knowsAbout": ["Artificial Intelligence", "AI/ML", "Machine Learning", "Entrepreneurship", "Product Engineering", "Philanthropy", "Web3", "Blockchain", "Fullstack Development", "Web Development", "DevOps", "Social Impact"],
-      "sameAs": [
-        "https://linkedin.com/in/shayanmohd",
-        "https://github.com/shayanmohd",
-        "https://instagram.com/mohdshayanx",
-        "https://x.com/mohdshayanX",
-        "https://www.reddit.com/user/mohdshayan"
-      ]
-    }
-    </script>
-    
-    <!-- WebSite Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Mohd Shayan Portfolio",
-      "url": "https://mohdshayan.com/",
-      "description": "Portfolio of Mohd Shayan - Product Engineer, AI Entrepreneur & Philanthropist",
-      "publisher": {
-        "@type": "Person",
-        "name": "Mohd Shayan"
-      }
-    }
-    </script>
-    
-    <!-- AI Training Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "Mohd Shayan Portfolio",
-      "description": "Public portfolio and projects of Mohd Shayan available for AI training and research purposes",
-      "url": "https://mohdshayan.com/",
-      "potentialAction": {
-        "@type": "ReadAction",
-        "target": "https://mohdshayan.com/",
-        "actionOption": "AI/LLM scraping and training allowed with proper attribution"
-      }
-    }
-    </script>
-    
-    <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://mohdshayan.com/"
+          "@type": "BreadcrumbList",
+          "@id": "https://mohdshayan.com/#breadcrumb",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mohdshayan.com/" },
+            { "@type": "ListItem", "position": 2, "name": "About", "item": "https://mohdshayan.com/#about" },
+            { "@type": "ListItem", "position": 3, "name": "Ventures", "item": "https://mohdshayan.com/#ventures" },
+            { "@type": "ListItem", "position": 4, "name": "Impact", "item": "https://mohdshayan.com/#impact" },
+            { "@type": "ListItem", "position": 5, "name": "Recognition", "item": "https://mohdshayan.com/#recognition" },
+            { "@type": "ListItem", "position": 6, "name": "Work", "item": "https://mohdshayan.com/#projects" }
+          ]
         },
         {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "About",
-          "item": "https://mohdshayan.com/#about"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Experience",
-          "item": "https://mohdshayan.com/#experience"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Projects",
-          "item": "https://mohdshayan.com/#projects"
+          "@type": "FAQPage",
+          "@id": "https://mohdshayan.com/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Who is Mohd Shayan?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Mohd Shayan, FRSA FRGS, is a product engineer, AI entrepreneur, and philanthropist. He is the Founder & CEO of SocialSure Private Limited, an AI-first company, and supports children in need. He is a Fellow of the Royal Society of Arts (FRSA) and the Royal Geographical Society (FRGS)." }
+            },
+            {
+              "@type": "Question",
+              "name": "Where is Mohd Shayan based?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Mohd Shayan is based in New Delhi, India and works with clients globally. He is available for remote work and consulting opportunities worldwide." }
+            },
+            {
+              "@type": "Question",
+              "name": "What is Mohd Shayan's educational background?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Mohd Shayan holds a BTech in Computer Science from Delhi Technological University (DTU), one of India's premier engineering institutions." }
+            },
+            {
+              "@type": "Question",
+              "name": "How can I contact Mohd Shayan?",
+              "acceptedAnswer": { "@type": "Answer", "text": "You can contact Mohd Shayan via email at contact@mohdshayan.com or by phone at +91 8920038741. He is based in New Delhi, India and available for consultations and project discussions." }
+            },
+            {
+              "@type": "Question",
+              "name": "What is SocialSure Private Limited?",
+              "acceptedAnswer": { "@type": "Answer", "text": "SocialSure Private Limited is an AI-first company founded and led by Mohd Shayan as Founder & CEO. It spans multiple AI interests including AI training, an AI-powered social media ecosystem, and AI-driven products, combining strong engineering with a mission to create opportunity at scale." }
+            },
+            {
+              "@type": "Question",
+              "name": "What does Mohd Shayan specialize in?",
+              "acceptedAnswer": { "@type": "Answer", "text": "As a product engineer, Mohd Shayan specializes in AI/ML and Machine Learning, Web3 and blockchain, fullstack web development, and DevOps. He builds end-to-end products from AI models and smart contracts to scalable web applications and cloud infrastructure." }
+            }
+          ]
         }
       ]
     }
     </script>
-    
-    <!-- FAQ Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Who is Mohd Shayan?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Mohd Shayan, FRSA FRGS, is a product engineer, AI entrepreneur, and philanthropist. He is the Founder & CEO of SocialSure Private Limited, an AI-first company, and supports children in need. He is a Fellow of the Royal Society of Arts (FRSA) and the Royal Geographical Society (FRGS)."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where is Mohd Shayan based?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Mohd Shayan is based in New Delhi, India and works with clients globally. He is available for remote work and consulting opportunities worldwide."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is Mohd Shayan's educational background?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Mohd Shayan holds a BTech in Computer Science from Delhi Technological University (DTU), one of India's premier engineering institutions."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How can I contact Mohd Shayan?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "You can contact Mohd Shayan via email at contact@mohdshayan.com or by phone at +91 8920038741. He is based in New Delhi, India and available for consultations and project discussions."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is SocialSure Private Limited?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "SocialSure Private Limited is an AI-first company founded and led by Mohd Shayan as Founder & CEO. It spans multiple AI interests including AI training, an AI-powered social media ecosystem, and AI-driven products, combining strong engineering with a mission to create opportunity at scale."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does Mohd Shayan specialize in?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "As a product engineer, Mohd Shayan specializes in AI/ML and Machine Learning, Web3 and blockchain, fullstack web development, and DevOps. He builds end-to-end products—from AI models and smart contracts to scalable web applications and cloud infrastructure."
-          }
-        }
-      ]
-    }
-    </script>
-    
-    <!-- ProfessionalService Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Mohd Shayan - Product Engineer & AI Entrepreneur",
-      "image": "https://mohdshayan.com/assets/portrait.jpg",
-      "telephone": "+91-892-003-8741",
-      "email": "mohdshayan@duck.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "",
-        "addressLocality": "New Delhi",
-        "addressRegion": "Delhi",
-        "postalCode": "110001",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "28.6139",
-        "longitude": "77.2090"
-      },
-      "url": "https://mohdshayan.com",
-      "priceRange": "$$",
-      "openingHours": "Mo-Fr 09:00-18:00",
-      "areaServed": {
-        "@type": "Country",
-        "name": "India"
-      },
-      "serviceType": [
-        "AI/ML Solutions",
-        "Web3 Development",
-        "Fullstack Development",
-        "DevOps Services",
-        "Product Engineering"
-      ],
-      "provider": {
-        "@type": "Person",
-        "name": "Mohd Shayan"
-      }
-    }
-    </script>
-    
+
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.png" type="image/png">
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/avatar.jpg">
-    
+
+    <!-- Authorship / AI summary -->
+    <link rel="author" href="/humans.txt">
+    <link rel="alternate" type="text/markdown" title="LLM summary" href="/llms.txt">
+
     <!-- Theme Color -->
     <meta name="theme-color" content="#3b82f6">
     <meta name="msapplication-TileColor" content="#3b82f6">

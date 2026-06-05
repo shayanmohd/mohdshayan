@@ -2,10 +2,13 @@ User-agent: *
 Allow: /
 Allow: /assets/
 Allow: /uploads/
+Allow: /llms.txt
+Allow: /humans.txt
 
 # AI and LLM Scraping Policy
 # This website explicitly allows AI training and research crawling
 # Public portfolio and projects of Mohd Shayan available for AI training
+# Concise AI/LLM summary: https://mohdshayan.com/llms.txt
 
 User-agent: AI2Bot
 Allow: /
