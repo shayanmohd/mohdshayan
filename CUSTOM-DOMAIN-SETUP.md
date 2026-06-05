@@ -80,7 +80,9 @@ Lines 78-82 - Update if needed:
 "sameAs": [
   "https://linkedin.com/in/shayanmohd",
   "https://github.com/shayanmohd",
-  "https://x.com/mohdshayanX"
+  "https://instagram.com/mohdshayanx",
+  "https://x.com/mohdshayanX",
+  "https://www.reddit.com/user/mohdshayan"
 ]
 ```
 
@@ -94,7 +96,8 @@ Test these URLs in your browser:
 - [ ] https://mohdshayan.com/sitemap.xml (Sitemap loads)
 - [ ] https://mohdshayan.com/robots.txt (Robots.txt loads)
 - [ ] https://mohdshayan.com/favicon.png (Favicon loads)
-- [ ] https://mohdshayan.com/assets/avatar.jpg (Avatar loads)
+- [ ] https://mohdshayan.com/assets/portrait.jpg (Hero portrait loads)
+- [ ] https://mohdshayan.com/assets/avatar.jpg (About photo loads)
 
 All should return HTTP 200 OK.
 
@@ -147,11 +150,11 @@ Use these tools with your custom domain:
 ### 1 Week:
 - FAQ rich snippets appear in search results
 - "Mohd Shayan" search shows your site
-- Image results show your avatar
+- Image results show your portrait
 
 ### 2 Weeks:
 - Ranking for "Product Engineer New Delhi"
-- Ranking for "Web Developer Delhi"
+- Ranking for "AI Entrepreneur India" / "Web Developer Delhi"
 - Organic traffic starts
 
 ### 1 Month:

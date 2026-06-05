@@ -84,14 +84,14 @@ https://mohdshayan.com/image-sitemap.xml
 ### **3. Create Google Business Profile (LOCAL SEO BOOST)**
 
 **Step 1:** Go to https://business.google.com/create
-**Step 2:** Enter business name: "Mohd Shayan - Product Engineer"
+**Step 2:** Enter business name: "Mohd Shayan - Product Engineer & AI Entrepreneur"
 **Step 3:** Category: "Software Engineer" or "Web Developer"
 **Step 4:** Location: New Delhi, India (service area)
 **Step 5:** Add details:
 - Phone: +91 8920038741
 - Website: https://mohdshayan.com
 - Hours: Mon-Fri 9AM-6PM
-- Services: Web Development, DevOps, Web3, AI/ML
+- Services: AI/ML, Web3, Web Development, DevOps, Product Engineering, AI Entrepreneurship
 
 **Impact:** Appears in Google Maps and local search results for "Product Engineer New Delhi"
 
@@ -99,24 +99,30 @@ https://mohdshayan.com/image-sitemap.xml
 
 ### **4. Update Social Media Links**
 
-**Current placeholders in index.html (lines 412-420):**
+**Social links in index.html (hero, contact, and footer):**
 ```html
-<a href="https://www.linkedin.com/in/shayanmohd">  <!-- CHANGE THIS -->
-<a href="https://github.com/shayanmohd">           <!-- CHANGE THIS -->
-<a href="https://x.com/SocialSureX">              <!-- CHANGE THIS -->
+<a href="https://www.linkedin.com/in/shayanmohd">
+<a href="https://github.com/shayanmohd">
+<a href="https://instagram.com/mohdshayanx">
+<a href="https://x.com/mohdshayanX">
+<a href="https://www.reddit.com/user/mohdshayan">
 ```
 
-**Update to your actual profiles:**
-- LinkedIn: `https://linkedin.com/in/yourusername`
+**Profiles:**
+- LinkedIn: `https://linkedin.com/in/shayanmohd`
 - GitHub: `https://github.com/shayanmohd`
+- Instagram: `https://instagram.com/mohdshayanx`
 - Twitter: `https://x.com/mohdshayanX`
+- Reddit: `https://www.reddit.com/user/mohdshayan`
 
-**Also update in Schema data (lines 78-82):**
+**Also reflected in Schema data (`sameAs`):**
 ```json
 "sameAs": [
-  "https://linkedin.com/in/yourusername",
+  "https://linkedin.com/in/shayanmohd",
   "https://github.com/shayanmohd",
-  "https://x.com/mohdshayanX"
+  "https://instagram.com/mohdshayanx",
+  "https://x.com/mohdshayanX",
+  "https://www.reddit.com/user/mohdshayan"
 ]
 ```
 
@@ -145,7 +151,7 @@ cd /Users/shreezy/Desktop/mohd-shayan-portfolio
 git init
 git add .
 git commit -m "Initial SEO-optimized portfolio"
-git remote add origin https://github.com/yourusername/mohd-shayan-portfolio.git
+git remote add origin https://github.com/shayanmohd/mohdshayan.git
 git push -u origin main
 ```
 Then enable GitHub Pages in repo settings.
@@ -197,12 +203,15 @@ Drag and drop the folder to https://vercel.com
 
 With these optimizations, you'll appear for:
 - "Product Engineer New Delhi"
+- "AI Entrepreneur India"
 - "Web Developer Delhi"
 - "DevOps Engineer India"
 - "Web3 Developer Delhi"
 - "AI/ML Engineer New Delhi"
 - "Software Engineer DTU"
 - "SocialSure founder"
+- "Mohd Shayan FRSA FRGS"
+- "Mohd Shayan philanthropist"
 - "Mohd Shayan"
 
 ---

@@ -41,7 +41,7 @@ Meta tags and headers confirm scraping is allowed for all major AI crawlers incl
 - HTML5 (Semantic markup with SEO optimization)
 - Tailwind CSS (via CDN)
 - Font Awesome Icons
-- Google Fonts (Space Grotesk, JetBrains Mono)
+- Times New Roman (system serif typeface — no web font dependency)
 - Vanilla JavaScript
 - Schema.org Structured Data (JSON-LD)
 
