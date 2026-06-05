@@ -202,7 +202,7 @@ With these optimizations, you'll appear for:
 - "Web3 Developer Delhi"
 - "AI/ML Engineer New Delhi"
 - "Software Engineer DTU"
-- "Socialsure founder"
+- "SocialSure founder"
 - "Mohd Shayan"
 
 ---

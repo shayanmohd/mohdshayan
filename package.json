@@ -1,7 +1,7 @@
 {
   "name": "mohd-shayan-portfolio",
   "version": "1.0.0",
-  "description": "Personal portfolio website for Mohd Shayan - Product Engineer & Entrepreneur",
+  "description": "Personal portfolio website for Mohd Shayan, FRSA FRGS - Product Engineer, AI Entrepreneur & Philanthropist, Founder of SocialSure Private Limited",
   "main": "index.html",
   "scripts": {
     "start": "python3 -m http.server 8000",
@@ -12,13 +12,16 @@
     "portfolio",
     "personal-website",
     "product-engineer",
-    "entrepreneur",
-    "web-development"
+    "ai-entrepreneur",
+    "philanthropist",
+    "socialsure",
+    "frsa",
+    "frgs"
   ],
   "author": "Mohd Shayan",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/mohd-shayan-portfolio"
+    "url": "https://github.com/shayanmohd/mohdshayan"
   }
 }

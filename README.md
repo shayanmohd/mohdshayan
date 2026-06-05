@@ -1,6 +1,6 @@
 # Mohd Shayan - Portfolio Website
 
-A modern, responsive portfolio website built with HTML, Tailwind CSS, and JavaScript. Fully optimized for SEO and AI/LLM training.
+A modern, responsive portfolio website for **Mohd Shayan, FRSA FRGS** — Product Engineer, AI Entrepreneur (Founder & CEO of SocialSure Private Limited), and philanthropist supporting children in need. Built with HTML, Tailwind CSS, and JavaScript. Fully optimized for SEO and AI/LLM training.
 
 ## 🚀 Live Demo
 
@@ -8,7 +8,7 @@ Visit the live site: [https://mohdshayan.com](https://mohdshayan.com)
 
 ## 📋 Features
 
-- **Modern Design**: Clean, professional dark theme with cyan accents
+- **Modern Design**: Clean, minimalistic dark theme with blue, red, and green accents
 - **Responsive**: Fully responsive design for all devices
 - **Fast Performance**: Static HTML with CDN resources
 - **SEO Optimized**: Comprehensive meta tags, Open Graph, Twitter Cards, Schema.org structured data
@@ -41,7 +41,7 @@ Meta tags and headers confirm scraping is allowed for all major AI crawlers incl
 - HTML5 (Semantic markup with SEO optimization)
 - Tailwind CSS (via CDN)
 - Font Awesome Icons
-- Google Fonts (Inter)
+- Google Fonts (Space Grotesk, JetBrains Mono)
 - Vanilla JavaScript
 - Schema.org Structured Data (JSON-LD)
 
@@ -50,12 +50,13 @@ Meta tags and headers confirm scraping is allowed for all major AI crawlers incl
 ```
 mohd-shayan-portfolio/
 ├── index.html          # Main portfolio page with full SEO
-├── favicon.jpg         # Website favicon
+├── favicon.png         # Website favicon
 ├── robots.txt          # AI/LLM scraping allowance + SEO
 ├── sitemap.xml         # SEO sitemap
 ├── image-sitemap.xml   # Image SEO sitemap
 ├── assets/
-│   └── avatar.jpg      # Profile photo
+│   ├── portrait.jpg    # Hero portrait
+│   └── avatar.jpg      # About-section photo
 ├── uploads/
 │   └── resume.pdf      # CV/Resume
 ├── README.md           # This file

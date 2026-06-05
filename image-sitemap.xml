@@ -4,34 +4,34 @@
   <url>
     <loc>https://mohdshayan.com/</loc>
     <image:image>
-      <image:loc>https://mohdshayan.com/assets/avatar.jpg</image:loc>
-      <image:title>Mohd Shayan - Product Engineer &amp; Entrepreneur</image:title>
-      <image:caption>Founder of Socialsure, DTU CS Graduate, specializing in Web Development, DevOps, Web3, and AI/ML</image:caption>
+      <image:loc>https://mohdshayan.com/assets/portrait.jpg</image:loc>
+      <image:title>Mohd Shayan - Product Engineer, AI Entrepreneur &amp; Philanthropist</image:title>
+      <image:caption>Mohd Shayan, FRSA FRGS — Founder &amp; CEO of SocialSure Private Limited, an AI-first company, and philanthropist supporting children in need</image:caption>
       <image:geo_location>New Delhi, Delhi, India</image:geo_location>
     </image:image>
     <image:image>
-      <image:loc>https://mohdshayan.com/favicon.jpg</image:loc>
+      <image:loc>https://mohdshayan.com/favicon.png</image:loc>
       <image:title>Mohd Shayan Portfolio Favicon</image:title>
       <image:caption>Brand icon for Mohd Shayan Portfolio</image:caption>
     </image:image>
   </url>
-  
+
   <url>
     <loc>https://mohdshayan.com/#about</loc>
     <image:image>
       <image:loc>https://mohdshayan.com/assets/avatar.jpg</image:loc>
-      <image:title>Mohd Shayan Professional Headshot</image:title>
-      <image:caption>Product Engineer and Entrepreneur based in New Delhi, India</image:caption>
+      <image:title>Mohd Shayan Portrait</image:title>
+      <image:caption>Product Engineer, AI Entrepreneur and Philanthropist based in New Delhi, India</image:caption>
       <image:geo_location>New Delhi, Delhi, India</image:geo_location>
     </image:image>
   </url>
-  
+
   <url>
     <loc>https://mohdshayan.com/#projects</loc>
     <image:image>
-      <image:loc>https://mohdshayan.com/assets/avatar.jpg</image:loc>
-      <image:title>Mohd Shayan - Project Portfolio</image:title>
-      <image:caption>Portfolio showcasing Web Development, DevOps, Web3, and AI/ML projects</image:caption>
+      <image:loc>https://mohdshayan.com/assets/portrait.jpg</image:loc>
+      <image:title>Mohd Shayan - Work &amp; Projects</image:title>
+      <image:caption>Portfolio showcasing applied AI, product engineering, and web projects</image:caption>
     </image:image>
   </url>
 </urlset>

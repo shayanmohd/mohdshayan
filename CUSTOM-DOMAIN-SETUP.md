@@ -93,7 +93,7 @@ Test these URLs in your browser:
 - [ ] https://mohdshayan.com (Homepage loads)
 - [ ] https://mohdshayan.com/sitemap.xml (Sitemap loads)
 - [ ] https://mohdshayan.com/robots.txt (Robots.txt loads)
-- [ ] https://mohdshayan.com/favicon.jpg (Favicon loads)
+- [ ] https://mohdshayan.com/favicon.png (Favicon loads)
 - [ ] https://mohdshayan.com/assets/avatar.jpg (Avatar loads)
 
 All should return HTTP 200 OK.

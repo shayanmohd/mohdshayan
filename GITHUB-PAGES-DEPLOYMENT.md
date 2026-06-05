@@ -146,7 +146,7 @@ Check these reports after 24-48 hours:
 2. **Start a Blog Section**
    Topics to write about:
    - "Deploying Web Apps with Netlify"
-   - "My DevOps Workflow for Socialsure"
+   - "My DevOps Workflow for SocialSure"
    - "Web3 Development: Getting Started"
    - "AI/ML for Web Developers"
    - "Lessons from DTU to Founder"
@@ -178,7 +178,7 @@ curl -I https://yourusername.github.io/mohd-shayan-portfolio/
 
 ### Check All Pages:
 - [ ] Homepage loads: `/`
-- [ ] Favicon loads: `/favicon.jpg`
+- [ ] Favicon loads: `/favicon.png`
 - [ ] Avatar loads: `/assets/avatar.jpg`
 - [ ] Sitemap loads: `/sitemap.xml`
 - [ ] Robots.txt loads: `/robots.txt`
@@ -196,8 +196,8 @@ curl -I https://yourusername.github.io/mohd-shayan-portfolio/
 ### Issue 2: Favicon Not Showing
 **Fix:**
 1. Clear browser cache (Ctrl+F5)
-2. Check favicon.jpg exists in repo root
-3. Try accessing: `yourusername.github.io/favicon.jpg`
+2. Check favicon.png exists in repo root
+3. Try accessing: `yourusername.github.io/favicon.png`
 
 ### Issue 3: Images Not Loading
 **Fix:**
