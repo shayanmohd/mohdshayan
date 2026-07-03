@@ -12,6 +12,6 @@
 
 /* SITE */
   Standards: HTML5, JSON-LD structured data
-  Typeface: Times New Roman
+  Typeface: Fraunces (display) · Inter (text)
   Hosting: GitHub Pages (custom domain: mohdshayan.com)
   Contact: contact@mohdshayan.com

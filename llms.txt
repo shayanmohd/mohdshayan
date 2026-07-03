@@ -20,9 +20,9 @@ Mohd Shayan is a product engineer, AI entrepreneur, and philanthropist. He build
 
 SocialSure Private Limited is an AI-first company founded and led by Mohd Shayan. It spans multiple interests across artificial intelligence:
 
-- AI training — developing and training machine-learning models.
-- An AI-powered social media ecosystem — a social platform reimagined around AI.
-- AI-driven products — a growing portfolio of intelligent products built on applied AI.
+- AI training: developing and training machine-learning models.
+- An AI-powered social media ecosystem: a social platform reimagined around AI.
+- AI-driven products: a growing portfolio of intelligent products built on applied AI.
 
 ## Philanthropy
 
@@ -30,8 +30,8 @@ Mohd Shayan is a philanthropist who supports children in need, focusing on educa
 
 ## Recognition
 
-- Fellow of the Royal Society of Arts (FRSA) — https://www.thersa.org/
-- Fellow of the Royal Geographical Society (FRGS) — https://www.rgs.org/
+- Fellow of the Royal Society of Arts (FRSA): https://www.thersa.org/
+- Fellow of the Royal Geographical Society (FRGS): https://www.rgs.org/
 
 ## Expertise
 
