@@ -415,6 +415,10 @@
         .d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}
         .d4{transition-delay:.24s}.d5{transition-delay:.30s}.d6{transition-delay:.36s}
 
+        /* ---------- Projects: collapsed extra cards (id-scoped to beat Tailwind .flex) ---------- */
+        #projects-grid .project-more { display:none; }
+        #projects-grid.is-expanded .project-more { display:flex; }
+
         /* ---------- Hero portrait frame ---------- */
         .portrait-frame { border-radius:1.125rem; padding:1px;
             background:linear-gradient(160deg, rgba(201,162,75,0.55), rgba(36,43,57,0.9) 55%); }
@@ -885,49 +889,207 @@
                 <p class="lead mt-5">A selection of work that showcases how Mohd Shayan builds across AI, product, and the web.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
                 <!-- Shayanomaly -->
                 <article class="card overflow-hidden flex flex-col reveal d1">
                     <div class="h-48 overflow-hidden relative border-b border-line">
-                        <img src="assets/projects/shayanomaly.png" alt="Shayanomaly Web3 Trading Terminal" loading="lazy"
+                        <img src="assets/projects/shayanomaly.png" alt="Shayanomaly Web3 trading terminal" loading="lazy"
                              class="w-full h-full object-cover object-top">
                         <div class="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent"></div>
                         <span class="absolute top-4 right-4 chip">Web3</span>
                     </div>
                     <div class="p-6 flex flex-col flex-1">
                         <h3 class="h3 text-ink mb-2">Shayanomaly</h3>
-                        <p class="text-ink-3 text-sm leading-relaxed flex-1">Web3 arbitrage &amp; trading terminal with real-time CEX/DEX aggregation, MEV-protected execution via Flashbots, and advanced analytics.</p>
+                        <p class="text-ink-3 text-sm leading-relaxed flex-1">Browser-based quantitative trading terminal streaming live order books from five exchanges and detecting cross-venue arbitrage, with an optional self-hosted engine for MEV-protected execution via Flashbots.</p>
                         <div class="flex flex-wrap gap-2 my-5">
                             <span class="tag">Next.js</span><span class="tag">Solidity</span><span class="tag">Ethers.js</span>
                         </div>
-                        <a href="https://github.com/shayanmohd/shayanomaly" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold hover:text-gold-2 font-medium text-sm transition-colors group">
-                            View Project <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
-                        </a>
+                        <div class="flex items-center gap-5">
+                            <a href="https://shayanmohd.github.io/Shayanomaly/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold hover:text-gold-2 font-medium text-sm transition-colors group">
+                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-xs group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"></i>
+                            </a>
+                            <a href="https://github.com/shayanmohd/Shayanomaly" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-ink-3 hover:text-ink font-medium text-sm transition-colors">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- deAIfy -->
+                <article class="card overflow-hidden flex flex-col reveal d2">
+                    <div class="h-48 overflow-hidden relative border-b border-line grid place-items-center"
+                         style="background:radial-gradient(40rem 20rem at 50% 0%, rgba(201,162,75,0.14), transparent 60%), #11151E;">
+                        <i class="fa-solid fa-broom text-6xl text-gold/70"></i>
+                        <span class="absolute top-4 right-4 chip">AI</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="h3 text-ink mb-2">deAIfy</h3>
+                        <p class="text-ink-3 text-sm leading-relaxed flex-1">A cross-platform tool that strips AI tells — em dashes, curly quotes, hidden unicode, filler words — fully on-device, or rewrites text to sound human via a user-supplied LLM key.</p>
+                        <div class="flex flex-wrap gap-2 my-5">
+                            <span class="tag">Expo</span><span class="tag">React Native</span><span class="tag">TypeScript</span>
+                        </div>
+                        <div class="flex items-center gap-5">
+                            <a href="https://shayanmohd.github.io/deAIfy/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold hover:text-gold-2 font-medium text-sm transition-colors group">
+                                Try It Live <i class="fa-solid fa-arrow-up-right-from-square text-xs group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"></i>
+                            </a>
+                            <a href="https://github.com/shayanmohd/deAIfy" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-ink-3 hover:text-ink font-medium text-sm transition-colors">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                        </div>
                     </div>
                 </article>
 
                 <!-- Habits -->
-                <article class="card overflow-hidden flex flex-col reveal d2">
+                <article class="card overflow-hidden flex flex-col reveal d3">
                     <div class="h-48 overflow-hidden relative border-b border-line">
-                        <img src="assets/projects/habittrack.png" alt="Habits Android App" loading="lazy"
+                        <img src="assets/projects/habittrack.png" alt="Habits Android app" loading="lazy"
                              class="w-full h-full object-cover object-top">
                         <div class="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent"></div>
                         <span class="absolute top-4 right-4 chip">Mobile</span>
                     </div>
                     <div class="p-6 flex flex-col flex-1">
                         <h3 class="h3 text-ink mb-2">Habits</h3>
-                        <p class="text-ink-3 text-sm leading-relaxed flex-1">Native Android habit tracker with minimalist design, offline-first architecture, beautiful animations, and home screen widget support.</p>
+                        <p class="text-ink-3 text-sm leading-relaxed flex-1">A native Android habit tracker in Kotlin and Jetpack Compose, storing data fully offline via Room. MVVM + StateFlow architecture, a Glance home-screen widget, and nine-language localization.</p>
                         <div class="flex flex-wrap gap-2 my-5">
-                            <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">Room DB</span>
+                            <span class="tag">Kotlin</span><span class="tag">Jetpack Compose</span><span class="tag">Room</span>
                         </div>
-                        <a href="https://github.com/shayanmohd/habits-app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold hover:text-gold-2 font-medium text-sm transition-colors group">
-                            View Project <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                        <div class="flex items-center gap-5">
+                            <a href="https://play.google.com/store/apps/details?id=com.mohdshayan.habits" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold hover:text-gold-2 font-medium text-sm transition-colors group">
+                                <i class="fa-brands fa-google-play text-xs"></i> Google Play <i class="fa-solid fa-arrow-up-right-from-square text-xs group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"></i>
+                            </a>
+                            <a href="https://github.com/shayanmohd/habits-app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-ink-3 hover:text-ink font-medium text-sm transition-colors">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Turup Chaal -->
+                <article class="card overflow-hidden flex flex-col reveal d4">
+                    <div class="h-48 overflow-hidden relative border-b border-line grid place-items-center"
+                         style="background:radial-gradient(40rem 20rem at 50% 0%, rgba(201,162,75,0.14), transparent 60%), #11151E;">
+                        <i class="fa-solid fa-diamond text-6xl text-gold/70"></i>
+                        <span class="absolute top-4 right-4 chip">Game</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="h3 text-ink mb-2">Turup Chaal</h3>
+                        <p class="text-ink-3 text-sm leading-relaxed flex-1">A production Court Piece trick-taking card game for Android, built solo in Unity and C#, with a pure-C# authoritative rules engine and host-authoritative Photon multiplayer using per-player anti-cheat state redaction.</p>
+                        <div class="flex flex-wrap gap-2 my-5">
+                            <span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Photon PUN2</span>
+                        </div>
+                        <a href="https://github.com/shayanmohd/Turup-Chaal" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold hover:text-gold-2 font-medium text-sm transition-colors group">
+                            View Code <i class="fa-brands fa-github group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </article>
 
-                <!-- Portfolio v2 -->
-                <article class="card overflow-hidden flex flex-col reveal d3">
+                <!-- Advocate Yunus -->
+                <article class="card overflow-hidden flex flex-col reveal d5">
+                    <div class="h-48 overflow-hidden relative border-b border-line grid place-items-center"
+                         style="background:radial-gradient(40rem 20rem at 50% 0%, rgba(201,162,75,0.14), transparent 60%), #11151E;">
+                        <i class="fa-solid fa-scale-balanced text-6xl text-gold/70"></i>
+                        <span class="absolute top-4 right-4 chip">Client Work</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="h3 text-ink mb-2">Advocate Yunus</h3>
+                        <p class="text-ink-3 text-sm leading-relaxed flex-1">A search-optimised marketing website for a legal practice, built with Framer and static HTML/CSS. Ships structured SEO assets — sitemap, robots, security headers and an llms.txt for AI discoverability.</p>
+                        <div class="flex flex-wrap gap-2 my-5">
+                            <span class="tag">Framer</span><span class="tag">HTML/CSS</span><span class="tag">SEO</span>
+                        </div>
+                        <div class="flex items-center gap-5">
+                            <a href="https://advocateyunus.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold hover:text-gold-2 font-medium text-sm transition-colors group">
+                                Visit Site <i class="fa-solid fa-arrow-up-right-from-square text-xs group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"></i>
+                            </a>
+                            <a href="https://github.com/shayanmohd/Advocatewebsite" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-ink-3 hover:text-ink font-medium text-sm transition-colors">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- GTA6.LLC -->
+                <article class="card overflow-hidden flex flex-col reveal d6">
+                    <div class="h-48 overflow-hidden relative border-b border-line grid place-items-center"
+                         style="background:radial-gradient(40rem 20rem at 50% 0%, rgba(201,162,75,0.14), transparent 60%), #11151E;">
+                        <i class="fa-solid fa-hourglass-half text-6xl text-gold/70"></i>
+                        <span class="absolute top-4 right-4 chip">Web</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="h3 text-ink mb-2">GTA6.LLC</h3>
+                        <p class="text-ink-3 text-sm leading-relaxed flex-1">A static GTA 6 launch hub with a live countdown, pre-order guide, interactive map, and email capture, built on config-driven vanilla JavaScript with no build step, backed optionally by Supabase.</p>
+                        <div class="flex flex-wrap gap-2 my-5">
+                            <span class="tag">JavaScript</span><span class="tag">Supabase</span><span class="tag">GitHub Pages</span>
+                        </div>
+                        <div class="flex items-center gap-5">
+                            <a href="https://gta6.llc" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold hover:text-gold-2 font-medium text-sm transition-colors group">
+                                Visit Site <i class="fa-solid fa-arrow-up-right-from-square text-xs group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform"></i>
+                            </a>
+                            <a href="https://github.com/shayanmohd/gta6-marketplace" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-ink-3 hover:text-ink font-medium text-sm transition-colors">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- ShreezyPay Bot (collapsed) -->
+                <article class="card overflow-hidden flex-col reveal project-more">
+                    <div class="h-48 overflow-hidden relative border-b border-line grid place-items-center"
+                         style="background:radial-gradient(40rem 20rem at 50% 0%, rgba(201,162,75,0.14), transparent 60%), #11151E;">
+                        <i class="fa-solid fa-robot text-6xl text-gold/70"></i>
+                        <span class="absolute top-4 right-4 chip">Bot</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="h3 text-ink mb-2">ShreezyPay Bot</h3>
+                        <p class="text-ink-3 text-sm leading-relaxed flex-1">A Telegram escrow-mediation bot running unlimited group pairs simultaneously, enforcing per-user send permissions, keyword filtering, and reply-thread synchronization while re-sending messages to preserve party anonymity.</p>
+                        <div class="flex flex-wrap gap-2 my-5">
+                            <span class="tag">Python</span><span class="tag">python-telegram-bot</span><span class="tag">Telegram API</span>
+                        </div>
+                        <a href="https://github.com/shayanmohd/shreezypaybot" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold hover:text-gold-2 font-medium text-sm transition-colors group">
+                            View Code <i class="fa-brands fa-github group-hover:translate-x-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Minimalist Calculator (collapsed) -->
+                <article class="card overflow-hidden flex-col reveal project-more">
+                    <div class="h-48 overflow-hidden relative border-b border-line grid place-items-center"
+                         style="background:radial-gradient(40rem 20rem at 50% 0%, rgba(201,162,75,0.14), transparent 60%), #11151E;">
+                        <i class="fa-solid fa-calculator text-6xl text-gold/70"></i>
+                        <span class="absolute top-4 right-4 chip">Mobile</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="h3 text-ink mb-2">Minimalist Calculator</h3>
+                        <p class="text-ink-3 text-sm leading-relaxed flex-1">A native Android calculator in Java that conceals an encrypted photo and video vault, unlocked only by a secret tap sequence. Media is AES-GCM encrypted via the Android Keystore.</p>
+                        <div class="flex flex-wrap gap-2 my-5">
+                            <span class="tag">Java</span><span class="tag">Android</span><span class="tag">AES-GCM</span>
+                        </div>
+                        <a href="https://github.com/shayanmohd/calculator" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold hover:text-gold-2 font-medium text-sm transition-colors group">
+                            View Code <i class="fa-brands fa-github group-hover:translate-x-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Wordle Plus (collapsed) -->
+                <article class="card overflow-hidden flex-col reveal project-more">
+                    <div class="h-48 overflow-hidden relative border-b border-line grid place-items-center"
+                         style="background:radial-gradient(40rem 20rem at 50% 0%, rgba(201,162,75,0.14), transparent 60%), #11151E;">
+                        <i class="fa-solid fa-spell-check text-6xl text-gold/70"></i>
+                        <span class="absolute top-4 right-4 chip">Game</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="h3 text-ink mb-2">Wordle Plus</h3>
+                        <p class="text-ink-3 text-sm leading-relaxed flex-1">Extends the daily word-guessing game with a shareable, independently-tracked practice mode and an optional 60/120/180-second timed countdown, layered onto a React and TypeScript base with hard and high-contrast modes.</p>
+                        <div class="flex flex-wrap gap-2 my-5">
+                            <span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS</span>
+                        </div>
+                        <a href="https://github.com/shayanmohd/wordle-plus" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold hover:text-gold-2 font-medium text-sm transition-colors group">
+                            View Code <i class="fa-brands fa-github group-hover:translate-x-0.5 transition-transform"></i>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Portfolio v2 (collapsed) -->
+                <article class="card overflow-hidden flex-col reveal project-more">
                     <div class="h-48 overflow-hidden relative border-b border-line grid place-items-center"
                          style="background:radial-gradient(40rem 20rem at 50% 0%, rgba(201,162,75,0.14), transparent 60%), #11151E;">
                         <i class="fa-solid fa-globe text-6xl text-gold/70"></i>
@@ -935,20 +1097,25 @@
                     </div>
                     <div class="p-6 flex flex-col flex-1">
                         <h3 class="h3 text-ink mb-2">Portfolio v2</h3>
-                        <p class="text-ink-3 text-sm leading-relaxed flex-1">This portfolio website, a premium dark design with slate-and-gold typography, subtle scroll-reveal motion, and a fully responsive layout.</p>
+                        <p class="text-ink-3 text-sm leading-relaxed flex-1">This portfolio itself — a static, fully responsive site engineered for SEO and AI discoverability, with JSON-LD @graph structured data, XML sitemaps, and explicit crawler permissions for major AI and LLM bots.</p>
                         <div class="flex flex-wrap gap-2 my-5">
-                            <span class="tag">HTML5</span><span class="tag">Tailwind CSS</span><span class="tag">JavaScript</span>
+                            <span class="tag">HTML5</span><span class="tag">Tailwind CSS</span><span class="tag">Schema.org</span>
                         </div>
                         <a href="https://github.com/shayanmohd/mohdshayan" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold hover:text-gold-2 font-medium text-sm transition-colors group">
-                            View Project <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                            View Code <i class="fa-brands fa-github group-hover:translate-x-0.5 transition-transform"></i>
                         </a>
                     </div>
                 </article>
             </div>
 
-            <div class="text-center mt-12 reveal">
+            <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
+                <button id="projects-toggle" type="button" class="btn-ghost" aria-expanded="false" aria-controls="projects-grid">
+                    <i class="fa-solid fa-layer-group text-base"></i>
+                    <span data-toggle-label>View all 10 projects</span>
+                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300" data-toggle-chevron></i>
+                </button>
                 <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="btn-ghost">
-                    <i class="fa-brands fa-github text-lg"></i> View More on GitHub
+                    <i class="fa-brands fa-github text-lg"></i> GitHub Profile
                     <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
                 </a>
             </div>
@@ -1091,6 +1258,32 @@
             revealEls.forEach(el => io.observe(el));
         } else {
             revealEls.forEach(el => el.classList.add('in'));
+        }
+
+        // Projects: "View all" expand / collapse
+        const projToggle = document.getElementById('projects-toggle');
+        const projGrid = document.getElementById('projects-grid');
+        if (projToggle && projGrid) {
+            const moreCards = Array.from(projGrid.querySelectorAll('.project-more'));
+            const toggleLabel = projToggle.querySelector('[data-toggle-label]');
+            const chevron = projToggle.querySelector('[data-toggle-chevron]');
+            let expanded = false;
+            projToggle.addEventListener('click', () => {
+                expanded = !expanded;
+                projGrid.classList.toggle('is-expanded', expanded);
+                projToggle.setAttribute('aria-expanded', String(expanded));
+                if (chevron) chevron.style.transform = expanded ? 'rotate(180deg)' : '';
+                if (toggleLabel) toggleLabel.textContent = expanded ? 'Show fewer projects' : 'View all 10 projects';
+                if (expanded) {
+                    // Staggered fade-in for the newly revealed cards
+                    moreCards.forEach((el, i) => {
+                        requestAnimationFrame(() => setTimeout(() => el.classList.add('in'), i * 70));
+                    });
+                } else {
+                    moreCards.forEach(el => el.classList.remove('in'));
+                    document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
         }
 
         // Active nav link on scroll (scroll spy)
