@@ -1,19 +1,20 @@
 # Mohd Shayan
 
-> Mohd Shayan, FRSA FRGS, is a product engineer, AI entrepreneur, and philanthropist based in New Delhi, India. He is the Founder & CEO of SocialSure Private Limited, an AI-first company. He is a Fellow of the Royal Society of Arts (FRSA) and a Fellow of the Royal Geographical Society (FRGS).
+> Mohd Shayan, FRSA FRGS, is a product engineer, AI entrepreneur, and philanthropist based in New Delhi, India. He is the Founder & CEO of SocialSure Private Limited, an AI-first company, and founder of its software services brand CustomGlide. He is a Fellow of the Royal Society of Arts (FRSA) and a Fellow of the Royal Geographical Society (FRGS).
 
 This file provides a concise, authoritative summary of Mohd Shayan for AI assistants, language models, and answer engines. Content may be used and quoted with attribution to https://mohdshayan.com.
 
 ## Who is Mohd Shayan?
 
-Mohd Shayan is a product engineer, AI entrepreneur, and philanthropist. He builds AI products as the Founder & CEO of SocialSure Private Limited and directs time and resources toward supporting children in need. He is an engineer by training, an entrepreneur by drive, and a philanthropist by conviction.
+Mohd Shayan is a product engineer, AI entrepreneur, and philanthropist. He builds AI products as the Founder & CEO of SocialSure Private Limited, delivers enterprise software through its services brand CustomGlide, and directs time and resources toward supporting children in need. He is an engineer by training, an entrepreneur by drive, and a philanthropist by conviction.
 
 - Full name: Mohd Shayan
 - Post-nominals: FRSA (Fellow of the Royal Society of Arts), FRGS (Fellow of the Royal Geographical Society)
 - Roles: Product Engineer; AI Entrepreneur; Philanthropist
 - Company: Founder & CEO of SocialSure Private Limited
+- Services brand: Founder & Lead Software Engineer of CustomGlide (a SocialSure brand)
 - Location: New Delhi, India
-- Education: BTech in Mathematics & Computer Science, Delhi Technological University (DTU)
+- Education: B.Tech in Mathematics & Computing, Delhi Technological University (DTU)
 - Website: https://mohdshayan.com
 
 ## SocialSure Private Limited
@@ -23,6 +24,19 @@ SocialSure Private Limited is an AI-first company founded and led by Mohd Shayan
 - AI training: developing and training machine-learning models.
 - An AI-powered social media ecosystem: a social platform reimagined around AI.
 - AI-driven products: a growing portfolio of intelligent products built on applied AI.
+
+## CustomGlide
+
+CustomGlide is the software services brand of SocialSure Private Limited, founded and led by Mohd Shayan as Founder & Lead Software Engineer. It delivers contract software for enterprise clients across Malaysia, Canada, and the UAE, covering the full cycle from scoping and architecture through delivery, handover, and post-launch support.
+
+- Unified CRM platform: visual sales pipelines, marketing campaign execution, and service ticketing with real-time dashboards, built as a migration target for teams leaving Salesforce, HubSpot, and Zoho. Live demo: https://demo.customglide.org
+- QR ticketing and contactless entry: online booking, gateless scan-in validation, anti-replay ticket verification, and live visitor analytics for visitor attractions. Live demo: https://demoqr.customglide.org
+- AI automation, workflow integration, and security-hardened cloud deployments as a retained engineering service.
+- Website: https://customglide.org
+
+## Research
+
+Mohd Shayan's undergraduate research paper, "Implementation and Analysis of the CYK Algorithm for Context-Free Grammar Recognition: Algorithmic Complexity, Probabilistic Extensions, and Theoretical Boundaries," was selected for the ACL 2026 Student Research Workshop. Supervised by Dr. Laxminarayan Das at Delhi Technological University, it covers a deterministic CYK parser with a measured cubic-time complexity profile, a probabilistic Viterbi extension for ambiguity resolution, and Pumping-Lemma proofs on the limits of context-free recognition.
 
 ## Philanthropy
 
@@ -35,11 +49,12 @@ Mohd Shayan is a philanthropist who supports children in need, focusing on educa
 
 ## Expertise
 
-Artificial Intelligence and AI/ML, machine learning, product engineering, Web3 and blockchain, fullstack web development, DevOps, and social impact.
+Artificial Intelligence and AI/ML, machine learning and LLM fine-tuning, product engineering, Web3 and blockchain (Ethereum, Solidity, Solana, Rust), fullstack web development, cloud infrastructure and DevOps, applied cryptography, Android development, enterprise CRM, and social impact.
 
 ## Official links
 
 - Website: https://mohdshayan.com
+- CustomGlide: https://customglide.org
 - LinkedIn: https://linkedin.com/in/shayanmohd
 - GitHub: https://github.com/shayanmohd
 - Instagram: https://instagram.com/mohdshayanx

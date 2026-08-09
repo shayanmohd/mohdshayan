@@ -79,6 +79,16 @@
       <image:caption>Designed cover plate for a native Android calculator concealing an AES-GCM encrypted photo and video vault</image:caption>
     </image:image>
     <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/customglide-crm.webp</image:loc>
+      <image:title>CustomGlide CRM - Unified Customer Platform</image:title>
+      <image:caption>Enterprise CRM platform with visual sales pipelines, marketing campaigns, service ticketing, and real-time dashboards</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/customglide-qr.webp</image:loc>
+      <image:title>CustomGlide QR Ticketing - Contactless Entry System</image:title>
+      <image:caption>QR ticketing and contactless entry for visitor attractions with online booking, gateless scan-in, and live visitor analytics</image:caption>
+    </image:image>
+    <image:image>
       <image:loc>https://mohdshayan.com/assets/projects/portfolio-v2.webp</image:loc>
       <image:title>Portfolio v2 - This Website</image:title>
       <image:caption>Static portfolio engineered for SEO and AI discoverability with JSON-LD structured data and XML sitemaps</image:caption>

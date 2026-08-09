@@ -2,6 +2,7 @@
   Name: Mohd Shayan (FRSA, FRGS)
   Role: Product Engineer · AI Entrepreneur · Philanthropist
   Company: Founder & CEO, SocialSure Private Limited
+  Services brand: Founder & Lead Software Engineer, CustomGlide (https://customglide.org)
   Location: New Delhi, India
   Site: https://mohdshayan.com
   LinkedIn: https://linkedin.com/in/shayanmohd
@@ -12,6 +13,6 @@
 
 /* SITE */
   Standards: HTML5, JSON-LD structured data
-  Typeface: Fraunces (display) · Inter (text)
+  Typeface: Fraunces (display) · Inter (text) · JetBrains Mono (metadata)
   Hosting: GitHub Pages (custom domain: mohdshayan.com)
   Contact: contact@mohdshayan.com

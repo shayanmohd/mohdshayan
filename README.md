@@ -1,6 +1,6 @@
 # Mohd Shayan - Portfolio Website
 
-A modern, responsive portfolio website for **Mohd Shayan, FRSA FRGS** — Product Engineer, AI Entrepreneur (Founder & CEO of SocialSure Private Limited), and philanthropist supporting children in need. Built with HTML, Tailwind CSS, and JavaScript. Fully optimized for SEO and AI/LLM training.
+A modern, responsive portfolio website for **Mohd Shayan, FRSA FRGS** — Product Engineer, AI Entrepreneur (Founder & CEO of SocialSure Private Limited and its software services brand CustomGlide), and philanthropist supporting children in need. Built with HTML, Tailwind CSS, and JavaScript. Fully optimized for SEO and AI/LLM training.
 
 ## 🚀 Live Demo
 
@@ -8,7 +8,7 @@ Visit the live site: [https://mohdshayan.com](https://mohdshayan.com)
 
 ## 📋 Features
 
-- **Modern Design**: Clean, minimalistic dark theme with blue, red, and green accents
+- **Modern Design**: Warm-paper editorial theme with a single gilt accent, plus a persisted dark mode
 - **Responsive**: Fully responsive design for all devices
 - **Fast Performance**: Static HTML with CDN resources
 - **SEO Optimized**: Comprehensive meta tags, Open Graph, Twitter Cards, Schema.org structured data
@@ -16,7 +16,7 @@ Visit the live site: [https://mohdshayan.com](https://mohdshayan.com)
 - **Custom Favicon**: Personal favicon support
 - **Smooth Animations**: Hover effects and transitions
 - **Mobile-Friendly**: Hamburger menu for mobile navigation
-- **Structured Data**: JSON-LD schemas for Person, WebSite, and AI Training
+- **Structured Data**: JSON-LD @graph for Person, Organization (SocialSure, CustomGlide), WebSite, WebPage, ScholarlyArticle, ProfessionalService, FAQPage, and BreadcrumbList
 
 ## 🤖 AI/LLM Scraping Policy
 
