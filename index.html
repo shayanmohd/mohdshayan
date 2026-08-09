@@ -583,6 +583,11 @@
             font-variant-numeric: tabular-nums; }
         .stat-cap { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .75rem; letter-spacing: .1em;
             text-transform: uppercase; color: var(--muted); }
+        /* Phones: the four-letter post-nominals are wider than a third of the
+           viewport, so scale them to the cell instead of the 2.5rem floor. */
+        @media (max-width: 640px) {
+            .stat-num { font-size: clamp(1.125rem, 6.6vw, 2rem); }
+        }
 
         /* ---------- Skills / experience ledgers ---------- */
         .idx::before { content: attr(data-num); display: block; font-family: 'JetBrains Mono', ui-monospace, monospace;
