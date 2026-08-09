@@ -33,5 +33,55 @@
       <image:title>Mohd Shayan - Work &amp; Projects</image:title>
       <image:caption>Portfolio showcasing applied AI/ML, Web3, fullstack web development, DevOps, and product engineering projects</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/shayanomaly.webp</image:loc>
+      <image:title>Shayanomaly - Web3 Quantitative Trading Terminal</image:title>
+      <image:caption>Browser-based trading terminal streaming live order books from five exchanges with cross-venue arbitrage detection</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/deaify.webp</image:loc>
+      <image:title>deAIfy - On-Device AI Text Cleaner</image:title>
+      <image:caption>Cross-platform tool that strips AI tells from text on-device or rewrites it via a user-supplied LLM key</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/habittrack.webp</image:loc>
+      <image:title>Habits - Native Android Habit Tracker</image:title>
+      <image:caption>Offline-first habit tracker in Kotlin and Jetpack Compose with a Glance home-screen widget</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/turup-chaal.webp</image:loc>
+      <image:title>Turup Chaal - Court Piece Card Game for Android</image:title>
+      <image:caption>Trick-taking Court Piece card game built in Unity and C# with host-authoritative Photon multiplayer</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/advocate-yunus.webp</image:loc>
+      <image:title>Advocate Yunus - Legal Practice Website</image:title>
+      <image:caption>Search-optimised marketing website for a legal practice, shipping structured SEO assets and an llms.txt</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/gta6.webp</image:loc>
+      <image:title>GTA6.LLC - Launch Hub with Live Countdown</image:title>
+      <image:caption>Static GTA 6 launch hub with live countdown, pre-order guide, interactive map, and email capture</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/wordle-plus.webp</image:loc>
+      <image:title>Wordle Plus - Word Game with Practice and Timed Modes</image:title>
+      <image:caption>React and TypeScript word game adding a shareable practice mode and an optional timed countdown</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/shreezypay.webp</image:loc>
+      <image:title>ShreezyPay Bot - Telegram Escrow Mediation Bot</image:title>
+      <image:caption>Designed cover plate for a Telegram escrow-mediation bot running unlimited group pairs with anonymity-preserving relay</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/calculator.webp</image:loc>
+      <image:title>Minimalist Calculator - Android Calculator with Encrypted Vault</image:title>
+      <image:caption>Designed cover plate for a native Android calculator concealing an AES-GCM encrypted photo and video vault</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/portfolio-v2.webp</image:loc>
+      <image:title>Portfolio v2 - This Website</image:title>
+      <image:caption>Static portfolio engineered for SEO and AI discoverability with JSON-LD structured data and XML sitemaps</image:caption>
+    </image:image>
   </url>
 </urlset>
