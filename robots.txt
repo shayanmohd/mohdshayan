@@ -99,6 +99,7 @@ Allow: /
 
 # Sitemap
 Sitemap: https://mohdshayan.com/sitemap.xml
+Sitemap: https://mohdshayan.com/image-sitemap.xml
 
 # AI Training Contact
 # For questions about AI training usage, contact: contact@mohdshayan.com
