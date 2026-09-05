@@ -68,7 +68,12 @@
           "name": "Mohd Shayan",
           "description": "Official website of Mohd Shayan, FRSA FRGS: Product Engineer, AI Entrepreneur and Philanthropist.",
           "inLanguage": "en",
-          "publisher": { "@id": "https://mohdshayan.com/#person" }
+          "publisher": { "@id": "https://mohdshayan.com/#person" },
+          "hasPart": [
+            { "@type": "Blog", "@id": "https://mohdshayan.com/blog/#blog", "url": "https://mohdshayan.com/blog/", "name": "Mohd Shayan: Writing" },
+            { "@type": "CollectionPage", "@id": "https://mohdshayan.com/philanthropy/#page", "url": "https://mohdshayan.com/philanthropy/", "name": "Philanthropy" },
+            { "@type": "CollectionPage", "@id": "https://mohdshayan.com/demo/#page", "url": "https://mohdshayan.com/demo/", "name": "Live demos" }
+          ]
         },
         {
           "@type": "WebPage",
@@ -281,6 +286,7 @@
     <!-- Authorship / AI summary -->
     <link rel="author" href="/humans.txt">
     <link rel="alternate" type="text/markdown" title="LLM summary" href="/llms.txt">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#faf8f3">
@@ -290,9 +296,9 @@
     <script>
       (function () {
         try {
-          if (localStorage.getItem('theme') === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-          }
+          var stored = localStorage.getItem('theme');
+          var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          if (dark) document.documentElement.setAttribute('data-theme', 'dark');
         } catch (e) {}
       })();
     </script>
@@ -314,10 +320,9 @@
     </script>
 
     <!-- Preconnect & Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="assets/portrait.jpg" as="image">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/portrait-720.webp" as="image" type="image/webp" imagesrcset="/assets/portrait-720.webp 720w, /assets/portrait-1100.webp 1100w" imagesizes="(min-width: 1024px) 352px, (min-width: 640px) 288px, 256px">
 
 
     <!-- Compiled stylesheet (npm run build:css) -->
@@ -331,22 +336,24 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <a href="#main" class="skip-link">Skip to content</a>
+
     <!-- ============ NAV ============ -->
     <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
-        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
             <a href="#home" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
 
             <ul class="hidden md:flex items-center gap-8">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#ventures" class="nav-link">Ventures</a></li>
-                <li><a href="#impact" class="nav-link">Impact</a></li>
-                <li><a href="#recognition" class="nav-link">Recognition</a></li>
                 <li><a href="#publications" class="nav-link">Research</a></li>
                 <li><a href="#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/philanthropy/" class="nav-link">Philanthropy</a></li>
             </ul>
 
             <div class="flex items-center gap-3">
-                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Switch to dark mode" aria-pressed="false">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
                     <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
                 </button>
                 <a href="#contact" class="hidden md:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
@@ -368,13 +375,13 @@
                 </button>
             </div>
             <nav class="flex flex-col">
-                <a href="#home" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;"><span class="drawer-num" data-num="01" aria-hidden="true"></span>Home</a>
-                <a href="#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;"><span class="drawer-num" data-num="02" aria-hidden="true"></span>About</a>
-                <a href="#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;"><span class="drawer-num" data-num="03" aria-hidden="true"></span>Ventures</a>
-                <a href="#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;"><span class="drawer-num" data-num="04" aria-hidden="true"></span>Impact</a>
-                <a href="#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;"><span class="drawer-num" data-num="05" aria-hidden="true"></span>Recognition</a>
-                <a href="#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;"><span class="drawer-num" data-num="06" aria-hidden="true"></span>Research</a>
-                <a href="#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;"><span class="drawer-num" data-num="07" aria-hidden="true"></span>Work</a>
+                <a href="#home" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
             </nav>
             <div class="mt-auto">
                 <a href="#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
@@ -390,22 +397,20 @@
         </aside>
     </div>
 
+    <main id="main">
     <!-- ============ HERO ============ -->
-    <section id="home" class="pt-36 pb-20 md:pt-44 md:pb-28">
+    <section id="home" class="hero-ambient relative overflow-hidden pt-36 pb-16 md:pt-40 md:pb-20">
         <div class="max-w-content mx-auto px-6 grid lg:grid-cols-[7fr_5fr] gap-12 lg:gap-12 items-center">
             <!-- Text -->
             <div>
-                <span class="eyebrow reveal">Product Engineer · AI Entrepreneur · Philanthropist</span>
-                <h1 class="h-display mt-6 balance reveal d1">Mohd Shayan<span class="text-gold-deep">.</span></h1>
-                <p class="lead mt-7 max-w-2xl reveal d2">
+                <span class="eyebrow">Product Engineer&nbsp;· AI Entrepreneur&nbsp;· Philanthropist</span>
+                <h1 class="h-display mt-6 balance">Mohd Shayan<span class="text-gold-deep">.</span></h1>
+                <p class="lead mt-7 max-w-2xl">
                     Founder &amp; CEO of <strong class="text-ink">SocialSure Private Limited</strong>, an AI-first company, building intelligent products and channeling that work into opportunity for children in need.
-                </p>
-                <p class="mt-4 text-muted max-w-2xl reveal d2">
-                    Engineer at heart, entrepreneur by drive, philanthropist by conviction.
                 </p>
 
                 <!-- CTAs -->
-                <div class="mt-9 flex flex-wrap gap-3 reveal d3">
+                <div class="mt-9 flex flex-wrap gap-3">
                     <a href="uploads/resume.pdf" class="btn-ink" download>
                         <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-down"></use></svg> Download Résumé
                     </a>
@@ -414,51 +419,50 @@
                     </a>
                 </div>
 
-                <!-- Credentials + social -->
-                <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 reveal d4">
-                    <div class="flex items-center gap-2">
-                        <span class="chip-pill"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-medal"></use></svg> FRSA</span>
-                        <span class="chip-pill"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-globe-hemisphere-west"></use></svg> FRGS</span>
-                    </div>
-                    <span class="hidden sm:block h-5 w-px bg-hairline"></span>
-                    <div class="flex flex-wrap items-center gap-2">
-                        <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
-                        <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
-                        <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
-                        <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
-                        <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
-                        <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
-                    </div>
-                </div>
             </div>
 
             <!-- Portrait: mounted print -->
-            <div class="justify-self-center lg:justify-self-end reveal d2">
+            <div class="justify-self-center lg:justify-self-end">
                 <figure class="w-64 sm:w-72 lg:w-[22rem]">
                     <div class="print-frame">
                         <div class="print-mat">
-                            <img src="assets/portrait.jpg"
-                                 alt="Mohd Shayan, FRSA FRGS: Product Engineer, AI Entrepreneur and Founder of SocialSure Private Limited, and Philanthropist"
-                                 title="Mohd Shayan, Product Engineer, AI Entrepreneur & Philanthropist"
-                                 width="440" height="550" fetchpriority="high"
+                            <img src="/assets/portrait-720.webp" srcset="/assets/portrait-720.webp 720w, /assets/portrait-1100.webp 1100w" sizes="(min-width: 1024px) 352px, (min-width: 640px) 288px, 256px"
+                                 alt="Portrait of Mohd Shayan"
+                                 width="720" height="886" fetchpriority="high" decoding="async"
                                  class="w-full aspect-[4/5] object-cover object-center bg-cream">
                         </div>
                     </div>
-                    <div class="plate-mark" aria-hidden="true"></div>
-                    <figcaption class="plaque" data-caption="Mohd Shayan · FRSA · FRGS" aria-hidden="true"></figcaption>
                 </figure>
             </div>
         </div>
     </section>
 
+    <!-- Credentials strip -->
+    <div class="max-w-content mx-auto px-6">
+        <div class="border-y border-hairline py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-5 reveal">
+            <p class="text-muted text-[0.9375rem]">Engineer at heart, entrepreneur by drive, philanthropist by conviction.</p>
+            <div class="flex flex-wrap items-center gap-x-6 gap-y-4">
+                <div class="flex items-center gap-2">
+                    <span class="chip-pill"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-medal"></use></svg> FRSA</span>
+                    <span class="chip-pill"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-globe-hemisphere-west"></use></svg> FRGS</span>
+                </div>
+                <span class="hidden sm:block h-5 w-px bg-hairline"></span>
+                <div class="flex flex-wrap items-center gap-2">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- ============ ABOUT ============ -->
     <section id="about" class="py-20 md:py-[6.5rem]">
         <div class="max-w-content mx-auto px-6">
-            <div class="folio reveal">
-                <span class="folio-label"><span class="num" data-num="01" aria-hidden="true"></span>About</span>
-                <span class="folio-rule" aria-hidden="true"></span>
-            </div>
-            <div class="max-w-2xl mt-8 reveal">
+            <div class="max-w-2xl reveal">
                 <h2 class="h2 balance">Engineering, Enterprise &amp; <span class="text-gold-deep">Empathy</span></h2>
                 <p class="lead mt-5">An engineer who became a founder, and a founder who builds for the people technology too often leaves behind.</p>
             </div>
@@ -473,8 +477,6 @@
                                      class="w-full aspect-[4/5] lg:aspect-auto lg:h-[26rem] object-cover object-center bg-cream">
                             </div>
                         </div>
-                        <div class="plate-mark" aria-hidden="true"></div>
-                        <figcaption class="plaque" data-caption="New Delhi, India" aria-hidden="true"></figcaption>
                     </figure>
                 </div>
 
@@ -511,23 +513,23 @@
             </div>
 
             <!-- What he does -->
-            <div class="grid sm:grid-cols-2 gap-6 mt-12">
-                <div class="plate p-7 reveal d1">
+            <div class="ruled-grid sm:grid-cols-2 mt-12 reveal">
+                <div class="cell">
                     <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-code"></use></svg></div>
                     <h3 class="card-title mb-2"><span class="sweep-target">Product Engineering</span></h3>
                     <p class="text-body text-[0.9375rem] leading-relaxed">Shipping end-to-end products, from architecture and AI models to the last pixel of the experience.</p>
                 </div>
-                <div class="plate p-7 reveal d2">
+                <div class="cell">
                     <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-rocket-launch"></use></svg></div>
                     <h3 class="card-title mb-2"><span class="sweep-target">AI Entrepreneurship</span></h3>
                     <p class="text-body text-[0.9375rem] leading-relaxed">Founding and leading SocialSure Private Limited, building an AI-first company from the ground up.</p>
                 </div>
-                <div class="plate p-7 reveal d3">
+                <div class="cell">
                     <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-hand-heart"></use></svg></div>
                     <h3 class="card-title mb-2"><span class="sweep-target">Philanthropy</span></h3>
                     <p class="text-body text-[0.9375rem] leading-relaxed">Supporting children in need with education, nutrition, and access to technology and opportunity.</p>
                 </div>
-                <div class="plate p-7 reveal d4">
+                <div class="cell">
                     <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-medal"></use></svg></div>
                     <h3 class="card-title mb-2"><span class="sweep-target">Fellowships</span></h3>
                     <p class="text-body text-[0.9375rem] leading-relaxed">Fellow of the Royal Society of Arts (FRSA) and the Royal Geographical Society (FRGS).</p>
@@ -539,10 +541,7 @@
     <!-- ============ SKILLS ============ -->
     <section id="skills" class="py-20 md:py-[6.5rem]">
         <div class="max-w-content mx-auto px-6">
-            <div class="folio reveal">
-                <span class="folio-label"><span class="num" data-num="02" aria-hidden="true"></span>Tech Stack</span>
-                <span class="folio-rule" aria-hidden="true"></span>
-            </div>
+            <hr class="section-rule reveal">
             <div class="max-w-2xl mt-8 reveal">
                 <h2 class="h2 balance">Skills &amp; <span class="text-gold-deep">Technologies</span></h2>
                 <p class="lead mt-5">A comprehensive toolkit for building modern, scalable, intelligent applications.</p>
@@ -593,10 +592,7 @@
     <!-- ============ EXPERIENCE ============ -->
     <section id="experience" class="py-20 md:py-[6.5rem]">
         <div class="max-w-content mx-auto px-6">
-            <div class="folio reveal">
-                <span class="folio-label"><span class="num" data-num="03" aria-hidden="true"></span>Journey</span>
-                <span class="folio-rule" aria-hidden="true"></span>
-            </div>
+            <hr class="section-rule reveal">
             <div class="max-w-2xl mt-8 reveal">
                 <h2 class="h2 balance">Experience &amp; <span class="text-gold-deep">Education</span></h2>
             </div>
@@ -617,7 +613,7 @@
                     </div>
                 </li>
                 <li class="exp-row grid md:grid-cols-[200px_1fr] gap-x-10 py-9 border-b border-hairline reveal d1">
-                    <div class="mono-meta text-muted uppercase pt-1.5 mb-4 md:mb-0">2024 — Present</div>
+                    <div class="mono-meta text-muted uppercase pt-1.5 mb-4 md:mb-0">2024 - Present</div>
                     <div class="exp-content">
                         <span class="t-node" aria-hidden="true"></span>
                         <h3 class="h3-serif" style="font-weight:500;">Founder &amp; Lead Software Engineer</h3>
@@ -649,10 +645,7 @@
     <!-- ============ VENTURES ============ -->
     <section id="ventures" class="py-20 md:py-[6.5rem]">
         <div class="max-w-content mx-auto px-6">
-            <div class="folio reveal">
-                <span class="folio-label"><span class="num" data-num="04" aria-hidden="true"></span>Ventures</span>
-                <span class="folio-rule" aria-hidden="true"></span>
-            </div>
+            <hr class="section-rule reveal">
             <div class="max-w-2xl mt-8 reveal">
                 <h2 class="h2 balance">Building in the <span class="text-gold-deep">AI Space</span></h2>
                 <p class="lead mt-5">Turning research-grade ideas into products people actually use.</p>
@@ -660,7 +653,7 @@
 
             <!-- Chapter spread: the dark flagship plate -->
             <div class="bg-dark rounded-2xl gilt-top p-8 md:p-12 mt-12 reveal">
-                <p class="eyebrow" style="color:#d9b45b;">Founder &amp; CEO · AI-First Company</p>
+                <p class="mono-meta" style="color:#d9b45b;">Founder &amp; CEO · AI-First Company</p>
                 <h3 class="display-m mt-4" style="color:#f5f2ea;">SocialSure Private Limited</h3>
                 <div class="grid lg:grid-cols-2 gap-x-12 gap-y-5 mt-7">
                     <p class="text-ondark-soft leading-[1.65]">
@@ -692,18 +685,18 @@
             </div>
 
             <!-- Focus areas: return to daylight -->
-            <div class="grid md:grid-cols-3 gap-6 mt-6">
-                <div class="plate p-7 reveal d1">
+            <div class="ruled-grid md:grid-cols-3 mt-6 reveal">
+                <div class="cell">
                     <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-cpu"></use></svg></div>
                     <h4 class="card-title mb-2"><span class="sweep-target">AI Training</span></h4>
                     <p class="text-body text-[0.9375rem] leading-relaxed">Developing and training models, building the data pipelines and intelligence that power everything the company ships.</p>
                 </div>
-                <div class="plate p-7 reveal d2">
+                <div class="cell">
                     <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-share-network"></use></svg></div>
                     <h4 class="card-title mb-2"><span class="sweep-target">AI Social Media Ecosystem</span></h4>
                     <p class="text-body text-[0.9375rem] leading-relaxed">A social platform reimagined around AI, smarter creation, connection, and discovery for the next generation of users.</p>
                 </div>
-                <div class="plate p-7 reveal d3">
+                <div class="cell">
                     <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-cube"></use></svg></div>
                     <h4 class="card-title mb-2"><span class="sweep-target">AI-Driven Products</span></h4>
                     <p class="text-body text-[0.9375rem] leading-relaxed">A growing portfolio of intelligent products that put applied AI to work solving real, everyday problems.</p>
@@ -714,7 +707,7 @@
             <div class="plate plate-lg p-8 md:p-10 mt-6 reveal d1">
                 <div class="grid lg:grid-cols-[1fr_auto] gap-8 items-start">
                     <div class="min-w-0">
-                        <p class="eyebrow">Founder &amp; Lead Software Engineer · Software Services</p>
+                        <p class="mono-meta text-gold-deep">Founder &amp; Lead Software Engineer · Software Services</p>
                         <h3 class="display-m mt-3">CustomGlide</h3>
                         <p class="text-body leading-[1.65] mt-5 max-w-[62ch]">
                             CustomGlide is SocialSure's software services brand, delivering contract engineering for enterprise clients across <strong class="text-ink">Malaysia, Canada, and the UAE</strong>. Mohd Shayan owns each engagement end to end, from scoping and architecture through delivery, handover, and post-launch support.
@@ -753,10 +746,7 @@
     <!-- ============ IMPACT ============ -->
     <section id="impact" class="py-16 md:py-24 bg-cream">
         <div class="max-w-content mx-auto px-6">
-            <div class="folio reveal">
-                <span class="folio-label"><span class="num" data-num="05" aria-hidden="true"></span>Philanthropy</span>
-                <span class="folio-rule folio-rule-band" aria-hidden="true"></span>
-            </div>
+            <hr class="section-rule reveal">
             <div class="max-w-2xl mt-8 reveal">
                 <h2 class="h2 balance">Giving Back to <span class="text-gold-deep">Children in Need</span></h2>
                 <p class="lead mt-5">The measure of progress is who it lifts along the way.</p>
@@ -778,26 +768,29 @@
                             “Build things that matter, and make sure they reach the people who matter most.”
                         </blockquote>
                         <div class="quote-rule" aria-hidden="true"></div>
+                        <a href="/philanthropy/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-6 whitespace-nowrap">
+                            Photos and video from the work <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg>
+                        </a>
                     </div>
                 </div>
 
-                <div class="grid sm:grid-cols-2 gap-5 reveal d1">
-                    <div class="plate p-7">
+                <div class="ruled-grid sm:grid-cols-2 reveal d1">
+                    <div class="cell">
                         <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-graduation-cap"></use></svg></div>
                         <h3 class="card-title mb-2"><span class="sweep-target">Education</span></h3>
                         <p class="text-body text-[0.9375rem] leading-relaxed">Supporting schooling, learning materials, and mentorship for underserved children.</p>
                     </div>
-                    <div class="plate p-7">
+                    <div class="cell">
                         <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-bowl-food"></use></svg></div>
                         <h3 class="card-title mb-2"><span class="sweep-target">Nutrition &amp; Care</span></h3>
                         <p class="text-body text-[0.9375rem] leading-relaxed">Helping meet basic needs so children can grow, learn, and thrive.</p>
                     </div>
-                    <div class="plate p-7">
+                    <div class="cell">
                         <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-laptop"></use></svg></div>
                         <h3 class="card-title mb-2"><span class="sweep-target">Digital Access</span></h3>
                         <p class="text-body text-[0.9375rem] leading-relaxed">Bringing devices, connectivity, and tech skills to the next generation.</p>
                     </div>
-                    <div class="plate p-7">
+                    <div class="cell">
                         <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-signpost"></use></svg></div>
                         <h3 class="card-title mb-2"><span class="sweep-target">Opportunity</span></h3>
                         <p class="text-body text-[0.9375rem] leading-relaxed">Creating pathways and a fair start for children to shape their own futures.</p>
@@ -810,10 +803,7 @@
     <!-- ============ RECOGNITION ============ -->
     <section id="recognition" class="py-20 md:py-[6.5rem]">
         <div class="max-w-content mx-auto px-6">
-            <div class="folio reveal">
-                <span class="folio-label"><span class="num" data-num="06" aria-hidden="true"></span>Recognition</span>
-                <span class="folio-rule" aria-hidden="true"></span>
-            </div>
+            <hr class="section-rule reveal">
             <div class="max-w-2xl mt-8 reveal">
                 <h2 class="h2 balance">Fellowships &amp; <span class="text-gold-deep">Distinctions</span></h2>
                 <p class="lead mt-5">Elected a Fellow of two of the world's most storied societies.</p>
@@ -821,15 +811,15 @@
 
             <div class="grid md:grid-cols-2 gap-6 mt-12">
                 <div class="plate cert p-10 md:p-12 text-center reveal d1">
-                    <div class="font-display text-ink" style="font-weight:400; font-size:2.75rem; line-height:1; font-variation-settings:'SOFT' 0,'WONK' 0;">FRSA</div>
+                    <div class="font-display text-ink" style="font-weight:400; font-size:2.75rem; line-height:1;">FRSA</div>
                     <p class="mono-meta text-muted mt-2">Post-nominal</p>
-                    <h3 class="eyebrow mt-6">Fellow of the Royal Society of Arts</h3>
+                    <h3 class="card-title mt-6">Fellow of the Royal Society of Arts</h3>
                     <p class="text-body text-[0.9375rem] leading-relaxed mt-4 max-w-sm mx-auto">A global fellowship of changemakers committed to social progress and the power of ideas, founded in London in 1754.</p>
                 </div>
                 <div class="plate cert p-10 md:p-12 text-center reveal d2">
-                    <div class="font-display text-ink" style="font-weight:400; font-size:2.75rem; line-height:1; font-variation-settings:'SOFT' 0,'WONK' 0;">FRGS</div>
+                    <div class="font-display text-ink" style="font-weight:400; font-size:2.75rem; line-height:1;">FRGS</div>
                     <p class="mono-meta text-muted mt-2">Post-nominal</p>
-                    <h3 class="eyebrow mt-6">Fellow of the Royal Geographical Society</h3>
+                    <h3 class="card-title mt-6">Fellow of the Royal Geographical Society</h3>
                     <p class="text-body text-[0.9375rem] leading-relaxed mt-4 max-w-sm mx-auto">One of the world's foremost geographical bodies, advancing the understanding of people, places, and the planet since 1830.</p>
                 </div>
             </div>
@@ -839,10 +829,7 @@
     <!-- ============ PUBLICATIONS ============ -->
     <section id="publications" class="py-20 md:py-[6.5rem]">
         <div class="max-w-content mx-auto px-6">
-            <div class="folio reveal">
-                <span class="folio-label"><span class="num" data-num="07" aria-hidden="true"></span>Research</span>
-                <span class="folio-rule" aria-hidden="true"></span>
-            </div>
+            <hr class="section-rule reveal">
             <div class="max-w-2xl mt-8 reveal">
                 <h2 class="h2 balance">Published <span class="text-gold-deep">Research</span></h2>
                 <p class="lead mt-5">Peer-reviewed work at the intersection of formal language theory and modern NLP.</p>
@@ -851,7 +838,7 @@
             <!-- Citation plate -->
             <article class="plate rule-gold p-8 md:p-10 mt-12 reveal d1">
                 <div class="flex flex-wrap items-center gap-3">
-                    <span class="chip-pill"><span class="w-1.5 h-1.5 rounded-full bg-gold" aria-hidden="true"></span> Selected</span>
+                    <span class="chip-pill">Selected</span>
                     <span class="chip-pill">ACL 2026 &middot; Student Research Workshop</span>
                 </div>
                 <h3 class="display-m mt-6" style="font-size:clamp(1.4rem,2.2vw,1.625rem); line-height:1.25;">Implementation and Analysis of the CYK Algorithm for Context-Free Grammar Recognition</h3>
@@ -872,10 +859,7 @@
     <!-- ============ PROJECTS ============ -->
     <section id="projects" class="py-20 md:py-[6.5rem]">
         <div class="max-w-content mx-auto px-6">
-            <div class="folio reveal">
-                <span class="folio-label"><span class="num" data-num="08" aria-hidden="true"></span>Portfolio</span>
-                <span class="folio-rule" aria-hidden="true"></span>
-            </div>
+            <hr class="section-rule reveal">
             <div class="max-w-2xl mt-8 reveal">
                 <h2 class="h2 balance">Featured <span class="text-gold-deep">Projects</span></h2>
                 <p class="lead mt-5">A selection of work that showcases how Mohd Shayan builds across AI, product, and the web.</p>
@@ -900,10 +884,10 @@
                             <span class="tag-chip">Next.js</span><span class="tag-chip">Solidity</span><span class="tag-chip">Ethers.js</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-                            <a href="https://shayanmohd.github.io/Shayanomaly/" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
+                            <a href="https://shayanmohd.github.io/Shayanomaly/" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap" aria-label="Open Shayanomaly">
                                 Live Demo <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
-                            <a href="https://github.com/shayanmohd/Shayanomaly" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
+                            <a href="https://github.com/shayanmohd/Shayanomaly" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap" aria-label="Source code for Shayanomaly on GitHub">
                                 <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
@@ -927,7 +911,7 @@
                         <div class="flex flex-wrap gap-2 my-5">
                             <span class="tag-chip">CRM</span><span class="tag-chip">Dashboards</span><span class="tag-chip">Automation</span>
                         </div>
-                        <a href="https://demo.customglide.org" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
+                        <a href="https://demo.customglide.org" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap" aria-label="Open CustomGlide CRM">
                             Live Demo <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                         </a>
                     </div>
@@ -950,7 +934,7 @@
                         <div class="flex flex-wrap gap-2 my-5">
                             <span class="tag-chip">QR Entry</span><span class="tag-chip">Booking</span><span class="tag-chip">Analytics</span>
                         </div>
-                        <a href="https://demoqr.customglide.org" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
+                        <a href="https://demoqr.customglide.org" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap" aria-label="Open CustomGlide QR Ticketing">
                             Live Demo <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                         </a>
                     </div>
@@ -974,13 +958,13 @@
                             <span class="tag-chip">Expo</span><span class="tag-chip">React Native</span><span class="tag-chip">TypeScript</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-                            <a href="https://play.google.com/store/apps/details?id=com.deAIfy.app" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
+                            <a href="https://play.google.com/store/apps/details?id=com.deAIfy.app" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap" aria-label="deAIfy on Google Play">
                                 <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-google-play-logo"></use></svg> Google Play <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
-                            <a href="https://shayanmohd.github.io/deAIfy/" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
+                            <a href="https://shayanmohd.github.io/deAIfy/" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap" aria-label="Open deAIfy">
                                 Try It Live <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
-                            <a href="https://github.com/shayanmohd/deAIfy" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
+                            <a href="https://github.com/shayanmohd/deAIfy" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap" aria-label="Source code for deAIfy on GitHub">
                                 <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
@@ -1005,10 +989,10 @@
                             <span class="tag-chip">Kotlin</span><span class="tag-chip">Jetpack Compose</span><span class="tag-chip">Room</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-                            <a href="https://play.google.com/store/apps/details?id=com.mohdshayan.habits" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
+                            <a href="https://play.google.com/store/apps/details?id=com.mohdshayan.habits" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap" aria-label="Habits on Google Play">
                                 <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-google-play-logo"></use></svg> Google Play <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
-                            <a href="https://github.com/shayanmohd/habits-app" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
+                            <a href="https://github.com/shayanmohd/habits-app" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap" aria-label="Source code for Habits on GitHub">
                                 <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
@@ -1033,10 +1017,10 @@
                             <span class="tag-chip">Unity</span><span class="tag-chip">C#</span><span class="tag-chip">Photon PUN2</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-                            <a href="https://play.google.com/store/apps/details?id=com.socialsure.turupchaal" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
+                            <a href="https://play.google.com/store/apps/details?id=com.socialsure.turupchaal" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap" aria-label="Turup Chaal on Google Play">
                                 <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-google-play-logo"></use></svg> Google Play <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
-                            <a href="https://github.com/shayanmohd/Turup-Chaal" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
+                            <a href="https://github.com/shayanmohd/Turup-Chaal" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap" aria-label="Source code for Turup Chaal on GitHub">
                                 <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
@@ -1061,10 +1045,10 @@
                             <span class="tag-chip">Framer</span><span class="tag-chip">HTML/CSS</span><span class="tag-chip">SEO</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-                            <a href="https://advocateyunus.com" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
+                            <a href="https://advocateyunus.com" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap" aria-label="Open Advocate Yunus">
                                 Visit Site <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
-                            <a href="https://github.com/shayanmohd/Advocatewebsite" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
+                            <a href="https://github.com/shayanmohd/Advocatewebsite" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap" aria-label="Source code for Advocate Yunus on GitHub">
                                 <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
@@ -1089,10 +1073,10 @@
                             <span class="tag-chip">JavaScript</span><span class="tag-chip">Supabase</span><span class="tag-chip">GitHub Pages</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-                            <a href="https://gta6.llc" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
+                            <a href="https://gta6.llc" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap" aria-label="Open GTA6.LLC">
                                 Visit Site <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
-                            <a href="https://github.com/shayanmohd/gta6-marketplace" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
+                            <a href="https://github.com/shayanmohd/gta6-marketplace" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap" aria-label="Source code for GTA6.LLC on GitHub">
                                 <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
@@ -1116,7 +1100,7 @@
                         <div class="flex flex-wrap gap-2 my-5">
                             <span class="tag-chip">Python</span><span class="tag-chip">python-telegram-bot</span><span class="tag-chip">Telegram API</span>
                         </div>
-                        <a href="https://github.com/shayanmohd/shreezypaybot" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
+                        <a href="https://github.com/shayanmohd/shreezypaybot" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap" aria-label="Source code for ShreezyPay Bot on GitHub">
                             View Code <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg>
                         </a>
                     </div>
@@ -1140,10 +1124,10 @@
                             <span class="tag-chip">Java</span><span class="tag-chip">Android</span><span class="tag-chip">AES-GCM</span>
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
-                            <a href="https://play.google.com/store/apps/details?id=com.socialsure.calculator" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
+                            <a href="https://play.google.com/store/apps/details?id=com.socialsure.calculator" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap" aria-label="Minimalist Calculator on Google Play">
                                 <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-google-play-logo"></use></svg> Google Play <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
-                            <a href="https://github.com/shayanmohd/calculator" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
+                            <a href="https://github.com/shayanmohd/calculator" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap" aria-label="Source code for Minimalist Calculator on GitHub">
                                 <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
@@ -1167,7 +1151,7 @@
                         <div class="flex flex-wrap gap-2 my-5">
                             <span class="tag-chip">React</span><span class="tag-chip">TypeScript</span><span class="tag-chip">Tailwind CSS</span>
                         </div>
-                        <a href="https://github.com/shayanmohd/wordle-plus" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
+                        <a href="https://github.com/shayanmohd/wordle-plus" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap" aria-label="Source code for Wordle Plus on GitHub">
                             View Code <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg>
                         </a>
                     </div>
@@ -1190,7 +1174,7 @@
                         <div class="flex flex-wrap gap-2 my-5">
                             <span class="tag-chip">HTML5</span><span class="tag-chip">Tailwind CSS</span><span class="tag-chip">Schema.org</span>
                         </div>
-                        <a href="https://github.com/shayanmohd/mohdshayan" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
+                        <a href="https://github.com/shayanmohd/mohdshayan" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap" aria-label="Source code for Portfolio v2 on GitHub">
                             View Code <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg>
                         </a>
                     </div>
@@ -1213,10 +1197,7 @@
     <!-- ============ CONTACT ============ -->
     <section id="contact" class="py-16 md:py-24 bg-dark gilt-top">
         <div class="max-w-content mx-auto px-6">
-            <div class="folio on-dark reveal">
-                <span class="folio-label"><span class="num" data-num="09" aria-hidden="true"></span>Get In Touch</span>
-                <span class="folio-rule" aria-hidden="true"></span>
-            </div>
+            <hr class="section-rule on-dark reveal">
 
             <div class="grid lg:grid-cols-[7fr_5fr] gap-10 lg:gap-14 mt-10 items-start">
                 <!-- Invite -->
@@ -1243,19 +1224,19 @@
                 <div class="reveal d1 min-w-0">
                     <div class="well p-7 sm:p-8">
                         <div class="flex items-start justify-between gap-6 py-3.5 border-b border-white/[0.08]">
-                            <p class="mono-meta uppercase" style="color:rgba(245,242,234,0.5);">Based in</p>
+                            <p class="mono-meta uppercase shrink-0 whitespace-nowrap" style="color:rgba(245,242,234,0.5);">Based in</p>
                             <p class="mono-meta text-right" style="color:#f5f2ea;">New Delhi, India · working globally</p>
                         </div>
                         <div class="flex items-start justify-between gap-6 py-3.5 border-b border-white/[0.08]">
-                            <p class="mono-meta uppercase" style="color:rgba(245,242,234,0.5);">Email</p>
+                            <p class="mono-meta uppercase shrink-0 whitespace-nowrap" style="color:rgba(245,242,234,0.5);">Email</p>
                             <a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark mono-meta text-right" style="color:#f5f2ea;">contact@mohdshayan.com</a>
                         </div>
                         <div class="flex items-start justify-between gap-6 py-3.5 border-b border-white/[0.08]">
-                            <p class="mono-meta uppercase" style="color:rgba(245,242,234,0.5);">Phone</p>
+                            <p class="mono-meta uppercase shrink-0 whitespace-nowrap" style="color:rgba(245,242,234,0.5);">Phone</p>
                             <a href="tel:+918920038741" class="sweep-link on-dark mono-meta text-right" style="color:#f5f2ea;">+91 89200 38741</a>
                         </div>
                         <div class="flex items-start justify-between gap-6 py-3.5">
-                            <p class="mono-meta uppercase" style="color:rgba(245,242,234,0.5);">Fellowships</p>
+                            <p class="mono-meta uppercase shrink-0 whitespace-nowrap" style="color:rgba(245,242,234,0.5);">Fellowships</p>
                             <p class="mono-meta text-right" style="color:#f5f2ea;">FRSA · FRGS</p>
                         </div>
                     </div>
@@ -1263,6 +1244,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <!-- ============ FOOTER ============ -->
     <footer class="bg-dark-3 border-t border-white/[0.08]">
@@ -1286,6 +1269,9 @@
                     <li><a href="#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
                     <li><a href="#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
                     <li><a href="#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="/demo/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
                 </ul>
             </div>
             <div>
@@ -1308,70 +1294,8 @@
     </footer>
 
     <!-- ============ SCRIPTS ============ -->
+    <script src="/assets/site.js" defer></script>
     <script>
-        // Theme toggle (light is the designed default; choice persists in localStorage)
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = themeToggle.querySelector('[data-theme-icon]');
-        const themeMetas = document.querySelectorAll('meta[name="theme-color"], meta[name="msapplication-TileColor"]');
-        function applyTheme(dark) {
-            if (dark) document.documentElement.setAttribute('data-theme', 'dark');
-            else document.documentElement.removeAttribute('data-theme');
-            themeIcon.querySelector('use').setAttribute('href', dark ? '/assets/icons.svg#i-sun' : '/assets/icons.svg#i-moon');
-            themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
-            themeToggle.setAttribute('aria-pressed', String(dark));
-            themeMetas.forEach(m => m.setAttribute('content', dark ? '#14120e' : '#faf8f3'));
-            try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
-        }
-        // Sync button state with the pre-paint script's decision
-        applyTheme(document.documentElement.getAttribute('data-theme') === 'dark');
-        themeToggle.addEventListener('click', () => {
-            applyTheme(document.documentElement.getAttribute('data-theme') !== 'dark');
-        });
-
-        // Mobile drawer
-        const drawer = document.getElementById('drawer');
-        const menuBtn = document.getElementById('menu-btn');
-        const menuClose = document.getElementById('menu-close');
-        function openDrawer() { drawer.classList.add('open'); document.body.classList.add('overflow-hidden'); menuBtn.setAttribute('aria-expanded', 'true'); menuClose.focus(); }
-        function closeDrawer() { drawer.classList.remove('open'); document.body.classList.remove('overflow-hidden'); menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.focus(); }
-        menuBtn.addEventListener('click', openDrawer);
-        menuClose.addEventListener('click', closeDrawer);
-        drawer.querySelectorAll('.drawer-link, nav a').forEach(el => el.addEventListener('click', closeDrawer));
-        document.addEventListener('keydown', e => {
-            if (!drawer.classList.contains('open')) return;
-            if (e.key === 'Escape') { closeDrawer(); return; }
-            if (e.key === 'Tab') {
-                const focusables = drawer.querySelectorAll('a[href], button');
-                const first = focusables[0], last = focusables[focusables.length - 1];
-                if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-                else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-            }
-        });
-
-        // Gilt reading-progress thread (nav bottom hairline)
-        const progressBar = document.getElementById('progress');
-        const onScrollProgress = () => {
-            const doc = document.documentElement;
-            const max = doc.scrollHeight - doc.clientHeight;
-            progressBar.style.transform = 'scaleX(' + (max > 0 ? doc.scrollTop / max : 0) + ')';
-        };
-        onScrollProgress();
-        window.addEventListener('scroll', onScrollProgress, { passive: true });
-        window.addEventListener('resize', onScrollProgress, { passive: true });
-
-        // Scroll reveal (IntersectionObserver, once)
-        const revealEls = document.querySelectorAll('.reveal');
-        if ('IntersectionObserver' in window) {
-            const io = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
-                });
-            }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-            revealEls.forEach(el => io.observe(el));
-        } else {
-            revealEls.forEach(el => el.classList.add('in'));
-        }
-
         // Projects: "View all" expand / collapse
         const projToggle = document.getElementById('projects-toggle');
         const projGrid = document.getElementById('projects-grid');
@@ -1409,7 +1333,7 @@
                     if (entry.isIntersecting) {
                         navLinks.forEach(l => { l.classList.remove('active'); l.removeAttribute('aria-current'); });
                         const link = linkMap.get(entry.target.id);
-                        if (link) { link.classList.add('active'); link.setAttribute('aria-current', 'true'); }
+                        if (link) { link.classList.add('active'); link.setAttribute('aria-current', 'location'); }
                     }
                 });
             }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });

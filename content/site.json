@@ -1,0 +1,11 @@
+{
+  "name": "Mohd Shayan",
+  "url": "https://mohdshayan.com",
+  "author": "Mohd Shayan",
+  "email": "contact@mohdshayan.com",
+  "newsletter": {
+    "provider": "buttondown",
+    "username": "",
+    "note": "Create a free Buttondown account, set username to your Buttondown username, and run npm run build. Buttondown also emails subscribers every new post automatically via the RSS feed (Settings > RSS-to-email > https://mohdshayan.com/feed.xml)."
+  }
+}

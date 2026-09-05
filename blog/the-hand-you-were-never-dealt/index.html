@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The hand you were never dealt | Mohd Shayan</title>
+    <meta name="description" content="How Turup Chaal stops card-game cheating by construction. The host validates every move and never sends a client a card it should not know about.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://mohdshayan.com/blog/the-hand-you-were-never-dealt/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/the-hand-you-were-never-dealt/">
+    <meta property="og:title" content="The hand you were never dealt | Mohd Shayan">
+    <meta property="og:description" content="How Turup Chaal stops card-game cheating by construction. The host validates every move and never sends a client a card it should not know about.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The hand you were never dealt | Mohd Shayan">
+    <meta name="twitter:description" content="How Turup Chaal stops card-game cheating by construction. The host validates every move and never sends a client a card it should not know about.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/avatar.jpg">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/the-hand-you-were-never-dealt/#post",
+      "headline": "The hand you were never dealt",
+      "description": "How Turup Chaal stops card-game cheating by construction. The host validates every move and never sends a client a card it should not know about.",
+      "url": "https://mohdshayan.com/blog/the-hand-you-were-never-dealt/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/the-hand-you-were-never-dealt/",
+      "datePublished": "2026-09-05",
+      "dateModified": "2026-09-05",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Multiplayer, Unity, Anti-cheat",
+      "inLanguage": "en",
+      "wordCount": 574
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden md:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+                <li><a href="/philanthropy/" class="nav-link">Philanthropy</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden md:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="md:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+                    <svg class="icon text-base" aria-hidden="true"><use href="/assets/icons.svg#i-list"></use></svg>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-0 z-[60] md:hidden">
+        <aside class="panel p-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <div class="flex items-center justify-between mb-10 pt-1">
+                <span class="eyebrow">Menu</span>
+                <button id="menu-close" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Close menu"><svg class="icon text-base" aria-hidden="true"><use href="/assets/icons.svg#i-x"></use></svg></button>
+            </div>
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">5 September 2026 <span class="mx-2">·</span> 2 min read</p>
+                <h1 class="h2 mt-3 balance reveal">The hand you were never dealt</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">How Turup Chaal stops card-game cheating by construction. The host validates every move and never sends a client a card it should not know about.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>Every online card game has the same enemy. Not the player who plays badly, the player who can see your hand.</p>
+<p>When I built Turup Chaal, a four-player Court Piece game for Android, I wanted cheating to be impossible rather than merely detected. Detection means you already lost the round. The design I settled on has two halves, and both of them live on the host.</p>
+<h2>The engine does not trust anyone</h2>
+<p>The rules engine is plain C#. It has no reference to Unity&#39;s types, no scene, no networking. It deals the 5-4-4 pattern, validates the trump call, enforces follow-suit, resolves each trick, and counts to seven. Because it is deterministic (shuffles are seeded), the same engine runs a practice match on one phone and the online match for four.</p>
+<p>Online, exactly one peer runs that engine: the room&#39;s host. Everyone else, including the host&#39;s own screen, only sends intents. Tapping a card does not play the card. It sends a <code>PlayCardIntent</code> to the host, and the host asks the engine whether the move is legal.</p>
+<p>That check is short and unforgiving:</p>
+<pre><code class="language-csharp">if (State.Phase != MatchPhase.Playing)  return Reject(&quot;Game is not in playing phase.&quot;);
+if (player.Seat != State.CurrentTurnSeat) return Reject(&quot;It is not this player&#39;s turn.&quot;);
+if (IndexOfCard(player.Hand, card) &lt; 0)  return Reject(&quot;Card is not in player&#39;s hand.&quot;);
+if (hasLedSuit &amp;&amp; card.Suit != ledSuit)  return Reject(&quot;Player must follow led suit.&quot;);
+</code></pre>
+<p>A client that lies about its turn, plays a card it does not hold, or refuses to follow suit gets a rule violation event back and nothing changes. There is no &quot;trust the client and reconcile later&quot;. The client was never allowed to change the game in the first place.</p>
+<h2>The half most games skip</h2>
+<p>Validation stops a client from playing an illegal card. It does nothing to stop a client from <em>reading</em> the other hands.</p>
+<p>In a naive design the host broadcasts the full game state to everyone and each screen simply hides the cards it should not show. That is a rendering decision, and rendering decisions are made on hardware you do not control. A patched client, a memory reader, or a rooted phone can show every hand at the table.</p>
+<p>So Turup Chaal never broadcasts the full state. After each accepted move the host builds a separate snapshot for each player and sends it only to that player:</p>
+<pre><code class="language-csharp">string json = BuildRedactedSnapshotJson(targetPlayerId);
+gateway.RaiseToActor(TurupNetEvents.Snapshot, payload, actor);
+</code></pre>
+<p>The redacted snapshot contains your own hand, the cards on the table, the trick counts, and whose turn it is. Your three opponents&#39; hands are stripped out. So is the undealt deck. A modified client cannot reveal what it was never sent, because the information does not exist on that device.</p>
+<h2>Why this is cheaper than it sounds</h2>
+<p>People assume per-player redaction is expensive. It is four small JSON payloads per move, in a game where a move happens every few seconds. The cost that matters is design cost, and it is paid once: the engine has to expose a &quot;state as seen by player X&quot; view, and the network layer has to address messages to individual actors instead of the room. Photon PUN2 supports both.</p>
+<p>What you get back is a game where the security argument fits in one sentence. The host decides what happened, and each phone only ever learns its own part of it.</p>
+<p>Turup Chaal is on <a href="https://play.google.com/store/apps/details?id=com.socialsure.turupchaal">Google Play</a> and the <a href="https://github.com/shayanmohd/Turup-Chaal">source is on GitHub</a>.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Multiplayer</span><span class="tag-chip">Unity</span><span class="tag-chip">Anti-cheat</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <!-- Email subscription: set newsletter.username in content/site.json (Buttondown) and run npm run build -->
+                <a href="/feed.xml" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="/demo/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/feed.xml" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">RSS feed</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

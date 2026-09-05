@@ -38,6 +38,18 @@ CustomGlide is the software services brand of SocialSure Private Limited, founde
 
 Mohd Shayan's undergraduate research paper, "Implementation and Analysis of the CYK Algorithm for Context-Free Grammar Recognition: Algorithmic Complexity, Probabilistic Extensions, and Theoretical Boundaries," was selected for the ACL 2026 Student Research Workshop. Supervised by Dr. Laxminarayan Das at Delhi Technological University, it covers a deterministic CYK parser with a measured cubic-time complexity profile, a probabilistic Viterbi extension for ambiguity resolution, and Pumping-Lemma proofs on the limits of context-free recognition.
 
+## Writing
+
+Mohd Shayan publishes essays and notes on engineering, AI, and building technology with purpose at https://mohdshayan.com/blog/. RSS feed: https://mohdshayan.com/feed.xml
+
+## Philanthropy in pictures
+
+Photographs and video from his work supporting children in need: https://mohdshayan.com/philanthropy/
+
+## Live demos
+
+Browser-based demos of his software (CustomGlide CRM, QR ticketing, Shayanomaly, deAIfy, Wordle Plus, GTA6.LLC): https://mohdshayan.com/demo/
+
 ## Philanthropy
 
 Mohd Shayan is a philanthropist who supports children in need, focusing on education, nutrition and care, digital access, and creating opportunity so more children get a fair start.
@@ -54,6 +66,8 @@ Artificial Intelligence and AI/ML, machine learning and LLM fine-tuning, product
 ## Official links
 
 - Website: https://mohdshayan.com
+- Blog: https://mohdshayan.com/blog/
+- RSS: https://mohdshayan.com/feed.xml
 - CustomGlide: https://customglide.org
 - LinkedIn: https://linkedin.com/in/shayanmohd
 - GitHub: https://github.com/shayanmohd

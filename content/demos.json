@@ -1,0 +1,14 @@
+[
+  { "title": "CustomGlide CRM", "url": "https://demo.customglide.org", "image": "/assets/projects/customglide-crm.webp",
+    "text": "A unified customer platform for enterprise clients, covering visual sales pipelines, marketing campaign execution, and service ticketing with real-time dashboards." },
+  { "title": "CustomGlide QR Ticketing", "url": "https://demoqr.customglide.org", "image": "/assets/projects/customglide-qr.webp",
+    "text": "A QR ticketing and contactless entry system for visitor attractions: online booking, gateless scan-in validation, anti-replay ticket verification, and live visitor analytics." },
+  { "title": "Shayanomaly", "url": "https://shayanmohd.github.io/Shayanomaly/", "image": "/assets/projects/shayanomaly.webp",
+    "text": "Browser-based quantitative trading terminal streaming live order books from five exchanges and detecting cross-venue arbitrage." },
+  { "title": "deAIfy", "url": "https://shayanmohd.github.io/deAIfy/", "image": "/assets/projects/deaify.webp",
+    "text": "A cross-platform tool that strips AI tells from text fully on-device, or rewrites text to sound human via a user-supplied LLM key." },
+  { "title": "Wordle Plus", "url": "https://shayanmohd.github.io/wordle-plus/", "image": "/assets/projects/wordle-plus.webp",
+    "text": "Extends the daily word-guessing game with a shareable practice mode and an optional timed countdown." },
+  { "title": "GTA6.LLC", "url": "https://gta6.llc", "image": "/assets/projects/gta6.webp",
+    "text": "A static GTA 6 launch hub with a live countdown, pre-order guide, interactive map, and email capture." }
+]

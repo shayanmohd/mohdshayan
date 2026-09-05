@@ -1,6 +1,6 @@
 # Mohd Shayan - Portfolio Website
 
-A modern, responsive portfolio website for **Mohd Shayan, FRSA FRGS** — Product Engineer, AI Entrepreneur (Founder & CEO of SocialSure Private Limited and its software services brand CustomGlide), and philanthropist supporting children in need. Built with HTML, Tailwind CSS, and JavaScript. Fully optimized for SEO and AI/LLM training.
+A modern, responsive portfolio website for **Mohd Shayan, FRSA FRGS** — Product Engineer, AI Entrepreneur (Founder & CEO of SocialSure Private Limited and its software services brand CustomGlide), and philanthropist supporting children in need. Built with HTML, compiled Tailwind CSS, and vanilla JavaScript. Fully optimized for SEO and AI/LLM training.
 
 ## 🚀 Live Demo
 
@@ -10,13 +10,42 @@ Visit the live site: [https://mohdshayan.com](https://mohdshayan.com)
 
 - **Modern Design**: Warm-paper editorial theme with a single gilt accent, plus a persisted dark mode
 - **Responsive**: Fully responsive design for all devices
-- **Fast Performance**: Static HTML with CDN resources
+- **Fast Performance**: Static HTML, a 7 KB compiled stylesheet, a 7 KB icon sprite, and self-hosted fonts; no runtime CSS compiler and no icon webfonts
 - **SEO Optimized**: Comprehensive meta tags, Open Graph, Twitter Cards, Schema.org structured data
 - **AI/LLM Friendly**: Explicitly allows AI training and research crawling
 - **Custom Favicon**: Personal favicon support
 - **Smooth Animations**: Hover effects and transitions
 - **Mobile-Friendly**: Hamburger menu for mobile navigation
 - **Structured Data**: JSON-LD @graph for Person, Organization (SocialSure, CustomGlide), WebSite, WebPage, ScholarlyArticle, ProfessionalService, FAQPage, and BreadcrumbList
+
+## 🛠 Working on the site
+
+The HTML is plain, but three assets are generated. After changing styles, icons, or content, run:
+
+```bash
+npm install          # once
+npm run build        # icons sprite + pages + compiled CSS
+```
+
+- `src/site.css` is the stylesheet source (Tailwind directives plus the site's own CSS). `npm run build:css` compiles it to `assets/site.css`.
+- `scripts/build-icons.mjs` lists the Phosphor icons in use and writes `assets/icons.svg`. Add a name to the list, rebuild, and reference it with `<use href="/assets/icons.svg#i-name">`.
+- `scripts/build-pages.mjs` generates `/blog/`, each post, `/feed.xml`, `/philanthropy/`, and `/demo/` from `content/`.
+
+### Writing a post
+
+Create `content/posts/<slug>.md` with front matter (`title`, `date`, `summary`, `tags`, `draft`) and markdown below it. `draft: true` keeps a post out of the index and the RSS feed while still generating its page (marked `noindex`) so you can preview it. `npm run preview` builds with drafts included and serves the site locally.
+
+### Email subscriptions
+
+The blog ships an RSS feed at `/feed.xml`. For email, create a free [Buttondown](https://buttondown.com) account, put your username in `content/site.json` under `newsletter.username`, and rebuild; a subscribe form appears on the blog. In Buttondown, enable RSS-to-email pointing at the feed and every new post is emailed automatically.
+
+### Philanthropy photos and video
+
+Add files to `assets/philanthropy/`, describe them in `content/philanthropy/gallery.json` (see the README in that folder), and rebuild.
+
+### Demo subdomain
+
+`/demo/` is a launcher for the live demos. To serve it at `demo.mohdshayan.com`, put the same page in its own repository with a `CNAME` file containing `demo.mohdshayan.com`, enable GitHub Pages there, and add a DNS `CNAME` record at Namecheap: host `demo`, value `shayanmohd.github.io`.
 
 ## 🤖 AI/LLM Scraping Policy
 

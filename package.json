@@ -7,8 +7,10 @@
     "start": "python3 -m http.server 8000",
     "build:css": "tailwindcss -c tailwind.config.js -i src/site.css -o assets/site.css --minify",
     "build:icons": "node scripts/build-icons.mjs",
-    "build": "npm run build:icons && npm run build:css",
-    "watch:css": "tailwindcss -c tailwind.config.js -i src/site.css -o assets/site.css --watch"
+    "build": "npm run build:icons && npm run build:pages && npm run build:css",
+    "watch:css": "tailwindcss -c tailwind.config.js -i src/site.css -o assets/site.css --watch",
+    "build:pages": "node scripts/build-pages.mjs",
+    "preview": "node scripts/build-pages.mjs --drafts && npm run build:css && python3 -m http.server 8000"
   },
   "keywords": [
     "portfolio",
@@ -38,6 +40,7 @@
   },
   "devDependencies": {
     "@phosphor-icons/core": "^2.1.1",
+    "marked": "^15.0.12",
     "tailwindcss": "^3.4.17"
   }
 }
