@@ -316,326 +316,14 @@
     <!-- Preconnect & Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <link rel="preload" href="assets/portrait.jpg" as="image">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:opsz,wght@14..32,100..900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              paper:   'var(--paper)',
-              cream:   'var(--cream)',
-              card:    'var(--card)',
-              dark:    'var(--dark)',
-              'dark-2':'#24211b',
-              'dark-3':'var(--dark-3)',
-              ink:     'var(--ink)',
-              body:    'var(--body)',
-              muted:   'var(--muted)',
-              faint:   'var(--faint)',
-              ondark:  '#f5f2ea',
-              'ondark-soft': 'rgba(245,242,234,0.66)',
-              hairline: 'var(--hairline)',
-              'hairline-soft': 'var(--hairline-soft)',
-              'hairline-strong': 'var(--hairline-strong)',
-              'gold-deep':   'var(--gold-text)',
-              gold:          '#c19a3d',
-              'gold-bright': '#d9b45b',
-              chipwash: 'var(--chipwash)',
-            },
-            fontFamily: {
-              display: ['Fraunces', 'Georgia', '"Times New Roman"', 'serif'],
-              sans:    ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-              mono:    ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
-            },
-            maxWidth: { content: '70rem' },
-          }
-        }
-      }
-    </script>
+    <!-- Compiled stylesheet (npm run build:css) -->
+    <link rel="stylesheet" href="/assets/site.css">
 
     <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
-    <style>
-        /* ---------- Theme tokens: The Monograph, light (warm paper) & dark (warm carbon) ---------- */
-        :root {
-            color-scheme: light;
-            --paper: #faf8f3;
-            --cream: #f1ece0;
-            --card: #ffffff;
-            --dark: #1a1814;
-            --dark-3: #141210;
-            --ink: #1a1814;
-            --body: #4a463d;
-            --muted: #6b6659;
-            --faint: #a39d8e;
-            --hairline: #e7e2d6;
-            --hairline-soft: #efebe0;
-            --hairline-strong: #cfc8b6;
-            --gold-text: #8a6410;
-            --chipwash: #f5edd9;
-            --glass: rgba(250,248,243,0.92);
-            --band-rule: #ddd6c4;
-            --btn-primary-bg: #1a1814;
-            --btn-primary-fg: #faf8f3;
-            --btn-primary-hover: #000000;
-            --scroll-thumb: #d8d2c2;
-            --scroll-thumb-hover: #cfc8b6;
-        }
-        html[data-theme="dark"] {
-            color-scheme: dark;
-            --paper: #14120e;
-            --cream: #1b1813;
-            --card: #1e1b15;
-            --dark: #221e17;
-            --dark-3: #0f0d0a;
-            --ink: #f5f2ea;
-            --body: #c6bfb0;
-            --muted: #9a927e;
-            --faint: #6f695c;
-            --hairline: #2b2720;
-            --hairline-soft: #23201a;
-            --hairline-strong: #3e382e;
-            --gold-text: #d9b45b;
-            --chipwash: rgba(217,180,91,0.10);
-            --glass: rgba(20,18,14,0.88);
-            --band-rule: #2f2a22;
-            --btn-primary-bg: #f5f2ea;
-            --btn-primary-fg: #1a1814;
-            --btn-primary-hover: #ffffff;
-            --scroll-thumb: #353028;
-            --scroll-thumb-hover: #3e382e;
-        }
-
-        html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
-        body {
-            background: var(--paper);
-            color: var(--body);
-            font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
-            font-weight: 450;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            transition: background .3s ease, color .3s ease;
-        }
-
-        /* Scrollbar */
-        * { scrollbar-width: thin; scrollbar-color: var(--hairline-strong) var(--paper); }
-        *::-webkit-scrollbar { width: 9px; height: 9px; }
-        *::-webkit-scrollbar-track { background: var(--paper); }
-        *::-webkit-scrollbar-thumb { background: var(--scroll-thumb); border-radius: 5px; }
-        *::-webkit-scrollbar-thumb:hover { background: var(--scroll-thumb-hover); }
-
-        /* Selection — gilt */
-        ::selection { background: #c19a3d; color: #1a1814; }
-
-        /* ---------- Gilt edge ---------- */
-        .gilt-edge { height: 2px; background: #8a6410; }
-        .gilt-top { border-top: 2px solid #8a6410; }
-
-        /* ---------- Typography ---------- */
-        .h-display, .h2, .h3-serif, .display-m { overflow-wrap: break-word; font-family: 'Fraunces', Georgia, serif;
-            font-optical-sizing: auto; font-variation-settings: 'SOFT' 0, 'WONK' 0; font-weight: 400; color: var(--ink); }
-        .h-display { font-size: clamp(3.25rem, 8vw, 5.5rem); line-height: 0.98; letter-spacing: -0.025em; }
-        .h2 { font-size: clamp(1.9rem, 3.5vw, 2.5rem); line-height: 1.1; letter-spacing: -0.02em; }
-        .h3-serif { font-size: clamp(1.3rem, 2vw, 1.5rem); line-height: 1.2; letter-spacing: -0.015em; }
-        .display-m { font-size: clamp(1.6rem, 2.8vw, 2.25rem); line-height: 1.15; letter-spacing: -0.015em; }
-        .lead { font-size: clamp(1.0625rem, 1.6vw, 1.25rem); line-height: 1.55; letter-spacing: -0.005em; color: var(--body); }
-        .card-title { font-weight: 560; font-size: 1.0625rem; line-height: 1.3; letter-spacing: -0.01em; color: var(--ink); }
-        .balance { text-wrap: balance; }
-        @media (max-width: 640px) { .balance { text-wrap: normal; } }
-        strong, b { font-weight: 550; }
-
-        /* Mono voices */
-        .eyebrow { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .75rem; font-weight: 500;
-            letter-spacing: .14em; text-transform: uppercase; color: var(--gold-text); font-variant-numeric: tabular-nums; }
-        .mono-meta { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .8125rem; font-weight: 400;
-            letter-spacing: .02em; line-height: 1.5; font-variant-numeric: tabular-nums; }
-        .cite-part + .cite-part::before { content: '·  '; color: var(--faint); }
-
-        /* ---------- Folio section headers ---------- */
-        .folio { display: flex; align-items: center; gap: 1.25rem; }
-        .folio-label { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .75rem; font-weight: 500;
-            letter-spacing: .14em; text-transform: uppercase; color: var(--ink); white-space: nowrap;
-            font-variant-numeric: tabular-nums; }
-        .folio-label .num::before { content: attr(data-num) ' / '; color: #c19a3d; }
-        .folio-rule { flex: 1; height: 1px; background: var(--hairline); }
-        .folio.on-dark .folio-label { color: #f5f2ea; }
-        .folio.on-dark .folio-label .num::before { color: #d9b45b; }
-        .folio.on-dark .folio-rule { background: rgba(255,255,255,0.12); }
-
-        /* ---------- Plates (cards) ---------- */
-        .plate { background: var(--card); border: 1px solid var(--hairline); border-radius: 12px; transition: border-color .25s ease, background .3s ease; }
-        .plate:hover { border-color: var(--hairline-strong); }
-        .plate-lg { border-radius: 16px; }
-
-        /* Certificate plate: nested gilt hairline */
-        .cert { position: relative; }
-        .cert::after { content: ''; position: absolute; inset: 12px; border: 1px solid #c19a3d; border-radius: 8px;
-            pointer-events: none; transition: border-color .3s ease; }
-        .cert:hover::after { border-color: var(--gold-text); }
-
-        /* Translucent wells on dark surfaces */
-        .well { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.06); }
-
-        /* ---------- Mounted-print portraits ---------- */
-        .print-frame { background: var(--card); border: 1px solid var(--hairline); border-radius: 16px; padding: 8px; }
-        .print-mat { border-radius: 8px; overflow: hidden; }
-        .print-mat img { transition: transform .7s cubic-bezier(.22,1,.36,1); }
-        .print-frame:hover .print-mat img { transform: scale(1.02); }
-        .plate-mark { width: 40%; height: 2px; background: #c19a3d; margin-top: 12px; }
-        .plaque { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .75rem; letter-spacing: .04em;
-            color: var(--muted); margin-top: 10px; text-transform: uppercase; }
-        .plaque::before { content: attr(data-caption); }
-
-        /* ---------- Buttons ---------- */
-        .btn-ink, .btn-ghost, .btn-invert, .btn-ghost-dark { display: inline-flex; align-items: center; justify-content: center;
-            gap: .5rem; height: 44px; padding: 0 22px; font-weight: 550; font-size: .875rem; letter-spacing: .01em;
-            border-radius: 6px; transition: background .15s ease-out, border-color .2s ease, color .2s ease; }
-        .btn-ink { background: var(--btn-primary-bg); color: var(--btn-primary-fg); }
-        .btn-ink:hover { background: var(--btn-primary-hover); }
-        .btn-ink-sm { height: 36px; padding: 0 16px; font-size: .8125rem; }
-        .btn-ghost { background: transparent; border: 1px solid var(--hairline-strong); color: var(--ink); }
-        .btn-ghost:hover { border-color: var(--gold-text); color: var(--gold-text); }
-        .btn-invert { background: #faf8f3; color: #1a1814; }
-        .btn-invert:hover { background: #f1ece0; }
-        .btn-ghost-dark { background: transparent; border: 1px solid rgba(255,255,255,0.25); color: #f5f2ea; }
-        .btn-ghost-dark:hover { border-color: #d9b45b; color: #d9b45b; }
-        a:focus-visible, button:focus-visible { outline: 2px solid var(--gold-text); outline-offset: 2px; }
-
-        /* ---------- Chips & tags ---------- */
-        .chip-pill { display: inline-flex; align-items: center; gap: .4rem; padding: .3rem .8rem; font-size: .8125rem;
-            font-weight: 550; color: var(--gold-text); background: var(--chipwash); border-radius: 9999px; }
-        .chip-mini { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .6875rem; letter-spacing: .05em;
-            text-transform: uppercase; background: var(--card); border: 1px solid var(--hairline); color: var(--muted);
-            border-radius: 9999px; padding: .25rem .65rem; }
-        .tag-mono { display: inline-flex; align-items: center; font-family: 'JetBrains Mono', ui-monospace, monospace;
-            font-size: .8125rem; color: var(--ink); background: var(--card); border: 1px solid var(--hairline); border-radius: 6px;
-            padding: .35rem .75rem; transition: border-color .2s ease; }
-        .tag-mono:hover { border-color: var(--gold-text); }
-        .tag-chip { display: inline-flex; align-items: center; font-family: 'JetBrains Mono', ui-monospace, monospace;
-            font-size: .75rem; color: var(--body); background: var(--paper); border: 1px solid var(--hairline); border-radius: 4px;
-            padding: .25rem .6rem; }
-        .tag-dark { display: inline-flex; align-items: center; font-family: 'JetBrains Mono', ui-monospace, monospace;
-            font-size: .75rem; color: rgba(245,242,234,0.85); background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: .3rem .7rem; }
-
-        /* ---------- Icon squares ---------- */
-        .icon-sq { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 8px;
-            background: var(--cream); color: var(--gold-text); }
-        .icon-sq.wash { background: var(--chipwash); }
-
-        /* ---------- Social ---------- */
-        .social { height: 40px; width: 40px; display: grid; place-items: center; border: 1px solid var(--hairline);
-            border-radius: 9999px; color: var(--body); transition: color .2s ease, border-color .2s ease; }
-        .social:hover { color: var(--gold-text); border-color: var(--gold-text); }
-        .social-dark { border-color: rgba(255,255,255,0.18); color: rgba(245,242,234,0.66); }
-        .social-dark:hover { color: #d9b45b; border-color: #d9b45b; }
-
-        /* ---------- Underline sweep (the universal interactive voice) ---------- */
-        .sweep-link, .nav-link, .sweep-target { background-image: linear-gradient(var(--gold-text), var(--gold-text));
-            background-repeat: no-repeat; background-size: 0% 1px; background-position: 0 100%;
-            transition: background-size .25s ease, color .2s ease; padding-bottom: 2px; }
-        .sweep-link:hover, .sweep-link:focus-visible { background-size: 100% 1px; }
-        .sweep-link.on-dark { background-image: linear-gradient(#d9b45b, #d9b45b); }
-        .plate:hover .sweep-target, article:hover .sweep-target { background-size: 100% 1px; }
-
-        /* ---------- Nav ---------- */
-        .nav-glass { background: var(--glass); }
-        .rule-gold { border-left: 3px solid var(--gold-text); }
-        .folio-rule-band { background: var(--band-rule); }
-        .nav-link { color: var(--body); font-weight: 460; font-size: .875rem; }
-        .nav-link:hover, .nav-link.active { color: var(--ink); background-size: 100% 1px; }
-        #progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: var(--gold-text);
-            transform: scaleX(0); transform-origin: left; z-index: 10; }
-
-        /* ---------- Mobile drawer ---------- */
-        #drawer { visibility: hidden; }
-        #drawer.open { visibility: visible; }
-        #drawer .panel { position: absolute; inset: 0; background: var(--paper); transform: translateX(100%);
-            transition: transform .35s cubic-bezier(.22,1,.36,1); }
-        #drawer.open .panel { transform: translateX(0); }
-        .drawer-link { opacity: 0; transform: translateY(8px); transition: opacity .35s ease, transform .35s ease; }
-        #drawer.open .drawer-link { opacity: 1; transform: none; }
-        #drawer.open .drawer-link:nth-child(1) { transition-delay: .08s; }
-        #drawer.open .drawer-link:nth-child(2) { transition-delay: .12s; }
-        #drawer.open .drawer-link:nth-child(3) { transition-delay: .16s; }
-        #drawer.open .drawer-link:nth-child(4) { transition-delay: .20s; }
-        #drawer.open .drawer-link:nth-child(5) { transition-delay: .24s; }
-        #drawer.open .drawer-link:nth-child(6) { transition-delay: .28s; }
-        #drawer.open .drawer-link:nth-child(7) { transition-delay: .32s; }
-        .drawer-num::before { content: attr(data-num); font-family: 'JetBrains Mono', ui-monospace, monospace;
-            font-size: .8125rem; color: var(--gold-text); margin-right: 1rem; font-variant-numeric: tabular-nums; }
-
-        /* ---------- Drop cap ---------- */
-        .drop-cap::first-letter { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-size: 3.3em;
-            line-height: .8; float: left; padding: .08em .12em 0 0; color: #c19a3d; }
-
-        /* ---------- Ledger stats ---------- */
-        .stat-num { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-variation-settings: 'SOFT' 0, 'WONK' 0;
-            font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1; letter-spacing: -0.02em; color: var(--ink);
-            font-variant-numeric: tabular-nums; }
-        .stat-cap { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: .75rem; letter-spacing: .1em;
-            text-transform: uppercase; color: var(--muted); }
-        /* Phones: the four-letter post-nominals are wider than a third of the
-           viewport, so scale them to the cell instead of the 2.5rem floor. */
-        @media (max-width: 640px) {
-            .stat-num { font-size: clamp(1.125rem, 6.6vw, 2rem); }
-        }
-
-        /* ---------- Skills / experience ledgers ---------- */
-        .idx::before { content: attr(data-num); display: block; font-family: 'JetBrains Mono', ui-monospace, monospace;
-            font-size: .8125rem; color: #c19a3d; margin-bottom: .4rem; font-variant-numeric: tabular-nums; }
-        .cat-marker { display: inline-block; width: 6px; height: 6px; background: #c19a3d; margin-right: .6rem;
-            vertical-align: 2px; }
-        @media (min-width: 768px) {
-            .exp-content { border-left: 1px solid var(--hairline); padding-left: 2.5rem; position: relative; }
-            .t-node { position: absolute; left: -4.5px; top: .55rem; width: 8px; height: 8px; border-radius: 9999px;
-                background: #c19a3d; transition: background .2s ease; }
-            .exp-row:hover .t-node { background: var(--gold-text); }
-        }
-        @media (max-width: 767px) { .t-node { display: none; } }
-
-        /* ---------- Pull quote ---------- */
-        .quote-wrap { position: relative; padding-top: 2.75rem; }
-        .quote-wrap::before { content: '\201C'; position: absolute; top: -0.75rem; left: -0.5rem;
-            font-family: 'Fraunces', Georgia, serif; font-size: 8.75rem; line-height: 1; color: #c19a3d;
-            opacity: .18; pointer-events: none; }
-        .pull-quote { font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400;
-            font-size: clamp(1.45rem, 2.4vw, 1.875rem); line-height: 1.35; letter-spacing: -0.01em; color: var(--ink);
-            max-width: 30ch; }
-        .quote-rule { width: 40px; height: 2px; background: #c19a3d; margin-top: 1.25rem; }
-
-        /* ---------- Projects media ---------- */
-        .shot-mat { border-radius: 8px; overflow: hidden; border: 1px solid var(--hairline);
-            box-shadow: 0 1px 3px rgba(26,24,20,0.06); }
-        .shot-mat img { transition: transform .7s cubic-bezier(.22,1,.36,1); }
-        article:hover .shot-mat img { transform: scale(1.02); }
-
-        /* ---------- Reveal motion ---------- */
-        .reveal { opacity: 0; transform: translateY(12px);
-            transition: opacity .55s cubic-bezier(.22,1,.36,1), transform .55s cubic-bezier(.22,1,.36,1); }
-        .reveal.in { opacity: 1; transform: none; }
-        .d1{transition-delay:.06s}.d2{transition-delay:.12s}.d3{transition-delay:.18s}
-        .d4{transition-delay:.24s}.d5{transition-delay:.30s}.d6{transition-delay:.36s}
-
-        /* ---------- Projects: collapsed extra cards (id-scoped to beat Tailwind .flex) ---------- */
-        #projects-grid .project-more { display: none; }
-        #projects-grid.is-expanded .project-more { display: flex; }
-
-        /* ---------- Reduced motion ---------- */
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-            *, *::before, *::after { transition: none !important; animation: none !important; }
-            .reveal, .drawer-link { opacity: 1 !important; transform: none !important; }
-        }
-    </style>
 </head>
 <body class="bg-paper text-body antialiased">
     <!-- Google Tag Manager (noscript) -->
@@ -659,11 +347,11 @@
 
             <div class="flex items-center gap-3">
                 <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Switch to dark mode" aria-pressed="false">
-                    <i class="fa-solid fa-moon text-sm" aria-hidden="true" data-theme-icon></i>
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
                 </button>
                 <a href="#contact" class="hidden md:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
                 <button id="menu-btn" class="md:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
-                    <i class="fa-solid fa-bars text-base" aria-hidden="true"></i>
+                    <svg class="icon text-base" aria-hidden="true"><use href="/assets/icons.svg#i-list"></use></svg>
                 </button>
             </div>
             <span id="progress" aria-hidden="true"></span>
@@ -676,7 +364,7 @@
             <div class="flex items-center justify-between mb-10 pt-1">
                 <span class="eyebrow">Menu</span>
                 <button id="menu-close" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Close menu">
-                    <i class="fa-solid fa-xmark text-base" aria-hidden="true"></i>
+                    <svg class="icon text-base" aria-hidden="true"><use href="/assets/icons.svg#i-x"></use></svg>
                 </button>
             </div>
             <nav class="flex flex-col">
@@ -691,12 +379,12 @@
             <div class="mt-auto">
                 <a href="#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
                 <div class="drawer-link flex items-center gap-2 mt-6">
-                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
-                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
-                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
-                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
-                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><i class="fa-brands fa-reddit-alien" aria-hidden="true"></i></a>
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
                 </div>
             </div>
         </aside>
@@ -719,27 +407,27 @@
                 <!-- CTAs -->
                 <div class="mt-9 flex flex-wrap gap-3 reveal d3">
                     <a href="uploads/resume.pdf" class="btn-ink" download>
-                        <i class="fa-solid fa-arrow-down-long" aria-hidden="true"></i> Download Résumé
+                        <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-down"></use></svg> Download Résumé
                     </a>
                     <a href="#projects" class="btn-ghost">
-                        View Work <i class="fa-solid fa-arrow-right text-xs" aria-hidden="true"></i>
+                        View Work <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg>
                     </a>
                 </div>
 
                 <!-- Credentials + social -->
                 <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4 reveal d4">
                     <div class="flex items-center gap-2">
-                        <span class="chip-pill"><i class="fa-solid fa-award" aria-hidden="true"></i> FRSA</span>
-                        <span class="chip-pill"><i class="fa-solid fa-globe" aria-hidden="true"></i> FRGS</span>
+                        <span class="chip-pill"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-medal"></use></svg> FRSA</span>
+                        <span class="chip-pill"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-globe-hemisphere-west"></use></svg> FRGS</span>
                     </div>
                     <span class="hidden sm:block h-5 w-px bg-hairline"></span>
                     <div class="flex flex-wrap items-center gap-2">
-                        <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
-                        <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
-                        <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
-                        <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-                        <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
-                        <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><i class="fa-brands fa-reddit-alien" aria-hidden="true"></i></a>
+                        <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                        <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                        <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                        <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                        <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                        <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
                     </div>
                 </div>
             </div>
@@ -825,22 +513,22 @@
             <!-- What he does -->
             <div class="grid sm:grid-cols-2 gap-6 mt-12">
                 <div class="plate p-7 reveal d1">
-                    <div class="icon-sq mb-5"><i class="fa-solid fa-code" aria-hidden="true"></i></div>
+                    <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-code"></use></svg></div>
                     <h3 class="card-title mb-2"><span class="sweep-target">Product Engineering</span></h3>
                     <p class="text-body text-[0.9375rem] leading-relaxed">Shipping end-to-end products, from architecture and AI models to the last pixel of the experience.</p>
                 </div>
                 <div class="plate p-7 reveal d2">
-                    <div class="icon-sq mb-5"><i class="fa-solid fa-rocket" aria-hidden="true"></i></div>
+                    <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-rocket-launch"></use></svg></div>
                     <h3 class="card-title mb-2"><span class="sweep-target">AI Entrepreneurship</span></h3>
                     <p class="text-body text-[0.9375rem] leading-relaxed">Founding and leading SocialSure Private Limited, building an AI-first company from the ground up.</p>
                 </div>
                 <div class="plate p-7 reveal d3">
-                    <div class="icon-sq mb-5"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i></div>
+                    <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-hand-heart"></use></svg></div>
                     <h3 class="card-title mb-2"><span class="sweep-target">Philanthropy</span></h3>
                     <p class="text-body text-[0.9375rem] leading-relaxed">Supporting children in need with education, nutrition, and access to technology and opportunity.</p>
                 </div>
                 <div class="plate p-7 reveal d4">
-                    <div class="icon-sq mb-5"><i class="fa-solid fa-award" aria-hidden="true"></i></div>
+                    <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-medal"></use></svg></div>
                     <h3 class="card-title mb-2"><span class="sweep-target">Fellowships</span></h3>
                     <p class="text-body text-[0.9375rem] leading-relaxed">Fellow of the Royal Society of Arts (FRSA) and the Royal Geographical Society (FRGS).</p>
                 </div>
@@ -989,15 +677,15 @@
                 <!-- Principles: machined wells -->
                 <div class="grid sm:grid-cols-3 gap-5 mt-10">
                     <div class="well p-6">
-                        <div class="flex items-center gap-3 mb-2"><i class="fa-solid fa-lightbulb text-gold-bright text-sm" aria-hidden="true"></i><h4 class="card-title" style="color:#f5f2ea;">Vision-led</h4></div>
+                        <div class="flex items-center gap-3 mb-2"><svg class="icon text-gold-bright text-sm" aria-hidden="true"><use href="/assets/icons.svg#i-lightbulb"></use></svg><h4 class="card-title" style="color:#f5f2ea;">Vision-led</h4></div>
                         <p class="text-ondark-soft text-sm leading-relaxed">From a single idea to a company, built around a long-term view of where AI is heading.</p>
                     </div>
                     <div class="well p-6">
-                        <div class="flex items-center gap-3 mb-2"><i class="fa-solid fa-layer-group text-gold-bright text-sm" aria-hidden="true"></i><h4 class="card-title" style="color:#f5f2ea;">Engineer-founded</h4></div>
+                        <div class="flex items-center gap-3 mb-2"><svg class="icon text-gold-bright text-sm" aria-hidden="true"><use href="/assets/icons.svg#i-stack"></use></svg><h4 class="card-title" style="color:#f5f2ea;">Engineer-founded</h4></div>
                         <p class="text-ondark-soft text-sm leading-relaxed">Deep technical roots mean products that are as robust under the hood as they are polished on top.</p>
                     </div>
                     <div class="well p-6">
-                        <div class="flex items-center gap-3 mb-2"><i class="fa-solid fa-heart text-gold-bright text-sm" aria-hidden="true"></i><h4 class="card-title" style="color:#f5f2ea;">Purpose-driven</h4></div>
+                        <div class="flex items-center gap-3 mb-2"><svg class="icon text-gold-bright text-sm" aria-hidden="true"><use href="/assets/icons.svg#i-heart"></use></svg><h4 class="card-title" style="color:#f5f2ea;">Purpose-driven</h4></div>
                         <p class="text-ondark-soft text-sm leading-relaxed">Profit and purpose aren't at odds; the venture funds and fuels the impact work he cares about.</p>
                     </div>
                 </div>
@@ -1006,17 +694,17 @@
             <!-- Focus areas: return to daylight -->
             <div class="grid md:grid-cols-3 gap-6 mt-6">
                 <div class="plate p-7 reveal d1">
-                    <div class="icon-sq mb-5"><i class="fa-solid fa-microchip" aria-hidden="true"></i></div>
+                    <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-cpu"></use></svg></div>
                     <h4 class="card-title mb-2"><span class="sweep-target">AI Training</span></h4>
                     <p class="text-body text-[0.9375rem] leading-relaxed">Developing and training models, building the data pipelines and intelligence that power everything the company ships.</p>
                 </div>
                 <div class="plate p-7 reveal d2">
-                    <div class="icon-sq mb-5"><i class="fa-solid fa-share-nodes" aria-hidden="true"></i></div>
+                    <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-share-network"></use></svg></div>
                     <h4 class="card-title mb-2"><span class="sweep-target">AI Social Media Ecosystem</span></h4>
                     <p class="text-body text-[0.9375rem] leading-relaxed">A social platform reimagined around AI, smarter creation, connection, and discovery for the next generation of users.</p>
                 </div>
                 <div class="plate p-7 reveal d3">
-                    <div class="icon-sq mb-5"><i class="fa-solid fa-cubes" aria-hidden="true"></i></div>
+                    <div class="icon-sq mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-cube"></use></svg></div>
                     <h4 class="card-title mb-2"><span class="sweep-target">AI-Driven Products</span></h4>
                     <p class="text-body text-[0.9375rem] leading-relaxed">A growing portfolio of intelligent products that put applied AI to work solving real, everyday problems.</p>
                 </div>
@@ -1036,25 +724,25 @@
                         </div>
                     </div>
                     <a href="https://customglide.org" target="_blank" rel="noopener noreferrer" class="btn-ghost shrink-0">
-                        Visit CustomGlide <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                        Visit CustomGlide <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                     </a>
                 </div>
 
                 <div class="grid sm:grid-cols-2 gap-5 mt-8 pt-8 border-t border-hairline">
                     <div>
-                        <div class="icon-sq mb-4"><i class="fa-solid fa-chart-line" aria-hidden="true"></i></div>
+                        <div class="icon-sq mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-chart-line-up"></use></svg></div>
                         <h4 class="card-title mb-2">Unified CRM Platform</h4>
                         <p class="text-body text-[0.9375rem] leading-relaxed">Visual sales pipelines, marketing campaign execution, and service ticketing with real-time dashboards, built as a migration target for teams leaving Salesforce, HubSpot, and Zoho.</p>
                         <a href="https://demo.customglide.org" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-4 whitespace-nowrap">
-                            Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                            Live Demo <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                         </a>
                     </div>
                     <div>
-                        <div class="icon-sq mb-4"><i class="fa-solid fa-qrcode" aria-hidden="true"></i></div>
+                        <div class="icon-sq mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-qr-code"></use></svg></div>
                         <h4 class="card-title mb-2">QR Ticketing &amp; Contactless Entry</h4>
                         <p class="text-body text-[0.9375rem] leading-relaxed">Online booking, gateless scan-in validation, anti-replay ticket verification, and live visitor analytics for visitor attractions.</p>
                         <a href="https://demoqr.customglide.org" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-4 whitespace-nowrap">
-                            Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                            Live Demo <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                         </a>
                     </div>
                 </div>
@@ -1095,22 +783,22 @@
 
                 <div class="grid sm:grid-cols-2 gap-5 reveal d1">
                     <div class="plate p-7">
-                        <div class="icon-sq wash mb-5"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+                        <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-graduation-cap"></use></svg></div>
                         <h3 class="card-title mb-2"><span class="sweep-target">Education</span></h3>
                         <p class="text-body text-[0.9375rem] leading-relaxed">Supporting schooling, learning materials, and mentorship for underserved children.</p>
                     </div>
                     <div class="plate p-7">
-                        <div class="icon-sq wash mb-5"><i class="fa-solid fa-bowl-food" aria-hidden="true"></i></div>
+                        <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-bowl-food"></use></svg></div>
                         <h3 class="card-title mb-2"><span class="sweep-target">Nutrition &amp; Care</span></h3>
                         <p class="text-body text-[0.9375rem] leading-relaxed">Helping meet basic needs so children can grow, learn, and thrive.</p>
                     </div>
                     <div class="plate p-7">
-                        <div class="icon-sq wash mb-5"><i class="fa-solid fa-laptop-code" aria-hidden="true"></i></div>
+                        <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-laptop"></use></svg></div>
                         <h3 class="card-title mb-2"><span class="sweep-target">Digital Access</span></h3>
                         <p class="text-body text-[0.9375rem] leading-relaxed">Bringing devices, connectivity, and tech skills to the next generation.</p>
                     </div>
                     <div class="plate p-7">
-                        <div class="icon-sq wash mb-5"><i class="fa-solid fa-hands-holding-child" aria-hidden="true"></i></div>
+                        <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-signpost"></use></svg></div>
                         <h3 class="card-title mb-2"><span class="sweep-target">Opportunity</span></h3>
                         <p class="text-body text-[0.9375rem] leading-relaxed">Creating pathways and a fair start for children to shape their own futures.</p>
                     </div>
@@ -1213,10 +901,10 @@
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
                             <a href="https://shayanmohd.github.io/Shayanomaly/" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
-                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                                Live Demo <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
                             <a href="https://github.com/shayanmohd/Shayanomaly" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
-                                <i class="fa-brands fa-github" aria-hidden="true"></i> Code
+                                <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
                     </div>
@@ -1240,7 +928,7 @@
                             <span class="tag-chip">CRM</span><span class="tag-chip">Dashboards</span><span class="tag-chip">Automation</span>
                         </div>
                         <a href="https://demo.customglide.org" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
-                            Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                            Live Demo <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                         </a>
                     </div>
                 </article>
@@ -1263,7 +951,7 @@
                             <span class="tag-chip">QR Entry</span><span class="tag-chip">Booking</span><span class="tag-chip">Analytics</span>
                         </div>
                         <a href="https://demoqr.customglide.org" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
-                            Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                            Live Demo <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                         </a>
                     </div>
                 </article>
@@ -1287,13 +975,13 @@
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
                             <a href="https://play.google.com/store/apps/details?id=com.deAIfy.app" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
-                                <i class="fa-brands fa-google-play text-xs" aria-hidden="true"></i> Google Play <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                                <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-google-play-logo"></use></svg> Google Play <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
                             <a href="https://shayanmohd.github.io/deAIfy/" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
-                                Try It Live <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                                Try It Live <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
                             <a href="https://github.com/shayanmohd/deAIfy" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
-                                <i class="fa-brands fa-github" aria-hidden="true"></i> Code
+                                <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
                     </div>
@@ -1318,10 +1006,10 @@
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
                             <a href="https://play.google.com/store/apps/details?id=com.mohdshayan.habits" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
-                                <i class="fa-brands fa-google-play text-xs" aria-hidden="true"></i> Google Play <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                                <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-google-play-logo"></use></svg> Google Play <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
                             <a href="https://github.com/shayanmohd/habits-app" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
-                                <i class="fa-brands fa-github" aria-hidden="true"></i> Code
+                                <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
                     </div>
@@ -1346,10 +1034,10 @@
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
                             <a href="https://play.google.com/store/apps/details?id=com.socialsure.turupchaal" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
-                                <i class="fa-brands fa-google-play text-xs" aria-hidden="true"></i> Google Play <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                                <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-google-play-logo"></use></svg> Google Play <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
                             <a href="https://github.com/shayanmohd/Turup-Chaal" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
-                                <i class="fa-brands fa-github" aria-hidden="true"></i> Code
+                                <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
                     </div>
@@ -1374,10 +1062,10 @@
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
                             <a href="https://advocateyunus.com" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
-                                Visit Site <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                                Visit Site <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
                             <a href="https://github.com/shayanmohd/Advocatewebsite" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
-                                <i class="fa-brands fa-github" aria-hidden="true"></i> Code
+                                <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
                     </div>
@@ -1402,10 +1090,10 @@
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
                             <a href="https://gta6.llc" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
-                                Visit Site <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                                Visit Site <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
                             <a href="https://github.com/shayanmohd/gta6-marketplace" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
-                                <i class="fa-brands fa-github" aria-hidden="true"></i> Code
+                                <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
                     </div>
@@ -1429,7 +1117,7 @@
                             <span class="tag-chip">Python</span><span class="tag-chip">python-telegram-bot</span><span class="tag-chip">Telegram API</span>
                         </div>
                         <a href="https://github.com/shayanmohd/shreezypaybot" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
-                            View Code <i class="fa-brands fa-github" aria-hidden="true"></i>
+                            View Code <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg>
                         </a>
                     </div>
                 </article>
@@ -1453,10 +1141,10 @@
                         </div>
                         <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
                             <a href="https://play.google.com/store/apps/details?id=com.socialsure.calculator" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
-                                <i class="fa-brands fa-google-play text-xs" aria-hidden="true"></i> Google Play <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                                <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-google-play-logo"></use></svg> Google Play <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                             </a>
                             <a href="https://github.com/shayanmohd/calculator" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-muted hover:text-ink font-[550] text-sm transition-colors whitespace-nowrap">
-                                <i class="fa-brands fa-github" aria-hidden="true"></i> Code
+                                <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> Code
                             </a>
                         </div>
                     </div>
@@ -1480,7 +1168,7 @@
                             <span class="tag-chip">React</span><span class="tag-chip">TypeScript</span><span class="tag-chip">Tailwind CSS</span>
                         </div>
                         <a href="https://github.com/shayanmohd/wordle-plus" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
-                            View Code <i class="fa-brands fa-github" aria-hidden="true"></i>
+                            View Code <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg>
                         </a>
                     </div>
                 </article>
@@ -1503,7 +1191,7 @@
                             <span class="tag-chip">HTML5</span><span class="tag-chip">Tailwind CSS</span><span class="tag-chip">Schema.org</span>
                         </div>
                         <a href="https://github.com/shayanmohd/mohdshayan" target="_blank" rel="noopener noreferrer" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
-                            View Code <i class="fa-brands fa-github" aria-hidden="true"></i>
+                            View Code <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg>
                         </a>
                     </div>
                 </article>
@@ -1512,11 +1200,11 @@
             <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
                 <button id="projects-toggle" type="button" class="btn-ghost font-mono uppercase tracking-[0.08em] !text-[0.8125rem]" aria-expanded="false" aria-controls="projects-grid">
                     <span data-toggle-label>View all 12 projects</span>
-                    <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300" data-toggle-chevron aria-hidden="true"></i>
+                    <svg class="icon text-xs transition-transform duration-300" data-toggle-chevron aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg>
                 </button>
                 <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="btn-ghost font-mono uppercase tracking-[0.08em] !text-[0.8125rem]">
-                    <i class="fa-brands fa-github text-base" aria-hidden="true"></i> GitHub Profile
-                    <i class="fa-solid fa-arrow-up-right-from-square text-xs" aria-hidden="true"></i>
+                    <svg class="icon text-base" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> GitHub Profile
+                    <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
                 </a>
             </div>
         </div>
@@ -1537,17 +1225,17 @@
                     <p class="lead mt-5 max-w-xl" style="color:rgba(245,242,234,0.66);">Whether it's an AI product, a partnership for SocialSure, or a cause worth supporting, Mohd Shayan would welcome the conversation. Great things start with one.</p>
 
                     <div class="flex flex-wrap gap-3 mt-8">
-                        <a href="mailto:contact@mohdshayan.com" class="btn-invert"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Send a Message</a>
-                        <a href="https://calendly.com/mohdshayan" target="_blank" rel="noopener noreferrer" class="btn-ghost-dark"><i class="fa-solid fa-calendar" aria-hidden="true"></i> Schedule a Call</a>
+                        <a href="mailto:contact@mohdshayan.com" class="btn-invert"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-paper-plane-tilt"></use></svg> Send a Message</a>
+                        <a href="https://calendly.com/mohdshayan" target="_blank" rel="noopener noreferrer" class="btn-ghost-dark"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-calendar-blank"></use></svg> Schedule a Call</a>
                     </div>
 
                     <div class="flex flex-wrap items-center gap-2 mt-8">
-                        <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
-                        <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
-                        <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
-                        <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-                        <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
-                        <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><i class="fa-brands fa-reddit-alien" aria-hidden="true"></i></a>
+                        <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                        <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                        <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                        <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                        <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                        <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
                     </div>
                 </div>
 
@@ -1583,11 +1271,11 @@
                 <a href="#home" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
                 <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
                 <div class="flex gap-3 mt-6">
-                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
-                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
-                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
-                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><i class="fa-brands fa-reddit-alien" aria-hidden="true"></i></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
                 </div>
             </div>
             <div>
@@ -1628,7 +1316,7 @@
         function applyTheme(dark) {
             if (dark) document.documentElement.setAttribute('data-theme', 'dark');
             else document.documentElement.removeAttribute('data-theme');
-            themeIcon.className = dark ? 'fa-solid fa-sun text-sm' : 'fa-solid fa-moon text-sm';
+            themeIcon.querySelector('use').setAttribute('href', dark ? '/assets/icons.svg#i-sun' : '/assets/icons.svg#i-moon');
             themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
             themeToggle.setAttribute('aria-pressed', String(dark));
             themeMetas.forEach(m => m.setAttribute('content', dark ? '#14120e' : '#faf8f3'));

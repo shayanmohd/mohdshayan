@@ -5,8 +5,10 @@
   "main": "index.html",
   "scripts": {
     "start": "python3 -m http.server 8000",
-    "build": "echo 'Static site - no build needed'",
-    "deploy": "echo 'Deploy to your hosting platform'"
+    "build:css": "tailwindcss -c tailwind.config.js -i src/site.css -o assets/site.css --minify",
+    "build:icons": "node scripts/build-icons.mjs",
+    "build": "npm run build:icons && npm run build:css",
+    "watch:css": "tailwindcss -c tailwind.config.js -i src/site.css -o assets/site.css --watch"
   },
   "keywords": [
     "portfolio",
@@ -33,5 +35,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/shayanmohd/mohdshayan"
+  },
+  "devDependencies": {
+    "@phosphor-icons/core": "^2.1.1",
+    "tailwindcss": "^3.4.17"
   }
 }
