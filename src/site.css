@@ -339,8 +339,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--gold-text); out
 }
 
 /* ---------- Skills / experience ledgers ---------- */
-.cat-marker { display: inline-block; width: 6px; height: 6px; background: #c19a3d; margin-right: .6rem;
-    vertical-align: 2px; }
 @media (min-width: 768px) {
     .exp-content { border-left: 1px solid var(--hairline); padding-left: 2.5rem; position: relative; }
     .t-node { position: absolute; left: -4.5px; top: .55rem; width: 8px; height: 8px; border-radius: 9999px;
