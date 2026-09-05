@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Mohd Shayan</title>
+    <link>https://mohdshayan.com/blog/</link>
+    <description>Essays and notes by Mohd Shayan on engineering, AI, and building technology with purpose.</description>
+    <language>en</language>
+    <atom:link href="https://mohdshayan.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>The hand you were never dealt</title>
+      <link>https://mohdshayan.com/blog/the-hand-you-were-never-dealt/</link>
+      <guid isPermaLink="true">https://mohdshayan.com/blog/the-hand-you-were-never-dealt/</guid>
+      <pubDate>Sat, 05 Sep 2026 09:00:00 GMT</pubDate>
+      <description>How Turup Chaal stops card-game cheating by construction. The host validates every move and never sends a client a card it should not know about.</description>
+      <content:encoded><![CDATA[<p>Every online card game has the same enemy. Not the player who plays badly, the player who can see your hand.</p>
+<p>When I built Turup Chaal, a four-player Court Piece game for Android, I wanted cheating to be impossible rather than merely detected. Detection means you already lost the round. The design I settled on has two halves, and both of them live on the host.</p>
+<h2>The engine does not trust anyone</h2>
+<p>The rules engine is plain C#. It has no reference to Unity&#39;s types, no scene, no networking. It deals the 5-4-4 pattern, validates the trump call, enforces follow-suit, resolves each trick, and counts to seven. Because it is deterministic (shuffles are seeded), the same engine runs a practice match on one phone and the online match for four.</p>
+<p>Online, exactly one peer runs that engine: the room&#39;s host. Everyone else, including the host&#39;s own screen, only sends intents. Tapping a card does not play the card. It sends a <code>PlayCardIntent</code> to the host, and the host asks the engine whether the move is legal.</p>
+<p>That check is short and unforgiving:</p>
+<pre><code class="language-csharp">if (State.Phase != MatchPhase.Playing)  return Reject(&quot;Game is not in playing phase.&quot;);
+if (player.Seat != State.CurrentTurnSeat) return Reject(&quot;It is not this player&#39;s turn.&quot;);
+if (IndexOfCard(player.Hand, card) &lt; 0)  return Reject(&quot;Card is not in player&#39;s hand.&quot;);
+if (hasLedSuit &amp;&amp; card.Suit != ledSuit)  return Reject(&quot;Player must follow led suit.&quot;);
+</code></pre>
+<p>A client that lies about its turn, plays a card it does not hold, or refuses to follow suit gets a rule violation event back and nothing changes. There is no &quot;trust the client and reconcile later&quot;. The client was never allowed to change the game in the first place.</p>
+<h2>The half most games skip</h2>
+<p>Validation stops a client from playing an illegal card. It does nothing to stop a client from <em>reading</em> the other hands.</p>
+<p>In a naive design the host broadcasts the full game state to everyone and each screen simply hides the cards it should not show. That is a rendering decision, and rendering decisions are made on hardware you do not control. A patched client, a memory reader, or a rooted phone can show every hand at the table.</p>
+<p>So Turup Chaal never broadcasts the full state. After each accepted move the host builds a separate snapshot for each player and sends it only to that player:</p>
+<pre><code class="language-csharp">string json = BuildRedactedSnapshotJson(targetPlayerId);
+gateway.RaiseToActor(TurupNetEvents.Snapshot, payload, actor);
+</code></pre>
+<p>The redacted snapshot contains your own hand, the cards on the table, the trick counts, and whose turn it is. Your three opponents&#39; hands are stripped out. So is the undealt deck. A modified client cannot reveal what it was never sent, because the information does not exist on that device.</p>
+<h2>Why this is cheaper than it sounds</h2>
+<p>People assume per-player redaction is expensive. It is four small JSON payloads per move, in a game where a move happens every few seconds. The cost that matters is design cost, and it is paid once: the engine has to expose a &quot;state as seen by player X&quot; view, and the network layer has to address messages to individual actors instead of the room. Photon PUN2 supports both.</p>
+<p>What you get back is a game where the security argument fits in one sentence. The host decides what happened, and each phone only ever learns its own part of it.</p>
+<p>Turup Chaal is on <a href="https://play.google.com/store/apps/details?id=com.socialsure.turupchaal">Google Play</a> and the <a href="https://github.com/shayanmohd/Turup-Chaal">source is on GitHub</a>.</p>
+]]></content:encoded>
+    </item>
+  </channel>
+</rss>
