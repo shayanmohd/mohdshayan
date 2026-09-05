@@ -420,6 +420,8 @@ article:hover .shot-mat img { transform: scale(1.02); }
 @media (min-width: 1024px) { .gallery { grid-template-columns: repeat(3, minmax(0,1fr)); } }
 .gallery-item { position: relative; display: block; background: var(--card); aspect-ratio: 4 / 3; overflow: hidden; }
 .gallery-item.wide { grid-column: span 2; aspect-ratio: 16 / 9; }
+.gallery.single { grid-template-columns: 1fr; }
+.gallery.single .gallery-item, .gallery.single .gallery-item.wide { grid-column: span 1; aspect-ratio: 3 / 2; }
 @media (max-width: 639px) { .gallery-item.wide { grid-column: span 1; aspect-ratio: 4 / 3; } }
 .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
 .gallery-item:hover img { transform: scale(1.02); }

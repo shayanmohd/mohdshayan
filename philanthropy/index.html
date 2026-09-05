@@ -37,7 +37,13 @@
         "@id": "https://mohdshayan.com/#person"
       },
       "inLanguage": "en",
-      "hasPart": []
+      "hasPart": [
+        {
+          "@type": "ImageObject",
+          "contentUrl": "https://mohdshayan.com/assets/philanthropy/community-meal.webp",
+          "caption": "Elderly women seated along a white cloth in a courtyard, sharing a meal served on steel plates"
+        }
+      ]
     }
     </script>
 </head>
@@ -104,9 +110,23 @@
                     <p class="text-[1.03125rem] leading-[1.7]">Alongside his work in technology, Mohd Shayan dedicates time and resources to the children who need it most. He supports causes that open doors for young people, because talent is universal, but opportunity is not.</p>
                     <p class="text-[1.03125rem] leading-[1.7] mt-5">From funding education and nutrition to bridging the digital divide, his goal is simple: help more children get a fair start, and a real chance to build the future on their own terms.</p>
                 </div>
-            <div class="plate p-8 md:p-10 mt-12 reveal">
-                <p class="text-body">Photographs and video from this work are being added.</p>
+            <div class="gallery single mt-12">
+                <a href="/assets/philanthropy/community-meal.webp" class="gallery-item wide reveal" data-lightbox data-caption="" data-full="/assets/philanthropy/community-meal.webp">
+                    <img src="/assets/philanthropy/community-meal.webp" alt="Elderly women seated along a white cloth in a courtyard, sharing a meal served on steel plates" loading="eager">
+                    
+                    
+                </a>
             </div>
+            <dialog id="lightbox" class="lightbox" aria-label="Media viewer">
+                <div class="frame">
+                    <img alt="" hidden>
+                    <iframe title="Video" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen hidden></iframe>
+                    <button type="button" class="lb-btn" style="left:.75rem" data-prev aria-label="Previous"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg></button>
+                    <button type="button" class="lb-btn" style="right:.75rem" data-next aria-label="Next"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg></button>
+                    <button type="button" class="lb-close" data-close aria-label="Close"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x"></use></svg></button>
+                </div>
+                <p class="mono-meta text-center mt-3" style="color:rgba(245,242,234,0.7);" data-caption></p>
+            </dialog>
             </div>
         </section>
     </main>

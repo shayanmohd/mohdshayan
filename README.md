@@ -37,7 +37,7 @@ Create `content/posts/<slug>.md` with front matter (`title`, `date`, `summary`, 
 
 ### Email subscriptions
 
-The blog ships an RSS feed at `/feed.xml`. For email, create a free [Buttondown](https://buttondown.com) account, put your username in `content/site.json` under `newsletter.username`, and rebuild; a subscribe form appears on the blog. In Buttondown, enable RSS-to-email pointing at the feed and every new post is emailed automatically.
+The blog ships an RSS feed at `/feed.xml`. For email delivery without a paid plan, use [follow.it](https://follow.it): its Basic plan is free with unlimited followers and emails and sends every new feed item automatically (it adds a small "suggested reading" footer to emails). Create a publisher account, add the feed URL, open the subscription-form embed, and paste the form's action URL into `content/site.json` under `newsletter.action`, then rebuild; the subscribe form appears on the blog. Buttondown and MailerLite also work with the same config (`action`, `emailField`) but both charge for RSS-to-email.
 
 ### Philanthropy photos and video
 

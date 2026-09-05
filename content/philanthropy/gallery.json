@@ -1,4 +1,13 @@
 {
   "intro_note": "Add photographs and video here. See README.md in this folder. Entries render in the order listed.",
-  "items": []
+  "items": [
+    {
+      "type": "image",
+      "src": "/assets/philanthropy/community-meal.webp",
+      "alt": "Elderly women seated along a white cloth in a courtyard, sharing a meal served on steel plates",
+      "caption": "",
+      "date": "",
+      "wide": true
+    }
+  ]
 }

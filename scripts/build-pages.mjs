@@ -100,8 +100,8 @@ ${[['/#about', 'About'], ['/#ventures', 'Ventures'], ['/#impact', 'Impact'], ['/
         <div class="gilt-edge" aria-hidden="true"></div>
     </footer>`;
 }
-function shell({ title, description, path, active, body, jsonld, noindex = false, image = `${site.url}/assets/portrait.jpg` }) {
-  const canonical = `${site.url}${path}`;
+function shell({ title, description, path, active, body, jsonld, noindex = false, image = `${site.url}/assets/portrait.jpg`, canonical }) {
+  canonical = canonical || `${site.url}${path}`;
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -147,15 +147,17 @@ ${footer()}
 
 // ---------- blocks ----------
 function subscribe(compact = false) {
-  const u = site.newsletter && site.newsletter.username;
-  const form = u ? `
-                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://buttondown.com/api/emails/embed-subscribe/${u}" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/${u}', 'popupwindow')">
-                    <label for="bd-email" class="sr-only">Email address</label>
-                    <input type="email" name="email" id="bd-email" placeholder="you@example.com" required autocomplete="email">
+  const nl = site.newsletter || {};
+  const action = nl.action || (nl.provider === 'buttondown' && nl.username ? `https://buttondown.com/api/emails/embed-subscribe/${nl.username}` : '');
+  const field = nl.emailField || 'email';
+  const form = action ? `
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="${action}" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="${field}" id="nl-email" placeholder="you@example.com" required autocomplete="email">
                     <button type="submit" class="btn-ink shrink-0">Subscribe</button>
                 </form>
-                <p class="mono-meta text-muted mt-3">No spam. Unsubscribe in one click.</p>` : `
-                <!-- Email subscription: set newsletter.username in content/site.json (Buttondown) and run npm run build -->`;
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>` : `
+                <!-- Email subscription: set newsletter.action in content/site.json and run npm run build -->`;
   return `            <div class="plate p-8 md:p-10 ${compact ? 'mt-12' : 'mt-16'} reveal">
                 <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
                 <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>${form}
@@ -258,7 +260,7 @@ function galleryPage() {
                     ${it.caption ? `<figcaption>${esc(it.caption)}</figcaption>` : ''}
                 </a>`;
   };
-  const grid = items.length ? `            <div class="gallery mt-12">\n${items.map(tile).join('\n')}\n            </div>
+  const grid = items.length ? `            <div class="gallery${items.length === 1 ? ' single' : ''} mt-12">\n${items.map(tile).join('\n')}\n            </div>
             <dialog id="lightbox" class="lightbox" aria-label="Media viewer">
                 <div class="frame">
                     <img alt="" hidden>
@@ -304,7 +306,7 @@ ${demos.map((d, i) => `                    <a href="${d.url}" target="_blank" re
                 </div>
             </div>
         </section>`;
-  return shell({ title: 'Live demos | Mohd Shayan', description: 'Live, browser-based demos of software built by Mohd Shayan: CustomGlide CRM, QR ticketing, Shayanomaly, deAIfy, and more.', path: '/demo/', active: '', body,
+  return shell({ title: 'Live demos | Mohd Shayan', description: 'Live, browser-based demos of software built by Mohd Shayan: CustomGlide CRM, QR ticketing, Shayanomaly, deAIfy, and more.', path: '/demo/', active: '', body, canonical: 'https://demo.mohdshayan.com/',
     jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', '@id': `${site.url}/demo/#page`, url: `${site.url}/demo/`, name: 'Live demos', about: { '@id': `${site.url}/#person` }, inLanguage: 'en',
       hasPart: demos.map(d => ({ '@type': 'SoftwareApplication', name: d.title, url: d.url, applicationCategory: 'WebApplication' })) } });
 }

@@ -4,8 +4,9 @@
   "author": "Mohd Shayan",
   "email": "contact@mohdshayan.com",
   "newsletter": {
-    "provider": "buttondown",
-    "username": "mohdshayan",
-    "note": "Create a free Buttondown account, set username to your Buttondown username, and run npm run build. Buttondown also emails subscribers every new post automatically via the RSS feed (Settings > RSS-to-email > https://mohdshayan.com/feed.xml)."
+    "provider": "followit",
+    "action": "",
+    "emailField": "email",
+    "note": "Free RSS-to-email: create a publisher account at https://follow.it, add the feed https://mohdshayan.com/feed.xml, open the subscription-form embed, and paste the form's action URL here (it looks like https://api.follow.it/subscription-form/XXXX/8). Run npm run build. Buttondown users: set provider to buttondown and username instead."
   }
 }
