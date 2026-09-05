@@ -40,7 +40,15 @@
         "@id": "https://mohdshayan.com/#person"
       },
       "inLanguage": "en",
-      "blogPost": []
+      "blogPost": [
+        {
+          "@type": "BlogPosting",
+          "@id": "https://mohdshayan.com/blog/the-hand-you-were-never-dealt/#post",
+          "headline": "The hand you were never dealt",
+          "url": "https://mohdshayan.com/blog/the-hand-you-were-never-dealt/",
+          "datePublished": "2026-09-05"
+        }
+      ]
     }
     </script>
 </head>
@@ -62,19 +70,15 @@
                     <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
                 </button>
                 <a href="/#contact" class="hidden md:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
-                <button id="menu-btn" class="md:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
-                    <svg class="icon text-base" aria-hidden="true"><use href="/assets/icons.svg#i-list"></use></svg>
+                <button id="menu-btn" class="md:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
                 </button>
             </div>
             <span id="progress" aria-hidden="true"></span>
         </nav>
     </header>
-    <div id="drawer" class="fixed inset-0 z-[60] md:hidden">
-        <aside class="panel p-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
-            <div class="flex items-center justify-between mb-10 pt-1">
-                <span class="eyebrow">Menu</span>
-                <button id="menu-close" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Close menu"><svg class="icon text-base" aria-hidden="true"><use href="/assets/icons.svg#i-x"></use></svg></button>
-            </div>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 md:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
             <nav class="flex flex-col">
                 <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
                 <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
@@ -107,9 +111,18 @@
         </section>
         <section class="pb-24">
             <div class="max-w-content mx-auto px-6">
-            <div class="plate p-8 md:p-10 mt-4 reveal">
-                <p class="text-body">The first essays are being written. Subscribe below and they will reach you when they are published.</p>
-            </div>
+            <ul class="ruled-list border-t border-hairline mt-4">
+                <li class="reveal">
+                    <div class="grid md:grid-cols-[200px_1fr] gap-x-10 gap-y-3">
+                        <p class="mono-meta text-muted pt-1.5">5 September 2026<br>2 min read</p>
+                        <div>
+                            <h2 class="h3-serif" style="font-weight:500;"><a href="/blog/the-hand-you-were-never-dealt/" class="sweep-link">The hand you were never dealt</a></h2>
+                            <p class="text-body mt-2 max-w-[62ch]">How Turup Chaal stops card-game cheating by construction. The host validates every move and never sends a client a card it should not know about.</p>
+                            <div class="flex flex-wrap gap-2 mt-4"><span class="tag-chip">Multiplayer</span><span class="tag-chip">Unity</span><span class="tag-chip">Anti-cheat</span></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
             <div class="plate p-8 md:p-10 mt-12 reveal">
                 <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
                 <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>

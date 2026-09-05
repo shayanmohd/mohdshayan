@@ -27,20 +27,18 @@
   // Mobile drawer with focus trap
   var drawer = document.getElementById('drawer');
   var menuBtn = document.getElementById('menu-btn');
-  var menuClose = document.getElementById('menu-close');
-  if (drawer && menuBtn && menuClose) {
-    var openDrawer = function () { drawer.classList.add('open'); document.body.classList.add('overflow-hidden'); menuBtn.setAttribute('aria-expanded', 'true'); menuClose.focus(); };
+  if (drawer && menuBtn) {
+    var openDrawer = function () { drawer.classList.add('open'); document.body.classList.add('overflow-hidden'); menuBtn.setAttribute('aria-expanded', 'true'); var f = drawer.querySelector('a[href]'); if (f) f.focus(); };
     var closeDrawer = function () { drawer.classList.remove('open'); document.body.classList.remove('overflow-hidden'); menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.focus(); };
-    menuBtn.addEventListener('click', openDrawer);
-    menuClose.addEventListener('click', closeDrawer);
+    menuBtn.addEventListener('click', function () { drawer.classList.contains('open') ? closeDrawer() : openDrawer(); });
     drawer.querySelectorAll('.drawer-link, nav a').forEach(function (el) { el.addEventListener('click', closeDrawer); });
     if (window.matchMedia) window.matchMedia('(min-width: 768px)').addEventListener('change', function (e) { if (e.matches && drawer.classList.contains('open')) closeDrawer(); });
     document.addEventListener('keydown', function (e) {
       if (!drawer.classList.contains('open')) return;
       if (e.key === 'Escape') { closeDrawer(); return; }
       if (e.key === 'Tab') {
-        var focusables = drawer.querySelectorAll('a[href], button');
-        var first = focusables[0], last = focusables[focusables.length - 1];
+        var inner = drawer.querySelectorAll('a[href], button');
+        var first = menuBtn, last = inner[inner.length - 1];
         if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
         else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }

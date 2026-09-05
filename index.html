@@ -357,8 +357,8 @@
                     <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
                 </button>
                 <a href="#contact" class="hidden md:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
-                <button id="menu-btn" class="md:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
-                    <svg class="icon text-base" aria-hidden="true"><use href="/assets/icons.svg#i-list"></use></svg>
+                <button id="menu-btn" class="md:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
                 </button>
             </div>
             <span id="progress" aria-hidden="true"></span>
@@ -366,14 +366,8 @@
     </header>
 
     <!-- Mobile drawer -->
-    <div id="drawer" class="fixed inset-0 z-[60] md:hidden">
-        <aside class="panel p-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
-            <div class="flex items-center justify-between mb-10 pt-1">
-                <span class="eyebrow">Menu</span>
-                <button id="menu-close" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Close menu">
-                    <svg class="icon text-base" aria-hidden="true"><use href="/assets/icons.svg#i-x"></use></svg>
-                </button>
-            </div>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 md:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
             <nav class="flex flex-col">
                 <a href="#home" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
                 <a href="#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
@@ -415,7 +409,7 @@
                         <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-down"></use></svg> Download Résumé
                     </a>
                     <a href="#projects" class="btn-ghost">
-                        View Work <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg>
+                        View Work <span class="btn-icon" aria-hidden="true"><svg class="icon"><use href="/assets/icons.svg#i-arrow-right"></use></svg></span>
                     </a>
                 </div>
 
@@ -652,7 +646,8 @@
             </div>
 
             <!-- Chapter spread: the dark flagship plate -->
-            <div class="bg-dark rounded-2xl gilt-top p-8 md:p-12 mt-12 reveal">
+            <div class="bezel mt-12 reveal">
+            <div class="bg-dark rounded-[10px] gilt-top p-8 md:p-12">
                 <p class="mono-meta" style="color:#d9b45b;">Founder &amp; CEO · AI-First Company</p>
                 <h3 class="display-m mt-4" style="color:#f5f2ea;">SocialSure Private Limited</h3>
                 <div class="grid lg:grid-cols-2 gap-x-12 gap-y-5 mt-7">
@@ -682,6 +677,7 @@
                         <p class="text-ondark-soft text-sm leading-relaxed">Profit and purpose aren't at odds; the venture funds and fuels the impact work he cares about.</p>
                     </div>
                 </div>
+            </div>
             </div>
 
             <!-- Focus areas: return to daylight -->
@@ -717,7 +713,7 @@
                         </div>
                     </div>
                     <a href="https://customglide.org" target="_blank" rel="noopener noreferrer" class="btn-ghost shrink-0">
-                        Visit CustomGlide <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
+                        Visit CustomGlide <span class="btn-icon" aria-hidden="true"><svg class="icon"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg></span>
                     </a>
                 </div>
 
@@ -1188,7 +1184,7 @@
                 </button>
                 <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="btn-ghost font-mono uppercase tracking-[0.08em] !text-[0.8125rem]">
                     <svg class="icon text-base" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg> GitHub Profile
-                    <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg>
+                    <span class="btn-icon" aria-hidden="true"><svg class="icon"><use href="/assets/icons.svg#i-arrow-up-right"></use></svg></span>
                 </a>
             </div>
         </div>
