@@ -149,7 +149,12 @@ gateway.RaiseToActor(TurupNetEvents.Snapshot, payload, actor);
             <div class="plate p-8 md:p-10 mt-16 reveal">
                 <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
                 <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
-                <!-- Email subscription: set newsletter.action in content/site.json and run npm run build -->
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
                 <a href="/feed.xml" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
             </div>
             </div>
