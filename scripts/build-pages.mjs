@@ -107,7 +107,7 @@ function shell({ title, description, path, active, body, jsonld, noindex = false
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${esc(title)}</title>
+    ${path === '/blog/' ? '<meta name="follow.it-verification-code" content="rsyEqJ2kqDBhrcJdzLnd"/>\n    ' : ''}<title>${esc(title)}</title>
     <meta name="description" content="${esc(description)}">
     ${noindex ? '<meta name="robots" content="noindex, nofollow">' : '<meta name="robots" content="index, follow, max-image-preview:large">'}
     <link rel="canonical" href="${canonical}">
