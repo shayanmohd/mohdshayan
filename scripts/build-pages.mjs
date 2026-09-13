@@ -28,7 +28,8 @@ const posts = readdirSync('content/posts').filter(f => f.endsWith('.md')).map(f 
 const published = posts.filter(p => !p.draft || INCLUDE_DRAFTS);
 
 // ---------- shared shell ----------
-const NAV = [['/#about', 'About'], ['/#ventures', 'Ventures'], ['/#publications', 'Research'], ['/#projects', 'Work'], ['/blog/', 'Blog'], ['/philanthropy/', 'Philanthropy']];
+const NAV = [['/#about', 'About'], ['/#ventures', 'Ventures'], ['/#impact', 'Impact'], ['/#recognition', 'Recognition'], ['/#publications', 'Research'], ['/#projects', 'Work'], ['/blog/', 'Blog']];
+const DRAWER_NAV = [...NAV, ['/philanthropy/', 'Philanthropy']];
 const SOCIAL = [['mailto:contact@mohdshayan.com', 'Email', 'envelope-simple'], ['https://www.linkedin.com/in/shayanmohd', 'LinkedIn', 'linkedin-logo'], ['https://github.com/shayanmohd', 'GitHub', 'github-logo'], ['https://instagram.com/mohdshayanx', 'Instagram', 'instagram-logo'], ['https://x.com/mohdshayanX', 'X (Twitter)', 'x-logo'], ['https://www.reddit.com/user/mohdshayan', 'Reddit', 'reddit-logo']];
 const socialLinks = (cls) => SOCIAL.map(([h, l, i]) => `<a href="${h}"${h.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : ''} class="${cls}" aria-label="${l}">${icon(i)}</a>`).join('\n                    ');
 
@@ -36,25 +37,25 @@ function header(active) {
   return `    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
         <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
             <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
-            <ul class="hidden md:flex items-center gap-8">
+            <ul class="hidden lg:flex items-center gap-8">
 ${NAV.map(([h, l]) => `                <li><a href="${h}" class="nav-link${h === active ? ' active' : ''}"${h === active ? ' aria-current="page"' : ''}>${l}</a></li>`).join('\n')}
             </ul>
             <div class="flex items-center gap-3">
                 <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
                     <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
                 </button>
-                <a href="/#contact" class="hidden md:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
-                <button id="menu-btn" class="md:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
                     <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
                 </button>
             </div>
             <span id="progress" aria-hidden="true"></span>
         </nav>
     </header>
-    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 md:hidden">
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
         <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
             <nav class="flex flex-col">
-${[['/', 'Home'], ...NAV].map(([h, l]) => `                <a href="${h}" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">${l}</a>`).join('\n')}
+${[['/', 'Home'], ...DRAWER_NAV].map(([h, l]) => `                <a href="${h}" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">${l}</a>`).join('\n')}
             </nav>
             <div class="mt-auto">
                 <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
@@ -78,7 +79,7 @@ function footer() {
             <div>
                 <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
                 <ul class="space-y-3 text-sm">
-${[['/#about', 'About'], ['/#ventures', 'Ventures'], ['/#impact', 'Impact'], ['/#recognition', 'Recognition'], ['/#projects', 'Work'], ['/blog/', 'Blog'], ['/philanthropy/', 'Philanthropy'], ['/demo/', 'Demos']].map(([h, l]) => `                    <li><a href="${h}" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">${l}</a></li>`).join('\n')}
+${[['/#about', 'About'], ['/#ventures', 'Ventures'], ['/#impact', 'Impact'], ['/#recognition', 'Recognition'], ['/#publications', 'Research'], ['/#projects', 'Work'], ['/blog/', 'Blog'], ['/philanthropy/', 'Philanthropy'], ['https://demo.mohdshayan.com/', 'Demos']].map(([h, l]) => `                    <li><a href="${h}" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">${l}</a></li>`).join('\n')}
                 </ul>
             </div>
             <div>
@@ -105,6 +106,13 @@ function shell({ title, description, path, active, body, jsonld, noindex = false
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     ${path === '/blog/' ? '<meta name="follow.it-verification-code" content="rsyEqJ2kqDBhrcJdzLnd"/>\n    ' : ''}<title>${esc(title)}</title>
@@ -123,7 +131,7 @@ function shell({ title, description, path, active, body, jsonld, noindex = false
     <meta name="twitter:image" content="${image}">
     <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="${site.url}/feed.xml">
     <link rel="shortcut icon" href="/favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="/assets/avatar.jpg">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <meta name="theme-color" content="#faf8f3">
     <meta name="msapplication-TileColor" content="#faf8f3">
     <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
@@ -133,6 +141,10 @@ function shell({ title, description, path, active, body, jsonld, noindex = false
 ${jsonld ? `    <script type="application/ld+json">\n${JSON.stringify(jsonld, null, 2).split('\n').map(l => '    ' + l).join('\n')}\n    </script>` : ''}
 </head>
 <body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <a href="#main" class="skip-link">Skip to content</a>
 ${header(active)}
     <main id="main">
@@ -333,6 +345,29 @@ ${subscribe(true, false).replace('mt-12', 'mt-4')}
   return shell({ title: 'Subscribe | Mohd Shayan', description: 'Get new posts by Mohd Shayan by email or in a feed reader.', path: '/subscribe/', active: '', body });
 }
 
+// ---------- sitemap (regenerated every build so published posts are always listed) ----------
+function sitemap() {
+  const live = posts.filter(p => !p.draft);
+  const newest = live.length ? live[0].date : '';
+  const url = (loc, { lastmod = '', changefreq, priority, extra = '' }) => `  <url>
+    <loc>${loc}</loc>${lastmod ? `\n    <lastmod>${lastmod}</lastmod>` : ''}
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>${extra}
+  </url>`;
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${[
+    url(`${site.url}/`, { changefreq: 'weekly', priority: '1.0', extra: `\n    <xhtml:link rel="alternate" hreflang="en" href="${site.url}/"/>` }),
+    url(`${site.url}/llms.txt`, { changefreq: 'monthly', priority: '0.5' }),
+    url(`${site.url}/blog/`, { lastmod: newest, changefreq: 'weekly', priority: '0.8' }),
+    ...live.map(p => url(p.url, { lastmod: p.date, changefreq: 'monthly', priority: '0.7' })),
+    url(`${site.url}/philanthropy/`, { changefreq: 'monthly', priority: '0.7' }),
+    url(`${site.url}/subscribe/`, { changefreq: 'yearly', priority: '0.4' }),
+  ].join('\n')}
+</urlset>
+`;
+}
+
 // ---------- write ----------
 const out = (p, s) => { if (p.includes('/')) mkdirSync(p.replace(/\/[^/]*$/, ''), { recursive: true }); writeFileSync(p, s); console.log('  wrote', p); };
 out('blog/index.html', blogIndex());
@@ -341,4 +376,5 @@ out('feed.xml', feed());
 out('subscribe/index.html', subscribePage());
 out('philanthropy/index.html', galleryPage());
 out('demo/index.html', demoPage());
+out('sitemap.xml', sitemap());
 console.log(`pages: ${posts.length} post(s) (${posts.filter(p => p.draft).length} draft), drafts ${INCLUDE_DRAFTS ? 'included' : 'hidden'} from index/feed`);

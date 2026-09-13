@@ -32,7 +32,7 @@
     var closeDrawer = function () { drawer.classList.remove('open'); document.body.classList.remove('overflow-hidden'); menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.focus(); };
     menuBtn.addEventListener('click', function () { drawer.classList.contains('open') ? closeDrawer() : openDrawer(); });
     drawer.querySelectorAll('.drawer-link, nav a').forEach(function (el) { el.addEventListener('click', closeDrawer); });
-    if (window.matchMedia) window.matchMedia('(min-width: 768px)').addEventListener('change', function (e) { if (e.matches && drawer.classList.contains('open')) closeDrawer(); });
+    if (window.matchMedia) window.matchMedia('(min-width: 1024px)').addEventListener('change', function (e) { if (e.matches && drawer.classList.contains('open')) closeDrawer(); });
     document.addEventListener('keydown', function (e) {
       if (!drawer.classList.contains('open')) return;
       if (e.key === 'Escape') { closeDrawer(); return; }

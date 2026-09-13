@@ -17,12 +17,13 @@ html = html
   .replace(`<meta property="og:url" content="${SITE}/demo/">`, '<meta property="og:url" content="https://demo.mohdshayan.com/">')
   .replace(`"url": "${SITE}/demo/"`, '"url": "https://demo.mohdshayan.com/"');
 writeFileSync(`${OUT}/index.html`, html);
-for (const f of ['assets/site.css', 'assets/site.js', 'assets/icons.svg', 'favicon.png', 'assets/avatar.jpg']) cpSync(f, `${OUT}/${f}`);
+for (const f of ['assets/site.css', 'assets/site.js', 'assets/icons.svg', 'favicon.png', 'assets/avatar.jpg', 'assets/apple-touch-icon.png']) cpSync(f, `${OUT}/${f}`);
 cpSync('assets/fonts', `${OUT}/assets/fonts`, { recursive: true });
 const used = [...html.matchAll(/\/assets\/projects\/([a-z0-9-]+\.webp)/g)].map(m => m[1]);
 for (const f of new Set(used)) cpSync(`assets/projects/${f}`, `${OUT}/assets/projects/${f}`);
 writeFileSync(`${OUT}/CNAME`, 'demo.mohdshayan.com\n');
-writeFileSync(`${OUT}/robots.txt`, 'User-agent: *\nAllow: /\n');
+writeFileSync(`${OUT}/robots.txt`, 'User-agent: *\nAllow: /\n\nSitemap: https://demo.mohdshayan.com/sitemap.xml\n');
+writeFileSync(`${OUT}/sitemap.xml`, '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url>\n    <loc>https://demo.mohdshayan.com/</loc>\n    <changefreq>monthly</changefreq>\n  </url>\n</urlset>\n');
 writeFileSync(`${OUT}/.nojekyll`, '');
 cpSync('404.html', `${OUT}/404.html`);
 console.log(`${OUT}: index.html + ${new Set(used).size} images + fonts/css/js/sprite + CNAME`);

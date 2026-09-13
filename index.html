@@ -282,7 +282,7 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.png" type="image/png">
     <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="assets/avatar.jpg">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
     <!-- Authorship / AI summary -->
     <link rel="author" href="/humans.txt">
@@ -311,14 +311,6 @@
     <meta name="format-detection" content="telephone=yes">
     <meta name="mobile-web-app-capable" content="yes">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EJY91X21RX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-EJY91X21RX');
-    </script>
 
     <!-- Preconnect & Fonts -->
     <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -344,21 +336,22 @@
         <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
             <a href="#home" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
 
-            <ul class="hidden md:flex items-center gap-8">
+            <ul class="hidden lg:flex items-center gap-8">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="#impact" class="nav-link">Impact</a></li>
+                <li><a href="#recognition" class="nav-link">Recognition</a></li>
                 <li><a href="#publications" class="nav-link">Research</a></li>
                 <li><a href="#projects" class="nav-link">Work</a></li>
                 <li><a href="/blog/" class="nav-link">Blog</a></li>
-                <li><a href="/philanthropy/" class="nav-link">Philanthropy</a></li>
             </ul>
 
             <div class="flex items-center gap-3">
                 <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
                     <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
                 </button>
-                <a href="#contact" class="hidden md:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
-                <button id="menu-btn" class="md:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                <a href="#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
                     <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
                 </button>
             </div>
@@ -367,12 +360,14 @@
     </header>
 
     <!-- Mobile drawer -->
-    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 md:hidden">
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
         <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
             <nav class="flex flex-col">
                 <a href="#home" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
                 <a href="#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
                 <a href="#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
                 <a href="#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
                 <a href="#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
                 <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
@@ -398,7 +393,7 @@
         <div class="max-w-content mx-auto px-6 grid lg:grid-cols-[7fr_5fr] gap-12 lg:gap-12 items-center">
             <!-- Text -->
             <div>
-                <span class="eyebrow">Product Engineer&nbsp;· AI Entrepreneur&nbsp;· Philanthropist</span>
+                <span class="eyebrow eyebrow-list"><span>Product Engineer</span> <span>AI Entrepreneur</span> <span>Philanthropist</span></span>
                 <h1 class="h-display mt-6 balance">Mohd Shayan<span class="text-gold-deep">.</span></h1>
                 <p class="lead mt-7 max-w-2xl">
                     Founder &amp; CEO of <strong class="text-ink">SocialSure Private Limited</strong>, an AI-first company, building intelligent products and channeling that work into opportunity for children in need.
@@ -849,7 +844,7 @@
                 <article class="plate overflow-hidden flex flex-col reveal d1">
                     <div class="p-4 pb-0">
                         <div class="shot-mat">
-                            <img src="assets/projects/shayanomaly.webp" alt="Shayanomaly Web3 trading terminal" loading="lazy" width="1200" height="750"
+                            <img src="assets/projects/shayanomaly.webp" srcset="assets/projects/shayanomaly-640.webp 640w, assets/projects/shayanomaly.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="Shayanomaly Web3 trading terminal" loading="lazy" width="1200" height="750"
                                  class="w-full aspect-[16/10] object-cover object-top">
                         </div>
                     </div>
@@ -877,7 +872,7 @@
                 <article class="plate overflow-hidden flex flex-col reveal d2">
                     <div class="p-4 pb-0">
                         <div class="shot-mat">
-                            <img src="assets/projects/customglide-crm.webp" alt="CustomGlide CRM platform dashboard with sales pipeline and revenue reporting" loading="lazy" width="1200" height="750"
+                            <img src="assets/projects/customglide-crm.webp" srcset="assets/projects/customglide-crm-640.webp 640w, assets/projects/customglide-crm.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="CustomGlide CRM platform dashboard with sales pipeline and revenue reporting" loading="lazy" width="1200" height="750"
                                  class="w-full aspect-[16/10] object-cover object-top">
                         </div>
                     </div>
@@ -900,7 +895,7 @@
                 <article class="plate overflow-hidden flex flex-col reveal d3">
                     <div class="p-4 pb-0">
                         <div class="shot-mat">
-                            <img src="assets/projects/customglide-qr.webp" alt="CustomGlide QR ticketing and contactless entry system with a scannable visitor ticket" loading="lazy" width="1200" height="750"
+                            <img src="assets/projects/customglide-qr.webp" srcset="assets/projects/customglide-qr-640.webp 640w, assets/projects/customglide-qr.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="CustomGlide QR ticketing and contactless entry system with a scannable visitor ticket" loading="lazy" width="1200" height="750"
                                  class="w-full aspect-[16/10] object-cover object-top">
                         </div>
                     </div>
@@ -923,7 +918,7 @@
                 <article class="plate overflow-hidden flex flex-col reveal d4">
                     <div class="p-4 pb-0">
                         <div class="shot-mat">
-                            <img src="assets/projects/deaify.webp" alt="deAIfy web app, stripping AI tells from pasted text" loading="lazy" width="1200" height="750"
+                            <img src="assets/projects/deaify.webp" srcset="assets/projects/deaify-640.webp 640w, assets/projects/deaify.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="deAIfy web app, stripping AI tells from pasted text" loading="lazy" width="1200" height="750"
                                  class="w-full aspect-[16/10] object-cover object-top">
                         </div>
                     </div>
@@ -954,7 +949,7 @@
                 <article class="plate overflow-hidden flex flex-col reveal d5">
                     <div class="p-4 pb-0">
                         <div class="shot-mat">
-                            <img src="assets/projects/habittrack.webp" alt="Habits Android app" loading="lazy" width="1200" height="750"
+                            <img src="assets/projects/habittrack.webp" srcset="assets/projects/habittrack-640.webp 640w, assets/projects/habittrack.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="Habits Android app" loading="lazy" width="1200" height="750"
                                  class="w-full aspect-[16/10] object-cover object-top">
                         </div>
                     </div>
@@ -982,7 +977,7 @@
                 <article class="plate overflow-hidden flex flex-col reveal d6">
                     <div class="p-4 pb-0">
                         <div class="shot-mat">
-                            <img src="assets/projects/turup-chaal.webp" alt="Turup Chaal, a Court Piece trick-taking card game for Android" loading="lazy" width="1200" height="750"
+                            <img src="assets/projects/turup-chaal.webp" srcset="assets/projects/turup-chaal-640.webp 640w, assets/projects/turup-chaal.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="Turup Chaal, a Court Piece trick-taking card game for Android" loading="lazy" width="1200" height="750"
                                  class="w-full aspect-[16/10] object-cover object-top">
                         </div>
                     </div>
@@ -1010,7 +1005,7 @@
                 <article class="plate overflow-hidden flex flex-col reveal d1">
                     <div class="p-4 pb-0">
                         <div class="shot-mat">
-                            <img src="assets/projects/advocate-yunus.webp" alt="Advocate Yunus legal practice website" loading="lazy" width="1200" height="750"
+                            <img src="assets/projects/advocate-yunus.webp" srcset="assets/projects/advocate-yunus-640.webp 640w, assets/projects/advocate-yunus.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="Advocate Yunus legal practice website" loading="lazy" width="1200" height="750"
                                  class="w-full aspect-[16/10] object-cover object-top">
                         </div>
                     </div>
@@ -1038,7 +1033,7 @@
                 <article class="plate overflow-hidden flex flex-col reveal d2">
                     <div class="p-4 pb-0">
                         <div class="shot-mat">
-                            <img src="assets/projects/gta6.webp" alt="GTA6.LLC launch hub with a live countdown" loading="lazy" width="1200" height="750"
+                            <img src="assets/projects/gta6.webp" srcset="assets/projects/gta6-640.webp 640w, assets/projects/gta6.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="GTA6.LLC launch hub with a live countdown" loading="lazy" width="1200" height="750"
                                  class="w-full aspect-[16/10] object-cover object-top">
                         </div>
                     </div>
@@ -1066,7 +1061,7 @@
                 <article class="plate overflow-hidden flex flex-col reveal d3">
                     <div class="p-4 pb-0">
                         <div class="shot-mat">
-                            <img src="assets/projects/shreezypay.webp" alt="Designed cover plate for ShreezyPay Bot, a Telegram escrow-mediation bot" loading="lazy" width="1200" height="750"
+                            <img src="assets/projects/shreezypay.webp" srcset="assets/projects/shreezypay-640.webp 640w, assets/projects/shreezypay.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="Designed cover plate for ShreezyPay Bot, a Telegram escrow-mediation bot" loading="lazy" width="1200" height="750"
                                  class="w-full aspect-[16/10] object-cover object-top">
                         </div>
                     </div>
@@ -1089,7 +1084,7 @@
                 <article class="plate overflow-hidden flex-col reveal project-more">
                     <div class="p-4 pb-0">
                         <div class="shot-mat">
-                            <img src="assets/projects/calculator.webp" alt="Designed cover plate for Minimalist Calculator, an Android calculator concealing an encrypted vault" loading="lazy" width="1200" height="750"
+                            <img src="assets/projects/calculator.webp" srcset="assets/projects/calculator-640.webp 640w, assets/projects/calculator.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="Designed cover plate for Minimalist Calculator, an Android calculator concealing an encrypted vault" loading="lazy" width="1200" height="750"
                                  class="w-full aspect-[16/10] object-cover object-top">
                         </div>
                     </div>
@@ -1117,7 +1112,7 @@
                 <article class="plate overflow-hidden flex-col reveal project-more">
                     <div class="p-4 pb-0">
                         <div class="shot-mat">
-                            <img src="assets/projects/wordle-plus.webp" alt="Wordle Plus game board in timed mode" loading="lazy" width="1200" height="750"
+                            <img src="assets/projects/wordle-plus.webp" srcset="assets/projects/wordle-plus-640.webp 640w, assets/projects/wordle-plus.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="Wordle Plus game board in timed mode" loading="lazy" width="1200" height="750"
                                  class="w-full aspect-[16/10] object-cover object-top">
                         </div>
                     </div>
@@ -1140,7 +1135,7 @@
                 <article class="plate overflow-hidden flex-col reveal project-more">
                     <div class="p-4 pb-0">
                         <div class="shot-mat">
-                            <img src="assets/projects/portfolio-v2.webp" alt="Mohd Shayan portfolio website" loading="lazy" width="1200" height="750"
+                            <img src="assets/projects/portfolio-v2.webp" srcset="assets/projects/portfolio-v2-640.webp 640w, assets/projects/portfolio-v2.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="Mohd Shayan portfolio website" loading="lazy" width="1200" height="750"
                                  class="w-full aspect-[16/10] object-cover object-top">
                         </div>
                     </div>
@@ -1247,10 +1242,11 @@
                     <li><a href="#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
                     <li><a href="#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
                     <li><a href="#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
                     <li><a href="#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
                     <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
                     <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
-                    <li><a href="/demo/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
                 </ul>
             </div>
             <div>
@@ -1302,19 +1298,36 @@
             });
         }
 
-        // Active nav link on scroll (scroll spy)
+        // Active nav link on scroll (scroll spy). A click sets the destination link at once and
+        // pauses the observer until the smooth scroll ends, so passing sections don't flash.
         const navLinks = Array.from(document.querySelectorAll('header .nav-link'));
         const linkMap = new Map(navLinks.map(l => [l.getAttribute('href').slice(1), l]));
         const spySections = Array.from(document.querySelectorAll('section[id]')).filter(s => linkMap.has(s.id));
         if ('IntersectionObserver' in window && spySections.length) {
+            let spyPaused = false;
+            const setActive = (link) => {
+                navLinks.forEach(l => { l.classList.remove('active'); l.removeAttribute('aria-current'); });
+                if (link) { link.classList.add('active'); link.setAttribute('aria-current', 'location'); }
+            };
+            document.addEventListener('click', (e) => {
+                if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+                const a = e.target.closest('a[href^="#"]');
+                if (!a || a.getAttribute('href') === '#main') return;
+                setActive(linkMap.get(a.getAttribute('href').slice(1)));
+                spyPaused = true;
+                let t;
+                const resume = () => {
+                    clearTimeout(t);
+                    spyPaused = false;
+                    const cur = spySections.find(s => { const r = s.getBoundingClientRect(); return r.top < innerHeight * 0.5 && r.bottom > innerHeight * 0.45; });
+                    if (cur) setActive(linkMap.get(cur.id));
+                };
+                document.addEventListener('scrollend', resume, { once: true });
+                t = setTimeout(resume, 1500);
+            });
             const spy = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(l => { l.classList.remove('active'); l.removeAttribute('aria-current'); });
-                        const link = linkMap.get(entry.target.id);
-                        if (link) { link.classList.add('active'); link.setAttribute('aria-current', 'location'); }
-                    }
-                });
+                if (spyPaused) return;
+                entries.forEach(entry => { if (entry.isIntersecting) setActive(linkMap.get(entry.target.id)); });
             }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
             spySections.forEach(s => spy.observe(s));
         }
