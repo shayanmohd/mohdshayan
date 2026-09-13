@@ -87,7 +87,7 @@ ${[['/#about', 'About'], ['/#ventures', 'Ventures'], ['/#impact', 'Impact'], ['/
                     <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
                     <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
                     <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
-                    <li><a href="/feed.xml" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">RSS feed</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
                 </ul>
             </div>
         </div>
@@ -146,7 +146,7 @@ ${footer()}
 }
 
 // ---------- blocks ----------
-function subscribe(compact = false) {
+function subscribe(compact = false, rssLink = true) {
   const nl = site.newsletter || {};
   const action = nl.action || (nl.provider === 'buttondown' && nl.username ? `https://buttondown.com/api/emails/embed-subscribe/${nl.username}` : '');
   const field = nl.emailField || 'email';
@@ -161,7 +161,7 @@ function subscribe(compact = false) {
   return `            <div class="plate p-8 md:p-10 ${compact ? 'mt-12' : 'mt-16'} reveal">
                 <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
                 <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>${form}
-                <a href="/feed.xml" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap">${icon('rss', 'text-xs')} Subscribe with RSS</a>
+                ${rssLink ? `<a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap">${icon('rss', 'text-xs')} Subscribe with RSS</a>` : ''}
             </div>`;
 }
 const pageHead = (h1, lead, eyebrow = '') => `        <section class="page-head pb-8">
@@ -311,11 +311,34 @@ ${demos.map((d, i) => `                    <a href="${d.url}" target="_blank" re
       hasPart: demos.map(d => ({ '@type': 'SoftwareApplication', name: d.title, url: d.url, applicationCategory: 'WebApplication' })) } });
 }
 
+// ---------- subscribe ----------
+function subscribePage() {
+  const feedUrl = `${site.url}/feed.xml`;
+  const body = `${pageHead('Subscribe', 'Get new posts by email, or follow them in a feed reader.')}
+        <section class="pb-24">
+            <div class="max-w-content mx-auto px-6">
+${subscribe(true, false).replace('mt-12', 'mt-4')}
+            <div class="plate p-8 md:p-10 mt-6 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Follow in a feed reader</h2>
+                <p class="text-body mt-2 max-w-xl">Paste this address into a feed reader such as Feedly, Inoreader, or NetNewsWire, and new posts will show up there.</p>
+                <div class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-xl">
+                    <label for="feed-url" class="sr-only">Feed address</label>
+                    <input type="text" id="feed-url" value="${feedUrl}" readonly class="font-mono text-sm">
+                    <button type="button" class="btn-ghost shrink-0" data-copy="feed-url">Copy</button>
+                </div>
+                <p id="feed-url-status" class="mono-meta text-muted mt-3" aria-live="polite"></p>
+            </div>
+            </div>
+        </section>`;
+  return shell({ title: 'Subscribe | Mohd Shayan', description: 'Get new posts by Mohd Shayan by email or in a feed reader.', path: '/subscribe/', active: '', body });
+}
+
 // ---------- write ----------
 const out = (p, s) => { if (p.includes('/')) mkdirSync(p.replace(/\/[^/]*$/, ''), { recursive: true }); writeFileSync(p, s); console.log('  wrote', p); };
 out('blog/index.html', blogIndex());
 for (const p of posts) out(`blog/${p.slug}/index.html`, postPage(p));
 out('feed.xml', feed());
+out('subscribe/index.html', subscribePage());
 out('philanthropy/index.html', galleryPage());
 out('demo/index.html', demoPage());
 console.log(`pages: ${posts.length} post(s) (${posts.filter(p => p.draft).length} draft), drafts ${INCLUDE_DRAFTS ? 'included' : 'hidden'} from index/feed`);

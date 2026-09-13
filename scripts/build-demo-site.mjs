@@ -12,7 +12,7 @@ let html = readFileSync('demo/index.html', 'utf8');
 html = html
   .replace(/href="\/(#[^"]*)"/g, `href="${SITE}/$1"`)
   .replace(/href="\/"/g, `href="${SITE}/"`)
-  .replace(/href="\/(blog|philanthropy|uploads|feed\.xml)([^"]*)"/g, `href="${SITE}/$1$2"`)
+  .replace(/href="\/(blog|philanthropy|subscribe|uploads|feed\.xml)([^"]*)"/g, `href="${SITE}/$1$2"`)
   .replace(/href="\/demo\/"/g, 'href="/"')
   .replace(`<meta property="og:url" content="${SITE}/demo/">`, '<meta property="og:url" content="https://demo.mohdshayan.com/">')
   .replace(`"url": "${SITE}/demo/"`, '"url": "https://demo.mohdshayan.com/"');

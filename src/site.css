@@ -410,9 +410,9 @@ article:hover .shot-mat img { transform: scale(1.02); }
 .prose hr { border: 0; height: 1px; background: var(--hairline); margin: 2.5em 0; }
 
 /* ---------- Subscribe ---------- */
-.subscribe input[type="email"] { height: 44px; border-radius: 6px; border: 1px solid var(--hairline-strong); background: var(--card); color: var(--ink); padding: 0 .9rem; width: 100%; font-size: .9375rem; }
+.subscribe input[type="email"], .subscribe input[readonly] { height: 44px; border-radius: 6px; border: 1px solid var(--hairline-strong); background: var(--card); color: var(--ink); padding: 0 .9rem; width: 100%; font-size: .9375rem; }
 .subscribe input[type="email"]::placeholder { color: var(--muted); }
-.subscribe input[type="email"]:focus { outline: 2px solid var(--gold-text); outline-offset: 2px; border-color: var(--gold-text); }
+.subscribe input[type="email"]:focus, .subscribe input[readonly]:focus { outline: 2px solid var(--gold-text); outline-offset: 2px; border-color: var(--gold-text); }
 
 /* ---------- Gallery (philanthropy) ---------- */
 .gallery { display: grid; grid-template-columns: repeat(1, minmax(0,1fr)); gap: 1px; background: var(--hairline); border: 1px solid var(--hairline); border-radius: 12px; overflow: hidden; }

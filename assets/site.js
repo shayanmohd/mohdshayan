@@ -58,6 +58,24 @@
     revealEls.forEach(function (el) { el.classList.add('in'); });
   }
 
+  // Copy-to-clipboard buttons: data-copy names the input to copy
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    var input = document.getElementById(btn.getAttribute('data-copy'));
+    var status = document.getElementById(btn.getAttribute('data-copy') + '-status');
+    if (!input) return;
+    input.addEventListener('focus', function () { input.select(); });
+    btn.addEventListener('click', function () {
+      var done = function () {
+        btn.textContent = 'Copied';
+        if (status) status.textContent = 'Feed address copied.';
+        setTimeout(function () { btn.textContent = 'Copy'; if (status) status.textContent = ''; }, 2000);
+      };
+      var fallback = function () { input.focus(); input.select(); if (status) status.textContent = 'Press Ctrl+C or Cmd+C to copy.'; };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(input.value).then(done, fallback);
+      else fallback();
+    });
+  });
+
   // Gallery lightbox (philanthropy page): <dialog> driven, keyboard friendly
   var lightbox = document.getElementById('lightbox');
   if (lightbox) {
