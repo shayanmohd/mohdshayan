@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your test set has been seen before | Mohd Shayan</title>
+    <meta name="description" content="Near-duplicates across the split boundary are the commonest reason a held-out score is not a generalisation score. Dedupe before you split, and report the overlap next to accuracy.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/test-set-seen-before/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/test-set-seen-before/">
+    <meta property="og:title" content="Your test set has been seen before | Mohd Shayan">
+    <meta property="og:description" content="Near-duplicates across the split boundary are the commonest reason a held-out score is not a generalisation score. Dedupe before you split, and report the overlap next to accuracy.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Your test set has been seen before | Mohd Shayan">
+    <meta name="twitter:description" content="Near-duplicates across the split boundary are the commonest reason a held-out score is not a generalisation score. Dedupe before you split, and report the overlap next to accuracy.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/test-set-seen-before/#post",
+      "headline": "Your test set has been seen before",
+      "description": "Near-duplicates across the split boundary are the commonest reason a held-out score is not a generalisation score. Dedupe before you split, and report the overlap next to accuracy.",
+      "url": "https://mohdshayan.com/blog/test-set-seen-before/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/test-set-seen-before/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Data Pipelines, Evaluation, Deduplication",
+      "inLanguage": "en",
+      "wordCount": 1125
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Your test set has been seen before</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Near-duplicates across the split boundary are the commonest reason a held-out score is not a generalisation score. Dedupe before you split, and report the overlap next to accuracy.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>A held-out test set is supposed to measure how a model does on data it has not seen. It measures that only if the test data really is unseen, and in most real datasets a surprising share of it is not: not identical to a training example, but close enough that the model has, in every sense that matters, seen it before. The split was random, the duplicates were in the source, and the random split preserved them on both sides of the line. The score that comes out is not a generalisation score. It is partly a memorisation score, and it is higher than the truth.</p>
+<h2>How much of a test set is a sibling</h2>
+<p>The numbers on well-known datasets are not small. Barz and Denzler&#39;s <a href="https://arxiv.org/abs/1902.00423">Do We Train on Test Data?</a> searched CIFAR for near-duplicates and found that 3.3 percent of CIFAR-10&#39;s test images and 10 percent of CIFAR-100&#39;s have a duplicate in the training set; when they replaced those images with fresh ones from the same domain, classification accuracy fell by between 9 and 14 percent relative to the reported figures. Lee and colleagues&#39; <a href="https://arxiv.org/abs/2107.06499">Deduplicating Training Data Makes Language Models Better</a> found the same structure in text: over 4 percent of the validation sets of standard language-modelling corpora had an approximate duplicate in the training data, including one 61-word sentence that appeared over sixty thousand times in C4.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 250" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Share of test or validation items with a near-duplicate in training</title>
+<desc id="f1-d">Horizontal bars: CIFAR-10 test set 3.3 percent, CIFAR-100 test set 10 percent, C4 validation set about 4.6 percent. A note records the 9 to 14 percent relative accuracy drop measured on duplicate-free CIFAR test sets.</desc>
+<text x="0" y="18" class="viz-title">Seen before, in three well-used datasets</text>
+<text x="0" y="36" class="viz-sub">Per cent of held-out items with an approximate duplicate in the training split</text>
+<line x1="176" y1="52" x2="176" y2="154" class="viz-axis"/>
+<text x="166" y="73" text-anchor="end" class="viz-label">CIFAR-10 test</text>
+<path d="M176 58 H303.6 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="323.6" y="73" class="viz-value">3.3%</text>
+<text x="166" y="107" text-anchor="end" class="viz-label">CIFAR-100 test</text>
+<path d="M176 92 H564 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/>
+<text x="580" y="107" class="viz-value">10%</text>
+<text x="166" y="141" text-anchor="end" class="viz-label">C4 validation</text>
+<path d="M176 126 H354.5 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="374.5" y="141" class="viz-value">about 4.6%</text>
+<text x="0" y="190" class="viz-label-muted">On duplicate-free CIFAR test sets, accuracy fell 9 to 14% relative to reported figures.</text>
+<text x="0" y="222" class="viz-tick">the drop is the part of the score that was memorisation</text>
+</svg>
+<figcaption>Source: <a href="https://arxiv.org/abs/1902.00423">Barz and Denzler (2020)</a> for CIFAR; <a href="https://arxiv.org/abs/2107.06499">Lee et al. (2021)</a> for C4.</figcaption>
+</figure>
+
+<p>Those are curated academic datasets, assembled by people who cared. A dataset scraped or collected inside a company is worse, and for reasons that are easy to name: the same page fetched twice on different days, an image and its thumbnail, a record and its retried submission, a document and the copy someone pasted into a ticket, an augmentation that was applied before the split instead of after. Every one of those puts a sibling on each side of the boundary, and a random split does not know.</p>
+<h2>Dedupe before you split, and look for siblings</h2>
+<p>The fix has two halves, and the order is the important part. Deduplication has to happen before the split, because a split of a duplicated source is a duplicated split. And the deduplication has to look for near-duplicates, because exact hashing catches almost none of the cases above: the thumbnail is not byte-identical to the image, the retried record has a new timestamp, the pasted copy has different whitespace.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 260" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Two pipeline orders, and where the leak enters</title>
+<desc id="f2-d">Top row: source, then a random split into train and test, then dedupe within each side; sibling pairs that straddle the boundary survive, marked as a leak. Bottom row: source, then near-duplicate dedupe across the whole set, then the split; no siblings straddle the boundary.</desc>
+<defs><marker id="f2-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<text x="0" y="18" class="viz-title">Order decides everything</text>
+<text x="0" y="48" class="viz-tick">SPLIT, THEN DEDUPE</text>
+<rect x="8" y="60" width="120" height="44" rx="8" class="viz-box"/><text x="68" y="87" text-anchor="middle" class="viz-label">Source</text>
+<line x1="130" y1="82" x2="166" y2="82" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="170" y="60" width="120" height="44" rx="8" class="viz-box"/><text x="230" y="87" text-anchor="middle" class="viz-label">Random split</text>
+<line x1="292" y1="82" x2="328" y2="82" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="332" y="60" width="140" height="44" rx="8" class="viz-box"/><text x="402" y="87" text-anchor="middle" class="viz-label">Dedupe each side</text>
+<line x1="474" y1="82" x2="510" y2="82" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="514" y="60" width="118" height="44" rx="8" class="viz-box-ink"/><text x="573" y="87" text-anchor="middle" class="viz-on-ink">siblings straddle</text>
+<text x="0" y="148" class="viz-tick">DEDUPE, THEN SPLIT</text>
+<rect x="8" y="160" width="120" height="44" rx="8" class="viz-box"/><text x="68" y="187" text-anchor="middle" class="viz-label">Source</text>
+<line x1="130" y1="182" x2="166" y2="182" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="170" y="160" width="140" height="44" rx="8" class="viz-box-accent"/><text x="240" y="187" text-anchor="middle" class="viz-label">Near-dup dedupe</text>
+<line x1="312" y1="182" x2="348" y2="182" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="352" y="160" width="120" height="44" rx="8" class="viz-box"/><text x="412" y="187" text-anchor="middle" class="viz-label">Random split</text>
+<line x1="474" y1="182" x2="510" y2="182" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="514" y="160" width="118" height="44" rx="8" class="viz-box"/><text x="573" y="187" text-anchor="middle" class="viz-label">clean boundary</text>
+<text x="320" y="240" text-anchor="middle" class="viz-label-muted">Deduplicating within each side after the split removes nothing that crosses it.</text>
+</svg>
+<figcaption>Illustrative: the two orders; only the second one can remove a pair that straddles the boundary.</figcaption>
+</figure>
+
+<p>Near-duplicate detection is a solved problem at the scale most teams need. For text, minhash over shingles or embedding similarity with a threshold; for images, a perceptual hash or an embedding from a pretrained encoder; for records, a similarity over the fields that matter with the timestamps and identifiers stripped out. The threshold has to be chosen, and the honest way to choose it is to sample pairs at several thresholds and look at them: the level at which a person says &quot;these are the same thing&quot; is the level, and it is different for every dataset.</p>
+<h2>Why the score moves so much</h2>
+<p>A few percent of siblings sounds like it should move the score by a few percent, and the CIFAR result says it moves it by more. The reason is that siblings are not a random sample of the test set. They are the items the model finds easiest, because it has effectively seen them, and they are concentrated in exactly the classes and regions where the model is otherwise weakest, because those are where the source had the most redundancy: rare classes padded with near-copies, hard cases collected twice. Remove them and the test set gets harder in the places that were propping up the number.</p>
+<p>The other reason is what the siblings were doing during training. A near-duplicate of a test item in the training set is not only a free point at test time; it is a training example the model was rewarded for memorising, and a model that has learnt to memorise redundant items generalises a little worse on everything else. Lee and colleagues&#39; result, that deduplicated training data produces models that memorise less and reach the same accuracy in fewer steps, is the training-side half of the same finding. The sibling in the test set inflates the score; the sibling in the training set depresses the model. Removing both is what the pipeline order buys.</p>
+<h2>The sibling scan</h2>
+<p>Deduplication before the split is a pipeline habit, and habits lapse. What keeps the habit honest is a measurement that runs every time and reports next to accuracy, and the one I use is what I call the sibling scan. Before any metric is read, embed or hash every item in the test set and every item in the training set, find each test item&#39;s nearest training neighbour, and report the fraction of test items whose nearest neighbour is above the similarity cutoff. That fraction is the sibling rate, and it sits on the evaluation report as a first-class number beside the score it qualifies.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 260" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">The sibling scan as a nearest-neighbour join across the boundary</title>
+<desc id="f3-d">Two columns of items, training on the left and test on the right. Each test item has an arrow to its nearest training neighbour with a similarity value. Two test items with similarity above the cutoff are marked as siblings. Below, the report line reads: accuracy 94.1 percent, sibling rate 6.2 percent above the cutoff.</desc>
+<text x="0" y="18" class="viz-title">Every test item, and its closest relative in training</text>
+<text x="80" y="52" text-anchor="middle" class="viz-tick">TRAINING</text>
+<text x="560" y="52" text-anchor="middle" class="viz-tick">TEST</text>
+<rect x="30" y="64" width="100" height="26" rx="5" class="viz-box"/><text x="80" y="82" text-anchor="middle" class="viz-label-muted">item 1</text>
+<rect x="30" y="98" width="100" height="26" rx="5" class="viz-box"/><text x="80" y="116" text-anchor="middle" class="viz-label-muted">item 2</text>
+<rect x="30" y="132" width="100" height="26" rx="5" class="viz-box"/><text x="80" y="150" text-anchor="middle" class="viz-label-muted">item 3</text>
+<rect x="30" y="166" width="100" height="26" rx="5" class="viz-box"/><text x="80" y="184" text-anchor="middle" class="viz-label-muted">item 4</text>
+<rect x="510" y="64" width="100" height="26" rx="5" class="viz-box"/><text x="560" y="82" text-anchor="middle" class="viz-label-muted">test a</text>
+<rect x="510" y="115" width="100" height="26" rx="5" class="viz-box-accent"/><text x="560" y="133" text-anchor="middle" class="viz-label-muted">test b</text>
+<rect x="510" y="166" width="100" height="26" rx="5" class="viz-box"/><text x="560" y="184" text-anchor="middle" class="viz-label-muted">test c</text>
+<line x1="508" y1="77" x2="132" y2="145" class="viz-sgray"/><text x="320" y="100" text-anchor="middle" class="viz-tick">0.41</text>
+<line x1="508" y1="128" x2="132" y2="111" class="viz-s1"/><text x="320" y="112" text-anchor="middle" class="viz-value">0.97: sibling</text>
+<line x1="508" y1="179" x2="132" y2="179" class="viz-sgray"/><text x="320" y="172" text-anchor="middle" class="viz-tick">0.52</text>
+<line x1="0" y1="212" x2="640" y2="212" class="viz-axis"/>
+<text x="0" y="240" class="viz-label">Report: accuracy 94.1%, sibling rate 6.2% above the cutoff of 0.9</text>
+</svg>
+<figcaption>Illustrative: the join and the report line; the similarity values and rates are made up for the drawing.</figcaption>
+</figure>
+
+<p>The report line is the point. An accuracy with a sibling rate beside it is a score that can be read: 94 percent with 6 percent siblings is a model whose true held-out accuracy is somewhat lower than 94 and whose evaluation set needs cleaning. An accuracy with no sibling rate is a number whose meaning depends on a pipeline habit nobody can see. The scan costs a nearest-neighbour search over the test set, which for any evaluation set a team actually uses is seconds, and it has caught leaks in pipelines that had been deduplicating carefully, because the deduplication had been happening after the split.</p>
+<h2>Where the cutoff comes from</h2>
+<p>The cutoff has two honest sources, and I use both. The first is a small hand-labelled sample: draw pairs across a range of similarities, have a person say which are the same thing, and put the cutoff where the answers flip. The second is the random-pair baseline of the embedding model itself, the similarity that unrelated items have under this model on this data, which I wrote about in <a href="/blog/similarity-threshold-has-no-zero/">the post on similarity thresholds</a>: a cutoff well above that baseline is a cutoff that means something, and a cutoff copied from another dataset is a cutoff that means whatever that dataset&#39;s baseline meant.</p>
+<p>SocialSure&#39;s training-data work is where this habit lives for me, and the reason it lives there is simple. A pipeline that assembles data from scrapes, from customer uploads and from augmentation produces siblings at every stage, and the first time a model scored suspiciously well on a held-out set was the last time the held-out set was trusted without a sibling rate next to it. The score is not the measurement. The score and the overlap together are.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Data Pipelines</span><span class="tag-chip">Evaluation</span><span class="tag-chip">Deduplication</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

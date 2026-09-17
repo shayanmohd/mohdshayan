@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The first thing a quantised model forgets | Mohd Shayan</title>
+    <meta name="description" content="Quantised models recover over 99 percent of accuracy on average, and the average hides where the loss lands. A canary set from the classes that fail first should choose the format.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/first-thing-quantised-model-forgets/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/first-thing-quantised-model-forgets/">
+    <meta property="og:title" content="The first thing a quantised model forgets | Mohd Shayan">
+    <meta property="og:description" content="Quantised models recover over 99 percent of accuracy on average, and the average hides where the loss lands. A canary set from the classes that fail first should choose the format.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The first thing a quantised model forgets | Mohd Shayan">
+    <meta name="twitter:description" content="Quantised models recover over 99 percent of accuracy on average, and the average hides where the loss lands. A canary set from the classes that fail first should choose the format.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/first-thing-quantised-model-forgets/#post",
+      "headline": "The first thing a quantised model forgets",
+      "description": "Quantised models recover over 99 percent of accuracy on average, and the average hides where the loss lands. A canary set from the classes that fail first should choose the format.",
+      "url": "https://mohdshayan.com/blog/first-thing-quantised-model-forgets/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/first-thing-quantised-model-forgets/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Quantisation, Inference, Evaluation",
+      "inLanguage": "en",
+      "wordCount": 1224
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">The first thing a quantised model forgets</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Quantised models recover over 99 percent of accuracy on average, and the average hides where the loss lands. A canary set from the classes that fail first should choose the format.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>The case for shipping a 4-bit model is an average, and the average is excellent. Red Hat&#39;s evaluation team <a href="https://developers.redhat.com/articles/2024/10/17/we-ran-over-half-million-evaluations-quantized-llms">ran over half a million evaluations</a> on quantised Llama 3.1 models and found that every scheme at every size recovered over 99 percent of the full-precision score on the OpenLLM v1 benchmarks, close to 99 percent on v2, and 98.9 percent on code at 4-bit. Those numbers are why teams quantise without looking further, and they are true. What they do not say is where the missing one percent lives, and the answer from the studies that looked is that it is not spread thinly across everything. It is concentrated in a few task classes, and in those classes the loss is ten times the average.</p>
+<h2>The average and the tail</h2>
+<p>The same evaluation series publishes per-model numbers, and the 8B model at 4-bit weights is the interesting one. Its <a href="https://huggingface.co/RedHatAI/Meta-Llama-3.1-8B-Instruct-quantized.w4a16">model card</a> reports 98.9 percent recovery on OpenLLM v1, 96.1 percent on v2, and 93.0 percent on Arena-Hard, the open-ended, judged benchmark closest to real conversational use; the <a href="https://huggingface.co/RedHatAI/Meta-Llama-3.1-8B-Instruct-quantized.w8a8">8-bit version</a> of the same model sits at or above 100 percent on all three. The ordering is the point: the more the task looks like a hard, open-ended conversation, the more the 4-bit model gives up, and the smaller the model, the more it gives up.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 260" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Accuracy recovery of the quantised Llama 3.1 8B Instruct model, by benchmark and format</title>
+<desc id="f1-d">Grouped horizontal bars. OpenLLM v1: 8-bit 100.3 percent, 4-bit 98.9. OpenLLM v2: 8-bit 101.5, 4-bit 96.1. Arena-Hard: 8-bit 105.4, 4-bit 93.0. The 4-bit loss grows as the benchmark gets harder and more open-ended.</desc>
+<text x="0" y="18" class="viz-title">Where the 8B model's 4-bit loss lands</text>
+<text x="0" y="36" class="viz-sub">Percent of the full-precision score recovered; bars start at 90</text>
+<rect x="470" y="26" width="12" height="12" rx="3" class="viz-fgray"/><text x="488" y="37" class="viz-label-muted">8-bit</text>
+<rect x="540" y="26" width="12" height="12" rx="3" class="viz-f1"/><text x="558" y="37" class="viz-label-muted">4-bit</text>
+<line x1="136" y1="52" x2="136" y2="220" class="viz-axis"/>
+<text x="126" y="75" text-anchor="end" class="viz-label">OpenLLM v1</text>
+<path d="M136 60 H444 a4 4 0 0 1 4 4 V72 a4 4 0 0 1 -4 4 H136 Z" class="viz-fgray"/>
+<text x="458" y="72" class="viz-value">100.3</text>
+<path d="M136 80 H402 a4 4 0 0 1 4 4 V92 a4 4 0 0 1 -4 4 H136 Z" class="viz-f1"/>
+<text x="416" y="92" class="viz-value">98.9</text>
+<text x="126" y="131" text-anchor="end" class="viz-label">OpenLLM v2</text>
+<path d="M136 116 H480 a4 4 0 0 1 4 4 V128 a4 4 0 0 1 -4 4 H136 Z" class="viz-fgray"/>
+<text x="494" y="128" class="viz-value">101.5</text>
+<path d="M136 136 H319 a4 4 0 0 1 4 4 V148 a4 4 0 0 1 -4 4 H136 Z" class="viz-f1"/>
+<text x="333" y="148" class="viz-value">96.1</text>
+<text x="126" y="187" text-anchor="end" class="viz-label">Arena-Hard</text>
+<path d="M136 172 H597 a4 4 0 0 1 4 4 V184 a4 4 0 0 1 -4 4 H136 Z" class="viz-fgray"/>
+<text x="593" y="167" text-anchor="end" class="viz-value">105.4</text>
+<path d="M136 192 H226 a4 4 0 0 1 4 4 V204 a4 4 0 0 1 -4 4 H136 Z" class="viz-f1"/>
+<text x="240" y="204" class="viz-value">93.0</text>
+<text x="0" y="248" class="viz-label-muted">Bars start at 90. The harder and more open-ended the task, the larger the 4-bit gap.</text>
+</svg>
+<figcaption>Source: the Red Hat AI model cards for the <a href="https://huggingface.co/RedHatAI/Meta-Llama-3.1-8B-Instruct-quantized.w4a16">W4A16</a> and <a href="https://huggingface.co/RedHatAI/Meta-Llama-3.1-8B-Instruct-quantized.w8a8">W8A8</a> quantisations of Llama 3.1 8B Instruct.</figcaption>
+</figure>
+
+<p>Two other studies name the classes. Marchisio and colleagues asked <a href="https://arxiv.org/abs/2407.03211">how quantisation affects multilingual models</a> and found that multi-step mathematical reasoning degrades fastest: at 4-bit with group-wise quantisation, a 35B model dropped 13.1 percent on average across languages on the multilingual maths benchmark and 17.3 percent in Chinese, while non-Latin-script languages were hurt worst in general. Their most sobering number is the gap between what automatic metrics see and what people see: a 1.7 percent average drop in Japanese on automatic tasks corresponded to a 16.0 percent drop reported by human evaluators on realistic prompts. And an <a href="https://arxiv.org/abs/2604.19884">April 2026 paper</a> separates two failure modes: signal degradation, where the computation is intact but precision erodes cumulatively, and computation collapse, where components in the early layers stop working and the signal is destroyed, which is the cliff that appears below 4-bit and which no post-hoc repair fixes.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 250" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Relative drops at 4-bit reported for fragile task classes, versus the automatic-metric average</title>
+<desc id="f2-d">Horizontal bars, percent relative drop: automatic metrics, Japanese average, 1.7; human evaluation, Japanese, 16.0; multilingual maths, 35B model average, 13.1; multilingual maths, Chinese, 17.3. The first bar is small and the other three are large.</desc>
+<text x="0" y="18" class="viz-title">Ten times the average, in the classes that fail first</text>
+<text x="0" y="36" class="viz-sub">Relative drop from full precision at 4-bit, percent, from one multilingual study</text>
+<line x1="216" y1="52" x2="216" y2="188" class="viz-axis"/>
+<text x="206" y="73" text-anchor="end" class="viz-label">Automatic metrics, Japanese</text>
+<path d="M216 58 H246 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H216 Z" class="viz-fgray"/>
+<text x="266" y="73" class="viz-value">1.7</text>
+<text x="206" y="107" text-anchor="end" class="viz-label">Human evaluation, Japanese</text>
+<path d="M216 92 H532 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H216 Z" class="viz-f4"/>
+<text x="552" y="107" class="viz-value">16.0</text>
+<text x="206" y="141" text-anchor="end" class="viz-label">Maths, average of languages</text>
+<path d="M216 126 H474 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H216 Z" class="viz-f4"/>
+<text x="494" y="141" class="viz-value">13.1</text>
+<text x="206" y="175" text-anchor="end" class="viz-label">Maths, Chinese</text>
+<path d="M216 160 H558 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H216 Z" class="viz-f4"/>
+<text x="578" y="175" class="viz-value">17.3</text>
+<text x="0" y="222" class="viz-label-muted">The first bar justifies shipping. The users who notice live in the other three.</text>
+<rect x="0" y="232" width="12" height="12" rx="3" class="viz-fgray"/><text x="18" y="243" class="viz-label-muted">automatic-metric average</text>
+<rect x="200" y="232" width="12" height="12" rx="3" class="viz-f4"/><text x="218" y="243" class="viz-label-muted">measured drop in a fragile class</text>
+</svg>
+<figcaption>Source: Marchisio et al., <a href="https://arxiv.org/abs/2407.03211">How Does Quantization Affect Multilingual LLMs?</a>, 2024; maths figures are for the 35B model with group-wise 4-bit weights, human evaluation for the 103B model.</figcaption>
+</figure>
+
+<h2>Why this fooled nobody at the helpdesk</h2>
+<p>At CRIS I tuned quantisation against latency targets for a helpdesk model, and the averages there were honest, for a reason worth stating: a helpdesk corpus in English, with short factual answers drawn from retrieved documents, is the easy case. It has no multi-step arithmetic, no non-Latin scripts, no long open-ended reasoning, and no rare identifiers that the tokeniser splits into unfamiliar pieces. The task classes that degrade first were simply absent, so the average was also the tail. That is not a reason to trust the average elsewhere. It is a description of the one kind of workload where trusting it happens to be safe, and most workloads are not that kind.</p>
+<h2>The canary set</h2>
+<p>The practice that follows is to stop evaluating the average and start evaluating the tail, deliberately, with a small fixed set of prompts drawn only from the classes that fail first. I call it the canary set: thirty to fifty prompts, chosen for fragility rather than representativeness. Multi-step arithmetic with the working shown. Long-context lookup where the answer is a specific detail far from the question. Rare identifiers, part numbers, hashes, unusual names, that must be reproduced exactly. And, for any product with users outside English, prompts in the non-Latin scripts those users write in, judged by someone who reads them, because the multilingual study&#39;s central finding is that automatic metrics miss most of that damage.</p>
+<p>The set is run at every quantisation level under consideration, against the full-precision model as the reference, and the selection rule is a tolerance: pick the smallest format whose canary score stays within a set margin of full precision. The margin is a product decision, a few percent for a general assistant, near zero for anything that does arithmetic on the user&#39;s behalf. Because the canaries are the fragile classes, they move long before the benchmark average does, and the rule catches the format that has quietly started to fail on the users who would notice.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 312" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">GPU memory for an 8B model: weights by format against KV cache by context length</title>
+<desc id="f3-d">Stacked comparison in gigabytes. Weights: 16-bit about 16.1, 8-bit about 8.0, 4-bit about 4.0. KV cache at 16-bit, derived from the architecture at 128 kilobytes per token: 8k context 1.0, 32k 4.0, 128k 16.0. At long context the cache, not the weights, dominates, which is where quantising the weights buys the least.</desc>
+<text x="0" y="18" class="viz-title">What 4-bit buys depends on the context length</text>
+<text x="0" y="36" class="viz-sub">Gigabytes for an 8B Llama-family model, derived from the published dimensions</text>
+<text x="20" y="66" class="viz-tick">WEIGHTS</text>
+<line x1="136" y1="72" x2="136" y2="160" class="viz-axis"/>
+<text x="126" y="93" text-anchor="end" class="viz-label">16-bit</text>
+<path d="M136 80 H458 a4 4 0 0 1 4 4 V92 a4 4 0 0 1 -4 4 H136 Z" class="viz-fgray"/>
+<text x="472" y="92" class="viz-value">16.1</text>
+<text x="126" y="121" text-anchor="end" class="viz-label">8-bit</text>
+<path d="M136 108 H296 a4 4 0 0 1 4 4 V120 a4 4 0 0 1 -4 4 H136 Z" class="viz-fgray"/>
+<text x="310" y="120" class="viz-value">8.0</text>
+<text x="126" y="149" text-anchor="end" class="viz-label">4-bit</text>
+<path d="M136 136 H216 a4 4 0 0 1 4 4 V148 a4 4 0 0 1 -4 4 H136 Z" class="viz-f1"/>
+<text x="230" y="148" class="viz-value">4.0</text>
+<text x="20" y="186" class="viz-tick">KV CACHE, 16-BIT</text>
+<line x1="136" y1="192" x2="136" y2="280" class="viz-axis"/>
+<text x="126" y="213" text-anchor="end" class="viz-label">8k context</text>
+<path d="M136 200 H156 a4 4 0 0 1 4 4 V212 a4 4 0 0 1 -4 4 H136 Z" class="viz-f2"/>
+<text x="170" y="212" class="viz-value">1.0</text>
+<text x="126" y="241" text-anchor="end" class="viz-label">32k context</text>
+<path d="M136 228 H216 a4 4 0 0 1 4 4 V240 a4 4 0 0 1 -4 4 H136 Z" class="viz-f2"/>
+<text x="230" y="240" class="viz-value">4.0</text>
+<text x="126" y="269" text-anchor="end" class="viz-label">128k context</text>
+<path d="M136 256 H456 a4 4 0 0 1 4 4 V268 a4 4 0 0 1 -4 4 H136 Z" class="viz-f2"/>
+<text x="470" y="268" class="viz-value">16.0</text>
+<rect x="0" y="292" width="12" height="12" rx="3" class="viz-fgray"/><text x="18" y="303" class="viz-label-muted">weights, 16 and 8-bit</text>
+<rect x="180" y="292" width="12" height="12" rx="3" class="viz-f1"/><text x="198" y="303" class="viz-label-muted">weights, 4-bit</text>
+<rect x="320" y="292" width="12" height="12" rx="3" class="viz-f2"/><text x="338" y="303" class="viz-label-muted">KV cache at 16-bit</text>
+</svg>
+<figcaption>Illustrative: derived by the author from the Llama 3 8B dimensions (32 layers, 8 key-value heads of 128, so 128 KB per token at 16-bit) and 8.03 billion parameters; the 4-bit weight figure ignores scale and zero-point overhead.</figcaption>
+</figure>
+
+<h2>Building the set</h2>
+<p>The set is easy to build badly and only slightly harder to build well. The prompts should come from real traffic where there is any, sorted into the fragile classes by hand, and from written examples where there is not, and they should exclude anything the full-precision model already gets wrong, because a canary that fails at every precision measures nothing. Each prompt gets a scoring rule appropriate to its class: exact match for arithmetic results and identifiers, where a single wrong digit is a failure; a rubric applied by a person or a strong judge model for open-ended answers, with the judge&#39;s own agreement with humans checked once on a sample. Decoding is deterministic, at zero temperature, so that a change in the score is a change in the model rather than in the dice.</p>
+<p>Two disciplines keep the set useful over time. It stays fixed across releases, so that scores are comparable and a regression is a regression; new prompts go into a candidate pool that is promoted only at a planned revision. And it stays small, thirty to fifty prompts, because the point is that it runs in minutes on every candidate build, including the ones that nobody expected to change the model, such as a runtime upgrade that quietly changed the quantisation kernels.</p>
+<p>When a canary trips, the response is graduated. The first step is a less aggressive format for the same weights, 8-bit instead of 4, or a 4-bit scheme with smaller groups or activation-aware calibration, and the canaries are re-run. The second, informed by the two-failure-modes finding, is to leave the early layers, where computation collapse begins, at higher precision while quantising the rest, which several toolchains now support per layer. The third is to accept the larger model and find the memory elsewhere, which is where the last figure comes in.</p>
+<h2>What the canaries do not decide</h2>
+<p>The canary set answers one question, which format is safe, and it deliberately does not answer the other, whether quantisation is worth it at all. That depends on where the memory goes, and the third figure is the reminder that for an 8B model the answer changes with context length. At short contexts the weights dominate and 4-bit halves the footprint again over 8-bit. At 128k tokens the key-value cache at 16-bit is as large as the full-precision weights, and shaving the weights to 4-bit saves a quarter of the total while spending accuracy in the fragile classes. There, the better trade is often 8-bit weights and a quantised cache, which is a different decision with its own canaries.</p>
+<p>The rule, then, has two halves. Decide whether to quantise from the memory budget at the context length you actually serve. Decide how far to quantise from the canary set, not from the benchmark average, because the average is the last number to move and the canaries are the first. The first thing a quantised model forgets is the thing your evaluation was not looking at, and the canary set is how you make sure something is.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Quantisation</span><span class="tag-chip">Inference</span><span class="tag-chip">Evaluation</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

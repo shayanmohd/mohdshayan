@@ -415,6 +415,53 @@ article:hover .shot-mat img { transform: scale(1.02); }
 .prose pre code { background: transparent; border: 0; padding: 0; color: inherit; font-size: inherit; }
 .prose img { border-radius: 8px; border: 1px solid var(--hairline); }
 .prose hr { border: 0; height: 1px; background: var(--hairline); margin: 2.5em 0; }
+.prose table { width: 100%; border-collapse: collapse; font-size: .9375rem; line-height: 1.5; font-variant-numeric: tabular-nums; }
+.prose th { text-align: left; font-family: var(--font-mono); font-size: .75rem; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: .6rem 1rem .6rem 0; border-bottom: 1px solid var(--hairline-strong); }
+.prose td { padding: .6rem 1rem .6rem 0; border-bottom: 1px solid var(--hairline); vertical-align: top; }
+.prose td:first-child { color: var(--ink); }
+
+/* ---------- Post figures: inline SVG charts and diagrams, themed by tokens ----------
+   Series colours were validated for colour-vision safety against the card surface in both modes.
+   Text inside a figure wears text tokens; only marks wear series colours. */
+:root { --viz-1: #9c7118; --viz-2: #35659f; --viz-3: #1f8a70; --viz-4: #c14a3a; --viz-gray: #b9b2a0; }
+html[data-theme="dark"] { --viz-1: #b08a2e; --viz-2: #4b89e6; --viz-3: #22987a; --viz-4: #d65a44; --viz-gray: #524b3f; }
+.prose figure { margin: 2em 0; }
+.prose figure.chart { background: var(--card); border: 1px solid var(--hairline); border-radius: 12px; padding: 1.25rem 1.25rem 1rem; overflow-x: auto; }
+.prose figure.chart svg { display: block; width: 100%; height: auto; min-width: 28rem; font-family: var(--font-sans); }
+.prose figcaption { position: sticky; left: 0; font-family: var(--font-mono); font-size: .8125rem; line-height: 1.5; letter-spacing: .02em; color: var(--muted); margin-top: .9rem; }
+/* Phones: the figure scrolls sideways; a scroll shadow on the right edge says so (it hides once scrolled to the end) */
+@media (max-width: 720px) {
+    .prose figure.chart { background:
+        linear-gradient(to right, var(--card) 40%, transparent) 0 0 / 48px 100% no-repeat local,
+        linear-gradient(to left, var(--card) 40%, transparent) 100% 0 / 48px 100% no-repeat local,
+        radial-gradient(farthest-side at 100% 50%, rgba(0,0,0,0.22), transparent) 100% 0 / 18px 100% no-repeat scroll,
+        var(--card); }
+}
+.viz-title { font-size: 15px; font-weight: 500; fill: var(--ink); }
+.viz-sub { font-size: 12px; fill: var(--muted); }
+.viz-label { font-size: 13px; fill: var(--ink); }
+.viz-label-muted { font-size: 13px; fill: var(--muted); }
+.viz-tick, .viz-value { font-family: var(--font-mono); font-size: 12px; font-variant-numeric: tabular-nums; }
+.viz-tick { fill: var(--muted); }
+.viz-value { fill: var(--ink); }
+.viz-onfill { font-size: 12px; font-weight: 500; fill: #ffffff; }
+.viz-on-ink { font-size: 13px; fill: var(--btn-primary-fg); }
+.viz-grid { stroke: var(--hairline); stroke-width: 1; }
+.viz-axis { stroke: var(--hairline-strong); stroke-width: 1; }
+.viz-f1 { fill: var(--viz-1); } .viz-f2 { fill: var(--viz-2); } .viz-f3 { fill: var(--viz-3); } .viz-f4 { fill: var(--viz-4); } .viz-fgray { fill: var(--viz-gray); }
+.viz-s1, .viz-s2, .viz-s3, .viz-s4, .viz-sgray { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.viz-s1 { stroke: var(--viz-1); } .viz-s2 { stroke: var(--viz-2); } .viz-s3 { stroke: var(--viz-3); } .viz-s4 { stroke: var(--viz-4); } .viz-sgray { stroke: var(--viz-gray); }
+.viz-d1, .viz-d2, .viz-d3, .viz-d4, .viz-dgray { stroke: var(--card); stroke-width: 2; }
+.viz-d1 { fill: var(--viz-1); } .viz-d2 { fill: var(--viz-2); } .viz-d3 { fill: var(--viz-3); } .viz-d4 { fill: var(--viz-4); } .viz-dgray { fill: var(--viz-gray); }
+.viz-a1 { fill: var(--viz-1); fill-opacity: .1; } .viz-a2 { fill: var(--viz-2); fill-opacity: .1; } .viz-a3 { fill: var(--viz-3); fill-opacity: .1; } .viz-a4 { fill: var(--viz-4); fill-opacity: .1; }
+.viz-q1 { fill: var(--viz-1); fill-opacity: .2; } .viz-q2 { fill: var(--viz-1); fill-opacity: .4; } .viz-q3 { fill: var(--viz-1); fill-opacity: .6; } .viz-q4 { fill: var(--viz-1); fill-opacity: .8; } .viz-q5 { fill: var(--viz-1); }
+.viz-box { fill: var(--paper); stroke: var(--hairline-strong); stroke-width: 1; }
+.viz-box-accent { fill: var(--chipwash); stroke: var(--viz-1); stroke-width: 1.5; }
+.viz-box-ink { fill: var(--btn-primary-bg); }
+.viz-band { fill: var(--cream); }
+.viz-arrow { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+.viz-arrowhead { fill: var(--muted); }
+.viz-gap { stroke: var(--card); stroke-width: 2; }
 
 /* ---------- Subscribe ---------- */
 .subscribe input[type="email"], .subscribe input[readonly] { height: 44px; border-radius: 6px; border: 1px solid var(--hairline-strong); background: var(--card); color: var(--ink); padding: 0 .9rem; width: 100%; font-size: .9375rem; }

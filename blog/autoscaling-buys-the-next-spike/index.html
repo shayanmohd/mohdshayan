@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autoscaling buys you the next spike | Mohd Shayan</title>
+    <meta name="description" content="Reactive autoscaling cannot serve the spike that triggers it. The new capacity arrives after a chain of delays that add up to minutes. What it buys is the spike after this one.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/autoscaling-buys-the-next-spike/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/autoscaling-buys-the-next-spike/">
+    <meta property="og:title" content="Autoscaling buys you the next spike | Mohd Shayan">
+    <meta property="og:description" content="Reactive autoscaling cannot serve the spike that triggers it. The new capacity arrives after a chain of delays that add up to minutes. What it buys is the spike after this one.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Autoscaling buys you the next spike | Mohd Shayan">
+    <meta name="twitter:description" content="Reactive autoscaling cannot serve the spike that triggers it. The new capacity arrives after a chain of delays that add up to minutes. What it buys is the spike after this one.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/autoscaling-buys-the-next-spike/#post",
+      "headline": "Autoscaling buys you the next spike",
+      "description": "Reactive autoscaling cannot serve the spike that triggers it. The new capacity arrives after a chain of delays that add up to minutes. What it buys is the spike after this one.",
+      "url": "https://mohdshayan.com/blog/autoscaling-buys-the-next-spike/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/autoscaling-buys-the-next-spike/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "AWS, Autoscaling, Capacity",
+      "inLanguage": "en",
+      "wordCount": 1259
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Autoscaling buys you the next spike</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Reactive autoscaling cannot serve the spike that triggers it. The new capacity arrives after a chain of delays that add up to minutes. What it buys is the spike after this one.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>The promise of autoscaling is that capacity appears when demand does. The mechanism cannot keep that promise, because capacity is a consequence of demand being measured, and measurement takes time at every step. By the time a reactive policy has noticed a spike, decided about it, launched an instance, waited for it to boot, and let it into the load balancer, the spike that triggered all of that is several minutes old. What the new instance serves is whatever comes next. That is not a flaw to be tuned away. It is what &quot;reactive&quot; means, and it changes what the policy is for.</p>
+<h2>The arrival gap</h2>
+<p>I call the total delay the arrival gap: the time between demand crossing the threshold and a new instance taking its first request. It is a sum of documented settings and physical facts, and every one of the settings defaults to a number that assumes you are not in a hurry.</p>
+<p>First the metric has to be observed. CloudWatch collects EC2 metrics in periods of a minute with detailed monitoring and five minutes without it, so the earliest the system can know about a change is the end of the current period. Then the alarm has to evaluate: a target tracking policy, per the <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-target-tracking.html">AWS documentation</a>, creates alarms that need several consecutive periods above the target before they fire, so that a single noisy minute does not launch a fleet. Then an instance has to launch, which takes as long as the image takes to boot and the bootstrap takes to run. Then the load balancer&#39;s health check has to pass, after its own grace period. And then, with a default instance warmup configured, the instance is held out of the aggregate metrics for that long; AWS&#39;s <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/consolidated-view-of-warm-up-and-cooldown-settings.html">warm-up and cooldown page</a> explains how the warmup falls back to the default cooldown, which is 300 seconds, when it is not set.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 200" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">The arrival gap as a sum of stages</title>
+<desc id="f1-d">One stacked horizontal bar in seconds: metric period 60, alarm evaluation 180, instance launch and bootstrap 120, health check grace 60, instance warmup 300, for a total of about 720 seconds or twelve minutes. Warmup is the largest segment.</desc>
+<text x="0" y="18" class="viz-title">Twelve minutes, from documented defaults and a typical boot</text>
+<text x="0" y="36" class="viz-sub">Seconds from demand crossing the threshold to the new instance serving</text>
+<rect x="0" y="60" width="53.3" height="28" class="viz-q2"/>
+<rect x="53.3" y="60" width="160" height="28" class="viz-q3"/>
+<rect x="213.3" y="60" width="106.7" height="28" class="viz-q4"/>
+<rect x="320" y="60" width="53.3" height="28" class="viz-q3"/>
+<rect x="373.3" y="60" width="266.7" height="28" class="viz-q5"/>
+<line x1="53.3" y1="60" x2="53.3" y2="88" class="viz-gap"/>
+<line x1="213.3" y1="60" x2="213.3" y2="88" class="viz-gap"/>
+<line x1="320" y1="60" x2="320" y2="88" class="viz-gap"/>
+<line x1="373.3" y1="60" x2="373.3" y2="88" class="viz-gap"/>
+<text x="133.3" y="78" text-anchor="middle" class="viz-onfill">alarm 180</text>
+<text x="266.7" y="78" text-anchor="middle" class="viz-onfill">boot 120</text>
+<text x="506.7" y="78" text-anchor="middle" class="viz-onfill">warmup 300</text>
+<text x="26.7" y="108" text-anchor="middle" class="viz-tick">60</text>
+<text x="346.7" y="108" text-anchor="middle" class="viz-tick">60</text>
+<text x="0" y="140" class="viz-label-muted">Metric 60, alarm 180, launch and bootstrap 120, health grace 60, warmup 300.</text>
+<text x="0" y="162" class="viz-label-muted">Only the boot figure is a guess; the rest are defaults or usual values.</text>
+<text x="0" y="188" class="viz-tick">total: about 720 seconds</text>
+</svg>
+<figcaption>Source: the 300-second default cooldown and warmup fallback from the <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/consolidated-view-of-warm-up-and-cooldown-settings.html">EC2 Auto Scaling warm-up and cooldown documentation</a>; the metric period and evaluation from the <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-target-tracking.html">target tracking documentation</a>; boot and grace are illustrative values stated as assumptions.</figcaption>
+</figure>
+
+<p>Twelve minutes is a long time. Most of the spikes a small service sees are shorter than that: a link shared somewhere, a batch job that fires on the hour, a scheduled email that sends everyone to the site at once. Against a spike that lasts five minutes, a twelve-minute arrival gap means the new capacity comes online after the spike is over, serves the trough, and is then scaled back in by the same policy. The requests that failed during the spike failed. The policy was decoration.</p>
+<h2>What it does buy</h2>
+<p>Reactive scaling is not useless. It is late, which is different, and late is fine for the demand it was designed for: a rise that lasts long enough for the arrival gap to be a small fraction of it. A morning ramp that builds over an hour, a campaign that doubles traffic for a week, a slow growth that the fleet has to follow across a quarter. Against those, the gap is a few minutes of under-provisioning at the front of a long period of correct provisioning, and the policy earns its keep.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Demand against reactive capacity on one timeline</title>
+<desc id="f2-d">A demand curve rises sharply at one point and falls back a few minutes later. A capacity line stays flat, then steps up twelve minutes after the rise, after the demand has already fallen. The window between the rise and the capacity step is shaded as the period in which requests fail.</desc>
+<text x="0" y="18" class="viz-title">The step arrives after the spike</text>
+<text x="0" y="36" class="viz-sub">A short spike against a reactive policy; the shaded window is where requests fail</text>
+<line x1="380" y1="31" x2="394" y2="31" class="viz-s1"/><text x="400" y="35" class="viz-label-muted">demand</text>
+<line x1="480" y1="31" x2="494" y2="31" class="viz-s2"/><text x="500" y="35" class="viz-label-muted">capacity</text>
+<rect x="200" y="56" width="180" height="208" class="viz-band"/>
+<line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/>
+<text x="56" y="288" text-anchor="middle" class="viz-tick">0</text>
+<text x="200" y="288" text-anchor="middle" class="viz-tick">spike</text>
+<text x="380" y="288" text-anchor="middle" class="viz-tick">+12 min</text>
+<text x="600" y="288" text-anchor="middle" class="viz-tick">+30 min</text>
+<polyline points="56,200 380,200 380,110 600,110" class="viz-s2"/>
+<polyline points="56,210 190,210 200,90 240,80 290,100 330,190 380,210 600,210" class="viz-s1"/>
+<text x="290" y="72" text-anchor="middle" class="viz-label-muted">demand above capacity</text>
+<text x="490" y="100" text-anchor="middle" class="viz-label-muted">capacity above demand</text>
+</svg>
+<figcaption>Illustrative: the timing relationship the arrival gap produces, drawn to show shape rather than measured traffic.</figcaption>
+</figure>
+
+<p>For everything shorter, the honest question is what the policy is defending against, and the answer is the next spike. If spikes come in waves, one after another, the capacity that arrived late for the first one is in place for the second, and that is worth something. If spikes come alone, it is worth nothing, and the money spent on the extra instance that arrives late and leaves later is money that could have bought a spare instance that was already there.</p>
+<h2>Scaling in is where the money goes</h2>
+<p>The same delays run in the other direction, and they are set longer on purpose. Target tracking scales in more cautiously than it scales out, with more evaluation periods before it removes an instance, because removing capacity too early is the failure operators notice. The consequence is that a fleet that scaled out late for a spike also scales in late after it, and the extra instance that arrived when the spike was over stays for a good while after that. Over a day of isolated spikes, the fleet spends most of its time one instance larger than the traffic needs and never one instance larger at the moment it needed to be. That is the cost profile of reactive scaling against short spikes: paying for capacity in the troughs and lacking it at the peaks.</p>
+<p>Seen that way, the spare instance is not an extravagance. It is the same instance the policy would have bought anyway, held at a time when it is useful instead of at a time when it is not.</p>
+<h2>When the schedule beats the policy</h2>
+<p>The QR ticketing system I built serves visitor attractions, and an attraction&#39;s demand is not a mystery. The gates open at a fixed time. The scan-in traffic starts at that minute, peaks in the first hour, and follows the day&#39;s programme. Nobody needs a metric to discover that ten o&#39;clock is busier than nine; it is printed on the sign outside. A reactive policy would spend the first twelve minutes of every morning learning something the operator has known for years.</p>
+<p>The same is true of most of the small services I have run. A CRM&#39;s traffic follows office hours in the client&#39;s time zone. A marketing site&#39;s traffic follows the campaign calendar. A helpdesk assistant&#39;s traffic follows the shifts of the people who ask it questions. In each case someone in the business can draw the demand curve from memory, and a policy that has to rediscover it from a metric every day is doing expensive, slow, slightly wrong work that a calendar entry does for free.</p>
+<p>For a service whose peaks are on a schedule, two things beat target tracking, and both are cheaper. One spare instance, N plus one, absorbs any spike smaller than one instance&#39;s worth of capacity with no gap at all, because it is already there. A scheduled action, which AWS supports directly, raises the fleet before the known peak and lowers it after, with an arrival gap of zero because the launch happens before the demand rather than after it. Reactive scaling then sits behind both as a backstop for the day the sign outside is wrong.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 320" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">An opening-hour surge against three capacity strategies</title>
+<desc id="f3-d">Demand steps up sharply at opening time and stays high for an hour. Reactive capacity steps up twelve minutes late. N plus one capacity is flat and slightly above demand from the start. Scheduled capacity steps up fifteen minutes before opening. Only the reactive line has a window where demand exceeds capacity.</desc>
+<text x="0" y="18" class="viz-title">Three ways to meet ten o'clock</text>
+<text x="0" y="36" class="viz-sub">An opening-hour step in demand; a model with the construction stated below</text>
+<line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/>
+<line x1="56" y1="160" x2="600" y2="160" class="viz-grid"/>
+<line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/>
+<text x="56" y="288" text-anchor="middle" class="viz-tick">9:30</text>
+<text x="237.3" y="288" text-anchor="middle" class="viz-tick">10:00</text>
+<text x="418.7" y="288" text-anchor="middle" class="viz-tick">10:30</text>
+<text x="600" y="288" text-anchor="middle" class="viz-tick">11:00</text>
+<text x="328" y="310" text-anchor="middle" class="viz-label-muted">Time of day</text>
+<polyline points="56,236 237.3,236 237.3,110 600,110" class="viz-s1"/>
+<polyline points="56,214 237.3,214 309.9,214 309.9,90 600,90" class="viz-s4"/>
+<polyline points="56,90 600,90" class="viz-sgray"/>
+<polyline points="56,214 146.7,214 146.7,90 600,90" class="viz-s2"/>
+<line x1="380" y1="31" x2="394" y2="31" class="viz-s1"/><text x="400" y="35" class="viz-label-muted">demand</text>
+<line x1="150" y1="31" x2="164" y2="31" class="viz-s4"/><text x="170" y="35" class="viz-label-muted">reactive</text>
+<line x1="240" y1="31" x2="254" y2="31" class="viz-s2"/><text x="260" y="35" class="viz-label-muted">scheduled</text>
+<line x1="480" y1="31" x2="494" y2="31" class="viz-sgray"/><text x="500" y="35" class="viz-label-muted">N plus one</text>
+<text x="273" y="200" text-anchor="middle" class="viz-label-muted">reactive gap</text>
+</svg>
+<figcaption>Illustrative: demand modelled as a step at opening, reactive capacity as the same step delayed by the twelve-minute arrival gap, scheduled capacity as the step fifteen minutes early, and N plus one as a flat line above the peak.</figcaption>
+</figure>
+
+<h2>Computing your own gap</h2>
+<p>The arrival gap is a number you can compute from your own settings in a few minutes, and it is worth computing before choosing a policy rather than after an incident. Read the metric period from the monitoring level. Read the alarm&#39;s evaluation periods from the policy. Time a launch from the console to the first successful health check. Add the warmup or the cooldown it falls back to. The sum is how late every reactive decision will be, and it should be compared with the length of the spikes in your own request logs, not with a feeling about how fast the cloud is.</p>
+<p>If the gap is shorter than your typical spike, reactive scaling will catch most of them, and the tuning that matters is bringing the gap down further: detailed monitoring, fewer evaluation periods, a faster image, a shorter warmup. If the gap is longer than your typical spike, no tuning of the policy fixes the problem, because the policy is the wrong tool. The tools for that case are a spare instance and a calendar, and for a great many small services they are the whole answer. Autoscaling then does what it is good at, which is following the slow tide, and stops being asked to catch the wave.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">AWS</span><span class="tag-chip">Autoscaling</span><span class="tag-chip">Capacity</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

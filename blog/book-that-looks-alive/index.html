@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A book that looks alive can be dead | Mohd Shayan</title>
+    <meta name="description" content="A local order book fed by WebSocket deltas keeps updating while being wrong. One dropped message desynchronises every level it touched, and a live stream proves nothing.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/book-that-looks-alive/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/book-that-looks-alive/">
+    <meta property="og:title" content="A book that looks alive can be dead | Mohd Shayan">
+    <meta property="og:description" content="A local order book fed by WebSocket deltas keeps updating while being wrong. One dropped message desynchronises every level it touched, and a live stream proves nothing.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A book that looks alive can be dead | Mohd Shayan">
+    <meta name="twitter:description" content="A local order book fed by WebSocket deltas keeps updating while being wrong. One dropped message desynchronises every level it touched, and a live stream proves nothing.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/book-that-looks-alive/#post",
+      "headline": "A book that looks alive can be dead",
+      "description": "A local order book fed by WebSocket deltas keeps updating while being wrong. One dropped message desynchronises every level it touched, and a live stream proves nothing.",
+      "url": "https://mohdshayan.com/blog/book-that-looks-alive/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/book-that-looks-alive/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "WebSockets, Order Books, CCXT",
+      "inLanguage": "en",
+      "wordCount": 1172
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">A book that looks alive can be dead</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">A local order book fed by WebSocket deltas keeps updating while being wrong. One dropped message desynchronises every level it touched, and a live stream proves nothing.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>An order book maintained from a WebSocket stream has one property that fools everyone the first time: it keeps moving. Updates arrive, levels change, the display flickers with activity, and every one of those signs of life is compatible with the book being wrong. A single dropped message desynchronises every price level the message touched, and every later update to those levels is applied to a base that no longer matches the exchange. Shayanomaly maintains books from five venues, and the second thing I learned building it, after the first thing about fees, was that a stream being alive is not evidence of a book being correct.</p>
+<h2>Snapshot plus deltas, and the gap in between</h2>
+<p>The standard design is a snapshot followed by deltas. Fetch the full book once over REST, then apply a stream of changes: this price level is now this size, this level is gone. The design is efficient and it is fragile at exactly one point, the join between the snapshot and the stream. Binance&#39;s <a href="https://developers.binance.com/docs/derivatives/usds-margined-futures/websocket-market-streams/How-to-manage-a-local-order-book-correctly">guide to managing a local order book</a> spells out the procedure: open the stream first and buffer its events, then fetch the snapshot, discard any buffered event whose final update id is at or below the snapshot&#39;s, and apply the rest in order. Each event carries a first and last update id, and the rule for every subsequent event is that its first id must be exactly one more than the id your book is at. If it is greater, you missed an event, and the instruction is unambiguous: discard the book and start again.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Joining a REST snapshot to a delta stream, and detecting a gap</title>
+<desc id="f1-d">Three lanes: the local book, the REST snapshot endpoint, and the WebSocket delta stream. The stream is opened first and its events buffered. The snapshot arrives with a last update id. Buffered events at or below that id are discarded; the first event spanning it is applied. A later event whose first id skips ahead is flagged as a gap and the book is rebuilt.</desc>
+<defs><marker id="f1-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<rect x="20" y="8" width="150" height="36" rx="8" class="viz-box-accent"/>
+<text x="95" y="31" text-anchor="middle" class="viz-label">Local book</text>
+<rect x="245" y="8" width="150" height="36" rx="8" class="viz-box"/>
+<text x="320" y="31" text-anchor="middle" class="viz-label">REST snapshot</text>
+<rect x="470" y="8" width="150" height="36" rx="8" class="viz-box"/>
+<text x="545" y="31" text-anchor="middle" class="viz-label">Delta stream</text>
+<line x1="95" y1="48" x2="95" y2="290" class="viz-grid"/>
+<line x1="320" y1="48" x2="320" y2="290" class="viz-grid"/>
+<line x1="545" y1="48" x2="545" y2="290" class="viz-grid"/>
+<text x="320" y="70" text-anchor="middle" class="viz-label-muted">open the stream, buffer events</text>
+<line x1="540" y1="76" x2="103" y2="76" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<text x="207" y="106" text-anchor="middle" class="viz-label-muted">snapshot, lastUpdateId = 1000</text>
+<line x1="315" y1="112" x2="103" y2="112" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<text x="320" y="142" text-anchor="middle" class="viz-label-muted">drop buffered events with u at or below 1000</text>
+<text x="320" y="172" text-anchor="middle" class="viz-label-muted">apply the event with U at or below 1001 and u above it</text>
+<line x1="540" y1="178" x2="103" y2="178" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<text x="320" y="208" text-anchor="middle" class="viz-label-muted">next event: U must equal the book's id plus one</text>
+<line x1="540" y1="214" x2="103" y2="214" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<text x="320" y="248" text-anchor="middle" class="viz-label-muted">U = 1187 when the book is at 1184: a gap</text>
+<line x1="540" y1="254" x2="103" y2="254" class="viz-s4" marker-end="url(#f1-ah)"/>
+<text x="95" y="282" text-anchor="middle" class="viz-tick">discard, start again</text>
+</svg>
+<figcaption>Illustrative: the procedure described in <a href="https://developers.binance.com/docs/derivatives/usds-margined-futures/websocket-market-streams/How-to-manage-a-local-order-book-correctly">Binance's local order book guide</a>, with example ids.</figcaption>
+</figure>
+
+<p>That last rule is the whole defence, and it depends on the venue sending sequence numbers. Where it does, a gap is detectable the instant it happens. Where it does not, a gap is invisible: the next event arrives, applies cleanly to the levels it names, and the book carries on, alive and wrong.</p>
+<h2>Two venues, two integrity mechanisms</h2>
+<p>Venues differ in what they give you to detect corruption, and a system that streams several of them needs a different rule per venue rather than one integrity check applied everywhere. Binance&#39;s mechanism is sequence continuity: the first and last update ids on every event, and the rule that they must chain. Kraken&#39;s is a checksum. Its <a href="https://docs.kraken.com/api/docs/guides/spot-ws-book-v2/">book channel</a> sends a CRC32 with every update, calculated over the top ten price levels on each side of the book regardless of the depth subscribed, so that after applying an update you compute the same checksum over your own top ten and compare. A mismatch means your book has diverged, whether or not a message was lost, and the response is again to resubscribe.</p>
+<p>The two mechanisms catch different things. Sequence continuity catches a missing message and nothing else; if a message arrives and is applied wrongly, the sequence is intact and the book is still wrong. A checksum catches any divergence in the top of the book, from any cause, but only in the levels it covers; a corruption deep in the book is invisible to a top-ten checksum until it rises. A venue that offers neither leaves you with one honest option, which is to fetch a fresh snapshot on a timer and accept that between snapshots the book may be wrong for as long as the timer runs.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 262" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">What each integrity mechanism detects</title>
+<desc id="f2-d">A table with three rows: sequence ids, as on Binance, detect a dropped message immediately but not a misapplied one; a checksum over the top levels, as on Kraken, detects any divergence in those levels from any cause but nothing deeper; a timed resnapshot, for venues with neither, detects nothing between snapshots and corrects everything at each one.</desc>
+<text x="0" y="18" class="viz-title">Three ways to know the book is wrong</text>
+<text x="20" y="48" class="viz-tick">MECHANISM</text>
+<text x="260" y="48" class="viz-tick">CATCHES</text>
+<text x="470" y="48" class="viz-tick">MISSES</text>
+<line x1="0" y1="56" x2="640" y2="56" class="viz-axis"/>
+<text x="20" y="82" class="viz-label">Sequence ids</text>
+<text x="20" y="100" class="viz-label-muted">Binance depth streams</text>
+<text x="260" y="82" class="viz-label-muted">a dropped message, at once</text>
+<text x="470" y="82" class="viz-label-muted">a misapplied message</text>
+<line x1="0" y1="110" x2="640" y2="110" class="viz-grid"/>
+<text x="20" y="136" class="viz-label">Checksum, top levels</text>
+<text x="20" y="154" class="viz-label-muted">Kraken book channel, CRC32</text>
+<text x="260" y="136" class="viz-label-muted">any divergence in the top ten</text>
+<text x="470" y="136" class="viz-label-muted">deeper levels</text>
+<line x1="0" y1="164" x2="640" y2="164" class="viz-grid"/>
+<text x="20" y="190" class="viz-label">Timed resnapshot</text>
+<text x="20" y="208" class="viz-label-muted">venues with neither</text>
+<text x="260" y="190" class="viz-label-muted">everything, at each snapshot</text>
+<text x="470" y="190" class="viz-label-muted">everything, between them</text>
+<line x1="0" y1="218" x2="640" y2="218" class="viz-grid"/>
+<text x="0" y="248" class="viz-label-muted">One integrity rule cannot cover five venues; each gets the check its feed supports.</text>
+</svg>
+<figcaption>Source: mechanisms as documented by <a href="https://developers.binance.com/docs/derivatives/usds-margined-futures/websocket-market-streams/How-to-manage-a-local-order-book-correctly">Binance</a> and <a href="https://docs.kraken.com/api/docs/guides/spot-ws-book-v2/">Kraken</a>; the third row is the fallback for any feed without either.</figcaption>
+</figure>
+
+<h2>Where the messages go missing</h2>
+<p>It is worth being concrete about how a message goes missing, because the mechanisms are mundane and none of them announces itself. A WebSocket connection drops and reconnects, and the stream resumes from now rather than from where it left off; every update during the gap is gone. A client&#39;s receive buffer fills during a burst, the library&#39;s backpressure handling discards or coalesces, and the book gets the last of a run of updates without the middle. A venue&#39;s own infrastructure fails over, and the new server&#39;s sequence numbers or snapshots are not the old server&#39;s. A message arrives out of order and is applied before its predecessor, which for a delta that says &quot;this level is now zero&quot; followed by one that says &quot;this level is now 5&quot; produces a level that should be empty and is not.</p>
+<p>Each of those leaves the stream alive. The connection is open, messages are flowing, the display is moving. Without a per-message check, the only symptom is that the book&#39;s numbers drift from the venue&#39;s, slowly at first and then, as later updates land on corrupted levels, in ways that compound. A detector reading that book sees spreads that do not exist and misses ones that do, and it has no way to know which of its inputs is lying.</p>
+<h2>The book drift score</h2>
+<p>Detection is necessary and it is not a measurement. What I wanted, once the per-venue checks were in place, was a number that said how often each venue&#39;s book had been wrong and for how long, so that the venues could be compared and the gap-handling code could be trusted or not. The number I settled on is the book drift score: per venue, the count of price levels that differ between the locally maintained book and a periodic REST snapshot, taken at an interval and kept as a rolling metric alongside the time since the last resync.</p>
+<p>A venue whose drift score is not zero between resyncs has a gap-handling bug, whatever its sequence checks say, because the checks passed and the book still diverged. The score also puts a duration on the damage: the time between the last event that was applied and the snapshot that revealed the drift is how many milliseconds of wrong data the detector tolerated before anyone noticed, and that number goes straight into the age gate that decides whether a quote is fresh enough to act on.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 320" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Divergence of a local book after one dropped delta, with and without detection</title>
+<desc id="f3-d">Two lines over time after a dropped message at time zero. Without detection, the count of wrong price levels climbs steadily as later updates are applied to a corrupt base, reaching dozens within seconds. With a checksum or sequence check, the count jumps at the drop and falls to zero within one resync interval.</desc>
+<text x="0" y="18" class="viz-title">Alive, and increasingly wrong</text>
+<text x="0" y="36" class="viz-sub">Wrong price levels after one dropped delta; an illustrative model</text>
+<line x1="380" y1="31" x2="394" y2="31" class="viz-s4"/><text x="400" y="35" class="viz-label-muted">no detection</text>
+<line x1="500" y1="31" x2="514" y2="31" class="viz-s1"/><text x="520" y="35" class="viz-label-muted">with a check</text>
+<line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">40</text>
+<line x1="56" y1="108" x2="600" y2="108" class="viz-grid"/><text x="48" y="112" text-anchor="end" class="viz-tick">30</text>
+<line x1="56" y1="160" x2="600" y2="160" class="viz-grid"/><text x="48" y="164" text-anchor="end" class="viz-tick">20</text>
+<line x1="56" y1="212" x2="600" y2="212" class="viz-grid"/><text x="48" y="216" text-anchor="end" class="viz-tick">10</text>
+<line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/><text x="48" y="268" text-anchor="end" class="viz-tick">0</text>
+<text x="56" y="288" text-anchor="middle" class="viz-tick">drop</text>
+<text x="192" y="288" text-anchor="middle" class="viz-tick">+1 s</text>
+<text x="328" y="288" text-anchor="middle" class="viz-tick">+2 s</text>
+<text x="464" y="288" text-anchor="middle" class="viz-tick">+3 s</text>
+<text x="600" y="288" text-anchor="middle" class="viz-tick">+4 s</text>
+<text x="328" y="310" text-anchor="middle" class="viz-label-muted">Time after the dropped message</text>
+<polyline points="56,264 60,243 120,222 192,196 260,170 328,144 400,118 464,98 532,80 600,66" class="viz-s4"/>
+<polyline points="56,264 60,243 90,243 96,264 600,264" class="viz-s1"/>
+<circle cx="600" cy="66" r="4" class="viz-d4"/>
+<circle cx="96" cy="264" r="4" class="viz-d1"/>
+<text x="108" y="250" class="viz-value">resync, back to zero</text>
+<text x="592" y="86" text-anchor="end" class="viz-value">still climbing</text>
+</svg>
+<figcaption>Illustrative: the shape of divergence under a simple model in which later updates touch levels the dropped message had already changed; not a measured trace.</figcaption>
+</figure>
+
+<h2>What the score changed</h2>
+<p>Three things, in the engine. Each venue got its own integrity rule, matched to what its feed provides, instead of one rule that was right for one venue and decorative for the rest. The resync interval per venue was set from the measured drift rather than from a guess: a venue whose score stayed at zero could be snapshotted rarely, and one whose score twitched got snapshotted often until the cause was found. And the detector stopped trusting liveness. A book is usable when its drift score is zero and its last verified update is younger than the venue&#39;s interval, and a book that is merely moving does not qualify.</p>
+<p>The general lesson is older than order books. Any local replica fed by a stream of changes has this property: it can be arbitrarily wrong while appearing to be fully up to date, because the appearance comes from the stream and the correctness comes from the base the stream is applied to. Liveness is a fact about the connection. Correctness is a fact about the replica, and it has to be measured against the source, on a schedule, by something other than the stream that is fooling you.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">WebSockets</span><span class="tag-chip">Order Books</span><span class="tag-chip">CCXT</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

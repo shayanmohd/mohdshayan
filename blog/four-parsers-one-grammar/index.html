@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four parsers, one grammar, no winner | Mohd Shayan</title>
+    <meta name="description" content="CYK, Earley, LR(1) and recursive descent are usually ranked by asymptotic cost, which is the wrong axis. The right axes are how often the grammar changes and how ambiguous it is.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/four-parsers-one-grammar/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/four-parsers-one-grammar/">
+    <meta property="og:title" content="Four parsers, one grammar, no winner | Mohd Shayan">
+    <meta property="og:description" content="CYK, Earley, LR(1) and recursive descent are usually ranked by asymptotic cost, which is the wrong axis. The right axes are how often the grammar changes and how ambiguous it is.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Four parsers, one grammar, no winner | Mohd Shayan">
+    <meta name="twitter:description" content="CYK, Earley, LR(1) and recursive descent are usually ranked by asymptotic cost, which is the wrong axis. The right axes are how often the grammar changes and how ambiguous it is.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/four-parsers-one-grammar/#post",
+      "headline": "Four parsers, one grammar, no winner",
+      "description": "CYK, Earley, LR(1) and recursive descent are usually ranked by asymptotic cost, which is the wrong axis. The right axes are how often the grammar changes and how ambiguous it is.",
+      "url": "https://mohdshayan.com/blog/four-parsers-one-grammar/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/four-parsers-one-grammar/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Parsing, Structured Output, Algorithms",
+      "inLanguage": "en",
+      "wordCount": 1200
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Four parsers, one grammar, no winner</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">CYK, Earley, LR(1) and recursive descent are usually ranked by asymptotic cost, which is the wrong axis. The right axes are how often the grammar changes and how ambiguous it is.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>My paper benchmarked a CYK parser against LR(1), Earley and recursive descent on the same grammars, and the honest summary of what a benchmark like that can tell you is less than people hope. Each parser wins on some input and loses on another, and the asymptotic bounds everybody quotes, cubic for CYK, cubic worst case for Earley, linear for LR(1) and for a hand-written descent, describe the axis on which the comparison is least interesting. The axis that decides which parser to use is not how long the input is. It is how often the grammar changes, and whether the grammar is ambiguous.</p>
+<h2>The wrong axis</h2>
+<p>Every parsing textbook ranks the algorithms by running time in the length of the input, and for a compiler that is right. A compiler&#39;s grammar is fixed when the compiler is built, so the cost of preparing the grammar, building LR tables or writing descent functions by hand, is paid once and amortised over every file ever parsed. What remains is the per-input cost, and there the table-driven and hand-written parsers are linear and the chart-based ones are not.</p>
+<p>That ranking assumes the grammar is a constant, and in a growing class of systems it is not. A structured-output engine for a language model receives a JSON schema with the request, compiles it to a grammar, and uses it to mask tokens for the duration of one response. A tool-calling agent switches between grammars mid-generation. A template engine parses user-supplied formats. In all of these, the grammar arrives with the input, and the cost of preparing it is paid every time. An LR(1) table for a schema-derived grammar can take longer to build than the response takes to generate, at which point the linear per-token cost is irrelevant and the parser that needs no preparation wins.</p>
+<h2>The grammar churn quadrant</h2>
+<p>So the two axes I use are grammar stability, fixed at build time against supplied per request, and ambiguity, deterministic against ambiguous. Each quadrant has a natural parser.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 400" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Four parsers placed by grammar stability and ambiguity</title>
+<desc id="f1-d">A two by two grid. Horizontal axis: grammar stability, fixed at build time on the left, supplied per request on the right. Vertical axis: ambiguity, deterministic at the bottom, ambiguous at the top. Bottom left: LR(1) tables and hand-written recursive descent. Top left: CYK, when every parse or a probability is needed. Bottom right: Earley, as used by llguidance and XGrammar-2. Top right: Earley again, or CYK if probabilities are needed.</desc>
+<rect x="56" y="40" width="544" height="304" rx="8" class="viz-box"/>
+<line x1="328" y1="40" x2="328" y2="344" class="viz-grid"/>
+<line x1="56" y1="192" x2="600" y2="192" class="viz-grid"/>
+<text x="192" y="104" text-anchor="middle" class="viz-label">CYK</text>
+<text x="192" y="124" text-anchor="middle" class="viz-label-muted">every parse, or a probability</text>
+<text x="464" y="104" text-anchor="middle" class="viz-label">Earley, or CYK for probabilities</text>
+<text x="464" y="124" text-anchor="middle" class="viz-label-muted">no tables to rebuild</text>
+<text x="192" y="256" text-anchor="middle" class="viz-label">LR(1), recursive descent</text>
+<text x="192" y="276" text-anchor="middle" class="viz-label-muted">compilers: pay once, parse forever</text>
+<text x="464" y="256" text-anchor="middle" class="viz-label">Earley</text>
+<text x="464" y="276" text-anchor="middle" class="viz-label-muted">llguidance, XGrammar-2</text>
+<circle cx="464" cy="300" r="6" class="viz-d1"/>
+<text x="328" y="372" text-anchor="middle" class="viz-label-muted">Grammar stability: fixed at build time to supplied per request</text>
+<text x="20" y="192" transform="rotate(-90 20 192)" text-anchor="middle" class="viz-label-muted">Ambiguity: deterministic to ambiguous</text>
+</svg>
+<figcaption>Illustrative: the placement this post argues for; the dot marks where constrained decoding engines have moved.</figcaption>
+</figure>
+
+<p>Bottom left is the compiler&#39;s home: a fixed, deterministic grammar, parsed millions of times, where LR(1) tables or a hand-tuned descent parser earn their preparation cost many times over. Top left is where CYK lives and where my paper&#39;s implementation belongs: a fixed grammar that is ambiguous, where the job is not to find a parse but to find all of them or the most probable one, and a chart that holds every sub-parse is the natural structure for that. Bottom right is the new territory: a deterministic or nearly deterministic grammar that arrives with each request, where anything that needs a table build is paying that cost per request, and Earley, which works directly from the rules with no preparation, has an advantage that no per-token bound shows. Top right is Earley again, or CYK when probabilities matter, because Earley handles ambiguity and still needs no tables.</p>
+<h2>The quadrant predicted a change</h2>
+<p>What makes me trust the quadrant is that it predicted a decision I had no part in. The first XGrammar engine, from late 2024, compiled a grammar to a pushdown automaton and precomputed token masks per automaton state; its speed came from that cache. XGrammar-2, published in <a href="https://arxiv.org/abs/2601.04426">January 2026</a>, replaced the automaton with an Earley parser, keeping the cache-based acceleration, and its stated reasons are the quadrant&#39;s: agentic workloads switch structures mid-generation and reuse sub-structures across requests, so the engine needs to handle grammars that change constantly and cannot afford to rebuild an automaton for each. <a href="https://github.com/guidance-ai/llguidance">llguidance</a>, the engine behind the Guidance library, was Earley-based from the start for the same reason. Two independent teams, working on the per-request-grammar problem, arrived at the parser the quadrant places there.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 320" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Total cost against number of inputs parsed, table-driven against table-free, for one grammar</title>
+<desc id="f2-d">Two lines. A table-driven parser starts with a large fixed cost to build its tables and then rises slowly per input. A table-free parser starts near zero and rises more steeply per input. They cross at some number of inputs; below it the table-free parser is cheaper, above it the table-driven one. A per-request grammar sits at one input, far to the left of the crossing.</desc>
+<text x="0" y="18" class="viz-title">Where the preparation cost pays back</text>
+<text x="0" y="36" class="viz-sub">Total cost against inputs parsed with one grammar; an illustrative model</text>
+<line x1="380" y1="31" x2="394" y2="31" class="viz-s2"/><text x="400" y="35" class="viz-label-muted">table-driven</text>
+<line x1="500" y1="31" x2="514" y2="31" class="viz-s1"/><text x="520" y="35" class="viz-label-muted">table-free</text>
+<line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/>
+<line x1="56" y1="160" x2="600" y2="160" class="viz-grid"/>
+<line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/>
+<text x="56" y="288" text-anchor="middle" class="viz-tick">1</text>
+<text x="328" y="288" text-anchor="middle" class="viz-tick">inputs parsed</text>
+<text x="600" y="288" text-anchor="middle" class="viz-tick">many</text>
+<text x="328" y="310" text-anchor="middle" class="viz-label-muted">Number of inputs parsed with the same grammar</text>
+<polyline points="56,150 600,110" class="viz-s2"/>
+<polyline points="56,258 600,70" class="viz-s1"/>
+<circle cx="360" cy="127" r="5" class="viz-dgray"/>
+<text x="374" y="122" class="viz-value">crossing</text>
+<circle cx="56" cy="258" r="5" class="viz-d1"/>
+<text x="70" y="250" class="viz-value">a per-request grammar lives here</text>
+<text x="70" y="146" class="viz-label-muted">table build, paid before the first input</text>
+</svg>
+<figcaption>Illustrative: two straight lines with a fixed cost and a slope, drawn to show why a per-request grammar never reaches the crossing.</figcaption>
+</figure>
+
+<h2>Where CYK still belongs</h2>
+<p>None of this retires the parser my paper is about, and the quadrant is careful about why. CYK&#39;s chart holds every nonterminal for every span, which is the structure a probabilistic grammar needs to compute the most likely tree, or the total probability of a sentence, or the expected counts that train the grammar in the first place. Earley can be extended to do the same, and it is, but the extension gives up the simplicity that makes Earley attractive per request, and the two converge on the same amount of work once probabilities are involved. In the top-left cell, a fixed grammar and a need for probabilities, CYK&#39;s cube is not a cost to be avoided; it is the size of the answer being computed.</p>
+<p>The requirement that trips people is normal form. CYK needs the grammar binarised, which is a preparation cost of its own, small next to an LR table build but not zero, and for a grammar that arrives per request it is one more reason the bottom-right cell prefers Earley, which takes rules as written. For a treebank grammar that is fixed for the life of the model, the conversion is paid once and forgotten.</p>
+<h2>What the benchmark can and cannot say</h2>
+<p>Back to the paper&#39;s comparison. On a fixed grammar and a batch of inputs, CYK loses to LR(1) on time, as it must, and the comparison is worth publishing because it puts a measured constant on the asymptotic story: how many times slower, on which grammar sizes, for which input lengths. What it cannot say is which parser to choose, because the benchmark fixed the grammar, and fixing the grammar decides the quadrant before the timer starts. A benchmark that included the table-build time per grammar, and ran each grammar against one input, would tell a different story, and it would be the story the structured-output engines are living.</p>
+<p>The other thing the benchmark cannot say is what happens under ambiguity. A deterministic grammar gives LR(1) and descent a clean run. An ambiguous one gives LR(1) conflicts, which are resolved by rules that pick one parse and discard the rest, and gives descent an exponential blow-up or a backtracking budget. CYK and Earley keep every parse in the chart, which is why they cost more, and it is the cost of an answer the other two do not offer. Comparing them on a grammar where that answer is not needed is comparing a delivery van with a bicycle on a race track.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">An Earley chart and the equivalent CYK cells for a four-token input</title>
+<desc id="f3-d">Left: an Earley chart as five state sets, one per position from zero to four, each holding dotted rules; arrows labelled predict, scan and complete connect them. Right: the CYK triangle for the same four tokens, ten cells, each holding the nonterminals that span the cell's range. A note says both hold every sub-parse, and Earley builds its sets from the rules directly, with no tables.</desc>
+<text x="0" y="18" class="viz-title">Two charts, same information, no tables</text>
+<text x="0" y="36" class="viz-sub">Earley state sets on the left; CYK cells on the right, for four tokens</text>
+<rect x="8" y="60" width="52" height="150" rx="6" class="viz-box"/><text x="34" y="82" text-anchor="middle" class="viz-tick">S0</text>
+<rect x="70" y="60" width="52" height="150" rx="6" class="viz-box"/><text x="96" y="82" text-anchor="middle" class="viz-tick">S1</text>
+<rect x="132" y="60" width="52" height="150" rx="6" class="viz-box-accent"/><text x="158" y="82" text-anchor="middle" class="viz-tick">S2</text>
+<rect x="194" y="60" width="52" height="150" rx="6" class="viz-box"/><text x="220" y="82" text-anchor="middle" class="viz-tick">S3</text>
+<rect x="256" y="60" width="52" height="150" rx="6" class="viz-box"/><text x="282" y="82" text-anchor="middle" class="viz-tick">S4</text>
+<text x="34" y="110" text-anchor="middle" class="viz-tick">predict</text>
+<text x="96" y="110" text-anchor="middle" class="viz-tick">scan</text>
+<text x="158" y="110" text-anchor="middle" class="viz-tick">complete</text>
+<text x="158" y="236" text-anchor="middle" class="viz-label-muted">dotted rules per position</text>
+<rect x="360" y="180" width="60" height="26" rx="4" class="viz-box"/><rect x="428" y="180" width="60" height="26" rx="4" class="viz-box"/><rect x="496" y="180" width="60" height="26" rx="4" class="viz-box"/><rect x="564" y="180" width="60" height="26" rx="4" class="viz-box"/>
+<rect x="394" y="146" width="60" height="26" rx="4" class="viz-box"/><rect x="462" y="146" width="60" height="26" rx="4" class="viz-box-accent"/><rect x="530" y="146" width="60" height="26" rx="4" class="viz-box"/>
+<rect x="428" y="112" width="60" height="26" rx="4" class="viz-box"/><rect x="496" y="112" width="60" height="26" rx="4" class="viz-box"/>
+<rect x="462" y="78" width="60" height="26" rx="4" class="viz-box"/>
+<text x="492" y="236" text-anchor="middle" class="viz-label-muted">nonterminals per span</text>
+<text x="320" y="276" text-anchor="middle" class="viz-tick">both keep every sub-parse; Earley needs no preparation, CYK needs normal form</text>
+</svg>
+<figcaption>Illustrative: the two chart shapes side by side; the highlighted cells hold the same span.</figcaption>
+</figure>
+
+<h2>How to choose</h2>
+<p>Ask two questions before reading a single benchmark. Does the grammar exist before the inputs, or arrive with them? And does the application need one parse, every parse, or the most probable one? A fixed grammar and one parse is a compiler, and the linear parsers are right. A fixed grammar and all parses or a probability is a chart parser&#39;s job, and CYK&#39;s cube is the price of the chart. A grammar per request is Earley&#39;s quadrant, whatever the input length, because the preparation is the cost and Earley has none. A grammar per request with probabilities is the hard corner, and it is where the interesting research now sits.</p>
+<p>The benchmark in my paper is honest about what it measured, and the quadrant is what it did not. Both are needed to choose, and the second one is the one people skip, because it is not a number.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Parsing</span><span class="tag-chip">Structured Output</span><span class="tag-chip">Algorithms</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

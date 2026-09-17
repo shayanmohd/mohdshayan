@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A citation is a claim about a passage | Mohd Shayan</title>
+    <meta name="description" content="A citation marker asserts that this passage supports this sentence, and it fails on its own schedule. Make the model commit to spans, check them outside the model, drop the rest.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/citation-is-a-claim/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/citation-is-a-claim/">
+    <meta property="og:title" content="A citation is a claim about a passage | Mohd Shayan">
+    <meta property="og:description" content="A citation marker asserts that this passage supports this sentence, and it fails on its own schedule. Make the model commit to spans, check them outside the model, drop the rest.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A citation is a claim about a passage | Mohd Shayan">
+    <meta name="twitter:description" content="A citation marker asserts that this passage supports this sentence, and it fails on its own schedule. Make the model commit to spans, check them outside the model, drop the rest.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/citation-is-a-claim/#post",
+      "headline": "A citation is a claim about a passage",
+      "description": "A citation marker asserts that this passage supports this sentence, and it fails on its own schedule. Make the model commit to spans, check them outside the model, drop the rest.",
+      "url": "https://mohdshayan.com/blog/citation-is-a-claim/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/citation-is-a-claim/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "RAG, Grounding, Citations",
+      "inLanguage": "en",
+      "wordCount": 1280
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 6 min read</p>
+                <h1 class="h2 mt-3 balance reveal">A citation is a claim about a passage</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">A citation marker asserts that this passage supports this sentence, and it fails on its own schedule. Make the model commit to spans, check them outside the model, drop the rest.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>A citation looks like evidence and is actually a second claim. The first claim is the sentence: the refund window is fourteen days. The second is the marker after it: passage 3 says so. Both can be wrong, and they fail independently, on different schedules, for different reasons. When I built grounded citation into the helpdesk assistant at CRIS, the thing I had not appreciated was that the marker needed exactly the same scrutiny as the sentence, and that giving it that scrutiny changes what the model is asked to produce.</p>
+<h2>Citations fail on their own schedule</h2>
+<p>The evidence that citation markers are unreliable is not anecdotal. The ALCE benchmark from <a href="https://arxiv.org/abs/2305.14627">Gao and colleagues</a> measures citation recall, whether the cited passages entail the sentence, and citation precision, whether each cited passage is actually needed, and found the best models of its time far from full support on long-form questions. Wallat and colleagues went further in <a href="https://arxiv.org/abs/2412.18004">Correctness is not Faithfulness in RAG Attributions</a>, distinguishing a citation that happens to point at a supporting passage from one that reflects how the answer was actually produced. They report that 57 percent of citations from a RAG-optimised model showed unfaithful behaviour: the model answered from its own memory and then found a passage to attach, a pattern they call post-rationalisation.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 230" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Unfaithful citations in a RAG-optimised model</title>
+<desc id="f1-d">A stacked bar: 57 percent of citations judged unfaithful, the model answering from memory and attaching a passage afterwards, and 43 percent faithful. A note explains that a citation can point at a passage that does support the sentence and still be unfaithful.</desc>
+<text x="0" y="18" class="viz-title">The marker can be right for the wrong reason</text>
+<text x="0" y="36" class="viz-sub">Share of citations by faithfulness, RAG-optimised model, Wallat et al.</text>
+<rect x="0" y="60" width="364.8" height="28" class="viz-f4"/>
+<rect x="364.8" y="60" width="275.2" height="28" class="viz-f1"/>
+<line x1="364.8" y1="60" x2="364.8" y2="88" class="viz-gap"/>
+<text x="182.4" y="78" text-anchor="middle" class="viz-onfill">57% unfaithful</text>
+<text x="502.4" y="78" text-anchor="middle" class="viz-onfill">43% faithful</text>
+<rect x="0" y="120" width="12" height="12" rx="3" class="viz-f4"/><text x="18" y="131" class="viz-label-muted">answer first, passage attached after</text>
+<rect x="300" y="120" width="12" height="12" rx="3" class="viz-f1"/><text x="318" y="131" class="viz-label-muted">answer produced from the passage</text>
+<text x="0" y="172" class="viz-label-muted">An unfaithful citation can still point at a passage that supports the sentence.</text>
+<text x="0" y="194" class="viz-label-muted">It is a correct marker on a claim the passage did not produce.</text>
+</svg>
+<figcaption>Source: <a href="https://arxiv.org/abs/2412.18004">Wallat et al. (2024)</a>, presented at ICTIR 2025.</figcaption>
+</figure>
+
+<p>That distinction matters for a helpdesk more than it sounds. A post-rationalised citation is right on the day the model&#39;s memory agrees with the manual and wrong on the day the manual changes, because the model was never reading the manual. The citation looked like grounding and was decoration.</p>
+<h2>A document citation cannot be checked at scale</h2>
+<p>The usual citation is a document identifier: passage 3, or a URL. To verify it, a person opens passage 3 and reads it against the sentence. That is fine for a demonstration and impossible for a system answering thousands of questions a day. There is no cheap mechanical check for &quot;this document supports this sentence&quot; that does not itself involve a model, and a model checking a model&#39;s citations is the same problem with a second opinion.</p>
+<p>A span citation is different. If the model has to quote the exact words from the passage that support the sentence, two cheap checks become possible. The first is string matching: does the quoted span actually occur in the cited passage, character for character. That check is free, deterministic and cannot be argued with. The second is entailment: does the span, read on its own, support the sentence. That check needs a model, but a small one, given a short span and a short sentence, and it is a far narrower question than &quot;does this document support this answer&quot;.</p>
+<h2>The no-span, no-claim rule</h2>
+<p>So the rule I built is this. Every sentence in a grounded answer carries a passage identifier and a verbatim span. A checker outside the model confirms the span exists in that passage by string match, and an entailment model confirms that the span supports the sentence. A sentence that fails either check is removed from the answer before it is shown. Not flagged, not marked uncertain, removed. The answer&#39;s length becomes a function of the evidence: an answer with three supported sentences is three sentences long, and an answer with none is a decline.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 160" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">The four gates a sentence passes before it is shown</title>
+<desc id="f2-d">Five boxes left to right: generate a sentence with a passage id and a quoted span; extract the span; string-match the span against the passage; run an entailment check of the span against the sentence; show or drop. A note under the third gate says it is deterministic and free.</desc>
+<defs><marker id="f2-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<rect x="8" y="40" width="112" height="56" rx="8" class="viz-box"/>
+<text x="64" y="64" text-anchor="middle" class="viz-label">Generate</text>
+<text x="64" y="82" text-anchor="middle" class="viz-label-muted">id plus span</text>
+<line x1="122" y1="68" x2="136" y2="68" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="140" y="40" width="112" height="56" rx="8" class="viz-box"/>
+<text x="196" y="64" text-anchor="middle" class="viz-label">Extract</text>
+<text x="196" y="82" text-anchor="middle" class="viz-label-muted">the quoted span</text>
+<line x1="254" y1="68" x2="268" y2="68" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="272" y="40" width="112" height="56" rx="8" class="viz-box-accent"/>
+<text x="328" y="64" text-anchor="middle" class="viz-label">String match</text>
+<text x="328" y="82" text-anchor="middle" class="viz-label-muted">in that passage</text>
+<line x1="386" y1="68" x2="400" y2="68" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="404" y="40" width="112" height="56" rx="8" class="viz-box"/>
+<text x="460" y="64" text-anchor="middle" class="viz-label">Entailment</text>
+<text x="460" y="82" text-anchor="middle" class="viz-label-muted">span supports it</text>
+<line x1="518" y1="68" x2="532" y2="68" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="536" y="40" width="96" height="56" rx="8" class="viz-box-ink"/>
+<text x="584" y="64" text-anchor="middle" class="viz-on-ink">Show</text>
+<text x="584" y="82" text-anchor="middle" class="viz-on-ink">or drop</text>
+<text x="328" y="126" text-anchor="middle" class="viz-tick">deterministic and free</text>
+<text x="320" y="150" text-anchor="middle" class="viz-label-muted">A sentence that fails any gate is removed; the answer shrinks to its evidence.</text>
+</svg>
+<figcaption>Illustrative: the pipeline as designed; the string-match gate is the one that costs nothing and catches the most.</figcaption>
+</figure>
+
+<p>The string-match gate does more work than it looks. A model that has post-rationalised, answering from memory and reaching for a passage afterwards, tends to quote loosely: it paraphrases the passage, or quotes something close to it, or quotes a span from a different passage than the one it cited. Exact matching catches all of that. The model is being asked to prove it read the passage by reproducing its words, and a model that did not read it cannot.</p>
+<p>The entailment gate catches the remainder: spans that are real but do not say what the sentence says. &quot;Refunds are processed within fourteen days&quot; does not support &quot;the refund window is fourteen days&quot;, and a span-level entailment model, asked only about those two short strings, is good at seeing the difference.</p>
+<h2>What it costs</h2>
+<p>Two things, and both are worth stating plainly. The first is that answers get shorter, sometimes to nothing, and a product team has to be willing to show a two-sentence answer where the model would have written six. The trade is that the two sentences are checkable, and the four that were dropped were the ones that would have been wrong on the day the manual changed.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 320" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Answer length against the entailment threshold, a model</title>
+<desc id="f3-d">A falling line: as the entailment threshold rises from lenient to strict, the average number of sentences surviving in an answer falls from about six to about two. A marker shows the threshold at which sentences that would fail when the source changes are removed.</desc>
+<text x="0" y="18" class="viz-title">Shorter, and checkable</text>
+<text x="0" y="36" class="viz-sub">Average sentences surviving per answer as the entailment gate tightens; an illustrative curve</text>
+<line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">8</text>
+<line x1="56" y1="108" x2="600" y2="108" class="viz-grid"/><text x="48" y="112" text-anchor="end" class="viz-tick">6</text>
+<line x1="56" y1="160" x2="600" y2="160" class="viz-grid"/><text x="48" y="164" text-anchor="end" class="viz-tick">4</text>
+<line x1="56" y1="212" x2="600" y2="212" class="viz-grid"/><text x="48" y="216" text-anchor="end" class="viz-tick">2</text>
+<line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/><text x="48" y="268" text-anchor="end" class="viz-tick">0</text>
+<text x="56" y="288" text-anchor="middle" class="viz-tick">lenient</text>
+<text x="328" y="288" text-anchor="middle" class="viz-tick">moderate</text>
+<text x="600" y="288" text-anchor="middle" class="viz-tick">strict</text>
+<text x="328" y="310" text-anchor="middle" class="viz-label-muted">Entailment threshold</text>
+<polyline points="56,108 164.8,118 273.6,140 382.4,170 491.2,196 600,212" class="viz-s1"/>
+<circle cx="382.4" cy="170" r="5" class="viz-d1"/>
+<text x="370" y="150" text-anchor="end" class="viz-value">post-rationalised sentences fall away here</text>
+<circle cx="600" cy="212" r="4" class="viz-d1"/>
+<text x="592" y="232" text-anchor="end" class="viz-value">2 sentences</text>
+</svg>
+<figcaption>Illustrative: a curve drawn to show the trade the rule makes; the sentence counts are a model, not measurements.</figcaption>
+</figure>
+
+<p>The second cost is latency. Two extra passes, one deterministic and one a small model, run after generation and before display. The string match is microseconds. The entailment check on a handful of short pairs is tens of milliseconds on a small model, which for a helpdesk answer read by a person is invisible, and for a pipeline that must stream tokens as they are produced is a real constraint, because the gate needs the whole sentence before it can pass it. For the streamed case the answer is to gate per sentence as each completes, which delays each sentence by one check rather than the whole answer by all of them.</p>
+<h2>What the gates miss</h2>
+<p>The rule is not a guarantee of truth, and it is worth saying which failures survive it. A span can be real, support the sentence, and still be the wrong span: the passage says the refund window is fourteen days for one product and thirty for another, the model quotes the fourteen, and the entailment gate passes because the quoted words do support the sentence. The gates check that the answer came from the passage. They do not check that the passage was the right one, which is a retrieval problem and belongs to the retriever&#39;s evaluation rather than to the citation checker.</p>
+<p>A span can also be real and the passage itself wrong, out of date, or superseded by a later document. The gates verify the chain from sentence to passage, not the passage&#39;s standing in the corpus, and a helpdesk with stale manuals will produce faithfully cited stale answers. That is a better failure than an unfaithful one, because the stale passage is named and can be fixed at the source, but it is a failure, and the corpus needs its own hygiene.</p>
+<p>What the gates do guarantee is narrower and more valuable than it looks: every sentence shown to the reader has a named passage and a quoted span that a person can check in seconds. The failure modes that remain are the ones a person can find by following the citation. The ones removed are the ones nobody could have found, because there was nothing at the end of the marker.</p>
+<h2>What it changes about the prompt</h2>
+<p>Asking for spans changes the model&#39;s job in a way that helps before the gates even run. A model told to quote the exact supporting words for every sentence is a model that has been told, in effect, to read the passages first. It is harder to post-rationalise a quotation than a citation, because the quotation has to come from the text. The Wallat result says that a marker on its own does not make the model read; the span requirement makes reading the shortest path to a passing answer.</p>
+<p>That is the design in one sentence: make the cheapest way to produce a citation the honest way, then check it anyway. A citation is a claim about a passage. Treat it like any other claim the model makes, and refuse to show it until it has been verified by something that is not the model.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">RAG</span><span class="tag-chip">Grounding</span><span class="tag-chip">Citations</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

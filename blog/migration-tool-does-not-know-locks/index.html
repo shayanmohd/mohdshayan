@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your migration tool does not know about locks | Mohd Shayan</title>
+    <meta name="description" content="Prisma and Drizzle run the SQL you give them and neither sets a lock timeout. The danger of a migration is the lock it takes and the queue behind it, not the size of the change.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/migration-tool-does-not-know-locks/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/migration-tool-does-not-know-locks/">
+    <meta property="og:title" content="Your migration tool does not know about locks | Mohd Shayan">
+    <meta property="og:description" content="Prisma and Drizzle run the SQL you give them and neither sets a lock timeout. The danger of a migration is the lock it takes and the queue behind it, not the size of the change.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Your migration tool does not know about locks | Mohd Shayan">
+    <meta name="twitter:description" content="Prisma and Drizzle run the SQL you give them and neither sets a lock timeout. The danger of a migration is the lock it takes and the queue behind it, not the size of the change.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/migration-tool-does-not-know-locks/#post",
+      "headline": "Your migration tool does not know about locks",
+      "description": "Prisma and Drizzle run the SQL you give them and neither sets a lock timeout. The danger of a migration is the lock it takes and the queue behind it, not the size of the change.",
+      "url": "https://mohdshayan.com/blog/migration-tool-does-not-know-locks/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/migration-tool-does-not-know-locks/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "PostgreSQL, Migrations, Prisma",
+      "inLanguage": "en",
+      "wordCount": 1334
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 6 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Your migration tool does not know about locks</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Prisma and Drizzle run the SQL you give them and neither sets a lock timeout. The danger of a migration is the lock it takes and the queue behind it, not the size of the change.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>The migration that takes a production system down is almost never the big one. Adding a column with a default to a table of a hundred rows can stop every request for a minute, and rewriting a table of a hundred million rows can pass unnoticed, because the thing that decides is not the size of the change. It is the lock the statement takes and the queue that forms behind it while it waits. SocialSure&#39;s backend runs PostgreSQL through Prisma and Drizzle, and the lesson I keep relearning is that the migration tools are honest about what they do: they run the SQL you give them. What they do not do is know anything about locks.</p>
+<h2>The queue is the danger</h2>
+<p>Most schema changes in Postgres take an ACCESS EXCLUSIVE lock on the table they touch, the strongest lock there is, and the <a href="https://www.postgresql.org/docs/current/explicit-locking.html">locking documentation</a> lists which statements take which level. ACCESS EXCLUSIVE conflicts with everything, including the ACCESS SHARE lock that a plain SELECT holds. The statement cannot proceed until every existing reader has finished.</p>
+<p>That alone would be fine, because most reads are short. The problem is the queue. Postgres grants locks in order, so once an ALTER TABLE is waiting for its exclusive lock, every new query that wants any conflicting lock, which is every query on that table, queues behind it. A single long-running report that started before the migration holds the ALTER off for as long as it runs, and for that whole time the table is effectively offline to everyone else, not because anything is being altered but because everyone is waiting behind something that is waiting.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 262" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">The lock queue behind a waiting ALTER TABLE</title>
+<desc id="f1-d">A row of boxes. First, a long SELECT holding an ACCESS SHARE lock since before the migration. Second, the ALTER TABLE waiting for ACCESS EXCLUSIVE, which conflicts with the SELECT. Third, fourth and fifth, ordinary reads and writes that arrived after the ALTER and queue behind it, even though they would not conflict with the SELECT. The table is idle for all of them.</desc>
+<text x="0" y="18" class="viz-title">Nothing is being altered; everything is waiting</text>
+<text x="0" y="36" class="viz-sub">Lock queue on one table, in arrival order</text>
+<rect x="8" y="70" width="150" height="72" rx="8" class="viz-box"/>
+<text x="83" y="94" text-anchor="middle" class="viz-label">Long SELECT</text>
+<text x="83" y="112" text-anchor="middle" class="viz-label-muted">ACCESS SHARE, held</text>
+<text x="83" y="130" text-anchor="middle" class="viz-label-muted">started an hour ago</text>
+<rect x="174" y="70" width="150" height="72" rx="8" class="viz-box-accent"/>
+<text x="249" y="94" text-anchor="middle" class="viz-label">ALTER TABLE</text>
+<text x="249" y="112" text-anchor="middle" class="viz-label-muted">ACCESS EXCLUSIVE</text>
+<text x="249" y="130" text-anchor="middle" class="viz-label-muted">waiting for the SELECT</text>
+<rect x="340" y="70" width="90" height="72" rx="8" class="viz-box"/>
+<text x="385" y="100" text-anchor="middle" class="viz-label">SELECT</text>
+<text x="385" y="120" text-anchor="middle" class="viz-label-muted">queued</text>
+<rect x="440" y="70" width="90" height="72" rx="8" class="viz-box"/>
+<text x="485" y="100" text-anchor="middle" class="viz-label">UPDATE</text>
+<text x="485" y="120" text-anchor="middle" class="viz-label-muted">queued</text>
+<rect x="540" y="70" width="90" height="72" rx="8" class="viz-box"/>
+<text x="585" y="100" text-anchor="middle" class="viz-label">SELECT</text>
+<text x="585" y="120" text-anchor="middle" class="viz-label-muted">queued</text>
+<line x1="8" y1="160" x2="632" y2="160" class="viz-axis"/>
+<text x="83" y="184" text-anchor="middle" class="viz-tick">holding</text>
+<text x="249" y="184" text-anchor="middle" class="viz-tick">blocked</text>
+<text x="485" y="184" text-anchor="middle" class="viz-tick">blocked by the blocked one</text>
+<text x="0" y="224" class="viz-label-muted">A lock_timeout on the ALTER makes it give up instead of holding the queue.</text>
+<text x="0" y="246" class="viz-label-muted">Nothing else in the stack does that for you.</text>
+</svg>
+<figcaption>Illustrative: the FIFO lock queue described in the <a href="https://www.postgresql.org/docs/current/explicit-locking.html">PostgreSQL locking documentation</a>; the queued statements would not have conflicted with the SELECT on their own.</figcaption>
+</figure>
+
+<h2>What the tools do and do not set</h2>
+<p>Prisma Migrate takes an advisory lock so that two migration runs cannot overlap, and its <a href="https://www.prisma.io/docs/orm/prisma-migrate/workflows/development-and-production">documentation</a> describes the workflow around that. Ten seconds of waiting for that advisory lock and the run fails. That lock is about migrations racing each other. It has nothing to do with the table locks the migration&#39;s SQL will take, and Prisma does not set a <code>lock_timeout</code> for those. Drizzle Kit runs the generated SQL the same way. In both cases the statement waits for its table lock as long as Postgres lets it, which by default is forever, and the queue grows the whole time.</p>
+<p>The fix is one setting, and the tools let you write it because it is just SQL: set <code>lock_timeout</code> at the top of the migration, to a value shorter than the time you are willing to block the table. If the exclusive lock cannot be obtained within that window, the statement fails instead of waiting, the queue drains, and the migration retries later or under a maintenance window. The failure is the safe outcome. The wait was the dangerous one.</p>
+<pre><code class="language-sql">SET lock_timeout = &#39;3s&#39;;
+ALTER TABLE deals ADD COLUMN source text;
+</code></pre>
+<p>Which statements need the timeout is the part the tools cannot tell you, and it is where the size intuition goes wrong. Adding a nullable column with no default takes the exclusive lock for a moment and is cheap once obtained; its danger is entirely the queue. Adding a column with a volatile default rewrites the table and holds the lock for the whole rewrite. Creating an index the ordinary way takes a SHARE lock that blocks writes for the duration; creating it concurrently takes a weaker lock and runs alongside traffic. The right question about every migration is which lock, for how long, behind what.</p>
+<h2>Postgres has been making this cheaper for twenty years</h2>
+<p>Most of the expensive operations have a cheap form now, and the history of when each arrived is a useful map of what to reach for.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 170" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">When common schema changes became cheap in PostgreSQL</title>
+<desc id="f2-d">A timeline: 2006, version 8.2, CREATE INDEX CONCURRENTLY; 2011, version 9.1, ADD CONSTRAINT NOT VALID with a separate VALIDATE; 2018, version 11, ADD COLUMN with a constant default without rewriting the table; 2021, version 14, DETACH PARTITION CONCURRENTLY.</desc>
+<line x1="40" y1="90" x2="600" y2="90" class="viz-axis"/>
+<circle cx="80" cy="90" r="6" class="viz-d1"/>
+<text x="80" y="64" text-anchor="middle" class="viz-tick">2006, 8.2</text>
+<text x="80" y="46" text-anchor="middle" class="viz-label">Index concurrently</text>
+<circle cx="240" cy="90" r="6" class="viz-d1"/>
+<text x="240" y="124" text-anchor="middle" class="viz-tick">2011, 9.1</text>
+<text x="240" y="142" text-anchor="middle" class="viz-label">Constraint NOT VALID</text>
+<circle cx="400" cy="90" r="6" class="viz-d1"/>
+<text x="400" y="64" text-anchor="middle" class="viz-tick">2018, 11</text>
+<text x="400" y="46" text-anchor="middle" class="viz-label">Default without rewrite</text>
+<circle cx="560" cy="90" r="6" class="viz-d1"/>
+<text x="560" y="124" text-anchor="middle" class="viz-tick">2021, 14</text>
+<text x="560" y="142" text-anchor="middle" class="viz-label">Detach concurrently</text>
+</svg>
+<figcaption>Source: PostgreSQL release notes for <a href="https://www.postgresql.org/docs/release/8.2.0/">8.2</a>, <a href="https://www.postgresql.org/docs/release/9.1.0/">9.1</a>, <a href="https://www.postgresql.org/docs/release/11.0/">11</a> and <a href="https://www.postgresql.org/docs/release/14.0/">14</a>.</figcaption>
+</figure>
+
+<p>Each entry on that line replaces an operation that held a strong lock for a long time with one that holds a weak lock, or a strong lock briefly. Since version 11, adding a column with a constant default is a catalogue change rather than a rewrite. Since 9.1, a foreign key or check constraint can be added as NOT VALID, which takes the exclusive lock only for an instant, and validated later under a lock that allows reads and writes. Since 8.2, an index can be built without blocking writes. The tools generate the plain forms by default, because the plain forms are portable and simple, and the migration author has to know to write the cheap ones.</p>
+<h2>The lock receipt</h2>
+<p>The habit I use to make that knowledge visible is a five-line header committed with every migration file. It states the lock level taken, the tables affected, the worst-case hold time and what it depends on, the lock timeout set, and the retry plan if the timeout fires. A migration without a receipt does not merge. The header is not enforced by any tool. It is enforced by the reviewer, who can now see in five lines what the SQL below is going to do to the table at three in the afternoon.</p>
+<pre><code class="language-sql">-- lock: ACCESS EXCLUSIVE on deals (instant, catalogue only)
+-- tables: deals
+-- worst case: held for the duration of any SELECT already running on deals
+-- lock_timeout: 3s
+-- retry: rerun; safe to repeat, the column add is idempotent via IF NOT EXISTS
+</code></pre>
+<p>Writing the receipt is what forces the right questions. Filling in the worst-case line for an ADD COLUMN with a default on version 10 makes you look up whether it rewrites, and it did. Filling it in for a CREATE INDEX makes you write CONCURRENTLY. Filling in the retry line for a rewrite that cannot be repeated makes you split it into a backfill in batches and a final constraint. The receipt is small because the thinking it forces is where the value is.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 262" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Lock level by statement, plain form against cheap form</title>
+<desc id="f3-d">A table with three rows: create an index, add a constraint, add a column with a default. For each, the plain form and its lock: CREATE INDEX takes SHARE and blocks writes; ADD CONSTRAINT takes ACCESS EXCLUSIVE for a full scan; ADD COLUMN DEFAULT before version 11 rewrote the table under ACCESS EXCLUSIVE. And the cheap form: CONCURRENTLY under SHARE UPDATE EXCLUSIVE; NOT VALID then VALIDATE; a constant default on version 11 or later, an instant catalogue change.</desc>
+<text x="0" y="18" class="viz-title">The same change, two locks</text>
+<text x="20" y="48" class="viz-tick">CHANGE</text>
+<text x="200" y="48" class="viz-tick">PLAIN FORM</text>
+<text x="420" y="48" class="viz-tick">CHEAP FORM</text>
+<line x1="0" y1="56" x2="640" y2="56" class="viz-axis"/>
+<text x="20" y="82" class="viz-label">Add an index</text>
+<text x="200" y="82" class="viz-label-muted">SHARE, blocks writes</text>
+<text x="420" y="82" class="viz-label-muted">CONCURRENTLY, writes continue</text>
+<line x1="0" y1="96" x2="640" y2="96" class="viz-grid"/>
+<text x="20" y="122" class="viz-label">Add a constraint</text>
+<text x="200" y="122" class="viz-label-muted">ACCESS EXCLUSIVE, full scan</text>
+<text x="420" y="122" class="viz-label-muted">NOT VALID, then VALIDATE</text>
+<line x1="0" y1="136" x2="640" y2="136" class="viz-grid"/>
+<text x="20" y="162" class="viz-label">Column with default</text>
+<text x="200" y="162" class="viz-label-muted">rewrite, before version 11</text>
+<text x="420" y="162" class="viz-label-muted">constant default, instant</text>
+<line x1="0" y1="176" x2="640" y2="176" class="viz-grid"/>
+<text x="20" y="202" class="viz-label">Any of the above</text>
+<text x="200" y="202" class="viz-label-muted">no lock_timeout, waits forever</text>
+<text x="420" y="202" class="viz-label-muted">lock_timeout set, fails safe</text>
+<line x1="0" y1="216" x2="640" y2="216" class="viz-grid"/>
+<text x="0" y="244" class="viz-label-muted">The tool writes the left column by default; the receipt gets the right one written.</text>
+</svg>
+<figcaption>Source: lock levels from the <a href="https://www.postgresql.org/docs/current/explicit-locking.html">PostgreSQL explicit locking documentation</a>; the version-11 default behaviour from its release notes.</figcaption>
+</figure>
+
+<h2>The retry that is not a retry</h2>
+<p>One line of the receipt deserves more than a line, because it is where migrations go from risky to safe: the retry plan. A statement that fails on <code>lock_timeout</code> has done nothing, and rerunning it is fine. A statement that was halfway through a table rewrite when the connection dropped may have left the table in a state the tool does not recognise, and the tool&#39;s own record of which migrations have run may disagree with the schema. The receipt forces the author to say which kind of statement this is before it runs.</p>
+<p>For the dangerous kind, the plan is almost always to split. A backfill runs in batches of a few thousand rows, each in its own short transaction, so that a failure loses one batch and a rerun resumes. The constraint that depends on the backfill is added NOT VALID at the start, so that new rows obey it while old rows catch up, and validated at the end under a lock that lets traffic through. The migration that would have held the table for ten minutes becomes a hundred migrations that each hold it for none, and the receipt for each one says &quot;safe to repeat&quot;.</p>
+<h2>What the tools could do</h2>
+<p>It is worth saying that none of this is a complaint about Prisma or Drizzle. Generating portable SQL from a schema diff is the right job for a tool, and knowing your production traffic pattern is not something a tool can do. A lock timeout is a value only the team can choose, because it encodes how long they are willing to block a table, and that number is different for a reporting database and a ticketing gate. The tools could make the setting more visible, and some of the safer-migration libraries do exactly that, but the decision was always going to be the team&#39;s.</p>
+<p>So the rule is the team&#39;s too. Every migration says what lock it takes, for how long, behind what, with a timeout that makes waiting fail instead of spreading. The size of the change never appears in that sentence, because it was never the thing that mattered.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">PostgreSQL</span><span class="tag-chip">Migrations</span><span class="tag-chip">Prisma</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

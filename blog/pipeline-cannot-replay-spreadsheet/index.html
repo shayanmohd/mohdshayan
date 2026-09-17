@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A pipeline you cannot replay is a spreadsheet | Mohd Shayan</title>
+    <meta name="description" content="The real product of a CRM is the history of state changes. If it cannot show the pipeline exactly as it stood at nine last Monday, every historical report is a reconstruction.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/pipeline-cannot-replay-spreadsheet/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/pipeline-cannot-replay-spreadsheet/">
+    <meta property="og:title" content="A pipeline you cannot replay is a spreadsheet | Mohd Shayan">
+    <meta property="og:description" content="The real product of a CRM is the history of state changes. If it cannot show the pipeline exactly as it stood at nine last Monday, every historical report is a reconstruction.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A pipeline you cannot replay is a spreadsheet | Mohd Shayan">
+    <meta name="twitter:description" content="The real product of a CRM is the history of state changes. If it cannot show the pipeline exactly as it stood at nine last Monday, every historical report is a reconstruction.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/pipeline-cannot-replay-spreadsheet/#post",
+      "headline": "A pipeline you cannot replay is a spreadsheet",
+      "description": "The real product of a CRM is the history of state changes. If it cannot show the pipeline exactly as it stood at nine last Monday, every historical report is a reconstruction.",
+      "url": "https://mohdshayan.com/blog/pipeline-cannot-replay-spreadsheet/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/pipeline-cannot-replay-spreadsheet/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Data Modelling, CRM, Databases",
+      "inLanguage": "en",
+      "wordCount": 1195
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">A pipeline you cannot replay is a spreadsheet</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">The real product of a CRM is the history of state changes. If it cannot show the pipeline exactly as it stood at nine last Monday, every historical report is a reconstruction.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>Ask a CRM a simple question: what did the pipeline look like at nine o&#39;clock last Monday. Not what it looks like now with a date filter, which is a different question with a different answer. What was in each stage, at that moment, before the week&#39;s moves. Most systems cannot answer, and the ones that cannot are, whatever their price, a spreadsheet with a login screen. The current state is stored; the history that produced it is not, or is kept for a while and then thrown away. When I designed the pipeline model for the CRM at CustomGlide, this was the question I built around, and the design that answers it is older than any CRM.</p>
+<h2>The Monday replay test</h2>
+<p>The test is one query. Pick any past instant and ask the system for the pipeline as it was. A system that passes has a transition log as its source of truth: every change of stage, owner, amount or status is a row with a timestamp, and the current state of a deal is derived from its rows. A system that fails has a mutable deal record whose stage column was overwritten, with maybe a history table on the side that was never the source of anything.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">A mutable deal row against a transition log</title>
+<desc id="f1-d">On the left, a single deal row whose stage column has been overwritten: it reads Negotiation and nothing else is known. On the right, a transition log for the same deal with five rows, each with a timestamp, from Lead through Qualified, Demo done, Proposal sent and Negotiation. A query that filters the log to rows at or before a chosen instant and takes the latest reconstructs the state at that instant.</desc>
+<text x="0" y="18" class="viz-title">One remembers; the other only knows</text>
+<text x="0" y="36" class="viz-sub">The same deal, stored two ways</text>
+<rect x="8" y="56" width="280" height="90" rx="8" class="viz-box"/>
+<text x="24" y="82" class="viz-label">deals</text>
+<text x="24" y="106" class="viz-value">id 4471   stage Negotiation</text>
+<text x="24" y="128" class="viz-label-muted">what was it last Monday: unknown</text>
+<rect x="352" y="56" width="280" height="200" rx="8" class="viz-box-accent"/>
+<text x="368" y="82" class="viz-label">stage_transitions</text>
+<text x="368" y="106" class="viz-value">4471  Lead           08-21 10:12</text>
+<text x="368" y="126" class="viz-value">4471  Qualified      08-28 15:40</text>
+<text x="368" y="146" class="viz-value">4471  Demo done      09-04 11:05</text>
+<text x="368" y="166" class="viz-value">4471  Proposal sent  09-12 14:02</text>
+<text x="368" y="186" class="viz-value">4471  Negotiation    09-16 09:30</text>
+<line x1="368" y1="196" x2="616" y2="196" class="viz-grid"/>
+<text x="368" y="220" class="viz-label-muted">as of Monday 09-15 09:00: the latest</text>
+<text x="368" y="240" class="viz-label-muted">row at or before it, so Proposal sent</text>
+<text x="8" y="180" class="viz-label-muted">The left is the state.</text>
+<text x="8" y="200" class="viz-label-muted">The right is the state and every</text>
+<text x="8" y="220" class="viz-label-muted">state it has ever been, with the</text>
+<text x="8" y="240" class="viz-label-muted">current row derived, not stored.</text>
+</svg>
+<figcaption>Illustrative: the two storage shapes; the dates are made up for the drawing.</figcaption>
+</figure>
+
+<p>The replay query is short, and it is the same query for every report that asks about the past.</p>
+<pre><code class="language-sql">SELECT DISTINCT ON (deal_id) deal_id, to_stage AS stage
+FROM stage_transitions
+WHERE moved_at &lt;= &#39;2026-09-15 09:00+05:30&#39;
+ORDER BY deal_id, moved_at DESC;
+</code></pre>
+<p>Group that by stage and you have the pipeline as it stood. Run it for the previous Monday too and you have the week&#39;s net movement, exactly, rather than as a reconstruction from whatever the current rows happen to say about their created and modified dates.</p>
+<h2>Why the current row is not enough</h2>
+<p>The reason this matters is not archival tidiness. It is that most of the questions a sales team asks are questions about change, and change is not visible in a snapshot. How much of this quarter&#39;s forecast was already in the pipeline at the start of the quarter. Which deals moved backwards last month. How long do deals spend in Negotiation before they close, and has that got longer. Whether the manager&#39;s Monday view was right, now that the month has closed. Every one of those is a query over transitions, and every one is a guess if the transitions were not kept.</p>
+<p>The disputes are worse than the reports. A rep says the deal was in Proposal Sent when the target was set; the manager remembers otherwise; the system shows Negotiation and a modified-date. Without the log, the argument is settled by seniority. With the log, it is settled by a row.</p>
+<h2>What the vendors keep</h2>
+<p>The major CRMs do keep history, and how much they keep is instructive, because each of them treats it as a feature with a limit rather than as the source of truth. Salesforce&#39;s standard <a href="https://help.salesforce.com/s/articleView?id=000383595&language=en_US&type=1">field history tracking</a> retains changes for up to 18 months in the interface and 24 through the API, and the paid <a href="https://help.salesforce.com/s/articleView?id=xcloud.field_audit_trail.htm&language=en_US">Field Audit Trail</a> add-on extends that to as long as ten years. HubSpot&#39;s <a href="https://knowledge.hubspot.com/properties/export-property-history">property history</a> is capped by revisions rather than time, at 45 for contact properties and 20 for deal, company and ticket properties, and deleting a property deletes its history. Zoho CRM&#39;s <a href="https://help.zoho.com/portal/en/kb/crm/faqs/audit-log">audit log</a> is kept for three years and then permanently deleted.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 250" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">How long three CRMs keep a field's history</title>
+<desc id="f2-d">Horizontal bars in months: Salesforce standard field history 18, Zoho audit log 36, Salesforce Field Audit Trail up to 120. HubSpot is shown as a note because its limit is 20 revisions per deal property rather than a time.</desc>
+<text x="0" y="18" class="viz-title">History as a feature with a limit</text>
+<text x="0" y="36" class="viz-sub">Months of retained history, by product and plan</text>
+<line x1="224" y1="52" x2="224" y2="154" class="viz-axis"/>
+<text x="214" y="73" text-anchor="end" class="viz-label">Salesforce, standard</text>
+<path d="M224 58 H275 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H224 Z" class="viz-fgray"/>
+<text x="291" y="73" class="viz-value">18</text>
+<text x="214" y="107" text-anchor="end" class="viz-label">Zoho, audit log</text>
+<path d="M224 92 H330 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H224 Z" class="viz-fgray"/>
+<text x="346" y="107" class="viz-value">36</text>
+<text x="214" y="141" text-anchor="end" class="viz-label">Salesforce, Field Audit Trail</text>
+<path d="M224 126 H564 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H224 Z" class="viz-f1"/>
+<text x="580" y="141" class="viz-value">120</text>
+<text x="0" y="186" class="viz-label-muted">HubSpot keeps the last 20 revisions of a deal property, however long they span,</text>
+<text x="0" y="206" class="viz-label-muted">and 45 of a contact property; a deleted property takes its history with it.</text>
+<text x="0" y="236" class="viz-tick">an add-on, a cap, and a three-year clock: none of them is the source of truth</text>
+</svg>
+<figcaption>Source: <a href="https://help.salesforce.com/s/articleView?id=000383595&language=en_US&type=1">Salesforce field history retention</a>, <a href="https://help.salesforce.com/s/articleView?id=xcloud.field_audit_trail.htm&language=en_US">Field Audit Trail</a>, <a href="https://knowledge.hubspot.com/properties/export-property-history">HubSpot property history</a> and <a href="https://help.zoho.com/portal/en/kb/crm/faqs/audit-log">Zoho CRM audit log</a> documentation, September 2026.</figcaption>
+</figure>
+
+<p>None of that is a criticism of the products. Keeping history as a bounded side table is a reasonable engineering choice for a system whose current state is the product. It is a statement about what the product is. A CRM that stores the state and remembers some of the history is a system of record for the present. A CRM that stores the history and derives the state is a system of record for the business, and the difference shows up the first time someone asks about last Monday.</p>
+<h2>What &quot;as of&quot; makes possible</h2>
+<p>Once the log is the source of truth, a class of reports that were previously impossible become ordinary, and they are the reports a sales leader actually wants. Pipeline coverage at the start of a period against bookings at its end, which is the only honest way to judge a forecast. Stage duration distributions computed from the actual entry and exit times of every deal, rather than from a &quot;days in stage&quot; field that resets when someone edits the record. Backflow, the share of departures from a stage that go backwards, which is the subject of <a href="/blog/backflow-ratio-fake-stages/">another post</a> and is a single query over the same table. A cohort view that follows the deals created in one month through every stage they visited afterwards.</p>
+<p>None of these needs a data warehouse or an export. They need the table that a mutable design threw away, kept, and a timestamp parameter on the query. The reporting layer of the CRM shrank when the log arrived, because most of what it had been doing was reconstructing history from clues.</p>
+<h2>The append-only ledger, without the vocabulary</h2>
+<p>The pattern has a name in software architecture and a body of writing behind it, and I have avoided the name on purpose, because the name makes it sound like a rewrite. It is not. It is one table, appended to on every change, and one derived view of the latest row per deal. The rest of the application reads the view exactly as it read the old mutable row. The dashboards, the forecasts, the stage reports all become queries over the log with a timestamp parameter that defaults to now.</p>
+<p>The cost that people expect, storage, is small. A deal that passes through six stages produces six rows. A pipeline of a hundred thousand deals with a dozen transitions each is a million or so rows of a few columns, which is a small table by any modern database&#39;s standard. The growth is linear in activity, and activity is the thing the business wants more of.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 320" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Rows in the transition table against deals in the pipeline</title>
+<desc id="f3-d">Three lines over deal counts from ten thousand to one million, on log axes, for an average of six, twelve and twenty-four transitions per deal. At a million deals with twelve transitions each the table holds twelve million rows. The growth is linear and the scale is modest for a relational database.</desc>
+<text x="0" y="18" class="viz-title">The storage cost is linear and small</text>
+<text x="0" y="36" class="viz-sub">Transition rows, log scale; a model with stated assumptions</text>
+<line x1="360" y1="31" x2="374" y2="31" class="viz-s1"/><text x="380" y="35" class="viz-label-muted">12 per deal</text>
+<line x1="470" y1="31" x2="484" y2="31" class="viz-s2"/><text x="490" y="35" class="viz-label-muted">24</text>
+<line x1="540" y1="31" x2="554" y2="31" class="viz-sgray"/><text x="560" y="35" class="viz-label-muted">6</text>
+<line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">100M</text>
+<line x1="56" y1="125.3" x2="600" y2="125.3" class="viz-grid"/><text x="48" y="129.3" text-anchor="end" class="viz-tick">10M</text>
+<line x1="56" y1="194.7" x2="600" y2="194.7" class="viz-grid"/><text x="48" y="198.7" text-anchor="end" class="viz-tick">1M</text>
+<line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/><text x="48" y="268" text-anchor="end" class="viz-tick">100k</text>
+<text x="56" y="288" text-anchor="middle" class="viz-tick">10k</text>
+<text x="328" y="288" text-anchor="middle" class="viz-tick">100k</text>
+<text x="600" y="288" text-anchor="middle" class="viz-tick">1M</text>
+<text x="328" y="310" text-anchor="middle" class="viz-label-muted">Deals in the pipeline, log scale</text>
+<polyline points="56,240.4 328,171 600,101.6" class="viz-sgray"/>
+<polyline points="56,219.5 328,150.1 600,80.7" class="viz-s1"/>
+<polyline points="56,198.6 328,129.2 600,59.8" class="viz-s2"/>
+<circle cx="600" cy="80.7" r="4" class="viz-d1"/>
+<text x="592" y="98" text-anchor="end" class="viz-value">12M rows</text>
+</svg>
+<figcaption>Illustrative: rows equal deals times transitions per deal, plotted for three assumed averages; a row here is a handful of columns, so twelve million of them is a modest table.</figcaption>
+</figure>
+
+<h2>What it changed</h2>
+<p>Three things, in the CRM. Every dashboard gained an &quot;as of&quot; parameter, which by default is now and can be any instant, and the forecast page compares the pipeline as it was at the start of the quarter with the pipeline now, from the same query with two timestamps. The stage report that used to be a nightly job that nobody trusted became a view that is correct at any moment because it is computed from the log at that moment. And the argument about last Monday stopped happening, because the system could answer it.</p>
+<p>The test is worth running against any system that calls itself a system of record. Pick a Monday. Ask for nine o&#39;clock. If the answer is a reconstruction, a best guess from modified dates and a side table with a retention limit, the system knows the present and has opinions about the past. If the answer is a query, it remembers. A pipeline you cannot replay was never a pipeline. It was a spreadsheet with a stage column, and the stage column has been overwritten.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Data Modelling</span><span class="tag-chip">CRM</span><span class="tag-chip">Databases</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

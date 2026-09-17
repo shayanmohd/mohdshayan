@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A LoRA adapter is a poor place for facts | Mohd Shayan</title>
+    <meta name="description" content="LoRA updates are low-rank and learn less new knowledge than full fine-tuning. Adapters hold format well and facts badly, and facts change faster than anyone retrains.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/lora-adapter-poor-place-for-facts/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/lora-adapter-poor-place-for-facts/">
+    <meta property="og:title" content="A LoRA adapter is a poor place for facts | Mohd Shayan">
+    <meta property="og:description" content="LoRA updates are low-rank and learn less new knowledge than full fine-tuning. Adapters hold format well and facts badly, and facts change faster than anyone retrains.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="A LoRA adapter is a poor place for facts | Mohd Shayan">
+    <meta name="twitter:description" content="LoRA updates are low-rank and learn less new knowledge than full fine-tuning. Adapters hold format well and facts badly, and facts change faster than anyone retrains.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/lora-adapter-poor-place-for-facts/#post",
+      "headline": "A LoRA adapter is a poor place for facts",
+      "description": "LoRA updates are low-rank and learn less new knowledge than full fine-tuning. Adapters hold format well and facts badly, and facts change faster than anyone retrains.",
+      "url": "https://mohdshayan.com/blog/lora-adapter-poor-place-for-facts/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/lora-adapter-poor-place-for-facts/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Fine-Tuning, LoRA, RAG",
+      "inLanguage": "en",
+      "wordCount": 1243
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">A LoRA adapter is a poor place for facts</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">LoRA updates are low-rank and learn less new knowledge than full fine-tuning. Adapters hold format well and facts badly, and facts change faster than anyone retrains.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>At CRIS I did both halves of the usual argument on one system: I fine-tuned open models with parameter-efficient adapters for a helpdesk assistant, and I built the retrieval pipeline that fed the same assistant its documents. The two halves are usually presented as competitors, fine-tuning against retrieval, and the decision between them is usually made by taste. Doing both on one problem made the division of labour obvious, and the division turned out to depend on how fast each kind of knowledge decays, measured against how often anyone will actually retrain, rather than on which technique is better.</p>
+<h2>What a low-rank update can hold</h2>
+<p>A LoRA adapter does not change a model&#39;s weights. It adds, to selected weight matrices, a correction that is the product of two thin matrices, so that the correction has a rank no higher than their shared inner dimension, r. The number of trainable parameters is therefore small and easy to compute from the architecture. For an eight-billion-parameter model of the Llama 3 family, whose <a href="https://arxiv.org/abs/2407.21783">published architecture</a> has 32 layers, a hidden size of 4,096, grouped key and value projections of 1,024, and a feed-forward width of 14,336, adapting only the query and value projections adds about 426,000 parameters per unit of rank; adapting every linear layer in each block adds about 2.6 million per unit of rank.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 320" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Trainable parameters in a LoRA adapter against rank, for an 8B Llama-family model</title>
+<desc id="f1-d">Two rising lines on a logarithmic axis. Adapting query and value projections only: 1.7 million parameters at rank 4, 3.4 million at 8, 6.8 million at 16, 13.6 million at 32, 27 million at 64. Adapting all linear layers: 10.5 million at rank 4, 21 million at 8, 42 million at 16, 84 million at 32, 168 million at 64. Even the largest is about two percent of the eight billion base parameters.</desc>
+<text x="0" y="18" class="viz-title">Small by construction</text>
+<text x="0" y="36" class="viz-sub">Trainable parameters, derived from the published 8B architecture; log scale</text>
+<line x1="380" y1="31" x2="394" y2="31" class="viz-s1"/><text x="400" y="35" class="viz-label-muted">all linear layers</text>
+<line x1="510" y1="31" x2="524" y2="31" class="viz-s2"/><text x="530" y="35" class="viz-label-muted">q and v only</text>
+<line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">1B</text>
+<line x1="56" y1="125.3" x2="600" y2="125.3" class="viz-grid"/><text x="48" y="129.3" text-anchor="end" class="viz-tick">100M</text>
+<line x1="56" y1="194.7" x2="600" y2="194.7" class="viz-grid"/><text x="48" y="198.7" text-anchor="end" class="viz-tick">10M</text>
+<line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/><text x="48" y="268" text-anchor="end" class="viz-tick">1M</text>
+<text x="56" y="288" text-anchor="middle" class="viz-tick">4</text>
+<text x="192" y="288" text-anchor="middle" class="viz-tick">8</text>
+<text x="328" y="288" text-anchor="middle" class="viz-tick">16</text>
+<text x="464" y="288" text-anchor="middle" class="viz-tick">32</text>
+<text x="600" y="288" text-anchor="middle" class="viz-tick">64</text>
+<text x="328" y="310" text-anchor="middle" class="viz-label-muted">LoRA rank, r</text>
+<polyline points="56,248 192,227.1 328,206.3 464,185.4 600,164.5" class="viz-s2"/>
+<polyline points="56,193.2 192,172.3 328,151.4 464,130.5 600,109.7" class="viz-s1"/>
+<circle cx="600" cy="109.7" r="4" class="viz-d1"/>
+<circle cx="600" cy="164.5" r="4" class="viz-d2"/>
+<text x="592" y="103" text-anchor="end" class="viz-value">168M, about 2% of the base</text>
+<text x="592" y="182" text-anchor="end" class="viz-value">27M</text>
+</svg>
+<figcaption>Source: derived by the author from the layer dimensions in the <a href="https://arxiv.org/abs/2407.21783">Llama 3 paper</a>; parameters per unit of rank are the sums of input and output dimensions of the adapted matrices, times 32 layers.</figcaption>
+</figure>
+
+<p>Two percent of the parameters, at a rank most people never use, and the correction is constrained to a low-dimensional subspace within that. That is a lot of capacity for shaping how a model responds. It is not a lot of capacity for storing what the model knows, and the empirical work agrees. Biderman and colleagues&#39; <a href="https://arxiv.org/abs/2405.09673">LoRA Learns Less and Forgets Less</a> compared adapters with full fine-tuning across code and mathematics, and found that LoRA learns substantially less of the new domain than full fine-tuning does, while also forgetting less of what the base model could do. The trade is the mechanism: a low-rank update cannot rewrite the model&#39;s knowledge, so it preserves the old and absorbs less of the new.</p>
+<h2>What the paper measured</h2>
+<p>The result deserves a closer look, because it is the empirical anchor for everything that follows. The study compared LoRA against full fine-tuning on two target domains, programming and mathematics, in two regimes each: continued pretraining on large unlabelled corpora and instruction fine-tuning on smaller labelled sets. Learning was measured on the target domain&#39;s benchmarks, and forgetting was measured on general tasks the base model already did well, so that each run produced a point on a learning-versus-forgetting plane. Across the regimes, LoRA sat consistently below full fine-tuning on the target domain and above it on the retained general ability. The gap on learning was largest in continued pretraining on code, which is the regime closest to &quot;teach the model a body of facts&quot;, and smallest in instruction fine-tuning on maths, which is closest to &quot;teach the model a way of answering&quot;.</p>
+<p>The paper also looked at why, and the explanation matches the arithmetic above. When the authors examined the weight changes that full fine-tuning produced, they found perturbations whose rank was ten to a hundred times higher than the ranks LoRA is normally run at. Full fine-tuning is not using a low-rank update that LoRA could match with a bigger r; it is using a genuinely high-rank one, and a low-rank adapter is a projection of it. LoRA, in return, acts as a stronger regulariser than the usual alternatives, keeping the model&#39;s outputs closer to the base and its generations more diverse. That is the behaviour-preserving property that makes an adapter safe to ship for the things it is good at.</p>
+<h2>Behaviour versus facts</h2>
+<p>That result reads as a limitation, and for one class of knowledge it is a feature. The things a helpdesk assistant most needs to learn from fine-tuning are behavioural: answer in this format, refuse these categories, cite in this style, keep this tone, stop after the answer. Those are patterns, not facts, and patterns live comfortably in a low-rank correction to how attention and projections behave. An adapter trained on a few thousand well-formed examples teaches them reliably, and forgetting less of the base model is exactly what you want while it does.</p>
+<p>The things the assistant most needs to know are facts: which form to file, which screen to open, what the policy says this quarter, which phone number moved. Facts are the wrong shape for a low-rank update, they are the category the paper shows adapters learning least of, and they have a second problem that is worse than capacity. They change.</p>
+<h2>The half-life split</h2>
+<p>So the rule I use is a question about decay rather than about technique. For each class of knowledge the system needs, estimate how long until half the answers in that class have changed. Then compare that half-life with the retraining cadence, how often anyone will actually build, evaluate and ship a new adapter, which for most teams is quarterly at best and, honestly, less often than that.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 400" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Where each class of knowledge belongs, by decay and kind</title>
+<desc id="f2-d">A two by two grid. Horizontal axis: kind of knowledge, behavioural on the left and factual on the right. Vertical axis: half-life, shorter than the retraining cadence at the bottom, longer at the top. Bottom right: fast-changing facts, retrieval. Top right: stable facts, the one contested cell, where rank decides. Top left: stable behaviour, the adapter. Bottom left: fast-changing behaviour, prompts and retrieved instructions.</desc>
+<rect x="56" y="40" width="544" height="304" rx="8" class="viz-box"/>
+<line x1="328" y1="40" x2="328" y2="344" class="viz-grid"/>
+<line x1="56" y1="192" x2="600" y2="192" class="viz-grid"/>
+<text x="192" y="104" text-anchor="middle" class="viz-label">The adapter</text>
+<text x="192" y="124" text-anchor="middle" class="viz-label-muted">format, tone, refusals, style</text>
+<text x="464" y="104" text-anchor="middle" class="viz-label">Contested: rank decides</text>
+<text x="464" y="124" text-anchor="middle" class="viz-label-muted">stable facts, domain vocabulary</text>
+<text x="192" y="256" text-anchor="middle" class="viz-label">Prompt and instructions</text>
+<text x="192" y="276" text-anchor="middle" class="viz-label-muted">behaviour that changes with policy</text>
+<text x="464" y="256" text-anchor="middle" class="viz-label">Retrieval</text>
+<text x="464" y="276" text-anchor="middle" class="viz-label-muted">procedures, numbers, this quarter's rules</text>
+<circle cx="464" cy="300" r="6" class="viz-d1"/>
+<text x="328" y="372" text-anchor="middle" class="viz-label-muted">Kind of knowledge: behavioural to factual</text>
+<text x="20" y="192" transform="rotate(-90 20 192)" text-anchor="middle" class="viz-label-muted">Half-life: shorter than retraining to longer</text>
+</svg>
+<figcaption>Illustrative: the split as a grid; the dot is where most of a helpdesk's knowledge sits.</figcaption>
+</figure>
+
+<p>Anything with a half-life shorter than the retraining cadence goes to retrieval, whatever its kind, because a fact baked into an adapter is wrong from the day it changes until the day someone retrains, and that gap is the half-life&#39;s whole length. Anything with a long half-life and a behavioural kind goes to the adapter, because that is what a low-rank update is good at and the knowledge will not rot before the next release. The one contested cell is long-lived factual knowledge, domain vocabulary, the stable structure of a product, the things that were true five years ago and will be true in five more, and there the adapter and retrieval genuinely compete. Rank decides it: a higher rank absorbs more, at the cost of forgetting more, and the paper&#39;s curves are the guide to where that trade sits for a given domain.</p>
+<h2>Estimating the half-life</h2>
+<p>The half-life is easier to estimate than it sounds, because the organisation already knows it. Ask how often each kind of document is revised.</p>
+<p>Pricing changes monthly. Procedures change with each release. Policy changes when the regulator does. Product names change at the whim of marketing. The tone of a good answer changes never. Put those on one axis and the retraining cadence on the same axis, and the classes sort themselves.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Knowledge classes by half-life against a quarterly retraining cadence</title>
+<desc id="f3-d">Horizontal bars on a logarithmic scale of weeks: pricing about 4 weeks, procedures about 12, product names about 26, policy about 52, tone and format effectively unbounded. A vertical marker at 13 weeks is the retraining cadence. Everything left of it belongs in retrieval.</desc>
+<text x="0" y="18" class="viz-title">Which classes decay before the next retrain</text>
+<text x="0" y="36" class="viz-sub">Half-life in weeks, log scale; example values for a helpdesk, stated as assumptions</text>
+<line x1="176" y1="52" x2="176" y2="222" class="viz-axis"/>
+<text x="166" y="73" text-anchor="end" class="viz-label">Pricing</text>
+<path d="M176 58 H278 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-f2"/>
+<text x="298" y="73" class="viz-value">4</text>
+<text x="166" y="107" text-anchor="end" class="viz-label">Procedures</text>
+<path d="M176 92 H360 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H176 Z" class="viz-f2"/>
+<text x="380" y="107" class="viz-value">12</text>
+<text x="166" y="141" text-anchor="end" class="viz-label">Product names</text>
+<path d="M176 126 H418 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="438" y="141" class="viz-value">26</text>
+<text x="166" y="175" text-anchor="end" class="viz-label">Policy</text>
+<path d="M176 160 H470 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="490" y="175" class="viz-value">52</text>
+<text x="166" y="209" text-anchor="end" class="viz-label">Tone and format</text>
+<path d="M176 194 H600 a4 4 0 0 1 4 4 V210 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/>
+<text x="596" y="189" text-anchor="end" class="viz-value">effectively never</text>
+<line x1="366" y1="52" x2="366" y2="222" class="viz-s4"/>
+<text x="372" y="240" class="viz-label-muted">retraining cadence: 13 weeks</text>
+<rect x="0" y="252" width="12" height="12" rx="3" class="viz-f2"/><text x="18" y="263" class="viz-label-muted">retrieval</text>
+<rect x="100" y="252" width="12" height="12" rx="3" class="viz-fgray"/><text x="118" y="263" class="viz-label-muted">contested</text>
+<rect x="210" y="252" width="12" height="12" rx="3" class="viz-f1"/><text x="228" y="263" class="viz-label-muted">adapter</text>
+</svg>
+<figcaption>Illustrative: half-lives are example values for a helpdesk domain, chosen to show the sort against a quarterly cadence; a real estimate comes from the organisation's own revision history.</figcaption>
+</figure>
+
+<h2>What this meant in practice</h2>
+<p>The split settled a question that had been consuming effort in the wrong place. The adapter&#39;s training set stopped being a dump of the manuals and became a few thousand examples of good answers: the right format, the right refusals, the right citation style, the right way to say that a question needs a human. The manuals went into the retrieval index, where a revised procedure replaced the old one the same afternoon, with no training run. And the evaluation split the same way: the adapter was judged on whether answers had the right shape, and retrieval was judged on whether the right passage was found, which are different failures with different fixes.</p>
+<p>The rule generalises past helpdesks. Any time the question is &quot;fine-tune or retrieve&quot;, replace it with two questions: what kind of knowledge is this, and how long until half of it is wrong. The adapter is where you put the things that will still be true at the next release. Everything else is a document, and documents are for retrieving.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Fine-Tuning</span><span class="tag-chip">LoRA</span><span class="tag-chip">RAG</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

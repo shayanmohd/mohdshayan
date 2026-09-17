@@ -1,0 +1,124 @@
+---
+title: What the letters after my name owe
+date: 2026-09-18
+summary: Postnominals like FRSA and FRGS are read as credentials, and they are not. Both societies began by owning a problem, and a fellowship is what the fellow owes that problem.
+tags: Fellowships, History, Philanthropy
+draft: false
+---
+
+I have two sets of letters after my name, FRSA and FRGS, and the honest thing to say about them first is that they are read as credentials and they are not. Nobody sat an examination for them. They are fellowships, memberships of two old societies that elect people who share their aims, and the temptation, for the fellow and for the reader, is to treat them as a mark of standing. Their history says otherwise. Both societies began as bodies that owned a problem and paid people to work on it, and a fellowship, read the way its founders would have read it, is a claim on the fellow rather than a compliment to them. This post is about what the letters owe, and it ends with a test I apply to my own.
+
+## A society that paid for solutions
+
+The Society for the Encouragement of Arts, Manufactures and Commerce was founded in 1754 by William Shipley, a drawing master from Northampton, on a proposal that was more like a prize fund than a club. The society would announce problems and pay premiums to whoever solved them: a dye that did not fade, a method of raising a crop, a way of producing a material Britain was importing. According to the [society's own history](https://en.wikipedia.org/wiki/Royal_Society_of_Arts), by 1764 it was publishing 380 prize categories across six committees, and by 1766 the premiums it had paid out totalled 16,625 pounds, an enormous sum for a voluntary body. Its response to fears of a timber shortage was a medal for whoever planted the most trees each year, and Anton Howes, the society's historian, reckons in [Arts and Minds](https://press.princeton.edu/books/hardcover/9780691182643/arts-and-minds) that the medal winners planted at least sixty million of them.
+
+<figure class="chart">
+<svg viewBox="0 0 640 220" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Timeline of the two societies from problem-owning bodies to fellowship bodies</title>
+<desc id="f1-d">A timeline with six points: 1754, the Society of Arts founded by William Shipley on a premium scheme; 1764, 380 prize categories published; 1830, the Geographical Society of London founded to advance geographical science and support expeditions; 1847, the Society of Arts receives a royal charter; 1859, the Geographical Society receives its royal charter; 1908, the Society of Arts becomes Royal, and both bodies are by then fellowship organisations.</desc>
+<circle cx="440" cy="18" r="5" class="viz-d1"/><text x="450" y="22" class="viz-label-muted">Society of Arts</text>
+<circle cx="540" cy="18" r="5" class="viz-d2"/><text x="550" y="22" class="viz-label-muted">Geographical</text>
+<line x1="40" y1="110" x2="600" y2="110" class="viz-axis"/>
+<circle cx="60" cy="110" r="6" class="viz-d1"/>
+<text x="60" y="84" text-anchor="middle" class="viz-tick">1754</text>
+<text x="60" y="66" class="viz-label">founded on premiums</text>
+<circle cx="130" cy="110" r="6" class="viz-d1"/>
+<text x="130" y="144" text-anchor="middle" class="viz-tick">1764</text>
+<text x="130" y="162" text-anchor="middle" class="viz-label">380 prize categories</text>
+<circle cx="320" cy="110" r="6" class="viz-d2"/>
+<text x="320" y="84" text-anchor="middle" class="viz-tick">1830</text>
+<text x="320" y="66" text-anchor="middle" class="viz-label">Geographical Society founded</text>
+<circle cx="380" cy="110" r="6" class="viz-d1"/>
+<text x="380" y="144" text-anchor="middle" class="viz-tick">1847</text>
+<text x="380" y="162" text-anchor="middle" class="viz-label">royal charter</text>
+<circle cx="450" cy="110" r="6" class="viz-d2"/>
+<text x="450" y="84" text-anchor="middle" class="viz-tick">1859</text>
+<text x="450" y="66" text-anchor="middle" class="viz-label">royal charter</text>
+<circle cx="580" cy="110" r="6" class="viz-d1"/>
+<text x="580" y="144" text-anchor="middle" class="viz-tick">1908</text>
+<text x="580" y="162" text-anchor="middle" class="viz-label">becomes Royal</text>
+<text x="320" y="204" text-anchor="middle" class="viz-label-muted">Both began by owning a problem; both are now known for the letters they confer.</text>
+</svg>
+<figcaption>Source: the histories of the <a href="https://en.wikipedia.org/wiki/Royal_Society_of_Arts">Royal Society of Arts</a> and the <a href="https://en.wikipedia.org/wiki/Royal_Geographical_Society">Royal Geographical Society</a>; the prize count and tree figure follow Anton Howes.</figcaption>
+</figure>
+
+The Geographical Society of London, founded in 1830 and chartered by Queen Victoria in 1859, owned a different problem: the map was not finished. It existed to fund and record expeditions, and its list of the people it backed reads like the index of nineteenth-century exploration, Darwin's circle, Livingstone, Scott, Shackleton. Membership meant contributing to a body that sent people into blank spaces on the map and published what they found. The letters came later. FRGS means Fellow of the Royal Geographical Society, elected by the existing fellows, and the society today has around 16,500 members; the RSA elects fellows from over 80 countries and has more than 30,000 of them.
+
+<figure class="chart">
+<svg viewBox="0 0 640 230" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">The size of the two bodies today against the prize count of 1764</title>
+<desc id="f2-d">Three horizontal bars on a logarithmic scale: 380 prize categories published by the Society of Arts in 1764; about 16,500 members of the Royal Geographical Society today; over 30,000 fellows of the Royal Society of Arts today. The first bar is highlighted as the measure of the old model, problems owned, and the other two as the measure of the new one, people elected.</desc>
+<text x="0" y="18" class="viz-title">From a few hundred problems to tens of thousands of fellows</text>
+<text x="0" y="36" class="viz-sub">Count, log scale from 100 to 100,000</text>
+<line x1="196" y1="52" x2="196" y2="154" class="viz-axis"/>
+<text x="186" y="73" text-anchor="end" class="viz-label">Prize categories, 1764</text>
+<path d="M196 58 H271 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/>
+<text x="291" y="73" class="viz-value">380 problems</text>
+<text x="186" y="107" text-anchor="end" class="viz-label">RGS members today</text>
+<path d="M196 92 H494 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
+<text x="514" y="107" class="viz-value">about 16,500</text>
+<text x="186" y="141" text-anchor="end" class="viz-label">RSA fellows today</text>
+<path d="M196 126 H529 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
+<text x="549" y="141" class="viz-value">over 30,000</text>
+<text x="0" y="188" class="viz-label-muted">The 1764 number counted problems to solve. The modern numbers count people.</text>
+<text x="0" y="212" class="viz-tick">one hundred and thirty-four pixels per decade</text>
+</svg>
+<figcaption>Source: the <a href="https://en.wikipedia.org/wiki/Royal_Society_of_Arts">RSA</a> and <a href="https://en.wikipedia.org/wiki/Royal_Geographical_Society">RGS</a> histories for the current figures and the 1764 count; the comparison across two centuries is the point, not a like-for-like measure.</figcaption>
+</figure>
+
+## What changed, and what did not
+
+The bars above measure the change in the model. In 1764 the society's output was a list of problems with prices attached, and a person's relationship to it was defined by which problem they had worked on. Today both societies' most visible output is the roll of people they have elected, and a person's relationship to them is a subscription and a pair of letters. That is not a fall from grace; a body with thirty thousand members cannot run a prize fund the way a body of a few hundred did, and both societies still run programmes, grants and publications that carry the old purpose forward. But the change moved the obligation from the society to the fellow. The society no longer names your problem. You have to.
+
+That is what a fellowship was always for, underneath. A fellowship is membership of a problem-owning body, and its value is the obligation it places on the fellow to contribute to the problem. The premiums made that explicit, because the only way to be involved with the Society of Arts in 1760 was to have solved or funded something. The modern election makes it implicit, and implicit obligations are the ones that decay into decoration.
+
+## The postnominal test
+
+So here is the test, in two questions. Can you name the problem your fellowship exists to work on? And can you say what you contributed to it in the last year? If the answer to either is no, the letters are decoration, however honestly they were earned, and the honest response is either to do something about the second question or to stop using the letters.
+
+<figure class="chart">
+<svg viewBox="0 0 640 270" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">The postnominal test as a two-question flow</title>
+<desc id="f3-d">A flow with two questions. First: can you name the problem the fellowship exists to work on? If no, the letters are decoration. If yes, second: can you say what you contributed to it in the last year? If no, the letters are decoration and there is a year to fix it. If yes, the letters are a claim you can stand behind.</desc>
+<defs><marker id="f3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<text x="0" y="18" class="viz-title">Two questions, asked once a year</text>
+<rect x="8" y="50" width="220" height="64" rx="8" class="viz-box-accent"/>
+<text x="118" y="76" text-anchor="middle" class="viz-label">Can you name the problem</text>
+<text x="118" y="94" text-anchor="middle" class="viz-label-muted">the fellowship exists to work on?</text>
+<line x1="230" y1="82" x2="272" y2="82" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="251" y="72" text-anchor="middle" class="viz-tick">yes</text>
+<rect x="276" y="50" width="220" height="64" rx="8" class="viz-box-accent"/>
+<text x="386" y="76" text-anchor="middle" class="viz-label">Can you say what you</text>
+<text x="386" y="94" text-anchor="middle" class="viz-label-muted">contributed to it this year?</text>
+<line x1="498" y1="82" x2="540" y2="82" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="519" y="72" text-anchor="middle" class="viz-tick">yes</text>
+<rect x="544" y="50" width="88" height="64" rx="8" class="viz-box"/>
+<text x="588" y="76" text-anchor="middle" class="viz-label">A claim</text>
+<text x="588" y="94" text-anchor="middle" class="viz-label-muted">to stand by</text>
+<line x1="118" y1="116" x2="118" y2="160" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="134" y="142" class="viz-tick">no</text>
+<line x1="386" y1="116" x2="386" y2="160" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="402" y="142" class="viz-tick">no</text>
+<rect x="8" y="164" width="220" height="50" rx="8" class="viz-box-ink"/>
+<text x="118" y="194" text-anchor="middle" class="viz-on-ink">decoration</text>
+<rect x="276" y="164" width="220" height="50" rx="8" class="viz-box-ink"/>
+<text x="386" y="186" text-anchor="middle" class="viz-on-ink">decoration, for now</text>
+<text x="386" y="204" text-anchor="middle" class="viz-on-ink">and a year to change it</text>
+<text x="320" y="250" text-anchor="middle" class="viz-label-muted">The test is not about whether the election was deserved, but what the letters are for.</text>
+</svg>
+<figcaption>Illustrative: the test as I apply it; the outcome is a use, not a verdict on the fellowship.</figcaption>
+</figure>
+
+The test has a property that credentials lack: it can be failed after it was passed. A degree, once earned, is earned. A fellowship under this reading is renewed by contribution, and a year without any is a year in which the letters quietly stopped meaning what they say. That is the sense in which the founders would have understood membership, since a subscriber to the premium fund who stopped subscribing stopped being involved, and it is the sense the modern election has to recover on its own, because nobody sends a reminder.
+
+It also has a limit that should be stated. The test measures use, not worth. A fellow who does nothing visible for the problem may be doing a great deal invisibly, and a fellow who does a great deal for the problem may not be able to name it in the society's terms. The test is for the person holding the letters, applied to themselves; it is a poor tool for judging anyone else's.
+
+## Applying it to my own
+
+The RSA's problem, in its founding charter's words, was to embolden enterprise, enlarge science, refine art, improve manufactures and extend commerce, alongside relieving poverty and securing employment; in modern terms, the society's work is about how communities and economies can be made to work for the people in them. I can name that. What I contribute to it is narrower than the charter: the philanthropy I do is directed at digital access and opportunity for children, which is one small corner of the problem of communities working for their people, and the work I do building software for small businesses is, at a stretch, enterprise emboldened one client at a time. That is an honest answer to the second question and it is not a large one. It passes the test, and it passes it modestly, and the year-on-year version of the question is whether the corner grows.
+
+The RGS's problem is geography: the discipline of where things are and why, and what it means for the people who live there. I can name that too, and the honest answer to the second question is thinner. My connection to geography is the geography of access, the fact that a child's chances depend heavily on the place they were born, which is the thread that runs through the philanthropy, and it is a connection I would struggle to defend to a field geographer as a contribution to their discipline. By the test's own terms, the FRGS is closer to decoration than the FRSA, and I would rather say so than let the letters imply otherwise. The year I have to change that is this one.
+
+## Why write this down
+
+The reason to publish a test that finds one's own letters wanting is the same reason the premium scheme worked: a public obligation is harder to let decay than a private one. The founders of both societies understood that a name attached to a problem was a commitment, and they built institutions that made the commitment visible, first as prizes and then as fellowships. The visibility is what survived. What the fellow does with it did not come with the letters, and it is the only part that was ever worth anything.

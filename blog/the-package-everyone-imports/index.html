@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The package everyone imports | Mohd Shayan</title>
+    <meta name="description" content="In a Turborepo monorepo, CI time is set by the few packages that change often and are imported everywhere: a task's cache key includes every dependency's hash. Find and split them.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/the-package-everyone-imports/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/the-package-everyone-imports/">
+    <meta property="og:title" content="The package everyone imports | Mohd Shayan">
+    <meta property="og:description" content="In a Turborepo monorepo, CI time is set by the few packages that change often and are imported everywhere: a task's cache key includes every dependency's hash. Find and split them.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The package everyone imports | Mohd Shayan">
+    <meta name="twitter:description" content="In a Turborepo monorepo, CI time is set by the few packages that change often and are imported everywhere: a task's cache key includes every dependency's hash. Find and split them.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/the-package-everyone-imports/#post",
+      "headline": "The package everyone imports",
+      "description": "In a Turborepo monorepo, CI time is set by the few packages that change often and are imported everywhere: a task's cache key includes every dependency's hash. Find and split them.",
+      "url": "https://mohdshayan.com/blog/the-package-everyone-imports/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/the-package-everyone-imports/",
+      "datePublished": "2026-09-18",
+      "dateModified": "2026-09-18",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Turborepo, Monorepos, CI",
+      "inLanguage": "en",
+      "wordCount": 1232
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">18 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">The package everyone imports</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">In a Turborepo monorepo, CI time is set by the few packages that change often and are imported everywhere: a task's cache key includes every dependency's hash. Find and split them.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>Every monorepo team reaches the point where the remote cache is on, the runners are fast, and CI still takes twenty minutes on a one-line change. The usual response is to buy a faster cache or bigger runners. The actual cause is structural: in a Turborepo, a task&#39;s cache key includes the hash of every package it depends on, so a change to a package that many others import invalidates the cache for every one of them, and the whole tree rebuilds. CI time is therefore decided by a small set of packages that change often and are imported everywhere, and the fix is not a faster cache but moving churn out of those packages. They can be found from git history and the package graph in an afternoon.</p>
+<h2>Why one change rebuilds everything</h2>
+<p>Turborepo <a href="https://turborepo.com/docs/crafting-your-repository/caching">hashes each task&#39;s inputs</a> to decide whether it can replay a cached result, and the inputs include the outputs of the tasks it depends on, transitively, through the package graph. That is the correct design: if a shared package&#39;s output changed, its dependents might build differently, so their cache entries cannot be trusted. The consequence is that the blast radius of a commit is not the number of files it touched but the number of packages that transitively depend on the packages it touched. A change to an application&#39;s own code rebuilds that application. A change to a package imported by ninety others rebuilds ninety.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">How a changed hash in one shared package propagates to every dependent task's cache key</title>
+<desc id="f1-d">A package graph drawn as layers. At the bottom, a shared package whose hash changed. Above it, four packages that import it, each with a cache key that now includes the new hash and therefore misses. Above those, three applications that import them, whose keys miss in turn. Arrows flow upward from the changed package, and every box it reaches is marked as a cache miss.</desc>
+<defs><marker id="f1-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<text x="0" y="18" class="viz-title">One hash, ninety cache keys</text>
+<rect x="250" y="220" width="140" height="44" rx="8" class="viz-box-accent"/>
+<text x="320" y="240" text-anchor="middle" class="viz-label">shared package</text>
+<text x="320" y="256" text-anchor="middle" class="viz-label-muted">hash changed</text>
+<rect x="40" y="130" width="120" height="44" rx="8" class="viz-box-ink"/><text x="100" y="157" text-anchor="middle" class="viz-on-ink">miss</text>
+<rect x="200" y="130" width="120" height="44" rx="8" class="viz-box-ink"/><text x="260" y="157" text-anchor="middle" class="viz-on-ink">miss</text>
+<rect x="360" y="130" width="120" height="44" rx="8" class="viz-box-ink"/><text x="420" y="157" text-anchor="middle" class="viz-on-ink">miss</text>
+<rect x="520" y="130" width="112" height="44" rx="8" class="viz-box-ink"/><text x="576" y="157" text-anchor="middle" class="viz-on-ink">miss</text>
+<line x1="290" y1="218" x2="110" y2="178" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<line x1="305" y1="218" x2="265" y2="178" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<line x1="335" y1="218" x2="415" y2="178" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<line x1="350" y1="218" x2="560" y2="178" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="120" y="50" width="120" height="44" rx="8" class="viz-box-ink"/><text x="180" y="77" text-anchor="middle" class="viz-on-ink">app: miss</text>
+<rect x="280" y="50" width="120" height="44" rx="8" class="viz-box-ink"/><text x="340" y="77" text-anchor="middle" class="viz-on-ink">app: miss</text>
+<rect x="440" y="50" width="120" height="44" rx="8" class="viz-box-ink"/><text x="500" y="77" text-anchor="middle" class="viz-on-ink">app: miss</text>
+<line x1="110" y1="128" x2="170" y2="98" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<line x1="270" y1="128" x2="330" y2="98" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<line x1="430" y1="128" x2="490" y2="98" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<line x1="576" y1="128" x2="520" y2="98" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<text x="320" y="290" text-anchor="middle" class="viz-label-muted">Every task whose key includes the changed hash rebuilds, however small the change was.</text>
+</svg>
+<figcaption>Illustrative: cache-key propagation through a package graph, as Turborepo's dependency hashing implies.</figcaption>
+</figure>
+
+<p>The number to measure, then, is not how big a package is or how slow its build is. It is two numbers per package: how often it changes, and how many packages transitively depend on it. Their product is the expected cache invalidation the package causes per unit time, and the packages where both are high are where the CI minutes go.</p>
+<h2>The churn-reach matrix</h2>
+<p>I call the two numbers churn and reach. Churn is the count of commits that touched the package in the last ninety days, from git history. Reach is the number of packages that transitively depend on it, from the package manifests.</p>
+<p>Plot every workspace package on those two axes and the picture has four quadrants. Low churn, low reach: leaf packages that rarely change, harmless. High churn, low reach: applications and feature packages that change constantly and are imported by nobody, harmless too, because their rebuilds are their own. Low churn, high reach: stable foundations, configuration, type definitions, the packages everyone imports and nobody touches, harmless as long as they stay untouched. And high churn, high reach: the hot hubs, the packages that change often and are imported everywhere, and every commit to one of them is a tree-wide rebuild.</p>
+<p>To see the shape on a real repository I ran the measurement on <a href="https://github.com/calcom/cal.com">cal.com</a>, a public Turborepo monorepo with 112 workspace packages, using the default branch&#39;s history over the ninety days to 18 September 2026 and the dependency declarations in each package manifest. Reach is dominated by six packages: the shared type definitions, TypeScript configuration, internationalisation, shared configuration, the date library wrapper and the general library package, each imported transitively by between 83 and 91 other packages. Churn is dominated by the application and the features package, which nobody imports. The two packages that sit in both lists are the internationalisation package, seven commits in the window and 89 dependents, and the library package, five commits and 83 dependents.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 380" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Churn against reach for the packages in the cal.com monorepo, with the hot hubs highlighted</title>
+<desc id="f2-d">A scatter with churn, commits in ninety days, on the horizontal axis and reach, transitive dependents, on the vertical. Most of the 112 packages cluster at one commit and zero dependents. The types, tsconfig, config and dayjs packages sit at one commit and 84 to 91 dependents. The web app and features package sit at seven and ten commits with zero to five dependents. Two packages sit in the top right: i18n at seven commits and 89 dependents, and lib at five commits and 83 dependents, highlighted as the hot hubs.</desc>
+<text x="0" y="18" class="viz-title">Two packages are where cal.com's cache misses come from</text>
+<text x="0" y="36" class="viz-sub">Commits touching the package in 90 days against transitive dependents, 112 packages</text>
+<line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">100</text>
+<line x1="56" y1="126" x2="600" y2="126" class="viz-grid"/><text x="48" y="130" text-anchor="end" class="viz-tick">75</text>
+<line x1="56" y1="196" x2="600" y2="196" class="viz-grid"/><text x="48" y="200" text-anchor="end" class="viz-tick">50</text>
+<line x1="56" y1="266" x2="600" y2="266" class="viz-grid"/><text x="48" y="270" text-anchor="end" class="viz-tick">25</text>
+<line x1="56" y1="336" x2="600" y2="336" class="viz-axis"/><text x="48" y="340" text-anchor="end" class="viz-tick">0</text>
+<text x="56" y="360" text-anchor="middle" class="viz-tick">0</text>
+<text x="328" y="360" text-anchor="middle" class="viz-tick">5</text>
+<text x="600" y="360" text-anchor="middle" class="viz-tick">10</text>
+<line x1="328" y1="56" x2="328" y2="336" class="viz-grid"/>
+<line x1="56" y1="196" x2="600" y2="196" class="viz-grid"/>
+<text x="596" y="70" text-anchor="end" class="viz-tick">hot hubs</text>
+<text x="60" y="70" class="viz-tick">stable foundations</text>
+<text x="60" y="326" class="viz-tick">leaves: most packages sit here</text>
+<text x="596" y="326" text-anchor="end" class="viz-tick">apps and features</text>
+<circle cx="110.4" cy="81.2" r="6" class="viz-dgray"/><text x="120" y="78" class="viz-label-muted">types, 91</text>
+<circle cx="110.4" cy="84" r="6" class="viz-dgray"/>
+<circle cx="110.4" cy="100.8" r="6" class="viz-dgray"/><text x="120" y="108" class="viz-label-muted">config, dayjs, 84</text>
+<circle cx="110.4" cy="238" r="6" class="viz-dgray"/><text x="120" y="242" class="viz-label-muted">prisma, 35</text>
+<circle cx="110.4" cy="330" r="6" class="viz-dgray"/><text x="120" y="320" class="viz-label-muted">about 90 packages, churn 1, reach 0 to 7</text>
+<circle cx="219.2" cy="305.2" r="6" class="viz-dgray"/><text x="229" y="300" class="viz-label-muted">ui, 11</text>
+<circle cx="328" cy="316.4" r="6" class="viz-dgray"/><text x="338" y="312" class="viz-label-muted">trpc, 7</text>
+<circle cx="436.8" cy="336" r="6" class="viz-dgray"/><text x="446" y="332" class="viz-label-muted">web app, 0</text>
+<circle cx="436.8" cy="330.4" r="6" class="viz-dgray"/>
+<circle cx="600" cy="322" r="6" class="viz-dgray"/><text x="592" y="312" text-anchor="end" class="viz-label-muted">features, 5</text>
+<circle cx="436.8" cy="86.8" r="7" class="viz-d1"/><text x="448" y="92" class="viz-value">i18n: 7 commits, 89 deps</text>
+<circle cx="328" cy="103.6" r="7" class="viz-d1"/><text x="300" y="120" text-anchor="end" class="viz-value">lib: 5, 83</text>
+<circle cx="8" cy="374" r="5" class="viz-d1"/><text x="18" y="378" class="viz-label-muted">hot hub</text>
+<circle cx="100" cy="374" r="5" class="viz-dgray"/><text x="110" y="378" class="viz-label-muted">other packages</text>
+</svg>
+<figcaption>Source: computed by the author from the <a href="https://github.com/calcom/cal.com">cal.com repository</a>, commits on the default branch in the ninety days to 18 September 2026 and dependency declarations in each package manifest; positions are jittered where packages overlap.</figcaption>
+</figure>
+
+<p>The matrix says something specific about this repository that no cache metric would. The foundations, types and configuration, have enormous reach and almost no churn, so they cost nothing: a commit to them rebuilds everything, and there was one such commit in ninety days. The application changes constantly and costs only itself. The internationalisation package is the one to look at: it changes about as often as the application does, because adding a string to the interface means touching it, and it is imported by nearly everything, because nearly everything shows a string. Seven commits in ninety days, each invalidating 89 packages&#39; cache keys, is the largest single source of rebuilds in the repository, and it comes from a package whose changes are individually trivial.</p>
+<p>One caveat about the window is worth stating, because it changes the reading. Ninety days on cal.com&#39;s default branch, as cloned, contained 37 commits, which is a quiet period for that repository or a reflection of how its work is merged; a busier window would scale every churn number up but would not change the ranking, since the packages that get touched when strings and helpers change are the same ones. The matrix is insensitive to the window&#39;s length and sensitive to which packages are hubs, which is the property you want.</p>
+<h2>The split rule</h2>
+<p>The rule that follows is that a hot hub gets split until it leaves the quadrant. Splitting means separating the part of the package that changes from the part that is imported. For an internationalisation package, that usually means the runtime, the functions every component calls, which is stable, and the message catalogue, the strings, which is what changes; if the catalogue is its own package that only the applications import, then adding a string invalidates the applications and not the ninety packages that merely call the translation function. For a general library package, it means splitting by domain, so that a change to a date helper does not invalidate the packages that import only a string helper, and the packages that import everything are made to import the pieces they use.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 400" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">The four quadrants of the churn-reach matrix with the split rule applied to the hot-hub cell</title>
+<desc id="f3-d">A two by two grid: churn on the horizontal axis, reach on the vertical. Bottom left, leaves: leave alone. Bottom right, apps and features: their rebuilds are their own. Top left, stable foundations: protect from churn. Top right, hot hubs: split the changing part from the imported part, and repeat until the package leaves the cell. An arrow shows a hot hub moving into the top-left and bottom-right cells after the split.</desc>
+<defs><marker id="f3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<rect x="56" y="40" width="544" height="304" rx="8" class="viz-box"/>
+<line x1="328" y1="40" x2="328" y2="344" class="viz-grid"/>
+<line x1="56" y1="192" x2="600" y2="192" class="viz-grid"/>
+<text x="192" y="104" text-anchor="middle" class="viz-label">Stable foundations</text>
+<text x="192" y="124" text-anchor="middle" class="viz-label-muted">protect from churn</text>
+<rect x="336" y="60" width="256" height="120" rx="8" class="viz-box-accent"/>
+<text x="464" y="96" text-anchor="middle" class="viz-label">Hot hubs</text>
+<text x="464" y="118" text-anchor="middle" class="viz-label-muted">split the changing part from</text>
+<text x="464" y="136" text-anchor="middle" class="viz-label-muted">the imported part, then repeat</text>
+<text x="192" y="256" text-anchor="middle" class="viz-label">Leaves</text>
+<text x="192" y="276" text-anchor="middle" class="viz-label-muted">leave alone</text>
+<text x="464" y="256" text-anchor="middle" class="viz-label">Apps and features</text>
+<text x="464" y="276" text-anchor="middle" class="viz-label-muted">their rebuilds are their own</text>
+<path d="M400 150 C 300 150, 260 130, 240 140" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<path d="M480 170 C 480 230, 470 240, 464 246" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="328" y="372" text-anchor="middle" class="viz-label-muted">Churn: commits in 90 days</text>
+<text x="20" y="192" transform="rotate(-90 20 192)" text-anchor="middle" class="viz-label-muted">Reach: transitive dependents</text>
+</svg>
+<figcaption>Illustrative: the matrix and the split rule; the arrows show where the two halves of a split hub land.</figcaption>
+</figure>
+
+<p>The split is not free, and the matrix says when to pay for it. A package with high reach and one commit a quarter is not worth splitting, whatever its size, because it invalidates the tree once a quarter. A package with ten commits a week and two dependents is not worth splitting either. The product of churn and reach is the number to rank by, and the top of that ranking is a short list, two packages in cal.com&#39;s case, which is why the exercise fits in an afternoon rather than a quarter.</p>
+<h2>Running it on your own repository</h2>
+<p>The measurement is two scripts. The first walks the package manifests, reads each package&#39;s declared dependencies, keeps the ones that are workspace packages, inverts the graph and counts transitive dependents per package. The second runs the git log for the window with file names, maps each touched file to the package directory that contains it, and counts commits per package. Join on the package name, multiply, sort. On a repository the size of cal.com the whole thing runs in under a minute once the history is cloned, and the output is a ranked list with two numbers beside each name.</p>
+<p>The platform I build on is a Turborepo of the same shape, a Next.js application and a set of shared TypeScript packages, and the matrix is how the shared packages have been split over time: not by size, and not by what felt tidy, but by which package&#39;s commits were rebuilding the tree. The rule, hot hubs get split until they leave the quadrant, is simple enough that a reviewer can apply it to a pull request that adds a dependency: does this import make a hot hub hotter, or a foundation churnier? A faster remote cache answers neither question. The matrix answers both, from data the repository already has.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Turborepo</span><span class="tag-chip">Monorepos</span><span class="tag-chip">CI</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

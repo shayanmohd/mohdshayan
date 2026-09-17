@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You pay for the context every turn | Mohd Shayan</title>
+    <meta name="description" content="In a retrieval chat the bill is input tokens: every turn resends the prompt, passages and history while the model writes a few hundred back. One ratio shows where the cost is.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/pay-for-context-every-turn/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/pay-for-context-every-turn/">
+    <meta property="og:title" content="You pay for the context every turn | Mohd Shayan">
+    <meta property="og:description" content="In a retrieval chat the bill is input tokens: every turn resends the prompt, passages and history while the model writes a few hundred back. One ratio shows where the cost is.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="You pay for the context every turn | Mohd Shayan">
+    <meta name="twitter:description" content="In a retrieval chat the bill is input tokens: every turn resends the prompt, passages and history while the model writes a few hundred back. One ratio shows where the cost is.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/pay-for-context-every-turn/#post",
+      "headline": "You pay for the context every turn",
+      "description": "In a retrieval chat the bill is input tokens: every turn resends the prompt, passages and history while the model writes a few hundred back. One ratio shows where the cost is.",
+      "url": "https://mohdshayan.com/blog/pay-for-context-every-turn/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/pay-for-context-every-turn/",
+      "datePublished": "2026-09-18",
+      "dateModified": "2026-09-18",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Cost, Prompt Caching, RAG",
+      "inLanguage": "en",
+      "wordCount": 1227
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">18 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">You pay for the context every turn</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">In a retrieval chat the bill is input tokens: every turn resends the prompt, passages and history while the model writes a few hundred back. One ratio shows where the cost is.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>The intuition about language model bills is that you pay for what the model writes. Output tokens are the expensive ones, five or six times the price of input at every provider, so the answer must be where the money goes. In a retrieval chat, it is not. Every turn resends the system prompt, the retrieved passages and the entire conversation so far, and the model writes a few hundred tokens back. Over a ten-turn conversation the input tokens billed outrun the output tokens by a factor that starts around twelve and, depending on one design decision, ends anywhere between twenty and a hundred. That factor has a name in my cost reviews, and it is the first number I compute for any workload that talks to a model more than once.</p>
+<h2>The resend ratio</h2>
+<p>The resend ratio is input tokens billed divided by output tokens generated, over a whole session. It is one number, it comes straight from the usage fields every API returns, and it answers the only question that matters before optimising: is this workload&#39;s cost in generation, which is rare, or in context, which is usual? A ratio near one is a generation workload, where the model writes about as much as it reads, and the levers are shorter answers and cheaper models. A ratio in the tens is a context workload, and the levers are the ones that follow: what goes in the prompt, what stays in the history, and what the cache can reuse. Most teams measure the second kind of workload with the instincts of the first, which is how a chat product ends up choosing a cheaper model to fix a bill that the model&#39;s price had almost nothing to do with.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 340" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Resend ratio per turn across a ten-turn retrieval chat, under two history policies</title>
+<desc id="f1-d">Two rising lines against turn number one to ten. With passages kept out of the stored history, the per-turn ratio rises from 12 at turn one to 24 at turn ten. With passages kept in the history, it rises from 12 to 96. Both use a 600-token system prompt, four 300-token passages per turn, 40-token questions and 150-token answers.</desc>
+<text x="0" y="18" class="viz-title">Twelve to one at the first turn, and it only goes up</text>
+<text x="0" y="36" class="viz-sub">Input per output token, per turn; 600-token prompt, 4 passages of 300, 150-token answers</text>
+<line x1="330" y1="31" x2="344" y2="31" class="viz-s4"/><text x="350" y="35" class="viz-label-muted">passages kept in history</text>
+<line x1="500" y1="31" x2="514" y2="31" class="viz-s1"/><text x="520" y="35" class="viz-label-muted">passages dropped</text>
+<line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">100</text>
+<line x1="56" y1="108" x2="600" y2="108" class="viz-grid"/><text x="48" y="112" text-anchor="end" class="viz-tick">75</text>
+<line x1="56" y1="160" x2="600" y2="160" class="viz-grid"/><text x="48" y="164" text-anchor="end" class="viz-tick">50</text>
+<line x1="56" y1="212" x2="600" y2="212" class="viz-grid"/><text x="48" y="216" text-anchor="end" class="viz-tick">25</text>
+<line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/><text x="48" y="268" text-anchor="end" class="viz-tick">0</text>
+<text x="56" y="288" text-anchor="middle" class="viz-tick">1</text>
+<text x="237" y="288" text-anchor="middle" class="viz-tick">4</text>
+<text x="418" y="288" text-anchor="middle" class="viz-tick">7</text>
+<text x="600" y="288" text-anchor="middle" class="viz-tick">10</text>
+<text x="328" y="310" text-anchor="middle" class="viz-label-muted">Turn number</text>
+<polyline points="56,238.5 116.4,219.2 176.9,199.9 237.3,180.7 297.8,161.4 358.2,142.2 418.7,122.9 479.1,103.6 539.6,84.4 600,65.1" class="viz-s4"/>
+<polyline points="56,238.5 116.4,235.9 176.9,233.2 237.3,230.6 297.8,227.9 358.2,225.3 418.7,222.7 479.1,220 539.6,217.4 600,214.7" class="viz-s1"/>
+<circle cx="56" cy="238.5" r="4" class="viz-d1"/><text x="66" y="252" class="viz-value">12</text>
+<circle cx="600" cy="65.1" r="4" class="viz-d4"/><text x="592" y="60" text-anchor="end" class="viz-value">96 at turn ten</text>
+<circle cx="600" cy="214.7" r="4" class="viz-d1"/><text x="592" y="208" text-anchor="end" class="viz-value">24</text>
+<text x="328" y="332" text-anchor="middle" class="viz-label-muted">Cumulative over the session: 54 to 1 with passages kept, 18 to 1 with them dropped.</text>
+</svg>
+<figcaption>Illustrative: computed from the stated assumptions, a 600-token system prompt, four 300-token passages retrieved fresh each turn, 40-token questions and 150-token answers; no measured traffic is involved.</figcaption>
+</figure>
+
+<p>The chart&#39;s two lines are the same conversation under two history policies, and the difference between them is the single largest cost decision in a retrieval chat. If the passages retrieved for each turn are kept in the stored history, so that turn ten&#39;s prompt contains the passages from turns one through nine as well as its own, the per-turn ratio reaches 96 by turn ten and the session averages 54 input tokens per output token. If each turn&#39;s passages are used and then dropped, with only the question and the answer retained, turn ten&#39;s ratio is 24 and the session averages 18. Same model, same answers, three times the bill.</p>
+<h2>Why the price tables make it worse than it looks</h2>
+<p>Output tokens are more expensive, and that fact is what hides the ratio. At the current list prices, the output price is five times the input price across the Claude line, Fable 5.1 at 10 and 50 dollars per million tokens, Opus 5 at 5 and 25, Sonnet 5 at 2 and 10, Haiku 4.5 at 1 and 5, per the <a href="https://claude.com/pricing">published pricing</a>; OpenAI&#39;s <a href="https://developers.openai.com/api/docs/pricing">current table</a> runs from five times for its largest models to six for most of the mid and small ones and eight for one small model. So a workload with a resend ratio of five spends equal money on input and output. A ratio of 18 spends about three and a half times as much on input as on output. A ratio of 54 spends eleven times as much.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 350" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Ratio of output to input token price across current models from two providers</title>
+<desc id="f2-d">Horizontal bars showing the output price divided by the input price: Claude Fable 5.1, Opus 5, Sonnet 5 and Haiku 4.5 all at 5; gpt-6-astra and gpt-5.6-sol at 5; gpt-5.6-terra, gpt-5.5, gpt-5.4 and gpt-5.4-mini at 6; gpt-5-mini at 8. A marker at the ratio shows where a workload's resend ratio would make input and output cost the same.</desc>
+<text x="0" y="18" class="viz-title">Output costs five to eight times input; the ratio decides which dominates</text>
+<text x="0" y="36" class="viz-sub">Output price divided by input price, list prices per million tokens, September 2026</text>
+<line x1="176" y1="52" x2="176" y2="290" class="viz-axis"/>
+<text x="166" y="73" text-anchor="end" class="viz-label">Claude Fable 5.1</text><path d="M176 58 H426 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/><text x="446" y="73" class="viz-value">5</text>
+<text x="166" y="101" text-anchor="end" class="viz-label">Claude Opus 5</text><path d="M176 86 H426 a4 4 0 0 1 4 4 V102 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/><text x="446" y="101" class="viz-value">5</text>
+<text x="166" y="129" text-anchor="end" class="viz-label">Claude Sonnet 5</text><path d="M176 114 H426 a4 4 0 0 1 4 4 V130 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/><text x="446" y="129" class="viz-value">5</text>
+<text x="166" y="157" text-anchor="end" class="viz-label">Claude Haiku 4.5</text><path d="M176 142 H426 a4 4 0 0 1 4 4 V158 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/><text x="446" y="157" class="viz-value">5</text>
+<text x="166" y="185" text-anchor="end" class="viz-label">gpt-6-astra</text><path d="M176 170 H426 a4 4 0 0 1 4 4 V186 a4 4 0 0 1 -4 4 H176 Z" class="viz-f2"/><text x="446" y="185" class="viz-value">5</text>
+<text x="166" y="213" text-anchor="end" class="viz-label">gpt-5.6-terra</text><path d="M176 198 H476 a4 4 0 0 1 4 4 V214 a4 4 0 0 1 -4 4 H176 Z" class="viz-f2"/><text x="496" y="213" class="viz-value">6</text>
+<text x="166" y="241" text-anchor="end" class="viz-label">gpt-5.4-mini</text><path d="M176 226 H476 a4 4 0 0 1 4 4 V242 a4 4 0 0 1 -4 4 H176 Z" class="viz-f2"/><text x="496" y="241" class="viz-value">6</text>
+<text x="166" y="269" text-anchor="end" class="viz-label">gpt-5-mini</text><path d="M176 254 H576 a4 4 0 0 1 4 4 V270 a4 4 0 0 1 -4 4 H176 Z" class="viz-f2"/><text x="596" y="269" class="viz-value">8</text>
+<rect x="0" y="306" width="12" height="12" rx="3" class="viz-f1"/><text x="18" y="317" class="viz-label-muted">Anthropic</text>
+<rect x="100" y="306" width="12" height="12" rx="3" class="viz-f2"/><text x="118" y="317" class="viz-label-muted">OpenAI</text>
+<text x="0" y="340" class="viz-label-muted">Fifty pixels per unit; a resend ratio above the bar means input dominates.</text>
+</svg>
+<figcaption>Source: computed from the list prices on the <a href="https://claude.com/pricing">Claude pricing page</a> and the <a href="https://developers.openai.com/api/docs/pricing">OpenAI pricing page</a> as read on 18 September 2026; ratios only, since the prices themselves change more often than the ratios do.</figcaption>
+</figure>
+
+<h2>What prompt caching actually attacks</h2>
+<p>Prompt caching is the provider&#39;s answer to the resend ratio, and it works on exactly one thing: a prefix of the prompt that is byte-for-byte identical to a prefix the provider has seen recently. Both major providers document the same shape with different numbers. OpenAI&#39;s <a href="https://developers.openai.com/api/docs/guides/prompt-caching">prompt caching guide</a> discounts cached input by up to 90 percent, requires a prefix of at least 1,024 tokens on its current models, keeps entries alive for at least thirty minutes after the last use on those models, and states plainly that reuse requires the entire rendered prefix to match. Anthropic&#39;s <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-caching">documentation</a> prices cache reads at a tenth of the input price, cache writes at 1.25 times for a five-minute lifetime or twice for an hour, sets minimum cacheable lengths from 512 to 4,096 tokens depending on the model, and fixes the prefix order as tools, then system, then messages, with explicit breakpoints that cache everything up to that point.</p>
+<p>The word that matters in both is prefix. A cache hit reuses everything up to the first byte that differs from the last request, and nothing after it. So the layout of the prompt decides whether the cache ever hits, and the natural layout for a retrieval chat, system prompt, then this turn&#39;s passages, then the history, then the question, is the worst one: the passages change every turn, they sit right after the system prompt, and everything after them is uncacheable.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Prompt layout with the cache breakpoint: stable prefix first, retrieved passages after it, history last</title>
+<desc id="f3-d">Two stacked prompt layouts. The naive layout: system prompt, then this turn's passages, then history, then question; the cache breakpoint falls after the system prompt and only the system prompt is reused. The recommended layout: tools and system prompt, then the history so far, then this turn's passages, then the question; the breakpoint falls after the history, so the system prompt and the whole history are reused and only the passages and question are billed at full price.</desc>
+<text x="0" y="18" class="viz-title">Put what changes last</text>
+<text x="8" y="52" class="viz-tick">NAIVE: PASSAGES RIGHT AFTER THE SYSTEM PROMPT</text>
+<rect x="8" y="60" width="120" height="40" rx="6" class="viz-box-accent"/><text x="68" y="85" text-anchor="middle" class="viz-label">system</text>
+<rect x="132" y="60" width="150" height="40" rx="6" class="viz-box-ink"/><text x="207" y="85" text-anchor="middle" class="viz-on-ink">this turn's passages</text>
+<rect x="286" y="60" width="240" height="40" rx="6" class="viz-box-ink"/><text x="406" y="85" text-anchor="middle" class="viz-on-ink">history, growing every turn</text>
+<rect x="530" y="60" width="102" height="40" rx="6" class="viz-box-ink"/><text x="581" y="85" text-anchor="middle" class="viz-on-ink">question</text>
+<line x1="130" y1="56" x2="130" y2="104" class="viz-s4"/>
+<text x="136" y="120" class="viz-tick">breakpoint: only the system prompt is ever reused</text>
+<text x="8" y="164" class="viz-tick">RECOMMENDED: STABLE PREFIX, THEN HISTORY, THEN WHAT CHANGED</text>
+<rect x="8" y="172" width="120" height="40" rx="6" class="viz-box-accent"/><text x="68" y="197" text-anchor="middle" class="viz-label">tools, system</text>
+<rect x="132" y="172" width="240" height="40" rx="6" class="viz-box-accent"/><text x="252" y="197" text-anchor="middle" class="viz-label">history so far</text>
+<rect x="376" y="172" width="150" height="40" rx="6" class="viz-box-ink"/><text x="451" y="197" text-anchor="middle" class="viz-on-ink">this turn's passages</text>
+<rect x="530" y="172" width="102" height="40" rx="6" class="viz-box-ink"/><text x="581" y="197" text-anchor="middle" class="viz-on-ink">question</text>
+<line x1="374" y1="168" x2="374" y2="216" class="viz-s4"/>
+<text x="136" y="232" class="viz-tick">breakpoint: system and history reused at a tenth of the price</text>
+<rect x="8" y="256" width="12" height="12" rx="3" class="viz-box-accent"/><text x="26" y="267" class="viz-label-muted">cacheable, identical to the last turn</text>
+<rect x="300" y="256" width="12" height="12" rx="3" class="viz-box-ink"/><text x="318" y="267" class="viz-label-muted">changes every turn, billed in full</text>
+<text x="0" y="292" class="viz-label-muted">History grows one exchange a turn, extending the cached prefix instead of breaking it.</text>
+</svg>
+<figcaption>Illustrative: the two layouts as the caching rules in both providers' documentation imply; the breakpoint is where the cached prefix ends.</figcaption>
+</figure>
+
+<p>The recommended layout inverts the order: the stable prefix first, then the history, then this turn&#39;s passages, then the question. The history grows by one exchange per turn, and because it grows at the end, each turn&#39;s history is the previous turn&#39;s history plus a suffix, so the previous turn&#39;s cache entry is a prefix of this turn&#39;s prompt and it hits. The passages, which change every turn, go after the breakpoint and are billed in full, and they are the only thing that is. On the ten-turn conversation above, with passages dropped from history, that turns most of the 18-to-1 into cache reads at a tenth of the price, and the effective ratio, in money rather than tokens, comes down to the low single digits.</p>
+<p>There is one more subtlety in the numbers. A cache write costs more than a plain input token at one provider, 1.25 times for the short lifetime, so a prefix that is written and never read again costs more than not caching it. The layout above makes each turn&#39;s write the next turn&#39;s read, which is the case caching was built for, and a conversation that ends after one turn pays a small premium for nothing. The resend ratio, measured per session, is how you tell those apart.</p>
+<h2>Where the ratio comes from in practice</h2>
+<p>The workload I have described is the shape of the helpdesk chat I worked on: a system prompt, a handful of retrieved passages per turn, a history, and short answers with citations. The ratios above are computed from stated assumptions and not from that system&#39;s traffic, but the shape is the shape, and it is the shape of most retrieval chats and most agent loops. The AI automation work I do for clients as a retained service has the same structure with a different label on the box: a stable instruction set, a changing context, a growing history, and a bill that is dominated by the parts that are resent.</p>
+<p>So the review starts the same way each time. Pull the usage counts, divide input by output over a session, and look at the number. If it is near five, the model&#39;s answers are the cost and the conversation is about which model. If it is in the tens, the context is the cost, and the conversation is about three things in order: what is in the history, where the passages sit, and whether the prefix is stable enough to cache. The provider&#39;s discount is real, and it applies only to the part of the prompt you were disciplined enough to keep the same.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Cost</span><span class="tag-chip">Prompt Caching</span><span class="tag-chip">RAG</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

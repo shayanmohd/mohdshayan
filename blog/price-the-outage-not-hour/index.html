@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price the outage, not the hour | Mohd Shayan</title>
+    <meta name="description" content="For infrastructure and security work the hour is the wrong unit. The client is buying a lower probability of an expensive failure, which is what an insurer sells, with arithmetic.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/price-the-outage-not-hour/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/price-the-outage-not-hour/">
+    <meta property="og:title" content="Price the outage, not the hour | Mohd Shayan">
+    <meta property="og:description" content="For infrastructure and security work the hour is the wrong unit. The client is buying a lower probability of an expensive failure, which is what an insurer sells, with arithmetic.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Price the outage, not the hour | Mohd Shayan">
+    <meta name="twitter:description" content="For infrastructure and security work the hour is the wrong unit. The client is buying a lower probability of an expensive failure, which is what an insurer sells, with arithmetic.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/price-the-outage-not-hour/#post",
+      "headline": "Price the outage, not the hour",
+      "description": "For infrastructure and security work the hour is the wrong unit. The client is buying a lower probability of an expensive failure, which is what an insurer sells, with arithmetic.",
+      "url": "https://mohdshayan.com/blog/price-the-outage-not-hour/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/price-the-outage-not-hour/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Pricing, Consulting, Reliability",
+      "inLanguage": "en",
+      "wordCount": 1251
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Price the outage, not the hour</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">For infrastructure and security work the hour is the wrong unit. The client is buying a lower probability of an expensive failure, which is what an insurer sells, with arithmetic.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>The first quotes I wrote for infrastructure work were in hours, because that is how engineering is bought, and every one of them was wrong in the same direction. The client was not buying my hours. They were buying a lower chance of the thing they were afraid of: the gate that stops validating tickets on the busiest day of the year, the database that cannot be restored, the credential that walks out of the building. Hours are what it costs me to reduce that chance. They say nothing about what the reduction is worth, and the gap between the two is where a quote is either fair or foolish.</p>
+<h2>What the client is actually buying</h2>
+<p>Uptime Institute&#39;s annual survey makes the shape of the thing plain. In its <a href="https://uptimeinstitute.com/about-ui/press-releases/uptime-announces-annual-outage-analysis-report-2026">2026 outage analysis</a>, 57 percent of respondents said their most recent significant outage cost more than 100,000 dollars, and one in five said it cost more than a million, the second year running at that level; the <a href="https://uptimeinstitute.com/about-ui/press-releases/uptime-announces-annual-outage-analysis-report-2025">2025 edition</a> had 54 percent above 100,000. Those are large operators, and a small client&#39;s numbers are smaller, but the structure is the same: an outage has a cost, the cost is large relative to the work that prevents it, and the work changes a probability rather than delivering a thing.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 230" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Cost of the most recent significant outage, share of respondents</title>
+<desc id="f1-d">Two pairs of horizontal bars. Over 100,000 dollars: 54 percent in the 2024 survey, 57 percent in the 2025 survey. Over one million dollars: about 20 percent in both.</desc>
+<text x="0" y="18" class="viz-title">What an outage costs the people who had one</text>
+<text x="0" y="36" class="viz-sub">Share of respondents, Uptime Institute annual surveys</text>
+<line x1="220" y1="52" x2="220" y2="188" class="viz-axis"/>
+<text x="210" y="73" text-anchor="end" class="viz-label">Over $100,000, 2024 survey</text>
+<path d="M220 58 H430.4 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H220 Z" class="viz-fgray"/>
+<text x="446.4" y="73" class="viz-value">54%</text>
+<text x="210" y="107" text-anchor="end" class="viz-label">Over $100,000, 2025 survey</text>
+<path d="M220 92 H442.1 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H220 Z" class="viz-f1"/>
+<text x="458.1" y="107" class="viz-value">57%</text>
+<text x="210" y="141" text-anchor="end" class="viz-label">Over $1 million, 2024 survey</text>
+<path d="M220 126 H298 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H220 Z" class="viz-fgray"/>
+<text x="314" y="141" class="viz-value">one in five</text>
+<text x="210" y="175" text-anchor="end" class="viz-label">Over $1 million, 2025 survey</text>
+<path d="M220 160 H298 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H220 Z" class="viz-f1"/>
+<text x="314" y="175" class="viz-value">one in five</text>
+<text x="0" y="216" class="viz-tick">the million-dollar rows are drawn at 20 per cent, as the reports state them</text>
+</svg>
+<figcaption>Source: Uptime Institute press releases for the <a href="https://uptimeinstitute.com/about-ui/press-releases/uptime-announces-annual-outage-analysis-report-2025">2025</a> and <a href="https://uptimeinstitute.com/about-ui/press-releases/uptime-announces-annual-outage-analysis-report-2026">2026</a> annual outage analyses.</figcaption>
+</figure>
+
+<p>An engagement that reduces a probability is an insurance product, whatever the invoice calls it. And insurers do not price by the hour. They price by the expected loss they are absorbing, and they add a margin for the risk they cannot measure. That arithmetic transfers to infrastructure and security work almost unchanged, and it produces quotes that survive negotiation because every number in them is the client&#39;s own.</p>
+<h2>The premium quote</h2>
+<p>The quote has four inputs, and all four come from the client. The cost of the failure: what a day without the gate, or a lost database, or a leaked key would cost, in money, using the client&#39;s own figures for revenue, penalties and recovery. The baseline probability: how likely that failure is over the retention period, before the work. The post-work probability: how likely it is after. And the retention period itself: how long the client is buying protection for, which is usually the length of the support contract.</p>
+<p>The fee is a stated share of the expected loss avoided: the cost of failure, times the reduction in probability, over the period. To that I attach a deductible, which is the residual risk the client keeps, stated plainly: the failures the work does not prevent, and the probability that remains.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 262" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">The premium quote as a flow</title>
+<desc id="f2-d">Three inputs on the left: cost of failure, baseline probability, and probability after the work. They combine into expected loss avoided over the retention period. A share of that becomes the fee. What remains, the residual probability times the cost, is stated as the deductible the client keeps.</desc>
+<defs><marker id="f2-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<rect x="8" y="30" width="170" height="48" rx="8" class="viz-box"/>
+<text x="93" y="59" text-anchor="middle" class="viz-label">Cost of failure</text>
+<rect x="8" y="94" width="170" height="48" rx="8" class="viz-box"/>
+<text x="93" y="123" text-anchor="middle" class="viz-label">Probability before</text>
+<rect x="8" y="158" width="170" height="48" rx="8" class="viz-box"/>
+<text x="93" y="187" text-anchor="middle" class="viz-label">Probability after</text>
+<line x1="180" y1="54" x2="236" y2="108" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<line x1="180" y1="118" x2="236" y2="118" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<line x1="180" y1="182" x2="236" y2="128" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="240" y="86" width="180" height="64" rx="8" class="viz-box-accent"/>
+<text x="330" y="112" text-anchor="middle" class="viz-label">Expected loss avoided</text>
+<text x="330" y="132" text-anchor="middle" class="viz-label-muted">cost x reduction, per period</text>
+<line x1="422" y1="106" x2="470" y2="70" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<line x1="422" y1="130" x2="470" y2="166" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="474" y="42" width="158" height="52" rx="8" class="viz-box-ink"/>
+<text x="553" y="66" text-anchor="middle" class="viz-on-ink">Fee: a stated share</text>
+<text x="553" y="84" text-anchor="middle" class="viz-on-ink">of the loss avoided</text>
+<rect x="474" y="142" width="158" height="52" rx="8" class="viz-box"/>
+<text x="553" y="166" text-anchor="middle" class="viz-label">Deductible</text>
+<text x="553" y="184" text-anchor="middle" class="viz-label-muted">residual risk, in writing</text>
+<text x="320" y="240" text-anchor="middle" class="viz-tick">every input is the client's own number; the share is the only one that is mine</text>
+</svg>
+<figcaption>Illustrative: the structure of the quote; the share and the inputs vary by engagement.</figcaption>
+</figure>
+
+<h2>The same hours, three prices</h2>
+<p>Here is why the hour was the wrong unit, in numbers I have made up to show the shape. Take forty hours of the same work: a restore drill, a lock-timeout policy for migrations, secrets moved to short-lived tokens, and a runbook. Do it for a hobby site whose worst day costs its owner a few hundred rupees of embarrassment. Do it for a visitor attraction whose gates fail on a festival weekend and refund a day&#39;s tickets. Do it for a payments backend whose outage triggers contractual penalties and a regulator&#39;s letter. The hours are identical. The loss avoided differs by orders of magnitude, and a fee that is a share of the loss avoided differs with it.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 250" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">The same forty hours priced for three clients</title>
+<desc id="f3-d">Horizontal bars on a logarithmic scale of expected loss avoided: a hobby site at about 1, a ticketing gate at about 100, a payments backend at about 10,000, in relative units. The fee follows the bar, not the hours.</desc>
+<text x="0" y="18" class="viz-title">Identical work, different worth</text>
+<text x="0" y="36" class="viz-sub">Expected loss avoided by the same 40 hours, relative units, log scale</text>
+<line x1="176" y1="52" x2="176" y2="154" class="viz-axis"/>
+<text x="166" y="73" text-anchor="end" class="viz-label">Hobby site</text>
+<path d="M176 58 H203 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="219" y="73" class="viz-value">1</text>
+<text x="166" y="107" text-anchor="end" class="viz-label">Ticketing gate</text>
+<path d="M176 92 H384 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/>
+<text x="400" y="107" class="viz-value">100</text>
+<text x="166" y="141" text-anchor="end" class="viz-label">Payments backend</text>
+<path d="M176 126 H564 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="580" y="141" class="viz-value">10,000</text>
+<text x="0" y="190" class="viz-label-muted">An hourly quote charges all three the same. A premium quote charges each</text>
+<text x="0" y="210" class="viz-label-muted">a share of its own bar, and is cheap for the first and fair for the third.</text>
+<text x="0" y="238" class="viz-tick">made-up magnitudes; the point is the spread, not the values</text>
+</svg>
+<figcaption>Illustrative: three client profiles with invented magnitudes, drawn to show why the hour cannot be the unit.</figcaption>
+</figure>
+
+<p>The hobby site should probably not buy the work at all, and the premium quote says so honestly: the loss avoided is too small to be worth a fee that covers my time, and the right answer is a checklist they can follow themselves. The payments backend should buy it and should pay a great deal more than forty hours&#39; worth, and will, because the quote is a fraction of a number their own finance team produced. The ticketing gate sits in between, and the deductible matters most there, because the work reduces the chance of a bad festival weekend and does not eliminate it, and the client should know which failures are still theirs.</p>
+<h2>Estimating the probabilities without pretending</h2>
+<p>The two probabilities are the inputs people distrust, and the honest answer is that they are estimates and should be presented as ranges. The baseline comes from three places. Public base rates, such as the outage surveys above, give an order of magnitude for a class of failure. The client&#39;s own history gives a second: how many times in the last three years the gate went down, the database needed a restore, a credential had to be rotated in a hurry. And a short review of the system gives a third, because a database with no tested restore has a higher probability of an unrecoverable failure than one with a monthly drill, and that difference is visible in an afternoon.</p>
+<p>The post-work probability is the harder one, and I state it as a claim about mechanism rather than a number pulled from the air. A restore drill that runs monthly does not make data loss impossible; it makes an unrecoverable loss depend on two failures in the same month instead of one. A lock timeout on migrations does not prevent bad migrations; it turns a table-wide outage into a failed deployment. Each mechanism converts one kind of failure into a smaller kind, and the reduction in probability is the reduction in the kinds that remain. Written that way, the client can argue with the mechanism, which is a better argument than one about a decimal.</p>
+<h2>Where the formula stops working</h2>
+<p>The arithmetic needs a cost of failure, and some work has none that anyone will write down. A refactor that makes the code nicer, a migration between two adequate frameworks, a dashboard that nobody&#39;s decision depends on. For those the premium quote produces zero, which is the formula telling you the work should be priced by the hour, if at all, because there is no risk being transferred. That is a useful answer, not a failure of the method.</p>
+<p>It also needs honest probabilities, and both sides have reasons to shade them. The client would like the baseline to be low, so the work looks unnecessary, and then high, so the fee looks steep. I would like the reduction to be large. The defence is to use public base rates where they exist, the outage surveys, the secrets-sprawl figures, the migration-incident post-mortems, and to write the assumptions into the quote so that they can be argued about before the work rather than after the failure.</p>
+<h2>What changed</h2>
+<p>Quoting this way changed two things about CustomGlide&#39;s retained infrastructure work. The conversations moved from &quot;how many hours&quot; to &quot;what does the bad day cost you&quot;, which is a conversation the client&#39;s leadership can join and the engineering manager could not have held alone. And the deductible line, the plain statement of what is still their risk, became the part of the proposal clients read most carefully, because it is the only part that tells them what they are not buying.</p>
+<p>Value-based pricing is old advice, and it usually arrives without arithmetic, as an exhortation to charge what the work is worth. Underwriting is the arithmetic. Cost of failure, probability before, probability after, a share of the difference, and a deductible in writing. It is not a way to charge more. It is a way to charge the right amount, which for some clients is less and for a few is a great deal more, and to be able to say why.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Pricing</span><span class="tag-chip">Consulting</span><span class="tag-chip">Reliability</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

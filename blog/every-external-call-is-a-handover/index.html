@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Every external call is a handover | Mohd Shayan</title>
+    <meta name="description" content="Reentrancy is a symptom. The event underneath is control leaving your contract while state is half-written. Count those moments per function and audit the count.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/every-external-call-is-a-handover/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/every-external-call-is-a-handover/">
+    <meta property="og:title" content="Every external call is a handover | Mohd Shayan">
+    <meta property="og:description" content="Reentrancy is a symptom. The event underneath is control leaving your contract while state is half-written. Count those moments per function and audit the count.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Every external call is a handover | Mohd Shayan">
+    <meta name="twitter:description" content="Reentrancy is a symptom. The event underneath is control leaving your contract while state is half-written. Count those moments per function and audit the count.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/every-external-call-is-a-handover/#post",
+      "headline": "Every external call is a handover",
+      "description": "Reentrancy is a symptom. The event underneath is control leaving your contract while state is half-written. Count those moments per function and audit the count.",
+      "url": "https://mohdshayan.com/blog/every-external-call-is-a-handover/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/every-external-call-is-a-handover/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Solidity, Security, Audits",
+      "inLanguage": "en",
+      "wordCount": 1269
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 6 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Every external call is a handover</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Reentrancy is a symptom. The event underneath is control leaving your contract while state is half-written. Count those moments per function and audit the count.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>Every Solidity audit checklist has a line for reentrancy, and every tutorial teaches the same fix: checks, effects, interactions, plus a guard modifier. The fix works for the case the tutorial shows and it names the wrong thing. Reentrancy is a symptom. The event underneath it is that control leaves your contract while some of your state is still to be written, and that event has more consequences than the one where the caller comes straight back in. It is also how a token&#39;s transfer hook runs your counterparty&#39;s code, how another contract reads your half-updated numbers, and how a flash-loan receiver ends up running inside someone else&#39;s transaction. Counting those moments is a better habit than pattern-matching for the symptom, and the count has a target, which is zero.</p>
+<h2>The handover count</h2>
+<p>For each function, count the points where control leaves the contract, by any external call, with at least one state variable still to be written after that point. That is the handover count. A function with zero handovers cannot be re-entered in any way that matters, because there is nothing half-written for a re-entrant caller to exploit, and nothing stale for an outside reader to see. A function with a non-zero count is not necessarily wrong; it has a reason, and the reason gets written next to the call in the code, and the count and its reasons are reported per function in the audit.</p>
+<p>The definition is deliberately about state written after the call, not about whether the callee is trusted. Trust is what the tutorials use, and it is the wrong axis: a trusted callee can be upgraded, can itself call an untrusted contract, or can be a token whose transfer runs a hook you did not know about. The state ordering is a property of your own code, and it is the one you control.</p>
+<h2>What a flash-loan receiver looks like under the count</h2>
+<p>The clearest shape I have worked with is a flash-loan receiver. In Aave&#39;s <a href="https://aave.com/docs/developers/smart-contracts/pool">pool contract</a>, a receiver calls flashLoan, the pool transfers the borrowed tokens and calls back into the receiver&#39;s executeOperation, the receiver does whatever it borrowed the money for, approves the repayment, and returns; the pool then pulls the loan plus premium. The whole design is a handover: your code runs inside the pool&#39;s transaction, between the pool&#39;s transfer and the pool&#39;s repayment check. Inside your executeOperation, every swap on a decentralised exchange is another handover, and every token transfer is a potential one, because a token that follows <a href="https://eips.ethereum.org/EIPS/eip-777">ERC-777</a> calls a hook on the recipient during the transfer, and an <a href="https://eips.ethereum.org/EIPS/eip-721">ERC-721</a> safe transfer calls the receiver&#39;s acceptance function.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 330" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Control flow of a flash-loan receiver with the handover points marked</title>
+<desc id="f1-d">A vertical flow. The receiver calls the pool's flashLoan: handover one, control moves to the pool. The pool transfers tokens and calls back executeOperation. Inside it, a swap on exchange A: handover two. A swap on exchange B: handover three. An approve on the token contract: handover four. Return true, and the pool pulls repayment. Beside each handover, the state the receiver still has to write afterwards is listed: the in-flight flag, the profit accounting, and the recipient of the profit.</desc>
+<defs><marker id="f1-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<text x="0" y="18" class="viz-title">Four handovers in one function, and what is still unwritten at each</text>
+<rect x="8" y="40" width="250" height="40" rx="8" class="viz-box"/>
+<text x="133" y="65" text-anchor="middle" class="viz-label">receiver calls pool.flashLoan</text>
+<circle cx="270" cy="60" r="7" class="viz-d4"/><text x="284" y="64" class="viz-label-muted">1: control to the pool</text>
+<line x1="133" y1="82" x2="133" y2="98" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="8" y="102" width="250" height="40" rx="8" class="viz-box-accent"/>
+<text x="133" y="127" text-anchor="middle" class="viz-label">pool calls back executeOperation</text>
+<line x1="133" y1="144" x2="133" y2="160" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="8" y="164" width="250" height="40" rx="8" class="viz-box"/>
+<text x="133" y="189" text-anchor="middle" class="viz-label">swap on exchange A</text>
+<circle cx="270" cy="184" r="7" class="viz-d4"/><text x="284" y="188" class="viz-label-muted">2: exchange, and its tokens' hooks</text>
+<line x1="133" y1="206" x2="133" y2="222" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="8" y="226" width="250" height="40" rx="8" class="viz-box"/>
+<text x="133" y="251" text-anchor="middle" class="viz-label">swap on exchange B, approve repayment</text>
+<circle cx="270" cy="246" r="7" class="viz-d4"/><text x="284" y="250" class="viz-label-muted">3 and 4: exchange, token contract</text>
+<line x1="133" y1="268" x2="133" y2="284" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="8" y="288" width="250" height="34" rx="8" class="viz-box-ink"/>
+<text x="133" y="310" text-anchor="middle" class="viz-on-ink">return; pool pulls loan plus premium</text>
+<text x="284" y="290" class="viz-tick">still to be written after 2, 3, 4:</text>
+<text x="284" y="306" class="viz-label-muted">in-flight flag, profit accounting, payee</text>
+<text x="284" y="322" class="viz-label-muted">each one a reason in the code, or moved earlier</text>
+</svg>
+<figcaption>Illustrative: the shape of a receiver built for Aave's flashLoan and executeOperation; the state listed is the kind such a contract keeps, not a particular deployment's.</figcaption>
+</figure>
+
+<p>Under the count, that function starts at four. The work of reducing it is ordinary: the in-flight flag is set before the first call and cleared at the very end, which is fine as long as the flag is the only thing read by anything re-entrant, and it is written down as the reason; the profit accounting moves to after the last external call, which reduces the number of handovers with unwritten state behind them from three to zero for that variable; the payee is fixed before anything is called. The count that remains, one, with the flag as its reason, is what the audit reports. It is a smaller and more honest number than &quot;uses a reentrancy guard&quot;.</p>
+<h2>Why the symptom is the wrong thing to count</h2>
+<p>The public loss data explains why the broader framing matters. DefiLlama&#39;s <a href="https://defillama.com/hacks">hacks dataset</a> classifies incidents by technique, and for the period from January 2025 to mid-September 2026, incidents labelled reentrancy account for six events and about 45 million dollars, which is a small slice of the roughly 4.5 billion lost in the period, most of it to key and signer compromise rather than to contract logic. Among the contract-logic categories, arithmetic errors, donation attacks, rounding errors, price manipulation and access control are each larger than reentrancy.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 330" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">DeFi losses by contract-logic technique, January 2025 to September 2026</title>
+<desc id="f2-d">Horizontal bars in millions of US dollars: arithmetic error 313, donation attack 145, rounding error 139, spot price manipulation 91, improper access control 83, reentrancy 45, incorrect share accounting 19. Reentrancy is highlighted and is sixth of seven.</desc>
+<text x="0" y="18" class="viz-title">Reentrancy is a small slice of contract-logic losses</text>
+<text x="0" y="36" class="viz-sub">Millions of US dollars lost, by technique, 1 January 2025 to 16 September 2026</text>
+<line x1="196" y1="52" x2="196" y2="290" class="viz-axis"/>
+<text x="186" y="73" text-anchor="end" class="viz-label">Arithmetic error</text>
+<path d="M196 58 H588 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
+<text x="584" y="53" text-anchor="end" class="viz-value">313, 13 incidents</text>
+<text x="186" y="107" text-anchor="end" class="viz-label">Donation attack</text>
+<path d="M196 92 H378 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
+<text x="398" y="107" class="viz-value">145, 7</text>
+<text x="186" y="141" text-anchor="end" class="viz-label">Rounding error</text>
+<path d="M196 126 H370 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
+<text x="390" y="141" class="viz-value">139, 5</text>
+<text x="186" y="175" text-anchor="end" class="viz-label">Spot price manipulation</text>
+<path d="M196 160 H310 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
+<text x="330" y="175" class="viz-value">91, 43</text>
+<text x="186" y="209" text-anchor="end" class="viz-label">Improper access control</text>
+<path d="M196 194 H300 a4 4 0 0 1 4 4 V210 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
+<text x="320" y="209" class="viz-value">83, 42</text>
+<text x="186" y="243" text-anchor="end" class="viz-label">Reentrancy</text>
+<path d="M196 228 H252 a4 4 0 0 1 4 4 V244 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/>
+<text x="272" y="243" class="viz-value">45, 6</text>
+<text x="186" y="277" text-anchor="end" class="viz-label">Share accounting</text>
+<path d="M196 262 H219 a4 4 0 0 1 4 4 V278 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
+<text x="239" y="277" class="viz-value">19, 24</text>
+<text x="0" y="316" class="viz-label-muted">Key and signer compromise, not shown, dwarf all of these rows.</text>
+</svg>
+<figcaption>Source: computed by the author from the <a href="https://defillama.com/hacks">DefiLlama hacks dataset</a> via its public API, incidents dated 1 January 2025 to 16 September 2026, grouped by the dataset's technique label.</figcaption>
+</figure>
+
+<p>The numbers are not an argument that reentrancy does not matter; the dataset&#39;s largest reentrancy loss in the period, a 42 million dollar exploit of a perpetuals protocol in July 2025, is reason enough to keep the line on the checklist. They are an argument about what to count. A guard modifier defends against the one technique labelled reentrancy. A handover count defends against every technique whose mechanism is &quot;someone else&#39;s code ran while my state was inconsistent&quot;, and that mechanism shows up under other labels: a donation that lands between a balance read and its use, a price read from a pool that is mid-swap, a share calculation that ran before a callback finished. The label on the incident is decided afterwards. The handover was visible in the code beforehand.</p>
+<h2>The read-only case the guard misses</h2>
+<p>The variant that makes the point sharpest is read-only reentrancy, where nobody re-enters the vulnerable contract at all. Contract A is mid-withdrawal: it has sent tokens to the caller but not yet updated the reserves it uses to compute its share price. During the send, the caller&#39;s code runs, and it calls contract B, a lender that values A&#39;s shares by asking A for its price. A answers from the half-updated reserves, B lends against the inflated value, and the loop closes without A&#39;s guard ever firing, because A was never called again. A&#39;s handover count on that withdrawal function was one, with the reserves as the unwritten state, and the count would have flagged it.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 270" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Read-only reentrancy across two contracts</title>
+<desc id="f3-d">Three boxes. Contract A, a pool, is mid-withdrawal: tokens sent, reserves not yet updated. Control is with the attacker's contract, which calls contract B, a lender. B calls A's price view, which answers from the stale reserves. B lends against the inflated value. A's reentrancy guard never fires because A is only read, not re-entered.</desc>
+<defs><marker id="f3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<text x="0" y="18" class="viz-title">Nobody re-enters A, and A is still the victim</text>
+<rect x="8" y="50" width="190" height="90" rx="8" class="viz-box-accent"/>
+<text x="103" y="74" text-anchor="middle" class="viz-label">Contract A, pool</text>
+<text x="103" y="94" text-anchor="middle" class="viz-label-muted">tokens sent to caller</text>
+<text x="103" y="112" text-anchor="middle" class="viz-label-muted">reserves not yet updated</text>
+<text x="103" y="130" text-anchor="middle" class="viz-tick">handover count: 1</text>
+<line x1="200" y1="95" x2="222" y2="95" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<rect x="226" y="50" width="190" height="90" rx="8" class="viz-box"/>
+<text x="321" y="74" text-anchor="middle" class="viz-label">Attacker's contract</text>
+<text x="321" y="94" text-anchor="middle" class="viz-label-muted">running inside A's send</text>
+<text x="321" y="112" text-anchor="middle" class="viz-label-muted">calls B, not A</text>
+<line x1="418" y1="95" x2="440" y2="95" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<rect x="444" y="50" width="188" height="90" rx="8" class="viz-box"/>
+<text x="538" y="74" text-anchor="middle" class="viz-label">Contract B, lender</text>
+<text x="538" y="94" text-anchor="middle" class="viz-label-muted">asks A for its price</text>
+<text x="538" y="112" text-anchor="middle" class="viz-label-muted">lends against the answer</text>
+<path d="M538 142 V180 H103 V144" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="320" y="172" text-anchor="middle" class="viz-tick">a view call: A answers from the stale reserves</text>
+<text x="320" y="214" text-anchor="middle" class="viz-label-muted">A's guard checks for a second entry. There is none. The unwritten state was the problem.</text>
+<text x="320" y="246" text-anchor="middle" class="viz-tick">the fix is the same as for the classic case: write the reserves before the send</text>
+</svg>
+<figcaption>Illustrative: the read-only reentrancy pattern drawn as three contracts; it is the case that a guard modifier on A cannot catch.</figcaption>
+</figure>
+
+<h2>Running the count</h2>
+<p>The count is easy to produce by hand for a small contract and easy to automate for a large one: for each function, list external calls in order, and for each call, list the storage writes that follow it in the same function. The audit report carries a table with one row per function: handover count, and for each non-zero entry, the call, the state still unwritten, and the reason given in the code. Reasons that are acceptable are specific: &quot;the flag is the only state read by re-entrant paths and it is set before the call&quot;; &quot;the callee is this contract&#39;s own library and makes no external calls&quot;. Reasons that are not acceptable are the ones the tutorials teach: &quot;the callee is trusted&quot;, &quot;there is a guard&quot;.</p>
+<p>Automating it is a walk over the syntax tree. For each function, visit the statements in order; an external call is any call expression whose target is an address or an interface rather than an internal function or a library that makes no calls of its own; a state write is any assignment whose left-hand side resolves to storage. Emit one row per call that has at least one state write after it in the same function, including writes inside branches and loops, and include writes that happen in internal functions called after the external call, because those are the ones a manual review skips. The tool does not need to decide what is safe. It needs to produce the list, and the reasons are a human&#39;s job.</p>
+<p>What the count does not cover deserves saying. Arithmetic and rounding errors, the largest contract-logic category in the data, are not handovers and need their own discipline. Key compromise, the largest category of all, is not a contract property at all. The handover count is a narrow tool for a specific mechanism, and its value is that the mechanism is the one that hides behind several labels. Get every function to zero, write a reason for every one that cannot be, and the reentrancy line on the checklist becomes a consequence rather than a hope.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Solidity</span><span class="tag-chip">Security</span><span class="tag-chip">Audits</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

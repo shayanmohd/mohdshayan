@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counting people out is the hard part | Mohd Shayan</title>
+    <meta name="description" content="Gateless entry gives a perfect entry count and no exit count, so live occupancy is an estimate that drifts up all day. Show the drift, and let it decide when to count exits.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/counting-people-out/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/counting-people-out/">
+    <meta property="og:title" content="Counting people out is the hard part | Mohd Shayan">
+    <meta property="og:description" content="Gateless entry gives a perfect entry count and no exit count, so live occupancy is an estimate that drifts up all day. Show the drift, and let it decide when to count exits.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Counting people out is the hard part | Mohd Shayan">
+    <meta name="twitter:description" content="Gateless entry gives a perfect entry count and no exit count, so live occupancy is an estimate that drifts up all day. Show the drift, and let it decide when to count exits.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/counting-people-out/#post",
+      "headline": "Counting people out is the hard part",
+      "description": "Gateless entry gives a perfect entry count and no exit count, so live occupancy is an estimate that drifts up all day. Show the drift, and let it decide when to count exits.",
+      "url": "https://mohdshayan.com/blog/counting-people-out/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/counting-people-out/",
+      "datePublished": "2026-09-18",
+      "dateModified": "2026-09-18",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Ticketing, Analytics, Queueing",
+      "inLanguage": "en",
+      "wordCount": 1170
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">18 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Counting people out is the hard part</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Gateless entry gives a perfect entry count and no exit count, so live occupancy is an estimate that drifts up all day. Show the drift, and let it decide when to count exits.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>A QR ticket scanned at the gate is a perfect record of one thing: a person came in, at this time, on this ticket. It records nothing about when they left, because nobody scans out. So the number every venue wants from a scan-in system, how many people are inside right now, is not a count. It is an estimate, built from a count of arrivals and an assumption about how long people stay, and it drifts upward all day, because every arrival is certain and every departure is a guess. The honest dashboard does not hide that. It shows the estimate with its drift, resets it at close, and uses the size of the drift to decide when counting exits becomes worth the door.</p>
+<h2>The scale of the problem</h2>
+<p>Arrival counts at real venues are large enough that the drift matters. The Association of Leading Visitor Attractions publishes <a href="https://www.alva.org.uk/details.cfm?p=423">annual visitor figures</a> for its members: in 2025 the Natural History Museum recorded 7,116,929 visits, the British Museum 6,440,120, Tate Modern 4,514,266 and the Science Museum 2,640,417. Spread over opening days, the largest of those is on the order of twenty thousand arrivals a day, and a museum that wants to hold a gallery under a safe occupancy needs to know how many of the morning&#39;s arrivals are still in the building at two in the afternoon, which no scan at the door can say.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 420" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Visits in 2025 to the ten most visited ALVA member attractions</title>
+<desc id="f1-d">Horizontal bars in millions of visits: Natural History Museum 7.12, British Museum 6.44, Windsor Great Park 4.98, Tate Modern 4.51, National Gallery 4.15, Southbank Centre 3.42, V and A South Kensington 3.33, Somerset House 2.90, Tower of London 2.82, Science Museum 2.64.</desc>
+<text x="0" y="18" class="viz-title">Tens of thousands of arrivals a day, and no record of departures</text>
+<text x="0" y="36" class="viz-sub">Visits in 2025, millions, ten most visited ALVA member attractions</text>
+<line x1="196" y1="52" x2="196" y2="392" class="viz-axis"/>
+<text x="186" y="73" text-anchor="end" class="viz-label">Natural History Museum</text>
+<path d="M196 58 H596 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/><text x="592" y="53" text-anchor="end" class="viz-value">7.12</text>
+<text x="186" y="107" text-anchor="end" class="viz-label">British Museum</text>
+<path d="M196 92 H558 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/><text x="554" y="87" text-anchor="end" class="viz-value">6.44</text>
+<text x="186" y="141" text-anchor="end" class="viz-label">Windsor Great Park</text>
+<path d="M196 126 H476 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/><text x="496" y="141" class="viz-value">4.98</text>
+<text x="186" y="175" text-anchor="end" class="viz-label">Tate Modern</text>
+<path d="M196 160 H450 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/><text x="470" y="175" class="viz-value">4.51</text>
+<text x="186" y="209" text-anchor="end" class="viz-label">National Gallery</text>
+<path d="M196 194 H429 a4 4 0 0 1 4 4 V210 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/><text x="449" y="209" class="viz-value">4.15</text>
+<text x="186" y="243" text-anchor="end" class="viz-label">Southbank Centre</text>
+<path d="M196 228 H388 a4 4 0 0 1 4 4 V244 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/><text x="408" y="243" class="viz-value">3.42</text>
+<text x="186" y="277" text-anchor="end" class="viz-label">V&amp;A South Kensington</text>
+<path d="M196 262 H383 a4 4 0 0 1 4 4 V278 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/><text x="403" y="277" class="viz-value">3.33</text>
+<text x="186" y="311" text-anchor="end" class="viz-label">Somerset House</text>
+<path d="M196 296 H359 a4 4 0 0 1 4 4 V312 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/><text x="379" y="311" class="viz-value">2.90</text>
+<text x="186" y="345" text-anchor="end" class="viz-label">Tower of London</text>
+<path d="M196 330 H354 a4 4 0 0 1 4 4 V346 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/><text x="374" y="345" class="viz-value">2.82</text>
+<text x="186" y="379" text-anchor="end" class="viz-label">Science Museum</text>
+<path d="M196 364 H344 a4 4 0 0 1 4 4 V380 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/><text x="364" y="379" class="viz-value">2.64</text>
+<text x="0" y="412" class="viz-label-muted">Fifty-six pixels per million visits.</text>
+</svg>
+<figcaption>Source: <a href="https://www.alva.org.uk/details.cfm?p=423">ALVA visitor figures</a> for 2025; the Windsor figure is for the Crown Estate's Great Park.</figcaption>
+</figure>
+
+<h2>Little&#39;s law, pointed the right way</h2>
+<p>The tool for turning arrivals into occupancy is <a href="https://en.wikipedia.org/wiki/Little%27s_law">Little&#39;s law</a>, which says that in any stable system the average number inside equals the average arrival rate times the average time spent inside. For a venue, occupancy equals arrivals per hour times the average dwell time in hours. If people arrive at two thousand an hour and stay two hours on average, there are about four thousand inside. The arrival rate is measured exactly by the scans. The dwell time is not measured at all; it is assumed, from surveys, from past exit counts, or from a guess, and the occupancy estimate inherits that assumption whole.</p>
+<p>What makes the estimate usable rather than dangerous is that its error has a known direction. If the dwell assumption is too long, the estimate is too high, and a venue that acts on it holds people at the door earlier than it needs to, which costs revenue and goodwill. If the assumption is too short, the estimate is too low, and the venue admits people into a space that is fuller than it thinks, which is the failure that safety limits exist to prevent. So the assumption is set long, deliberately, and the estimate is a figure that is wrong in a predictable direction. That is better than a count that is wrong in an unknown one, and it is the standard a dashboard can be honest about.</p>
+<h2>The exit deficit</h2>
+<p>The number that expresses the honesty is what I call the exit deficit: at any moment, the gap between scanned entries and inferred exits. It is the error bar on the occupancy figure. Early in the day it is small, because few people have been inside long enough for the dwell assumption to matter. By mid-afternoon it is large, because the estimate of who has left is entirely a product of the assumption and the assumption has been compounding since opening. The dashboard shows the occupancy estimate and the deficit side by side, and resets both at close, when the building is empty and the count is known.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 330" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">One day of scanned entries, modelled exits and the resulting occupancy estimate, with the exit deficit shaded</title>
+<desc id="f2-d">Lines over a day from opening to close. Cumulative scanned entries rise steadily and flatten toward close. Modelled cumulative exits, from an assumed dwell distribution, rise with a lag. The occupancy estimate is the gap between them, peaking in the early afternoon. A shaded band around the occupancy line widens through the day and is labelled the exit deficit, the uncertainty from the unmeasured dwell time.</desc>
+<text x="0" y="18" class="viz-title">Entries are certain; the gap is a guess that grows</text>
+<text x="0" y="36" class="viz-sub">Cumulative people over one day; illustrative shape from an assumed dwell distribution</text>
+<line x1="330" y1="31" x2="344" y2="31" class="viz-s1"/><text x="350" y="35" class="viz-label-muted">scanned entries</text>
+<line x1="470" y1="31" x2="484" y2="31" class="viz-s2"/><text x="490" y="35" class="viz-label-muted">modelled exits</text>
+<line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/>
+<line x1="56" y1="126" x2="600" y2="126" class="viz-grid"/>
+<line x1="56" y1="196" x2="600" y2="196" class="viz-grid"/>
+<line x1="56" y1="266" x2="600" y2="266" class="viz-axis"/>
+<text x="56" y="290" text-anchor="middle" class="viz-tick">open</text>
+<text x="328" y="290" text-anchor="middle" class="viz-tick">midday</text>
+<text x="600" y="290" text-anchor="middle" class="viz-tick">close</text>
+<path d="M56 266 L140 236 L220 186 L300 126 L380 86 L460 66 L540 60 L600 58 L600 58 L540 70 L460 84 L380 112 L300 158 L220 214 L140 250 L56 266 Z" class="viz-band"/>
+<polyline points="56,266 140,236 220,186 300,126 380,86 460,66 540,60 600,58" class="viz-s1"/>
+<polyline points="56,266 140,264 220,246 300,206 380,156 460,110 540,78 600,60" class="viz-s2"/>
+<text x="330" y="182" class="viz-label-muted">occupancy estimate: the gap</text>
+<text x="330" y="200" class="viz-tick">shaded: the exit deficit, widening</text>
+<text x="328" y="318" text-anchor="middle" class="viz-label-muted">At close the building is empty, the lines meet, and the day's estimate can be checked.</text>
+</svg>
+<figcaption>Illustrative: the shape produced by steady arrivals and an assumed dwell distribution; the curves are constructed, not measured at any venue.</figcaption>
+</figure>
+
+<p>The reset at close is not a formality. It is the one moment in the day when the estimate can be checked: the building is empty, so the true exits equal the day&#39;s entries, and the model&#39;s cumulative exits can be compared against them. A model that predicted the building would be empty an hour before close was assuming dwell times too short; one that still predicted people inside at close was assuming too long. That comparison, done daily, is how the dwell assumption gets calibrated without ever installing an exit counter, and it is why the dashboard&#39;s error bar narrows over weeks even though the data it runs on does not change.</p>
+<p>The dwell assumption itself deserves to be a distribution rather than a number, because visitors do not all stay the same time. A school group stays ninety minutes and leaves together; a tourist stays three hours; a member drops in for twenty minutes. Little&#39;s law works with the average, but the deficit is better computed from the spread, since a wide spread means the modelled exits are uncertain even when their average is right. In practice the model I use assumes a distribution shaped by past sampled counts where they exist and by the venue&#39;s own judgement where they do not, and the deficit is the range of occupancy figures the plausible dwell distributions produce, not a single subtraction.</p>
+<h2>When to start counting exits</h2>
+<p>The deficit is also the trigger for the next investment. A venue has a tolerance: the amount of uncertainty in the occupancy figure it can live with, set by how close it runs to its safe limit. While the deficit stays inside that tolerance, entry-only counting is enough and the exit door stays unstaffed. When the deficit exceeds it, regularly, at the times that matter, the venue needs measured exits, and the cheapest version is not a scanner on every exit. It is a sampled count at one door, a person or a sensor counting departures through the busiest exit for an hour at a time, which measures the actual dwell distribution and replaces the assumption with data for that day.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Three counting architectures and the data each produces</title>
+<desc id="f3-d">Three columns. Entry only: scan at the gate; produces exact arrivals, occupancy as an estimate with an exit deficit. Entry plus sampled exit: scan at the gate plus a sampled count at one exit; produces exact arrivals and a measured dwell distribution, occupancy as an estimate with a small deficit. Entry plus exit: scan in and scan out at every door; produces exact occupancy but requires every exit to be gated. The middle column is highlighted as the usual right answer.</desc>
+<text x="0" y="18" class="viz-title">What each architecture can honestly show</text>
+<rect x="8" y="40" width="200" height="200" rx="8" class="viz-box"/>
+<text x="108" y="66" text-anchor="middle" class="viz-label">Entry only</text>
+<text x="108" y="90" text-anchor="middle" class="viz-label-muted">scan at the gate</text>
+<text x="108" y="120" text-anchor="middle" class="viz-label-muted">arrivals: exact</text>
+<text x="108" y="140" text-anchor="middle" class="viz-label-muted">dwell: assumed</text>
+<text x="108" y="160" text-anchor="middle" class="viz-label-muted">occupancy: estimate</text>
+<text x="108" y="180" text-anchor="middle" class="viz-label-muted">deficit: grows all day</text>
+<text x="108" y="220" text-anchor="middle" class="viz-tick">no extra doors</text>
+<rect x="220" y="40" width="200" height="200" rx="8" class="viz-box-accent"/>
+<text x="320" y="66" text-anchor="middle" class="viz-label">Entry plus sampled exit</text>
+<text x="320" y="90" text-anchor="middle" class="viz-label-muted">gate scan, one exit counted</text>
+<text x="320" y="120" text-anchor="middle" class="viz-label-muted">arrivals: exact</text>
+<text x="320" y="140" text-anchor="middle" class="viz-label-muted">dwell: measured today</text>
+<text x="320" y="160" text-anchor="middle" class="viz-label-muted">occupancy: estimate</text>
+<text x="320" y="180" text-anchor="middle" class="viz-label-muted">deficit: small, bounded</text>
+<text x="320" y="220" text-anchor="middle" class="viz-tick">one door, part of the day</text>
+<rect x="432" y="40" width="200" height="200" rx="8" class="viz-box"/>
+<text x="532" y="66" text-anchor="middle" class="viz-label">Entry plus exit</text>
+<text x="532" y="90" text-anchor="middle" class="viz-label-muted">scan in and out everywhere</text>
+<text x="532" y="120" text-anchor="middle" class="viz-label-muted">arrivals: exact</text>
+<text x="532" y="140" text-anchor="middle" class="viz-label-muted">departures: exact</text>
+<text x="532" y="160" text-anchor="middle" class="viz-label-muted">occupancy: a count</text>
+<text x="532" y="180" text-anchor="middle" class="viz-label-muted">deficit: zero, if no door leaks</text>
+<text x="532" y="220" text-anchor="middle" class="viz-tick">every exit gated and staffed</text>
+<text x="320" y="276" text-anchor="middle" class="viz-label-muted">The deficit decides which column a venue needs; most never need the third.</text>
+</svg>
+<figcaption>Illustrative: the three architectures and their outputs, as the design reasons about them.</figcaption>
+</figure>
+
+<p>The third architecture, scanning out at every door, is the one venues imagine they want and almost never need. It produces a true count only if every exit is gated, which for a museum with fire doors and a garden and a cafe is not a property the building has, and a single ungated door turns the count back into an estimate with an error that nobody is tracking. The sampled exit is honest about being a sample, and it costs one person for one hour rather than a turnstile on every door.</p>
+<h2>What the dashboard says</h2>
+<p>The live visitor view in the ticketing system I built counts scan-ins at the gate, and the design decisions above are how the occupancy figure on that view is meant to be read. It is labelled as an estimate. It carries the deficit beside it. It resets at close, and the close-of-day comparison feeds the next day&#39;s dwell assumption. When the deficit crosses the venue&#39;s tolerance, the view says so, and the recommended response is a sampled exit count rather than a change to the software. A number with its error bar is a number an operations manager can act on. A number without one is a number they will either over-trust or ignore, and neither is what the gate was scanning for.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Ticketing</span><span class="tag-chip">Analytics</span><span class="tag-chip">Queueing</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

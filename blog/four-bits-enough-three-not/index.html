@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four bits are enough, three are not | Mohd Shayan</title>
+    <meta name="description" content="Quantisation error is a group's range divided by its levels, and a few outlier weights set the range for everyone. Sixteen levels leave the bulk enough resolution; eight do not.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/four-bits-enough-three-not/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/four-bits-enough-three-not/">
+    <meta property="og:title" content="Four bits are enough, three are not | Mohd Shayan">
+    <meta property="og:description" content="Quantisation error is a group's range divided by its levels, and a few outlier weights set the range for everyone. Sixteen levels leave the bulk enough resolution; eight do not.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Four bits are enough, three are not | Mohd Shayan">
+    <meta name="twitter:description" content="Quantisation error is a group's range divided by its levels, and a few outlier weights set the range for everyone. Sixteen levels leave the bulk enough resolution; eight do not.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/four-bits-enough-three-not/#post",
+      "headline": "Four bits are enough, three are not",
+      "description": "Quantisation error is a group's range divided by its levels, and a few outlier weights set the range for everyone. Sixteen levels leave the bulk enough resolution; eight do not.",
+      "url": "https://mohdshayan.com/blog/four-bits-enough-three-not/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/four-bits-enough-three-not/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Quantisation, Linear Algebra, Inference",
+      "inLanguage": "en",
+      "wordCount": 1231
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Four bits are enough, three are not</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Quantisation error is a group's range divided by its levels, and a few outlier weights set the range for everyone. Sixteen levels leave the bulk enough resolution; eight do not.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>Everyone who serves language models learns the same rule of thumb: 8-bit weights are free, 4-bit weights are nearly free, and below 4 bits the model gets noticeably worse, fast. The rule is right, and the explanations offered for it are usually hand-waving about information content. The actual reason is arithmetic that fits on a napkin.</p>
+<p>Weight quantisation is rounding. The rounding error is the range of each group of weights divided by the number of levels available, and the range is set by the largest weight in the group, which is an outlier that almost nothing else in the group resembles. Sixteen levels leave enough of the range for the bulk of the weights after the outlier has taken its share. Eight do not. Everything published below 4 bits is, at bottom, a way of stopping the outlier from taxing everyone else.</p>
+<h2>The cliff, measured</h2>
+<p>The cliff is visible in any careful evaluation, and the cleanest public one I know is the table that accompanied the introduction of the k-quant formats in <a href="https://github.com/ggml-org/llama.cpp/pull/1684">llama.cpp</a>, which reports perplexity for the 7-billion-parameter LLaMA at each format alongside the file size. Against a 16-bit baseline of 5.9066, the 4-bit medium format lands at 5.9601, under one percent worse, for a file 3.4 times smaller. The 3-bit medium format is 6.1503, four percent worse, and the 3-bit small format is 6.4571, over nine percent worse. The 2-bit format is 6.7764, fifteen percent worse, and its file is barely smaller than the 3-bit small one. The curve is flat from 16 bits down to about 4.5 and then bends sharply.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 320" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Perplexity against model file size for the 7B LLaMA k-quant formats</title>
+<desc id="f1-d">A scatter with a connecting line. Points from right to left: Q6_K at 5.15 gigabytes and perplexity 5.911; Q5_K_M at 4.45 and 5.921; Q5_K_S at 4.33 and 5.942; Q4_K_M at 3.80 and 5.960; Q4_K_S at 3.56 and 6.022; Q3_K_M at 3.06 and 6.150; Q3_K_S at 2.75 and 6.457; Q2_K at 2.67 and 6.776. A dashed reference line marks the 16-bit perplexity of 5.907. The curve is flat down to about 3.8 gigabytes and rises steeply below.</desc>
+<text x="0" y="18" class="viz-title">Flat to four bits, then a cliff</text>
+<text x="0" y="36" class="viz-sub">Perplexity of LLaMA 7B by quantised file size in gigabytes; 16-bit reference 5.907</text>
+<line x1="56" y1="74.9" x2="600" y2="74.9" class="viz-grid"/><text x="48" y="78.9" text-anchor="end" class="viz-tick">6.8</text>
+<line x1="56" y1="112.7" x2="600" y2="112.7" class="viz-grid"/><text x="48" y="116.7" text-anchor="end" class="viz-tick">6.6</text>
+<line x1="56" y1="150.5" x2="600" y2="150.5" class="viz-grid"/><text x="48" y="154.5" text-anchor="end" class="viz-tick">6.4</text>
+<line x1="56" y1="188.4" x2="600" y2="188.4" class="viz-grid"/><text x="48" y="192.4" text-anchor="end" class="viz-tick">6.2</text>
+<line x1="56" y1="226.2" x2="600" y2="226.2" class="viz-grid"/><text x="48" y="230.2" text-anchor="end" class="viz-tick">6.0</text>
+<line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/><text x="48" y="268" text-anchor="end" class="viz-tick">5.8</text>
+<text x="147" y="288" text-anchor="middle" class="viz-tick">3 GB</text>
+<text x="328" y="288" text-anchor="middle" class="viz-tick">4 GB</text>
+<text x="509" y="288" text-anchor="middle" class="viz-tick">5 GB</text>
+<line x1="56" y1="243.8" x2="600" y2="243.8" class="viz-s4" stroke-dasharray="4 4"/>
+<text x="596" y="256" text-anchor="end" class="viz-tick">16-bit: 5.907</text>
+<polyline points="86.8,79.4 101.3,139.7 157.5,197.8 248.2,222.1 291.7,233.7 387.8,237.2 409.5,241.2 536.4,243" class="viz-s1"/>
+<circle cx="86.8" cy="79.4" r="4" class="viz-d4"/><text x="98" y="76" class="viz-value">Q2_K, 6.776</text>
+<circle cx="101.3" cy="139.7" r="4" class="viz-d4"/><text x="112" y="136" class="viz-value">Q3_K_S, 6.457</text>
+<circle cx="157.5" cy="197.8" r="4" class="viz-d4"/><text x="168" y="194" class="viz-value">Q3_K_M, 6.150</text>
+<circle cx="248.2" cy="222.1" r="4" class="viz-d1"/><text x="258" y="216" class="viz-value">Q4_K_S</text>
+<circle cx="291.7" cy="233.7" r="4" class="viz-d1"/><text x="302" y="228" class="viz-value">Q4_K_M, 5.960</text>
+<circle cx="387.8" cy="237.2" r="4" class="viz-d1"/>
+<circle cx="409.5" cy="241.2" r="4" class="viz-d1"/><text x="420" y="234" class="viz-value">Q5_K</text>
+<circle cx="536.4" cy="243" r="4" class="viz-d1"/><text x="546" y="238" class="viz-value">Q6_K</text>
+<circle cx="120" cy="308" r="5" class="viz-d1"/><text x="130" y="312" class="viz-label-muted">within one percent of 16-bit</text>
+<circle cx="360" cy="308" r="5" class="viz-d4"/><text x="370" y="312" class="viz-label-muted">the cliff: 4 to 15 percent worse</text>
+</svg>
+<figcaption>Source: the perplexity and file-size table in the <a href="https://github.com/ggml-org/llama.cpp/pull/1684">k-quants pull request</a> to llama.cpp, June 2023, for the 7B model; positions are drawn from the table's values.</figcaption>
+</figure>
+
+<h2>What a weight matrix looks like</h2>
+<p>To see why the cliff is there, look at the weights themselves. I took a public checkpoint small enough to download over lunch, the 135-million-parameter <a href="https://huggingface.co/HuggingFaceTB/SmolLM2-135M">SmolLM2</a>, and pulled one matrix from the middle of the network, the down-projection of a feed-forward block, 576 by 1,536, about 885,000 weights. Measured in units of the matrix&#39;s own standard deviation, 99.45 percent of the weights lie within three sigma and 99.94 percent within four. Sixty-two weights, seven in a hundred thousand, lie beyond six sigma. The largest is at 18.8 sigma. The distribution is a near-Gaussian bulk with a tail that is thin, long, and decisive.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 330" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Histogram of one weight matrix in units of its standard deviation, with the 4-bit levels for a typical group drawn beneath</title>
+<desc id="f2-d">Twenty bars on a logarithmic count axis, one per sigma from minus ten to plus ten. The central two bins hold about 311,000 weights each; the bins at plus and minus three to four hold about 2,100; at five to six, a few dozen; beyond eight, a handful, with the largest weight at 18.8 sigma off the chart. Below the axis, sixteen gold ticks mark the levels a 4-bit quantiser has for a typical group of 128 weights whose largest value is 2.93 sigma; the ticks are 0.39 sigma apart.</desc>
+<text x="0" y="18" class="viz-title">A near-Gaussian bulk and a thin, long tail</text>
+<text x="0" y="36" class="viz-sub">Weights per one-sigma bin, log scale; SmolLM2-135M, layer 22 down-projection, 884,736 weights</text>
+<line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">1M</text>
+<line x1="56" y1="125.3" x2="600" y2="125.3" class="viz-grid"/><text x="48" y="129.3" text-anchor="end" class="viz-tick">10k</text>
+<line x1="56" y1="194.7" x2="600" y2="194.7" class="viz-grid"/><text x="48" y="198.7" text-anchor="end" class="viz-tick">100</text>
+<line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/><text x="48" y="268" text-anchor="end" class="viz-tick">1</text>
+<rect x="58" y="264" width="23" height="0.5" class="viz-fgray"/>
+<rect x="85" y="239.8" width="23" height="24.2" class="viz-fgray"/>
+<rect x="112" y="237" width="23" height="27" class="viz-fgray"/>
+<rect x="139" y="222.3" width="23" height="41.7" class="viz-fgray"/>
+<rect x="166" y="207.6" width="23" height="56.4" class="viz-fgray"/>
+<rect x="193" y="184" width="23" height="80" class="viz-fgray"/>
+<rect x="220" y="148.2" width="23" height="115.8" class="viz-fgray"/>
+<rect x="247" y="115.1" width="23" height="148.9" class="viz-f1"/>
+<rect x="274" y="89.3" width="23" height="174.7" class="viz-f1"/>
+<rect x="301" y="73.5" width="23" height="190.5" class="viz-f1"/>
+<rect x="328" y="73.5" width="23" height="190.5" class="viz-f1"/>
+<rect x="355" y="89.3" width="23" height="174.7" class="viz-f1"/>
+<rect x="382" y="115.1" width="23" height="148.9" class="viz-f1"/>
+<rect x="409" y="148.7" width="23" height="115.3" class="viz-fgray"/>
+<rect x="436" y="185.1" width="23" height="78.9" class="viz-fgray"/>
+<rect x="463" y="209.1" width="23" height="54.9" class="viz-fgray"/>
+<rect x="490" y="225.4" width="23" height="38.6" class="viz-fgray"/>
+<rect x="517" y="243.1" width="23" height="20.9" class="viz-fgray"/>
+<rect x="544" y="239.8" width="23" height="24.2" class="viz-fgray"/>
+<rect x="571" y="239.8" width="23" height="24.2" class="viz-fgray"/>
+<text x="69" y="284" text-anchor="middle" class="viz-tick">-10</text>
+<text x="205" y="284" text-anchor="middle" class="viz-tick">-5</text>
+<text x="328" y="284" text-anchor="middle" class="viz-tick">0</text>
+<text x="451" y="284" text-anchor="middle" class="viz-tick">5</text>
+<text x="588" y="284" text-anchor="middle" class="viz-tick">10</text>
+<line x1="248.4" y1="292" x2="248.4" y2="300" class="viz-s1"/><line x1="259" y1="292" x2="259" y2="300" class="viz-s1"/><line x1="269.6" y1="292" x2="269.6" y2="300" class="viz-s1"/><line x1="280.2" y1="292" x2="280.2" y2="300" class="viz-s1"/><line x1="290.8" y1="292" x2="290.8" y2="300" class="viz-s1"/><line x1="301.4" y1="292" x2="301.4" y2="300" class="viz-s1"/><line x1="312" y1="292" x2="312" y2="300" class="viz-s1"/><line x1="322.6" y1="292" x2="322.6" y2="300" class="viz-s1"/><line x1="333.2" y1="292" x2="333.2" y2="300" class="viz-s1"/><line x1="343.8" y1="292" x2="343.8" y2="300" class="viz-s1"/><line x1="354.4" y1="292" x2="354.4" y2="300" class="viz-s1"/><line x1="365" y1="292" x2="365" y2="300" class="viz-s1"/><line x1="375.6" y1="292" x2="375.6" y2="300" class="viz-s1"/><line x1="386.2" y1="292" x2="386.2" y2="300" class="viz-s1"/><line x1="396.8" y1="292" x2="396.8" y2="300" class="viz-s1"/><line x1="407.4" y1="292" x2="407.4" y2="300" class="viz-s1"/>
+<text x="420" y="300" class="viz-tick">4-bit levels, 0.39 sigma apart</text>
+<text x="328" y="322" text-anchor="middle" class="viz-label-muted">Gold bars: 99.45 percent within three sigma; the largest weight is at 18.8 sigma.</text>
+</svg>
+<figcaption>Source: computed by the author from the public <a href="https://huggingface.co/HuggingFaceTB/SmolLM2-135M">SmolLM2-135M</a> checkpoint; bars are counts per one-sigma bin, the ticks are the levels of a symmetric 4-bit quantiser for a group of 128 whose largest weight is at the median, 2.93 sigma.</figcaption>
+</figure>
+
+<h2>The range tax</h2>
+<p>Now quantise it. A uniform quantiser with b bits has 2 to the b levels spread evenly across a range, and the simplest range is symmetric around zero out to the largest absolute weight in the group. The step between levels is twice the largest weight divided by the number of levels minus one, and the rounding error is, on average, a quarter of a step. Everything about the cliff follows from what &quot;the group&quot; is.</p>
+<p>If the group is the whole matrix, the largest weight is 18.8 sigma, and the 4-bit step is 2.5 sigma. Almost every weight in the matrix rounds to one of three levels, and the model is destroyed. Eighty percent of the quantiser&#39;s range lies beyond the 99.9th percentile of the weights, spent on values that fewer than one weight in a thousand ever takes. That share is what I call the range tax: the fraction of the range, and so of the levels, that the outliers take from everyone else.</p>
+<p>The fix everyone uses is to shrink the group. With groups of 128 consecutive weights, the median group&#39;s largest value is 2.93 sigma, the 4-bit step is 0.39 sigma, and ten of the sixteen levels fall inside plus or minus two sigma where the bulk lives. The mean rounding error, measured, is 0.10 sigma. Only 5.5 percent of groups contain a weight beyond four sigma, so the tax is paid in a few groups rather than everywhere, and it averages about one percent of the range.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Per-group scaling: the range, the step, and one outlier stretching the step for the whole group</title>
+<desc id="f3-d">Two number lines. Top, a group with no outlier: the weights cluster within about three sigma, the sixteen levels span that cluster, and the step is small. Bottom, a group with one weight at eight sigma: the same sixteen levels now span eight sigma, the step is nearly three times larger, and most of the levels lie in empty space between the cluster and the outlier.</desc>
+<text x="0" y="18" class="viz-title">One weight sets the step for 127 others</text>
+<text x="8" y="54" class="viz-tick">GROUP WITHOUT AN OUTLIER: range 3 sigma, step 0.4 sigma</text>
+<line x1="40" y1="90" x2="600" y2="90" class="viz-axis"/>
+<rect x="215" y="72" width="210" height="36" rx="18" class="viz-f1"/>
+<text x="320" y="95" text-anchor="middle" class="viz-on-ink">128 weights, within 3 sigma</text>
+<line x1="215" y1="112" x2="215" y2="120" class="viz-s1"/><line x1="229" y1="112" x2="229" y2="120" class="viz-s1"/><line x1="243" y1="112" x2="243" y2="120" class="viz-s1"/><line x1="257" y1="112" x2="257" y2="120" class="viz-s1"/><line x1="271" y1="112" x2="271" y2="120" class="viz-s1"/><line x1="285" y1="112" x2="285" y2="120" class="viz-s1"/><line x1="299" y1="112" x2="299" y2="120" class="viz-s1"/><line x1="313" y1="112" x2="313" y2="120" class="viz-s1"/><line x1="327" y1="112" x2="327" y2="120" class="viz-s1"/><line x1="341" y1="112" x2="341" y2="120" class="viz-s1"/><line x1="355" y1="112" x2="355" y2="120" class="viz-s1"/><line x1="369" y1="112" x2="369" y2="120" class="viz-s1"/><line x1="383" y1="112" x2="383" y2="120" class="viz-s1"/><line x1="397" y1="112" x2="397" y2="120" class="viz-s1"/><line x1="411" y1="112" x2="411" y2="120" class="viz-s1"/><line x1="425" y1="112" x2="425" y2="120" class="viz-s1"/>
+<text x="440" y="120" class="viz-tick">16 levels in the cluster</text>
+<text x="8" y="164" class="viz-tick">GROUP WITH ONE OUTLIER AT 8 SIGMA: range 8 sigma, step 1.07 sigma</text>
+<line x1="40" y1="200" x2="600" y2="200" class="viz-axis"/>
+<rect x="215" y="182" width="210" height="36" rx="18" class="viz-f1"/>
+<text x="320" y="205" text-anchor="middle" class="viz-on-ink">the same 128 weights</text>
+<circle cx="600" cy="200" r="6" class="viz-d4"/>
+<text x="596" y="176" text-anchor="end" class="viz-label-muted">one weight at 8 sigma</text>
+<line x1="40" y1="222" x2="40" y2="230" class="viz-s4"/><line x1="77.3" y1="222" x2="77.3" y2="230" class="viz-s4"/><line x1="114.7" y1="222" x2="114.7" y2="230" class="viz-s4"/><line x1="152" y1="222" x2="152" y2="230" class="viz-s4"/><line x1="189.3" y1="222" x2="189.3" y2="230" class="viz-s4"/><line x1="226.7" y1="222" x2="226.7" y2="230" class="viz-s4"/><line x1="264" y1="222" x2="264" y2="230" class="viz-s4"/><line x1="301.3" y1="222" x2="301.3" y2="230" class="viz-s4"/><line x1="338.7" y1="222" x2="338.7" y2="230" class="viz-s4"/><line x1="376" y1="222" x2="376" y2="230" class="viz-s4"/><line x1="413.3" y1="222" x2="413.3" y2="230" class="viz-s4"/><line x1="450.7" y1="222" x2="450.7" y2="230" class="viz-s4"/><line x1="488" y1="222" x2="488" y2="230" class="viz-s4"/><line x1="525.3" y1="222" x2="525.3" y2="230" class="viz-s4"/><line x1="562.7" y1="222" x2="562.7" y2="230" class="viz-s4"/><line x1="600" y1="222" x2="600" y2="230" class="viz-s4"/>
+<text x="320" y="256" text-anchor="middle" class="viz-label-muted">Same 16 levels, stretched over the outlier: six inside the cluster, ten in empty space.</text>
+<text x="320" y="284" text-anchor="middle" class="viz-tick">the range tax is the share of levels in the empty space, here over sixty percent</text>
+</svg>
+<figcaption>Illustrative: two groups drawn to scale on a sigma axis; the step sizes are computed for a symmetric 16-level quantiser over each range.</figcaption>
+</figure>
+
+<h2>Why the cliff is between four and three</h2>
+<p>Hold the group at 128 and drop to 3 bits. The same median range of 2.93 sigma is now split into eight levels, the step is 0.84 sigma, and only four levels fall inside plus or minus two sigma. The measured rounding error doubles, to 0.21 sigma. At 2 bits the step is 1.95 sigma, two levels serve the bulk, and the error is 0.51 sigma, half the width of the distribution. The perplexity table above is that arithmetic seen from the outside: the one-percent penalty at 4 bits, the four-to-nine-percent penalty at 3 bits, the fifteen at 2.</p>
+<p>The reason the threshold is where it is comes from the shape of the bulk. A near-Gaussian distribution needs a step of a few tenths of a sigma before rounding noise is small relative to the signal in each weight, and the smallest range a group of a hundred-odd samples can have is about three sigma either side, because the largest of a hundred draws from a Gaussian sits near there even with no outliers at all. Six sigma of range at a step of 0.4 needs about sixteen levels. That is four bits. Eight levels over the same range is a step of 0.84 sigma, and the noise is no longer small. The cliff is not a property of any model; it is a property of a Gaussian bulk with a hundred-sample range, and every model whose weights look like that will have it in the same place.</p>
+<h2>Every sub-4-bit method is an outlier method</h2>
+<p>Seen this way, the research below 4 bits is a set of ways to lower the range tax, and they are three, not thirty. The first is group size: smaller groups mean each outlier taxes fewer neighbours, and in the matrix above, going from groups of 1,024 to 128 to 32 takes the share of groups with a weight past four sigma from 28 percent to 5.5 to 1.7, and the average tax from about six percent of the range to one to under half a percent, at the cost of storing a scale per group. The second is rotation: multiply the weights by an orthogonal matrix before quantising, as <a href="https://arxiv.org/abs/2404.00456">QuaRot</a> and its successors do, so that a single large entry is spread across many coordinates and the largest value in every group shrinks toward the Gaussian expectation, which lowers the range without changing what the layer computes. The third is mixed precision: find the columns that carry the outliers, which <a href="https://arxiv.org/abs/2306.00978">activation-aware methods</a> identify from the activations they multiply, and keep those at higher precision while the rest go to 4 bits or below.</p>
+<p>A fourth family, the non-uniform and importance-weighted codebooks that the k-quants themselves belong to, places the levels where the weights actually are rather than evenly across the range, which is a way of refusing to spend levels on the empty part of it; it lowers the tax without shrinking the range, and it composes with the other three.</p>
+<p>Each of the four attacks the same quantity. None of them adds resolution to the bulk by fiat; they stop the bulk from paying for the tail. That is why the honest description of a 3-bit or 2-bit result is never &quot;the model tolerates fewer bits&quot; and always &quot;the method found a way to make the range smaller&quot;, and it is why, when I choose between 8-bit and 4-bit for a served model, the question I actually ask is how the quantiser handles outliers, not how many bits it claims.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Quantisation</span><span class="tag-chip">Linear Algebra</span><span class="tag-chip">Inference</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

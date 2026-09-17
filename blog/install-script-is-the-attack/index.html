@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The install script is the attack | Mohd Shayan</title>
+    <meta name="description" content="Every big package compromise since 2018 has used one mechanism: code that runs at install time with your credentials. Count those scripts in every lockfile and drive them to zero.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/install-script-is-the-attack/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/install-script-is-the-attack/">
+    <meta property="og:title" content="The install script is the attack | Mohd Shayan">
+    <meta property="og:description" content="Every big package compromise since 2018 has used one mechanism: code that runs at install time with your credentials. Count those scripts in every lockfile and drive them to zero.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The install script is the attack | Mohd Shayan">
+    <meta name="twitter:description" content="Every big package compromise since 2018 has used one mechanism: code that runs at install time with your credentials. Count those scripts in every lockfile and drive them to zero.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/install-script-is-the-attack/#post",
+      "headline": "The install script is the attack",
+      "description": "Every big package compromise since 2018 has used one mechanism: code that runs at install time with your credentials. Count those scripts in every lockfile and drive them to zero.",
+      "url": "https://mohdshayan.com/blog/install-script-is-the-attack/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/install-script-is-the-attack/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Supply Chain, Npm, Security",
+      "inLanguage": "en",
+      "wordCount": 1286
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 6 min read</p>
+                <h1 class="h2 mt-3 balance reveal">The install script is the attack</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Every big package compromise since 2018 has used one mechanism: code that runs at install time with your credentials. Count those scripts in every lockfile and drive them to zero.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>Every major package compromise of the last eight years has had a different story and the same mechanism. A maintainer&#39;s token is phished, a popular package gets a new version, and the new version carries a script that runs the moment someone installs it, with the installing user&#39;s credentials, on the installing user&#39;s machine, before a single line of the package has been imported. The story changes each time. The install script is the attack every time, and it is the one part of the chain that a team can count and remove.</p>
+<h2>The same shape, eight years running</h2>
+<p>The <a href="https://github.com/dominictarr/event-stream/issues/116">event-stream</a> incident of November 2018 was the template: a widely depended-on npm package handed to a new maintainer, who added a dependency that targeted one wallet application&#39;s build. In September 2025 the shape returned as a worm. The Shai-Hulud campaign, <a href="https://www.wiz.io/blog/shai-hulud-npm-supply-chain-attack">documented by Wiz</a> and in a <a href="https://www.cisa.gov/news-events/alerts/2025/09/23/widespread-supply-chain-compromise-impacting-npm-ecosystem">CISA alert</a>, published malicious versions of over two hundred packages and more than five hundred versions between 14 and 18 September, each carrying a post-install script that harvested credentials and, if it found an npm token, published itself into every package that token could reach. A second wave followed on 24 November. And in February 2026, <a href="https://thehackernews.com/2026/02/cline-cli-230-supply-chain-attack.html">version 2.3.0 of the Cline CLI</a>, a widely used coding-agent tool, shipped with a post-install script that silently installed a second package on every machine that ran the install, after an attacker reached its publishing credentials through a prompt injection in a GitHub issue title.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 170" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Install-time supply chain incidents, 2018 to 2026</title>
+<desc id="f1-d">A timeline with five events, four compromises in brick and one defence in gold: November 2018, event-stream; 14 to 18 September 2025, Shai-Hulud, over 200 packages; 24 November 2025, the second Shai-Hulud wave; 9 December 2025, npm revokes classic tokens; 17 February 2026, Cline CLI 2.3.0 post-install compromise.</desc>
+<circle cx="430" cy="18" r="5" class="viz-d4"/><text x="440" y="22" class="viz-label-muted">compromise</text>
+<circle cx="540" cy="18" r="5" class="viz-d1"/><text x="550" y="22" class="viz-label-muted">defence</text>
+<line x1="40" y1="90" x2="600" y2="90" class="viz-axis"/>
+<circle cx="70" cy="90" r="6" class="viz-d4"/>
+<text x="70" y="64" text-anchor="middle" class="viz-tick">Nov 2018</text>
+<text x="70" y="46" text-anchor="middle" class="viz-label">event-stream</text>
+<circle cx="280" cy="90" r="6" class="viz-d4"/>
+<text x="280" y="124" text-anchor="middle" class="viz-tick">Sept 2025</text>
+<text x="280" y="142" text-anchor="middle" class="viz-label">Shai-Hulud, 200+ packages</text>
+<circle cx="400" cy="90" r="6" class="viz-d4"/>
+<text x="400" y="64" text-anchor="middle" class="viz-tick">Nov 2025</text>
+<text x="400" y="46" text-anchor="middle" class="viz-label">second wave</text>
+<circle cx="470" cy="90" r="6" class="viz-d1"/>
+<text x="470" y="124" text-anchor="middle" class="viz-tick">Dec 2025</text>
+<text x="470" y="142" text-anchor="middle" class="viz-label">classic tokens revoked</text>
+<circle cx="570" cy="90" r="6" class="viz-d4"/>
+<text x="570" y="64" text-anchor="middle" class="viz-tick">Feb 2026</text>
+<text x="570" y="46" text-anchor="middle" class="viz-label">Cline CLI 2.3.0</text>
+</svg>
+<figcaption>Source: the <a href="https://www.wiz.io/blog/shai-hulud-npm-supply-chain-attack">Wiz analysis</a> and <a href="https://www.cisa.gov/news-events/alerts/2025/09/23/widespread-supply-chain-compromise-impacting-npm-ecosystem">CISA alert</a> on Shai-Hulud, GitHub's <a href="https://github.blog/changelog/2025-11-05-npm-security-update-classic-token-creation-disabled-and-granular-token-changes/">npm token changelog</a>, and <a href="https://thehackernews.com/2026/02/cline-cli-230-supply-chain-attack.html">reporting on the Cline incident</a>.</figcaption>
+</figure>
+
+<p>What makes the worm form possible is one loop: the post-install script runs with the developer&#39;s environment, the environment contains a publishing token, the script uses the token to publish itself into other packages, and those packages&#39; post-install scripts run on the next developer. Three of the four steps are outside the package ecosystem&#39;s control. The first one is not.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 220" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">The worm loop, and the one step a team controls</title>
+<desc id="f2-d">Four boxes in a cycle: a post-install script runs on install; it harvests the npm token from the environment; it publishes malicious versions of every package the token can reach; those packages run their own post-install script on the next machine. The first box is highlighted as the step a team can refuse.</desc>
+<defs><marker id="f2-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<rect x="8" y="40" width="140" height="56" rx="8" class="viz-box-accent"/>
+<text x="78" y="64" text-anchor="middle" class="viz-label">Script runs</text>
+<text x="78" y="82" text-anchor="middle" class="viz-label-muted">at install time</text>
+<line x1="150" y1="68" x2="168" y2="68" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="172" y="40" width="140" height="56" rx="8" class="viz-box"/>
+<text x="242" y="64" text-anchor="middle" class="viz-label">Harvests token</text>
+<text x="242" y="82" text-anchor="middle" class="viz-label-muted">from the environment</text>
+<line x1="314" y1="68" x2="332" y2="68" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="336" y="40" width="140" height="56" rx="8" class="viz-box"/>
+<text x="406" y="64" text-anchor="middle" class="viz-label">Publishes itself</text>
+<text x="406" y="82" text-anchor="middle" class="viz-label-muted">into reachable packages</text>
+<line x1="478" y1="68" x2="496" y2="68" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<rect x="500" y="40" width="132" height="56" rx="8" class="viz-box"/>
+<text x="566" y="64" text-anchor="middle" class="viz-label">Next install</text>
+<text x="566" y="82" text-anchor="middle" class="viz-label-muted">on another machine</text>
+<path d="M566 98 V140 H78 V102" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<text x="320" y="170" text-anchor="middle" class="viz-label-muted">The loop closes through the first box. A tree with no install scripts has no first box.</text>
+<text x="320" y="200" text-anchor="middle" class="viz-tick">expiring tokens and two-factor publishing weaken boxes two and three</text>
+</svg>
+<figcaption>Illustrative: the propagation described in the Shai-Hulud analyses, drawn as a cycle.</figcaption>
+</figure>
+
+<h2>The ecosystem has finally accepted it</h2>
+<p>The defences that arrived in 2025 were aimed at the loop&#39;s later steps and at the first one. GitHub&#39;s <a href="https://github.blog/changelog/2025-09-29-strengthening-npm-security-important-changes-to-authentication-and-token-management/">September 2025 announcement</a> and its <a href="https://github.blog/changelog/2025-11-05-npm-security-update-classic-token-creation-disabled-and-granular-token-changes/">November update</a> ended classic npm tokens, with all existing ones revoked on 9 December 2025, capped write-capable granular tokens at ninety days, and made two-factor authentication the default for tokens that can publish. Those shorten the second and third steps: a harvested token expires, and publishing needs a second factor the script does not have.</p>
+<p>The first step got its defence from pnpm. Version 10 <a href="https://socket.dev/blog/pnpm-10-0-0-blocks-lifecycle-scripts-by-default">blocks dependency lifecycle scripts by default</a>: a dependency&#39;s pre-install, install and post-install scripts do not run unless the project explicitly approves that package. The install completes, the packages are on disk, and the code that would have run with your credentials sits there unexecuted. It is a breaking change, deliberately, and it is the correct default, because the number of packages that genuinely need to run code at install time is small and known.</p>
+<h2>The postinstall tax</h2>
+<p>The practice that follows is to count. For every lockfile a team ships, count the packages that declare an install-time lifecycle script, and treat that number as a tax paid in blast radius, tracked in continuous integration the way bundle size is tracked. Each package on the list gets one of two treatments: an explicit allow, with a written reason, for the handful that compile native code or download a binary they cannot ship otherwise; or a replacement, with a package that does the same job without running code on install. A new entry on the list fails the build until it has been classified.</p>
+<p>The count is a few lines of script over the installed tree, reading each package&#39;s manifest for preinstall, install and postinstall entries. I ran it on two trees I maintain to see the shape. The dependency tree behind this site, 75 packages for a Tailwind build and an icon sprite, declares none. A small tool tree of 27 packages, including a browser automation library, declares none either. That is not typical of a large application, where native modules and binary downloads push the number into double figures, and it is the point: for most of the software a small team ships, the tax can be zero, and the packages that raise it above zero are visible by name.</p>
+<pre><code class="language-js">// count install-time scripts across node_modules
+const k = [&#39;preinstall&#39;, &#39;install&#39;, &#39;postinstall&#39;];
+const taxed = manifests.filter(m =&gt; k.some(s =&gt; m.scripts &amp;&amp; m.scripts[s]));
+console.log(`${taxed.length} of ${manifests.length} packages run code on install`);
+</code></pre>
+<figure class="chart">
+<svg viewBox="0 0 640 262" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Defences by which step of the loop they weaken</title>
+<desc id="f3-d">A table of four rows. Ignoring install scripts by default, as pnpm 10 does: removes the first step entirely. Short-lived granular tokens: limit the harvested token's life, weakening the second step. Two-factor publishing: blocks the script from publishing, weakening the third step. Pinning versions in a lockfile: delays the fourth step until someone updates, but does not stop it.</desc>
+<text x="0" y="18" class="viz-title">Which defence breaks which step</text>
+<text x="20" y="48" class="viz-tick">DEFENCE</text>
+<text x="300" y="48" class="viz-tick">STEP</text>
+<text x="420" y="48" class="viz-tick">EFFECT</text>
+<line x1="0" y1="56" x2="640" y2="56" class="viz-axis"/>
+<text x="20" y="82" class="viz-label">Ignore install scripts by default</text>
+<text x="300" y="82" class="viz-value">1: script runs</text>
+<text x="420" y="82" class="viz-label-muted">removes the step entirely</text>
+<line x1="0" y1="96" x2="640" y2="96" class="viz-grid"/>
+<text x="20" y="122" class="viz-label">Short-lived granular tokens</text>
+<text x="300" y="122" class="viz-value">2: harvest</text>
+<text x="420" y="122" class="viz-label-muted">token dies in ninety days</text>
+<line x1="0" y1="136" x2="640" y2="136" class="viz-grid"/>
+<text x="20" y="162" class="viz-label">Two-factor publishing</text>
+<text x="300" y="162" class="viz-value">3: publish</text>
+<text x="420" y="162" class="viz-label-muted">script has no second factor</text>
+<line x1="0" y1="176" x2="640" y2="176" class="viz-grid"/>
+<text x="20" y="202" class="viz-label">Pinned lockfile</text>
+<text x="300" y="202" class="viz-value">4: next install</text>
+<text x="420" y="202" class="viz-label-muted">delays until someone updates</text>
+<line x1="0" y1="216" x2="640" y2="216" class="viz-grid"/>
+<text x="0" y="248" class="viz-label-muted">Only the first row makes a compromised version harmless on arrival.</text>
+</svg>
+<figcaption>Illustrative: the mapping between the 2025 defences and the loop; the token and two-factor changes are those in GitHub's npm changelogs.</figcaption>
+</figure>
+
+<h2>Turning it on without breaking the build</h2>
+<p>The migration is less dramatic than it sounds, and the order matters. Start by turning scripts off globally: pnpm 10 does it by default, and for npm an <code>ignore-scripts=true</code> line in the project&#39;s <code>.npmrc</code> does the same, so that every install on every machine and in every pipeline runs with dependency scripts disabled. Then run the install and the test suite and see what breaks. Usually it is two or three packages: something that compiles a native module, something that downloads a platform binary it cannot ship in the tarball, and a browser automation library that fetches a browser. Those go on the allow list. In pnpm that is the <code>onlyBuiltDependencies</code> list in package.json, which names the packages whose scripts may run and nothing else; in npm it is a targeted rebuild of the named packages after the scripts-off install.</p>
+<p>The allow list should be reviewed, not just written. For each package on it, ask whether there is a version or an alternative that ships prebuilt binaries as optional platform packages instead of running a download at install, because several popular native packages moved to that pattern precisely so that they could be installed with scripts off. Every package removed from the list is one fewer place a compromised version can execute on arrival.</p>
+<p>Finally, put the count in continuous integration. A job that installs with scripts ignored, counts the packages declaring lifecycle scripts, and compares the set against the allow list will fail the moment a new dependency brings a script with it, which is the moment someone should look. The failure message should say which package and which script, so that the review takes a minute rather than a search.</p>
+<h2>What the count does not cover</h2>
+<p>Two honest limits. A package that does not run code at install can still run malicious code at import, the first time your application requires it, and the count says nothing about that. The install-time step is special because it runs on every machine that installs, including build servers and the laptops of people who never use the package, with credentials that the application itself may never see; it is the widest blast radius and the one worms need. Import-time code is a narrower problem, caught by the same review and pinning practices that were always needed, and it is not solved by this count.</p>
+<p>The other limit is the allow list itself. A package on the allow list runs its install script with full credentials, and a compromised version of that package is exactly as dangerous as before. The list has to be short, each entry has to be pinned to a version and a checksum, and the entries have to be the packages the team would notice a new version of. A long allow list is the old default with extra steps.</p>
+<h2>The rule</h2>
+<p>Count the install scripts in every lockfile. Run installs with dependency scripts ignored by default, and allow the exceptions by name with a reason. Fail the build when the count rises. Then let the token and publishing defences do their slower work on the rest of the loop. The stories will keep changing. The first box does not have to be in yours.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Supply Chain</span><span class="tag-chip">Npm</span><span class="tag-chip">Security</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

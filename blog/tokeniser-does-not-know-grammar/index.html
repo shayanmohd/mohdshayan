@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The tokeniser does not know your grammar | Mohd Shayan</title>
+    <meta name="description" content="Constrained decoding is sold as a parser masking logits, but the model emits tokens that ignore the parser's boundaries. The tokens that straddle a boundary set the cost.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/tokeniser-does-not-know-grammar/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/tokeniser-does-not-know-grammar/">
+    <meta property="og:title" content="The tokeniser does not know your grammar | Mohd Shayan">
+    <meta property="og:description" content="Constrained decoding is sold as a parser masking logits, but the model emits tokens that ignore the parser's boundaries. The tokens that straddle a boundary set the cost.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The tokeniser does not know your grammar | Mohd Shayan">
+    <meta name="twitter:description" content="Constrained decoding is sold as a parser masking logits, but the model emits tokens that ignore the parser's boundaries. The tokens that straddle a boundary set the cost.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/tokeniser-does-not-know-grammar/#post",
+      "headline": "The tokeniser does not know your grammar",
+      "description": "Constrained decoding is sold as a parser masking logits, but the model emits tokens that ignore the parser's boundaries. The tokens that straddle a boundary set the cost.",
+      "url": "https://mohdshayan.com/blog/tokeniser-does-not-know-grammar/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/tokeniser-does-not-know-grammar/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Structured Output, Tokenisation, LLM Inference",
+      "inLanguage": "en",
+      "wordCount": 1230
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">The tokeniser does not know your grammar</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Constrained decoding is sold as a parser masking logits, but the model emits tokens that ignore the parser's boundaries. The tokens that straddle a boundary set the cost.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>The one-sentence explanation of grammar-constrained decoding is that a parser sits beside the model and, at each step, masks out every token that would break the grammar. It is a good sentence and it hides the whole difficulty. The parser reads characters. The model emits subword tokens, and the tokeniser that made those tokens was trained on text frequencies with no knowledge that a JSON string ends at a quote or that a key is followed by a colon. So the units the model chooses from do not line up with the units the grammar is written in, and every real engine&#39;s cost and correctness come down to how it handles the tokens that cross a boundary. Those tokens are a computable set, and its size, not the rule count of the grammar, is what predicts the per-token overhead.</p>
+<h2>Two segmentations of one string</h2>
+<p>Take the smallest JSON object that has anything in it. A grammar sees nine terminals: an opening brace, a quoted key, a colon, a quoted value, a comma, a second key, a colon, a number and a closing brace. A byte-pair tokeniser sees something else. Run through the cl100k vocabulary used by a generation of OpenAI models, via the public <a href="https://github.com/openai/tiktoken">tiktoken</a> library, the same object becomes nine tokens too, but they are not the same nine: the first token is the brace fused with the opening quote of the key, the third is the closing quote, the colon and the opening quote of the value fused into one, and the fifth is a quote, a comma and a quote. Four of the nine tokens span a boundary the grammar cares about.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 250" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">One JSON object segmented by the grammar and by a BPE tokeniser</title>
+<desc id="f1-d">Two rows of boxes for the object with a name key of Ada and an age of 36. The grammar row has nine terminals: brace, quoted key, colon, quoted value, comma, quoted key, colon, number, brace. The tokeniser row has nine tokens from the cl100k vocabulary: brace-plus-quote, name, quote-colon-quote, Ada, quote-comma-quote, age, quote-colon, 36, brace. The four tokens that cross a terminal boundary are highlighted.</desc>
+<text x="0" y="18" class="viz-title">Same bytes, two sets of boundaries</text>
+<text x="8" y="56" class="viz-tick">GRAMMAR TERMINALS</text>
+<rect x="8" y="64" width="40" height="36" rx="6" class="viz-box"/><text x="28" y="88" text-anchor="middle" class="viz-label">{</text>
+<rect x="54" y="64" width="76" height="36" rx="6" class="viz-box"/><text x="92" y="88" text-anchor="middle" class="viz-label">"name"</text>
+<rect x="136" y="64" width="40" height="36" rx="6" class="viz-box"/><text x="156" y="88" text-anchor="middle" class="viz-label">:</text>
+<rect x="182" y="64" width="70" height="36" rx="6" class="viz-box"/><text x="217" y="88" text-anchor="middle" class="viz-label">"Ada"</text>
+<rect x="258" y="64" width="40" height="36" rx="6" class="viz-box"/><text x="278" y="88" text-anchor="middle" class="viz-label">,</text>
+<rect x="304" y="64" width="70" height="36" rx="6" class="viz-box"/><text x="339" y="88" text-anchor="middle" class="viz-label">"age"</text>
+<rect x="380" y="64" width="40" height="36" rx="6" class="viz-box"/><text x="400" y="88" text-anchor="middle" class="viz-label">:</text>
+<rect x="426" y="64" width="50" height="36" rx="6" class="viz-box"/><text x="451" y="88" text-anchor="middle" class="viz-label">36</text>
+<rect x="482" y="64" width="40" height="36" rx="6" class="viz-box"/><text x="502" y="88" text-anchor="middle" class="viz-label">}</text>
+<text x="8" y="146" class="viz-tick">BPE TOKENS, cl100k</text>
+<rect x="8" y="154" width="46" height="36" rx="6" class="viz-box-accent"/><text x="31" y="178" text-anchor="middle" class="viz-label">{"</text>
+<rect x="60" y="154" width="64" height="36" rx="6" class="viz-box"/><text x="92" y="178" text-anchor="middle" class="viz-label">name</text>
+<rect x="130" y="154" width="50" height="36" rx="6" class="viz-box-accent"/><text x="155" y="178" text-anchor="middle" class="viz-label">":"</text>
+<rect x="186" y="154" width="56" height="36" rx="6" class="viz-box"/><text x="214" y="178" text-anchor="middle" class="viz-label">Ada</text>
+<rect x="248" y="154" width="50" height="36" rx="6" class="viz-box-accent"/><text x="273" y="178" text-anchor="middle" class="viz-label">","</text>
+<rect x="304" y="154" width="56" height="36" rx="6" class="viz-box"/><text x="332" y="178" text-anchor="middle" class="viz-label">age</text>
+<rect x="366" y="154" width="46" height="36" rx="6" class="viz-box-accent"/><text x="389" y="178" text-anchor="middle" class="viz-label">":</text>
+<rect x="418" y="154" width="50" height="36" rx="6" class="viz-box"/><text x="443" y="178" text-anchor="middle" class="viz-label">36</text>
+<rect x="474" y="154" width="40" height="36" rx="6" class="viz-box"/><text x="494" y="178" text-anchor="middle" class="viz-label">}</text>
+<rect x="8" y="216" width="12" height="12" rx="3" class="viz-box-accent"/><text x="26" y="227" class="viz-label-muted">token crosses a terminal boundary: four of nine here</text>
+</svg>
+<figcaption>Illustrative: the segmentation is real, reproduced with the cl100k encoding in tiktoken; the layout is drawn.</figcaption>
+</figure>
+
+<p>The straddling tokens are the problem. A token that lies entirely inside one terminal is easy to judge: it is valid if the terminal accepts those characters. A token that crosses a boundary can only be judged by advancing the parser through the first part, checking that the terminal has ended where the token says it has, and continuing into whatever comes next, which may involve leaving the current grammar rule and consulting the rules above it. Every engine does that work somewhere; the question is how often and for how many tokens.</p>
+<h2>The straddle set</h2>
+<p>For a grammar and a vocabulary, define the straddle set as the tokens whose byte string crosses at least one terminal boundary of the grammar. For JSON the dominant boundaries are the quotes that begin and end every string, so a good first approximation is the set of vocabulary tokens that contain a quote character together with at least one other byte. Computed over the two public OpenAI vocabularies, that set is 1,342 tokens of the 100,277 in cl100k, about 1.3 percent, and 1,140 of the 200,019 in o200k, about 0.6 percent. The figure lines up with what the XGrammar authors report for a different tokeniser: for JSON with Llama 3.1&#39;s 128k vocabulary, they count <a href="https://arxiv.org/abs/2411.15100">1,134 context-dependent tokens</a>, under one percent, and their engine&#39;s central trick is that the other 99 percent can be judged once, at grammar compile time, and stored as a bitmask per parser state.</p>
+<p>That is why the <a href="https://arxiv.org/abs/2411.15100">XGrammar paper</a> can report mask generation under 40 microseconds per token for JSON schemas against roughly 150 for Outlines and over 800 for lm-format-enforcer, and its <a href="https://arxiv.org/abs/2601.04426">2026 successor</a> can claim near-zero end-to-end overhead while compiling grammars six times faster for workloads where the grammar changes from request to request. The per-token cost that remains is almost entirely the straddle set: the tokens that have to be run through the parser at decode time because their validity depends on where in the grammar you are.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 230" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Per-token mask generation time by engine, JSON schema workloads</title>
+<desc id="f2-d">Horizontal bars in microseconds: lm-format-enforcer, over 800; llama.cpp grammar mode, over 500; Outlines, about 150; XGrammar, under 40. XGrammar is highlighted.</desc>
+<text x="0" y="18" class="viz-title">What the straddle set costs, engine by engine</text>
+<text x="0" y="36" class="viz-sub">Mask time per token in microseconds, as reported in the XGrammar paper's comparison</text>
+<line x1="176" y1="52" x2="176" y2="188" class="viz-axis"/>
+<text x="166" y="73" text-anchor="end" class="viz-label">lm-format-enforcer</text>
+<path d="M176 58 H572 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="568" y="53" text-anchor="end" class="viz-value">over 800</text>
+<text x="166" y="107" text-anchor="end" class="viz-label">llama.cpp grammars</text>
+<path d="M176 92 H422 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="442" y="107" class="viz-value">over 500</text>
+<text x="166" y="141" text-anchor="end" class="viz-label">Outlines</text>
+<path d="M176 126 H250 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="270" y="141" class="viz-value">about 150</text>
+<text x="166" y="175" text-anchor="end" class="viz-label">XGrammar</text>
+<path d="M176 160 H192 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/>
+<text x="212" y="175" class="viz-value">under 40</text>
+<text x="0" y="222" class="viz-label-muted">The gap is the share of the vocabulary each engine re-checks at decode time.</text>
+</svg>
+<figcaption>Source: figures as reported in <a href="https://arxiv.org/abs/2411.15100">XGrammar</a> (Dong et al., 2024), read from the paper's comparison; the llama.cpp figure is for its context-free grammar mode.</figcaption>
+</figure>
+
+<h2>One percent of the vocabulary, one in eight of the output</h2>
+<p>The straddle set is small as a share of the vocabulary and that is not the number that matters at decode time. What matters is how often the model actually emits a straddling token, and for JSON the answer is: at every string boundary, which is twice per string. I measured it on two JSON documents with both tokenisers. On a document of long prose-like strings averaging seventeen tokens each, 6.2 percent of all emitted tokens were straddling tokens. On a package lockfile, whose strings are short names and versions averaging seven or eight tokens, the share was 13 to 14 percent. One token in sixteen, or one in eight, is a token the engine cannot judge from the precomputed mask, and that ratio is set by the shape of the output, not by the grammar&#39;s rule count.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 270" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Straddling tokens as a share of the vocabulary and as a share of emitted tokens</title>
+<desc id="f3-d">Horizontal bars in percent. Share of vocabulary: cl100k 1.34, o200k 0.57. Share of emitted tokens on a prose-heavy JSON document, both tokenisers about 6.2. Share on a package lockfile: cl100k 13.2, o200k 14.0. The emitted shares are highlighted.</desc>
+<text x="0" y="18" class="viz-title">Rare in the vocabulary, common in the output</text>
+<text x="0" y="36" class="viz-sub">Tokens containing a string delimiter plus other bytes, percent</text>
+<rect x="420" y="26" width="12" height="12" rx="3" class="viz-fgray"/><text x="438" y="37" class="viz-label-muted">of vocabulary</text>
+<rect x="540" y="26" width="12" height="12" rx="3" class="viz-f1"/><text x="558" y="37" class="viz-label-muted">of output</text>
+<line x1="216" y1="52" x2="216" y2="222" class="viz-axis"/>
+<text x="206" y="73" text-anchor="end" class="viz-label">cl100k vocabulary</text>
+<path d="M216 58 H250 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H216 Z" class="viz-fgray"/>
+<text x="270" y="73" class="viz-value">1.34</text>
+<text x="206" y="107" text-anchor="end" class="viz-label">o200k vocabulary</text>
+<path d="M216 92 H230 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H216 Z" class="viz-fgray"/>
+<text x="250" y="107" class="viz-value">0.57</text>
+<text x="206" y="141" text-anchor="end" class="viz-label">Prose-heavy JSON, output</text>
+<path d="M216 126 H378 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H216 Z" class="viz-f1"/>
+<text x="398" y="141" class="viz-value">6.2, both tokenisers</text>
+<text x="206" y="175" text-anchor="end" class="viz-label">Lockfile JSON, cl100k</text>
+<path d="M216 160 H562 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H216 Z" class="viz-f1"/>
+<text x="558" y="155" text-anchor="end" class="viz-value">13.2</text>
+<text x="206" y="209" text-anchor="end" class="viz-label">Lockfile JSON, o200k</text>
+<path d="M216 194 H584 a4 4 0 0 1 4 4 V210 a4 4 0 0 1 -4 4 H216 Z" class="viz-f1"/>
+<text x="580" y="189" text-anchor="end" class="viz-value">14.0</text>
+<text x="0" y="252" class="viz-label-muted">Shorter strings, more boundaries per token: the lockfile pays twice as often.</text>
+</svg>
+<figcaption>Source: computed by the author with <a href="https://github.com/openai/tiktoken">tiktoken</a> over the cl100k and o200k encodings; the two documents are a 212 KB planning file with 2,595 strings and a 27 KB package lockfile with 1,311 strings.</figcaption>
+</figure>
+
+<p>The measurement suggests a simple predictor for constrained-decoding overhead that has nothing to do with the grammar&#39;s size: the number of string boundaries per emitted token. A schema that produces many short strings, identifiers, enum values, version numbers, will spend a larger share of its decode steps in the expensive path than a schema that produces a few long ones, whatever the rule count. The grammar&#39;s rules affect compile time; the straddle rate affects every token.</p>
+<h2>Why a microsecond is a budget</h2>
+<p>The reason to care about tens of microseconds is that serving is a per-token business. During my internship I tuned batching and quantisation for served Llama and Mistral models against latency targets, and the arithmetic of that job is unforgiving: a decode step for a batch has a budget of a few milliseconds, the mask has to be ready before the sampler runs, and anything on the critical path is multiplied by every token of every request. A mask that costs a millisecond is a real cost; at a few hundred tokens per response it is a few hundred milliseconds of added latency, or a batch that cannot be made larger. The engines that got the overhead under a few tens of microseconds did it by moving the work off the critical path, and the work that could not be moved is exactly the straddle set.</p>
+<p>There is a second consequence that is about correctness rather than speed, and the paper titled <a href="https://arxiv.org/abs/2502.14969">Lost in Space</a> documents it under the name token misalignment: because the model&#39;s preferred tokenisation of a string is not the only tokenisation that spells it, a constrained decoder that forces the grammar&#39;s boundaries can push the model onto token sequences it never saw in training, where its predictions are poor. The straddle set is where that happens, because a straddling token is precisely one whose natural use spans a boundary the constraint may forbid. An engine that handles the set well is not only faster; it lets the model write the way it learned to.</p>
+<h2>What to take from it</h2>
+<p>If you are choosing an engine, the number to ask for is the per-token mask time on your schema, not the grammar&#39;s expressiveness, and the number to measure on your own traffic is the straddle rate: the share of emitted tokens that cross a string boundary. If you are designing a schema, longer strings and fewer of them are cheaper to constrain than many short ones, which is the opposite of what tidy schema design usually produces. And if you are explaining constrained decoding to someone, the one-sentence version is fine as long as the second sentence follows it: the parser reads characters, the model emits tokens, and the tokens that straddle the boundary between the two are where the cost lives.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Structured Output</span><span class="tag-chip">Tokenisation</span><span class="tag-chip">LLM Inference</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

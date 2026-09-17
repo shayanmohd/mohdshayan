@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeouts run in two directions | Mohd Shayan</title>
+    <meta name="description" content="Through a proxy chain, idle timeouts must get longer as you go inward and deadlines must get shorter. Most timeout bugs are one of those staircases built the wrong way round.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/timeouts-run-in-two-directions/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/timeouts-run-in-two-directions/">
+    <meta property="og:title" content="Timeouts run in two directions | Mohd Shayan">
+    <meta property="og:description" content="Through a proxy chain, idle timeouts must get longer as you go inward and deadlines must get shorter. Most timeout bugs are one of those staircases built the wrong way round.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Timeouts run in two directions | Mohd Shayan">
+    <meta name="twitter:description" content="Through a proxy chain, idle timeouts must get longer as you go inward and deadlines must get shorter. Most timeout bugs are one of those staircases built the wrong way round.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/timeouts-run-in-two-directions/#post",
+      "headline": "Timeouts run in two directions",
+      "description": "Through a proxy chain, idle timeouts must get longer as you go inward and deadlines must get shorter. Most timeout bugs are one of those staircases built the wrong way round.",
+      "url": "https://mohdshayan.com/blog/timeouts-run-in-two-directions/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/timeouts-run-in-two-directions/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Reverse Proxies, Node.js, Reliability",
+      "inLanguage": "en",
+      "wordCount": 1234
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Timeouts run in two directions</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Through a proxy chain, idle timeouts must get longer as you go inward and deadlines must get shorter. Most timeout bugs are one of those staircases built the wrong way round.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>The random 502 and the hung connection pool are the two timeout bugs every backend engineer meets, and they are usually treated as unrelated. They are the same bug in two directions. A request passes through a chain of hops, a load balancer, a reverse proxy, an application server, a database, and every hop has two timeouts on it: how long it will keep an idle connection open, and how long it will wait for a response. Those two numbers have to move in opposite directions along the chain, and when either one does not, the failure has a name.</p>
+<h2>Two staircases</h2>
+<p>Draw every hop from the client to the database and write two numbers on each. The first is the idle timeout: how long this hop keeps a connection open with nothing happening on it. The second is the deadline: how long this hop waits for the hop behind it to answer before giving up.</p>
+<p>The idle staircase must ascend inward. Each hop&#39;s idle timeout must be longer than the timeout of the hop in front of it, so that the outer hop is always the one that closes an idle connection. If an inner hop closes first, the outer hop may already have written the next request onto a socket the inner hop just shut, and the outer hop reports that as a bad gateway.</p>
+<p>The deadline staircase must descend inward. Each hop&#39;s deadline must be shorter than the deadline of the hop in front of it, so that the innermost hop is always the one that gives up first and the failure propagates outward as a clean error. If an inner hop waits longer than an outer one, the outer hop has already sent an error to the client while the inner hop is still working, holding a worker, a connection, and a slot in the pool for a response nobody will read.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 340" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Documented default timeouts along a common chain</title>
+<desc id="f1-d">Four hops on the horizontal axis: an AWS application load balancer, nginx, a Node.js HTTP server and PostgreSQL. Two series on a logarithmic seconds axis. Idle timeouts: 60 at the load balancer, 75 at nginx, 5 at Node, which breaks the ascending rule and is highlighted. Deadlines: 60 at the load balancer, 60 at nginx, 300 at Node, and no limit at PostgreSQL, which breaks the descending rule and is highlighted.</desc>
+<text x="0" y="18" class="viz-title">Defaults, before anyone sets anything</text>
+<text x="0" y="36" class="viz-sub">Seconds, log scale; the two series should step in opposite directions</text>
+<line x1="380" y1="31" x2="394" y2="31" class="viz-s2"/><text x="400" y="35" class="viz-label-muted">idle timeout</text>
+<line x1="500" y1="31" x2="514" y2="31" class="viz-s3"/><text x="520" y="35" class="viz-label-muted">deadline</text>
+<line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">1,000</text>
+<line x1="56" y1="125.3" x2="600" y2="125.3" class="viz-grid"/><text x="48" y="129.3" text-anchor="end" class="viz-tick">100</text>
+<line x1="56" y1="194.7" x2="600" y2="194.7" class="viz-grid"/><text x="48" y="198.7" text-anchor="end" class="viz-tick">10</text>
+<line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/><text x="48" y="268" text-anchor="end" class="viz-tick">1</text>
+<text x="124" y="288" text-anchor="middle" class="viz-tick">ALB</text>
+<text x="260" y="288" text-anchor="middle" class="viz-tick">nginx</text>
+<text x="396" y="288" text-anchor="middle" class="viz-tick">Node.js</text>
+<text x="532" y="288" text-anchor="middle" class="viz-tick">PostgreSQL</text>
+<text x="328" y="310" text-anchor="middle" class="viz-label-muted">Hops, from the client inward</text>
+<polyline points="124,140.6 260,133.9 396,215.5" class="viz-s2"/>
+<circle cx="124" cy="140.6" r="4" class="viz-d2"/>
+<circle cx="260" cy="133.9" r="4" class="viz-d2"/>
+<circle cx="396" cy="215.5" r="6" class="viz-d4"/>
+<text x="396" y="240" text-anchor="middle" class="viz-value">5 s: closes before nginx</text>
+<polyline points="124,140.6 260,140.6 396,92.1" class="viz-s3"/>
+<circle cx="124" cy="140.6" r="4" class="viz-d3"/>
+<circle cx="260" cy="140.6" r="4" class="viz-d3"/>
+<circle cx="396" cy="92.1" r="6" class="viz-d4"/>
+<text x="396" y="80" text-anchor="middle" class="viz-value">300 s: outlives the proxy</text>
+<circle cx="532" cy="56" r="6" class="viz-d4"/>
+<text x="532" y="44" text-anchor="middle" class="viz-value">no limit</text>
+<text x="124" y="160" text-anchor="middle" class="viz-value">60</text>
+<text x="260" y="120" text-anchor="middle" class="viz-value">75 / 60</text>
+</svg>
+<figcaption>Source: default values from the <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html">AWS ALB documentation</a> (idle timeout 60 s), the nginx <a href="https://nginx.org/en/docs/http/ngx_http_core_module.html#keepalive_timeout">keepalive_timeout</a> (75 s) and <a href="https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_read_timeout">proxy_read_timeout</a> (60 s) directives, the <a href="https://nodejs.org/api/http.html#serverkeepalivetimeout">Node.js HTTP server</a> (keepAliveTimeout 5 s, requestTimeout 300 s), and PostgreSQL's <a href="https://www.postgresql.org/docs/current/runtime-config-client.html">statement_timeout</a> (0, disabled).</figcaption>
+</figure>
+
+<p>The chart is the defaults, and both staircases are broken out of the box. That is not a criticism of any of the projects; each default is sensible for the component on its own. The bugs are in the combination, and nobody ships the combination.</p>
+<h2>The 502 is the idle staircase reversed</h2>
+<p>Node&#39;s HTTP server closes an idle keep-alive connection after five seconds by default, per its <a href="https://nodejs.org/api/http.html#serverkeepalivetimeout">server.keepAliveTimeout</a> documentation. nginx keeps an idle upstream connection for longer than that, and an application load balancer in front of nginx holds client connections for sixty, its <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html">documented default</a>. So a request arrives at nginx, nginx picks an upstream connection that has been idle for five seconds and a few milliseconds, writes the request onto it, and Node has already closed its end. nginx sees a connection reset with no response, and the client gets a 502. It happens on a small fraction of requests, at random, more often under light load than heavy, which is the signature that sends people looking at the application code for a bug that is not there.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">The race that produces a random 502</title>
+<desc id="f2-d">Three lanes: nginx, the idle upstream socket, and Node. Node closes the socket at five seconds of idleness. A few milliseconds later nginx writes a new request onto the same socket, receives a reset, and returns 502 to the client. Setting Node's keep-alive timeout above nginx's fixes the order.</desc>
+<defs><marker id="f2-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<rect x="20" y="8" width="150" height="36" rx="8" class="viz-box"/>
+<text x="95" y="31" text-anchor="middle" class="viz-label">nginx</text>
+<rect x="245" y="8" width="150" height="36" rx="8" class="viz-box-accent"/>
+<text x="320" y="31" text-anchor="middle" class="viz-label">Idle upstream socket</text>
+<rect x="470" y="8" width="150" height="36" rx="8" class="viz-box"/>
+<text x="545" y="31" text-anchor="middle" class="viz-label">Node.js</text>
+<line x1="95" y1="48" x2="95" y2="290" class="viz-grid"/>
+<line x1="320" y1="48" x2="320" y2="290" class="viz-grid"/>
+<line x1="545" y1="48" x2="545" y2="290" class="viz-grid"/>
+<text x="320" y="74" text-anchor="middle" class="viz-label-muted">last response, t = 0; socket goes idle</text>
+<line x1="540" y1="80" x2="103" y2="80" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<text x="432" y="116" text-anchor="middle" class="viz-label-muted">t = 5,000 ms: keepAliveTimeout, FIN</text>
+<line x1="540" y1="122" x2="328" y2="122" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<text x="207" y="158" text-anchor="middle" class="viz-label-muted">t = 5,004 ms: new request written</text>
+<line x1="100" y1="164" x2="312" y2="164" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<text x="207" y="200" text-anchor="middle" class="viz-label-muted">reset, no response</text>
+<line x1="315" y1="206" x2="103" y2="206" class="viz-s4" marker-end="url(#f2-ah)"/>
+<rect x="8" y="230" width="174" height="44" rx="8" class="viz-box-ink"/>
+<text x="95" y="248" text-anchor="middle" class="viz-on-ink">502 Bad Gateway</text>
+<text x="95" y="266" text-anchor="middle" class="viz-on-ink">to the client</text>
+</svg>
+<figcaption>Illustrative: the ordering of events that the default values allow; the fix is to make Node the last to close.</figcaption>
+</figure>
+
+<p>The fix is one line, and it is the line the staircase tells you to write: set Node&#39;s keep-alive timeout above nginx&#39;s, and nginx&#39;s above the load balancer&#39;s. Node also has a headers timeout that must sit above its keep-alive timeout, which the Node documentation notes, because a keep-alive connection that has just been reused is waiting for headers, and the two timers interact. Once the idle staircase ascends inward, the outermost hop always closes first, and a socket is never reused after the far end has left.</p>
+<h2>The hung pool is the deadline staircase reversed</h2>
+<p>The other direction is quieter and worse. PostgreSQL&#39;s <a href="https://www.postgresql.org/docs/current/runtime-config-client.html">statement_timeout</a> is disabled by default, so a query that hits a lock or a bad plan runs until it finishes, however long that is. nginx&#39;s read timeout is sixty seconds, so after a minute nginx returns a 504 to the client and forgets the request. But the request is not over. Node is still waiting on the database, the database is still running the query, and the connection is still checked out of the pool. Repeat that a dozen times in a bad minute and the pool is empty, every new request queues behind a connection that will not come back for a while, and the service is down for a reason that no log line will state directly.</p>
+<p>The fix is again what the staircase says: a statement timeout at the database shorter than the application&#39;s request deadline, which is shorter than the proxy&#39;s read timeout, which is shorter than the load balancer&#39;s. Then the database is always the first to give up, the application receives a clean error and releases the connection, the proxy receives a clean error from the application, and the client receives a real status instead of a silence that turned into a 504.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 262" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">The two staircases, built the right way round</title>
+<desc id="f3-d">A table with four hops as rows, load balancer, nginx, Node, PostgreSQL, and two columns. The idle column rises inward: 60, 75, 80 seconds, and not applicable for the database. The deadline column falls inward: 60, 30, 20, 15 seconds. Example values, chosen to satisfy the rules.</desc>
+<text x="0" y="18" class="viz-title">Idle ascends inward, deadline descends inward</text>
+<text x="0" y="36" class="viz-sub">Example values in seconds that satisfy both rules</text>
+<text x="20" y="66" class="viz-tick">HOP</text>
+<text x="300" y="66" text-anchor="middle" class="viz-tick">IDLE TIMEOUT</text>
+<text x="500" y="66" text-anchor="middle" class="viz-tick">DEADLINE</text>
+<line x1="0" y1="74" x2="640" y2="74" class="viz-axis"/>
+<text x="20" y="100" class="viz-label">Load balancer</text>
+<text x="300" y="100" text-anchor="middle" class="viz-value">60</text>
+<text x="500" y="100" text-anchor="middle" class="viz-value">60</text>
+<line x1="0" y1="110" x2="640" y2="110" class="viz-grid"/>
+<text x="20" y="136" class="viz-label">nginx</text>
+<text x="300" y="136" text-anchor="middle" class="viz-value">75</text>
+<text x="500" y="136" text-anchor="middle" class="viz-value">30</text>
+<line x1="0" y1="146" x2="640" y2="146" class="viz-grid"/>
+<text x="20" y="172" class="viz-label">Node.js</text>
+<text x="300" y="172" text-anchor="middle" class="viz-value">80</text>
+<text x="500" y="172" text-anchor="middle" class="viz-value">20</text>
+<line x1="0" y1="182" x2="640" y2="182" class="viz-grid"/>
+<text x="20" y="208" class="viz-label">PostgreSQL</text>
+<text x="300" y="208" text-anchor="middle" class="viz-label-muted">not a hop it holds</text>
+<text x="500" y="208" text-anchor="middle" class="viz-value">15</text>
+<line x1="0" y1="218" x2="640" y2="218" class="viz-grid"/>
+<text x="0" y="248" class="viz-label-muted">Outermost closes idle sockets first; innermost gives up on slow work first.</text>
+</svg>
+<figcaption>Illustrative: one consistent assignment; the specific numbers matter less than their order.</figcaption>
+</figure>
+
+<h2>Why the deadline staircase is the harder one</h2>
+<p>The idle staircase is a configuration problem: four numbers in four config files, checked once. The deadline staircase is a design problem, because a deadline the innermost hop enforces has to be a deadline the application can live with. Setting a statement timeout of fifteen seconds means every query in the system must finish in fifteen seconds, including the reporting query somebody wrote last spring. That is the correct constraint, and enforcing it surfaces the queries that were quietly taking a minute. But it surfaces them as errors, and a team that is not ready for that will raise the timeout back to nothing and lose the staircase.</p>
+<p>The way through is to set the innermost deadline first, at the value the product needs, and to treat every query that breaks it as a defect to fix rather than a reason to loosen the number. The QR ticketing system&#39;s gate check is the sharpest version of this I have built: the deadline is however long a visitor will stand at a gate, the database has to answer inside it, and a query that cannot is not a slow query. It is a broken gate.</p>
+<p>One more row belongs on the deadline staircase, and it is the one that hides. Health checks are requests too, and the load balancer&#39;s health check has its own timeout, usually a few seconds. If the application answers its health endpoint by touching the database, and the database&#39;s statement timeout is longer than the health check&#39;s, a slow database makes the health check time out, the load balancer marks the instance unhealthy, and traffic moves to the other instances, which are talking to the same slow database. The staircase says the health check&#39;s deadline is the shortest of all, and a health endpoint that cannot answer inside it should not be doing the work that made it slow.</p>
+<h2>The check on paper</h2>
+<p>Both bugs can be found before they fire, without load tests, by drawing the chain and writing the two numbers on each hop. Read the idle column from the outside in: every number must be larger than the one before it. Read the deadline column from the outside in: every number must be smaller. Any step where a column flattens or reverses is a bug, and it is a bug you found in five minutes with a pen. Most timeout bugs I have seen were one staircase built the wrong way round, and every one of them was visible on paper the whole time.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Reverse Proxies</span><span class="tag-chip">Node.js</span><span class="tag-chip">Reliability</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

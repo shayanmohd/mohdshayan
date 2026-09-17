@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idempotency keys pointed the other way | Mohd Shayan</title>
+    <meta name="description" content="A payment API's idempotency key and a gate's anti-replay check are the same primitive with opposite second answers. Seen as one mechanism, the design collapses to two questions.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/idempotency-keys-pointed-other-way/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/idempotency-keys-pointed-other-way/">
+    <meta property="og:title" content="Idempotency keys pointed the other way | Mohd Shayan">
+    <meta property="og:description" content="A payment API's idempotency key and a gate's anti-replay check are the same primitive with opposite second answers. Seen as one mechanism, the design collapses to two questions.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Idempotency keys pointed the other way | Mohd Shayan">
+    <meta name="twitter:description" content="A payment API's idempotency key and a gate's anti-replay check are the same primitive with opposite second answers. Seen as one mechanism, the design collapses to two questions.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/idempotency-keys-pointed-other-way/#post",
+      "headline": "Idempotency keys pointed the other way",
+      "description": "A payment API's idempotency key and a gate's anti-replay check are the same primitive with opposite second answers. Seen as one mechanism, the design collapses to two questions.",
+      "url": "https://mohdshayan.com/blog/idempotency-keys-pointed-other-way/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/idempotency-keys-pointed-other-way/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "API Design, Idempotency, Security",
+      "inLanguage": "en",
+      "wordCount": 1243
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Idempotency keys pointed the other way</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">A payment API's idempotency key and a gate's anti-replay check are the same primitive with opposite second answers. Seen as one mechanism, the design collapses to two questions.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>A payment API and a ticket gate have the same problem and give opposite answers to it. Both receive a request carrying an identifier the client chose. Both must do something sensible when the same identifier arrives twice. The payment API returns the first response again, so a retried charge does not become two charges. The gate refuses, so a scanned ticket does not admit two people. Same table, same unique constraint, same first request. Only the second request differs, and the difference is a single branch. Once I saw that, the anti-replay design for the QR ticketing system stopped being a security feature and became an idempotency key pointed the other way.</p>
+<h2>One primitive, two second answers</h2>
+<p>Stripe&#39;s <a href="https://docs.stripe.com/api/idempotent_requests">idempotent requests</a> documentation describes the payment side. The client sends a key it generated; the server stores the key with the result of the first request; a repeat with the same key gets the stored result back instead of a second execution. Keys are pruned once they are at least 24 hours old, after which a reused key is treated as a new request. Adyen&#39;s <a href="https://docs.adyen.com/development-resources/api-idempotency">API idempotency</a> page does the same thing with a longer memory: keys are valid for 7 to 14 days after first submission.</p>
+<p>The gate side is the mirror. The key is the ticket identifier, chosen by the server at issue time rather than by the client, but presented by the client at the gate. The first presentation records the spend. A repeat with the same identifier is refused, and the refusal cites the first-seen time and place. Nobody calls this an idempotency key, but the storage is identical: a key, a first-seen time, and a first result.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 216" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">How long the key is remembered</title>
+<desc id="f1-d">Horizontal bars in days: Stripe idempotency keys, at least 1; Adyen idempotency keys, 7 to 14, drawn at 7; a QR ticket in this design, the whole life of the event, drawn at 90 as an example. The ticket bar is highlighted.</desc>
+<text x="0" y="18" class="viz-title">Memory of the key, in days</text>
+<text x="0" y="36" class="viz-sub">Two payment APIs and one ticket gate</text>
+<line x1="176" y1="52" x2="176" y2="188" class="viz-axis"/>
+<text x="166" y="73" text-anchor="end" class="viz-label">Stripe</text>
+<path d="M176 58 H176.9 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="192" y="73" class="viz-value">1 (at least)</text>
+<text x="166" y="107" text-anchor="end" class="viz-label">Adyen</text>
+<path d="M176 92 H206.2 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="222" y="107" class="viz-value">7 to 14</text>
+<text x="166" y="141" text-anchor="end" class="viz-label">A ticket (this design)</text>
+<path d="M176 126 H564 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/>
+<text x="580" y="141" class="viz-value">90</text>
+<text x="0" y="176" class="viz-label-muted">The ticket row lives for the event, then is archived; it is never pruned early</text>
+</svg>
+<figcaption>Source: <a href="https://docs.stripe.com/api/idempotent_requests">Stripe</a> and <a href="https://docs.adyen.com/development-resources/api-idempotency">Adyen</a> documentation for the two API rows; the ticket row is this post's design choice, drawn at 90 days as an example of an event's life.</figcaption>
+</figure>
+
+<p>The reason the two systems answer differently is not that one is about money and one is about security. It is that they mean different things by &quot;again&quot;. A retried payment request is the same intent arriving twice because a network was unreliable, and the right thing is to make the second arrival invisible. A rescanned ticket is a different intent, a second person trying to use one admission, and the right thing is to make the second arrival fail loudly. Echo or refuse. That is the only branch.</p>
+<h2>The mirror rule</h2>
+<p>So the rule I use now is this. For each endpoint that accepts a client-supplied identifier, decide whether a repeat is echoed or refused, write that decision down, and then store exactly the same three columns either way: the key, the time it was first seen, and the result of the first request. The branch is data, not code. The same table, the same insert, and one flag on the endpoint that says which way the second request goes.</p>
+<pre><code class="language-sql">INSERT INTO seen (key, first_seen, result)
+VALUES ($1, now(), $2)
+ON CONFLICT (key) DO NOTHING
+RETURNING key;
+</code></pre>
+<p>If the insert returns a row, this is the first request: execute, store the result, reply. If it returns nothing, the key was seen before: read the stored row, then either echo its result or refuse with its first-seen time. The unique constraint does the work of deciding which request was first, under any concurrency, without a lock the application has to manage. Two requests that arrive in the same millisecond are serialised by the index, one wins, and the other reads the winner&#39;s row.</p>
+<p>There is one subtlety the payment side handles and the gate side must copy. Between the insert and the stored result, there is a window where the first request has claimed the key but has not finished executing. A second request arriving in that window finds the row but no result. The payment API&#39;s answer is to reply with a conflict status and let the client retry after a moment; Stripe documents exactly this case. The gate&#39;s answer is the same: refuse with &quot;in progress&quot;, which at a gate is a half-second wait, not a problem.</p>
+<h2>Two gates, 200 milliseconds apart</h2>
+<p>The concurrency case is what makes the unique constraint the right home for the decision, and it is worth drawing.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Two gates present the same ticket 200 milliseconds apart</title>
+<desc id="f2-d">Three lanes: gate A, the API with its database, and gate B. Gate A's insert succeeds and returns the key, so the API admits. Gate B's insert 200 milliseconds later conflicts and returns nothing, so the API reads the winner's row and refuses, citing gate A and the time.</desc>
+<defs><marker id="f2-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<rect x="20" y="8" width="150" height="36" rx="8" class="viz-box"/>
+<text x="95" y="31" text-anchor="middle" class="viz-label">Gate A</text>
+<rect x="245" y="8" width="150" height="36" rx="8" class="viz-box-accent"/>
+<text x="320" y="31" text-anchor="middle" class="viz-label">API and unique index</text>
+<rect x="470" y="8" width="150" height="36" rx="8" class="viz-box"/>
+<text x="545" y="31" text-anchor="middle" class="viz-label">Gate B</text>
+<line x1="95" y1="48" x2="95" y2="290" class="viz-grid"/>
+<line x1="320" y1="48" x2="320" y2="290" class="viz-grid"/>
+<line x1="545" y1="48" x2="545" y2="290" class="viz-grid"/>
+<text x="207" y="74" text-anchor="middle" class="viz-label-muted">key T-4471, t = 0 ms</text>
+<line x1="100" y1="80" x2="312" y2="80" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<text x="332" y="106" class="viz-value">INSERT ... ON CONFLICT DO NOTHING</text>
+<text x="332" y="122" class="viz-label-muted">returns the key: first</text>
+<text x="207" y="150" text-anchor="middle" class="viz-label-muted">admit</text>
+<line x1="315" y1="156" x2="103" y2="156" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<text x="432" y="190" text-anchor="middle" class="viz-label-muted">key T-4471, t = 200 ms</text>
+<line x1="540" y1="196" x2="328" y2="196" class="viz-arrow" marker-end="url(#f2-ah)"/>
+<text x="332" y="222" class="viz-value">INSERT ... ON CONFLICT DO NOTHING</text>
+<text x="332" y="238" class="viz-label-muted">returns nothing: read the winner</text>
+<text x="432" y="266" text-anchor="middle" class="viz-label-muted">refuse: seen at gate A, 200 ms ago</text>
+<line x1="325" y1="272" x2="537" y2="272" class="viz-arrow" marker-end="url(#f2-ah)"/>
+</svg>
+<figcaption>Illustrative: the same race a payment API resolves with an idempotency key, resolved the other way.</figcaption>
+</figure>
+
+<p>For a payment endpoint the diagram is identical except for the last arrow, which would carry the stored result to gate B instead of a refusal. That is the whole point. The infrastructure that makes retried charges safe is the infrastructure that makes replayed tickets fail, and a team that has built one has built the other.</p>
+<h2>What the key identifies</h2>
+<p>The second question is what the key should be, and the two sides answer it the same way once you ask it properly: the key identifies the intent, not the request. A payment client generates a fresh key per attempt at a charge, and reuses it across retries of that same attempt; a new charge gets a new key. If the client instead derived the key from the request body, two legitimately separate charges of the same amount would collide, and the second customer would silently get the first customer&#39;s receipt. That failure is quiet, which is what makes it expensive: nothing errors, one payment is simply missing, and the reconciliation happens weeks later in a spreadsheet.</p>
+<p>The gate has it easier, because the intent is the admission and the identifier was minted by the server when the ticket was issued. But the same mistake is available: a gate that keys on the phone, or the person, or the booking rather than the ticket admits two tickets from one booking as one, or refuses a family of four on the second child. The key is the ticket, because the ticket is the unit of admission, and everything else is a lookup after the fact.</p>
+<h2>How long to remember</h2>
+<p>The final question is retention, and the mirror rule gives it a clean shape. An echoing endpoint remembers for as long as a client might reasonably retry, which is why Stripe&#39;s floor is a day and Adyen&#39;s is a week; beyond that, forgetting is safe because the retry that arrives after the window is, by then, a new intent. A refusing endpoint remembers for as long as a replay would still be harmful, and for a ticket that is the life of the event, because a screenshot does not expire on a schedule the attacker knows about. Forgetting early on a refusing endpoint reopens the replay. Remembering forever on an echoing endpoint is merely a storage bill.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 400" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Endpoints by second-request behaviour and memory</title>
+<desc id="f3-d">A two by two grid. Horizontal axis: what the second request gets, echo on the left and refuse on the right. Vertical axis: how long the key is remembered, a window at the bottom and forever at the top. Bottom left: payment charges. Bottom right: webhook receivers and signed requests. Top right: tickets and one-time codes. Top left: rarely useful.</desc>
+<rect x="56" y="40" width="544" height="304" rx="8" class="viz-box"/>
+<line x1="328" y1="40" x2="328" y2="344" class="viz-grid"/>
+<line x1="56" y1="192" x2="600" y2="192" class="viz-grid"/>
+<text x="192" y="104" text-anchor="middle" class="viz-label">Rarely worth it</text>
+<text x="192" y="124" text-anchor="middle" class="viz-label-muted">a receipt nobody will ask for again</text>
+<text x="464" y="104" text-anchor="middle" class="viz-label">Tickets, one-time codes</text>
+<text x="464" y="124" text-anchor="middle" class="viz-label-muted">forgetting reopens the replay</text>
+<text x="192" y="256" text-anchor="middle" class="viz-label">Payment charges</text>
+<text x="192" y="276" text-anchor="middle" class="viz-label-muted">echo for a day or a week</text>
+<text x="464" y="256" text-anchor="middle" class="viz-label">Webhooks, signed requests</text>
+<text x="464" y="276" text-anchor="middle" class="viz-label-muted">refuse inside the timestamp window</text>
+<circle cx="464" cy="80" r="6" class="viz-d1"/>
+<circle cx="192" cy="232" r="6" class="viz-dgray"/>
+<text x="328" y="372" text-anchor="middle" class="viz-label-muted">Second request: echo to refuse</text>
+<text x="20" y="192" transform="rotate(-90 20 192)" text-anchor="middle" class="viz-label-muted">Memory of the key: a window to forever</text>
+</svg>
+<figcaption>Illustrative: a placement of common endpoint types; the gold dot is the ticket gate, the grey dot is a payment charge.</figcaption>
+</figure>
+
+<p>Webhook receivers sit in the bottom-right cell for a reason worth stating. They refuse repeats, but only within the window their signature&#39;s timestamp allows, because outside the window the signature check already rejects the message. Their memory can be short because another mechanism takes over. A ticket has no such mechanism; the row is all there is, and that is why its memory is measured in the life of the event rather than in hours.</p>
+<h2>What this bought me</h2>
+<p>When I built the QR system, the anti-replay requirement arrived as a security feature with a security vocabulary: nonces, replay windows, freshness. Building it as an idempotency key pointed the other way meant it arrived as one table I already knew how to run, one unique constraint the database already knew how to enforce, and two decisions written next to the endpoint: refuse, and remember for the event. The same table now backs the echoing endpoints too, with the flag flipped. Two questions, one primitive, and no separate security subsystem to keep honest.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">API Design</span><span class="tag-chip">Idempotency</span><span class="tag-chip">Security</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

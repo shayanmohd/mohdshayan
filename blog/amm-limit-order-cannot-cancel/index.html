@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An AMM is a limit order you cannot cancel | Mohd Shayan</title>
+    <meta name="description" content="A constant-product pool is a continuum of resting limit orders, and the liquidity provider's defining disadvantage is that none of them can be pulled when the price moves.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/amm-limit-order-cannot-cancel/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/amm-limit-order-cannot-cancel/">
+    <meta property="og:title" content="An AMM is a limit order you cannot cancel | Mohd Shayan">
+    <meta property="og:description" content="A constant-product pool is a continuum of resting limit orders, and the liquidity provider's defining disadvantage is that none of them can be pulled when the price moves.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="An AMM is a limit order you cannot cancel | Mohd Shayan">
+    <meta name="twitter:description" content="A constant-product pool is a continuum of resting limit orders, and the liquidity provider's defining disadvantage is that none of them can be pulled when the price moves.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/amm-limit-order-cannot-cancel/#post",
+      "headline": "An AMM is a limit order you cannot cancel",
+      "description": "A constant-product pool is a continuum of resting limit orders, and the liquidity provider's defining disadvantage is that none of them can be pulled when the price moves.",
+      "url": "https://mohdshayan.com/blog/amm-limit-order-cannot-cancel/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/amm-limit-order-cannot-cancel/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "AMM, DeFi, Market Making",
+      "inLanguage": "en",
+      "wordCount": 1261
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">An AMM is a limit order you cannot cancel</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">A constant-product pool is a continuum of resting limit orders, and the liquidity provider's defining disadvantage is that none of them can be pulled when the price moves.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>A market maker on an order book does one thing constantly: cancels. Quotes are posted, the price moves elsewhere, the quotes are pulled before anyone can hit them, and new ones are posted at the new price. The cancel is the whole job. An automated market maker cannot do it. A constant-product pool posts, in effect, a resting limit order at every price, and when the price moves on another venue, every one of those orders is still there, waiting for the first person who notices. That inability is the entire economics of being a liquidity provider, and the losses people argue about, impermanent loss, loss-versus-rebalancing, all follow from it.</p>
+<h2>A curve is a ladder of orders</h2>
+<p>Take the constant-product rule, x times y equals k, that Uniswap&#39;s <a href="https://docs.uniswap.org/contracts/v2/concepts/protocol-overview/how-uniswap-works">second version</a> and countless pools since have used. The pool holds x of one asset and y of the other, and it will trade along the curve so that the product stays constant. A trader who buys a small amount of y pays a price near y over x; a trader who buys a lot walks up the curve and pays more. Read that from the other side and it is a ladder: the pool is offering to sell y at every price above the current one and to buy y at every price below it, in amounts fixed by the curve. It is an order book with an order at every tick, placed by nobody, cancelled by nobody.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 340" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">The constant-product curve read as a ladder of resting orders</title>
+<desc id="f1-d">A convex curve x times y equals k drawn across the plot, with the current reserves marked as a dot. Along the curve above the dot, small step marks are labelled as sell orders at rising prices; below the dot, as buy orders at falling prices. A note says none of the steps can be removed when the price moves elsewhere.</desc>
+<text x="0" y="18" class="viz-title">Every point on the curve is an order</text>
+<text x="0" y="36" class="viz-sub">x times y equals k, read as resting bids and asks around the current reserves</text>
+<line x1="56" y1="56" x2="56" y2="290" class="viz-axis"/>
+<line x1="56" y1="290" x2="600" y2="290" class="viz-axis"/>
+<text x="600" y="312" text-anchor="end" class="viz-label-muted">reserve of x</text>
+<text x="20" y="180" transform="rotate(-90 20 180)" text-anchor="middle" class="viz-label-muted">reserve of y</text>
+<polyline points="90,70 110,120 135,160 165,193 200,218 240,238 290,253 350,264 420,272 500,278 590,282" class="viz-s1"/>
+<circle cx="240" cy="238" r="6" class="viz-d1"/>
+<text x="254" y="232" class="viz-label">current reserves</text>
+<circle cx="200" cy="218" r="4" class="viz-d2"/><circle cx="165" cy="193" r="4" class="viz-d2"/><circle cx="135" cy="160" r="4" class="viz-d2"/><circle cx="110" cy="120" r="4" class="viz-d2"/>
+<text x="150" y="110" class="viz-label-muted">sells of y, at rising prices</text>
+<circle cx="290" cy="253" r="4" class="viz-d3"/><circle cx="350" cy="264" r="4" class="viz-d3"/><circle cx="420" cy="272" r="4" class="viz-d3"/><circle cx="500" cy="278" r="4" class="viz-d3"/>
+<text x="360" y="250" class="viz-label-muted">buys of y, at falling prices</text>
+<line x1="380" y1="31" x2="394" y2="31" class="viz-s1"/><text x="400" y="35" class="viz-label-muted">curve</text>
+<circle cx="470" cy="31" r="4" class="viz-d2"/><text x="480" y="35" class="viz-label-muted">ask</text>
+<circle cx="530" cy="31" r="4" class="viz-d3"/><text x="540" y="35" class="viz-label-muted">bid</text>
+<text x="328" y="332" text-anchor="middle" class="viz-tick">none of the marked orders can be pulled when the price moves on another venue</text>
+</svg>
+<figcaption>Illustrative: the geometry of a constant-product pool drawn to show the reading, not a plot of any pool's reserves.</figcaption>
+</figure>
+
+<p>On a central limit order book, the maker whose quotes are stale loses money to whoever trades against them first, which is why makers cancel the instant they see the price move. The pool cannot see anything. It has no feed, no clock and no opinion; it only knows its own reserves. When the price on a large exchange moves, the pool&#39;s ladder is wrong, and it stays wrong until an arbitrageur trades it back to the right price, taking the difference as profit. That profit is paid by the liquidity providers, and it is paid every time the price moves, in either direction.</p>
+<h2>The uncancellable quote test</h2>
+<p>Here is the test I apply to any market-making design, on chain or off. Ask what happens the instant the quoter learns that the price has moved. If the answer is &quot;nothing, until someone trades against it&quot;, the design pays a cost for being unable to cancel, and everything else about its economics is a way of pricing that cost. If the answer is &quot;the quotes move&quot;, the design is a market maker in the ordinary sense and the question is only whether it can move them fast enough.</p>
+<p>A constant-product pool fails the test by construction. A concentrated-liquidity pool fails it too; the ladder is narrower and the orders are larger within the range, but they are just as uncancellable. In fact concentration makes the failure sharper rather than softer: the liquidity provider has chosen to post bigger orders closer to the current price, which is exactly where a stale quote is most expensive, and the reward for that choice is a larger share of the fees in exchange for a larger share of the arbitrageurs&#39; profit. Concentration is a lever on the size of the bet, not on its direction.</p>
+<p>The test is also useful for reading the newer designs, because most of them are attempts to pass it partially. Pools that quote from an external price feed are trying to cancel by proxy, with the oracle doing the cancelling; they pass to the extent the oracle updates before the arbitrageurs arrive and fail in every block where it does not. Pools that auction the right to trade first are not cancelling at all; they are selling the stale orders to the highest bidder and returning the proceeds to the LP, which is a way of getting some of the rent back rather than avoiding it. An order-book maker with a fast feed passes it. A pool whose quotes are set by an oracle rather than by its own reserves passes it partly, to the extent the oracle is faster than the arbitrageurs, which is the design question that most of the newer AMMs are really about.</p>
+<h2>Loss-versus-rebalancing is the price of the missing cancel</h2>
+<p>Milionis, Moallemi, Roughgarden and Zhang gave the cost a name and a formula in <a href="https://arxiv.org/abs/2208.06046">Automated Market Making and Loss-Versus-Rebalancing</a>. Loss-versus-rebalancing compares the liquidity provider&#39;s position against a benchmark that holds the same assets but rebalances at the true market price instead of being picked off at stale ones. The difference is exactly the arbitrageurs&#39; profit, and for a constant-product pool it has a closed form: the LVR accrues at a rate proportional to the square of the asset&#39;s volatility, sigma squared over eight, as a fraction of the pool&#39;s value, per unit time. Higher volatility means the price moves more, the ladder is wrong more often and by more, and the cost of not cancelling rises with the square.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 320" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Annual loss-versus-rebalancing for a constant-product pool against volatility</title>
+<desc id="f2-d">A curve rising with the square of annualised volatility: about 1.1 percent of pool value per year at 30 percent volatility, 3.1 at 50, 6.1 at 70, 10.1 at 90 and 15.1 at 110 percent. Fees have to exceed this to make providing liquidity worthwhile.</desc>
+<text x="0" y="18" class="viz-title">The rent for being unable to cancel</text>
+<text x="0" y="36" class="viz-sub">LVR as a share of pool value per year, sigma squared over eight</text>
+<line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">16%</text>
+<line x1="56" y1="108" x2="600" y2="108" class="viz-grid"/><text x="48" y="112" text-anchor="end" class="viz-tick">12%</text>
+<line x1="56" y1="160" x2="600" y2="160" class="viz-grid"/><text x="48" y="164" text-anchor="end" class="viz-tick">8%</text>
+<line x1="56" y1="212" x2="600" y2="212" class="viz-grid"/><text x="48" y="216" text-anchor="end" class="viz-tick">4%</text>
+<line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/><text x="48" y="268" text-anchor="end" class="viz-tick">0</text>
+<text x="56" y="288" text-anchor="middle" class="viz-tick">30%</text>
+<text x="192" y="288" text-anchor="middle" class="viz-tick">50%</text>
+<text x="328" y="288" text-anchor="middle" class="viz-tick">70%</text>
+<text x="464" y="288" text-anchor="middle" class="viz-tick">90%</text>
+<text x="600" y="288" text-anchor="middle" class="viz-tick">110%</text>
+<text x="328" y="310" text-anchor="middle" class="viz-label-muted">Annualised volatility of the asset</text>
+<polyline points="56,249.4 192,223.4 328,184.5 464,132.7 600,67.9" class="viz-s1"/>
+<circle cx="56" cy="249.4" r="4" class="viz-d1"/>
+<circle cx="192" cy="223.4" r="4" class="viz-d1"/>
+<circle cx="328" cy="184.5" r="4" class="viz-d1"/>
+<circle cx="464" cy="132.7" r="4" class="viz-d1"/>
+<circle cx="600" cy="67.9" r="4" class="viz-d1"/>
+<text x="70" y="244" class="viz-value">1.1%</text>
+<text x="592" y="62" text-anchor="end" class="viz-value">15.1%</text>
+</svg>
+<figcaption>Illustrative: computed from the constant-product result in <a href="https://arxiv.org/abs/2208.06046">Milionis et al. (2022)</a>, LVR rate equal to sigma squared over eight; the volatility values on the axis are inputs, not a claim about any asset.</figcaption>
+</figure>
+
+<p>Read the chart as a rent. At 70 percent annualised volatility, which is not unusual for a large crypto asset, the pool loses about six percent of its value a year to the people who correct its prices, before a single fee is counted. Fees are what the pool charges in return for the service of always being there, and the position is profitable only when fee income exceeds the rent. That is the whole calculation, and it is why fee tiers exist: a volatile pair needs a higher fee to cover a higher LVR, and a stable pair can charge almost nothing because its ladder is almost never wrong.</p>
+<h2>Where impermanent loss fits</h2>
+<p>Impermanent loss is the older and more confusing name for a related quantity, and the ladder view sorts out the confusion. Impermanent loss compares the LP&#39;s position with simply holding the two assets; it depends on where the price ends up and is zero if the price returns to where it started. LVR compares the LP with a rebalancing benchmark and depends on the path, on how much the price moved along the way, not on where it ended. Both are the cost of the missing cancel, measured against different benchmarks. LVR is the better measure of what the LP actually pays, because arbitrageurs are paid on every move and do not give the money back when the price comes home.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 230" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">An order-book maker and a pool, at the moment the price moves</title>
+<desc id="f3-d">Two panels side by side. Left, the order-book maker: on a price move it cancels its stale quotes and reposts at the new price, losing nothing. Right, the pool: on the same move its ladder stays where it was, an arbitrageur trades against the stale orders, and the pool ends up at the new price having paid the difference.</desc>
+<rect x="8" y="30" width="300" height="160" rx="8" class="viz-box"/>
+<text x="158" y="58" text-anchor="middle" class="viz-label">Order-book maker</text>
+<text x="158" y="86" text-anchor="middle" class="viz-label-muted">price moves elsewhere</text>
+<text x="158" y="110" text-anchor="middle" class="viz-label-muted">cancel stale quotes</text>
+<text x="158" y="134" text-anchor="middle" class="viz-label-muted">repost at the new price</text>
+<text x="158" y="166" text-anchor="middle" class="viz-value">cost: nothing, if fast enough</text>
+<rect x="332" y="30" width="300" height="160" rx="8" class="viz-box-accent"/>
+<text x="482" y="58" text-anchor="middle" class="viz-label">Constant-product pool</text>
+<text x="482" y="86" text-anchor="middle" class="viz-label-muted">price moves elsewhere</text>
+<text x="482" y="110" text-anchor="middle" class="viz-label-muted">ladder stays where it was</text>
+<text x="482" y="134" text-anchor="middle" class="viz-label-muted">arbitrageur trades it to the new price</text>
+<text x="482" y="166" text-anchor="middle" class="viz-value">cost: the difference, every time</text>
+<text x="320" y="216" text-anchor="middle" class="viz-tick">the same price move, two responses; only one of them is a choice</text>
+</svg>
+<figcaption>Illustrative: the two behaviours the uncancellable quote test distinguishes.</figcaption>
+</figure>
+
+<h2>What it means for the other side</h2>
+<p>I spend more of my time on the other side of this trade than on it. Shayanomaly watches five venues for the moments when a pool&#39;s ladder and an exchange&#39;s book disagree, and the disagreement is exactly the LVR the pool is about to pay. From that side, the ladder view is also the clearest explanation of what the arbitrage is: not a free lunch, but a service the pool has agreed in advance to pay for, at a rate set by volatility, to whoever gets there first. The competition to get there first is what keeps the pool&#39;s price honest and keeps the LP&#39;s rent from being any higher than it has to be.</p>
+<p>For anyone providing liquidity, the test reduces to one question that is easier to answer than the literature makes it look. What does this design do the instant it learns the price has moved? If the answer is nothing, then the fee tier is the only thing standing between you and the square of the volatility, and it needs to be large enough to cover it.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">AMM</span><span class="tag-chip">DeFi</span><span class="tag-chip">Market Making</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

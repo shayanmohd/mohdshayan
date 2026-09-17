@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your similarity threshold has no zero | Mohd Shayan</title>
+    <meta name="description" content="A cosine threshold of 0.8 is not 80 percent of anything. Every embedding model puts unrelated text at its own baseline, and a threshold only means something measured above it.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/similarity-threshold-has-no-zero/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/similarity-threshold-has-no-zero/">
+    <meta property="og:title" content="Your similarity threshold has no zero | Mohd Shayan">
+    <meta property="og:description" content="A cosine threshold of 0.8 is not 80 percent of anything. Every embedding model puts unrelated text at its own baseline, and a threshold only means something measured above it.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Your similarity threshold has no zero | Mohd Shayan">
+    <meta name="twitter:description" content="A cosine threshold of 0.8 is not 80 percent of anything. Every embedding model puts unrelated text at its own baseline, and a threshold only means something measured above it.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/similarity-threshold-has-no-zero/#post",
+      "headline": "Your similarity threshold has no zero",
+      "description": "A cosine threshold of 0.8 is not 80 percent of anything. Every embedding model puts unrelated text at its own baseline, and a threshold only means something measured above it.",
+      "url": "https://mohdshayan.com/blog/similarity-threshold-has-no-zero/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/similarity-threshold-has-no-zero/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Embeddings, Vector Search, RAG",
+      "inLanguage": "en",
+      "wordCount": 1231
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Your similarity threshold has no zero</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">A cosine threshold of 0.8 is not 80 percent of anything. Every embedding model puts unrelated text at its own baseline, and a threshold only means something measured above it.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>Somewhere in most retrieval pipelines there is a line like <code>if score &lt; 0.8: skip</code>, and somewhere in most teams there is a belief that 0.8 means something. It does not. Cosine similarity between two embeddings is a number between minus one and one in theory, and in practice, for any given model, it lives in a narrow band whose floor is nowhere near zero. Unrelated sentences do not score zero. They score whatever that model&#39;s baseline is, and the baseline is different for every model, every fine-tune and every domain. A threshold copied from a tutorial, or carried across a model upgrade, is wrong by an offset nobody measured.</p>
+<h2>Why unrelated text is not orthogonal</h2>
+<p>The reason is a property of learned representations that has been documented since the first contextual models. Ethayarajh&#39;s <a href="https://arxiv.org/abs/1909.00512">study of contextualised representations</a> found that they are not isotropic in any layer of the models examined: rather than spreading evenly across the space, the vectors cluster in a narrow cone, sharing a common direction. Two representations that have nothing to do with each other still point roughly the same way, so their cosine similarity is positive, often substantially so, before any meaning is involved at all.</p>
+<p>Sentence embedding models inherit the same shape. The models are trained so that related pairs land closer than unrelated pairs, which is the property retrieval needs, but nothing in the training objective requires unrelated pairs to land at zero. They land where the cone puts them. On one model, random pairs of chunks from a corpus might average 0.3; on another, 0.6; on a third, the same model after a domain fine-tune, somewhere else again. The relevant pairs sit above that, in a band that overlaps the random band more than anyone likes.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 320" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Two similarity distributions from one model on one corpus</title>
+<desc id="f1-d">Two overlapping histograms of cosine similarity. Random pairs of chunks cluster around 0.45 with a spread of about 0.08. Labelled relevant pairs cluster around 0.72 with a wider spread. A vertical marker at 0.8 shows a threshold that sits above most relevant pairs, and a second marker at 0.61, two standard deviations above the random mean, shows the threshold this post proposes.</desc>
+<text x="0" y="18" class="viz-title">The stranger score and the pairs you want</text>
+<text x="0" y="36" class="viz-sub">Cosine similarity, one model, one corpus; an illustrative shape</text>
+<rect x="380" y="24" width="12" height="12" rx="3" class="viz-fgray"/><text x="398" y="35" class="viz-label-muted">random pairs</text>
+<rect x="500" y="24" width="12" height="12" rx="3" class="viz-f1"/><text x="518" y="35" class="viz-label-muted">relevant pairs</text>
+<line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/>
+<text x="56" y="288" text-anchor="middle" class="viz-tick">0.2</text>
+<text x="192" y="288" text-anchor="middle" class="viz-tick">0.4</text>
+<text x="328" y="288" text-anchor="middle" class="viz-tick">0.6</text>
+<text x="464" y="288" text-anchor="middle" class="viz-tick">0.8</text>
+<text x="600" y="288" text-anchor="middle" class="viz-tick">1.0</text>
+<text x="328" y="310" text-anchor="middle" class="viz-label-muted">Cosine similarity</text>
+<rect x="158" y="230" width="18" height="34" class="viz-fgray"/>
+<rect x="178" y="180" width="18" height="84" class="viz-fgray"/>
+<rect x="198" y="110" width="18" height="154" class="viz-fgray"/>
+<rect x="218" y="70" width="18" height="194" class="viz-fgray"/>
+<rect x="238" y="96" width="18" height="168" class="viz-fgray"/>
+<rect x="258" y="160" width="18" height="104" class="viz-fgray"/>
+<rect x="278" y="222" width="18" height="42" class="viz-fgray"/>
+<rect x="298" y="250" width="18" height="14" class="viz-fgray"/>
+<rect x="318" y="244" width="18" height="20" class="viz-f1"/>
+<rect x="338" y="214" width="18" height="50" class="viz-f1"/>
+<rect x="358" y="178" width="18" height="86" class="viz-f1"/>
+<rect x="378" y="150" width="18" height="114" class="viz-f1"/>
+<rect x="398" y="134" width="18" height="130" class="viz-f1"/>
+<rect x="418" y="150" width="18" height="114" class="viz-f1"/>
+<rect x="438" y="182" width="18" height="82" class="viz-f1"/>
+<rect x="458" y="214" width="18" height="50" class="viz-f1"/>
+<rect x="478" y="240" width="18" height="24" class="viz-f1"/>
+<rect x="498" y="254" width="18" height="10" class="viz-f1"/>
+<line x1="464" y1="56" x2="464" y2="264" class="viz-s4"/>
+<text x="458" y="70" text-anchor="end" class="viz-label-muted">0.8, copied from a tutorial</text>
+<line x1="335" y1="56" x2="335" y2="264" class="viz-s2"/>
+<text x="329" y="90" text-anchor="end" class="viz-label-muted">stranger score + 2 sd</text>
+</svg>
+<figcaption>Illustrative: the shape of the two distributions as they typically appear; the numbers are drawn to show the argument, and the point of the post is that you measure yours.</figcaption>
+</figure>
+
+<h2>The stranger score</h2>
+<p>The fix is one measurement, and I do it before setting any threshold. Sample a few thousand random pairs of chunks from your own corpus, embed them with the model you actually run, and record the mean and standard deviation of their cosine similarity. That mean is the stranger score: what two chunks that have nothing to do with each other look like, under this model, on this data. Every threshold in the system is then written as &quot;k standard deviations above the stranger score&quot;, and the rule I enforce in review is that a threshold not written that way does not get merged.</p>
+<p>Writing thresholds relative to the baseline does three things at once. It makes them portable across model swaps, because the k survives even though the raw number does not. It makes them meaningful to read: 2.5 standard deviations above strangers says what the author intended, 0.8 says nothing. And it forces the measurement that everyone was skipping, which is the part that actually catches problems.</p>
+<p>The measurement itself is a few lines and runs in a minute on a corpus of tens of thousands of chunks. Pick pairs at random rather than adjacent ones, because adjacent chunks share a document and are not strangers. Use the same normalisation the query path uses, because a model that expects unit vectors gives different numbers if you forget. And store the result next to the index, dated and tagged with the model id, so that the next person can see what baseline the thresholds were written against.</p>
+<pre><code class="language-python">idx = rng.choice(len(vecs), size=(5000, 2))
+idx = idx[idx[:, 0] != idx[:, 1]]
+sims = (vecs[idx[:, 0]] * vecs[idx[:, 1]]).sum(axis=1)   # unit vectors
+stranger_mean, stranger_sd = sims.mean(), sims.std()
+threshold = stranger_mean + k * stranger_sd
+</code></pre>
+<p>One more thing the number is not. It is not a substitute for top-k. Retrieval usually asks for the k best chunks and then applies a threshold to drop the ones that are not good enough, and the two controls answer different questions: k bounds the cost of the prompt, the threshold bounds the noise in it. A pipeline with only a threshold sends the model forty chunks on a broad question and none on a narrow one. A pipeline with only top-k sends five chunks whether or not any of them is relevant, which is how an assistant ends up citing a passage about the wrong product with complete confidence. Both controls belong in the pipeline, and only one of them has a baseline problem.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 400" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Embeddings live in a cone, and a threshold is a shell above its floor</title>
+<desc id="f2-d">A quarter circle representing the unit sphere with a narrow cone of embedding vectors drawn inside it, all pointing in roughly the same direction. The floor of the cone is labelled the stranger score. A shell drawn a fixed angular distance above the floor is labelled the threshold. A second, differently shaped cone for another model shows that the same raw number would fall in a different place.</desc>
+<text x="0" y="18" class="viz-title">Where a threshold actually sits</text>
+<text x="0" y="36" class="viz-sub">Two models, the same raw threshold, different meanings</text>
+<path d="M60 344 A284 284 0 0 1 344 60" class="viz-axis"/>
+<line x1="60" y1="344" x2="344" y2="60" class="viz-grid"/>
+<path d="M60 344 L316 108 A284 284 0 0 1 344 60 Z" class="viz-a1"/>
+<line x1="60" y1="344" x2="316" y2="108" class="viz-s1"/>
+<line x1="60" y1="344" x2="344" y2="60" class="viz-s1"/>
+<text x="352" y="56" class="viz-label">Model A's cone</text>
+<text x="352" y="116" class="viz-label-muted">floor = stranger score</text>
+<path d="M60 344 A284 284 0 0 1 60 60" class="viz-grid"/>
+<path d="M60 344 L100 74 A284 284 0 0 1 60 60 Z" class="viz-a2"/>
+<line x1="60" y1="344" x2="100" y2="74" class="viz-s2"/>
+<line x1="60" y1="344" x2="60" y2="60" class="viz-s2"/>
+<text x="110" y="70" class="viz-label">Model B's cone</text>
+<circle cx="60" cy="344" r="5" class="viz-dgray"/>
+<text x="72" y="368" class="viz-label-muted">origin</text>
+<text x="380" y="240" class="viz-label-muted">The same raw cosine sits at a</text>
+<text x="380" y="260" class="viz-label-muted">different height above each floor.</text>
+<text x="380" y="292" class="viz-label-muted">Written as k standard deviations</text>
+<text x="380" y="312" class="viz-label-muted">above the floor, it means the same</text>
+<text x="380" y="332" class="viz-label-muted">thing in both.</text>
+</svg>
+<figcaption>Illustrative: a two-dimensional sketch of the anisotropy described by <a href="https://arxiv.org/abs/1909.00512">Ethayarajh (2019)</a>; real embeddings have hundreds of dimensions and the cone is a picture, not a measurement.</figcaption>
+</figure>
+
+<h2>What the measurement catches</h2>
+<p>Three failures, in my experience, and all three are silent without it.</p>
+<p>The model swap. A team upgrades from one embedding model to a newer one, re-embeds the corpus, and keeps the threshold. The new model&#39;s stranger score is lower, so the old threshold now admits pairs that are two standard deviations above strangers instead of four, and retrieval quietly gets noisier. Or the score is higher and the threshold now excludes nearly everything, and the assistant starts declining questions it used to answer. Nobody changed the threshold, so nobody looks at it.</p>
+<p>The domain shift. The same model, but the corpus changes from product documentation to support tickets. Tickets are shorter, more repetitive and full of the same identifiers, so random pairs of them look more alike; the stranger score rises and a threshold set on the documentation is now too permissive. The pgvector <a href="https://github.com/pgvector/pgvector">distance operators</a> and the sentence-transformers <a href="https://www.sbert.net/">similarity utilities</a> will compute whatever you ask of them and will never tell you that the baseline moved.</p>
+<p>The mixed index. Two corpora with different stranger scores in one index, one threshold across both. This one is common in helpdesk systems, where procedure manuals, ticket histories and product pages are embedded into the same collection because that was the simplest thing to do on the day. Every query is now evaluated against two different baselines at once, and the results from the corpus with the higher floor crowd out the other. The measurement per corpus is what shows you the floors differ, and the fix is either separate thresholds or separate indexes.</p>
+<h2>What it does not fix</h2>
+<p>The stranger score is a baseline, not a relevance model. It tells you where unrelated pairs sit; it does not tell you where the relevant pairs sit, and the two distributions overlap. It also says nothing about direction: two chunks can be far above the baseline because they share a rare identifier, a product code or a customer name, and be about entirely different things. Lexical overlap of that kind is exactly what dense models are worst at distinguishing from meaning, which is why the labelled relevant set is not optional. Setting k requires the second distribution too: a few hundred labelled relevant pairs from your own data, so that you can see how much of the relevant band a given k keeps and how much of the random band it admits. That labelled set is the same one you need for any retrieval evaluation, so it is not extra work. It is the work, and the stranger score is the first thing to compute from it.</p>
+<p>When I was tuning retrieval for the helpdesk assistant at CRIS, retrieval depth was the parameter that got the attention, and the threshold was the parameter that got copied. In hindsight the threshold was the more dangerous of the two, precisely because it looked like a number with a meaning. It has one, but the meaning is relative, and the zero it seems to be measured from does not exist.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Embeddings</span><span class="tag-chip">Vector Search</span><span class="tag-chip">RAG</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

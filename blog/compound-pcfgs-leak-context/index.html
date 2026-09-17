@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound PCFGs leak context on purpose | Mohd Shayan</title>
+    <meta name="description" content="A compound PCFG keeps the tree context-free so the inside algorithm still works, and lets context in through a per-sentence latent that rewrites rule probabilities.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/compound-pcfgs-leak-context/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/compound-pcfgs-leak-context/">
+    <meta property="og:title" content="Compound PCFGs leak context on purpose | Mohd Shayan">
+    <meta property="og:description" content="A compound PCFG keeps the tree context-free so the inside algorithm still works, and lets context in through a per-sentence latent that rewrites rule probabilities.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Compound PCFGs leak context on purpose | Mohd Shayan">
+    <meta name="twitter:description" content="A compound PCFG keeps the tree context-free so the inside algorithm still works, and lets context in through a per-sentence latent that rewrites rule probabilities.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/compound-pcfgs-leak-context/#post",
+      "headline": "Compound PCFGs leak context on purpose",
+      "description": "A compound PCFG keeps the tree context-free so the inside algorithm still works, and lets context in through a per-sentence latent that rewrites rule probabilities.",
+      "url": "https://mohdshayan.com/blog/compound-pcfgs-leak-context/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/compound-pcfgs-leak-context/",
+      "datePublished": "2026-09-18",
+      "dateModified": "2026-09-18",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Grammar Induction, PCFG, NLP",
+      "inLanguage": "en",
+      "wordCount": 1146
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">18 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Compound PCFGs leak context on purpose</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">A compound PCFG keeps the tree context-free so the inside algorithm still works, and lets context in through a per-sentence latent that rewrites rule probabilities.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>A probabilistic context-free grammar makes one assumption that is both its whole reason for being and its whole limitation: the probability of a subtree depends only on the nonterminal at its root, not on anything outside it. That assumption is what lets the <a href="https://en.wikipedia.org/wiki/Inside%E2%80%93outside_algorithm">inside algorithm</a> compute the total probability of a sentence in cubic time, and it is why a PCFG cannot know that a sentence about finance and a sentence about cooking should expand their noun phrases differently. The compound PCFG of Kim, Dyer and Rush solved that tension with a trick that is worth naming as a design pattern, because it recurs well beyond grammar induction. It keeps the context-free assumption exactly, so that inference still works, and lets context in through a side door: a per-sentence latent vector that rewrites the rule probabilities before the grammar is applied. Conditioned on that vector the grammar is context-free. Marginally, it is not.</p>
+<h2>What the side door does</h2>
+<p>In the <a href="https://arxiv.org/abs/1906.10225">compound PCFG paper</a>, each sentence gets a continuous latent variable, drawn from a prior, and the rule probabilities of the grammar are computed from that variable through a neural network. For a fixed value of the latent, the result is an ordinary PCFG: the same rule probabilities apply to every position in the tree, subtrees are independent given their root, and the inside algorithm runs unchanged. What differs from a plain neural PCFG is that the rule probabilities are different for each sentence, because the latent is, and so two subtrees in the same sentence are correlated through the latent they share. Integrate the latent out and the model is no longer context-free; it is a mixture of context-free grammars, one per point in the latent space.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">The graphical model of a plain PCFG next to the compound PCFG with a per-sentence latent, showing the dependence path that exists only when the latent is unobserved</title>
+<desc id="f1-d">Left: a plain PCFG, with fixed rule probabilities feeding a tree, and the tree's subtrees independent given their root nonterminals. Right: a compound PCFG, with a per-sentence latent z drawn from a prior, feeding the rule probabilities, which feed the tree. Given z the subtrees are independent as before; with z unobserved, a dependence path runs from one subtree up through the rule probabilities to z and back down to another subtree.</desc>
+<defs><marker id="f1-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<text x="0" y="18" class="viz-title">Same tree, one more variable</text>
+<text x="8" y="52" class="viz-tick">PLAIN PCFG</text>
+<rect x="60" y="64" width="140" height="40" rx="8" class="viz-box"/>
+<text x="130" y="89" text-anchor="middle" class="viz-label">rule probabilities</text>
+<line x1="130" y1="106" x2="130" y2="136" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="60" y="140" width="140" height="40" rx="8" class="viz-box"/>
+<text x="130" y="165" text-anchor="middle" class="viz-label">tree</text>
+<rect x="30" y="200" width="90" height="34" rx="6" class="viz-box"/><text x="75" y="222" text-anchor="middle" class="viz-label-muted">subtree A</text>
+<rect x="140" y="200" width="90" height="34" rx="6" class="viz-box"/><text x="185" y="222" text-anchor="middle" class="viz-label-muted">subtree B</text>
+<text x="130" y="262" text-anchor="middle" class="viz-tick">A, B independent given roots</text>
+<text x="340" y="52" class="viz-tick">COMPOUND PCFG</text>
+<rect x="420" y="40" width="100" height="34" rx="8" class="viz-box-accent"/>
+<text x="470" y="62" text-anchor="middle" class="viz-label">z, per sentence</text>
+<line x1="470" y1="76" x2="470" y2="96" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="400" y="100" width="140" height="40" rx="8" class="viz-box"/>
+<text x="470" y="125" text-anchor="middle" class="viz-label">rule probabilities of z</text>
+<line x1="470" y1="142" x2="470" y2="160" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="400" y="164" width="140" height="36" rx="8" class="viz-box"/>
+<text x="470" y="187" text-anchor="middle" class="viz-label">tree</text>
+<rect x="370" y="216" width="90" height="34" rx="6" class="viz-box"/><text x="415" y="238" text-anchor="middle" class="viz-label-muted">subtree A</text>
+<rect x="480" y="216" width="90" height="34" rx="6" class="viz-box"/><text x="525" y="238" text-anchor="middle" class="viz-label-muted">subtree B</text>
+<path d="M415 252 C 415 290, 330 200, 340 120 C 345 70, 420 57, 420 57" fill="none" class="viz-s4"/>
+<text x="470" y="278" text-anchor="middle" class="viz-tick">given z independent; z unobserved, correlated</text>
+</svg>
+<figcaption>Illustrative: the two graphical models; the brick path on the right is the marginal dependence the latent introduces.</figcaption>
+</figure>
+
+<p>That is the entire design, and its effect on the benchmark was large. On unsupervised parsing of the Penn Treebank, the paper reports unlabelled sentence-level F1 of 60.1 for the compound PCFG against 52.6 for a neural PCFG with the same parameterisation and no latent, with the earlier PRPN and ordered-neuron models at 47.3 and 48.1. The neural parameterisation on its own, going from a table of rule probabilities to a network that produces them, is worth a few points. The side door is worth seven and a half.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 262" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Unlabelled sentence-level F1 on the Penn Treebank test set for four unsupervised parsers</title>
+<desc id="f2-d">Horizontal bars in F1: PRPN 47.3, ordered neurons 48.1, neural PCFG 52.6, compound PCFG 60.1. The compound PCFG bar is highlighted, and the gap between the last two bars is the effect of the per-sentence latent.</desc>
+<text x="0" y="18" class="viz-title">The latent is worth seven and a half points</text>
+<text x="0" y="36" class="viz-sub">Unlabelled sentence F1 on the PTB test set, best reported run; bars start at 40</text>
+<line x1="176" y1="52" x2="176" y2="188" class="viz-axis"/>
+<text x="166" y="73" text-anchor="end" class="viz-label">PRPN</text>
+<path d="M176 58 H322 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/><text x="342" y="73" class="viz-value">47.3</text>
+<text x="166" y="107" text-anchor="end" class="viz-label">Ordered neurons</text>
+<path d="M176 92 H338 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/><text x="358" y="107" class="viz-value">48.1</text>
+<text x="166" y="141" text-anchor="end" class="viz-label">Neural PCFG</text>
+<path d="M176 126 H428 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/><text x="448" y="141" class="viz-value">52.6</text>
+<text x="166" y="175" text-anchor="end" class="viz-label">Compound PCFG</text>
+<path d="M176 160 H578 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/><text x="574" y="155" text-anchor="end" class="viz-value">60.1</text>
+<text x="0" y="222" class="viz-label-muted">Twenty pixels per point above 40; the two PCFGs share everything but the latent.</text>
+<text x="0" y="246" class="viz-tick">later replications report the gap with variance across seeds; the ordering has held</text>
+</svg>
+<figcaption>Source: Kim, Dyer and Rush, <a href="https://arxiv.org/abs/1906.10225">Compound Probabilistic Context-Free Grammars for Grammar Induction</a>, ACL 2019, Table 1, best-run figures.</figcaption>
+</figure>
+
+<h2>Why inference survives</h2>
+<p>The reason the trick works, rather than merely being clever, is that the inside algorithm does not know the latent exists. Inference proceeds in a loop: sample a value of the latent from an amortised posterior network that reads the sentence, compute the rule probabilities from that value, run the inside algorithm with those probabilities exactly as for a plain PCFG, and marginalise the trees with the dynamic programme while the latent is handled by the sampler. The paper calls this collapsed variational inference, and the word collapsed is the point: the trees are integrated out exactly, in cubic time, and only the continuous latent needs approximation.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 230" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">The inference loop: sample the latent from the amortised posterior, run the inside algorithm with latent-conditioned rule probabilities, marginalise the trees</title>
+<desc id="f3-d">A cycle of four steps: the sentence enters an encoder that gives an approximate posterior over z; a z is sampled; the rule probabilities are computed from z; the inside algorithm runs with those probabilities and returns the marginal likelihood of the sentence over all trees; that likelihood, and the divergence to the prior, form the objective, which updates the encoder and the grammar.</desc>
+<defs><marker id="f3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<text x="0" y="18" class="viz-title">The dynamic programme never sees the latent change</text>
+<rect x="8" y="60" width="140" height="60" rx="8" class="viz-box"/>
+<text x="78" y="86" text-anchor="middle" class="viz-label">Encoder</text>
+<text x="78" y="104" text-anchor="middle" class="viz-label-muted">posterior over z</text>
+<line x1="150" y1="90" x2="170" y2="90" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<rect x="174" y="60" width="130" height="60" rx="8" class="viz-box-accent"/>
+<text x="239" y="86" text-anchor="middle" class="viz-label">Sample z</text>
+<text x="239" y="104" text-anchor="middle" class="viz-label-muted">one per sentence</text>
+<line x1="306" y1="90" x2="326" y2="90" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<rect x="330" y="60" width="140" height="60" rx="8" class="viz-box"/>
+<text x="400" y="86" text-anchor="middle" class="viz-label">Rules from z</text>
+<text x="400" y="104" text-anchor="middle" class="viz-label-muted">a PCFG, for now</text>
+<line x1="472" y1="90" x2="492" y2="90" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<rect x="496" y="60" width="136" height="60" rx="8" class="viz-box-ink"/>
+<text x="564" y="86" text-anchor="middle" class="viz-on-ink">Inside algorithm</text>
+<text x="564" y="104" text-anchor="middle" class="viz-on-ink">trees summed exactly</text>
+<path d="M564 122 V170 H78 V124" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="320" y="164" text-anchor="middle" class="viz-tick">likelihood plus divergence to the prior: the objective for encoder and grammar</text>
+<text x="320" y="210" text-anchor="middle" class="viz-label-muted">Only the continuous latent is approximated; the discrete structure is handled exactly.</text>
+</svg>
+<figcaption>Illustrative: the training loop as described in the paper, drawn to show that the inside algorithm runs unchanged inside it.</figcaption>
+</figure>
+
+<p>I implemented an extension to PCFGs whose relationship to the compound model my paper discusses, and the relationship holds at exactly this level: the inside recursion I wrote does not care where its rule probabilities came from. It takes a table of probabilities, or a function that produces them, and fills the chart. Any extension that changes the table per sentence, per document, per speaker, is compatible with that recursion as long as the table is fixed for the duration of the chart. The moment the extension needs the probabilities to depend on the chart itself, on which subtrees were chosen elsewhere in the sentence, the recursion no longer factors and cubic time is gone.</p>
+<p>It is worth saying what the latent actually captures, because the pattern&#39;s value depends on it. In the paper&#39;s analysis the latent tends to encode properties that hold across a whole sentence: its length, its rough topic, whether it is a question, the register of its vocabulary. Those are exactly the things a plain PCFG cannot represent, because they are properties of the sentence rather than of any one subtree, and they are exactly the things that should change which rules are likely. A financial sentence uses noun phrases that expand into numbers and units; a narrative sentence uses ones that expand into pronouns. The latent lets the grammar be the financial grammar for one sentence and the narrative grammar for the next, and the inside algorithm sees a single grammar each time.</p>
+<h2>The parameter side door as a pattern</h2>
+<p>Named as a pattern, the idea is this: leave a model&#39;s structural independence assumptions intact, and let context in only through parameters conditioned on a latent variable. The independence assumptions are what make inference tractable, so they are kept. The parameters are where the model&#39;s flexibility lives, so they are made to vary. And the latent is what ties the varying parameters to the data, so that the model can learn which parameters go with which contexts without any component ever violating the assumptions the inference relies on.</p>
+<p>The pattern has a test, and it is the one I use when someone proposes an extension to a grammar model. Write down the inference recursion, the inside algorithm for a PCFG, and ask whether it still factors given the latent. If every term in the recursion depends on the latent only through the parameters, and the parameters are fixed once the latent is, the extension keeps the door on the parameter side and the dynamic programme survives. If some term depends on the latent through the structure, on which rule was chosen at another node, on the span a sibling covered, the door has moved to the structural side, the factorisation is broken, and whatever is gained in expressiveness is paid for with approximate inference over trees, which is the thing the pattern existed to avoid.</p>
+<h2>Why the split, not the network, made the difference</h2>
+<p>It is tempting to attribute the compound PCFG&#39;s gain to neural parameterisation, since that is the visible novelty. The comparison in the paper says otherwise: the neural PCFG has the network and not the latent, and it lands within a few points of the older models. What the latent adds is a way for the grammar to be different for different sentences without giving up the property that makes it a grammar. That is a statement about where flexibility belongs in a structured model, and it generalises. Hidden Markov models, topic models, sequence-to-sequence models with structured decoders: each has an inference algorithm that depends on an independence assumption, and each can be given context the same way, by conditioning its parameters on something learned per instance and leaving the assumption alone. The compound PCFG is the cleanest example I know because the assumption is famous and the inference is a textbook algorithm. Context leaks in through the parameters, on purpose, and the chart never notices.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Grammar Induction</span><span class="tag-chip">PCFG</span><span class="tag-chip">NLP</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

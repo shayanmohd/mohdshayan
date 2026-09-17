@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secrets have a half-life | Mohd Shayan</title>
+    <meta name="description" content="Leaked credentials keep working for years. The number that matters is not how many leak but how fast a leaked one stops working, and a secrets programme should be built on that.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/secrets-have-a-half-life/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/secrets-have-a-half-life/">
+    <meta property="og:title" content="Secrets have a half-life | Mohd Shayan">
+    <meta property="og:description" content="Leaked credentials keep working for years. The number that matters is not how many leak but how fast a leaked one stops working, and a secrets programme should be built on that.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Secrets have a half-life | Mohd Shayan">
+    <meta name="twitter:description" content="Leaked credentials keep working for years. The number that matters is not how many leak but how fast a leaked one stops working, and a secrets programme should be built on that.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/secrets-have-a-half-life/#post",
+      "headline": "Secrets have a half-life",
+      "description": "Leaked credentials keep working for years. The number that matters is not how many leak but how fast a leaked one stops working, and a secrets programme should be built on that.",
+      "url": "https://mohdshayan.com/blog/secrets-have-a-half-life/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/secrets-have-a-half-life/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Secrets Management, CI/CD, Security",
+      "inLanguage": "en",
+      "wordCount": 1221
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Secrets have a half-life</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Leaked credentials keep working for years. The number that matters is not how many leak but how fast a leaked one stops working, and a secrets programme should be built on that.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>The assumption most secrets programmes are built on is that leaks are preventable. Scan the commits, block the push, train the team, and the secret never reaches a public repository. The assumption is wrong at scale, and GitGuardian&#39;s <a href="https://blog.gitguardian.com/the-state-of-secrets-sprawl-2026/">State of Secrets Sprawl 2026</a> puts numbers on how wrong: 28.65 million new hard-coded secrets reached public GitHub commits in 2025 alone, up 34 percent on the year before. Prevention is worth doing. It is not the thing that decides whether a leak hurts you. What decides that is how long the secret keeps working after it leaks, and the report&#39;s other finding is the one to build on.</p>
+<h2>The secret that keeps working</h2>
+<p>Of the credentials GitGuardian confirmed valid in 2022, close to 70 percent were still valid in January 2025, and when retested in January 2026, more than 64 percent still worked. Four years after being pushed to a public repository, nearly two thirds of those keys had not been rotated or revoked. They had simply been forgotten, by everyone except whoever had copied them.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 230" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Share of credentials leaked in 2022 that still worked years later</title>
+<desc id="f1-d">Two horizontal bars: about 70 percent of the credentials confirmed valid in 2022 were still valid in January 2025, and about 64 percent were still valid in January 2026. The decay over a year is small.</desc>
+<text x="0" y="18" class="viz-title">Four years on, most of them still work</text>
+<text x="0" y="36" class="viz-sub">Credentials confirmed valid in 2022, retested later, per cent still valid</text>
+<line x1="176" y1="52" x2="176" y2="120" class="viz-axis"/>
+<text x="166" y="73" text-anchor="end" class="viz-label">January 2025</text>
+<path d="M176 58 H484 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="500" y="73" class="viz-value">about 70</text>
+<text x="166" y="107" text-anchor="end" class="viz-label">January 2026</text>
+<path d="M176 92 H457.6 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/>
+<text x="473.6" y="107" class="viz-value">above 64</text>
+<text x="0" y="160" class="viz-label-muted">A half-life measured in years, for keys that were public the whole time.</text>
+<text x="0" y="182" class="viz-label-muted">The 28.65 million new secrets of 2025 will decay at about the same pace.</text>
+</svg>
+<figcaption>Source: <a href="https://blog.gitguardian.com/the-state-of-secrets-sprawl-2026/">GitGuardian, The State of Secrets Sprawl 2026</a>.</figcaption>
+</figure>
+
+<p>That is a half-life, in the physical sense: a leaked credential population that loses a small fraction of its validity each year and is mostly still alive after four. It should be measured in minutes. The distance between those two numbers, years and minutes, is the whole design space of a secrets programme, and prevention does not touch it.</p>
+<h2>The blast clock</h2>
+<p>The number I care about for each secret is what I call its blast clock: the elapsed time from the moment it leaks to the moment it stops working. The clock has three segments. Detection, the time until anyone notices the leak. Revocation, the time from noticing until the credential is dead. Rotation, the time until the systems that depended on it are running on a replacement, which is what allows revocation to happen without an outage. A secrets programme sets a target for the clock per class of secret, and then chooses mechanisms by how much each one shortens which segment.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 220" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">The blast clock for one leaked credential</title>
+<desc id="f2-d">A horizontal timeline from the leak to the moment the credential stops working, split into three segments: detection, revocation and rotation. Below, two versions: a long-lived API key where each segment is days or longer, and a short-lived federated token where the whole clock is under an hour because the token expires on its own.</desc>
+<text x="0" y="18" class="viz-title">Three segments, one clock</text>
+<text x="0" y="36" class="viz-sub">From the leak to the moment the credential is useless</text>
+<text x="0" y="70" class="viz-label">Long-lived API key</text>
+<rect x="160" y="56" width="200" height="24" class="viz-f4"/>
+<rect x="360" y="56" width="140" height="24" class="viz-f4"/>
+<rect x="500" y="56" width="140" height="24" class="viz-f4"/>
+<line x1="360" y1="56" x2="360" y2="80" class="viz-gap"/>
+<line x1="500" y1="56" x2="500" y2="80" class="viz-gap"/>
+<text x="260" y="72" text-anchor="middle" class="viz-onfill">detect: months</text>
+<text x="430" y="72" text-anchor="middle" class="viz-onfill">revoke: days</text>
+<text x="570" y="72" text-anchor="middle" class="viz-onfill">rotate: days</text>
+<text x="0" y="128" class="viz-label">Short-lived token</text>
+<rect x="160" y="114" width="40" height="24" class="viz-f1"/>
+<text x="210" y="130" class="viz-label-muted">expires on its own; no one has to notice</text>
+<line x1="160" y1="160" x2="640" y2="160" class="viz-axis"/>
+<text x="160" y="184" class="viz-tick">leak</text>
+<text x="640" y="184" text-anchor="end" class="viz-tick">credential dead</text>
+<text x="0" y="212" class="viz-label-muted">Target: minutes for CI credentials, hours for anything a human issued.</text>
+</svg>
+<figcaption>Illustrative: the three segments the programme is designed around; durations are typical, not measured.</figcaption>
+</figure>
+
+<p>The segments are not equally hard. Detection depends on scanning, on the repository being public, and on luck; the GitGuardian figures are for secrets that were found, which is a lower bound on the population. Revocation depends on whether anyone can revoke the credential quickly, which for a key issued by a vendor&#39;s console means a person with the right login and a working day. Rotation depends on whether the systems that use the credential can pick up a new one without a redeploy, which is a property of how the credential was wired in.</p>
+<p>The lever that shortens all three at once is lifetime. A credential that expires on its own in fifteen minutes has a blast clock of at most fifteen minutes whether or not anyone detects the leak, revokes anything or rotates anything. That is why the biggest single change a small team can make is not a scanner. It is replacing long-lived credentials in CI with short-lived ones obtained at the start of each job, through federation with the cloud provider, so that the pipeline never holds a secret that outlives the job. GitHub&#39;s <a href="https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect">OpenID Connect integration</a> is the usual mechanism: the job presents a signed token about itself, the cloud provider exchanges it for credentials scoped to that job and that repository, and there is nothing to store, nothing to leak and nothing to rotate.</p>
+<p>The shape of that change is worth dwelling on, because it is the difference between managing secrets and not having them. Every secret in a pipeline is a liability with a half-life, and the cheapest way to shorten the half-life is to make the secret not exist between jobs. A long-lived cloud key stored in the repository&#39;s secret settings is a credential that outlives every job that used it; the federated token is a credential that dies with the job that requested it. Nothing about the work the job does changes. Only the clock does.</p>
+<h2>Ranking secrets by how fast they die</h2>
+<p>SocialSure&#39;s platform ships through a CI/CD pipeline into containers, and the Habits app builds on GitHub Actions, so the pipeline is where most of the credentials in my life live. Sorting them by blast clock, rather than by how sensitive they feel, produced a ladder with four rungs.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 262" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Credential classes by how fast a leaked one can be killed</title>
+<desc id="f3-d">Four rows. Federated tokens: seconds to minutes, expire on their own; the default for CI. Keys you issue yourself, such as API keys and database passwords: minutes, if rotation is automated. Keys a vendor issues, such as an app upload key: days, via a support process. Keys that identify the product itself, such as a legacy signing key: never; they must not touch CI at all.</desc>
+<text x="0" y="18" class="viz-title">The revocation ladder</text>
+<text x="20" y="48" class="viz-tick">CLASS</text>
+<text x="300" y="48" class="viz-tick">TIME TO KILL</text>
+<text x="450" y="48" class="viz-tick">RULE</text>
+<line x1="0" y1="56" x2="640" y2="56" class="viz-axis"/>
+<text x="20" y="82" class="viz-label">Federated, short-lived tokens</text>
+<text x="300" y="82" class="viz-value">minutes, alone</text>
+<text x="450" y="82" class="viz-label-muted">the default for every job</text>
+<line x1="0" y1="96" x2="640" y2="96" class="viz-grid"/>
+<text x="20" y="122" class="viz-label">Keys you issue yourself</text>
+<text x="300" y="122" class="viz-value">minutes, if automated</text>
+<text x="450" y="122" class="viz-label-muted">rotate on a schedule</text>
+<line x1="0" y1="136" x2="640" y2="136" class="viz-grid"/>
+<text x="20" y="162" class="viz-label">Keys a vendor issues</text>
+<text x="300" y="162" class="viz-value">days, by support</text>
+<text x="450" y="162" class="viz-label-muted">split custody</text>
+<line x1="0" y1="176" x2="640" y2="176" class="viz-grid"/>
+<text x="20" y="202" class="viz-label">Keys that are the product</text>
+<text x="300" y="202" class="viz-value">never</text>
+<text x="450" y="202" class="viz-label-muted">must not touch CI at all</text>
+<line x1="0" y1="216" x2="640" y2="216" class="viz-grid"/>
+<text x="0" y="248" class="viz-label-muted">Sorted by blast clock, not by how sensitive the secret feels.</text>
+</svg>
+<figcaption>Illustrative: the ladder as applied to a small team's pipeline; the classes are general, the examples are from Android and cloud release work.</figcaption>
+</figure>
+
+<p>The ladder sorts by a different property from the one most teams use, and the difference matters. Sensitivity asks how bad a leak would be. The blast clock asks how long a leak would stay bad. A database password is sensitive and, if rotation is automated, dies in minutes; a read-only analytics key is far less sensitive and, if it was issued by a vendor and nobody knows how to revoke it, lives for years. Sorting by sensitivity puts the first one at the top of the worry list. Sorting by the clock puts the second one there, which is where the four-year-old keys in the GitGuardian figures came from.</p>
+<p>The bottom rung is the one that changes behaviour. An Android app signing key from the era before Play App Signing cannot be replaced: lose it or leak it and the app can never be updated under its old identity on older devices. A credential with a blast clock of never does not belong in a pipeline, in a repository, or on a laptop; it belongs in an escrow with a ceremony, and the pipeline uses an upload key that Google can reset on request. The rung above, vendor-issued keys with a days-long clock, gets split custody and never appears in plaintext in a build log. The two top rungs are what the pipeline actually runs on, and the top one needs no revocation at all.</p>
+<h2>What it changes day to day</h2>
+<p>Three practical consequences fell out of thinking in clocks rather than in prevention.</p>
+<p>The scanner stayed, but its job changed. It is no longer the thing that keeps secrets safe; it is the detection segment of the clock, and its value is measured by how much it shortens that segment, which for a public repository is from months to minutes. For private repositories it is a cheaper and less urgent control, because the population that can read the leak is smaller, though not, as the GitGuardian figures on private and internal leaks show, small.</p>
+<p>Rotation became a scheduled, automated event rather than a response to an incident. A key that is rotated every week by a job has a rotation segment of zero on the day it leaks, because the replacement path already exists and has been exercised. A key that has never been rotated has a rotation segment that includes discovering how, which is the segment that turns a leak into an outage.</p>
+<p>And every new credential now arrives with a question before it is created: what is its blast clock, and can it be made shorter by not creating it at all. Most of the time the answer is a federated token, and the secret never exists.</p>
+<p>The leak rate will keep rising. The report&#39;s numbers say so, and a small team is not going to reverse the trend. What a small team controls is the half-life, and a half-life of minutes makes the leak rate a statistic rather than a threat.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Secrets Management</span><span class="tag-chip">CI/CD</span><span class="tag-chip">Security</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

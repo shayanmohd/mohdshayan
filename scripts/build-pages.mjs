@@ -22,8 +22,10 @@ function parseFrontMatter(src) {
 const posts = readdirSync('content/posts').filter(f => f.endsWith('.md')).map(f => {
   const { meta, body } = parseFrontMatter(readFileSync(`content/posts/${f}`, 'utf8'));
   const slug = f.replace(/\.md$/, '');
-  const words = body.split(/\s+/).filter(Boolean).length;
-  return { slug, ...meta, body, html: marked.parse(body), minutes: Math.max(1, Math.round(words / 230)), url: `${site.url}/blog/${slug}/` };
+  // Inline SVG figures are not read, so they do not count towards reading time
+  const prose = body.replace(/<figure[\s\S]*?<\/figure>/g, ' ');
+  const words = prose.split(/\s+/).filter(Boolean).length;
+  return { slug, ...meta, body, prose, html: marked.parse(body), minutes: Math.max(1, Math.round(words / 230)), url: `${site.url}/blog/${slug}/` };
 }).sort((a, b) => (a.date < b.date ? 1 : -1));
 const published = posts.filter(p => !p.draft || INCLUDE_DRAFTS);
 
@@ -230,10 +232,20 @@ ${subscribe()}
         </article>`;
   return shell({ title: `${p.title} | Mohd Shayan`, description: p.summary, path: `/blog/${p.slug}/`, active: '/blog/', body, noindex: p.draft,
     jsonld: { '@context': 'https://schema.org', '@type': 'BlogPosting', '@id': `${p.url}#post`, headline: p.title, description: p.summary, url: p.url, mainEntityOfPage: p.url, datePublished: p.date, dateModified: p.date,
-      author: { '@type': 'Person', '@id': `${site.url}/#person`, name: site.author, url: site.url }, publisher: { '@id': `${site.url}/#person` }, isPartOf: { '@id': `${site.url}/blog/#blog` }, keywords: p.tags.join(', '), inLanguage: 'en', wordCount: p.body.split(/\s+/).length } });
+      author: { '@type': 'Person', '@id': `${site.url}/#person`, name: site.author, url: site.url }, publisher: { '@id': `${site.url}/#person` }, isPartOf: { '@id': `${site.url}/blog/#blog` }, keywords: p.tags.join(', '), inLanguage: 'en', wordCount: p.prose.split(/\s+/).length } });
 }
 
 // ---------- feed ----------
+// Feed readers and email do not load the site's CSS, so inline SVG figures would render as black shapes.
+// Each figure becomes a one-line pointer back to the post instead.
+function feedHtml(p) {
+  return p.html
+    .replace(/<figure class="chart">[\s\S]*?<\/figure>/g, m => {
+      const title = (m.match(/<title[^>]*>([^<]*)<\/title>/) || ['', 'Figure'])[1].trim();
+      return `<p><em>Figure: ${title}. <a href="${p.url}">View it on mohdshayan.com</a></em></p>`;
+    })
+    .replace(/src="\//g, `src="${site.url}/`).replace(/href="\//g, `href="${site.url}/`);
+}
 function feed() {
   const items = published.filter(p => !p.draft);
   const x = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -251,7 +263,7 @@ ${items.map(p => `    <item>
       <guid isPermaLink="true">${p.url}</guid>
       <pubDate>${new Date(p.date + 'T09:00:00Z').toUTCString()}</pubDate>
       <description>${x(p.summary)}</description>
-      <content:encoded><![CDATA[${p.html.replace(/src="\//g, `src="${site.url}/`).replace(/href="\//g, `href="${site.url}/`)}]]></content:encoded>
+      <content:encoded><![CDATA[${feedHtml(p)}]]></content:encoded>
     </item>`).join('\n')}
   </channel>
 </rss>

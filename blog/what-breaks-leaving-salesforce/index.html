@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What breaks when you leave Salesforce | Mohd Shayan</title>
+    <meta name="description" content="Migration cost is about references, not rows. Contacts export cleanly. What breaks is the graph, and you can measure how much will break in an afternoon, before you quote.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/what-breaks-leaving-salesforce/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/what-breaks-leaving-salesforce/">
+    <meta property="og:title" content="What breaks when you leave Salesforce | Mohd Shayan">
+    <meta property="og:description" content="Migration cost is about references, not rows. Contacts export cleanly. What breaks is the graph, and you can measure how much will break in an afternoon, before you quote.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="What breaks when you leave Salesforce | Mohd Shayan">
+    <meta name="twitter:description" content="Migration cost is about references, not rows. Contacts export cleanly. What breaks is the graph, and you can measure how much will break in an afternoon, before you quote.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/what-breaks-leaving-salesforce/#post",
+      "headline": "What breaks when you leave Salesforce",
+      "description": "Migration cost is about references, not rows. Contacts export cleanly. What breaks is the graph, and you can measure how much will break in an afternoon, before you quote.",
+      "url": "https://mohdshayan.com/blog/what-breaks-leaving-salesforce/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/what-breaks-leaving-salesforce/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "CRM Migration, Data Modelling, Salesforce",
+      "inLanguage": "en",
+      "wordCount": 1231
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">What breaks when you leave Salesforce</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Migration cost is about references, not rows. Contacts export cleanly. What breaks is the graph, and you can measure how much will break in an afternoon, before you quote.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>The first question a team asks about leaving a CRM is how many records they have, and the number they give is the least useful number in the project. The CRM I built at CustomGlide is a migration target for teams leaving Salesforce, HubSpot and Zoho, so I have spent a fair amount of time on the receiving end of exports. Row counts predict almost nothing. Contacts export cleanly, in every system, every time. What breaks is the graph: the references from one record to another that only mean something inside the source. The migration&#39;s cost is the cost of those references, and it can be measured on a trial export before anyone quotes anything.</p>
+<h2>Rows export, references break</h2>
+<p>A CRM export is a set of tables that point at each other. A deal points at an account and an owner. An activity points at a contact and at the deal it belonged to. A contact points at the campaign that created it, the user who created it, and a dozen picklist values that were valid on the day it was saved. Every one of those pointers is an identifier that the source system minted and the target system has never seen.</p>
+<p>Some resolve. The account the deal points at is in the accounts table, so the pointer can be rewritten to the new id. Many do not. The owner left the company two years ago and was deactivated, so the user record is missing from the export or present without a login. The deal the activity belonged to was deleted, so the activity points at nothing. The picklist value &quot;Proposal sent (old)&quot; was retired in a cleanup and exists only as a string in fifteen thousand records. The campaign id belongs to a marketing tool that was integrated, then replaced, and its records were never in the CRM at all.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">The reference graph of a CRM export, with the edges that fail</title>
+<desc id="f1-d">Six boxes: contact, account, deal, activity, user and campaign. Solid arrows show references that resolve: contact to account, deal to account, deal to contact. Highlighted arrows show references that fail: deal to a user who has left, activity to a deleted deal, contact to a campaign that lives in a retired tool, and a picklist value that no longer exists.</desc>
+<defs><marker id="f1-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker><marker id="f1-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-f4"/></marker></defs>
+<rect x="20" y="40" width="130" height="44" rx="8" class="viz-box"/><text x="85" y="67" text-anchor="middle" class="viz-label">Contact</text>
+<rect x="255" y="40" width="130" height="44" rx="8" class="viz-box"/><text x="320" y="67" text-anchor="middle" class="viz-label">Account</text>
+<rect x="490" y="40" width="130" height="44" rx="8" class="viz-box"/><text x="555" y="67" text-anchor="middle" class="viz-label">Campaign</text>
+<rect x="20" y="180" width="130" height="44" rx="8" class="viz-box"/><text x="85" y="207" text-anchor="middle" class="viz-label">Activity</text>
+<rect x="255" y="180" width="130" height="44" rx="8" class="viz-box"/><text x="320" y="207" text-anchor="middle" class="viz-label">Deal</text>
+<rect x="490" y="180" width="130" height="44" rx="8" class="viz-box"/><text x="555" y="207" text-anchor="middle" class="viz-label">User (owner)</text>
+<line x1="152" y1="62" x2="245" y2="62" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<line x1="320" y1="178" x2="320" y2="94" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<line x1="253" y1="196" x2="152" y2="80" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<line x1="387" y1="202" x2="480" y2="202" class="viz-s4" marker-end="url(#f1-bad)"/>
+<text x="433" y="192" text-anchor="middle" class="viz-tick">owner left</text>
+<line x1="152" y1="202" x2="245" y2="202" class="viz-s4" marker-end="url(#f1-bad)"/>
+<text x="198" y="192" text-anchor="middle" class="viz-tick">deal deleted</text>
+<line x1="152" y1="50" x2="480" y2="50" class="viz-s4" marker-end="url(#f1-bad)"/>
+<text x="433" y="40" text-anchor="middle" class="viz-tick">tool retired</text>
+<line x1="320" y1="226" x2="320" y2="262" class="viz-s4"/>
+<text x="320" y="282" text-anchor="middle" class="viz-tick">picklist value "Proposal sent (old)" no longer exists</text>
+<line x1="20" y1="136" x2="34" y2="136" class="viz-arrow"/><text x="40" y="140" class="viz-label-muted">reference resolves</text>
+<line x1="20" y1="158" x2="34" y2="158" class="viz-s4"/><text x="40" y="162" class="viz-label-muted">reference fails</text>
+</svg>
+<figcaption>Illustrative: the shape of a typical export, not any client's data.</figcaption>
+</figure>
+
+<p>None of this shows up in a row count. A hundred thousand contacts with clean references migrate in a day. Ten thousand deals whose owners, stages and activities all point into the past can take a month of decisions, because every unresolved reference is a question: drop it, remap it, or invent a placeholder that someone will have to explain later.</p>
+<h2>The orphan ratio</h2>
+<p>The measurement I run before quoting is what I call the orphan ratio. Take a trial export of everything the team wants to keep, load it into a scratch copy of the target model, attempt to resolve every reference, and count the records that have at least one reference which fails to resolve: an owner, an account, a parent, a campaign, a created-by, a picklist value. Divide by the total number of records. That fraction is the orphan ratio, and it predicts effort far better than volume does.</p>
+<p>Every orphan then gets one of three treatments, and the proposal should say which classes get which. Reassign, when a live substitute exists: a departed owner becomes a named successor or a house user, and the record keeps its history. Archive with a tombstone, when the parent is gone but the child still carries information: the activity that pointed at a deleted deal keeps a note saying so, in a field the team can filter on, rather than being silently attached to nothing. Invent a placeholder only as a last resort, and only when the team has agreed to explain it later, because placeholders are the migration&#39;s debt and every one of them is a question someone will ask in a report six months on.</p>
+<p>It takes an afternoon, and most of the afternoon is the export, not the counting. The resolution step is a handful of joins. The output is a table by object type and by reference field, which is more useful than the single ratio, because it says where the orphans are. Owners who left are usually the largest group and the easiest to fix, with one rule: reassign to a named successor or to a house account. Deleted parents are the next largest and the hardest, because the record still carries information and the thing it was about is gone. Retired picklist values are numerous and cheap once someone decides what the old value maps to.</p>
+<h2>Getting the data out is the easy part</h2>
+<p>People expect the export itself to be the bottleneck, and it rarely is. HubSpot, for example, raised its <a href="https://developers.hubspot.com/changelog/increasing-our-api-limits">API limits in September 2024</a> to 650,000 requests per day on Professional and 1 million on Enterprise, with a burst limit of 190 requests per 10 seconds for private apps, and its <a href="https://developers.hubspot.com/docs/developer-tooling/platform/usage-guidelines">usage guidelines</a> spell out how the two limits interact. Paging at 100 records per request, the burst limit is the binding one, and it works out to under nine minutes per million records.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Time to page records out of HubSpot at the burst limit</title>
+<desc id="f2-d">Three columns in minutes: about 9 minutes for one million records, 44 for five million and 88 for ten million, at 100 records per request and 190 requests per 10 seconds.</desc>
+<text x="0" y="18" class="viz-title">Paging out is minutes, not days</text>
+<text x="0" y="36" class="viz-sub">Minutes at 100 records per request and 190 requests per 10 seconds</text>
+<line x1="56" y1="250" x2="600" y2="250" class="viz-axis"/>
+<path d="M195.3 231 V227 a4 4 0 0 1 4 -4 H215.3 a4 4 0 0 1 4 4 V250 H195.3 Z" class="viz-f1"/>
+<text x="207.3" y="215" text-anchor="middle" class="viz-value">8.8</text>
+<text x="207.3" y="272" text-anchor="middle" class="viz-label-muted">1 million records</text>
+<path d="M316 154 V150 a4 4 0 0 1 4 -4 H336 a4 4 0 0 1 4 4 V250 H316 Z" class="viz-f1"/>
+<text x="328" y="138" text-anchor="middle" class="viz-value">43.9</text>
+<text x="328" y="272" text-anchor="middle" class="viz-label-muted">5 million</text>
+<path d="M436.7 58 V54 a4 4 0 0 1 4 -4 H456.7 a4 4 0 0 1 4 4 V250 H436.7 Z" class="viz-f1"/>
+<text x="448.7" y="42" text-anchor="middle" class="viz-value">87.7</text>
+<text x="448.7" y="272" text-anchor="middle" class="viz-label-muted">10 million</text>
+</svg>
+<figcaption>Source: computed from the limits in <a href="https://developers.hubspot.com/changelog/increasing-our-api-limits">HubSpot's API limits changelog</a>; the daily cap of 650,000 or 1 million requests is not the binding constraint at these volumes.</figcaption>
+</figure>
+
+<p>The chart is there to kill the wrong worry. Nobody&#39;s migration is slow because the API is slow. It is slow because of what happens after the records land, and the orphan ratio is the measurement of that.</p>
+<h2>Where the hours go</h2>
+<p>Once the export is on disk, the work sorts into five kinds, and the reference work dominates. Resolving references is the bulk: deciding rules for each orphan class, applying them, and checking the result against what the sales team remembers. Field mapping is next: the source has forty custom fields on a contact and the target has a data model, so each field is either mapped, promoted to a proper entity, or dropped with the team&#39;s agreement. Picklist reconciliation is cheap per value and expensive in total, because there are hundreds of values and each needs an owner to say what it meant. Validation is the reconciliation of counts and sums before and after, so that the team trusts the result. The transfer itself, the part everyone worried about, is the smallest.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 250" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Where the hours of a CRM migration go</title>
+<desc id="f3-d">Horizontal bars as a share of effort: resolving references 45 percent, field mapping 20, picklist reconciliation 15, validation 10, transfer 10. Resolving references is highlighted.</desc>
+<text x="0" y="18" class="viz-title">Where the hours go</text>
+<text x="0" y="36" class="viz-sub">Share of migration effort, an illustrative split</text>
+<line x1="176" y1="52" x2="176" y2="222" class="viz-axis"/>
+<text x="166" y="73" text-anchor="end" class="viz-label">Resolving references</text>
+<path d="M176 58 H564 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/>
+<text x="580" y="73" class="viz-value">45%</text>
+<text x="166" y="107" text-anchor="end" class="viz-label">Field mapping</text>
+<path d="M176 92 H346.2 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="362.2" y="107" class="viz-value">20%</text>
+<text x="166" y="141" text-anchor="end" class="viz-label">Picklist reconciliation</text>
+<path d="M176 126 H302.7 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="318.7" y="141" class="viz-value">15%</text>
+<text x="166" y="175" text-anchor="end" class="viz-label">Validation</text>
+<path d="M176 160 H259.1 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="275.1" y="175" class="viz-value">10%</text>
+<text x="166" y="209" text-anchor="end" class="viz-label">Transfer</text>
+<path d="M176 194 H259.1 a4 4 0 0 1 4 4 V210 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="275.1" y="209" class="viz-value">10%</text>
+</svg>
+<figcaption>Illustrative: a split drawn from the shape of the work described in this post, not a measurement of any engagement.</figcaption>
+</figure>
+
+<h2>How to quote from the ratio</h2>
+<p>The orphan ratio turns a guess into a range. A trial export with a ratio under a few percent, concentrated in departed owners, is a migration that will run on rules: write the reassignment rule, apply it, move on. A ratio in the tens of percent, spread across deleted parents and retired values, is a migration that will run on meetings, because each class of orphan needs a decision from someone who remembers what the data meant. The quote should say which kind it is, and it should say so before the price, because the price follows from it.</p>
+<p>Two more things the trial export teaches, both worth writing into the proposal. First, which records the team is willing to leave behind. Activities older than a certain date, deals lost before a certain year, and contacts with no activity in years are often the largest source of orphans and the least valuable to migrate, and a team that has seen the ratio by object type will usually agree to an archive rather than a migration for them. Second, what the target model is missing. If a whole class of records has nowhere to land, the trial export finds it on the first afternoon rather than in the final week.</p>
+<h2>The rule</h2>
+<p>Never quote a migration from a row count. Export a trial, resolve every reference, count the orphans by object and by field, and quote from that table. The graph is the job. The rows were never the problem.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">CRM Migration</span><span class="tag-chip">Data Modelling</span><span class="tag-chip">Salesforce</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

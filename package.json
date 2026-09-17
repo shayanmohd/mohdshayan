@@ -10,7 +10,8 @@
     "build": "npm run build:icons && npm run build:pages && npm run build:css",
     "watch:css": "tailwindcss -c tailwind.config.js -i src/site.css -o assets/site.css --watch",
     "build:pages": "node scripts/build-pages.mjs",
-    "preview": "node scripts/build-pages.mjs --drafts && npm run build:css && python3 -m http.server 8000"
+    "preview": "node scripts/build-pages.mjs --drafts && npm run build:css && python3 -m http.server 8000",
+    "publish": "node scripts/publish-post.mjs"
   },
   "keywords": [
     "portfolio",

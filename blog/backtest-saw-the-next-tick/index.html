@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your backtest saw the next tick | Mohd Shayan</title>
+    <meta name="description" content="Most leakage in time-ordered data is not a leaked column but a leaked clock. Features joined by when an event happened, not when your system could have known it, leak the future.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/backtest-saw-the-next-tick/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/backtest-saw-the-next-tick/">
+    <meta property="og:title" content="Your backtest saw the next tick | Mohd Shayan">
+    <meta property="og:description" content="Most leakage in time-ordered data is not a leaked column but a leaked clock. Features joined by when an event happened, not when your system could have known it, leak the future.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Your backtest saw the next tick | Mohd Shayan">
+    <meta name="twitter:description" content="Most leakage in time-ordered data is not a leaked column but a leaked clock. Features joined by when an event happened, not when your system could have known it, leak the future.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/backtest-saw-the-next-tick/#post",
+      "headline": "Your backtest saw the next tick",
+      "description": "Most leakage in time-ordered data is not a leaked column but a leaked clock. Features joined by when an event happened, not when your system could have known it, leak the future.",
+      "url": "https://mohdshayan.com/blog/backtest-saw-the-next-tick/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/backtest-saw-the-next-tick/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Evaluation, Data Leakage, Time Series",
+      "inLanguage": "en",
+      "wordCount": 1243
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Your backtest saw the next tick</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Most leakage in time-ordered data is not a leaked column but a leaked clock. Features joined by when an event happened, not when your system could have known it, leak the future.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>The first arbitrage detector I evaluated on recorded data was extraordinary. It found spreads everywhere, it closed them at the quoted prices, and its backtested returns were the kind that make you check the code for a sign error. There was no sign error. There was a clock error, and it is the same clock error that sits inside most leaky models on time-ordered data: the features were aligned by the time an event happened, not by the time my system could have known about it.</p>
+<h2>Two timestamps on every event</h2>
+<p>Every event in a time-ordered system has two times. The first is when it happened: the exchange matched the trade, the sensor read the value, the customer clicked the button. The second is when it became knowable to you: when the message arrived over the wire, when the batch job ran, when the record was written. The gap between them is latency, and it is never zero. Shayanomaly streams order books from five venues, and each message carries the exchange&#39;s timestamp and a local receipt time, and the two are never equal. The <a href="https://hftbacktest.readthedocs.io/en/latest/data.html">hftbacktest documentation</a> builds its whole data model on this distinction, with an exchange timestamp and a local timestamp on every row and the feed latency defined as the difference.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 200" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">One event, two timestamps, and the window in between</title>
+<desc id="f1-d">A horizontal timeline for a single price update. A marker labelled happened-at, when the exchange matched it. A later marker labelled knowable-at, when the message arrived locally. Between them, a shaded window in which a backtest aligned by the exchange time believes it knew the price, and did not. A decision-time marker inside the window shows the leak.</desc>
+<text x="0" y="18" class="viz-title">The window your backtest lived in</text>
+<text x="0" y="36" class="viz-sub">A single price update as two moments, not one</text>
+<circle cx="440" cy="31" r="4" class="viz-d1"/><text x="450" y="35" class="viz-label-muted">timestamps</text>
+<circle cx="550" cy="31" r="4" class="viz-d4"/><text x="560" y="35" class="viz-label-muted">the leak</text>
+<line x1="40" y1="110" x2="600" y2="110" class="viz-axis"/>
+<rect x="160" y="70" width="240" height="80" class="viz-band"/>
+<circle cx="160" cy="110" r="6" class="viz-d1"/>
+<text x="160" y="52" text-anchor="middle" class="viz-label">happened-at</text>
+<text x="160" y="176" text-anchor="middle" class="viz-tick">exchange timestamp</text>
+<circle cx="400" cy="110" r="6" class="viz-d1"/>
+<text x="400" y="52" text-anchor="middle" class="viz-label">knowable-at</text>
+<text x="400" y="176" text-anchor="middle" class="viz-tick">local receipt time</text>
+<circle cx="280" cy="110" r="5" class="viz-d4"/>
+<text x="280" y="98" text-anchor="middle" class="viz-value">decision here uses a price not yet received</text>
+<text x="500" y="98" text-anchor="middle" class="viz-label-muted">safe to use from here</text>
+</svg>
+<figcaption>Illustrative: the two-timestamp model described in the <a href="https://hftbacktest.readthedocs.io/en/latest/data.html">hftbacktest data documentation</a>, drawn for one event.</figcaption>
+</figure>
+
+<p>A backtest that aligns everything by the exchange timestamp is a backtest in which every decision is made with information that had not yet arrived. The spreads it finds are real in the sense that the two venues really did quote those prices at those instants. They are not real in the sense that matters, which is that no system connected to those venues could have seen both quotes at the instant the backtest assumes. The detector saw the next tick, and it saw it on every trade.</p>
+<h2>The knowable-at clock</h2>
+<p>The fix generalises far beyond trading, and I keep it as a rule about tables rather than a rule about markets. Every feature carries two timestamps: happened-at and knowable-at. A training row, or a backtest decision, may use only features whose knowable-at precedes the row&#39;s decision time. Not its happened-at. Its knowable-at.</p>
+<p>Stated that way, the familiar kinds of leakage are all the same mistake. A random train-test split on time-ordered data puts rows whose knowable-at is in the future into training. A feature built from a full-series statistic, a mean or a standard deviation over the whole history, has a knowable-at at the end of the series, and every row before that is using it early. A label that is corrected weeks after the event, a chargeback, a cancelled order, a revised earnings figure, has a knowable-at weeks after its happened-at, and a model trained on the corrected label learns from a future it will not have in production. Order books aligned by exchange time are the fast version of the same thing.</p>
+<p>The check is three lines of SQL against any feature table that carries both columns, and I run it as a test.</p>
+<pre><code class="language-sql">SELECT count(*) AS violations
+FROM training_rows r JOIN feature_values f USING (entity_id)
+WHERE f.knowable_at &gt; r.decision_time
+  AND f.happened_at &lt;= r.decision_time;
+</code></pre>
+<p>The second condition is the interesting one. Features whose happened-at is also after the decision time are the obvious future, and most pipelines already exclude them. The rows this query finds are the ones that happened before the decision and became knowable after it: the slow labels, the late-arriving messages, the statistics computed at the end. Those are the leaks nobody looks for, because by the happened-at clock they look fine.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Four kinds of leakage, one clock error</title>
+<desc id="f2-d">A two column table. Left, the familiar name: random split, full-series feature, corrected label, exchange-time alignment. Right, the same thing stated by the knowable-at clock: future rows in training; a feature knowable only at the end of the series; a label knowable weeks after the event; a price knowable only after network latency.</desc>
+<text x="0" y="18" class="viz-title">Different names, the same mistake</text>
+<text x="20" y="48" class="viz-tick">THE FAMILIAR NAME</text>
+<text x="340" y="48" class="viz-tick">BY THE KNOWABLE-AT CLOCK</text>
+<line x1="0" y1="56" x2="640" y2="56" class="viz-axis"/>
+<line x1="320" y1="56" x2="320" y2="250" class="viz-grid"/>
+<text x="20" y="82" class="viz-label">Random train-test split</text>
+<text x="340" y="82" class="viz-label">Future rows placed in training</text>
+<line x1="0" y1="92" x2="640" y2="92" class="viz-grid"/>
+<text x="20" y="114" class="viz-label">Full-series statistic as a feature</text>
+<text x="340" y="114" class="viz-label">Knowable only at the end of the series</text>
+<line x1="0" y1="124" x2="640" y2="124" class="viz-grid"/>
+<text x="20" y="146" class="viz-label">Corrected or revised label</text>
+<text x="340" y="146" class="viz-label">Knowable weeks after it happened</text>
+<line x1="0" y1="156" x2="640" y2="156" class="viz-grid"/>
+<text x="20" y="178" class="viz-label">Exchange-time alignment</text>
+<text x="340" y="178" class="viz-label">Knowable only after the feed latency</text>
+<line x1="0" y1="188" x2="640" y2="188" class="viz-grid"/>
+<text x="20" y="210" class="viz-label">Model with a training cutoff</text>
+<text x="340" y="210" class="viz-label">Knowable-at is the training corpus</text>
+<line x1="0" y1="220" x2="640" y2="220" class="viz-grid"/>
+<text x="20" y="242" class="viz-label-muted">A chronological split alone catches only the first row.</text>
+</svg>
+<figcaption>Illustrative: the mapping this post uses; each row is a case the three-line check finds.</figcaption>
+</figure>
+
+<h2>Why the chronological split is not enough</h2>
+<p>The standard defence against leakage on time-ordered data is to split by time: train on everything before a date, test on everything after. It is necessary and it is the first row of the table. It does nothing about the other rows. A feature computed over the whole training period, a mean of the last year&#39;s prices, say, is used by every training row including the ones at the start of the year, whose knowable-at for that feature was months in their future. The model learns a relationship between a row and a statistic the row could not have seen, the relationship holds in the test period too because the statistic was computed there as well, and the chronological split passes the leak straight through.</p>
+<p>The same happens with labels that are revised. A fraud label finalised sixty days after the transaction is, for the last sixty days of the training window, a label from the test period. A chronological split at the boundary counts those rows as clean. The knowable-at clock counts them as leaks, and it is right, because in production the model will have to score today&#39;s transaction without knowing what the investigators will decide in two months.</p>
+<h2>The newest version of the old bug</h2>
+<p>The last row of that table is the one that has arrived with language models, and it is worth spelling out because it is the same clock error at a new scale. A model&#39;s knowable-at is its training corpus, which extends up to a cutoff date, and a backtest that asks the model to forecast events before its cutoff is asking it to recall rather than to predict. A 2026 study of <a href="https://arxiv.org/abs/2608.02985">temporal leakage in LLM backtesting</a> shows that the usual check, comparing scores before and after the cutoff, is not enough: models legitimately know more about the period near their cutoff, so recency looks like leakage and leakage looks like recency, and the authors argue that only a matched clean control separates the two.</p>
+<p>That is the knowable-at clock applied to a feature whose knowable-at is fuzzy, and the lesson is the same as for the order book. If you cannot say when the system could have known something, you cannot say whether the backtest is honest, and the default assumption should be that it is not.</p>
+<h2>What the fix looked like</h2>
+<p>For the arbitrage detector the fix was mechanical once the clock was named. Every message got its receipt time as the primary time, the exchange time was kept as a field for measuring latency, and the backtest replayed messages in receipt order, so that at every decision the detector saw exactly the set of quotes that had arrived by then. The spreads shrank, the returns fell to something believable, and the thing that remained was the actual edge: the moments when one venue&#39;s message arrived materially before another&#39;s, which is a property of network paths rather than of prices, and which is measurable.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Backtested edge under exchange-time and receipt-time alignment</title>
+<desc id="f3-d">Two horizontal bars. Aligned by exchange time, the apparent spread captured per trade is large. Aligned by receipt time, it is a small fraction of that. The difference is the part of the edge that never existed for any real system.</desc>
+<text x="0" y="18" class="viz-title">How much of the edge was the clock</text>
+<text x="0" y="36" class="viz-sub">Apparent captured spread per trade, two alignments; an illustrative ratio</text>
+<line x1="176" y1="52" x2="176" y2="120" class="viz-axis"/>
+<text x="166" y="73" text-anchor="end" class="viz-label">By exchange time</text>
+<path d="M176 58 H564 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="580" y="73" class="viz-value">100</text>
+<text x="166" y="107" text-anchor="end" class="viz-label">By receipt time</text>
+<path d="M176 92 H231 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/>
+<text x="247" y="107" class="viz-value">a small fraction</text>
+<text x="0" y="160" class="viz-label-muted">The grey bar is what the detector reported. The gold bar is what any</text>
+<text x="0" y="180" class="viz-label-muted">system connected to the venues could actually have captured.</text>
+<text x="0" y="212" class="viz-label-muted">The gap between them was never edge. It was latency, counted as profit.</text>
+<text x="0" y="250" class="viz-tick">drawn as a ratio; no measured returns are claimed</text>
+</svg>
+<figcaption>Illustrative: the shape of the correction, not measured results from any strategy.</figcaption>
+</figure>
+
+<h2>Two columns, always</h2>
+<p>The rule I carry from this into every time-ordered dataset is a schema rule, and it is cheap: every feature table has both columns, happened-at and knowable-at, and the second is never defaulted to the first. For a sensor reading, knowable-at is when the reading was written to the store. For a label, it is when the label became final. For a market message, it is the local receipt time. For anything computed, it is the time the computation ran, over data that itself had knowable-at values before it.</p>
+<p>Then the three-line check runs in CI, against every feature table, and a count above zero fails the build. It has caught more leakage than any chronological split ever did, because the chronological split protects against one row of that table and the clock protects against all of them.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Evaluation</span><span class="tag-chip">Data Leakage</span><span class="tag-chip">Time Series</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

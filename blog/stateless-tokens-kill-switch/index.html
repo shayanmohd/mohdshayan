@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stateless tokens still need a kill switch | Mohd Shayan</title>
+    <meta name="description" content="Every token system has a revocation lag, and a JWT sets it to the token lifetime. Write the allowed lag down per endpoint class and the stateless debate turns into arithmetic.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/stateless-tokens-kill-switch/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/stateless-tokens-kill-switch/">
+    <meta property="og:title" content="Stateless tokens still need a kill switch | Mohd Shayan">
+    <meta property="og:description" content="Every token system has a revocation lag, and a JWT sets it to the token lifetime. Write the allowed lag down per endpoint class and the stateless debate turns into arithmetic.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Stateless tokens still need a kill switch | Mohd Shayan">
+    <meta name="twitter:description" content="Every token system has a revocation lag, and a JWT sets it to the token lifetime. Write the allowed lag down per endpoint class and the stateless debate turns into arithmetic.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/stateless-tokens-kill-switch/#post",
+      "headline": "Stateless tokens still need a kill switch",
+      "description": "Every token system has a revocation lag, and a JWT sets it to the token lifetime. Write the allowed lag down per endpoint class and the stateless debate turns into arithmetic.",
+      "url": "https://mohdshayan.com/blog/stateless-tokens-kill-switch/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/stateless-tokens-kill-switch/",
+      "datePublished": "2026-09-17",
+      "dateModified": "2026-09-17",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Authentication, JWT, Security",
+      "inLanguage": "en",
+      "wordCount": 1255
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Stateless tokens still need a kill switch</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Every token system has a revocation lag, and a JWT sets it to the token lifetime. Write the allowed lag down per endpoint class and the stateless debate turns into arithmetic.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>The stateless-versus-stateful token argument has been running for a decade and it is the wrong argument. Every token system has a revocation lag: the longest time a principal whose access has been revoked can keep acting. A session table sets that lag to one database round trip. A signed, self-contained token sets it to the token&#39;s lifetime, because nothing checks anything until the token expires. Neither number is right or wrong in itself. What is wrong is not knowing the number, and most systems do not, because the lifetime was set once by whoever configured the identity provider and never connected to what the endpoints behind it actually do. The fix is to write the acceptable lag down per endpoint class, as a number of seconds, next to the route, and to choose mechanisms that fit under it.</p>
+<h2>What the providers set for you</h2>
+<p>The lifetime most teams inherit is whatever their identity provider&#39;s default is, and those defaults span two orders of magnitude. Auth0&#39;s <a href="https://auth0.com/docs/secure/tokens/access-tokens/update-access-token-lifetime">API access tokens</a> default to 86,400 seconds, a full day, and can be raised to thirty. Microsoft Entra issues <a href="https://learn.microsoft.com/en-us/entra/identity-platform/configurable-token-lifetimes">access tokens</a> with a random lifetime between 60 and 90 minutes. Amazon Cognito lets an <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-the-access-token.html">access token</a> live anywhere from five minutes to a day, with an hour as the usual setting. Firebase <a href="https://firebase.google.com/docs/auth/admin/manage-sessions">ID tokens</a> last an hour, and the same page is candid that revocation is not detected until the token is next refreshed unless the server explicitly asks. A GitHub App&#39;s <a href="https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app">installation token</a> expires after an hour.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 262" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Default or typical access token lifetimes across identity providers</title>
+<desc id="f1-d">Horizontal bars on a logarithmic scale of minutes: Auth0 API access tokens, 1,440 minutes by default; Microsoft Entra, 60 to 90 minutes; Amazon Cognito, configurable from 5 minutes to 1,440, one hour typical; Firebase ID tokens, 60; GitHub App installation tokens, 60. The Auth0 bar is highlighted as the longest default.</desc>
+<text x="0" y="18" class="viz-title">The lag you inherit from the provider</text>
+<text x="0" y="36" class="viz-sub">Access token lifetime in minutes, log scale from 5 to 1,440</text>
+<line x1="216" y1="52" x2="216" y2="222" class="viz-axis"/>
+<text x="206" y="73" text-anchor="end" class="viz-label">Auth0, default</text>
+<path d="M216 58 H596 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H216 Z" class="viz-f1"/>
+<text x="592" y="53" text-anchor="end" class="viz-value">1,440, a day</text>
+<text x="206" y="107" text-anchor="end" class="viz-label">Microsoft Entra</text>
+<path d="M216 92 H409 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H216 Z" class="viz-fgray"/>
+<text x="429" y="107" class="viz-value">60 to 90</text>
+<text x="206" y="141" text-anchor="end" class="viz-label">Amazon Cognito, typical</text>
+<path d="M216 126 H382 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H216 Z" class="viz-fgray"/>
+<text x="402" y="141" class="viz-value">60, settable 5 to 1,440</text>
+<text x="206" y="175" text-anchor="end" class="viz-label">Firebase ID token</text>
+<path d="M216 160 H382 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H216 Z" class="viz-fgray"/>
+<text x="402" y="175" class="viz-value">60</text>
+<text x="206" y="209" text-anchor="end" class="viz-label">GitHub App installation</text>
+<path d="M216 194 H382 a4 4 0 0 1 4 4 V210 a4 4 0 0 1 -4 4 H216 Z" class="viz-fgray"/>
+<text x="402" y="209" class="viz-value">60</text>
+<text x="0" y="250" class="viz-label-muted">Every bar is a revocation lag unless something checks the token before it expires.</text>
+</svg>
+<figcaption>Source: the providers' documentation as linked in the text, from <a href="https://auth0.com/docs/secure/tokens/access-tokens/update-access-token-lifetime">Auth0</a> to <a href="https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app">GitHub</a>, read in September 2026; the Cognito bar shows the common one-hour setting within its documented range.</figcaption>
+</figure>
+
+<p>None of those defaults is a decision about your endpoints. An hour is a reasonable lag for reading a dashboard and an unreasonable one for moving money, and a single token lifetime cannot be both. The provider does not know which routes you have. You do.</p>
+<h2>The revocation budget</h2>
+<p>So the number goes on the route. For each class of endpoint, declare a revocation budget: the number of seconds a revoked identity may still be accepted there. It sits next to the rate limit and the required scopes, and it is enforced by a constraint that is easy to state: the token lifetime, plus any cache the resource server keeps of introspection results or key sets, plus the interval of whatever online check the route performs, must sum to less than the budget. The token lifetime alone is the lag when there is no online check; the online check&#39;s interval is the lag when there is one; caches add to whichever applies.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Revocation budgets for four route classes and the mechanism that fits under each</title>
+<desc id="f2-d">A table with four rows. Reads of the caller's own data: budget one hour; a short-lived access token alone. Writes and shared reads: budget five minutes; five-minute access tokens with refresh rotation. Money-moving and admin actions: budget ten seconds; an online introspection or denylist check on every call. Session and token issuance itself: budget zero; refresh tokens are stateful and rotated with reuse detection.</desc>
+<text x="0" y="18" class="viz-title">Declare the lag, then pick the mechanism</text>
+<text x="20" y="48" class="viz-tick">ROUTE CLASS</text>
+<text x="260" y="48" class="viz-tick">BUDGET</text>
+<text x="380" y="48" class="viz-tick">MECHANISM THAT FITS</text>
+<line x1="0" y1="56" x2="640" y2="56" class="viz-axis"/>
+<text x="20" y="84" class="viz-label">Reads of the caller's own data</text>
+<text x="260" y="84" class="viz-value">an hour</text>
+<text x="380" y="84" class="viz-label-muted">access token alone, hour lifetime</text>
+<line x1="0" y1="100" x2="640" y2="100" class="viz-grid"/>
+<text x="20" y="128" class="viz-label">Writes, shared reads</text>
+<text x="260" y="128" class="viz-value">five minutes</text>
+<text x="380" y="128" class="viz-label-muted">five-minute tokens, refresh rotation</text>
+<line x1="0" y1="144" x2="640" y2="144" class="viz-grid"/>
+<text x="20" y="172" class="viz-label">Money-moving, admin actions</text>
+<text x="260" y="172" class="viz-value">ten seconds</text>
+<text x="380" y="172" class="viz-label-muted">online check on every call</text>
+<line x1="0" y1="188" x2="640" y2="188" class="viz-grid"/>
+<text x="20" y="216" class="viz-label">Token issuance itself</text>
+<text x="260" y="216" class="viz-value">zero</text>
+<text x="380" y="216" class="viz-label-muted">stateful refresh, reuse detection</text>
+<line x1="0" y1="232" x2="640" y2="232" class="viz-grid"/>
+<text x="0" y="264" class="viz-label-muted">Lifetime plus caches plus check interval must be under the budget on every row.</text>
+<text x="0" y="288" class="viz-tick">values are the ones I would set for a CRM; the point is that each row gets its own</text>
+</svg>
+<figcaption>Illustrative: budgets for a CRM's route classes, as I would declare them; the mechanisms are the standard ones and the numbers are judgements.</figcaption>
+</figure>
+
+<p>For the CRM I built, the classes fall out quickly. Reads of a user&#39;s own pipeline and contacts can tolerate an hour: the harm of a revoked user reading their own data for another hour is small and the cost of checking every read is not. Writes and reads of shared records get five minutes, met by a five-minute access token and refresh rotation, which means nothing on those routes ever calls the identity provider. The routes that move money or change permissions, exporting a whole tenant&#39;s contacts, changing a role, connecting a payment account, get ten seconds, which no token lifetime meets, so those routes perform an online check on every call: an introspection request, or a lookup in a denylist of revoked subjects that is updated synchronously when a revocation happens. And the issuance path itself has a budget of zero, because a stolen refresh token is a stolen identity for as long as it works.</p>
+<h2>The mechanism most routes need</h2>
+<p>The mechanism that covers the middle rows is refresh token rotation with reuse detection, and it is worth drawing because it is where the stateless system keeps its state. Access tokens are short and self-contained. Refresh tokens are opaque, stored server-side in families, and rotated on every use: the client presents a refresh token, receives a new access token and a new refresh token, and the old refresh token is marked used. If a used refresh token is ever presented again, someone has a copy, and the whole family is revoked, which logs out both the thief and the victim and forces a fresh login.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Refresh token rotation with reuse detection</title>
+<desc id="f3-d">A sequence. The client uses refresh token one and receives access token and refresh token two; one is marked used. Later the client uses two and receives three. Then a stolen copy of refresh token two is presented. The server sees a used token reappear and revokes the whole family, so three stops working and both parties must log in again.</desc>
+<defs><marker id="f3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<text x="0" y="18" class="viz-title">The stateless system's state, in one table of families</text>
+<text x="80" y="52" text-anchor="middle" class="viz-tick">CLIENT</text>
+<text x="560" y="52" text-anchor="middle" class="viz-tick">AUTH SERVER</text>
+<line x1="80" y1="60" x2="80" y2="250" class="viz-grid"/>
+<line x1="560" y1="60" x2="560" y2="250" class="viz-grid"/>
+<line x1="86" y1="84" x2="550" y2="84" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="320" y="78" text-anchor="middle" class="viz-label-muted">refresh with token 1</text>
+<line x1="554" y1="112" x2="90" y2="112" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="320" y="106" text-anchor="middle" class="viz-label-muted">access token, refresh token 2; token 1 marked used</text>
+<line x1="86" y1="150" x2="550" y2="150" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="320" y="144" text-anchor="middle" class="viz-label-muted">refresh with token 2</text>
+<line x1="554" y1="178" x2="90" y2="178" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="320" y="172" text-anchor="middle" class="viz-label-muted">access token, refresh token 3; token 2 marked used</text>
+<line x1="86" y1="222" x2="550" y2="222" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="320" y="216" text-anchor="middle" class="viz-value">stolen copy of token 2 presented</text>
+<rect x="150" y="234" width="340" height="30" rx="8" class="viz-box-ink"/>
+<text x="320" y="254" text-anchor="middle" class="viz-on-ink">used token reappeared: whole family revoked, 3 dies too</text>
+<text x="320" y="288" text-anchor="middle" class="viz-tick">both the thief and the real user are logged out; the lag on the issuance path is zero</text>
+</svg>
+<figcaption>Illustrative: the rotation and reuse-detection sequence as commonly implemented; the family table is the one piece of server state the design needs.</figcaption>
+</figure>
+
+<p>Rotation bounds the damage from a stolen refresh token to the time until either party next refreshes, and the reuse detection is what makes the budget on the issuance row zero rather than &quot;until the refresh token expires&quot;. It does require the authorisation server to keep state, a table of token families, and that is the honest answer to the stateless purists: the system is stateless where the budget allows and stateful where it does not, and the budget is what says which is which.</p>
+<h2>Where the online check goes</h2>
+<p>The ten-second row needs a check on every call, and there are two honest ways to build it. The first is token introspection as <a href="https://www.rfc-editor.org/rfc/rfc7662">RFC 7662</a> defines it: the resource server sends the token to the authorisation server and asks whether it is still active. It is simple, it is a network round trip on every protected call, and its lag is the round trip plus whatever the authorisation server caches internally, which has to be known and added to the row.</p>
+<p>The second is a revocation list held close to the resource servers. When a principal is revoked, the authorisation server writes the subject and a revoked-at timestamp to a small shared store, replicated to every resource server within a second or two. A resource server checking a token compares the token&#39;s issued-at claim with the subject&#39;s revoked-at time, and rejects any token issued before the revocation. The list stays small because an entry only needs to live for the longest access token lifetime in the system, after which every token it could affect has expired on its own. The lag is the replication delay, and the check is a local lookup rather than a round trip.</p>
+<p>Both mechanisms have one dependency that is easy to forget: the key set. A resource server verifies signatures against the authorisation server&#39;s published keys, and it caches them. If a signing key is compromised and rotated, the cache&#39;s time-to-live is a revocation lag of its own, on every row, and it belongs in the sum. A day-long key cache under a ten-second budget is the kind of mismatch the budget is there to catch.</p>
+<h2>Arithmetic, not debate</h2>
+<p>The reason to write the budget down rather than argue about architecture is that it turns every later decision into a check. Someone proposes raising the access token lifetime to a day to reduce load on the identity provider: which routes have a budget under a day, and what online check will they gain to compensate? Someone adds a cache of introspection results with a five-minute TTL in front of the money-moving routes: the sum on that row is now five minutes plus the token lifetime, which is over the ten-second budget, so the cache is wrong for that row and fine for the writes row. Someone proposes dropping the family table because it is state: the issuance row&#39;s budget is zero, and nothing stateless meets zero.</p>
+<p>Each of those is a two-line calculation instead of a meeting, and the calculation has the same shape as a rate limit, which is why the budget belongs where the rate limit lives, in the route&#39;s declaration, where the next engineer will see it. Revocation is not a feature the identity provider gives you. It is a number you owe each endpoint, and once the number is written down, the mechanism chooses itself.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Authentication</span><span class="tag-chip">JWT</span><span class="tag-chip">Security</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

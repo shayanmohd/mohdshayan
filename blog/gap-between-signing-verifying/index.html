@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The gap between signing and verifying | Mohd Shayan</title>
+    <meta name="description" content="Signature checks fail far more often from re-serialisation than from cryptography: the sender signed one byte string and the receiver re-encoded it into another before checking.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/gap-between-signing-verifying/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/gap-between-signing-verifying/">
+    <meta property="og:title" content="The gap between signing and verifying | Mohd Shayan">
+    <meta property="og:description" content="Signature checks fail far more often from re-serialisation than from cryptography: the sender signed one byte string and the receiver re-encoded it into another before checking.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The gap between signing and verifying | Mohd Shayan">
+    <meta name="twitter:description" content="Signature checks fail far more often from re-serialisation than from cryptography: the sender signed one byte string and the receiver re-encoded it into another before checking.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/gap-between-signing-verifying/#post",
+      "headline": "The gap between signing and verifying",
+      "description": "Signature checks fail far more often from re-serialisation than from cryptography: the sender signed one byte string and the receiver re-encoded it into another before checking.",
+      "url": "https://mohdshayan.com/blog/gap-between-signing-verifying/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/gap-between-signing-verifying/",
+      "datePublished": "2026-09-18",
+      "dateModified": "2026-09-18",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Security, Signing, Webhooks",
+      "inLanguage": "en",
+      "wordCount": 1255
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">18 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <h1 class="h2 mt-3 balance reveal">The gap between signing and verifying</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Signature checks fail far more often from re-serialisation than from cryptography: the sender signed one byte string and the receiver re-encoded it into another before checking.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="prose reveal">
+<p>Almost every signature verification failure I have debugged had nothing to do with cryptography. The keys were right, the algorithm was right, the library was right. The sender had signed one byte string, and by the time the receiver checked the signature it was checking a different byte string, because something between the network and the verification code had parsed the message and written it back out. A JSON body became an object and became JSON again with the keys in a different order. A framework stripped a trailing newline. A proxy normalised a unicode escape.</p>
+<p>The signature was over the bytes the sender sent; the check was over the bytes the receiver&#39;s stack reconstructed; and the two differed by a character nobody could see. I call the set of those transformations the re-serialisation gap, and a signed-message design is rated by whether the gap is empty.</p>
+<h2>Where the bytes diverge</h2>
+<p>The pipeline on each side has more stages than the diagram in the documentation shows. The sender builds an object, serialises it to bytes, computes a signature over those bytes, and sends both. The receiver&#39;s web server reads the bytes, a middleware may decompress or decode them, the framework parses them into an object for the handler&#39;s convenience, and then the verification code, if it is written naively, serialises that object back to bytes and computes the signature over the result. Every stage after the network is a chance for the bytes to change without the content changing, and the signature does not care about content. It cares about bytes.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 330" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Sender and receiver pipelines, showing where re-serialisation happens and where the two hash inputs diverge</title>
+<desc id="f1-d">Top row, the sender: object, serialise to bytes, sign those bytes, send. Bottom row, the receiver: receive bytes, framework parses to an object, handler re-serialises to bytes, verify. The bytes the sender signed and the bytes the receiver verifies are marked, and the stages between receiving and verifying are highlighted as the gap: key reordering, whitespace, unicode escapes, trailing newline, number formatting.</desc>
+<defs><marker id="f1-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<text x="0" y="18" class="viz-title">The signature is over bytes; the framework hands you an object</text>
+<text x="8" y="52" class="viz-tick">SENDER</text>
+<rect x="8" y="60" width="120" height="44" rx="8" class="viz-box"/><text x="68" y="87" text-anchor="middle" class="viz-label">object</text>
+<line x1="130" y1="82" x2="150" y2="82" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="154" y="60" width="120" height="44" rx="8" class="viz-box"/><text x="214" y="87" text-anchor="middle" class="viz-label">serialise</text>
+<line x1="276" y1="82" x2="296" y2="82" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="300" y="60" width="120" height="44" rx="8" class="viz-box-ink"/><text x="360" y="87" text-anchor="middle" class="viz-on-ink">sign these bytes</text>
+<line x1="422" y1="82" x2="442" y2="82" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="446" y="60" width="120" height="44" rx="8" class="viz-box"/><text x="506" y="87" text-anchor="middle" class="viz-label">send</text>
+<text x="8" y="146" class="viz-tick">RECEIVER</text>
+<rect x="8" y="154" width="120" height="44" rx="8" class="viz-box"/><text x="68" y="181" text-anchor="middle" class="viz-label">receive bytes</text>
+<line x1="130" y1="176" x2="150" y2="176" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="154" y="154" width="120" height="44" rx="8" class="viz-box-accent"/><text x="214" y="181" text-anchor="middle" class="viz-label">framework parses</text>
+<line x1="276" y1="176" x2="296" y2="176" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="300" y="154" width="120" height="44" rx="8" class="viz-box-accent"/><text x="360" y="181" text-anchor="middle" class="viz-label">handler re-serialises</text>
+<line x1="422" y1="176" x2="442" y2="176" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="446" y="154" width="120" height="44" rx="8" class="viz-box-ink"/><text x="506" y="181" text-anchor="middle" class="viz-on-ink">verify these bytes</text>
+<text x="8" y="236" class="viz-label-muted">The gap, in the highlighted stages: key order, whitespace, unicode escapes,</text>
+<text x="8" y="256" class="viz-label-muted">trailing newlines, number formatting, and the framework's idea of a string.</text>
+<text x="8" y="290" class="viz-label">Fix: verify against the bytes in the first receiver box, before anything parses them.</text>
+<text x="8" y="312" class="viz-tick">the object is for the handler; the bytes are for the signature</text>
+</svg>
+<figcaption>Illustrative: the two pipelines as they exist in most web frameworks; the highlighted stages are where the gap opens.</figcaption>
+</figure>
+
+<p>The gap has a known membership. Key reordering, because most serialisers write object keys in whatever order the language&#39;s map iterates them. Whitespace, because pretty-printed and compact JSON are the same object and different bytes.</p>
+<p>Unicode, because a serialiser may escape a character the sender wrote literally, or normalise a composed character into a decomposed one. Trailing newlines, which some HTTP clients add and some frameworks strip. Number formatting, where 1.0 and 1 and 1e0 are one value and three byte strings. And, the one that catches people who think they are safe, the framework&#39;s decoding of the body into a string at all, which can replace bytes it considers invalid with a replacement character before the handler ever sees them.</p>
+<h2>What the providers do</h2>
+<p>The public webhook schemes show the two design choices side by side, and the well-designed ones share a rule. Stripe&#39;s <a href="https://docs.stripe.com/webhooks">verification guide</a> signs a payload built from a timestamp, a dot, and the raw request body, with a header that carries both the timestamp and the signature; the libraries reject anything older than five minutes by default; and the documentation says, in a highlighted box, that any manipulation of the raw body causes verification to fail. Slack&#39;s <a href="https://docs.slack.dev/authentication/verifying-requests-from-slack">scheme</a> is the same shape: a version string, the timestamp and the raw body joined by colons, an HMAC, and a check that the timestamp is within five minutes. GitHub&#39;s <a href="https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries">deliveries</a> sign the raw body alone, with a secret and no timestamp, and the guidance is to compare in constant time.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 300" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Replay tolerance and timestamp binding across public webhook signing schemes</title>
+<desc id="f2-d">A table of six schemes. Stripe: timestamp inside the signed payload, five-minute default tolerance. Slack: timestamp inside the signed payload, five-minute check. GitHub: HMAC over the raw body, no timestamp. Shopify: HMAC over the raw body, no timestamp. Twilio: HMAC over the URL and parameters, no timestamp. Telegram Mini App initData: an auth_date field inside the signed data, tolerance chosen by the app. The rows with a bound timestamp are highlighted.</desc>
+<text x="0" y="18" class="viz-title">What is signed, and whether time is in it</text>
+<text x="20" y="48" class="viz-tick">SCHEME</text>
+<text x="200" y="48" class="viz-tick">SIGNED BYTES</text>
+<text x="440" y="48" class="viz-tick">REPLAY WINDOW</text>
+<line x1="0" y1="56" x2="640" y2="56" class="viz-axis"/>
+<text x="20" y="80" class="viz-label">Stripe</text><text x="200" y="80" class="viz-label-muted">timestamp, dot, raw body</text><text x="440" y="80" class="viz-value">300 s by default</text>
+<line x1="0" y1="92" x2="640" y2="92" class="viz-grid"/>
+<text x="20" y="116" class="viz-label">Slack</text><text x="200" y="116" class="viz-label-muted">version, timestamp, raw body</text><text x="440" y="116" class="viz-value">5 minutes</text>
+<line x1="0" y1="128" x2="640" y2="128" class="viz-grid"/>
+<text x="20" y="152" class="viz-label">GitHub</text><text x="200" y="152" class="viz-label-muted">raw body only</text><text x="440" y="152" class="viz-label-muted">none in the scheme</text>
+<line x1="0" y1="164" x2="640" y2="164" class="viz-grid"/>
+<text x="20" y="188" class="viz-label">Shopify</text><text x="200" y="188" class="viz-label-muted">raw body only</text><text x="440" y="188" class="viz-label-muted">none in the scheme</text>
+<line x1="0" y1="200" x2="640" y2="200" class="viz-grid"/>
+<text x="20" y="224" class="viz-label">Twilio</text><text x="200" y="224" class="viz-label-muted">URL plus sorted parameters</text><text x="440" y="224" class="viz-label-muted">none in the scheme</text>
+<line x1="0" y1="236" x2="640" y2="236" class="viz-grid"/>
+<text x="20" y="260" class="viz-label">Telegram Mini App</text><text x="200" y="260" class="viz-label-muted">sorted fields including auth_date</text><text x="440" y="260" class="viz-value">app decides, from auth_date</text>
+<line x1="0" y1="272" x2="640" y2="272" class="viz-grid"/>
+<text x="0" y="294" class="viz-label-muted">Every row signs bytes as sent, never an object; the timestamped rows also close replay.</text>
+</svg>
+<figcaption>Source: the signing documentation of <a href="https://docs.stripe.com/webhooks">Stripe</a>, <a href="https://docs.slack.dev/authentication/verifying-requests-from-slack">Slack</a>, <a href="https://docs.github.com/en/webhooks/using-webhooks/validating-webhook-deliveries">GitHub</a>, <a href="https://shopify.dev/docs/apps/build/webhooks/subscribe/https">Shopify</a>, <a href="https://www.twilio.com/docs/usage/webhooks/webhooks-security">Twilio</a> and <a href="https://core.telegram.org/bots/webapps">Telegram</a>, September 2026.</figcaption>
+</figure>
+
+<p>Not one of them signs a JSON object. They all sign bytes, and the ones that bind a timestamp sign it as part of the same byte string, so that the replay check and the integrity check are one operation. That is the design rule in its entirety: sign and verify the exact bytes on the wire, bind a timestamp into them, and never let a parsed object stand in for the bytes it came from.</p>
+<p>The practical symptom of the gap is a verification that fails intermittently, which is the worst kind of failure to debug. It works in the test suite, where the test constructs the request and the framework&#39;s parser round-trips it cleanly. It fails in production for the one sender whose serialiser emits a unicode escape, or for the one message that contains a number with a trailing zero, and the failure is logged as a bad signature, which sends the investigation toward the keys. The tell is that the same key verifies most messages. A key that is wrong fails all of them.</p>
+<h2>When the bytes cannot be kept</h2>
+<p>There are designs where the receiver genuinely cannot get at the original bytes, because the message has passed through a system that reconstructs it, a message queue that stores objects, a database that holds the payload as a document, a second service that forwards a parsed copy. For those, the gap cannot be made empty by discipline, and it has to be closed by specification: both sides agree on a canonical serialisation, so that the bytes are a deterministic function of the content, and the signature is computed over the canonical form on both ends. <a href="https://www.rfc-editor.org/rfc/rfc8785">RFC 8785</a>, the JSON Canonicalization Scheme, is the standard way to do that for JSON: keys sorted, whitespace removed, numbers and strings serialised one way. A design that signs objects without a canonical form is a design that will fail on the first serialiser upgrade, and the failure will look like a broken key.</p>
+<p>The two approaches are not equal, and the order of preference is clear. Keep the bytes if you can, because a byte-for-byte check has no serialiser in it and nothing to disagree about. Canonicalise if you must, and then show that both sides actually use the canonical form, which means a test that signs on one side and verifies on the other through the real pipeline rather than a unit test of the canonicaliser alone.</p>
+<h2>Three gates, in order</h2>
+<p>The verification code itself is three gates, and the order matters. The first is the signature, computed over the raw bytes and compared in constant time, because a comparison that returns early on the first mismatched byte leaks how many bytes matched. The second is the timestamp, checked against the receiver&#39;s clock with a tolerance measured in minutes, which turns a captured message into one that expires. The third is an idempotency key, the message&#39;s own identifier, checked against a store of recently processed ones, which turns a replay inside the window into a no-op rather than a duplicate action.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 230" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Constant-time compare, timestamp check and idempotency key as three gates in order</title>
+<desc id="f3-d">A flow of three gates a received message passes through: first, HMAC over the raw bytes compared in constant time, rejecting forgeries; second, timestamp within tolerance, rejecting old captures; third, message id not seen before, rejecting replays inside the window. Only after all three does the handler run.</desc>
+<defs><marker id="f3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<text x="0" y="18" class="viz-title">Forgery, then age, then duplicates</text>
+<rect x="8" y="60" width="130" height="64" rx="8" class="viz-box"/>
+<text x="73" y="86" text-anchor="middle" class="viz-label">Raw bytes</text>
+<text x="73" y="104" text-anchor="middle" class="viz-label-muted">and headers</text>
+<line x1="140" y1="92" x2="160" y2="92" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<rect x="164" y="60" width="140" height="64" rx="8" class="viz-box-accent"/>
+<text x="234" y="86" text-anchor="middle" class="viz-label">1. Signature</text>
+<text x="234" y="104" text-anchor="middle" class="viz-label-muted">constant-time compare</text>
+<line x1="306" y1="92" x2="326" y2="92" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<rect x="330" y="60" width="140" height="64" rx="8" class="viz-box-accent"/>
+<text x="400" y="86" text-anchor="middle" class="viz-label">2. Timestamp</text>
+<text x="400" y="104" text-anchor="middle" class="viz-label-muted">within tolerance</text>
+<line x1="472" y1="92" x2="492" y2="92" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<rect x="496" y="60" width="136" height="64" rx="8" class="viz-box-accent"/>
+<text x="564" y="86" text-anchor="middle" class="viz-label">3. Message id</text>
+<text x="564" y="104" text-anchor="middle" class="viz-label-muted">not seen before</text>
+<text x="320" y="164" text-anchor="middle" class="viz-label-muted">Each gate answers one question: is it genuine, is it current, is it new.</text>
+<text x="320" y="194" text-anchor="middle" class="viz-tick">the handler parses the body only after the third gate</text>
+</svg>
+<figcaption>Illustrative: the three checks as the receiving code should order them; the parse into an object happens after, not before.</figcaption>
+</figure>
+
+<p>The order is not aesthetic. Checking the timestamp before the signature lets an attacker learn your clock tolerance from an unsigned message; checking the idempotency key before the signature lets an attacker fill the store with forged ids. The signature goes first because it is the only gate that costs nothing to fail, and everything after it runs only on messages that are provably from the sender.</p>
+<h2>The same gap in every signed message</h2>
+<p>Webhooks are where the gap is most visible, because the two sides are different companies and the bytes cross a network, but the gap is the same in every signed structure. A JWS token is a signature over base64 segments, and a library that decodes, reformats and re-encodes the payload before verifying has opened the gap in a place nobody looks. A signed configuration file, a signed manifest, a signed audit record stored in a database: each is a case where the bytes the signer hashed and the bytes the verifier hashes are separated by a store or a parser that may not round-trip. The rule is the same. Find the exact bytes that were signed, keep them, and verify those. If they cannot be kept, specify a canonical form and prove both sides produce it. The cryptography is the easy part. The bytes are where it fails.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Security</span><span class="tag-chip">Signing</span><span class="tag-chip">Webhooks</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>
