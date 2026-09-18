@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>An order book maintained from a WebSocket stream has one property that fools everyone the first time: it keeps moving. Updates arrive, levels change, the display flickers with activity, and every one of those signs of life is compatible with the book being wrong. A single dropped message desynchronises every price level the message touched, and every later update to those levels is applied to a base that no longer matches the exchange. Shayanomaly maintains books from five venues, and the second thing I learned building it, after the first thing about fees, was that a stream being alive is not evidence of a book being correct.</p>
 <h2>Snapshot plus deltas, and the gap in between</h2>
 <p>The standard design is a snapshot followed by deltas. Fetch the full book once over REST, then apply a stream of changes: this price level is now this size, this level is gone. The design is efficient and it is fragile at exactly one point, the join between the snapshot and the stream. Binance&#39;s <a href="https://developers.binance.com/docs/derivatives/usds-margined-futures/websocket-market-streams/How-to-manage-a-local-order-book-correctly">guide to managing a local order book</a> spells out the procedure: open the stream first and buffer its events, then fetch the snapshot, discard any buffered event whose final update id is at or below the snapshot&#39;s, and apply the rest in order. Each event carries a first and last update id, and the rule for every subsequent event is that its first id must be exactly one more than the id your book is at. If it is greater, you missed an event, and the instruction is unambiguous: discard the book and start again.</p>

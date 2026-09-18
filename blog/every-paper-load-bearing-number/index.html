@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every research paper I have read closely, and the one I have written, rests on a single number. It is the entry in one table that, had it come out a fifth worse, would have ended the submission, and everything else in the paper, the related work, the notation, the third ablation, exists to make that number credible. Reading a paper is the act of finding that number and checking how it was measured. Done in that order, it takes a quarter of the time the front-to-back approach does, and it catches the failures that the front-to-back approach reads straight past.</p>
 <h2>Why the number matters more than the prose</h2>
 <p>Kapoor and Narayanan&#39;s survey of <a href="https://arxiv.org/abs/2207.07048">leakage in machine-learning-based science</a> found that across seventeen fields, 329 papers had a data leakage problem that undermined their central result, and the <a href="https://reproducible.cs.princeton.edu/">living version of the survey</a> they maintain had grown to 648 papers across thirty fields by September 2026. In every one of those papers the prose was fine. The argument was coherent, the method was described, the related work was cited. The failure was in how one number was produced: a test set that overlapped the training set, a feature that would not exist at prediction time, a split that leaked the future into the past. The number said the method worked, and the number was wrong.</p>

@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every textbook introduction to the CYK algorithm ends with the same sentence: it runs in time cubic in the length of the input. That is true, and it is the least useful true thing you can say about the algorithm. The full bound, the one I proved for the parser in my ACL Student Research Workshop paper, is O(n cubed times the size of the grammar), and for the grammars anyone actually parses with, the second factor is the one you pay. The cube is a threat that only arrives for sentences longer than people write.</p>
 <h2>The bound, read properly</h2>
 <p>CYK fills a triangular chart with one cell for every span of the sentence: n squared over two cells for n tokens. Each cell asks, for every split point inside the span, whether some binary rule A to B C has B covering the left part and C covering the right. That inner loop is where the cube comes from: n squared cells, up to n split points each. But for each split point the parser considers every binary rule in the grammar, and that is the factor the textbook sentence drops.</p>

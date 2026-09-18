@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The pumping lemma is taught as a tool for proving that a language is not regular, or not context-free, and students learn it as a ritual with five variables and a contradiction at the end. It is simpler than that and more useful. It is a doubling argument: any recogniser with a finite amount of memory that accepts a long enough string must have repeated a memory state somewhere in the middle, and if it repeated a state, it must also accept the string with that middle section repeated any number of times. That is a statement about any finite machine, and a neural network run once over an input is a finite machine. So the lemma gives a direct experimental test of whether a model learned the grammar of a task or memorised the lengths it was trained on, and it is a test I would run before believing any claim that a model parses.</p>
 <h2>The argument, without the ritual</h2>
 <p>Take a recogniser with a bounded number of internal states, and feed it a string longer than that number. By the time it has read the string, some state must have occurred twice, because there are more positions than states. Call the section between the two occurrences the middle. The machine was in the same state before and after the middle, so if you delete the middle, or repeat it, or repeat it a thousand times, the machine ends in the same state as before and gives the same answer. If the language requires the answer to change, the machine cannot be recognising it. That is the whole <a href="https://en.wikipedia.org/wiki/Pumping_lemma_for_context-free_languages">lemma</a> for regular languages, and the context-free version is the same argument applied to a pushdown automaton&#39;s stack, where two pumpable sections appear instead of one because the stack has to grow and shrink in matched pairs.</p>

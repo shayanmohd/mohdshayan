@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Most outages I have watched from the outside had the same shape: the origin stopped answering, the CDN in front of it had a perfectly good copy of every page from a few minutes earlier, and the CDN served error pages anyway, because nobody had told it that a slightly old answer was acceptable. The HTTP specification has had a way to say that since 2010. Almost nobody uses it, and the reason is not ignorance of the header but the absence of a number to put in it. The number is the staleness budget, and it is different for every route.</p>
 <h2>The unused half of the specification</h2>
 <p><a href="https://www.rfc-editor.org/rfc/rfc5861">RFC 5861</a> added two extensions to Cache-Control. stale-while-revalidate lets a cache serve a stale copy immediately while fetching a fresh one in the background, which is a latency feature. stale-if-error lets a cache serve a stale copy when the origin returns an error or cannot be reached, for a stated number of seconds past expiry, which is an availability feature. The second is the one that turns a dead origin into a slow news day, and it is the rarer of the two by an order of magnitude.</p>

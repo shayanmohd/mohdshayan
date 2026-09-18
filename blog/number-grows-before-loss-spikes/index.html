@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A loss spike in a transformer training run looks like an accident. The curve is descending, then in a few hundred steps it jumps, sometimes recovers, sometimes never does, and the post-mortem blames the learning rate, the data, the precision, or bad luck. It is rarely an accident. In the runs where the mechanism has been studied, the spike is the visible end of a process that started long before: the largest attention logit, the dot product of a query and a key divided by the square root of the head dimension, drifted upward until the softmax that consumes it saturated, and a saturated softmax passes back a gradient that is either nothing or enormous. The loss is the last thing to move. The logit moved first, and it was loggable the whole time.</p>
 <h2>The mechanism</h2>
 <p>Attention takes a query vector and a set of key vectors, computes their dot products, scales, and pushes the result through a softmax to get weights. The softmax is well behaved when the logits are of moderate size and badly behaved when one logit is much larger than the rest, because the weights then collapse onto that one key and the gradient with respect to every other key goes to zero, while the gradient with respect to the winning logit itself can become large and erratic. Nothing in the standard architecture bounds the size of the logits. The query and key projections are linear layers, and if their weights grow, or the residual stream feeding them grows, the logits grow with them, quadratically, since both factors of the dot product scale.</p>

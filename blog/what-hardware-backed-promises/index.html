@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>&quot;Hardware-backed&quot; is the most reassuring phrase in Android security, and it promises less than most people hear. When I built the encrypted media vault inside the Minimalist Calculator app, the key that protects every file lives in the Android Keystore, bound to the device&#39;s secure hardware. That is the right design. It is also a design whose guarantee fits in one sentence, and the sentence is not &quot;your data is safe from an attacker who controls the phone&quot;. It is &quot;your key cannot leave the phone&quot;. The difference between those two sentences is the subject of this post.</p>
 <h2>The promise, in Google&#39;s words</h2>
 <p>Google&#39;s <a href="https://developer.android.com/privacy-and-security/keystore">Keystore documentation</a> describes two measures under the heading extraction prevention. First, key material never enters the application process: an app hands plaintext to a system process that performs the operation and hands the result back, so an attacker who compromises the app can use the app&#39;s keys but cannot read them. Second, key material can be bound to secure hardware, a trusted execution environment or a secure element, so that it is never exposed outside that hardware at all. Then comes the sentence that matters: if the Android OS is compromised or an attacker can read the device&#39;s internal storage, the attacker might be able to use any app&#39;s Keystore keys on that device, but cannot extract them from it.</p>

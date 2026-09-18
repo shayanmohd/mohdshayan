@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Using one language model to grade another is now the default way to evaluate anything that does not have a single right answer, and it works well enough on average that the average has become the whole story. It should not be. A judge model is trained on nearly the same data as the model it grades, by nearly the same methods, toward nearly the same objective, and so its errors are not independent of the generator&#39;s. Where the generator is confidently wrong, the judge is likely to be wrong in the same way, for the same reason, and to give the wrong answer a high score. The measured accuracy is therefore inflated exactly on the items that matter, the hard ones, and the small human-labelled sample that is supposed to calibrate the judge will miss the inflation unless it is drawn deliberately from where the inflation lives.</p>
 <h2>The average is fine</h2>
 <p>The evidence for judges is real. Zheng and colleagues, in <a href="https://arxiv.org/abs/2306.05685">the MT-Bench and Chatbot Arena paper</a>, found that a strong judge agreed with human preferences over 80 percent of the time, a level that matched how often humans agreed with each other, and they named the biases they found on the way: a preference for the first of two answers, a preference for longer answers, a preference for the judge&#39;s own style, and limited ability to grade reasoning. Every subsequent judge-based evaluation leans on that 80 percent, and it is an honest number. It is also an average over items of every difficulty, and averages are where correlated errors hide.</p>

@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Somewhere in most retrieval pipelines there is a line like <code>if score &lt; 0.8: skip</code>, and somewhere in most teams there is a belief that 0.8 means something. It does not. Cosine similarity between two embeddings is a number between minus one and one in theory, and in practice, for any given model, it lives in a narrow band whose floor is nowhere near zero. Unrelated sentences do not score zero. They score whatever that model&#39;s baseline is, and the baseline is different for every model, every fine-tune and every domain. A threshold copied from a tutorial, or carried across a model upgrade, is wrong by an offset nobody measured.</p>
 <h2>Why unrelated text is not orthogonal</h2>
 <p>The reason is a property of learned representations that has been documented since the first contextual models. Ethayarajh&#39;s <a href="https://arxiv.org/abs/1909.00512">study of contextualised representations</a> found that they are not isotropic in any layer of the models examined: rather than spreading evenly across the space, the vectors cluster in a narrow cone, sharing a common direction. Two representations that have nothing to do with each other still point roughly the same way, so their cosine similarity is positive, often substantially so, before any meaning is involved at all.</p>

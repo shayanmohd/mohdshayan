@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A container is a process wearing a costume. It has its own view of the filesystem, its own process table, its own network namespace, and it shares the kernel with every other process on the machine, including the ones that belong to someone else. The isolation a container gives you is therefore exactly the isolation the kernel gives between processes, which is to say it is as strong as the kernel&#39;s bug count is low, and the kernel is a large program that gains and loses bugs every week. Whether that matters depends on two questions, and once they are answered the boundary picks itself: who wrote the code, and how long will it run?</p>
 <h2>The stranger&#39;s code test</h2>
 <p>The first question is about trust, and it has four honest answers. You wrote the code, and you can read it. A dependency wrote it, someone else whose work you vetted when you added it and whose updates you review, more or less. A customer wrote it, a person you have a contract with and no visibility into. Or a language model wrote it, which is the newest answer and the one this post exists for, because model-written code is code whose author cannot be held to a contract, cannot be asked what they meant, and will produce something different next time.</p>

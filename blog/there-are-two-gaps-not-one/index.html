@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The bug that teaches most teams about event-driven systems is the lost event: the database commit succeeded, the publish to the broker failed, and a downstream service never learned that an order existed. The fix everybody reaches for is the outbox pattern, and it works. Then a second bug arrives, quieter than the first, and it turns out the fix had moved the problem rather than removed it. There are two gaps in every write-then-publish pipeline, not one, and the outbox closes exactly one of them.</p>
 <h2>Gap one: between the commit and the publish</h2>
 <p>The first gap is the one the outbox is for. A service writes a row and then publishes an event, and between those two actions the process can die, the network can fail, or the broker can refuse. If the write committed and the publish did not, the event is lost. If the publish happened and the write then rolled back, the event describes something that never occurred. The two operations are on different systems and cannot share a transaction.</p>

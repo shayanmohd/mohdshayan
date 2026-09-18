@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Split the key into five shares, require three to sign, keep the shares in different places. That is the sentence every custody design starts with, and it describes two schemes that could not be more different at the moment of signing. Under Shamir&#39;s secret sharing, the three shares are brought together, the private key is reconstructed in one process&#39;s memory, the signature is produced, and the key is discarded. Under a threshold signature scheme, the three parties each compute a partial signature from their own share, the partials are combined, and a valid signature appears without the whole key ever existing anywhere. For a system that signs once a year, the difference is academic. For a system that signs many times a day, it is the entire threat model, and the question to ask of any custody design is not how many shares exist but whether a full key ever exists in one memory.</p>
 <h2>The reconstruction moment</h2>
 <p>I call it the reconstruction moment: the instant, if any, at which the complete private key exists in one address space. A custody design is audited by locating that moment, where it happens, in which process, for how long, and who could read that process&#39;s memory during it. Shamir has one on every signature. A hardware wallet has one permanently, inside the secure element, which is the point of the secure element. A threshold scheme has none during signing, and the audit question becomes whether it has one anywhere else: at key generation, if a dealer creates the key and splits it; at backup, if the shares are combined to produce a recovery phrase; at recovery, if the phrase is used to rebuild them.</p>

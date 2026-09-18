@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A probabilistic context-free grammar makes one assumption that is both its whole reason for being and its whole limitation: the probability of a subtree depends only on the nonterminal at its root, not on anything outside it. That assumption is what lets the <a href="https://en.wikipedia.org/wiki/Inside%E2%80%93outside_algorithm">inside algorithm</a> compute the total probability of a sentence in cubic time, and it is why a PCFG cannot know that a sentence about finance and a sentence about cooking should expand their noun phrases differently. The compound PCFG of Kim, Dyer and Rush solved that tension with a trick that is worth naming as a design pattern, because it recurs well beyond grammar induction. It keeps the context-free assumption exactly, so that inference still works, and lets context in through a side door: a per-sentence latent vector that rewrites the rule probabilities before the grammar is applied. Conditioned on that vector the grammar is context-free. Marginally, it is not.</p>
 <h2>What the side door does</h2>
 <p>In the <a href="https://arxiv.org/abs/1906.10225">compound PCFG paper</a>, each sentence gets a continuous latent variable, drawn from a prior, and the rule probabilities of the grammar are computed from that variable through a neural network. For a fixed value of the latent, the result is an ordinary PCFG: the same rule probabilities apply to every position in the tree, subtrees are independent given their root, and the inside algorithm runs unchanged. What differs from a plain neural PCFG is that the rule probabilities are different for each sentence, because the latent is, and so two subtrees in the same sentence are correlated through the latent they share. Integrate the latent out and the model is no longer context-free; it is a mixture of context-free grammars, one per point in the latent space.</p>

@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every major package compromise of the last eight years has had a different story and the same mechanism. A maintainer&#39;s token is phished, a popular package gets a new version, and the new version carries a script that runs the moment someone installs it, with the installing user&#39;s credentials, on the installing user&#39;s machine, before a single line of the package has been imported. The story changes each time. The install script is the attack every time, and it is the one part of the chain that a team can count and remove.</p>
 <h2>The same shape, eight years running</h2>
 <p>The <a href="https://github.com/dominictarr/event-stream/issues/116">event-stream</a> incident of November 2018 was the template: a widely depended-on npm package handed to a new maintainer, who added a dependency that targeted one wallet application&#39;s build. In September 2025 the shape returned as a worm. The Shai-Hulud campaign, <a href="https://www.wiz.io/blog/shai-hulud-npm-supply-chain-attack">documented by Wiz</a> and in a <a href="https://www.cisa.gov/news-events/alerts/2025/09/23/widespread-supply-chain-compromise-impacting-npm-ecosystem">CISA alert</a>, published malicious versions of over two hundred packages and more than five hundred versions between 14 and 18 September, each carrying a post-install script that harvested credentials and, if it found an npm token, published itself into every package that token could reach. A second wave followed on 24 November. And in February 2026, <a href="https://thehackernews.com/2026/02/cline-cli-230-supply-chain-attack.html">version 2.3.0 of the Cline CLI</a>, a widely used coding-agent tool, shipped with a post-install script that silently installed a second package on every machine that ran the install, after an attacker reached its publishing credentials through a prompt injection in a GitHub issue title.</p>

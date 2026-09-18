@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A transformer of fixed depth, run once over an input, has no memory that grows with the input. Every layer sees the whole sequence at once and passes a fixed-width vector per position to the next, and the number of layers does not change when the input gets longer. That is a stronger limitation than it sounds. It means the model cannot, in general, simulate a finite-state machine over an arbitrarily long string, which means it cannot recognise every regular language at every length, let alone match brackets or check a grammar, tasks that need a stack. Chain of thought is the workaround, and the theory of the last few years says exactly what kind of workaround it is: it writes the missing memory into the output, one token at a time, and the number of tokens written is a hard budget on what the model can compute.</p>
 <h2>The ladder</h2>
 <p>Merrill and Sabharwal&#39;s <a href="https://arxiv.org/abs/2310.07923">ICLR 2024 paper</a> gives the result as a ladder with three rungs, indexed by how many intermediate tokens the model is allowed to generate before answering. With a logarithmic number of steps in the input length, the limits of a standard transformer move only slightly. With a linear number of steps, the model gains a clearly new ability: it can recognise every regular language, which is to say it can simulate any finite-state machine over the input, one token per state transition. And with a polynomial number of steps, a transformer with a generalised pre-norm recognises exactly the class of problems solvable in polynomial time. The characterisation is exact, which is rare in this area, and it says something specific about parsing.</p>

@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>AES-GCM is the default authenticated cipher in almost every library, and it has one rule that libraries cannot enforce for you: never encrypt two messages under the same key with the same nonce. Break the rule once and the keystream repeats, the XOR of the two plaintexts is exposed, and the authentication key falls out of the tags. That is not a weakness people argue about. It is the design. What people under-appreciate is that with random nonces the rule is not a property you have; it is a countdown you are running, and the countdown has a number.</p>
 <h2>The number</h2>
 <p>GCM&#39;s standard nonce is 96 bits. If nonces are drawn at random, the chance that two of them collide grows with the square of the number of messages, the birthday bound, and <a href="https://csrc.nist.gov/pubs/sp/800/38/d/final">NIST SP 800-38D</a> draws the line at 2 to the 32 invocations per key for random nonce constructions, so that the collision probability stays below 2 to the negative 32. Four billion messages sounds like a lot until you are a server encrypting records, tokens or log lines, at which point it is a few weeks.</p>

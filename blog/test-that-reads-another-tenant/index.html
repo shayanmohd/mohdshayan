@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every multi-tenant application has a sentence in its design document that says every query is scoped to the tenant. The sentence is true on the day it is written. It stops being true the first time someone writes a raw query for a report, or adds a table without the scoping column, or runs a session-level setting through a connection pool that reuses sessions. None of those mistakes fails a test, because there is no test. The CRM I built at CustomGlide serves companies that must never see each other&#39;s pipelines, and the thing that let me sleep was not the WHERE clause. It was a test that logs in as one tenant and tries, table by table, to read another.</p>
 <h2>Every implementation has a way to stop applying</h2>
 <p>There are three common ways to scope a shared-table schema, and each has a failure mode that is silent.</p>

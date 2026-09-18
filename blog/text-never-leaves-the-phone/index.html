@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>deAIfy does one thing: it takes a piece of text and removes the marks that machine writing leaves behind, the long dashes, the curly quotes, the invisible characters, the filler words. Most of that is deterministic, and it runs entirely on the phone. The optional part, asking a language model to rewrite the text to sound more human, runs only when the user pastes in their own API key, and then it runs against that user&#39;s account, not mine. Choosing on-device as the default and the model as the exception, rather than the other way round, was the most consequential product decision in the tool, and it changed three things that I did not fully anticipate.</p>
 <h2>Three things that disappear</h2>
 <p>The first thing that disappears is the leak. Text that never leaves the device cannot be intercepted, logged, retained, subpoenaed or used for training, because there is no server to do any of those things. A privacy policy for the on-device path is one sentence, and it is true.</p>

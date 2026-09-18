@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A payment API and a ticket gate have the same problem and give opposite answers to it. Both receive a request carrying an identifier the client chose. Both must do something sensible when the same identifier arrives twice. The payment API returns the first response again, so a retried charge does not become two charges. The gate refuses, so a scanned ticket does not admit two people. Same table, same unique constraint, same first request. Only the second request differs, and the difference is a single branch. Once I saw that, the anti-replay design for the QR ticketing system stopped being a security feature and became an idempotency key pointed the other way.</p>
 <h2>One primitive, two second answers</h2>
 <p>Stripe&#39;s <a href="https://docs.stripe.com/api/idempotent_requests">idempotent requests</a> documentation describes the payment side. The client sends a key it generated; the server stores the key with the result of the first request; a repeat with the same key gets the stored result back instead of a second execution. Keys are pruned once they are at least 24 hours old, after which a reused key is treated as a new request. Adyen&#39;s <a href="https://docs.adyen.com/development-resources/api-idempotency">API idempotency</a> page does the same thing with a longer memory: keys are valid for 7 to 14 days after first submission.</p>

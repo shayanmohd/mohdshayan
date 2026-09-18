@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A browser has one budget that matters for anything that moves: roughly sixteen milliseconds per frame at sixty frames a second, shared between everything the page wants to do. An order-book feed from a busy exchange does not know about that budget. It sends an update whenever the exchange&#39;s own cadence says to, and when a trading terminal is subscribed to five venues at once, the updates arrive faster than frames do, at exactly the moments, a spike or a cascade of liquidations, when the trader most needs the screen to keep up. Rendering per message is the natural first implementation and it guarantees a frozen tab in those moments. The fix is to change the unit of work from the message to the frame.</p>
 <h2>How fast the feeds actually are</h2>
 <p>The venues publish their cadences, and they differ by an order of magnitude. Binance&#39;s <a href="https://developers.binance.com/docs/binance-spot-api-docs/web-socket-streams">diff depth stream</a> offers updates every 1,000 milliseconds or every 100. Bybit&#39;s <a href="https://bybit-exchange.github.io/docs/v5/websocket/public/orderbook">order book topic</a> pushes the top level every 10 milliseconds, fifty levels every 20, two hundred every 100 and a thousand every 200. Kraken&#39;s <a href="https://docs.kraken.com/api/docs/websocket-v2/book">book channel</a> sends an update per event with no fixed interval, and notes that one message may carry several changes to the same price level. Coinbase&#39;s <a href="https://docs.cdp.coinbase.com/coinbase-app/advanced-trade-apis/websocket/websocket-channels">level2 channel</a> is a snapshot followed by incremental updates, again without a published cadence. Converted to a sixty-hertz frame, the fastest documented tier alone delivers more than one message per frame.</p>

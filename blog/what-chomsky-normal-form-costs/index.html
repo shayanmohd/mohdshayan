@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every textbook that introduces the CYK algorithm says the same thing in the same tone: the grammar must first be converted to Chomsky normal form, which can always be done, and the conversion is a formality. It can always be done. It is not a formality. On a real grammar the conversion can multiply the rule count by an order of magnitude, and because the running time of CYK carries the grammar size as a factor, the multiplication lands directly in the parser&#39;s cost. My CYK implementation takes normal-form grammars, and the complexity term in my paper is the size after conversion, so I measured what the conversion actually costs on grammars I could get hold of, step by step. The step everyone worries about, binarisation, is nearly free. The step everyone forgets, unit-rule elimination, is the bill.</p>
 <h2>The five steps</h2>
 <p>Chomsky normal form allows two kinds of rule: a nonterminal produces exactly two nonterminals, or a nonterminal produces exactly one terminal. Getting an arbitrary grammar into that shape takes five steps, conventionally named START, TERM, BIN, DEL and UNIT. START adds a fresh start symbol so that the old one can appear on the right of rules. TERM replaces every terminal that appears in a rule with other symbols by a new nonterminal that produces only that terminal. BIN splits every rule with more than two symbols on the right into a chain of two-symbol rules. DEL removes rules that produce the empty string, by adding copies of every rule that could have used them. UNIT removes rules of the form one nonterminal produces one other nonterminal, by copying the target&#39;s rules up to the source.</p>

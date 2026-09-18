@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A held-out test set is supposed to measure how a model does on data it has not seen. It measures that only if the test data really is unseen, and in most real datasets a surprising share of it is not: not identical to a training example, but close enough that the model has, in every sense that matters, seen it before. The split was random, the duplicates were in the source, and the random split preserved them on both sides of the line. The score that comes out is not a generalisation score. It is partly a memorisation score, and it is higher than the truth.</p>
 <h2>How much of a test set is a sibling</h2>
 <p>The numbers on well-known datasets are not small. Barz and Denzler&#39;s <a href="https://arxiv.org/abs/1902.00423">Do We Train on Test Data?</a> searched CIFAR for near-duplicates and found that 3.3 percent of CIFAR-10&#39;s test images and 10 percent of CIFAR-100&#39;s have a duplicate in the training set; when they replaced those images with fresh ones from the same domain, classification accuracy fell by between 9 and 14 percent relative to the reported figures. Lee and colleagues&#39; <a href="https://arxiv.org/abs/2107.06499">Deduplicating Training Data Makes Language Models Better</a> found the same structure in text: over 4 percent of the validation sets of standard language-modelling corpora had an approximate duplicate in the training data, including one 61-word sentence that appeared over sixty thousand times in C4.</p>

@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every few months someone asks me whether their three-person company should move to Kubernetes, and every few months I give an answer that has nothing to do with their workload. The workload is almost never the constraint. The constraint is a person. Kubernetes is a second product your company now runs, with its own release schedule, its own upgrade deadlines and its own ways of failing at two in the morning, and the honest question is whether there is someone on the payroll whose job it is to answer that page.</p>
 <h2>A second release train</h2>
 <p>Here is the part of Kubernetes that does not appear on the architecture diagram. The project ships a minor version roughly <a href="https://kubernetes.io/releases/">three times a year</a>, and each minor version receives patches for about fourteen months: a year of support and a two-month window in which to upgrade off it. That policy has held since 1.19, and <a href="https://endoflife.date/kubernetes">endoflife.date</a> keeps the dates for every version.</p>

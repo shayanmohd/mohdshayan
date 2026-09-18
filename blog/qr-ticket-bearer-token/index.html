@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A QR code on a phone screen is a bearer credential. Whoever presents it gets what it grants, and there is no channel binding, no device it is tied to, nothing that distinguishes the original from a screenshot. Copy the pixels and you have copied the ticket. That is not a flaw in QR codes; it is what a printable credential is. When I built the QR ticketing and contactless entry system for visitor attractions, most of the security discussion was about how to sign the ticket, and almost none of it was about the only question that decides whether a gate can be fooled: where does the spend happen.</p>
 <h2>What a signature proves</h2>
 <p>Signing is the easy half, and it is worth doing well. A ticket token can be small: an identifier, an expiry, and an Ed25519 signature, which <a href="https://www.rfc-editor.org/rfc/rfc8032">RFC 8032</a> fixes at 64 bytes. Put a 16-byte id and an 8-byte expiry next to it and the whole token is 88 bytes before encoding. QR codes have room to spare. The <a href="https://www.iso.org/standard/83389.html">ISO/IEC 18004</a> capacity tables, reproduced on most <a href="https://qrmake.dev/blog/qr-code-capacity-reference/">QR reference sites</a>, give a version 40 symbol at the lowest error correction level 2,953 bytes, and a version 5 symbol, which scans comfortably from a phone screen at arm&#39;s length, over a hundred. The token fits in a small, dense, fast-scanning code with capacity left for a stronger error correction level, which matters more at a gate than payload does.</p>

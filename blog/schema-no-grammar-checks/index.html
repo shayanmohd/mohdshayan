@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>When a structured-output engine accepts your JSON Schema, it is not promising to enforce your JSON Schema. It is promising to enforce the part of it that can be turned into a grammar the decoder can check one token at a time. Several keywords cannot be, either because the constraint is not context-free at all or because the only grammar that expresses it is exponentially large, and every engine quietly drops or approximates those. If you do not know which keywords those are, you will ship outputs the schema forbids while believing they are guaranteed. I call the dropped part the schema residue, and the rule that follows is short: validate the residue after decoding, and only the residue.</p>
 <h2>How much gets dropped</h2>
 <p>The clearest measurement is the JSONSchemaBench study by Geng and colleagues, which ran <a href="https://arxiv.org/abs/2501.10868">ten thousand real-world schemas</a> through six engines, Guidance, Outlines, llama.cpp, XGrammar, OpenAI and Gemini, and measured three things: whether an engine accepts a schema at all, whether its outputs then validate against the full schema, and how long compilation takes. Declared coverage, the share of schemas accepted without error, ranges from near-total on the easy collections to as low as 6 percent for the hosted engines on the hardest, and empirical coverage, the share of generated outputs that actually validate, is lower still, because an engine can accept a schema and then produce output that violates the part of it the grammar did not encode.</p>

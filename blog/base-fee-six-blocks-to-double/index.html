@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Ethereum&#39;s fee market has a thermostat, and the thermostat has a speed limit. Since EIP-1559 the protocol sets a base fee for every block, raises it when the previous block was fuller than its target and lowers it when emptier, and the rule caps the change at one eighth per block in either direction. That cap has a consequence that is easy to state and easy to forget: after a step change in demand, the base fee takes about six blocks, seventy-two seconds, to double, and about twenty blocks, four minutes, to rise tenfold. During that lag the base fee is not the price. The priority fee is the whole auction, which is why bots overpay in the first minute of a spike and why any fee estimator that reads the base fee is wrong at exactly the moments it matters.</p>
 <h2>The rule and the arithmetic</h2>
 <p>The mechanism is in <a href="https://eips.ethereum.org/EIPS/eip-1559">EIP-1559</a> and it is short. Each block has a gas limit and a target of half that limit, set by an elasticity multiplier of two. If the parent block used more gas than the target, the base fee rises in proportion to the excess, up to a maximum of one eighth when the block was full; if it used less, the base fee falls in proportion, down to one eighth when the block was empty. The denominator of eight is the whole story of the lag. A sustained run of full blocks raises the base fee by a factor of 1.125 per block, and the number of blocks needed to reach a multiple m is the logarithm of m in base 1.125: 5.9 blocks to double, 19.5 blocks for ten times, 39 blocks for a hundred. I call that the doubling distance, and the six and the twenty are the numbers to carry around.</p>

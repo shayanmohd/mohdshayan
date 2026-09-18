@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Somewhere in every retrieval pipeline is a number that was chosen on the first day and never revisited: how many passages to retrieve. Five, because the tutorial said five. Ten, because ten felt safer. The number sets the prompt length on every turn, which sets the prefill cost and the time to first token, and it also sets how much noise sits next to the evidence. When I tuned the helpdesk assistant at CRIS against a latency target, retrieval depth was one of three knobs I had, and it was the one nobody had a principled way to set. This is the way I settled on.</p>
 <h2>More is not better past a point</h2>
 <p>The intuition that more passages can only help is wrong, and the evidence for that has accumulated. Liu and colleagues&#39; <a href="https://arxiv.org/abs/2307.03172">Lost in the Middle</a> showed that models use evidence unevenly across a long context, with accuracy dropping when the relevant passage sits in the middle of the retrieved set. Cuconasu and colleagues&#39; <a href="https://arxiv.org/abs/2401.14887">The Power of Noise</a> found that a moderate share of irrelevant passages in the retrieved set substantially degrades factual accuracy, and argued that precision and reranking matter more than raw recall. A 2026 <a href="https://arxiv.org/abs/2606.28337">systems-level analysis of retrieval-augmented generation</a> reports the pattern directly in one of its configurations: answer quality peaked at a retrieval depth of three and fell at higher depths, even as more of the gold evidence was retrieved.</p>

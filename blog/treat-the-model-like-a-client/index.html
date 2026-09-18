@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every online card game has one rule that nothing else works without: the client does not get to say what happened. It says what it wants to happen, and the host decides. When I built Turup Chaal, that rule was the whole anti-cheat design, and I wrote about it in <a href="/blog/the-hand-you-were-never-dealt/">the previous post</a>. I have since come to think it is also the whole design for an agent that calls tools.</p>
 <p>An agent&#39;s tool call looks like an action. It is not one. It is a message from a client you do not control, produced by a process you cannot inspect, asking for something to happen. The system that receives that message is the host, and the host owes it exactly the treatment a card game gives a tapped card.</p>
 <h2>An intent is not an action</h2>

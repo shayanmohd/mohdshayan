@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The first question a team asks about leaving a CRM is how many records they have, and the number they give is the least useful number in the project. The CRM I built at CustomGlide is a migration target for teams leaving Salesforce, HubSpot and Zoho, so I have spent a fair amount of time on the receiving end of exports. Row counts predict almost nothing. Contacts export cleanly, in every system, every time. What breaks is the graph: the references from one record to another that only mean something inside the source. The migration&#39;s cost is the cost of those references, and it can be measured on a trial export before anyone quotes anything.</p>
 <h2>Rows export, references break</h2>
 <p>A CRM export is a set of tables that point at each other. A deal points at an account and an owner. An activity points at a contact and at the deal it belonged to. A contact points at the campaign that created it, the user who created it, and a dozen picklist values that were valid on the day it was saved. Every one of those pointers is an identifier that the source system minted and the target system has never seen.</p>

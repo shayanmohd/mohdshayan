@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The hardest habit to unlearn when moving from Solidity to Solana is trusting your own storage. An EVM contract owns its state: a mapping lives at an address the contract controls, and reading it is reading something only the contract could have written. A Solana program owns nothing at run time. Every account it touches, its own state, the user&#39;s token account, the mint, the program it will call, arrives in a list that the transaction&#39;s author assembled and passed in. The program is handed its argument list by the caller, and the caller may be hostile. Most Solana exploits are not logic bugs in the Solidity sense. They are accounts accepted without proving who owns them, who signed for them and what type they are, and the defence is a number a build pipeline can enforce rather than a longer checklist.</p>
 <h2>What the audits find</h2>
 <p>The clearest evidence is in the aggregate audit data. Sec3&#39;s <a href="https://sec3.dev/report">Solana Security Ecosystem Review 2025</a>, an empirical analysis of 1,669 findings across 163 multi-auditor reviews, reports that three categories account for 85.5 percent of high and critical findings: business logic errors at 36.9 percent, input validation failures at 27.9 percent and access control weaknesses at 20.7 percent. The second and third categories are, on Solana, overwhelmingly the same mechanism: an account in the instruction&#39;s list that the program used without checking its owner, its signer status or its type. Nearly half of the severe findings are that mechanism wearing two labels.</p>

@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A custom field is the cheapest change a CRM administrator can make, and that is its problem. Someone needs to track a vehicle registration on a contact, so they add a field. Then a make, a model, a colour, an insurance expiry. Five fields later the contact record is quietly carrying a second entity, with its own lifecycle, no identity, and no way to have two of them. The CRM I built at CustomGlide shares one contact and account model across pipelines, campaigns and ticketing, so every field decision is felt three times, and the rule this post describes is the one I use to decide when a field is a field and when it is a table in disguise.</p>
 <h2>The ceiling is the trouble</h2>
 <p>Vendors sell the field limit as a feature, and the limits are generous enough that almost nobody hits them. Zoho CRM&#39;s <a href="https://help.zoho.com/portal/en/kb/crm/customize-crm-account/customizing-fields/articles/use-custom-fields">custom field limits</a> run from 10 per module on Standard to 155 on Professional and 300 on Enterprise. HubSpot allows <a href="https://developers.hubspot.com/docs/api-reference/crm-limits-tracking-v3/limits/get-crm-v3-limits-custom-properties">1,000 custom properties per object</a> on paid tiers, with a much smaller allowance on the free one. The generosity is the point of the sales pitch and the source of the rot: a schema does not fail when it fills, it fails long before, when the fields stop meaning what their names say and nobody can tell which of the three hundred are still used.</p>

@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A citation looks like evidence and is actually a second claim. The first claim is the sentence: the refund window is fourteen days. The second is the marker after it: passage 3 says so. Both can be wrong, and they fail independently, on different schedules, for different reasons. When I built grounded citation into the helpdesk assistant at CRIS, the thing I had not appreciated was that the marker needed exactly the same scrutiny as the sentence, and that giving it that scrutiny changes what the model is asked to produce.</p>
 <h2>Citations fail on their own schedule</h2>
 <p>The evidence that citation markers are unreliable is not anecdotal. The ALCE benchmark from <a href="https://arxiv.org/abs/2305.14627">Gao and colleagues</a> measures citation recall, whether the cited passages entail the sentence, and citation precision, whether each cited passage is actually needed, and found the best models of its time far from full support on long-form questions. Wallat and colleagues went further in <a href="https://arxiv.org/abs/2412.18004">Correctness is not Faithfulness in RAG Attributions</a>, distinguishing a citation that happens to point at a supporting passage from one that reflects how the answer was actually produced. They report that 57 percent of citations from a RAG-optimised model showed unfaithful behaviour: the model answered from its own memory and then found a passage to attach, a pattern they call post-rationalisation.</p>

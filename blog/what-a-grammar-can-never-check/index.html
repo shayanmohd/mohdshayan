@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Constrained decoding is the most reassuring feature in the structured-output toolbox. Hand the engine a grammar, and every token the model emits is checked against it before it is sampled, so the output is guaranteed to be valid JSON, to match the schema, to use one of the allowed enum values, to close every bracket it opens. The guarantee is real and it is narrower than it feels. A grammar can guarantee the shape of an output. It cannot guarantee its reference: that a field equals an earlier field, that a quoted span appears verbatim in the source it claims to quote, that an identifier exists in a table that was live at the moment of decoding. The reason is a theorem, not an engineering gap, and the theorem draws a line that every structured-output pipeline has to respect with a second component.</p>
 <h2>The copy-language wall</h2>
 <p>The engines that make constrained decoding fast, and the theory I worked with in my parsing research, both run on context-free grammars. XGrammar&#39;s central result, in the <a href="https://arxiv.org/abs/2411.15100">paper that introduced it</a>, is that for a JSON grammar over a 128,000-token vocabulary, only 1,134 tokens are context-dependent, meaning their validity depends on the full parser stack rather than on the current rule; the other 99 percent can be precomputed at compile time. That is what takes the mask below 40 microseconds per token, and its <a href="https://arxiv.org/abs/2601.04426">2026 successor</a> extends the same machinery to grammars that change within a request. All of it is context-free by construction, because a pushdown automaton is what can be run per token at that speed.</p>

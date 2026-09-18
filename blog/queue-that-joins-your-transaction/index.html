@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The argument about where background jobs should live is usually conducted in the wrong units. One side says Redis is faster and built for it; the other says Postgres is already there and one fewer thing to run. Both are true and neither is the reason to choose. The reason to run jobs from a Postgres table is that the enqueue can sit in the same transaction as the row that caused it: the order is inserted and the job to email its confirmation is inserted in one commit, and if the commit fails, neither exists. No external broker can offer that, however fast it is, because it is not in the transaction. The folklore about throughput, meanwhile, is wrong by two orders of magnitude in both directions, so it should not be what decides anything.</p>
 <h2>The same-transaction test</h2>
 <p>Every job type answers one question: must this job not exist if the write that caused it rolled back? For a confirmation email, yes: an email about an order that was never saved is a bug. For a search-index update, yes: indexing a document that does not exist produces a phantom result. For a nightly report, no: it is scheduled by the clock, not by a write. For a cache warm, no: a warm for a row that did not commit is wasted work and nothing worse.</p>

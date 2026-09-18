@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>I work from New Delhi with clients in Malaysia, Canada and the United Arab Emirates, and the honest arithmetic of that arrangement is not what the phrase &quot;different time zones&quot; suggests. Kuala Lumpur and Dubai are easy: their working days overlap mine for most of the day. Canada is not a smaller overlap. It is none. A nine-to-six day in Delhi and a nine-to-six day in Toronto or Vancouver share zero hours, in summer and in winter, and the shared hour with Canada does not exist until someone builds it out of their evening or their early morning. It has been enough, and the reason is that the list of things which genuinely need both sides awake is short, and I keep it written down.</p>
 <h2>The arithmetic</h2>
 <p>The overlaps are a computation on the <a href="https://www.iana.org/time-zones">IANA time zone database</a>, which any language exposes; I used Python&#39;s <a href="https://docs.python.org/3/library/zoneinfo.html">zoneinfo</a> module, and it is worth doing exactly rather than by feel, because the daylight-saving shifts move the answer by an hour in each direction twice a year. Delhi is at UTC plus five and a half all year. Kuala Lumpur is at UTC plus eight, Dubai at plus four, Toronto at minus five in winter and minus four in summer, Vancouver at minus eight and minus seven. Take a nine-to-six day in every city, on the same calendar date, and count the hours in which both are inside their day.</p>

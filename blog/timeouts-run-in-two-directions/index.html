@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The random 502 and the hung connection pool are the two timeout bugs every backend engineer meets, and they are usually treated as unrelated. They are the same bug in two directions. A request passes through a chain of hops, a load balancer, a reverse proxy, an application server, a database, and every hop has two timeouts on it: how long it will keep an idle connection open, and how long it will wait for a response. Those two numbers have to move in opposite directions along the chain, and when either one does not, the failure has a name.</p>
 <h2>Two staircases</h2>
 <p>Draw every hop from the client to the database and write two numbers on each. The first is the idle timeout: how long this hop keeps a connection open with nothing happening on it. The second is the deadline: how long this hop waits for the hop behind it to answer before giving up.</p>

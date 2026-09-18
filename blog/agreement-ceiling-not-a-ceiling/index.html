@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>There is a sentence that gets said in every labelling project, usually by someone trying to be realistic: the model cannot do better than the annotators agree with each other. If two people agree on 82 percent of items, then 82 percent is the ceiling, and a model scoring above it is measuring noise. It sounds like humility and it is a mistake. The agreement rate compares two noisy annotators with each other. The model is compared with a majority label that is more accurate than either of them. Those are different numbers, and the second one is higher.</p>
 <h2>Two numbers that look alike</h2>
 <p>Take the simplest case: binary labels, independent annotators, each right with the same probability p. Two annotators agree when both are right or both are wrong, so the pairwise agreement a is p squared plus one minus p squared. Invert that and the per-annotator accuracy is one plus the square root of two a minus one, all over two. An agreement rate of 82 percent gives a per-annotator accuracy of 90 percent. The annotators are better than their agreement suggests, because agreement counts every disagreement against both of them.</p>

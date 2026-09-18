@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Almost every signature verification failure I have debugged had nothing to do with cryptography. The keys were right, the algorithm was right, the library was right. The sender had signed one byte string, and by the time the receiver checked the signature it was checking a different byte string, because something between the network and the verification code had parsed the message and written it back out. A JSON body became an object and became JSON again with the keys in a different order. A framework stripped a trailing newline. A proxy normalised a unicode escape.</p>
 <p>The signature was over the bytes the sender sent; the check was over the bytes the receiver&#39;s stack reconstructed; and the two differed by a character nobody could see. I call the set of those transformations the re-serialisation gap, and a signed-message design is rated by whether the gap is empty.</p>
 <h2>Where the bytes diverge</h2>

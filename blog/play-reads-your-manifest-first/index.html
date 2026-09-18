@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>An Android manifest is read twice before anyone uses the app. The device reads it at install, to know what the app may ask for. Google Play reads it before that, at review, to decide whether the app may be listed at all, and the reviewer has less context than the user will: no onboarding screen, no explanation, just a list of permissions and a policy that says which ones need justifying. When eight apps ship under one developer account, as mine do, a permission that looks unjustified in one app is a strike against the account that publishes all eight. The habit that keeps the account clean is boring and effective: a written reason for every permission, a screen where it is asked, and a path through the app when it is refused, kept in one table that the release process reads before the reviewer does.</p>
 <h2>The policy has been tightening for years</h2>
 <p>Play&#39;s permission policy has moved in one direction, and each move has the same shape: a permission group that used to be free to request becomes one that must be justified or replaced. The <a href="https://support.google.com/googleplay/android-developer/answer/10158779">permissions policy</a> restricts the SMS and call log groups to apps whose core purpose needs them, treats the inventory of installed apps as personal data so that broad package visibility is allowed only for apps like launchers, file managers and security tools, and requires high-risk permissions to be declared through a form in the console. The <a href="https://support.google.com/googleplay/android-developer/answer/14115180">photo and video policy</a> says that apps targeting Android 13 or later may request the broad media permissions only when the system photo picker is not sufficient, which for one-time or occasional access it always is, with full compliance mandatory for every developer from 28 May 2025 and non-compliant apps subject to removal after that date.</p>

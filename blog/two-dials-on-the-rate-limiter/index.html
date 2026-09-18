@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Most rate limiters in multi-tenant software are one middleware with one number, and the number was chosen by someone who had to pick something. It is usually described as protecting the platform, which it does, badly, and as being fair to tenants, which it is not. The reason is that a rate limit is two protections wearing one hat. A per-tenant limit exists so that tenants cannot hurt each other. A per-principal limit, per user or per API key, exists so that one runaway client cannot hurt you. Those are set from different numbers, derived from different facts about the system, and putting both behind a single dial means the dial is wrong for at least one of them at every setting.</p>
 <h2>What the public limits are made of</h2>
 <p>Every large API publishes its limits, and reading them side by side shows the two dials in the open. GitHub&#39;s <a href="https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api">REST API</a> allows an authenticated user 5,000 requests an hour, 60 unauthenticated, and 15,000 an hour for Enterprise Cloud, with a separate secondary limit of no more than 100 concurrent requests, 900 points a minute per endpoint, and 90 seconds of CPU per 60 seconds of real time. Stripe&#39;s <a href="https://docs.stripe.com/rate-limits">global limit</a> is 100 requests a second per account in live mode, 25 in a sandbox, with 25 a second on individual endpoints and separate concurrency limits. Shopify&#39;s <a href="https://shopify.dev/docs/api/usage/limits">GraphQL Admin API</a> meters query cost in points from a leaky bucket that refills at 100 points a second on standard plans and 1,000 on Plus. Slack&#39;s <a href="https://docs.slack.dev/apis/web-api/rate-limits">Web API</a> tiers its methods at one, twenty, fifty or a hundred-plus calls a minute, with a special rule that a message may be posted about once a second per channel.</p>

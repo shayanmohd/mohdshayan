@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>ShreezyPay Bot mediates trades between two Telegram groups that must not learn who is in the other. Each side talks to the bot, the bot relays what needs relaying, and if the trade goes wrong the bot holds enough to settle a dispute. The property that makes it work is not encryption, which Telegram supplies to everyone, and it is not the relay itself. It is the size of one table: the mapping from a relayed message back to the person who sent it. Anonymity between two parties in a mediated trade is a property of that table, its contents, its lifetime and its distance from everything else the bot stores, and every other feature in the bot exists to stop the two parties from leaking the mapping themselves.</p>
 <h2>The unmask table</h2>
 <p>I call it the unmask table because that is what its disclosure would do: unmask a pair. The bot needs some version of it, because a reply from one side has to reach the right thread on the other, and a dispute has to be attributable to a party. The design question is how little the table can hold while still doing those two jobs, and the answer is much less than the obvious implementation stores.</p>

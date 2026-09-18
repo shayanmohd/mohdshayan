@@ -48,11 +48,17 @@
   // Scroll reveal (IntersectionObserver, once)
   var revealEls = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
+    // Small blocks reveal once 12% of them is on screen. A block taller than
+    // most of the viewport (an article body on a phone) can never reach 12%,
+    // so it reveals as soon as any of it enters the viewport instead.
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+        if (!entry.isIntersecting) return;
+        var rootHeight = entry.rootBounds ? entry.rootBounds.height : window.innerHeight;
+        var tall = entry.boundingClientRect.height > rootHeight * 0.6;
+        if (tall || entry.intersectionRatio >= 0.12) { entry.target.classList.add('in'); io.unobserve(entry.target); }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    }, { threshold: [0, 0.12], rootMargin: '0px 0px -8% 0px' });
     revealEls.forEach(function (el) { io.observe(el); });
   } else {
     revealEls.forEach(function (el) { el.classList.add('in'); });

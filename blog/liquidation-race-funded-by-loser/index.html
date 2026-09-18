@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A lending protocol does not liquidate anyone. It publishes a price for doing so, and waits for someone to accept it. On Aave the price is the liquidation bonus, a slice of the unhealthy borrower&#39;s collateral handed to whoever repays their debt, and the bonus is paid by the borrower, not by the protocol. That makes liquidation a race funded by the loser, and a race only gets run when the prize exceeds the cost of entering. The cost is gas. Below the line where the bonus no longer covers gas plus execution, no rational actor liquidates, the position sits unhealthy, and if the collateral keeps falling it becomes bad debt that the protocol&#39;s depositors eventually eat. The line has a value per asset, it moves with the base fee, and the total value of positions under it is a risk number that lending protocols should publish and mostly do not.</p>
 <h2>The mechanism</h2>
 <p>Aave&#39;s <a href="https://aave.com/docs/developers/liquidations">liquidation documentation</a> describes the current design plainly: a liquidator repays some of a borrower&#39;s debt and receives collateral worth more than the repayment, with the difference being the bonus, and in the fourth version of the protocol the bonus follows a Dutch auction in which lower health factors earn higher bonuses. The documentation&#39;s own advice to liquidators is the whole economics in a sentence: when choosing positions, ensure the liquidation bonus exceeds the gas cost. A share of the bonus, currently 10 percent for most Ethereum collateral and 20 percent for the major stablecoins after a <a href="https://governance.aave.com/t/arfc-liquidation-protocol-fee-increase-for-wbtc-weth-and-wsteth-on-aave-v3-ethereum-core/25470">governance change</a>, goes to the protocol as a fee, which lowers the liquidator&#39;s take and moves the line further up.</p>

@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The promise of autoscaling is that capacity appears when demand does. The mechanism cannot keep that promise, because capacity is a consequence of demand being measured, and measurement takes time at every step. By the time a reactive policy has noticed a spike, decided about it, launched an instance, waited for it to boot, and let it into the load balancer, the spike that triggered all of that is several minutes old. What the new instance serves is whatever comes next. That is not a flaw to be tuned away. It is what &quot;reactive&quot; means, and it changes what the policy is for.</p>
 <h2>The arrival gap</h2>
 <p>I call the total delay the arrival gap: the time between demand crossing the threshold and a new instance taking its first request. It is a sum of documented settings and physical facts, and every one of the settings defaults to a number that assumes you are not in a hurry.</p>

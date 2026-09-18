@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The one-sentence explanation of grammar-constrained decoding is that a parser sits beside the model and, at each step, masks out every token that would break the grammar. It is a good sentence and it hides the whole difficulty. The parser reads characters. The model emits subword tokens, and the tokeniser that made those tokens was trained on text frequencies with no knowledge that a JSON string ends at a quote or that a key is followed by a colon. So the units the model chooses from do not line up with the units the grammar is written in, and every real engine&#39;s cost and correctness come down to how it handles the tokens that cross a boundary. Those tokens are a computable set, and its size, not the rule count of the grammar, is what predicts the per-token overhead.</p>
 <h2>Two segmentations of one string</h2>
 <p>Take the smallest JSON object that has anything in it. A grammar sees nine terminals: an opening brace, a quoted key, a colon, a quoted value, a comma, a second key, a colon, a number and a closing brace. A byte-pair tokeniser sees something else. Run through the cl100k vocabulary used by a generation of OpenAI models, via the public <a href="https://github.com/openai/tiktoken">tiktoken</a> library, the same object becomes nine tokens too, but they are not the same nine: the first token is the brace fused with the opening quote of the key, the third is the closing quote, the colon and the opening quote of the value fused into one, and the fifth is a quote, a comma and a quote. Four of the nine tokens span a boundary the grammar cares about.</p>

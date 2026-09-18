@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The migration that takes a production system down is almost never the big one. Adding a column with a default to a table of a hundred rows can stop every request for a minute, and rewriting a table of a hundred million rows can pass unnoticed, because the thing that decides is not the size of the change. It is the lock the statement takes and the queue that forms behind it while it waits. SocialSure&#39;s backend runs PostgreSQL through Prisma and Drizzle, and the lesson I keep relearning is that the migration tools are honest about what they do: they run the SQL you give them. What they do not do is know anything about locks.</p>
 <h2>The queue is the danger</h2>
 <p>Most schema changes in Postgres take an ACCESS EXCLUSIVE lock on the table they touch, the strongest lock there is, and the <a href="https://www.postgresql.org/docs/current/explicit-locking.html">locking documentation</a> lists which statements take which level. ACCESS EXCLUSIVE conflicts with everything, including the ACCESS SHARE lock that a plain SELECT holds. The statement cannot proceed until every existing reader has finished.</p>

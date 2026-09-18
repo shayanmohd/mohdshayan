@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every managed database console has a checkbox called encryption at rest, and every compliance questionnaire asks whether it is ticked. It should be. It also defends against one specific event, someone walking off with the physical disk or a raw volume snapshot, and that is not how databases are breached. They are breached by someone who obtains the application&#39;s own connection string and runs <a href="https://www.postgresql.org/docs/current/app-pgdump.html">pg_dump</a>, which returns every row in plain text because, to the database, that person is the application. The useful question for each column is therefore not &quot;is the disk encrypted&quot; but &quot;what does this column look like in that dump&quot;. I call it the dump test, and it sorts every column into one of three layers.</p>
 <h2>The credential is the attack surface</h2>
 <p>The reason the dump is the realistic threat is that application credentials leak constantly. GitGuardian&#39;s <a href="https://blog.gitguardian.com/the-state-of-secrets-sprawl-2026/">2026 report</a> counted 28.65 million new hardcoded secrets pushed to public GitHub in 2025, up 34 percent on the year, and the <a href="https://blog.gitguardian.com/the-state-of-secrets-sprawl-2025/">previous year&#39;s report</a> found that the single most commonly leaked secret type in public repositories was a MongoDB connection string, at 18.8 percent, with 70 percent of the secrets leaked in 2022 still valid when checked. A connection string in a commit, a config file in a container image, an environment variable in a crash report: each is a full-access credential, and none of them involves a disk.</p>

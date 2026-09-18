@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The number that gets optimised in a serving stack is tokens per second, and for a streamed chat answer it is the wrong number to optimise past a point that is easy to compute. The person on the other end reads at a fixed speed. Once the model produces text faster than that, every further token per second is invisible to them, and the capacity spent producing it could have been spent on the thing they do notice, which is how long they waited before the first word appeared. When I was tuning batching for the helpdesk assistant at CRIS against a latency target, this was the reframing that made the target make sense.</p>
 <h2>How fast people read</h2>
 <p>Brysbaert&#39;s <a href="https://doi.org/10.1016/j.jml.2019.104047">meta-analysis of reading rate</a>, covering 190 studies and 18,573 participants, puts the average silent reading rate for adults reading English non-fiction at 238 words per minute, fiction at 260, and reading aloud at 183. Non-fiction is the right figure for a helpdesk answer or a technical explanation. At roughly 1.3 tokens per English word for a typical subword tokeniser, 238 words a minute is about four words a second, which is a little over five tokens a second.</p>

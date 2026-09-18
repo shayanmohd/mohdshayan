@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every bundle path I have built for Ethereum was designed for a world with three parties in the block auction: a searcher who finds the opportunity, a builder who assembles the block, and a relay that sits between the builder and the validator so that neither has to trust the other. Glamsterdam, the upgrade now in public testnets with a 2026 target, moves the auction into the protocol and deletes the third party. The headlines say this fixes the trust problem in block building. For a searcher it moves the problem rather than removing it, and the honest accounting of what changes is narrower than the headlines and more useful.</p>
 <h2>Three eras of the auction</h2>
 <p>The block auction has had three shapes. From January 2021, Flashbots&#39; MEV-Geth let searchers send bundles straight to miners running a patched client. From the Merge in September 2022, <a href="https://docs.flashbots.net/flashbots-mev-boost/introduction">MEV-Boost</a> let validators outsource block building to specialised builders through relays, which hold the builder&#39;s block, show the validator only a header and a bid, and release the body once the validator has signed. And with Glamsterdam, <a href="https://eips.ethereum.org/EIPS/eip-7732">EIP-7732</a> makes builders staked entities inside the beacon chain and lets the proposer commit to a builder&#39;s bid without anyone in the middle. The upgrade after it, Hegotá, is <a href="https://eipsinsight.com/upgrade/hegota">scoped for 2027</a> with inclusion lists as its headliner, which is the part of the roadmap that addresses censorship rather than trust.</p>

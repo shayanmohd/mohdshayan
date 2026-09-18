@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The stateless-versus-stateful token argument has been running for a decade and it is the wrong argument. Every token system has a revocation lag: the longest time a principal whose access has been revoked can keep acting. A session table sets that lag to one database round trip. A signed, self-contained token sets it to the token&#39;s lifetime, because nothing checks anything until the token expires. Neither number is right or wrong in itself. What is wrong is not knowing the number, and most systems do not, because the lifetime was set once by whoever configured the identity provider and never connected to what the endpoints behind it actually do. The fix is to write the acceptable lag down per endpoint class, as a number of seconds, next to the route, and to choose mechanisms that fit under it.</p>
 <h2>What the providers set for you</h2>
 <p>The lifetime most teams inherit is whatever their identity provider&#39;s default is, and those defaults span two orders of magnitude. Auth0&#39;s <a href="https://auth0.com/docs/secure/tokens/access-tokens/update-access-token-lifetime">API access tokens</a> default to 86,400 seconds, a full day, and can be raised to thirty. Microsoft Entra issues <a href="https://learn.microsoft.com/en-us/entra/identity-platform/configurable-token-lifetimes">access tokens</a> with a random lifetime between 60 and 90 minutes. Amazon Cognito lets an <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-the-access-token.html">access token</a> live anywhere from five minutes to a day, with an hour as the usual setting. Firebase <a href="https://firebase.google.com/docs/auth/admin/manage-sessions">ID tokens</a> last an hour, and the same page is candid that revocation is not detected until the token is next refreshed unless the server explicitly asks. A GitHub App&#39;s <a href="https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/generating-an-installation-access-token-for-a-github-app">installation token</a> expires after an hour.</p>

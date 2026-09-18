@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every monorepo team reaches the point where the remote cache is on, the runners are fast, and CI still takes twenty minutes on a one-line change. The usual response is to buy a faster cache or bigger runners. The actual cause is structural: in a Turborepo, a task&#39;s cache key includes the hash of every package it depends on, so a change to a package that many others import invalidates the cache for every one of them, and the whole tree rebuilds. CI time is therefore decided by a small set of packages that change often and are imported everywhere, and the fix is not a faster cache but moving churn out of those packages. They can be found from git history and the package graph in an afternoon.</p>
 <h2>Why one change rebuilds everything</h2>
 <p>Turborepo <a href="https://turborepo.com/docs/crafting-your-repository/caching">hashes each task&#39;s inputs</a> to decide whether it can replay a cached result, and the inputs include the outputs of the tasks it depends on, transitively, through the package graph. That is the correct design: if a shared package&#39;s output changed, its dependents might build differently, so their cache entries cannot be trusted. The consequence is that the blast radius of a commit is not the number of files it touched but the number of packages that transitively depend on the packages it touched. A change to an application&#39;s own code rebuilds that application. A change to a package imported by ninety others rebuilds ninety.</p>

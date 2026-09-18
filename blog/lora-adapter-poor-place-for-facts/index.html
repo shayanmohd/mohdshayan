@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>At CRIS I did both halves of the usual argument on one system: I fine-tuned open models with parameter-efficient adapters for a helpdesk assistant, and I built the retrieval pipeline that fed the same assistant its documents. The two halves are usually presented as competitors, fine-tuning against retrieval, and the decision between them is usually made by taste. Doing both on one problem made the division of labour obvious, and the division turned out to depend on how fast each kind of knowledge decays, measured against how often anyone will actually retrain, rather than on which technique is better.</p>
 <h2>What a low-rank update can hold</h2>
 <p>A LoRA adapter does not change a model&#39;s weights. It adds, to selected weight matrices, a correction that is the product of two thin matrices, so that the correction has a rank no higher than their shared inner dimension, r. The number of trainable parameters is therefore small and easy to compute from the architecture. For an eight-billion-parameter model of the Llama 3 family, whose <a href="https://arxiv.org/abs/2407.21783">published architecture</a> has 32 layers, a hidden size of 4,096, grouped key and value projections of 1,024, and a feed-forward width of 14,336, adapting only the query and value projections adds about 426,000 parameters per unit of rank; adapting every linear layer in each block adds about 2.6 million per unit of rank.</p>

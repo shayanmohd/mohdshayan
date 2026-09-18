@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every Android release I ship passes through two keys, and for years the documentation described them as if they were siblings. They are not. Under Play App Signing, the upload key does one job: it proves to Google that the bundle came from the account that owns the app, and if it is lost or leaked it can be reset from the console in a day. The app signing key does a different job: it is what a device checks when it decides whether an update is really an update, and on older Android versions its loss or compromise is permanent, because the devices in the field will trust nothing else. Two keys, two security classes, and in 2026 Google sharpened the difference in a way that moves almost all of the operational risk onto the key you handle every release.</p>
 <h2>Two keys, two classes</h2>
 <p>The <a href="https://support.google.com/googleplay/android-developer/answer/9842756">Play App Signing documentation</a> is clear once you read it for the distinction. The upload key is yours: an RSA key of at least 2,048 bits in a keystore you hold, used to sign the bundle before upload, used by Google to verify your identity, and resettable if compromised or lost by generating a new one, exporting its certificate and requesting a reset in the console. The app signing key is Google&#39;s to hold: it signs the APKs that reach devices, you can let Google generate it or upload your own, and the page&#39;s warning is unambiguous about the alternative, that a key you manage yourself outside Play App Signing cannot be reset if you lose it.</p>

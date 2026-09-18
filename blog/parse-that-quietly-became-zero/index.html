@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The probabilistic extension of my CYK parser decodes in the log domain, and when I wrote that sentence in the paper it read like a stylistic choice, the kind of thing a careful implementer does. It is not a choice. Done in the probability domain, the parser is wrong on most real sentences, and it is wrong silently: it returns a legal tree that happens to be the first one it tried, with a score of exactly zero, and nothing in the output says so. I measured how quickly that happens, and the answer is sooner than most people would guess.</p>
 <h2>The arithmetic of a parse</h2>
 <p>A probabilistic context-free grammar assigns each rule a probability, and the probability of a tree is the product of the probabilities of the rules used to build it. A Viterbi parse, the most probable tree for a sentence, is found by CYK with the sum replaced by max and the count replaced by product: each chart cell holds the best probability for its span, computed as the product of the best probabilities of two sub-spans and the rule that joins them.</p>

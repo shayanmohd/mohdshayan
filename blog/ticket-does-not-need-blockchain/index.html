@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The pitch for blockchain ticketing is that a ticket on a chain cannot be forged or double-spent, and both halves of that are true. They are also true of a signed ticket in a database, at a fraction of the cost and latency, and the reason is that a venue&#39;s ticketing has exactly one writer. When I built the QR ticketing and contactless entry system for visitor attractions, the question of whether the tickets should live on a chain came up early and was settled by a count, not by an opinion about blockchains.</p>
 <h2>Count the writers</h2>
 <p>Here is the test. Count the mutually distrusting parties that must append to the record. Not read it, append to it. If the answer is one, the record is a database with signatures: the one writer signs what it writes, anyone can verify the signature, and nobody else needs to be trusted because nobody else writes. If the answer is two, the two parties need a shared log that neither can rewrite alone, and there are several ways to get one that are not a blockchain. Only when the answer is many, and there is no operator all of them would accept, does a chain pay for itself, because a chain is the machine for letting strangers append to one record without an operator.</p>

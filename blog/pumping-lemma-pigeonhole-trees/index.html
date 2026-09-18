@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The <a href="https://en.wikipedia.org/wiki/Pumping_lemma_for_context-free_languages">pumping lemma for context-free languages</a> is taught as a spell. For any context-free language there is a length p such that any string longer than p can be split into five pieces, u v w x y, with v and x not both empty, v w x no longer than p, and every string u v^i w x^i y also in the language. Students memorise the five letters, apply the spell to a^n b^n c^n, and never quite believe it. I did not believe it either until the proof for my paper on the limits of context-free recognition forced me to draw it, at which point it stopped being a spell and became a fact about trees that a first-year student can see.</p>
 <h2>One observation</h2>
 <p>Here is the whole lemma. Take a grammar in Chomsky normal form with V nonterminals. Every internal node of a parse tree has at most two children, so a tree of height h has at most 2 to the h leaves. Turn that around: a string of length more than 2 to the V has a parse tree of height more than V, which means some root-to-leaf path has more than V internal nodes, which means, by the pigeonhole principle, some nonterminal appears twice on that path.</p>

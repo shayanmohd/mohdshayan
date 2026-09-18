@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every infrastructure-as-code team has the same conversation after a drift incident. Someone changed a security group in the console during an outage, the Terraform state no longer matched the world, and the next apply either reverted the emergency fix or refused to run. The conclusion is always the same: lock the console, make it read-only, route everything through code. It treats drift as a discipline failure. I think it is better modelled as a race, and the race has a measurable winner. People edit the console when the code path is slower than the emergency. Drift accumulates at a rate set by how long a change takes to get from a pull request to production, and locking the console removes the symptom while leaving the cause exactly where it was.</p>
 <h2>The numbers behind the conversation</h2>
 <p>The industry surveys describe the symptom well. Firefly&#39;s <a href="https://www.firefly.ai/state-of-iac-2025">State of IaC 2025</a> found that 89 percent of respondents had adopted infrastructure as code and only 6 percent had complete coverage, with less than a third continuously monitoring for drift and the rest addressing it reactively. The <a href="https://www.firefly.ai/state-of-iac-2026">2026 edition</a> found a third of respondents had tied drift to a costly production incident, a further 8 percent to significant downtime, and nearly a fifth with no detection or remediation process at all, while 90 percent said their orchestration fell short of what they needed. The gap between adoption and coverage is where drift lives, and the orchestration complaint is the clue to why.</p>

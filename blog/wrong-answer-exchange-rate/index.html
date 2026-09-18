@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A helpdesk assistant that answers every question scores higher on accuracy than one that sometimes says it does not know. That is not a quirk of one benchmark. It is arithmetic. If a wrong answer and a declined answer both score zero, then answering is never worse than declining, and a model trained and selected on that scoreboard learns to guess. Kalai, Nachum, Vempala and Zhang put this at the centre of <a href="https://arxiv.org/abs/2509.04664">Why Language Models Hallucinate</a> in September 2025: under a binary right-or-wrong scheme, guessing when unsure maximises the expected score, so the evaluations themselves keep hallucination alive.</p>
 <p>Their proposed fix is to penalise confident errors more than abstentions. I agree with the fix and I want to push on the part the paper leaves open, because it is the part an engineer building a real system has to decide. How big should the penalty be. The answer is not a constant. It is an exchange rate between wrong answers and declined ones, it differs by deployment, and once you know it the abstention threshold follows from it.</p>
 <h2>Two models, three columns</h2>

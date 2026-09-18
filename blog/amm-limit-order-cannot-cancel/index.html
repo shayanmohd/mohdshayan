@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A market maker on an order book does one thing constantly: cancels. Quotes are posted, the price moves elsewhere, the quotes are pulled before anyone can hit them, and new ones are posted at the new price. The cancel is the whole job. An automated market maker cannot do it. A constant-product pool posts, in effect, a resting limit order at every price, and when the price moves on another venue, every one of those orders is still there, waiting for the first person who notices. That inability is the entire economics of being a liquidity provider, and the losses people argue about, impermanent loss, loss-versus-rebalancing, all follow from it.</p>
 <h2>A curve is a ladder of orders</h2>
 <p>Take the constant-product rule, x times y equals k, that Uniswap&#39;s <a href="https://docs.uniswap.org/contracts/v2/concepts/protocol-overview/how-uniswap-works">second version</a> and countless pools since have used. The pool holds x of one asset and y of the other, and it will trade along the curve so that the product stays constant. A trader who buys a small amount of y pays a price near y over x; a trader who buys a lot walks up the curve and pays more. Read that from the other side and it is a ladder: the pool is offering to sell y at every price above the current one and to buy y at every price below it, in amounts fixed by the curve. It is an order book with an order at every tick, placed by nobody, cancelled by nobody.</p>

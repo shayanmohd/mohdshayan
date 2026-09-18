@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A fine-tuned model is usually more accurate than the base model on the task it was tuned for, and it is usually more confident, and the second effect outruns the first. The reason is not mysterious. Cross-entropy loss on labels that are nearly deterministic keeps rewarding larger logits long after the argmax has stopped changing, so the weights keep growing in the direction that makes the model&#39;s answers sharper without making them righter. The result is a model that sounds sure in proportion to how long it was trained rather than how often it is correct. The fix is one scalar, fitted on held-out data after the final fine-tune, and the rule that matters is the word &quot;after&quot;: no temperature survives a change to the weights, so it is the last step of every training run or it is not there at all.</p>
 <h2>Watching the logits grow</h2>
 <p>The mechanism is easiest to see in a model small enough to watch. I trained a logistic regression, the simplest model that has logits, on eighty examples of a two-class problem in twenty dimensions with plain gradient descent on cross-entropy, no regularisation, and recorded four things at intervals: training accuracy, accuracy on four thousand held-out examples, the mean confidence the model reported on those held-out examples, and the norm of the weight vector, which is the size of the logits.</p>

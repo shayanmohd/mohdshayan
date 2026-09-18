@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The number everyone quotes about flash loans is 0.05%. That is the premium Aave charges on the amount borrowed, and it is the one line on the invoice that is easy to read. When I built the execution engine for Shayanomaly, which borrows from Aave V3 and settles a cross-venue trade in one atomic transaction, the premium turned out to be the least interesting cost in the system. The cost that decides whether a strategy lives is the gas spent on attempts that fail, and that cost is not a property of the strategy. It is a property of how the transaction reaches the chain.</p>
 <h2>Where the premium sits</h2>
 <p>Aave&#39;s <a href="https://aave.com/docs/aave-v3/guides/flash-loans">flash loan documentation</a> describes the mechanism: the pool transfers the requested amount to your contract, calls your contract&#39;s <code>executeOperation</code>, and expects the amount plus the premium to be repaid before the call returns. If it is not, the entire transaction reverts and the pool never lent anything. The premium is initialised at 0.05% and can be changed by governance; the current value is read from <code>FLASHLOAN_PREMIUM_TOTAL</code> on the <a href="https://aave.com/docs/aave-v3/smart-contracts/pool">Pool contract</a>, and at initialisation none of it goes to the protocol treasury, so it is paid to the liquidity providers whose capital you used for one block.</p>

@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The first version of any arbitrage detector finds opportunities everywhere. Two venues quote the same asset a few basis points apart, the detector lights up, and the log fills with spreads that would have made money if the world had ended at the moment the quote arrived. When I built the engine behind Shayanomaly, which streams order books from five venues and looks for cross-venue anomalies, the first thing I learned was that the number the detector was computing was not the number I cared about. It was computing the gross spread. The number that decides anything is the spread that survives the deductions, and there are six of them.</p>
 <h2>Six deductions</h2>
 <p>Start with a gross spread: venue A asks 100.00, venue B bids 100.50, so buying on A and selling on B shows 50 basis points. Then take it apart.</p>

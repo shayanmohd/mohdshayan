@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The mental model most people bring to a home-screen widget is that it is a small window onto the app, a live view that happens to sit on the launcher. It is not. A widget is a picture. The app draws it, hands the drawing to the launcher, and the launcher shows that drawing until the app sends a new one, which may be minutes later, may be half an hour later, and may not happen at all if the system decides the phone is better off asleep. Jetpack Glance makes drawing the picture pleasant, with composables instead of RemoteViews by hand, and that pleasantness hides the fact that the result is still a snapshot. Designing a widget well means designing for the age of the snapshot.</p>
 <h2>What the launcher actually holds</h2>
 <p>Under the composable surface, a Glance widget is translated into RemoteViews and sent to the launcher process; the <a href="https://developer.android.com/develop/ui/compose/glance/glance-app-widget">Glance documentation</a> is explicit that to update the content, Glance must recreate the RemoteViews and send them again. Nothing recomposes on the launcher. A state change in the app does not reach the widget until something in the app calls update, and that something has to be running. The sequence, when it works, is: data changes, a worker or broadcast wakes the app, the widget&#39;s content is recomposed, new RemoteViews are built, the launcher redraws. Each arrow in that chain has a delay, and the first two can be deferred by the system.</p>

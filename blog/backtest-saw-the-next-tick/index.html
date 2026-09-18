@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The first arbitrage detector I evaluated on recorded data was extraordinary. It found spreads everywhere, it closed them at the quoted prices, and its backtested returns were the kind that make you check the code for a sign error. There was no sign error. There was a clock error, and it is the same clock error that sits inside most leaky models on time-ordered data: the features were aligned by the time an event happened, not by the time my system could have known about it.</p>
 <h2>Two timestamps on every event</h2>
 <p>Every event in a time-ordered system has two times. The first is when it happened: the exchange matched the trade, the sensor read the value, the customer clicked the button. The second is when it became knowable to you: when the message arrived over the wire, when the batch job ran, when the record was written. The gap between them is latency, and it is never zero. Shayanomaly streams order books from five venues, and each message carries the exchange&#39;s timestamp and a local receipt time, and the two are never equal. The <a href="https://hftbacktest.readthedocs.io/en/latest/data.html">hftbacktest documentation</a> builds its whole data model on this distinction, with an exchange timestamp and a local timestamp on every row and the feed latency defined as the difference.</p>

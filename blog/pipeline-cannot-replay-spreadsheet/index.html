@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Ask a CRM a simple question: what did the pipeline look like at nine o&#39;clock last Monday. Not what it looks like now with a date filter, which is a different question with a different answer. What was in each stage, at that moment, before the week&#39;s moves. Most systems cannot answer, and the ones that cannot are, whatever their price, a spreadsheet with a login screen. The current state is stored; the history that produced it is not, or is kept for a while and then thrown away. When I designed the pipeline model for the CRM at CustomGlide, this was the question I built around, and the design that answers it is older than any CRM.</p>
 <h2>The Monday replay test</h2>
 <p>The test is one query. Pick any past instant and ask the system for the pipeline as it was. A system that passes has a transition log as its source of truth: every change of stage, owner, amount or status is a row with a timestamp, and the current state of a deal is derived from its rows. A system that fails has a mutable deal record whose stage column was overwritten, with maybe a history table on the side that was never the source of anything.</p>

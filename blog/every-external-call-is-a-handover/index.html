@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every Solidity audit checklist has a line for reentrancy, and every tutorial teaches the same fix: checks, effects, interactions, plus a guard modifier. The fix works for the case the tutorial shows and it names the wrong thing. Reentrancy is a symptom. The event underneath it is that control leaves your contract while some of your state is still to be written, and that event has more consequences than the one where the caller comes straight back in. It is also how a token&#39;s transfer hook runs your counterparty&#39;s code, how another contract reads your half-updated numbers, and how a flash-loan receiver ends up running inside someone else&#39;s transaction. Counting those moments is a better habit than pattern-matching for the symptom, and the count has a target, which is zero.</p>
 <h2>The handover count</h2>
 <p>For each function, count the points where control leaves the contract, by any external call, with at least one state variable still to be written after that point. That is the handover count. A function with zero handovers cannot be re-entered in any way that matters, because there is nothing half-written for a re-entrant caller to exploit, and nothing stale for an outside reader to see. A function with a non-zero count is not necessarily wrong; it has a reason, and the reason gets written next to the call in the code, and the count and its reasons are reported per function in the audit.</p>

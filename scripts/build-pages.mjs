@@ -143,6 +143,7 @@ function shell({ title, description, path, active, body, jsonld, noindex = false
 ${jsonld ? `    <script type="application/ld+json">\n${JSON.stringify(jsonld, null, 2).split('\n').map(l => '    ' + l).join('\n')}\n    </script>` : ''}
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -219,7 +220,7 @@ function postPage(p) {
   const body = `        <article>
 ${pageHead(esc(p.title), esc(p.summary), `${longDate(p.date)} <span class="mx-2">·</span> ${p.minutes} min read`)}
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 ${p.html}
                 </div>
                 ${p.tags.length ? `<div class="flex flex-wrap gap-2 mt-10 reveal">${p.tags.map(t => `<span class="tag-chip">${esc(t)}</span>`).join('')}</div>` : ''}

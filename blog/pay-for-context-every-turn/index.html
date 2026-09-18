@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The intuition about language model bills is that you pay for what the model writes. Output tokens are the expensive ones, five or six times the price of input at every provider, so the answer must be where the money goes. In a retrieval chat, it is not. Every turn resends the system prompt, the retrieved passages and the entire conversation so far, and the model writes a few hundred tokens back. Over a ten-turn conversation the input tokens billed outrun the output tokens by a factor that starts around twelve and, depending on one design decision, ends anywhere between twenty and a hundred. That factor has a name in my cost reviews, and it is the first number I compute for any workload that talks to a model more than once.</p>
 <h2>The resend ratio</h2>
 <p>The resend ratio is input tokens billed divided by output tokens generated, over a whole session. It is one number, it comes straight from the usage fields every API returns, and it answers the only question that matters before optimising: is this workload&#39;s cost in generation, which is rare, or in context, which is usual? A ratio near one is a generation workload, where the model writes about as much as it reads, and the levers are shorter answers and cheaper models. A ratio in the tens is a context workload, and the levers are the ones that follow: what goes in the prompt, what stays in the history, and what the cache can reuse. Most teams measure the second kind of workload with the instincts of the first, which is how a chat product ends up choosing a cheaper model to fix a bill that the model&#39;s price had almost nothing to do with.</p>

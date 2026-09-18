@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Every backup dashboard I have seen reports the same thing: last night&#39;s job succeeded, the snapshot exists, the retention policy is in force. All true, all reassuring, and none of it is the number that matters. The number that matters is how long it takes to get from nothing, an empty cloud account, a repository and an offsite copy, to a system that passes its production health check. That number is rarely measured, because measuring it is frightening, and the three most instructive postmortems in the industry are instructive precisely because nobody had measured it before the day it mattered.</p>
 <h2>Three restores that took longer than anyone planned</h2>
 <p>GitLab&#39;s <a href="https://about.gitlab.com/blog/postmortem-of-database-outage-of-january-31/">postmortem of its January 2017 database outage</a> is the best-known. An engineer removed the data directory on the wrong server; the regular backups turned out not to be usable; the restore ran from a staging snapshot, which had to be copied across a slow network link, and the copy alone took about eighteen hours, with roughly six hours of production data lost for good.</p>

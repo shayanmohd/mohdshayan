@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Everyone who serves language models learns the same rule of thumb: 8-bit weights are free, 4-bit weights are nearly free, and below 4 bits the model gets noticeably worse, fast. The rule is right, and the explanations offered for it are usually hand-waving about information content. The actual reason is arithmetic that fits on a napkin.</p>
 <p>Weight quantisation is rounding. The rounding error is the range of each group of weights divided by the number of levels available, and the range is set by the largest weight in the group, which is an outlier that almost nothing else in the group resembles. Sixteen levels leave enough of the range for the bulk of the weights after the outlier has taken its share. Eight do not. Everything published below 4 bits is, at bottom, a way of stopping the outlier from taxing everyone else.</p>
 <h2>The cliff, measured</h2>

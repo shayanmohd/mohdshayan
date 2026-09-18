@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Teams arrive at a CRM migration with their roles already named. A company leaving Salesforce has profiles called things like Regional Sales Lead and Support Tier 2; a company leaving HubSpot has its own; and each expects to keep them, because the names are how the company describes itself. A permission system built as a single enum of roles cannot accept them without a code change and a deploy, and a permission system built as tables all the way down accepts them and then loses track of what any permission actually does. The way out is to notice that the two halves of the problem change for different reasons, and to put each half where its kind of change is cheap.</p>
 <h2>Capabilities scale with the code</h2>
 <p>A capability is a thing the software can do: view a deal, edit a pipeline stage, export contacts, connect a mailbox. New capabilities appear when engineers ship features, and only then. The clearest public record of that relationship is AWS&#39;s own permission list, which is the set of IAM actions the platform recognises, one per API operation, published in its <a href="https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html">service authorization reference</a>. The <a href="https://github.com/iann0036/iam-dataset">iam-dataset</a> project has tracked that list daily since 2020, and the count is a nearly straight line: about 7,500 actions in June 2020, 9,259 at the start of 2021, 16,214 at the start of 2024, and 21,916 in mid-September 2026, which is roughly two thousand new permissions a year, every year, added by nobody but the engineers who shipped the APIs behind them.</p>

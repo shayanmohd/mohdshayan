@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A staged rollout feels like caution. Ship to one percent, watch the crash rate, widen to five, watch again, and so on to everyone. I run that ladder for eight apps on Google Play, and for a long time I treated the early stages as if they were telling me something about the crash rate. They were not, or not the thing I thought. At one percent of a small app&#39;s users, the sample is too small to see the very rise in crashes that Play would penalise, and a stage that cannot see the thing you are watching for is not a test of it. It is a delay with a dashboard.</p>
 <h2>What Play is watching for</h2>
 <p>Google Play measures app quality through Android vitals, and its <a href="https://support.google.com/googleplay/android-developer/answer/9844486">documentation</a> states the thresholds it acts on, with the definitions of a user-perceived crash and ANR in the <a href="https://developer.android.com/topic/performance/vitals">Android vitals developer guide</a>. An app whose user-perceived crash rate exceeds 1.09 percent of daily users, or whose user-perceived ANR rate exceeds 0.47 percent, is over the bad-behaviour threshold and becomes less discoverable on the store; on any single device model the threshold is 8 percent, and an app over it there may get a warning on its listing for that device. Those are the numbers a rollout is guarding against, so the question for each stage is whether it could detect a rise across them.</p>

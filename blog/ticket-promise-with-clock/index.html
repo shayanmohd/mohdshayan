@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A service-level agreement on a ticket is a promise with a clock attached: we will respond within four hours, resolve within two days. When the promise is broken, the post-mortem almost always finds that nobody was slow. The clock was paused by an agent&#39;s internal note and never resumed, or it kept running through a weekend the contract excluded, or two clocks were running on the same ticket because a reassignment started a second one. The breach was an accounting failure, and accounting failures come from modelling the ticket as a record with a status field and a nightly job that tries to reconstruct what the clocks should have done. The fix is to model the ticket as a state machine in which every state carries exactly one clock and names exactly one actor who can stop it.</p>
 <h2>The one-pause rule</h2>
 <p>The rule that makes the design work is small enough to state in one sentence: every SLA clock has exactly one party whose action can pause it, and that party is never the one being measured. The response clock measures the agent, so an agent&#39;s action cannot pause it. Writing an internal note, reassigning the ticket, changing its priority, none of those stop the clock, because they are things the measured party does. What stops the response clock is a customer reply, because the ticket is now waiting on the customer, or a scheduled callback that the customer agreed to, because the promise has been renegotiated with the person it was made to. The resolution clock has the same shape with a longer horizon.</p>

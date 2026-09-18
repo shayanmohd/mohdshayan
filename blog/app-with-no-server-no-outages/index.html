@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>Habits, the tracker I built for Android, has no server. Every record lives in a <a href="https://developer.android.com/training/data-storage/room">Room</a> database on the phone; there is no account to create, nothing to sync, no backend to keep alive. I made that decision for reasons of taste before I understood what it bought and what it cost, and the accounting is worth writing down because the same decision faces every small product, and it is usually made by default in the other direction. A server is the assumed starting point. It should be the exception, added for a specific reason, and the reason should be on a short list.</p>
 <h2>The dividend</h2>
 <p>Start with what disappears when there is no server. Uptime disappears as a concern: there is nothing to be down, no on-call, no status page, no incident retrospective. Authentication disappears: no passwords to store, no reset flow, no session tokens, no account takeover to defend against. Per-user cost disappears: the thousandth user costs exactly what the first did, which is nothing, so there is no pricing model needed to cover infrastructure and no reason to gate features behind one. The privacy policy shrinks to a paragraph, because there is nothing to describe: the data is on the device, the app does not send it anywhere, and the sentence is true. Compliance questions about data residency and retention answer themselves. And the codebase loses an entire tier, the API layer, its client, the retry logic, the migration coordination between server and app versions.</p>

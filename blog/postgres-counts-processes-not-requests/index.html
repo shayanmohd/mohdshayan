@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The error arrives as &quot;too many connections&quot;, and the first instinct is to raise the limit. The limit is not the problem. Postgres runs one operating-system process per connection, and the number of connections is not something your code decides; it is the product of two numbers, only one of which you control. Every instance of your application carries a pool, and the number of instances is set by whoever scales your compute. Under a serverless platform that is the platform, and it can decide to run fifty copies of your function in the same second. Fifty pools of ten is five hundred backends asking for a database that was provisioned for a hundred.</p>
 <h2>The pool product</h2>
 <p>I keep this as an equation because it is the only way the conversation stays honest. The pool product is the number of instances that can run at once, times the maximum connections each instance&#39;s pool will open. It has to stay below the database&#39;s connection ceiling, minus the connections reserved for administration, replication and monitoring, or the database will refuse connections at exactly the moment traffic is highest. Nobody should set a pool size until they can write the product down, and most teams cannot, because they do not know the first factor.</p>

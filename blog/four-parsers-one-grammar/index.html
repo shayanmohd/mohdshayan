@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>My paper benchmarked a CYK parser against LR(1), Earley and recursive descent on the same grammars, and the honest summary of what a benchmark like that can tell you is less than people hope. Each parser wins on some input and loses on another, and the asymptotic bounds everybody quotes, cubic for CYK, cubic worst case for Earley, linear for LR(1) and for a hand-written descent, describe the axis on which the comparison is least interesting. The axis that decides which parser to use is not how long the input is. It is how often the grammar changes, and whether the grammar is ambiguous.</p>
 <h2>The wrong axis</h2>
 <p>Every parsing textbook ranks the algorithms by running time in the length of the input, and for a compiler that is right. A compiler&#39;s grammar is fixed when the compiler is built, so the cost of preparing the grammar, building LR tables or writing descent functions by hand, is paid once and amortised over every file ever parsed. What remains is the per-input cost, and there the table-driven and hand-written parsers are linear and the chart-based ones are not.</p>

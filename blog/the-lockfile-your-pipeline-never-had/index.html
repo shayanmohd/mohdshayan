@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>A package.json without a lockfile would not pass review at any company I have worked with, and a workflow file that pulls a dozen third-party actions by tag passes every day. The two are the same mistake. A tag is a pointer that its owner can move, and in March 2025 one of the most widely used actions had its tags moved to a commit that dumped every secret in the workflow&#39;s environment into the build logs. The Habits app builds in GitHub Actions in a public repository and SocialSure&#39;s platform deploys through CI/CD, so the incident was not abstract, and the test I built afterwards is the subject of this post.</p>
 <h2>One moving tag, twenty-three thousand repositories</h2>
 <p>The compromise of tj-actions/changed-files, tracked as <a href="https://www.wiz.io/blog/github-action-tj-actions-changed-files-supply-chain-attack-cve-2025-30066">CVE-2025-30066</a>, rewrote the action&#39;s version tags, from v1 through v45.0.7, to point at a malicious commit on 14 and 15 March 2025. Any workflow referencing the action by tag, which was nearly all of them, ran the malicious code on its next trigger; the action was used in over 23,000 repositories. The chain behind it, per <a href="https://www.cisa.gov/news-events/alerts/2025/03/18/supply-chain-compromise-third-party-tj-actionschanged-files-cve-2025-30066-and-reviewdogaction">CISA&#39;s alert</a>, ran through a second compromised action, reviewdog/action-setup, on 11 March, itself reached through the maintainers&#39; access to the SpotBugs project. Three hops, each through a credential the previous hop exposed, and the final hop multiplied by every repository that trusted a tag.</p>

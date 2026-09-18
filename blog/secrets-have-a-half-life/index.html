@@ -63,6 +63,7 @@
     </script>
 </head>
 <body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -128,7 +129,7 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
-                <div class="prose reveal">
+                <div class="prose">
 <p>The assumption most secrets programmes are built on is that leaks are preventable. Scan the commits, block the push, train the team, and the secret never reaches a public repository. The assumption is wrong at scale, and GitGuardian&#39;s <a href="https://blog.gitguardian.com/the-state-of-secrets-sprawl-2026/">State of Secrets Sprawl 2026</a> puts numbers on how wrong: 28.65 million new hard-coded secrets reached public GitHub commits in 2025 alone, up 34 percent on the year before. Prevention is worth doing. It is not the thing that decides whether a leak hurts you. What decides that is how long the secret keeps working after it leaks, and the report&#39;s other finding is the one to build on.</p>
 <h2>The secret that keeps working</h2>
 <p>Of the credentials GitGuardian confirmed valid in 2022, close to 70 percent were still valid in January 2025, and when retested in January 2026, more than 64 percent still worked. Four years after being pushed to a public repository, nearly two thirds of those keys had not been rotated or revoked. They had simply been forgotten, by everyone except whoever had copied them.</p>
