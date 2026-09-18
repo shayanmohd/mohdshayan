@@ -1,6 +1,6 @@
 ---
 title: Glamsterdam removes the relay, not the builder
-date: 2026-09-17
+date: 2026-09-09
 summary: ePBS deletes the relay as a trusted party and makes the builder's payment unconditional. The builder still sees every bundle, and gains an in-protocol way to drop the block.
 tags: MEV, Ethereum, Glamsterdam
 draft: false
@@ -56,8 +56,8 @@ The mechanism is worth stating precisely, because the security argument depends 
 <text x="40" y="106" text-anchor="middle" class="viz-tick">0 s</text>
 <text x="600" y="106" text-anchor="middle" class="viz-tick">12 s</text>
 <line x1="40" y1="60" x2="40" y2="92" class="viz-axis"/>
-<text x="46" y="50" class="viz-label">beacon block with the bid</text>
-<text x="46" y="36" class="viz-label-muted">payment deducted here</text>
+<text x="46" y="54" class="viz-label">beacon block with the bid</text>
+<text x="46" y="34" class="viz-label-muted">payment deducted here</text>
 <line x1="200" y1="60" x2="200" y2="92" class="viz-axis"/>
 <text x="206" y="128" class="viz-label">attesters vote on the block</text>
 <line x1="320" y1="60" x2="320" y2="92" class="viz-axis"/>

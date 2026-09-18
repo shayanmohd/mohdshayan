@@ -1,6 +1,6 @@
 ---
 title: What hardware-backed actually promises
-date: 2026-09-17
+date: 2025-03-01
 summary: A key in the Android Keystore cannot be copied off the device, and that is the whole promise. An attacker with root can still use it. Most vault designs quietly assume more.
 tags: Android, Key Management, Hardware Security
 draft: false

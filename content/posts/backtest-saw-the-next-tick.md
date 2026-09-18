@@ -1,6 +1,6 @@
 ---
 title: Your backtest saw the next tick
-date: 2026-09-17
+date: 2026-03-22
 summary: Most leakage in time-ordered data is not a leaked column but a leaked clock. Features joined by when an event happened, not when your system could have known it, leak the future.
 tags: Evaluation, Data Leakage, Time Series
 draft: false
@@ -29,8 +29,8 @@ Every event in a time-ordered system has two times. The first is when it happene
 <text x="400" y="52" text-anchor="middle" class="viz-label">knowable-at</text>
 <text x="400" y="176" text-anchor="middle" class="viz-tick">local receipt time</text>
 <circle cx="280" cy="110" r="5" class="viz-d4"/>
-<text x="280" y="98" text-anchor="middle" class="viz-value">decision here uses a price not yet received</text>
-<text x="500" y="98" text-anchor="middle" class="viz-label-muted">safe to use from here</text>
+<text x="280" y="98" text-anchor="middle" class="viz-value">decision here: a price not yet received</text>
+<text x="500" y="134" text-anchor="middle" class="viz-label-muted">safe to use from here</text>
 </svg>
 <figcaption>Illustrative: the two-timestamp model described in the <a href="https://hftbacktest.readthedocs.io/en/latest/data.html">hftbacktest data documentation</a>, drawn for one event.</figcaption>
 </figure>

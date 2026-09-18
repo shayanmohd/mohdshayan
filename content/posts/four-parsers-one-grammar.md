@@ -1,6 +1,6 @@
 ---
 title: Four parsers, one grammar, no winner
-date: 2026-09-17
+date: 2026-06-06
 summary: CYK, Earley, LR(1) and recursive descent are usually ranked by asymptotic cost, which is the wrong axis. The right axes are how often the grammar changes and how ambiguous it is.
 tags: Parsing, Structured Output, Algorithms
 draft: false
@@ -51,7 +51,7 @@ What makes me trust the quadrant is that it predicted a decision I had no part i
 <title id="f2-t">Total cost against number of inputs parsed, table-driven against table-free, for one grammar</title>
 <desc id="f2-d">Two lines. A table-driven parser starts with a large fixed cost to build its tables and then rises slowly per input. A table-free parser starts near zero and rises more steeply per input. They cross at some number of inputs; below it the table-free parser is cheaper, above it the table-driven one. A per-request grammar sits at one input, far to the left of the crossing.</desc>
 <text x="0" y="18" class="viz-title">Where the preparation cost pays back</text>
-<text x="0" y="36" class="viz-sub">Total cost against inputs parsed with one grammar; an illustrative model</text>
+<text x="0" y="36" class="viz-sub">Total cost against inputs parsed with one grammar; illustrative</text>
 <line x1="380" y1="31" x2="394" y2="31" class="viz-s2"/><text x="400" y="35" class="viz-label-muted">table-driven</text>
 <line x1="500" y1="31" x2="514" y2="31" class="viz-s1"/><text x="520" y="35" class="viz-label-muted">table-free</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/>
@@ -67,7 +67,7 @@ What makes me trust the quadrant is that it predicted a decision I had no part i
 <text x="374" y="122" class="viz-value">crossing</text>
 <circle cx="56" cy="258" r="5" class="viz-d1"/>
 <text x="70" y="250" class="viz-value">a per-request grammar lives here</text>
-<text x="70" y="146" class="viz-label-muted">table build, paid before the first input</text>
+<text x="70" y="132" class="viz-label-muted">table build, paid before the first input</text>
 </svg>
 <figcaption>Illustrative: two straight lines with a fixed cost and a slope, drawn to show why a per-request grammar never reaches the crossing.</figcaption>
 </figure>
@@ -90,15 +90,15 @@ The other thing the benchmark cannot say is what happens under ambiguity. A dete
 <desc id="f3-d">Left: an Earley chart as five state sets, one per position from zero to four, each holding dotted rules; arrows labelled predict, scan and complete connect them. Right: the CYK triangle for the same four tokens, ten cells, each holding the nonterminals that span the cell's range. A note says both hold every sub-parse, and Earley builds its sets from the rules directly, with no tables.</desc>
 <text x="0" y="18" class="viz-title">Two charts, same information, no tables</text>
 <text x="0" y="36" class="viz-sub">Earley state sets on the left; CYK cells on the right, for four tokens</text>
-<rect x="8" y="60" width="52" height="150" rx="6" class="viz-box"/><text x="34" y="82" text-anchor="middle" class="viz-tick">S0</text>
-<rect x="70" y="60" width="52" height="150" rx="6" class="viz-box"/><text x="96" y="82" text-anchor="middle" class="viz-tick">S1</text>
-<rect x="132" y="60" width="52" height="150" rx="6" class="viz-box-accent"/><text x="158" y="82" text-anchor="middle" class="viz-tick">S2</text>
-<rect x="194" y="60" width="52" height="150" rx="6" class="viz-box"/><text x="220" y="82" text-anchor="middle" class="viz-tick">S3</text>
-<rect x="256" y="60" width="52" height="150" rx="6" class="viz-box"/><text x="282" y="82" text-anchor="middle" class="viz-tick">S4</text>
+<rect x="4" y="60" width="60" height="150" rx="6" class="viz-box"/><text x="34" y="82" text-anchor="middle" class="viz-tick">S0</text>
+<rect x="68" y="60" width="60" height="150" rx="6" class="viz-box"/><text x="98" y="82" text-anchor="middle" class="viz-tick">S1</text>
+<rect x="132" y="60" width="60" height="150" rx="6" class="viz-box-accent"/><text x="162" y="82" text-anchor="middle" class="viz-tick">S2</text>
+<rect x="196" y="60" width="60" height="150" rx="6" class="viz-box"/><text x="226" y="82" text-anchor="middle" class="viz-tick">S3</text>
+<rect x="260" y="60" width="60" height="150" rx="6" class="viz-box"/><text x="290" y="82" text-anchor="middle" class="viz-tick">S4</text>
 <text x="34" y="110" text-anchor="middle" class="viz-tick">predict</text>
-<text x="96" y="110" text-anchor="middle" class="viz-tick">scan</text>
-<text x="158" y="110" text-anchor="middle" class="viz-tick">complete</text>
-<text x="158" y="236" text-anchor="middle" class="viz-label-muted">dotted rules per position</text>
+<text x="98" y="110" text-anchor="middle" class="viz-tick">scan</text>
+<text x="162" y="110" text-anchor="middle" class="viz-tick">complete</text>
+<text x="162" y="236" text-anchor="middle" class="viz-label-muted">dotted rules per position</text>
 <rect x="360" y="180" width="60" height="26" rx="4" class="viz-box"/><rect x="428" y="180" width="60" height="26" rx="4" class="viz-box"/><rect x="496" y="180" width="60" height="26" rx="4" class="viz-box"/><rect x="564" y="180" width="60" height="26" rx="4" class="viz-box"/>
 <rect x="394" y="146" width="60" height="26" rx="4" class="viz-box"/><rect x="462" y="146" width="60" height="26" rx="4" class="viz-box-accent"/><rect x="530" y="146" width="60" height="26" rx="4" class="viz-box"/>
 <rect x="428" y="112" width="60" height="26" rx="4" class="viz-box"/><rect x="496" y="112" width="60" height="26" rx="4" class="viz-box"/>

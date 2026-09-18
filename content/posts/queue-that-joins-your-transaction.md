@@ -1,6 +1,6 @@
 ---
 title: The queue that joins your transaction
-date: 2026-09-18
+date: 2026-01-30
 summary: The reason to run background jobs from a Postgres table is not that it is cheaper than Redis. It is that the enqueue can share a transaction with the row that caused it.
 tags: PostgreSQL, Background Jobs, Redis
 draft: false
@@ -119,7 +119,7 @@ If speed is not the cost of a Postgres queue, what is? Dead tuples. Every job ro
 <title id="f4-t">Dead tuples against job rate under default autovacuum thresholds, from a simple model</title>
 <desc id="f4-d">Two lines against jobs per second. With completed jobs deleted promptly and the table kept small, dead tuples stay bounded, because autovacuum triggers often on a small table. With completed jobs retained, the table grows, the twenty percent threshold grows with it, vacuum runs less often relative to churn, and dead tuples climb steadily with the job rate until bloat dominates.</desc>
 <text x="0" y="18" class="viz-title">Keep the table small and vacuum keeps up</text>
-<text x="0" y="36" class="viz-sub">Dead tuples between vacuums against job rate, two retention policies; illustrative model</text>
+<text x="0" y="36" class="viz-sub">Dead tuples between vacuums by job rate; two policies</text>
 <line x1="330" y1="31" x2="344" y2="31" class="viz-s1"/><text x="350" y="35" class="viz-label-muted">completed rows deleted</text>
 <line x1="500" y1="31" x2="514" y2="31" class="viz-s4"/><text x="520" y="35" class="viz-label-muted">retained</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">high</text>

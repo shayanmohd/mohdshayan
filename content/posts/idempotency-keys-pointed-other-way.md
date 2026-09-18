@@ -1,6 +1,6 @@
 ---
 title: Idempotency keys pointed the other way
-date: 2026-09-17
+date: 2026-06-04
 summary: A payment API's idempotency key and a gate's anti-replay check are the same primitive with opposite second answers. Seen as one mechanism, the design collapses to two questions.
 tags: API Design, Idempotency, Security
 draft: false

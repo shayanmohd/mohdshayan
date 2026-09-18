@@ -1,6 +1,6 @@
 ---
 title: Eight apps and one release spine
-date: 2026-09-17
+date: 2026-09-04
 summary: A portfolio of small apps is only cheaper than one big app if shipping each costs almost nothing. Play charges that cost per app, per year; a shared release system pays it once.
 tags: Android, Release Engineering, Product Strategy
 draft: false
@@ -110,7 +110,7 @@ The test has a second use. It tells you what to automate next. Whatever step of 
 <title id="f3-t">Annual fixed cost against number of apps, two ways of shipping</title>
 <desc id="f3-d">Two lines over one to eight apps. Per-app pipelines rise steadily from 6 engineer-days for one app to 48 for eight. A shared spine starts higher at 21 days for one app and rises slowly to 28 for eight. The lines cross at about three apps.</desc>
 <text x="0" y="18" class="viz-title">Where a portfolio stops being cheap</text>
-<text x="0" y="36" class="viz-sub">Engineer-days per year on release work, a model with stated assumptions</text>
+<text x="0" y="36" class="viz-sub">Engineer-days per year on release work, a model with assumptions</text>
 <line x1="380" y1="31" x2="394" y2="31" class="viz-s1"/><text x="400" y="35" class="viz-label-muted">Shared spine</text>
 <line x1="500" y1="31" x2="514" y2="31" class="viz-sgray"/><text x="520" y="35" class="viz-label-muted">Per-app pipelines</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">50</text>

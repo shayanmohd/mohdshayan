@@ -1,6 +1,6 @@
 ---
 title: The third adult in every classroom app
-date: 2026-09-18
+date: 2025-11-10
 summary: AI tutors solve the content bottleneck, but the best Indian evidence for software tutoring came from staffed centres. The unpriced input is the adult who makes the child sit down.
 tags: Education, AI Tutors, Philanthropy
 draft: false
@@ -82,7 +82,7 @@ The rule I apply to any child-facing learning product, including the ones people
 <title id="f3-t">Cost per child for centre-based and home deployment, with the third-adult line shown</title>
 <desc id="f3-d">Two stacked bars, illustrative. Centre-based: device and content, a small segment; premises, a medium segment; the third adult, a large segment, highlighted. Home deployment as usually budgeted: device and content only, with the third-adult segment drawn as an empty outline labelled zero, and a note that the outcomes claimed were measured with the highlighted segment funded.</desc>
 <text x="0" y="18" class="viz-title">What the home budget quietly removes</text>
-<text x="0" y="36" class="viz-sub">Cost per child by component, two deployments; illustrative proportions</text>
+<text x="0" y="36" class="viz-sub">Cost per child by component, two deployments; drawn</text>
 <rect x="300" y="26" width="12" height="12" rx="3" class="viz-fgray"/><text x="318" y="37" class="viz-label-muted">device, content, premises</text>
 <rect x="520" y="26" width="12" height="12" rx="3" class="viz-f1"/><text x="538" y="37" class="viz-label-muted">third adult</text>
 <line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/>
@@ -96,8 +96,9 @@ The rule I apply to any child-facing learning product, including the ones people
 <rect x="380" y="204" width="120" height="60" class="viz-fgray"/>
 <rect x="380" y="116" width="120" height="86" rx="4" fill="none" class="viz-s4"/>
 <text x="440" y="240" text-anchor="middle" class="viz-tick">device, content</text>
-<text x="440" y="155" text-anchor="middle" class="viz-label-muted">third adult: zero</text>
-<text x="440" y="175" text-anchor="middle" class="viz-tick">the outcomes were measured here</text>
+<text x="440" y="150" text-anchor="middle" class="viz-label-muted">third adult: zero</text>
+<text x="440" y="170" text-anchor="middle" class="viz-tick">outcomes were</text>
+<text x="440" y="186" text-anchor="middle" class="viz-tick">measured here</text>
 <text x="440" y="288" text-anchor="middle" class="viz-tick">home deployment, as usually budgeted</text>
 </svg>
 <figcaption>Illustrative: the two budgets as proportions, drawn to make the missing line visible; no real programme's costs are shown.</figcaption>

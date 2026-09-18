@@ -1,6 +1,6 @@
 ---
 title: The pumping lemma is pigeonhole on trees
-date: 2026-09-17
+date: 2025-11-04
 summary: Students learn the pumping lemma as a five-variable spell. It is one observation: a tall parse tree repeats a nonterminal, and a repeated nonterminal is a subtree you can copy.
 tags: Formal Languages, Proofs, NLP
 draft: false

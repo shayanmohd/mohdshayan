@@ -68,19 +68,19 @@ To see the shape on a real repository I ran the measurement on [cal.com](https:/
 <line x1="328" y1="56" x2="328" y2="336" class="viz-grid"/>
 <line x1="56" y1="196" x2="600" y2="196" class="viz-grid"/>
 <text x="596" y="70" text-anchor="end" class="viz-tick">hot hubs</text>
-<text x="60" y="70" class="viz-tick">stable foundations</text>
-<text x="60" y="326" class="viz-tick">leaves: most packages sit here</text>
-<text x="596" y="326" text-anchor="end" class="viz-tick">apps and features</text>
+<text x="60" y="52" class="viz-tick">stable foundations</text>
+<text x="60" y="290" class="viz-tick">leaves: most packages sit here</text>
+<text x="596" y="290" text-anchor="end" class="viz-tick">apps and features</text>
 <circle cx="110.4" cy="81.2" r="6" class="viz-dgray"/><text x="120" y="78" class="viz-label-muted">types, 91</text>
 <circle cx="110.4" cy="84" r="6" class="viz-dgray"/>
 <circle cx="110.4" cy="100.8" r="6" class="viz-dgray"/><text x="120" y="108" class="viz-label-muted">config, dayjs, 84</text>
 <circle cx="110.4" cy="238" r="6" class="viz-dgray"/><text x="120" y="242" class="viz-label-muted">prisma, 35</text>
-<circle cx="110.4" cy="330" r="6" class="viz-dgray"/><text x="120" y="320" class="viz-label-muted">about 90 packages, churn 1, reach 0 to 7</text>
+<circle cx="110.4" cy="330" r="6" class="viz-dgray"/><text x="120" y="322" class="viz-label-muted">about 90 packages here</text>
 <circle cx="219.2" cy="305.2" r="6" class="viz-dgray"/><text x="229" y="300" class="viz-label-muted">ui, 11</text>
 <circle cx="328" cy="316.4" r="6" class="viz-dgray"/><text x="338" y="312" class="viz-label-muted">trpc, 7</text>
-<circle cx="436.8" cy="336" r="6" class="viz-dgray"/><text x="446" y="332" class="viz-label-muted">web app, 0</text>
+<circle cx="436.8" cy="336" r="6" class="viz-dgray"/><text x="446" y="350" class="viz-label-muted">web app, 0</text>
 <circle cx="436.8" cy="330.4" r="6" class="viz-dgray"/>
-<circle cx="600" cy="322" r="6" class="viz-dgray"/><text x="592" y="312" text-anchor="end" class="viz-label-muted">features, 5</text>
+<circle cx="600" cy="322" r="6" class="viz-dgray"/><text x="592" y="308" text-anchor="end" class="viz-label-muted">features, 5</text>
 <circle cx="436.8" cy="86.8" r="7" class="viz-d1"/><text x="448" y="92" class="viz-value">i18n: 7 commits, 89 deps</text>
 <circle cx="328" cy="103.6" r="7" class="viz-d1"/><text x="300" y="120" text-anchor="end" class="viz-value">lib: 5, 83</text>
 <circle cx="8" cy="374" r="5" class="viz-d1"/><text x="18" y="378" class="viz-label-muted">hot hub</text>

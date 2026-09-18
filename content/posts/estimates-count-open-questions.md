@@ -1,6 +1,6 @@
 ---
 title: Estimates are a count of open questions
-date: 2026-09-17
+date: 2026-06-12
 summary: Estimation error comes from the questions nobody asked, not from optimism about visible work. Price the questions, not the features; no fixed price while the client's stay open.
 tags: Contract Work, Estimation, Consulting
 draft: false
@@ -99,7 +99,7 @@ Client-only questions are the dangerous category, because they look closeable an
 <title id="f3-t">Quoted range width against the number of open client-only questions, from the rule in the post</title>
 <desc id="f3-d">A rising curve: with zero open client-only questions the quoted range is narrow, about plus or minus ten percent; with two, about plus or minus twenty-five; with four, about plus or minus fifty; with eight, roughly a factor of two either way. A marker at three questions shows where the rule stops allowing a fixed price.</desc>
 <text x="0" y="18" class="viz-title">Every open client question widens the quote</text>
-<text x="0" y="36" class="viz-sub">Quoted range as a multiple either side of the point estimate; illustrative</text>
+<text x="0" y="36" class="viz-sub">Quoted range as a multiple of the point estimate; illustrative</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">2.0x</text>
 <line x1="56" y1="108" x2="600" y2="108" class="viz-grid"/><text x="48" y="112" text-anchor="end" class="viz-tick">1.75x</text>
 <line x1="56" y1="160" x2="600" y2="160" class="viz-grid"/><text x="48" y="164" text-anchor="end" class="viz-tick">1.5x</text>

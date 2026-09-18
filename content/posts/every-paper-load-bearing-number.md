@@ -1,6 +1,6 @@
 ---
 title: Every paper has one load-bearing number
-date: 2026-09-17
+date: 2026-09-02
 summary: A paper's claim rests on one number that, a fifth worse, would have sunk it. Find that number first, ask four questions about how it was measured, and read the rest as context.
 tags: Research, Reading Papers, Evaluation
 draft: false
@@ -72,7 +72,7 @@ The load-bearing number is rarely labelled. It is the cell in the results table 
 <line x1="122" y1="80" x2="134" y2="80" class="viz-arrow" marker-end="url(#f2-ah)"/>
 <rect x="138" y="50" width="112" height="60" rx="8" class="viz-box-accent"/>
 <text x="194" y="76" text-anchor="middle" class="viz-label">The cell</text>
-<text x="194" y="94" text-anchor="middle" class="viz-label-muted">the number it rests on</text>
+<text x="194" y="94" text-anchor="middle" class="viz-label-muted">the number</text>
 <line x1="252" y1="80" x2="264" y2="80" class="viz-arrow" marker-end="url(#f2-ah)"/>
 <rect x="268" y="50" width="112" height="60" rx="8" class="viz-box"/>
 <text x="324" y="76" text-anchor="middle" class="viz-label">Its method</text>
@@ -113,7 +113,7 @@ Once found, the number gets four questions, and the answers decide what the pape
 <rect x="190" y="152" width="60" height="26" rx="6" class="viz-box-accent"/>
 <text x="24" y="170" class="viz-label">This paper</text>
 <text x="200" y="170" class="viz-value">74.8</text>
-<text x="24" y="204" class="viz-tick">the highlighted cell is the one a fifth worse would sink</text>
+<text x="24" y="204" class="viz-tick">the cell a fifth worse would sink</text>
 <rect x="332" y="40" width="300" height="180" rx="8" class="viz-box-ink"/>
 <text x="348" y="70" class="viz-on-ink">1. What was compared, tuned how?</text>
 <text x="348" y="106" class="viz-on-ink">2. On how many items?</text>

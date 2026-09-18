@@ -1,6 +1,6 @@
 ---
 title: Stateless tokens still need a kill switch
-date: 2026-09-17
+date: 2026-09-07
 summary: Every token system has a revocation lag, and a JWT sets it to the token lifetime. Write the allowed lag down per endpoint class and the stateless debate turns into arithmetic.
 tags: Authentication, JWT, Security
 draft: false
@@ -102,7 +102,7 @@ The mechanism that covers the middle rows is refresh token rotation with reuse d
 <text x="320" y="172" text-anchor="middle" class="viz-label-muted">access token, refresh token 3; token 2 marked used</text>
 <line x1="86" y1="222" x2="550" y2="222" class="viz-arrow" marker-end="url(#f3-ah)"/>
 <text x="320" y="216" text-anchor="middle" class="viz-value">stolen copy of token 2 presented</text>
-<rect x="150" y="234" width="340" height="30" rx="8" class="viz-box-ink"/>
+<rect x="100" y="234" width="440" height="30" rx="8" class="viz-box-ink"/>
 <text x="320" y="254" text-anchor="middle" class="viz-on-ink">used token reappeared: whole family revoked, 3 dies too</text>
 <text x="320" y="288" text-anchor="middle" class="viz-tick">both the thief and the real user are logged out; the lag on the issuance path is zero</text>
 </svg>

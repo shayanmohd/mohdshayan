@@ -1,6 +1,6 @@
 ---
 title: What a grammar can never check
-date: 2026-09-17
+date: 2026-01-28
 summary: Constrained decoding guarantees an output's shape, never its reference. Equality of two strings is the copy language, which no grammar recognises; a checker after decoding must.
 tags: Structured Output, Formal Languages, Constrained Decoding
 draft: false
@@ -82,7 +82,7 @@ The architecture that follows is two components rather than one. The decoder run
 <text x="8" y="52" class="viz-tick">EACH TOKEN</text>
 <rect x="8" y="60" width="140" height="120" rx="8" class="viz-box"/>
 <text x="78" y="84" text-anchor="middle" class="viz-label">Vocabulary</text>
-<rect x="24" y="96" width="108" height="30" rx="6" class="viz-box-accent"/><text x="78" y="116" text-anchor="middle" class="viz-label-muted">allowed by grammar</text>
+<rect x="24" y="96" width="108" height="30" rx="6" class="viz-box-accent"/><text x="78" y="116" text-anchor="middle" class="viz-label-muted">grammar allows</text>
 <rect x="24" y="134" width="108" height="30" rx="6" class="viz-box-ink"/><text x="78" y="154" text-anchor="middle" class="viz-on-ink">masked out</text>
 <line x1="150" y1="120" x2="172" y2="120" class="viz-arrow" marker-end="url(#f3-ah)"/>
 <rect x="176" y="90" width="110" height="60" rx="8" class="viz-box"/>
@@ -92,10 +92,10 @@ The architecture that follows is two components rather than one. The decoder run
 <text x="330" y="52" class="viz-tick">WHOLE OUTPUT</text>
 <rect x="314" y="60" width="150" height="120" rx="8" class="viz-box-accent"/>
 <text x="389" y="84" text-anchor="middle" class="viz-label">Checker gate</text>
-<text x="389" y="106" text-anchor="middle" class="viz-label-muted">fields that must match</text>
-<text x="389" y="124" text-anchor="middle" class="viz-label-muted">spans found in source</text>
-<text x="389" y="142" text-anchor="middle" class="viz-label-muted">ids present, sums correct</text>
-<text x="389" y="166" text-anchor="middle" class="viz-tick">reference is checked here</text>
+<text x="389" y="106" text-anchor="middle" class="viz-label-muted">fields must match</text>
+<text x="389" y="124" text-anchor="middle" class="viz-label-muted">spans in the source</text>
+<text x="389" y="142" text-anchor="middle" class="viz-label-muted">ids exist, sums hold</text>
+<text x="389" y="194" text-anchor="middle" class="viz-tick">reference is checked here</text>
 <line x1="466" y1="100" x2="500" y2="100" class="viz-arrow" marker-end="url(#f3-ah)"/>
 <rect x="504" y="80" width="128" height="40" rx="8" class="viz-box"/><text x="568" y="105" text-anchor="middle" class="viz-label">pass: deliver</text>
 <line x1="466" y1="150" x2="500" y2="150" class="viz-arrow" marker-end="url(#f3-ah)"/>

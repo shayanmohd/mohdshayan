@@ -1,6 +1,6 @@
 ---
 title: Counting people out is the hard part
-date: 2026-09-18
+date: 2025-03-27
 summary: Gateless entry gives a perfect entry count and no exit count, so live occupancy is an estimate that drifts up all day. Show the drift, and let it decide when to count exits.
 tags: Ticketing, Analytics, Queueing
 draft: false
@@ -59,7 +59,7 @@ The number that expresses the honesty is what I call the exit deficit: at any mo
 <title id="f2-t">One day of scanned entries, modelled exits and the resulting occupancy estimate, with the exit deficit shaded</title>
 <desc id="f2-d">Lines over a day from opening to close. Cumulative scanned entries rise steadily and flatten toward close. Modelled cumulative exits, from an assumed dwell distribution, rise with a lag. The occupancy estimate is the gap between them, peaking in the early afternoon. A shaded band around the occupancy line widens through the day and is labelled the exit deficit, the uncertainty from the unmeasured dwell time.</desc>
 <text x="0" y="18" class="viz-title">Entries are certain; the gap is a guess that grows</text>
-<text x="0" y="36" class="viz-sub">Cumulative people over one day; illustrative shape from an assumed dwell distribution</text>
+<text x="0" y="36" class="viz-sub">Cumulative people in a day; an assumed dwell distribution</text>
 <line x1="330" y1="31" x2="344" y2="31" class="viz-s1"/><text x="350" y="35" class="viz-label-muted">scanned entries</text>
 <line x1="470" y1="31" x2="484" y2="31" class="viz-s2"/><text x="490" y="35" class="viz-label-muted">modelled exits</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/>
@@ -72,8 +72,8 @@ The number that expresses the honesty is what I call the exit deficit: at any mo
 <path d="M56 266 L140 236 L220 186 L300 126 L380 86 L460 66 L540 60 L600 58 L600 58 L540 70 L460 84 L380 112 L300 158 L220 214 L140 250 L56 266 Z" class="viz-band"/>
 <polyline points="56,266 140,236 220,186 300,126 380,86 460,66 540,60 600,58" class="viz-s1"/>
 <polyline points="56,266 140,264 220,246 300,206 380,156 460,110 540,78 600,60" class="viz-s2"/>
-<text x="330" y="182" class="viz-label-muted">occupancy estimate: the gap</text>
-<text x="330" y="200" class="viz-tick">shaded: the exit deficit, widening</text>
+<text x="60" y="70" class="viz-label-muted">occupancy estimate: the gap</text>
+<text x="60" y="88" class="viz-tick">shaded: the exit deficit, widening</text>
 <text x="328" y="318" text-anchor="middle" class="viz-label-muted">At close the building is empty, the lines meet, and the day's estimate can be checked.</text>
 </svg>
 <figcaption>Illustrative: the shape produced by steady arrivals and an assumed dwell distribution; the curves are constructed, not measured at any venue.</figcaption>
@@ -115,7 +115,7 @@ The deficit is also the trigger for the next investment. A venue has a tolerance
 <text x="532" y="140" text-anchor="middle" class="viz-label-muted">departures: exact</text>
 <text x="532" y="160" text-anchor="middle" class="viz-label-muted">occupancy: a count</text>
 <text x="532" y="180" text-anchor="middle" class="viz-label-muted">deficit: zero, if no door leaks</text>
-<text x="532" y="220" text-anchor="middle" class="viz-tick">every exit gated and staffed</text>
+<text x="532" y="220" text-anchor="middle" class="viz-tick">every exit gated</text>
 <text x="320" y="276" text-anchor="middle" class="viz-label-muted">The deficit decides which column a venue needs; most never need the third.</text>
 </svg>
 <figcaption>Illustrative: the three architectures and their outputs, as the design reasons about them.</figcaption>

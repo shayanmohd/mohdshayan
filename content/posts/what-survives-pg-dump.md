@@ -1,6 +1,6 @@
 ---
 title: What survives a pg_dump
-date: 2026-09-17
+date: 2026-07-04
 summary: Disk encryption defends against a stolen drive; databases are breached by a dump run with the app's own credentials. Sort each column by whether it stays unreadable in that dump.
 tags: PostgreSQL, Encryption, Threat Modelling
 draft: false
@@ -81,7 +81,7 @@ Take the schema, imagine the output of pg_dump run with the application's connec
 <text x="0" y="18" class="viz-title">Three outcomes for a CRM's columns</text>
 <rect x="8" y="40" width="200" height="220" rx="8" class="viz-box"/>
 <text x="108" y="66" text-anchor="middle" class="viz-label">Readable</text>
-<text x="108" y="84" text-anchor="middle" class="viz-tick">needed for search and sort</text>
+<text x="108" y="84" text-anchor="middle" class="viz-tick">needed for search</text>
 <text x="24" y="114" class="viz-label-muted">contacts.name</text>
 <text x="24" y="138" class="viz-label-muted">contacts.company</text>
 <text x="24" y="162" class="viz-label-muted">deals.stage</text>
@@ -90,7 +90,7 @@ Take the schema, imagine the output of pg_dump run with the application's connec
 <text x="24" y="234" class="viz-label-muted">memberships.role</text>
 <rect x="220" y="40" width="200" height="220" rx="8" class="viz-box-accent"/>
 <text x="320" y="66" text-anchor="middle" class="viz-label">Unreadable</text>
-<text x="320" y="84" text-anchor="middle" class="viz-tick">encrypted in the app, key outside</text>
+<text x="320" y="84" text-anchor="middle" class="viz-tick">encrypted, key outside</text>
 <text x="236" y="114" class="viz-label-muted">tickets.body</text>
 <text x="236" y="138" class="viz-label-muted">contacts.notes</text>
 <text x="236" y="162" class="viz-label-muted">mailboxes.refresh_token</text>
@@ -98,7 +98,7 @@ Take the schema, imagine the output of pg_dump run with the application's connec
 <text x="236" y="210" class="viz-label-muted">calls.transcript</text>
 <rect x="432" y="40" width="200" height="220" rx="8" class="viz-box-ink"/>
 <text x="532" y="66" text-anchor="middle" class="viz-on-ink">Not there</text>
-<text x="532" y="84" text-anchor="middle" class="viz-on-ink">a useless-when-read stand-in</text>
+<text x="532" y="84" text-anchor="middle" class="viz-on-ink">useless if read</text>
 <text x="448" y="114" class="viz-on-ink">cards: processor token</text>
 <text x="448" y="138" class="viz-on-ink">passwords: hash only</text>
 <text x="448" y="162" class="viz-on-ink">ID documents: object store,</text>

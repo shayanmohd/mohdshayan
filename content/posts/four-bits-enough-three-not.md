@@ -1,6 +1,6 @@
 ---
 title: Four bits are enough, three are not
-date: 2026-09-17
+date: 2024-12-27
 summary: Quantisation error is a group's range divided by its levels, and a few outlier weights set the range for everyone. Sixteen levels leave the bulk enough resolution; eight do not.
 tags: Quantisation, Linear Algebra, Inference
 draft: false
@@ -116,7 +116,7 @@ The fix everyone uses is to shrink the group. With groups of 128 consecutive wei
 <rect x="215" y="182" width="210" height="36" rx="18" class="viz-f1"/>
 <text x="320" y="205" text-anchor="middle" class="viz-on-ink">the same 128 weights</text>
 <circle cx="600" cy="200" r="6" class="viz-d4"/>
-<text x="596" y="176" text-anchor="end" class="viz-label-muted">one weight at 8 sigma</text>
+<text x="586" y="205" text-anchor="end" class="viz-label-muted">one weight at 8 sigma</text>
 <line x1="40" y1="222" x2="40" y2="230" class="viz-s4"/><line x1="77.3" y1="222" x2="77.3" y2="230" class="viz-s4"/><line x1="114.7" y1="222" x2="114.7" y2="230" class="viz-s4"/><line x1="152" y1="222" x2="152" y2="230" class="viz-s4"/><line x1="189.3" y1="222" x2="189.3" y2="230" class="viz-s4"/><line x1="226.7" y1="222" x2="226.7" y2="230" class="viz-s4"/><line x1="264" y1="222" x2="264" y2="230" class="viz-s4"/><line x1="301.3" y1="222" x2="301.3" y2="230" class="viz-s4"/><line x1="338.7" y1="222" x2="338.7" y2="230" class="viz-s4"/><line x1="376" y1="222" x2="376" y2="230" class="viz-s4"/><line x1="413.3" y1="222" x2="413.3" y2="230" class="viz-s4"/><line x1="450.7" y1="222" x2="450.7" y2="230" class="viz-s4"/><line x1="488" y1="222" x2="488" y2="230" class="viz-s4"/><line x1="525.3" y1="222" x2="525.3" y2="230" class="viz-s4"/><line x1="562.7" y1="222" x2="562.7" y2="230" class="viz-s4"/><line x1="600" y1="222" x2="600" y2="230" class="viz-s4"/>
 <text x="320" y="256" text-anchor="middle" class="viz-label-muted">Same 16 levels, stretched over the outlier: six inside the cluster, ten in empty space.</text>
 <text x="320" y="284" text-anchor="middle" class="viz-tick">the range tax is the share of levels in the empty space, here over sixty percent</text>

@@ -1,6 +1,6 @@
 ---
 title: Your upload key is disposable
-date: 2026-09-18
+date: 2026-09-11
 summary: Under Play App Signing the two keys are different classes: the upload key proves you are you and can be reset; the signing key is what devices trust. In 2026 the split sharpened.
 tags: Android, Release Engineering, Post-Quantum
 draft: false
@@ -31,7 +31,7 @@ The [Play App Signing documentation](https://support.google.com/googleplay/andro
 <text x="320" y="134" text-anchor="middle" class="viz-on-ink">held by Google</text>
 <rect x="236" y="164" width="168" height="70" rx="6" class="viz-box-ink"/>
 <text x="320" y="188" text-anchor="middle" class="viz-on-ink">hybrid key</text>
-<text x="320" y="206" text-anchor="middle" class="viz-on-ink">RSA-4096 plus ML-DSA-65</text>
+<text x="320" y="206" text-anchor="middle" class="viz-on-ink">RSA plus ML-DSA-65</text>
 <text x="320" y="224" text-anchor="middle" class="viz-on-ink">held by Google</text>
 <line x1="422" y1="122" x2="478" y2="122" class="viz-arrow" marker-end="url(#f1-ah)"/>
 <rect x="482" y="92" width="150" height="60" rx="8" class="viz-box"/>
@@ -88,7 +88,7 @@ If the app signing key is Google's and the devices' concern, then everything the
 <svg viewBox="0 0 640 262" role="img" aria-labelledby="f3-t f3-d">
 <title id="f3-t">APK signature schemes by the Android version that introduced them, through the 2026 hybrid signing change</title>
 <desc id="f3-d">A timeline of signature schemes: v1 JAR signing from the beginning; v2 in Android 7.0; v3 in Android 9, with key rotation; v4 in Android 11, for optimised distribution; v3.1 in Android 13; and in 2026, quantum-ready hybrid signing enforced from Android 17, which is not yet compatible with v4.</desc>
-<circle cx="440" cy="18" r="5" class="viz-d1"/><text x="450" y="22" class="viz-label-muted">signature scheme</text>
+<circle cx="420" cy="18" r="5" class="viz-d1"/><text x="430" y="22" class="viz-label-muted">signature scheme</text>
 <circle cx="560" cy="18" r="5" class="viz-d4"/><text x="570" y="22" class="viz-label-muted">key change</text>
 <line x1="40" y1="120" x2="600" y2="120" class="viz-axis"/>
 <circle cx="60" cy="120" r="6" class="viz-d1"/>

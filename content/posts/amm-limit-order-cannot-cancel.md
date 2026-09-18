@@ -1,6 +1,6 @@
 ---
 title: An AMM is a limit order you cannot cancel
-date: 2026-09-17
+date: 2026-09-03
 summary: A constant-product pool is a continuum of resting limit orders, and the liquidity provider's defining disadvantage is that none of them can be pulled when the price moves.
 tags: AMM, DeFi, Market Making
 draft: false
@@ -17,7 +17,7 @@ Take the constant-product rule, x times y equals k, that Uniswap's [second versi
 <title id="f1-t">The constant-product curve read as a ladder of resting orders</title>
 <desc id="f1-d">A convex curve x times y equals k drawn across the plot, with the current reserves marked as a dot. Along the curve above the dot, small step marks are labelled as sell orders at rising prices; below the dot, as buy orders at falling prices. A note says none of the steps can be removed when the price moves elsewhere.</desc>
 <text x="0" y="18" class="viz-title">Every point on the curve is an order</text>
-<text x="0" y="36" class="viz-sub">x times y equals k, read as resting bids and asks around the current reserves</text>
+<text x="0" y="36" class="viz-sub">x times y equals k, read as resting bids and asks around the pool</text>
 <line x1="56" y1="56" x2="56" y2="290" class="viz-axis"/>
 <line x1="56" y1="290" x2="600" y2="290" class="viz-axis"/>
 <text x="600" y="312" text-anchor="end" class="viz-label-muted">reserve of x</text>

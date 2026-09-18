@@ -1,6 +1,6 @@
 ---
 title: Your similarity threshold has no zero
-date: 2026-09-17
+date: 2025-03-08
 summary: A cosine threshold of 0.8 is not 80 percent of anything. Every embedding model puts unrelated text at its own baseline, and a threshold only means something measured above it.
 tags: Embeddings, Vector Search, RAG
 draft: false
@@ -79,15 +79,15 @@ One more thing the number is not. It is not a substitute for top-k. Retrieval us
 <desc id="f2-d">A quarter circle representing the unit sphere with a narrow cone of embedding vectors drawn inside it, all pointing in roughly the same direction. The floor of the cone is labelled the stranger score. A shell drawn a fixed angular distance above the floor is labelled the threshold. A second, differently shaped cone for another model shows that the same raw number would fall in a different place.</desc>
 <text x="0" y="18" class="viz-title">Where a threshold actually sits</text>
 <text x="0" y="36" class="viz-sub">Two models, the same raw threshold, different meanings</text>
-<path d="M60 344 A284 284 0 0 1 344 60" class="viz-axis"/>
+<path d="M60 344 A284 284 0 0 1 344 60" fill="none" class="viz-axis"/>
 <line x1="60" y1="344" x2="344" y2="60" class="viz-grid"/>
-<path d="M60 344 L316 108 A284 284 0 0 1 344 60 Z" class="viz-a1"/>
+<path d="M60 344 L316 108 A284 284 0 0 1 344 60 Z" class="viz-f1" fill-opacity="0.2"/>
 <line x1="60" y1="344" x2="316" y2="108" class="viz-s1"/>
 <line x1="60" y1="344" x2="344" y2="60" class="viz-s1"/>
 <text x="352" y="56" class="viz-label">Model A's cone</text>
 <text x="352" y="116" class="viz-label-muted">floor = stranger score</text>
-<path d="M60 344 A284 284 0 0 1 60 60" class="viz-grid"/>
-<path d="M60 344 L100 74 A284 284 0 0 1 60 60 Z" class="viz-a2"/>
+<path d="M60 344 A284 284 0 0 1 60 60" fill="none" class="viz-grid"/>
+<path d="M60 344 L100 74 A284 284 0 0 1 60 60 Z" class="viz-f2" fill-opacity="0.2"/>
 <line x1="60" y1="344" x2="100" y2="74" class="viz-s2"/>
 <line x1="60" y1="344" x2="60" y2="60" class="viz-s2"/>
 <text x="110" y="70" class="viz-label">Model B's cone</text>

@@ -1,6 +1,6 @@
 ---
 title: Your test set has been seen before
-date: 2026-09-17
+date: 2025-05-03
 summary: Near-duplicates across the split boundary are the commonest reason a held-out score is not a generalisation score. Dedupe before you split, and report the overlap next to accuracy.
 tags: Data Pipelines, Evaluation, Deduplication
 draft: false
@@ -94,7 +94,7 @@ Deduplication before the split is a pipeline habit, and habits lapse. What keeps
 <rect x="510" y="115" width="100" height="26" rx="5" class="viz-box-accent"/><text x="560" y="133" text-anchor="middle" class="viz-label-muted">test b</text>
 <rect x="510" y="166" width="100" height="26" rx="5" class="viz-box"/><text x="560" y="184" text-anchor="middle" class="viz-label-muted">test c</text>
 <line x1="508" y1="77" x2="132" y2="145" class="viz-sgray"/><text x="320" y="100" text-anchor="middle" class="viz-tick">0.41</text>
-<line x1="508" y1="128" x2="132" y2="111" class="viz-s1"/><text x="320" y="112" text-anchor="middle" class="viz-value">0.97: sibling</text>
+<line x1="508" y1="128" x2="132" y2="111" class="viz-s1"/><text x="400" y="140" text-anchor="middle" class="viz-value">0.97: sibling</text>
 <line x1="508" y1="179" x2="132" y2="179" class="viz-sgray"/><text x="320" y="172" text-anchor="middle" class="viz-tick">0.52</text>
 <line x1="0" y1="212" x2="640" y2="212" class="viz-axis"/>
 <text x="0" y="240" class="viz-label">Report: accuracy 94.1%, sibling rate 6.2% above the cutoff of 0.9</text>

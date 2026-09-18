@@ -1,6 +1,6 @@
 ---
 title: The judge shares the defendant's blind spots
-date: 2026-09-18
+date: 2025-04-20
 summary: An LLM judge is trained on nearly the same data as the model it grades, so their errors are correlated. Judge scores inflate on the hard items; sample the calibration set there.
 tags: Evaluation, LLM-as-Judge
 draft: false
@@ -52,7 +52,7 @@ I call the failure mode correlated blindness: judge and generator fail on the sa
 <title id="f2-t">Measured accuracy against true accuracy as the error correlation between judge and generator rises, from a stated toy model</title>
 <desc id="f2-d">Lines showing measured accuracy against true accuracy for three levels of error correlation. With independent errors, measured accuracy tracks true accuracy closely. With moderate correlation, measured accuracy sits above the diagonal, most of all in the middle of the range. With high correlation, measured accuracy stays high even as true accuracy falls, so a generator that is right half the time can score near eighty percent.</desc>
 <text x="0" y="18" class="viz-title">The more the two models share, the less the score can fall</text>
-<text x="0" y="36" class="viz-sub">Judge-measured accuracy against true accuracy under three error correlations; toy model</text>
+<text x="0" y="36" class="viz-sub">Judge-measured against true accuracy, three error correlations</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">100%</text>
 <line x1="56" y1="160" x2="600" y2="160" class="viz-grid"/><text x="48" y="164" text-anchor="end" class="viz-tick">50%</text>
 <line x1="56" y1="264" x2="600" y2="264" class="viz-axis"/><text x="48" y="268" text-anchor="end" class="viz-tick">0</text>
@@ -88,8 +88,8 @@ So the calibration sample should be weighted toward it. I call this the agreemen
 <text x="8" y="52" class="viz-tick">RANDOM SAMPLE</text>
 <rect x="8" y="60" width="300" height="180" rx="8" class="viz-box"/>
 <rect x="230" y="176" width="70" height="56" rx="6" class="viz-box-accent"/>
-<text x="265" y="200" text-anchor="middle" class="viz-tick">confident,</text>
-<text x="265" y="216" text-anchor="middle" class="viz-tick">scored high, wrong</text>
+<text x="222" y="176" text-anchor="end" class="viz-tick">confident,</text>
+<text x="222" y="192" text-anchor="end" class="viz-tick">scored high, wrong</text>
 <circle cx="40" cy="90" r="3" class="viz-dgray"/><circle cx="110" cy="140" r="3" class="viz-dgray"/><circle cx="180" cy="80" r="3" class="viz-dgray"/><circle cx="70" cy="200" r="3" class="viz-dgray"/><circle cx="150" cy="180" r="3" class="viz-dgray"/><circle cx="220" cy="120" r="3" class="viz-dgray"/><circle cx="260" cy="90" r="3" class="viz-dgray"/><circle cx="120" cy="100" r="3" class="viz-dgray"/><circle cx="200" cy="210" r="3" class="viz-dgray"/><circle cx="90" cy="160" r="3" class="viz-dgray"/><circle cx="240" cy="150" r="3" class="viz-dgray"/><circle cx="60" cy="120" r="3" class="viz-dgray"/>
 <text x="332" y="52" class="viz-tick">AGREEMENT-WEIGHTED SAMPLE</text>
 <rect x="332" y="60" width="300" height="180" rx="8" class="viz-box"/>

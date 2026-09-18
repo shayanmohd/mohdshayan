@@ -1,6 +1,6 @@
 ---
 title: The keys only I hold
-date: 2026-09-17
+date: 2026-07-09
 summary: For an engineer-founder the dangerous list is not the tasks only they can do but the credentials only they hold. Delegate by irreversibility, not by how often a key is used.
 tags: Founding, Security, Android
 draft: false
@@ -33,9 +33,9 @@ This is not a niche worry. Carta's [solo founders report](https://carta.com/data
 <circle cx="600" cy="82" r="5" class="viz-d1"/>
 <text x="148" y="170" class="viz-value">17%</text>
 <text x="592" y="74" text-anchor="end" class="viz-value">35%</text>
-<text x="56" y="120" class="viz-label-muted">In 2024, solo founders were 35% of new</text>
-<text x="56" y="140" class="viz-label-muted">companies and 17% of those that raised</text>
-<text x="56" y="160" class="viz-label-muted">a venture round in the same year.</text>
+<text x="300" y="212" class="viz-label-muted">In 2024, solo founders were 35% of new</text>
+<text x="300" y="232" class="viz-label-muted">companies and 17% of those that raised</text>
+<text x="300" y="252" class="viz-label-muted">a venture round in the same year.</text>
 </svg>
 <figcaption>Source: <a href="https://carta.com/data/solo-founders-report/">Carta, Solo Founders Report 2025</a>; intermediate years are not shown because the report gives them only in aggregate.</figcaption>
 </figure>
@@ -57,7 +57,7 @@ At the bottom, credentials recoverable in hours by anyone with an email address:
 <line x1="0" y1="56" x2="640" y2="56" class="viz-axis"/>
 <rect x="0" y="66" width="640" height="44" rx="6" class="viz-box-ink"/>
 <text x="20" y="93" class="viz-on-ink">Never</text>
-<text x="180" y="93" class="viz-on-ink">legacy signing key, wallet seed, sole data key</text>
+<text x="180" y="93" class="viz-on-ink">legacy signing key, wallet seed</text>
 <text x="440" y="93" class="viz-on-ink">none; split custody early</text>
 <rect x="0" y="118" width="640" height="44" rx="6" class="viz-box-accent"/>
 <text x="20" y="145" class="viz-label">Weeks</text>
@@ -100,7 +100,7 @@ For what remains on the top rung, the answer is split custody, and the tool is S
 <text x="315" y="70" text-anchor="middle" class="viz-label-muted">the founder</text>
 <rect x="240" y="94" width="150" height="48" rx="8" class="viz-box"/>
 <text x="315" y="114" text-anchor="middle" class="viz-label">Share 2</text>
-<text x="315" y="132" text-anchor="middle" class="viz-label-muted">a trusted second person</text>
+<text x="315" y="132" text-anchor="middle" class="viz-label-muted">a trusted colleague</text>
 <rect x="240" y="156" width="150" height="48" rx="8" class="viz-box"/>
 <text x="315" y="176" text-anchor="middle" class="viz-label">Share 3</text>
 <text x="315" y="194" text-anchor="middle" class="viz-label-muted">a third party, with instructions</text>
@@ -108,7 +108,7 @@ For what remains on the top rung, the answer is split custody, and the tool is S
 <text x="435" y="108" text-anchor="middle" class="viz-tick">any two</text>
 <rect x="482" y="90" width="150" height="56" rx="8" class="viz-box-accent"/>
 <text x="557" y="114" text-anchor="middle" class="viz-label">Reconstruct</text>
-<text x="557" y="132" text-anchor="middle" class="viz-label-muted">by a rehearsed procedure</text>
+<text x="557" y="132" text-anchor="middle" class="viz-label-muted">a rehearsed procedure</text>
 <text x="320" y="240" text-anchor="middle" class="viz-label-muted">A split key is useless if only the founder knows how to reassemble it.</text>
 </svg>
 <figcaption>Illustrative: the escrow as practised for the top rung; the threshold scheme is <a href="https://en.wikipedia.org/wiki/Shamir%27s_secret_sharing">Shamir's</a>, and the ceremony is the part that matters.</figcaption>

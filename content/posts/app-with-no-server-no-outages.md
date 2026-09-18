@@ -1,6 +1,6 @@
 ---
 title: An app with no server has no outages
-date: 2026-09-17
+date: 2026-09-05
 summary: Habits keeps every record in a Room database on the phone: no account, no sync, no backend. That removes whole categories of work and two things users want. Pricing both sides.
 tags: Android, Offline-First, Product Strategy
 draft: false
@@ -28,12 +28,12 @@ There are three things a user wants from an app that a device-only design cannot
 <text x="83" y="86" text-anchor="middle" class="viz-label">Room database</text>
 <text x="83" y="104" text-anchor="middle" class="viz-label-muted">on the device</text>
 <line x1="160" y1="92" x2="188" y2="92" class="viz-arrow" marker-end="url(#f1-ah)"/>
-<text x="174" y="80" text-anchor="middle" class="viz-tick">nightly</text>
+<text x="174" y="52" text-anchor="middle" class="viz-tick">nightly</text>
 <rect x="192" y="60" width="170" height="64" rx="8" class="viz-box"/>
 <text x="277" y="86" text-anchor="middle" class="viz-label">Auto Backup</text>
 <text x="277" y="104" text-anchor="middle" class="viz-label-muted">private Drive folder, 25 MB</text>
 <line x1="364" y1="92" x2="392" y2="92" class="viz-arrow" marker-end="url(#f1-ah)"/>
-<text x="378" y="80" text-anchor="middle" class="viz-tick">new phone</text>
+<text x="378" y="52" text-anchor="middle" class="viz-tick">new phone</text>
 <rect x="396" y="60" width="150" height="64" rx="8" class="viz-box"/>
 <text x="471" y="86" text-anchor="middle" class="viz-label">Restore</text>
 <text x="471" y="104" text-anchor="middle" class="viz-label-muted">same account, at setup</text>
@@ -58,23 +58,23 @@ That covers the ordinary case: a phone is replaced, the data comes back. It does
 <text x="0" y="18" class="viz-title">Free, nightly, and one copy deep</text>
 <text x="20" y="48" class="viz-tick">CONSTRAINT</text>
 <text x="240" y="48" class="viz-tick">VALUE</text>
-<text x="400" y="48" class="viz-tick">MEANS FOR THE APP</text>
+<text x="420" y="48" class="viz-tick">MEANS FOR THE APP</text>
 <line x1="0" y1="56" x2="640" y2="56" class="viz-axis"/>
 <text x="20" y="82" class="viz-label">Quota per app</text>
 <text x="240" y="82" class="viz-value">25 MB</text>
-<text x="400" y="82" class="viz-label-muted">years of records; no photos</text>
+<text x="420" y="82" class="viz-label-muted">years of records; no photos</text>
 <line x1="0" y1="96" x2="640" y2="96" class="viz-grid"/>
 <text x="20" y="122" class="viz-label">Interval</text>
 <text x="240" y="122" class="viz-value">24 h, idle, Wi-Fi</text>
-<text x="400" y="122" class="viz-label-muted">up to a day of entries at risk</text>
+<text x="420" y="122" class="viz-label-muted">up to a day of entries at risk</text>
 <line x1="0" y1="136" x2="640" y2="136" class="viz-grid"/>
 <text x="20" y="162" class="viz-label">Copies retained</text>
 <text x="240" y="162" class="viz-value">1, the latest</text>
-<text x="400" y="162" class="viz-label-muted">a bad night overwrites a good one</text>
+<text x="420" y="162" class="viz-label-muted">a bad night replaces a good one</text>
 <line x1="0" y1="176" x2="640" y2="176" class="viz-grid"/>
 <text x="20" y="202" class="viz-label">Encryption</text>
-<text x="240" y="202" class="viz-value">end to end, Android 9+</text>
-<text x="400" y="202" class="viz-label-muted">the developer never sees the data</text>
+<text x="240" y="202" class="viz-value">end to end, API 28+</text>
+<text x="420" y="202" class="viz-label-muted">the developer never sees it</text>
 <line x1="0" y1="216" x2="640" y2="216" class="viz-grid"/>
 </svg>
 <figcaption>Source: the Android <a href="https://developer.android.com/identity/data/autobackup">Auto Backup documentation</a>, September 2026.</figcaption>

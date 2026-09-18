@@ -1,6 +1,6 @@
 ---
 title: Stale is a feature
-date: 2026-09-17
+date: 2025-01-09
 summary: Most origins that fall over could have kept serving for hours if the CDN had been told a slightly old answer was acceptable. Write that tolerance down per route, in one header.
 tags: CDN, Caching, Cloudflare
 draft: false
@@ -19,7 +19,7 @@ The HTTP Archive's Web Almanac has counted directive usage across millions of pa
 <title id="f1-t">Share of web responses carrying the two stale directives, Web Almanac 2019 to 2021</title>
 <desc id="f1-d">Grouped horizontal bars for three years. stale-while-revalidate: 2.4 percent in 2019, 2.2 in 2020, 2.4 in 2021. stale-if-error: 0.2 percent in each year. Both series are flat and small.</desc>
 <text x="0" y="18" class="viz-title">The outage directive is used on one response in five hundred</text>
-<text x="0" y="36" class="viz-sub">Percent of responses whose Cache-Control includes the directive, mobile crawl</text>
+<text x="0" y="36" class="viz-sub">Percent of responses carrying the directive, mobile crawl</text>
 <rect x="330" y="26" width="12" height="12" rx="3" class="viz-f1"/><text x="348" y="37" class="viz-label-muted">stale-while-revalidate</text>
 <rect x="510" y="26" width="12" height="12" rx="3" class="viz-f4"/><text x="528" y="37" class="viz-label-muted">stale-if-error</text>
 <line x1="96" y1="52" x2="96" y2="220" class="viz-axis"/>

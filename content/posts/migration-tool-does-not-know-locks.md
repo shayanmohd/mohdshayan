@@ -1,6 +1,6 @@
 ---
 title: Your migration tool does not know about locks
-date: 2026-09-17
+date: 2026-07-08
 summary: Prisma and Drizzle run the SQL you give them and neither sets a lock timeout. The danger of a migration is the lock it takes and the queue behind it, not the size of the change.
 tags: PostgreSQL, Migrations, Prisma
 draft: false

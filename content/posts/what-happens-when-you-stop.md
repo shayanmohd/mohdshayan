@@ -1,6 +1,6 @@
 ---
 title: What happens when you stop giving
-date: 2026-09-17
+date: 2026-07-14
 summary: Engineers give the way they ship: pilots, dashboards, scale. Children's needs recur, and the damage is done by a gift that stops. The first question is about the month after.
 tags: Philanthropy, Founding, Children
 draft: false
@@ -41,7 +41,7 @@ The planned exit: the commitment ends on the date it was meant to, and something
 <text x="454" y="136" text-anchor="middle" class="viz-label">Below the</text>
 <text x="454" y="154" text-anchor="middle" class="viz-label">baseline?</text>
 <line x1="506" y1="126" x2="540" y2="80" class="viz-arrow" marker-end="url(#f1-ah)"/>
-<text x="520" y="92" class="viz-tick">any yes</text>
+<text x="520" y="102" class="viz-tick">any yes</text>
 <line x1="506" y1="154" x2="540" y2="200" class="viz-arrow" marker-end="url(#f1-ah)"/>
 <text x="520" y="196" class="viz-tick">all no</text>
 <rect x="516" y="32" width="116" height="56" rx="8" class="viz-box-ink"/>
@@ -107,7 +107,7 @@ I make the trade because of what the thin version looks like from the child's si
 <title id="f3-t">A child's monthly support under an abrupt exit and a tapered one</title>
 <desc id="f3-d">Two lines over twenty-four months. Under an abrupt exit the support is level for twelve months and then drops to zero. Under a taper it is level for twelve months and then steps down over the following twelve, reaching zero at month twenty-four, giving the family a year to replace it.</desc>
 <text x="0" y="18" class="viz-title">The same gift, two ways of ending</text>
-<text x="0" y="36" class="viz-sub">Monthly support as a share of the starting amount, an illustrative shape</text>
+<text x="0" y="36" class="viz-sub">Monthly support as a share of the starting amount; illustrative</text>
 <line x1="380" y1="31" x2="394" y2="31" class="viz-s1"/><text x="400" y="35" class="viz-label-muted">tapered</text>
 <line x1="480" y1="31" x2="494" y2="31" class="viz-s4"/><text x="500" y="35" class="viz-label-muted">abrupt</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">100%</text>

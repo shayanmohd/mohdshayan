@@ -1,6 +1,6 @@
 ---
 title: What the letters after my name owe
-date: 2026-09-18
+date: 2024-12-04
 summary: Postnominals like FRSA and FRGS are read as credentials, and they are not. Both societies began by owning a problem, and a fellowship is what the fellow owes that problem.
 tags: Fellowships, History, Philanthropy
 draft: false
@@ -16,7 +16,7 @@ The Society for the Encouragement of Arts, Manufactures and Commerce was founded
 <svg viewBox="0 0 640 220" role="img" aria-labelledby="f1-t f1-d">
 <title id="f1-t">Timeline of the two societies from problem-owning bodies to fellowship bodies</title>
 <desc id="f1-d">A timeline with six points: 1754, the Society of Arts founded by William Shipley on a premium scheme; 1764, 380 prize categories published; 1830, the Geographical Society of London founded to advance geographical science and support expeditions; 1847, the Society of Arts receives a royal charter; 1859, the Geographical Society receives its royal charter; 1908, the Society of Arts becomes Royal, and both bodies are by then fellowship organisations.</desc>
-<circle cx="440" cy="18" r="5" class="viz-d1"/><text x="450" y="22" class="viz-label-muted">Society of Arts</text>
+<circle cx="420" cy="18" r="5" class="viz-d1"/><text x="430" y="22" class="viz-label-muted">Society of Arts</text>
 <circle cx="540" cy="18" r="5" class="viz-d2"/><text x="550" y="22" class="viz-label-muted">Geographical</text>
 <line x1="40" y1="110" x2="600" y2="110" class="viz-axis"/>
 <circle cx="60" cy="110" r="6" class="viz-d1"/>
@@ -27,7 +27,7 @@ The Society for the Encouragement of Arts, Manufactures and Commerce was founded
 <text x="130" y="162" text-anchor="middle" class="viz-label">380 prize categories</text>
 <circle cx="320" cy="110" r="6" class="viz-d2"/>
 <text x="320" y="84" text-anchor="middle" class="viz-tick">1830</text>
-<text x="320" y="66" text-anchor="middle" class="viz-label">Geographical Society founded</text>
+<text x="300" y="66" text-anchor="middle" class="viz-label">Geographical Society founded</text>
 <circle cx="380" cy="110" r="6" class="viz-d1"/>
 <text x="380" y="144" text-anchor="middle" class="viz-tick">1847</text>
 <text x="380" y="162" text-anchor="middle" class="viz-label">royal charter</text>

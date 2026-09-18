@@ -1,6 +1,6 @@
 ---
 title: The flash loan is free until it reverts
-date: 2026-09-17
+date: 2025-05-14
 summary: Aave's premium is the smallest cost a flash-loan arbitrageur pays. The real cost is gas burned on attempts that revert, and that cost depends on how the transaction was sent.
 tags: Flash Loans, Aave, MEV
 draft: false
@@ -63,20 +63,20 @@ The number I keep in front of me is what I call the revert budget: the expected 
 <text x="0" y="18" class="viz-title">Failed attempts a strategy can afford per win</text>
 <text x="0" y="36" class="viz-sub">0.02 ETH expected profit per win, 500,000 gas per attempt</text>
 <line x1="56" y1="250" x2="600" y2="250" class="viz-axis"/>
-<path d="M89.3 66 V62 a4 4 0 0 1 4 -4 H109.3 a4 4 0 0 1 4 4 V250 H89.3 Z" class="viz-f1"/>
-<text x="101.3" y="50" text-anchor="middle" class="viz-value">8</text>
+<path d="M89.3 84.4 V80.8 a4 4 0 0 1 4 -4 H109.3 a4 4 0 0 1 4 4 V250 H89.3 Z" class="viz-f1"/>
+<text x="101.3" y="70" text-anchor="middle" class="viz-value">8</text>
 <text x="101.3" y="272" text-anchor="middle" class="viz-label-muted">5 gwei</text>
-<path d="M180 158 V154 a4 4 0 0 1 4 -4 H200 a4 4 0 0 1 4 4 V250 H180 Z" class="viz-f1"/>
-<text x="192" y="142" text-anchor="middle" class="viz-value">4</text>
+<path d="M180 167.2 V163.6 a4 4 0 0 1 4 -4 H200 a4 4 0 0 1 4 4 V250 H180 Z" class="viz-f1"/>
+<text x="192" y="152.8" text-anchor="middle" class="viz-value">4</text>
 <text x="192" y="272" text-anchor="middle" class="viz-label-muted">10 gwei</text>
-<path d="M270.7 204 V200 a4 4 0 0 1 4 -4 H290.7 a4 4 0 0 1 4 4 V250 H270.7 Z" class="viz-f1"/>
-<text x="282.7" y="188" text-anchor="middle" class="viz-value">2</text>
+<path d="M270.7 208.6 V205 a4 4 0 0 1 4 -4 H290.7 a4 4 0 0 1 4 4 V250 H270.7 Z" class="viz-f1"/>
+<text x="282.7" y="194.2" text-anchor="middle" class="viz-value">2</text>
 <text x="282.7" y="272" text-anchor="middle" class="viz-label-muted">20 gwei</text>
-<path d="M361.3 227 V223 a4 4 0 0 1 4 -4 H381.3 a4 4 0 0 1 4 4 V250 H361.3 Z" class="viz-f1"/>
-<text x="373.3" y="211" text-anchor="middle" class="viz-value">1</text>
+<path d="M361.3 229.3 V225.7 a4 4 0 0 1 4 -4 H381.3 a4 4 0 0 1 4 4 V250 H361.3 Z" class="viz-f1"/>
+<text x="373.3" y="214.9" text-anchor="middle" class="viz-value">1</text>
 <text x="373.3" y="272" text-anchor="middle" class="viz-label-muted">40 gwei</text>
-<path d="M452 238.5 V234.5 a4 4 0 0 1 4 -4 H472 a4 4 0 0 1 4 4 V250 H452 Z" class="viz-f1"/>
-<text x="464" y="222.5" text-anchor="middle" class="viz-value">0.5</text>
+<path d="M452 239.7 V236.1 a4 4 0 0 1 4 -4 H472 a4 4 0 0 1 4 4 V250 H452 Z" class="viz-f1"/>
+<text x="464" y="225.3" text-anchor="middle" class="viz-value">0.5</text>
 <text x="464" y="272" text-anchor="middle" class="viz-label-muted">80 gwei</text>
 <text x="554.7" y="150" text-anchor="middle" class="viz-label-muted">below 1, every</text>
 <text x="554.7" y="168" text-anchor="middle" class="viz-label-muted">public attempt</text>
@@ -108,7 +108,7 @@ That changes the revert budget from a number to a choice. Through the public mem
 <text x="192" y="276" text-anchor="middle" class="viz-label-muted">recompute it every block</text>
 <text x="464" y="256" text-anchor="middle" class="viz-label">Loses money</text>
 <text x="464" y="276" text-anchor="middle" class="viz-label-muted">nine reverts per premium</text>
-<circle cx="464" cy="104" r="6" class="viz-d1"/>
+<circle cx="464" cy="82" r="6" class="viz-d1"/>
 <text x="328" y="372" text-anchor="middle" class="viz-label-muted">Revert rate: low to high</text>
 <text x="20" y="192" transform="rotate(-90 20 192)" text-anchor="middle" class="viz-label-muted">Submission path: public mempool to bundle</text>
 </svg>

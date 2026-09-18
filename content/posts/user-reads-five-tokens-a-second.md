@@ -1,6 +1,6 @@
 ---
 title: The user reads at five tokens a second
-date: 2026-09-17
+date: 2026-01-13
 summary: For a streamed answer, decode speed only needs to beat the reader. Adults read about 238 words a minute, so speed above a floor is invisible; spend the capacity elsewhere.
 tags: Inference, Latency, LLM Serving
 draft: false

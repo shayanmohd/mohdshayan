@@ -1,6 +1,6 @@
 ---
 title: Capabilities in code, roles in rows
-date: 2026-09-17
+date: 2026-09-15
 summary: Permissions change with the code, so they live in code; roles change with a customer's org chart, so they live in rows. The deploy line is the test for which side each belongs on.
 tags: RBAC, PostgreSQL, Multi-tenant SaaS
 draft: false

@@ -42,8 +42,8 @@
       "description": "Reactive autoscaling cannot serve the spike that triggers it. The new capacity arrives after a chain of delays that add up to minutes. What it buys is the spike after this one.",
       "url": "https://mohdshayan.com/blog/autoscaling-buys-the-next-spike/",
       "mainEntityOfPage": "https://mohdshayan.com/blog/autoscaling-buys-the-next-spike/",
-      "datePublished": "2026-09-17",
-      "dateModified": "2026-09-17",
+      "datePublished": "2025-11-17",
+      "dateModified": "2025-11-17",
       "author": {
         "@type": "Person",
         "@id": "https://mohdshayan.com/#person",
@@ -122,7 +122,7 @@
         <article>
         <section class="page-head pb-8">
             <div class="max-w-content mx-auto px-6">
-                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <p class="mono-meta text-muted reveal">17 November 2025 <span class="mx-2">·</span> 5 min read</p>
                 <h1 class="h2 mt-3 balance reveal">Autoscaling buys you the next spike</h1>
                 <p class="lead mt-5 max-w-2xl reveal d1">Reactive autoscaling cannot serve the spike that triggers it. The new capacity arrives after a chain of delays that add up to minutes. What it buys is the spike after this one.</p>
             </div>
@@ -168,7 +168,7 @@
 <title id="f2-t">Demand against reactive capacity on one timeline</title>
 <desc id="f2-d">A demand curve rises sharply at one point and falls back a few minutes later. A capacity line stays flat, then steps up twelve minutes after the rise, after the demand has already fallen. The window between the rise and the capacity step is shaded as the period in which requests fail.</desc>
 <text x="0" y="18" class="viz-title">The step arrives after the spike</text>
-<text x="0" y="36" class="viz-sub">A short spike against a reactive policy; the shaded window is where requests fail</text>
+<text x="0" y="36" class="viz-sub">A short spike under a reactive policy; shaded where requests fail</text>
 <line x1="380" y1="31" x2="394" y2="31" class="viz-s1"/><text x="400" y="35" class="viz-label-muted">demand</text>
 <line x1="480" y1="31" x2="494" y2="31" class="viz-s2"/><text x="500" y="35" class="viz-label-muted">capacity</text>
 <rect x="200" y="56" width="180" height="208" class="viz-band"/>
@@ -194,7 +194,7 @@
 <p>The same is true of most of the small services I have run. A CRM&#39;s traffic follows office hours in the client&#39;s time zone. A marketing site&#39;s traffic follows the campaign calendar. A helpdesk assistant&#39;s traffic follows the shifts of the people who ask it questions. In each case someone in the business can draw the demand curve from memory, and a policy that has to rediscover it from a metric every day is doing expensive, slow, slightly wrong work that a calendar entry does for free.</p>
 <p>For a service whose peaks are on a schedule, two things beat target tracking, and both are cheaper. One spare instance, N plus one, absorbs any spike smaller than one instance&#39;s worth of capacity with no gap at all, because it is already there. A scheduled action, which AWS supports directly, raises the fleet before the known peak and lowers it after, with an arrival gap of zero because the launch happens before the demand rather than after it. Reactive scaling then sits behind both as a backstop for the day the sign outside is wrong.</p>
 <figure class="chart">
-<svg viewBox="0 0 640 320" role="img" aria-labelledby="f3-t f3-d">
+<svg viewBox="0 0 640 346" role="img" aria-labelledby="f3-t f3-d">
 <title id="f3-t">An opening-hour surge against three capacity strategies</title>
 <desc id="f3-d">Demand steps up sharply at opening time and stays high for an hour. Reactive capacity steps up twelve minutes late. N plus one capacity is flat and slightly above demand from the start. Scheduled capacity steps up fifteen minutes before opening. Only the reactive line has a window where demand exceeds capacity.</desc>
 <text x="0" y="18" class="viz-title">Three ways to meet ten o'clock</text>
@@ -211,10 +211,10 @@
 <polyline points="56,214 237.3,214 309.9,214 309.9,90 600,90" class="viz-s4"/>
 <polyline points="56,90 600,90" class="viz-sgray"/>
 <polyline points="56,214 146.7,214 146.7,90 600,90" class="viz-s2"/>
-<line x1="380" y1="31" x2="394" y2="31" class="viz-s1"/><text x="400" y="35" class="viz-label-muted">demand</text>
-<line x1="150" y1="31" x2="164" y2="31" class="viz-s4"/><text x="170" y="35" class="viz-label-muted">reactive</text>
-<line x1="240" y1="31" x2="254" y2="31" class="viz-s2"/><text x="260" y="35" class="viz-label-muted">scheduled</text>
-<line x1="480" y1="31" x2="494" y2="31" class="viz-sgray"/><text x="500" y="35" class="viz-label-muted">N plus one</text>
+<line x1="380" y1="331" x2="394" y2="331" class="viz-s1"/><text x="400" y="335" class="viz-label-muted">demand</text>
+<line x1="150" y1="331" x2="164" y2="331" class="viz-s4"/><text x="170" y="335" class="viz-label-muted">reactive</text>
+<line x1="240" y1="331" x2="254" y2="331" class="viz-s2"/><text x="260" y="335" class="viz-label-muted">scheduled</text>
+<line x1="480" y1="331" x2="494" y2="331" class="viz-sgray"/><text x="500" y="335" class="viz-label-muted">N plus one</text>
 <text x="273" y="200" text-anchor="middle" class="viz-label-muted">reactive gap</text>
 </svg>
 <figcaption>Illustrative: demand modelled as a step at opening, reactive capacity as the same step delayed by the twelve-minute arrival gap, scheduled capacity as the step fifteen minutes early, and N plus one as a flat line above the peak.</figcaption>

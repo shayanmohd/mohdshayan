@@ -1,6 +1,6 @@
 ---
 title: Restore time is the only backup metric
-date: 2026-09-17
+date: 2025-06-09
 summary: Backup success rate is a vanity number. The number that decides whether a company survives is how long a restore takes from nothing, and in every public postmortem it ran long.
 tags: Disaster Recovery, Backups, Postmortems
 draft: false
@@ -85,7 +85,7 @@ None of these is exotic. Each is a few minutes to fix once found and a few hours
 <title id="f3-t">Assumed and measured recovery time across repeated drills</title>
 <desc id="f3-d">Two lines over five drills. The assumed recovery time, from the document, stays flat at two hours. The measured time starts far above it, near fourteen hours on the first drill, and falls with each drill as findings are fixed, reaching a little above the assumption by the fifth. The gap on the first drill is the part that would have been discovered during an incident.</desc>
 <text x="0" y="18" class="viz-title">The document says two hours; the stopwatch disagrees, then converges</text>
-<text x="0" y="36" class="viz-sub">Hours from empty account to passing health check, an illustrative series</text>
+<text x="0" y="36" class="viz-sub">Hours from empty account to passing health check; illustrative</text>
 <line x1="380" y1="31" x2="394" y2="31" class="viz-s1"/><text x="400" y="35" class="viz-label-muted">measured</text>
 <line x1="490" y1="31" x2="504" y2="31" class="viz-sgray"/><text x="510" y="35" class="viz-label-muted">assumed</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">16</text>

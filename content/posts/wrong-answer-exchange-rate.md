@@ -1,6 +1,6 @@
 ---
 title: Every wrong answer has an exchange rate
-date: 2026-09-17
+date: 2026-03-08
 summary: Accuracy rewards guessing. The fix is a penalty for wrong answers, and the penalty is not a research constant. It is a business number, and it sets the abstention threshold.
 tags: Hallucination, Evaluation, Helpdesk
 draft: false

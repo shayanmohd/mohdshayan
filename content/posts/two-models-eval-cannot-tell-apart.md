@@ -1,6 +1,6 @@
 ---
 title: Two models your eval cannot tell apart
-date: 2026-09-17
+date: 2026-06-19
 summary: A benchmark's item count sets its resolution. On HumanEval a six-point gap between two models is a tie, and most leaderboard gaps are smaller than that.
 tags: Evaluation, Statistics, Benchmarks
 draft: false

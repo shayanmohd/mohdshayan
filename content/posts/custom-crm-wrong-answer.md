@@ -1,6 +1,6 @@
 ---
 title: When a custom CRM is the wrong answer
-date: 2026-09-17
+date: 2026-09-12
 summary: I build CRMs for a living. Most teams should not hire me. A custom CRM is justified by one missing verb, never by the price on the vendor's page.
 tags: CRM, Build Vs Buy, Contract Work
 draft: false
@@ -108,7 +108,7 @@ Two questions sort every case I have seen. Does the vendor have all ten verbs, o
 <text x="192" y="276" text-anchor="middle" class="viz-label-muted">most teams live here</text>
 <text x="464" y="256" text-anchor="middle" class="viz-label">Build the missing verb only</text>
 <text x="464" y="276" text-anchor="middle" class="viz-label-muted">a small system beside the CRM</text>
-<circle cx="464" cy="256" r="6" class="viz-d1"/>
+<circle cx="464" cy="234" r="6" class="viz-d1"/>
 <text x="328" y="372" text-anchor="middle" class="viz-label-muted">Vendor's verb coverage: all covered to one missing</text>
 <text x="20" y="192" transform="rotate(-90 20 192)" text-anchor="middle" class="viz-label-muted">Need to own the data model: low to high</text>
 </svg>

@@ -1,6 +1,6 @@
 ---
 title: What Chomsky normal form costs you
-date: 2026-09-18
+date: 2025-07-21
 summary: Converting a grammar to Chomsky normal form is taught as a formality. It can multiply the rule count many times over, and the unit-rule step, not binarisation, does the damage.
 tags: Formal Languages, Parsing, Grammars
 draft: false
@@ -89,7 +89,7 @@ The reason is the shape of a treebank grammar. A parsed corpus is full of rules 
 <title id="f3-t">Worst-case growth for unit-rule elimination on a chain grammar, quadratic, against the near-linear growth of binarisation</title>
 <desc id="f3-d">Two curves against the number of nonterminals in a chain. Binarisation grows linearly with the grammar. Unit elimination on a chain where each nonterminal has a unit rule to the next and a few rules of its own grows with the square of the chain length, because each nonterminal receives copies of every rule below it. The quadratic curve pulls away sharply after a few dozen nonterminals.</desc>
 <text x="0" y="18" class="viz-title">Chains are the worst case, and treebanks are full of them</text>
-<text x="0" y="36" class="viz-sub">Rules after conversion for a chain grammar of n nonterminals; illustrative construction</text>
+<text x="0" y="36" class="viz-sub">Rules after conversion for a chain grammar of n nonterminals</text>
 <line x1="380" y1="31" x2="394" y2="31" class="viz-s1"/><text x="400" y="35" class="viz-label-muted">UNIT on a chain</text>
 <line x1="510" y1="31" x2="524" y2="31" class="viz-s2"/><text x="530" y="35" class="viz-label-muted">BIN</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">10k</text>

@@ -56,7 +56,7 @@ The rule I take from it is a test to run before placing anything on a free allow
 <line x1="140" y1="80" x2="166" y2="80" class="viz-arrow" marker-end="url(#f2-ah)"/>
 <rect x="170" y="50" width="130" height="60" rx="8" class="viz-box-accent"/>
 <text x="235" y="76" text-anchor="middle" class="viz-label">Halve every limit</text>
-<text x="235" y="94" text-anchor="middle" class="viz-label-muted">cores, memory, disk, egress</text>
+<text x="235" y="94" text-anchor="middle" class="viz-label-muted">cores, memory, disk</text>
 <line x1="302" y1="80" x2="328" y2="80" class="viz-arrow" marker-end="url(#f2-ah)"/>
 <rect x="332" y="50" width="130" height="60" rx="8" class="viz-box-accent"/>
 <text x="397" y="76" text-anchor="middle" class="viz-label">Latency target met?</text>
@@ -70,7 +70,7 @@ The rule I take from it is a test to run before placing anything on a free allow
 <text x="413" y="138" class="viz-tick">no</text>
 <rect x="332" y="160" width="130" height="60" rx="8" class="viz-box-accent"/>
 <text x="397" y="186" text-anchor="middle" class="viz-label">Can it be cut?</text>
-<text x="397" y="204" text-anchor="middle" class="viz-label-muted">smaller model, context</text>
+<text x="397" y="204" text-anchor="middle" class="viz-label-muted">a smaller model</text>
 <line x1="464" y1="190" x2="490" y2="190" class="viz-arrow" marker-end="url(#f2-ah)"/>
 <text x="477" y="180" text-anchor="middle" class="viz-tick">yes</text>
 <rect x="494" y="160" width="138" height="60" rx="8" class="viz-box"/>
@@ -107,7 +107,7 @@ The reason I care about this particular tier is that it is the one where quantis
 <text x="186" y="209" text-anchor="end" class="viz-label">Qwen2.5 14B, Q8_0</text>
 <path d="M196 194 H428 a4 4 0 0 1 4 4 V210 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/><text x="444" y="209" class="viz-value">15.70</text>
 <text x="186" y="243" text-anchor="end" class="viz-label">Llama 3.3 70B, Q4_K_M</text>
-<path d="M196 228 H600 a4 4 0 0 1 4 4 V244 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/><text x="596" y="223" text-anchor="end" class="viz-value">42.52, off the chart</text>
+<path d="M196 228 H600 a4 4 0 0 1 4 4 V244 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/><text x="596" y="241" text-anchor="end" class="viz-value">42.52, off the chart</text>
 <line x1="374" y1="52" x2="374" y2="256" class="viz-s4"/>
 <text x="380" y="62" class="viz-tick">12 GB, new</text>
 <line x1="552" y1="52" x2="552" y2="256" class="viz-s4"/>

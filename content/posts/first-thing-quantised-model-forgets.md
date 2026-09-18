@@ -1,6 +1,6 @@
 ---
 title: The first thing a quantised model forgets
-date: 2026-09-17
+date: 2026-09-14
 summary: Quantised models recover over 99 percent of accuracy on average, and the average hides where the loss lands. A canary set from the classes that fail first should choose the format.
 tags: Quantisation, Inference, Evaluation
 draft: false

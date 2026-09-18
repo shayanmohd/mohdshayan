@@ -1,6 +1,6 @@
 ---
 title: The install script is the attack
-date: 2026-09-17
+date: 2026-04-19
 summary: Every big package compromise since 2018 has used one mechanism: code that runs at install time with your credentials. Count those scripts in every lockfile and drive them to zero.
 tags: Supply Chain, Npm, Security
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: There are two gaps, not one
-date: 2026-09-17
+date: 2025-09-03
 summary: Every write-then-publish has two places to crash. The outbox pattern closes only the first, so a team that stops there has traded lost events for duplicated ones.
 tags: Event-Driven, PostgreSQL, Reliability
 draft: false
@@ -90,8 +90,8 @@ The broker still matters, in one specific way: how long it keeps a message the c
 <path d="M176 160 H600 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/>
 <text x="596" y="155" text-anchor="end" class="viz-value">168</text>
 <text x="166" y="209" text-anchor="end" class="viz-label">Redis Streams</text>
-<path d="M176 194 H600 a4 4 0 0 1 4 4 V210 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
-<text x="596" y="189" text-anchor="end" class="viz-value">until trimmed</text>
+<path d="M176 194 H520 a4 4 0 0 1 4 4 V210 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="536" y="209" class="viz-value">until trimmed</text>
 </svg>
 <figcaption>Source: <a href="https://redis.io/docs/latest/develop/interact/pubsub/">Redis Pub/Sub</a> and <a href="https://redis.io/docs/latest/develop/data-types/streams/">Streams</a> documentation, the <a href="https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-architecture.html">SQS developer guide</a>, Kafka's <a href="https://kafka.apache.org/documentation/#brokerconfigs_log.retention.hours">log.retention.hours</a> default, and <a href="https://cloud.google.com/pubsub/docs/subscription-properties">Pub/Sub subscription properties</a>.</figcaption>
 </figure>

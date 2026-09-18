@@ -1,6 +1,6 @@
 ---
 title: A pipeline you cannot replay is a spreadsheet
-date: 2026-09-17
+date: 2026-09-18
 summary: The real product of a CRM is the history of state changes. If it cannot show the pipeline exactly as it stood at nine last Monday, every historical report is a reconstruction.
 tags: Data Modelling, CRM, Databases
 draft: false
@@ -119,7 +119,7 @@ The cost that people expect, storage, is small. A deal that passes through six s
 <polyline points="56,219.5 328,150.1 600,80.7" class="viz-s1"/>
 <polyline points="56,198.6 328,129.2 600,59.8" class="viz-s2"/>
 <circle cx="600" cy="80.7" r="4" class="viz-d1"/>
-<text x="592" y="98" text-anchor="end" class="viz-value">12M rows</text>
+<text x="606" y="85" class="viz-value">12M</text>
 </svg>
 <figcaption>Illustrative: rows equal deals times transitions per deal, plotted for three assumed averages; a row here is a handful of columns, so twelve million of them is a modest table.</figcaption>
 </figure>

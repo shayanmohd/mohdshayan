@@ -1,6 +1,6 @@
 ---
 title: A liquidation is a race funded by the loser
-date: 2026-09-18
+date: 2026-05-02
 summary: On Aave the liquidation bonus comes out of the borrower's collateral, so the race only runs when the bonus beats gas. Below that line positions rot into bad debt.
 tags: Aave, DeFi, Liquidations
 draft: false
@@ -61,7 +61,7 @@ A liquidation of the kind drawn above uses on the order of 400,000 gas. At a bas
 <title id="f2-t">The dust line against gas price for three liquidation bonuses, with 400,000 gas per liquidation</title>
 <desc id="f2-d">Three rising lines on log axes: collateral value in ether at which the bonus equals gas, against gas price in gwei from 0.1 to 100. At a 1 percent bonus the line runs from 0.004 ether at 0.1 gwei to 4 ether at 100 gwei; at 5 percent, from 0.0008 to 0.8; at 10 percent, from 0.0004 to 0.4. Everything below a line is dust that a rational liquidator will not touch at that gas price.</desc>
 <text x="0" y="18" class="viz-title">Where the race stops being worth running</text>
-<text x="0" y="36" class="viz-sub">Collateral value at which the bonus equals gas, 400,000 gas per liquidation; both axes log</text>
+<text x="0" y="36" class="viz-sub">Collateral where the bonus equals gas, 400,000 gas each; log axes</text>
 <line x1="380" y1="31" x2="394" y2="31" class="viz-s4"/><text x="400" y="35" class="viz-label-muted">1% bonus</text>
 <line x1="470" y1="31" x2="484" y2="31" class="viz-s1"/><text x="490" y="35" class="viz-label-muted">5%</text>
 <line x1="530" y1="31" x2="544" y2="31" class="viz-s2"/><text x="550" y="35" class="viz-label-muted">10%</text>

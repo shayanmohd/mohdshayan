@@ -1,6 +1,6 @@
 ---
 title: The kernel you share with a stranger
-date: 2026-09-18
+date: 2026-07-22
 summary: A container is a process in a costume; it shares the host kernel with everything else on the box, so its isolation is the kernel's bug count. Author and lifetime pick the boundary.
 tags: Firecracker, Sandboxing, AI Agents
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: One percent of users cannot tell you much
-date: 2026-09-17
+date: 2025-02-04
 summary: A staged rollout is a statistical test, and at one percent the sample is too small to see the crash-rate rise Play penalises. Write each halt rule from what the stage can detect.
 tags: Android, Staged Rollouts, Release Engineering
 draft: false
@@ -46,17 +46,17 @@ The standard one-sided calculation, at 95 percent confidence and 80 percent powe
 <text x="0" y="18" class="viz-title">What a stage has to see before it can see anything</text>
 <text x="0" y="36" class="viz-sub">Sessions needed, one-sided, 95% confidence, 80% power, baseline 1.09%</text>
 <line x1="56" y1="250" x2="600" y2="250" class="viz-axis"/>
-<path d="M89.3 58 V54 a4 4 0 0 1 4 -4 H109.3 a4 4 0 0 1 4 4 V250 H89.3 Z" class="viz-f1"/>
-<text x="101.3" y="42" text-anchor="middle" class="viz-value">4,400</text>
+<path d="M89.3 81 V77.5 a4 4 0 0 1 4 -4 H109.3 a4 4 0 0 1 4 4 V250 H89.3 Z" class="viz-f1"/>
+<text x="101.3" y="67" text-anchor="middle" class="viz-value">4,400</text>
 <text x="101.3" y="272" text-anchor="middle" class="viz-label-muted">rise to 1.5%</text>
-<path d="M234.7 206.4 V202.4 a4 4 0 0 1 4 -4 H254.7 a4 4 0 0 1 4 4 V250 H234.7 Z" class="viz-f1"/>
-<text x="246.7" y="190.4" text-anchor="middle" class="viz-value">1,000</text>
+<path d="M234.7 211.6 V208.1 a4 4 0 0 1 4 -4 H254.7 a4 4 0 0 1 4 4 V250 H234.7 Z" class="viz-f1"/>
+<text x="246.7" y="197.6" text-anchor="middle" class="viz-value">1,000</text>
 <text x="246.7" y="272" text-anchor="middle" class="viz-label-muted">to 2%</text>
-<path d="M380 238.2 V234.2 a4 4 0 0 1 4 -4 H400 a4 4 0 0 1 4 4 V250 H380 Z" class="viz-f1"/>
-<text x="392" y="222.2" text-anchor="middle" class="viz-value">270</text>
+<path d="M380 239.6 V236.1 a4 4 0 0 1 4 -4 H400 a4 4 0 0 1 4 4 V250 H380 Z" class="viz-f1"/>
+<text x="392" y="225.5" text-anchor="middle" class="viz-value">270</text>
 <text x="392" y="272" text-anchor="middle" class="viz-label-muted">to 3%</text>
-<rect x="525.3" y="246.5" width="24" height="3.5" class="viz-f1"/>
-<text x="537.3" y="230.5" text-anchor="middle" class="viz-value">80</text>
+<rect x="525.3" y="246.9" width="24" height="3.1" class="viz-f1"/>
+<text x="537.3" y="232.8" text-anchor="middle" class="viz-value">80</text>
 <text x="537.3" y="272" text-anchor="middle" class="viz-label-muted">to 5%</text>
 </svg>
 <figcaption>Illustrative: computed from the standard normal-approximation sample size for comparing an observed proportion with a fixed baseline; the thresholds are Play's, the rises are examples.</figcaption>

@@ -1,6 +1,6 @@
 ---
 title: A widget is a photograph of your app
-date: 2026-09-17
+date: 2026-09-04
 summary: A home-screen widget is not a running view; it is a picture the launcher shows until you send a new one. Design for the age of the picture, not for the code that drew it.
 tags: Android, Jetpack Glance, UX
 draft: false
@@ -89,7 +89,7 @@ So the design question is not "how do I keep the widget fresh" but "what does th
 <text x="24" y="142" class="viz-label-muted">periodic worker at N,</text>
 <text x="24" y="160" class="viz-label-muted">immediate update when</text>
 <text x="24" y="178" class="viz-label-muted">the app is open</text>
-<text x="24" y="206" class="viz-tick">N is fifteen or thirty, not one</text>
+<text x="24" y="206" class="viz-tick">N is 15 or 30, not 1</text>
 <rect x="220" y="40" width="200" height="180" rx="8" class="viz-box-accent"/>
 <text x="320" y="66" text-anchor="middle" class="viz-label">A tap lands somewhere fresh</text>
 <text x="236" y="96" class="viz-label-muted">the tap opens the app,</text>
@@ -97,7 +97,7 @@ So the design question is not "how do I keep the widget fresh" but "what does th
 <text x="236" y="132" class="viz-label-muted">acting on anything</text>
 <text x="236" y="160" class="viz-label-muted">no destructive action</text>
 <text x="236" y="178" class="viz-label-muted">from a stale number</text>
-<text x="236" y="206" class="viz-tick">the picture is a link, not a control</text>
+<text x="236" y="206" class="viz-tick">a link, not a control</text>
 <rect x="432" y="40" width="200" height="180" rx="8" class="viz-box-accent"/>
 <text x="532" y="66" text-anchor="middle" class="viz-label">Never an error state</text>
 <text x="448" y="96" class="viz-label-muted">keep the last good</text>

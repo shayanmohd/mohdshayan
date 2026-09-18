@@ -1,6 +1,6 @@
 ---
 title: Fine-tuning taught it to sound sure
-date: 2026-09-18
+date: 2026-03-24
 summary: Fine-tuning makes a model more accurate and less calibrated at once: cross-entropy keeps rewarding larger logits after the answers stop changing. Refit the temperature last.
 tags: Calibration, Fine-Tuning, Probability
 draft: false
@@ -17,7 +17,7 @@ The mechanism is easiest to see in a model small enough to watch. I trained a lo
 <title id="f1-t">Weight norm and mean confidence keep rising after held-out accuracy has stopped changing, in a toy model</title>
 <desc id="f1-d">Two lines against training epochs on a log scale from 1 to 3,000. Held-out accuracy is flat at about 90 percent from epoch 10 onward. Mean reported confidence rises from 63 percent at epoch 1 to 97 percent at epoch 3,000. A third series, the weight norm, rises from 0.4 to 9.3 over the same range, shown as labelled points.</desc>
 <text x="0" y="18" class="viz-title">The answers stop changing at epoch ten; the confidence does not</text>
-<text x="0" y="36" class="viz-sub">Toy logistic model, 80 training examples, 4,000 held-out; epochs on a log scale</text>
+<text x="0" y="36" class="viz-sub">Toy logistic model, 80 train examples, log-scale epochs</text>
 <line x1="330" y1="31" x2="344" y2="31" class="viz-s1"/><text x="350" y="35" class="viz-label-muted">mean confidence</text>
 <line x1="470" y1="31" x2="484" y2="31" class="viz-s2"/><text x="490" y="35" class="viz-label-muted">held-out accuracy</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">100%</text>
@@ -57,7 +57,7 @@ The repair is old and almost embarrassingly small. Guo and colleagues showed in 
 <title id="f2-t">Reliability diagram of the toy model before and after temperature scaling</title>
 <desc id="f2-d">Confidence on the horizontal axis against observed accuracy on the vertical, with a diagonal for perfect calibration. Before scaling, the points sit below the diagonal: confidence 0.65 with accuracy 0.48, 0.75 with 0.54, 0.85 with 0.64, and the large top bin at confidence 0.996 with accuracy 0.93. After scaling with a fitted temperature of 3.9, the points sit on the diagonal: 0.65 with 0.67, 0.75 with 0.77, 0.86 with 0.87, 0.97 with 0.98.</desc>
 <text x="0" y="18" class="viz-title">Before: sure and wrong. After: sure in proportion</text>
-<text x="0" y="36" class="viz-sub">Observed accuracy against reported confidence, held-out set, confidence bins of a tenth</text>
+<text x="0" y="36" class="viz-sub">Observed against reported confidence, held-out, 0.1 bins</text>
 <circle cx="340" cy="31" r="5" class="viz-d4"/><text x="350" y="35" class="viz-label-muted">before, ECE 0.072</text>
 <circle cx="490" cy="31" r="5" class="viz-d1"/><text x="500" y="35" class="viz-label-muted">after, ECE 0.013</text>
 <line x1="96" y1="56" x2="600" y2="56" class="viz-grid"/><text x="88" y="60" text-anchor="end" class="viz-tick">1.0</text>

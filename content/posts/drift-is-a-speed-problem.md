@@ -1,6 +1,6 @@
 ---
 title: Drift is a speed problem
-date: 2026-09-17
+date: 2026-05-31
 summary: Drift is treated as a discipline failure: someone touched the console. It is a race. People use the console when code is slower than the emergency, so the fix is in the pipeline.
 tags: Terraform, Infrastructure As Code, Cloud
 draft: false

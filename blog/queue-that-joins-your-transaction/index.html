@@ -42,8 +42,8 @@
       "description": "The reason to run background jobs from a Postgres table is not that it is cheaper than Redis. It is that the enqueue can share a transaction with the row that caused it.",
       "url": "https://mohdshayan.com/blog/queue-that-joins-your-transaction/",
       "mainEntityOfPage": "https://mohdshayan.com/blog/queue-that-joins-your-transaction/",
-      "datePublished": "2026-09-18",
-      "dateModified": "2026-09-18",
+      "datePublished": "2026-01-30",
+      "dateModified": "2026-01-30",
       "author": {
         "@type": "Person",
         "@id": "https://mohdshayan.com/#person",
@@ -122,7 +122,7 @@
         <article>
         <section class="page-head pb-8">
             <div class="max-w-content mx-auto px-6">
-                <p class="mono-meta text-muted reveal">18 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <p class="mono-meta text-muted reveal">30 January 2026 <span class="mx-2">·</span> 5 min read</p>
                 <h1 class="h2 mt-3 balance reveal">The queue that joins your transaction</h1>
                 <p class="lead mt-5 max-w-2xl reveal d1">The reason to run background jobs from a Postgres table is not that it is cheaper than Redis. It is that the enqueue can share a transaction with the row that caused it.</p>
             </div>
@@ -230,7 +230,7 @@
 <title id="f4-t">Dead tuples against job rate under default autovacuum thresholds, from a simple model</title>
 <desc id="f4-d">Two lines against jobs per second. With completed jobs deleted promptly and the table kept small, dead tuples stay bounded, because autovacuum triggers often on a small table. With completed jobs retained, the table grows, the twenty percent threshold grows with it, vacuum runs less often relative to churn, and dead tuples climb steadily with the job rate until bloat dominates.</desc>
 <text x="0" y="18" class="viz-title">Keep the table small and vacuum keeps up</text>
-<text x="0" y="36" class="viz-sub">Dead tuples between vacuums against job rate, two retention policies; illustrative model</text>
+<text x="0" y="36" class="viz-sub">Dead tuples between vacuums by job rate; two policies</text>
 <line x1="330" y1="31" x2="344" y2="31" class="viz-s1"/><text x="350" y="35" class="viz-label-muted">completed rows deleted</text>
 <line x1="500" y1="31" x2="514" y2="31" class="viz-s4"/><text x="520" y="35" class="viz-label-muted">retained</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">high</text>

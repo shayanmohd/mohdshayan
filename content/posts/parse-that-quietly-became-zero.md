@@ -1,6 +1,6 @@
 ---
 title: The parse that quietly became zero
-date: 2026-09-17
+date: 2026-03-17
 summary: A Viterbi parse multiplies one probability per rule. In float32 the best parse of a typical sentence underflows to zero and the argmax is a tie. Log space is not an optimisation.
 tags: Parsing, Numerical Methods, NLP
 draft: false
@@ -96,15 +96,17 @@ That is why the log domain is not an optimisation. Replace every probability wit
 <desc id="f3-d">Two side by side boxes. On the left, the probability domain: the cell's value is the maximum over splits and rules of the product of the left sub-span, the right sub-span and the rule probability, and the product becomes zero once it is below the float floor. On the right, the log domain: the cell's value is the maximum over splits and rules of the sum of the three log probabilities, and the sum stays representable.</desc>
 <rect x="8" y="30" width="300" height="180" rx="8" class="viz-box"/>
 <text x="158" y="58" text-anchor="middle" class="viz-label">Probability domain</text>
-<text x="158" y="90" text-anchor="middle" class="viz-value">cell[i,j][A] = max over k, A to B C of</text>
-<text x="158" y="112" text-anchor="middle" class="viz-value">cell[i,k][B] x cell[k,j][C] x P(A to B C)</text>
+<text x="158" y="86" text-anchor="middle" class="viz-value">cell[i,j][A] = max over k of</text>
+<text x="158" y="104" text-anchor="middle" class="viz-value">cell[i,k][B] x cell[k,j][C]</text>
+<text x="158" y="122" text-anchor="middle" class="viz-value">x P(A to B C)</text>
 <text x="158" y="150" text-anchor="middle" class="viz-label-muted">product of many numbers below 1</text>
 <text x="158" y="170" text-anchor="middle" class="viz-label-muted">reaches 0.0 near 13 tokens in float32</text>
 <text x="158" y="196" text-anchor="middle" class="viz-tick">argmax over zeros: a tie</text>
 <rect x="332" y="30" width="300" height="180" rx="8" class="viz-box-accent"/>
 <text x="482" y="58" text-anchor="middle" class="viz-label">Log domain</text>
-<text x="482" y="90" text-anchor="middle" class="viz-value">cell[i,j][A] = max over k, A to B C of</text>
-<text x="482" y="112" text-anchor="middle" class="viz-value">cell[i,k][B] + cell[k,j][C] + log P(A to B C)</text>
+<text x="482" y="86" text-anchor="middle" class="viz-value">cell[i,j][A] = max over k of</text>
+<text x="482" y="104" text-anchor="middle" class="viz-value">cell[i,k][B] + cell[k,j][C]</text>
+<text x="482" y="122" text-anchor="middle" class="viz-value">+ log P(A to B C)</text>
 <text x="482" y="150" text-anchor="middle" class="viz-label-muted">sum of many negative numbers</text>
 <text x="482" y="170" text-anchor="middle" class="viz-label-muted">around -200 for a long sentence</text>
 <text x="482" y="196" text-anchor="middle" class="viz-tick">argmax unchanged, and defined</text>

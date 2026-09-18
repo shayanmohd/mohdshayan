@@ -1,6 +1,6 @@
 ---
 title: Your ticket does not need a blockchain
-date: 2026-09-17
+date: 2025-05-15
 summary: A ledger earns its cost only when several parties who distrust each other must write to it. A venue's ticketing has one writer, and one writer means a signature and a row.
 tags: Architecture, Blockchain, Ticketing
 draft: false

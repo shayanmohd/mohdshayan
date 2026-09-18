@@ -1,6 +1,6 @@
 ---
 title: Nutrition has no app
-date: 2026-09-17
+date: 2025-04-07
 summary: Technologists fund education because it looks like an information problem and skip nutrition because it does not. The evidence on school meals says that instinct is backwards.
 tags: Philanthropy, Nutrition, Education
 draft: false
@@ -21,14 +21,14 @@ The reason is not mysterious. A hungry child does not learn, whatever is on the 
 <text x="0" y="18" class="viz-title">More than a third of children, still</text>
 <text x="0" y="36" class="viz-sub">Share of children under five who are stunted, per cent</text>
 <line x1="56" y1="250" x2="600" y2="250" class="viz-axis"/>
-<path d="M148.7 58 V54 a4 4 0 0 1 4 -4 H168.7 a4 4 0 0 1 4 4 V250 H148.7 Z" class="viz-fgray"/>
-<text x="160.7" y="42" text-anchor="middle" class="viz-value">48.0</text>
+<path d="M148.7 81 V77.5 a4 4 0 0 1 4 -4 H168.7 a4 4 0 0 1 4 4 V250 H148.7 Z" class="viz-fgray"/>
+<text x="160.7" y="67" text-anchor="middle" class="viz-value">48.0</text>
 <text x="160.7" y="272" text-anchor="middle" class="viz-label-muted">NFHS-3, 2005 to 06</text>
-<path d="M316 96.4 V92.4 a4 4 0 0 1 4 -4 H336 a4 4 0 0 1 4 4 V250 H316 Z" class="viz-fgray"/>
-<text x="328" y="80.4" text-anchor="middle" class="viz-value">38.4</text>
+<path d="M316 114.8 V111.3 a4 4 0 0 1 4 -4 H336 a4 4 0 0 1 4 4 V250 H316 Z" class="viz-fgray"/>
+<text x="328" y="100.8" text-anchor="middle" class="viz-value">38.4</text>
 <text x="328" y="272" text-anchor="middle" class="viz-label-muted">NFHS-4, 2015 to 16</text>
-<path d="M483.3 108 V104 a4 4 0 0 1 4 -4 H503.3 a4 4 0 0 1 4 4 V250 H483.3 Z" class="viz-f1"/>
-<text x="495.3" y="92" text-anchor="middle" class="viz-value">35.5</text>
+<path d="M483.3 125 V121.5 a4 4 0 0 1 4 -4 H503.3 a4 4 0 0 1 4 4 V250 H483.3 Z" class="viz-f1"/>
+<text x="495.3" y="111" text-anchor="middle" class="viz-value">35.5</text>
 <text x="495.3" y="272" text-anchor="middle" class="viz-label-muted">NFHS-5, 2019 to 21</text>
 </svg>
 <figcaption>Source: <a href="https://dhsprogram.com/publications/publication-fr375-dhs-final-reports.cfm">NFHS-5 India report (2019 to 21)</a>, International Institute for Population Sciences, with the NFHS-3 and NFHS-4 figures as reported there for comparison.</figcaption>
@@ -87,7 +87,7 @@ The bias is wrong when it is applied first, before the first question has been a
 <text x="83" y="64" text-anchor="middle" class="viz-label">Material or</text>
 <text x="83" y="82" text-anchor="middle" class="viz-label">informational</text>
 <line x1="160" y1="68" x2="200" y2="68" class="viz-arrow" marker-end="url(#f3-ah)"/>
-<text x="180" y="58" text-anchor="middle" class="viz-tick">material</text>
+<text x="180" y="34" text-anchor="middle" class="viz-tick">material</text>
 <rect x="204" y="40" width="150" height="56" rx="8" class="viz-box-accent"/>
 <text x="279" y="64" text-anchor="middle" class="viz-label">Is anyone you</text>
 <text x="279" y="82" text-anchor="middle" class="viz-label">know funding it</text>

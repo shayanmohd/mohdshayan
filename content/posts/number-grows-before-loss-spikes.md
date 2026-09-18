@@ -1,6 +1,6 @@
 ---
 title: The number that grows before the loss spikes
-date: 2026-09-18
+date: 2025-01-01
 summary: Loss spikes in transformer runs are preceded by growth of the largest attention logit. QK-norm, z-loss and QK-clip bound that quantity, so log it rather than waiting for the loss.
 tags: Training Dynamics, Transformers, Numerics
 draft: false
@@ -76,7 +76,7 @@ Once the quantity is named, the fixes that the field has converged on read as th
 <title id="f3-t">Maximum attention logit and training loss over steps in a run heading for a spike, illustrative</title>
 <desc id="f3-d">Two curves over training steps. The maximum attention logit rises slowly and steadily from about 4 to past 18, crossing a marked saturation threshold well before the end. The loss falls smoothly throughout and then jumps sharply after the logit crosses the threshold. A vertical marker at the crossing shows how many steps of warning the logit gives.</desc>
 <text x="0" y="18" class="viz-title">The logit crosses the line long before the loss moves</text>
-<text x="0" y="36" class="viz-sub">Maximum attention logit and loss over training steps; illustrative shape</text>
+<text x="0" y="36" class="viz-sub">Max attention logit and loss over training steps; drawn</text>
 <line x1="330" y1="31" x2="344" y2="31" class="viz-s1"/><text x="350" y="35" class="viz-label-muted">max attention logit</text>
 <line x1="500" y1="31" x2="514" y2="31" class="viz-s2"/><text x="520" y="35" class="viz-label-muted">training loss</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/>

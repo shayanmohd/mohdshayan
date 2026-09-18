@@ -1,6 +1,6 @@
 ---
 title: Every AES-GCM key has a collision horizon
-date: 2026-09-17
+date: 2025-07-10
 summary: With a random 96-bit nonce, AES-GCM's safety is a countdown, not a property. Compute the countdown for every key, and design so that it can never be reached.
 tags: Cryptography, AES-GCM, Android
 draft: false
@@ -96,14 +96,14 @@ The second is to make nonces that cannot repeat: a counter rather than a random 
 <text x="0" y="36" class="viz-sub">Nonce length in bits; what happens on a repeat is noted beside each</text>
 <line x1="176" y1="52" x2="176" y2="154" class="viz-axis"/>
 <text x="166" y="73" text-anchor="end" class="viz-label">AES-GCM</text>
-<path d="M176 58 H392 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
-<text x="412" y="73" class="viz-value">96, repeat breaks the key</text>
+<path d="M176 58 H356 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="372" y="73" class="viz-value">96, repeat breaks the key</text>
 <text x="166" y="107" text-anchor="end" class="viz-label">AES-GCM-SIV</text>
-<path d="M176 92 H392 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/>
-<text x="412" y="107" class="viz-value">96, repeat leaks equality only</text>
+<path d="M176 92 H356 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/>
+<text x="372" y="107" class="viz-value">96, repeat leaks equality only</text>
 <text x="166" y="141" text-anchor="end" class="viz-label">XChaCha20-Poly1305</text>
-<path d="M176 126 H608 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
-<text x="600" y="121" text-anchor="end" class="viz-value">192</text>
+<path d="M176 126 H536 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="552" y="141" class="viz-value">192</text>
 <text x="0" y="190" class="viz-label-muted">A 192-bit random nonce moves the horizon beyond any realistic message count.</text>
 <text x="0" y="212" class="viz-label-muted">Misuse resistance keeps a repeat from exposing plaintext or the hash key.</text>
 </svg>

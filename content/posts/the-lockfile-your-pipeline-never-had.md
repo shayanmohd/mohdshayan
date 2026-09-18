@@ -1,6 +1,6 @@
 ---
 title: The lockfile your pipeline never had
-date: 2026-09-17
+date: 2026-01-02
 summary: Package managers got lockfiles a decade ago; CI workflows did not, which is how one moved tag reached 23,000 repositories. Would your build survive the marketplace vanishing?
 tags: GitHub Actions, Supply Chain, CI/CD
 draft: false
@@ -28,7 +28,7 @@ The compromise of tj-actions/changed-files, tracked as [CVE-2025-30066](https://
 <line x1="312" y1="92" x2="338" y2="92" class="viz-arrow" marker-end="url(#f1-ah)"/>
 <rect x="342" y="60" width="140" height="64" rx="8" class="viz-box-accent"/>
 <text x="412" y="84" text-anchor="middle" class="viz-label">changed-files</text>
-<text x="412" y="102" text-anchor="middle" class="viz-label-muted">tags moved, 14 to 15 March</text>
+<text x="412" y="102" text-anchor="middle" class="viz-label-muted">tags moved in March</text>
 <line x1="484" y1="92" x2="510" y2="92" class="viz-arrow" marker-end="url(#f1-ah)"/>
 <rect x="514" y="60" width="118" height="64" rx="8" class="viz-box-ink"/>
 <text x="573" y="84" text-anchor="middle" class="viz-on-ink">23,000+ repos</text>

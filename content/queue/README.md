@@ -1,6 +1,6 @@
 # Post queue
 
-All hundred posts in the index below were published on 18 September 2026. The folder is kept for future queued posts; the workflow is unchanged.
+All hundred posts in the index below were published on 18 September 2026, with post dates spread at random across the two years before that (no post is dated earlier than the latest source it cites). The folder is kept for future queued posts; the workflow is unchanged.
 
 Finished posts waiting to be published. Each file is a complete post in the same format as `content/posts/`
 (front matter plus markdown, figures inline as SVG), so publishing one is a move, a date stamp, a build, and

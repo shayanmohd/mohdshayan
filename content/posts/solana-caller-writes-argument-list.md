@@ -1,6 +1,6 @@
 ---
 title: On Solana the caller writes your argument list
-date: 2026-09-18
+date: 2026-06-17
 summary: An EVM contract reads its own storage; a Solana program is handed every account it touches by the caller, so the account list is untrusted input. Count what you accept unchecked.
 tags: Solana, Anchor, Security
 draft: false
@@ -54,7 +54,7 @@ Every account in an instruction has to pass three gates before the logic runs. T
 <line x1="120" y1="100" x2="136" y2="100" class="viz-arrow" marker-end="url(#f2-ah)"/>
 <rect x="140" y="70" width="104" height="60" rx="8" class="viz-box-accent"/>
 <text x="192" y="96" text-anchor="middle" class="viz-label">Owner?</text>
-<text x="192" y="114" text-anchor="middle" class="viz-label-muted">expected program</text>
+<text x="192" y="114" text-anchor="middle" class="viz-label-muted">expected owner</text>
 <line x1="246" y1="100" x2="262" y2="100" class="viz-arrow" marker-end="url(#f2-ah)"/>
 <rect x="266" y="70" width="104" height="60" rx="8" class="viz-box-accent"/>
 <text x="318" y="96" text-anchor="middle" class="viz-label">Signer?</text>

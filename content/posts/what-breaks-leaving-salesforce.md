@@ -1,6 +1,6 @@
 ---
 title: What breaks when you leave Salesforce
-date: 2026-09-17
+date: 2026-04-03
 summary: Migration cost is about references, not rows. Contacts export cleanly. What breaks is the graph, and you can measure how much will break in an afternoon, before you quote.
 tags: CRM Migration, Data Modelling, Salesforce
 draft: false
@@ -63,14 +63,14 @@ People expect the export itself to be the bottleneck, and it rarely is. HubSpot,
 <text x="0" y="18" class="viz-title">Paging out is minutes, not days</text>
 <text x="0" y="36" class="viz-sub">Minutes at 100 records per request and 190 requests per 10 seconds</text>
 <line x1="56" y1="250" x2="600" y2="250" class="viz-axis"/>
-<path d="M195.3 231 V227 a4 4 0 0 1 4 -4 H215.3 a4 4 0 0 1 4 4 V250 H195.3 Z" class="viz-f1"/>
-<text x="207.3" y="215" text-anchor="middle" class="viz-value">8.8</text>
+<path d="M195.3 233.3 V229.8 a4 4 0 0 1 4 -4 H215.3 a4 4 0 0 1 4 4 V250 H195.3 Z" class="viz-f1"/>
+<text x="207.3" y="219.2" text-anchor="middle" class="viz-value">8.8</text>
 <text x="207.3" y="272" text-anchor="middle" class="viz-label-muted">1 million records</text>
-<path d="M316 154 V150 a4 4 0 0 1 4 -4 H336 a4 4 0 0 1 4 4 V250 H316 Z" class="viz-f1"/>
-<text x="328" y="138" text-anchor="middle" class="viz-value">43.9</text>
+<path d="M316 165.5 V162 a4 4 0 0 1 4 -4 H336 a4 4 0 0 1 4 4 V250 H316 Z" class="viz-f1"/>
+<text x="328" y="151.4" text-anchor="middle" class="viz-value">43.9</text>
 <text x="328" y="272" text-anchor="middle" class="viz-label-muted">5 million</text>
-<path d="M436.7 58 V54 a4 4 0 0 1 4 -4 H456.7 a4 4 0 0 1 4 4 V250 H436.7 Z" class="viz-f1"/>
-<text x="448.7" y="42" text-anchor="middle" class="viz-value">87.7</text>
+<path d="M436.7 81 V77.5 a4 4 0 0 1 4 -4 H456.7 a4 4 0 0 1 4 4 V250 H436.7 Z" class="viz-f1"/>
+<text x="448.7" y="67" text-anchor="middle" class="viz-value">87.7</text>
 <text x="448.7" y="272" text-anchor="middle" class="viz-label-muted">10 million</text>
 </svg>
 <figcaption>Source: computed from the limits in <a href="https://developers.hubspot.com/changelog/increasing-our-api-limits">HubSpot's API limits changelog</a>; the daily cap of 650,000 or 1 million requests is not the binding constraint at these volumes.</figcaption>

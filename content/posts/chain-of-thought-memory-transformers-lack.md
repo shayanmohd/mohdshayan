@@ -1,6 +1,6 @@
 ---
 title: Chain of thought is the memory transformers lack
-date: 2026-09-18
+date: 2026-08-15
 summary: A fixed-depth transformer has no working memory that grows with the input, so it cannot recognise regular languages at any length. Chain of thought writes that memory as tokens.
 tags: Transformers, Chain Of Thought, Formal Languages
 draft: false
@@ -65,7 +65,7 @@ For parsing the consequence is a rule I call the written stack rule: if a task n
 <rect x="140" y="160" width="36" height="14" class="viz-f1"/><rect x="140" y="176" width="36" height="14" class="viz-f1"/>
 <rect x="184" y="160" width="36" height="14" class="viz-f1"/>
 <text x="246" y="172" text-anchor="middle" class="viz-tick">empty</text>
-<text x="8" y="222" class="viz-tick">the stack lives in the machine, invisible to the output</text>
+<text x="8" y="222" class="viz-tick">the stack lives in the machine, unseen</text>
 <text x="330" y="52" class="viz-tick">SCRATCHPAD TRANSCRIPT</text>
 <rect x="330" y="64" width="302" height="200" rx="8" class="viz-box-accent"/>
 <text x="346" y="90" class="viz-label-muted">read (   stack: [</text>
@@ -94,7 +94,7 @@ My paper related CYK recognition to what a transformer constrained by a grammar 
 <title id="f3-t">Accuracy against problem size for a serial task with and without chain of thought, illustrative of the reported pattern</title>
 <desc id="f3-d">Two curves against problem size. Without chain of thought, accuracy is high at small sizes and falls toward chance as the size grows past what the forward pass can hold. With chain of thought proportional to the size, accuracy stays high across the range. A vertical marker shows the size at which the two curves separate.</desc>
 <text x="0" y="18" class="viz-title">Without the written memory, accuracy falls with size</text>
-<text x="0" y="36" class="viz-sub">Accuracy on an inherently serial task against input size; illustrative of the reported pattern</text>
+<text x="0" y="36" class="viz-sub">Accuracy on a serial task by input size, illustrative</text>
 <line x1="330" y1="31" x2="344" y2="31" class="viz-s1"/><text x="350" y="35" class="viz-label-muted">with chain of thought</text>
 <line x1="500" y1="31" x2="514" y2="31" class="viz-s4"/><text x="520" y="35" class="viz-label-muted">without</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">100%</text>

@@ -1,6 +1,6 @@
 ---
 title: The client pays for the research
-date: 2026-09-17
+date: 2025-02-01
 summary: Contract work is not a distraction from the product if every contract is chosen for what it leaves behind. A rule for picking which paying work a small product company should take.
 tags: Founding, Consulting, Product Strategy
 draft: false
@@ -25,17 +25,17 @@ I would give the same advice anywhere, but in India it is less a preference than
 <text x="0" y="18" class="viz-title">Funding into Indian tech, by year</text>
 <text x="0" y="36" class="viz-sub">Billions of US dollars, Tracxn annual reports</text>
 <line x1="56" y1="250" x2="600" y2="250" class="viz-axis"/>
-<path d="M112 58 V54 a4 4 0 0 1 4 -4 H132 a4 4 0 0 1 4 4 V250 H112 Z" class="viz-f1"/>
-<text x="124" y="42" text-anchor="middle" class="viz-value">25.0</text>
+<path d="M112 81 V77.5 a4 4 0 0 1 4 -4 H132 a4 4 0 0 1 4 4 V250 H112 Z" class="viz-f1"/>
+<text x="124" y="67" text-anchor="middle" class="viz-value">25.0</text>
 <text x="124" y="272" text-anchor="middle" class="viz-label-muted">2022</text>
-<path d="M248 165.6 V161.6 a4 4 0 0 1 4 -4 H268 a4 4 0 0 1 4 4 V250 H248 Z" class="viz-fgray"/>
-<text x="260" y="149.6" text-anchor="middle" class="viz-value">11.0</text>
+<path d="M248 175.7 V172.2 a4 4 0 0 1 4 -4 H268 a4 4 0 0 1 4 4 V250 H248 Z" class="viz-fgray"/>
+<text x="260" y="161.6" text-anchor="middle" class="viz-value">11.0</text>
 <text x="260" y="272" text-anchor="middle" class="viz-label-muted">2023</text>
-<path d="M384 152.6 V148.6 a4 4 0 0 1 4 -4 H404 a4 4 0 0 1 4 4 V250 H384 Z" class="viz-fgray"/>
-<text x="396" y="136.6" text-anchor="middle" class="viz-value">12.7</text>
+<path d="M384 164.3 V160.8 a4 4 0 0 1 4 -4 H404 a4 4 0 0 1 4 4 V250 H384 Z" class="viz-fgray"/>
+<text x="396" y="150.2" text-anchor="middle" class="viz-value">12.7</text>
 <text x="396" y="272" text-anchor="middle" class="viz-label-muted">2024</text>
-<path d="M520 169.4 V165.4 a4 4 0 0 1 4 -4 H540 a4 4 0 0 1 4 4 V250 H520 Z" class="viz-fgray"/>
-<text x="532" y="153.4" text-anchor="middle" class="viz-value">10.5</text>
+<path d="M520 179.1 V175.6 a4 4 0 0 1 4 -4 H540 a4 4 0 0 1 4 4 V250 H520 Z" class="viz-fgray"/>
+<text x="532" y="165" text-anchor="middle" class="viz-value">10.5</text>
 <text x="532" y="272" text-anchor="middle" class="viz-label-muted">2025</text>
 </svg>
 <figcaption>Source: <a href="https://tracxn.com/d/insights/market-reports/india-tech-annual-funding-report-2025/__pvsyFahv-Ilo6lB2JbwcePNNWOdgWGMsVyntzEVDIn0">Tracxn, India Tech Annual Funding Report 2025</a> for 2023 to 2025; <a href="https://w.tracxn.com/report-releases/india-tech-annual-report-2023">Tracxn's 2023 report</a> for 2022. Tracxn revises earlier years as late deals are recorded.</figcaption>

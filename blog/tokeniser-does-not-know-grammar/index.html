@@ -42,8 +42,8 @@
       "description": "Constrained decoding is sold as a parser masking logits, but the model emits tokens that ignore the parser's boundaries. The tokens that straddle a boundary set the cost.",
       "url": "https://mohdshayan.com/blog/tokeniser-does-not-know-grammar/",
       "mainEntityOfPage": "https://mohdshayan.com/blog/tokeniser-does-not-know-grammar/",
-      "datePublished": "2026-09-17",
-      "dateModified": "2026-09-17",
+      "datePublished": "2026-01-17",
+      "dateModified": "2026-01-17",
       "author": {
         "@type": "Person",
         "@id": "https://mohdshayan.com/#person",
@@ -122,7 +122,7 @@
         <article>
         <section class="page-head pb-8">
             <div class="max-w-content mx-auto px-6">
-                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <p class="mono-meta text-muted reveal">17 January 2026 <span class="mx-2">·</span> 5 min read</p>
                 <h1 class="h2 mt-3 balance reveal">The tokeniser does not know your grammar</h1>
                 <p class="lead mt-5 max-w-2xl reveal d1">Constrained decoding is sold as a parser masking logits, but the model emits tokens that ignore the parser's boundaries. The tokens that straddle a boundary set the cost.</p>
             </div>
@@ -202,20 +202,20 @@
 <rect x="540" y="26" width="12" height="12" rx="3" class="viz-f1"/><text x="558" y="37" class="viz-label-muted">of output</text>
 <line x1="216" y1="52" x2="216" y2="222" class="viz-axis"/>
 <text x="206" y="73" text-anchor="end" class="viz-label">cl100k vocabulary</text>
-<path d="M216 58 H250 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H216 Z" class="viz-fgray"/>
-<text x="270" y="73" class="viz-value">1.34</text>
+<path d="M216 58 H247 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H216 Z" class="viz-fgray"/>
+<text x="267" y="73" class="viz-value">1.34</text>
 <text x="206" y="107" text-anchor="end" class="viz-label">o200k vocabulary</text>
-<path d="M216 92 H230 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H216 Z" class="viz-fgray"/>
-<text x="250" y="107" class="viz-value">0.57</text>
+<path d="M216 92 H229 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H216 Z" class="viz-fgray"/>
+<text x="249" y="107" class="viz-value">0.57</text>
 <text x="206" y="141" text-anchor="end" class="viz-label">Prose-heavy JSON, output</text>
-<path d="M216 126 H378 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H216 Z" class="viz-f1"/>
-<text x="398" y="141" class="viz-value">6.2, both tokenisers</text>
+<path d="M216 126 H359 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H216 Z" class="viz-f1"/>
+<text x="379" y="141" class="viz-value">6.2, both tokenisers</text>
 <text x="206" y="175" text-anchor="end" class="viz-label">Lockfile JSON, cl100k</text>
-<path d="M216 160 H562 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H216 Z" class="viz-f1"/>
-<text x="558" y="155" text-anchor="end" class="viz-value">13.2</text>
+<path d="M216 160 H520 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H216 Z" class="viz-f1"/>
+<text x="540" y="175" class="viz-value">13.2</text>
 <text x="206" y="209" text-anchor="end" class="viz-label">Lockfile JSON, o200k</text>
-<path d="M216 194 H584 a4 4 0 0 1 4 4 V210 a4 4 0 0 1 -4 4 H216 Z" class="viz-f1"/>
-<text x="580" y="189" text-anchor="end" class="viz-value">14.0</text>
+<path d="M216 194 H539 a4 4 0 0 1 4 4 V210 a4 4 0 0 1 -4 4 H216 Z" class="viz-f1"/>
+<text x="559" y="209" class="viz-value">14.0</text>
 <text x="0" y="252" class="viz-label-muted">Shorter strings, more boundaries per token: the lockfile pays twice as often.</text>
 </svg>
 <figcaption>Source: computed by the author with <a href="https://github.com/openai/tiktoken">tiktoken</a> over the cl100k and o200k encodings; the two documents are a 212 KB planning file with 2,595 strings and a 27 KB package lockfile with 1,311 strings.</figcaption>

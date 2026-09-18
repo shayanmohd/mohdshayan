@@ -42,8 +42,8 @@
       "description": "LoRA updates are low-rank and learn less new knowledge than full fine-tuning. Adapters hold format well and facts badly, and facts change faster than anyone retrains.",
       "url": "https://mohdshayan.com/blog/lora-adapter-poor-place-for-facts/",
       "mainEntityOfPage": "https://mohdshayan.com/blog/lora-adapter-poor-place-for-facts/",
-      "datePublished": "2026-09-17",
-      "dateModified": "2026-09-17",
+      "datePublished": "2025-12-18",
+      "dateModified": "2025-12-18",
       "author": {
         "@type": "Person",
         "@id": "https://mohdshayan.com/#person",
@@ -122,7 +122,7 @@
         <article>
         <section class="page-head pb-8">
             <div class="max-w-content mx-auto px-6">
-                <p class="mono-meta text-muted reveal">17 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <p class="mono-meta text-muted reveal">18 December 2025 <span class="mx-2">·</span> 5 min read</p>
                 <h1 class="h2 mt-3 balance reveal">A LoRA adapter is a poor place for facts</h1>
                 <p class="lead mt-5 max-w-2xl reveal d1">LoRA updates are low-rank and learn less new knowledge than full fine-tuning. Adapters hold format well and facts badly, and facts change faster than anyone retrains.</p>
             </div>
@@ -137,7 +137,7 @@
 <title id="f1-t">Trainable parameters in a LoRA adapter against rank, for an 8B Llama-family model</title>
 <desc id="f1-d">Two rising lines on a logarithmic axis. Adapting query and value projections only: 1.7 million parameters at rank 4, 3.4 million at 8, 6.8 million at 16, 13.6 million at 32, 27 million at 64. Adapting all linear layers: 10.5 million at rank 4, 21 million at 8, 42 million at 16, 84 million at 32, 168 million at 64. Even the largest is about two percent of the eight billion base parameters.</desc>
 <text x="0" y="18" class="viz-title">Small by construction</text>
-<text x="0" y="36" class="viz-sub">Trainable parameters, derived from the published 8B architecture; log scale</text>
+<text x="0" y="36" class="viz-sub">Trainable parameters, derived from the 8B architecture; log scale</text>
 <line x1="380" y1="31" x2="394" y2="31" class="viz-s1"/><text x="400" y="35" class="viz-label-muted">all linear layers</text>
 <line x1="510" y1="31" x2="524" y2="31" class="viz-s2"/><text x="530" y="35" class="viz-label-muted">q and v only</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">1B</text>

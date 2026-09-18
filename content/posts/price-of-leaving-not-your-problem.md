@@ -45,7 +45,7 @@ Every product has two egress bills and they are not the same size. The exit bill
 <text x="158" y="76" text-anchor="middle" class="viz-label">Exit bill</text>
 <text x="158" y="100" text-anchor="middle" class="viz-label-muted">stored bytes times transfer price</text>
 <text x="158" y="120" text-anchor="middle" class="viz-label-muted">paid once, on leaving</text>
-<text x="158" y="150" text-anchor="middle" class="viz-tick">covered: Data Act from 2027, waivers today</text>
+<text x="158" y="150" text-anchor="middle" class="viz-tick">covered: Data Act from 2027</text>
 <text x="158" y="180" text-anchor="middle" class="viz-tick">for a small SaaS: small, and now free</text>
 <rect x="332" y="50" width="300" height="150" rx="8" class="viz-box-accent"/>
 <text x="482" y="76" text-anchor="middle" class="viz-label">Serving bill</text>
@@ -69,7 +69,7 @@ Dashboards, ticketing analytics and CRMs sit firmly in the second group. They ho
 <title id="f3-t">Cost to serve one terabyte a month for a year against a one-off ten-terabyte exit, by provider, at list prices</title>
 <desc id="f3-d">Grouped horizontal bars in US dollars. AWS S3: serving 1 TB a month for a year at 0.09 dollars per gigabyte, about 1,106; a 10 TB exit at the same price, about 922, or zero under the migration waiver. Cloudflare R2: serving zero, exit zero, egress is free. Backblaze B2: serving zero for a 1 TB store because egress up to three times storage is free; a 10 TB exit about 72 dollars at 0.01 per gigabyte beyond the free allowance.</desc>
 <text x="0" y="18" class="viz-title">At the large providers, one year of serving costs more than leaving ever did</text>
-<text x="0" y="36" class="viz-sub">US dollars at list prices; serving 1 TB a month for a year against a 10 TB exit</text>
+<text x="0" y="36" class="viz-sub">List prices; a year of serving 1 TB a month against a 10 TB exit</text>
 <rect x="400" y="26" width="12" height="12" rx="3" class="viz-f1"/><text x="418" y="37" class="viz-label-muted">serving, a year</text>
 <rect x="530" y="26" width="12" height="12" rx="3" class="viz-fgray"/><text x="548" y="37" class="viz-label-muted">exit, once</text>
 <line x1="156" y1="52" x2="156" y2="240" class="viz-axis"/>

@@ -17,7 +17,7 @@ The resend ratio is input tokens billed divided by output tokens generated, over
 <title id="f1-t">Resend ratio per turn across a ten-turn retrieval chat, under two history policies</title>
 <desc id="f1-d">Two rising lines against turn number one to ten. With passages kept out of the stored history, the per-turn ratio rises from 12 at turn one to 24 at turn ten. With passages kept in the history, it rises from 12 to 96. Both use a 600-token system prompt, four 300-token passages per turn, 40-token questions and 150-token answers.</desc>
 <text x="0" y="18" class="viz-title">Twelve to one at the first turn, and it only goes up</text>
-<text x="0" y="36" class="viz-sub">Input per output token, per turn; 600-token prompt, 4 passages of 300, 150-token answers</text>
+<text x="0" y="36" class="viz-sub">Input per output token, per turn; see caption for inputs</text>
 <line x1="330" y1="31" x2="344" y2="31" class="viz-s4"/><text x="350" y="35" class="viz-label-muted">passages kept in history</text>
 <line x1="500" y1="31" x2="514" y2="31" class="viz-s1"/><text x="520" y="35" class="viz-label-muted">passages dropped</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">100</text>

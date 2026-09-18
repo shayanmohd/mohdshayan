@@ -1,6 +1,6 @@
 ---
 title: The part of your schema no grammar checks
-date: 2026-09-17
+date: 2026-09-11
 summary: A JSON Schema is compiled to a grammar for constrained decoding, and several keywords cannot survive the compilation. Know which, and validate that residue after decoding.
 tags: Structured Output, JSON Schema, Validation
 draft: false
@@ -45,7 +45,7 @@ The hosted engines are the honest case, because they publish the subset. OpenAI'
 The keywords that drop are not arbitrary; each falls out for one of three reasons, and knowing the reason tells you what the post-decode check has to do.
 
 <figure class="chart">
-<svg viewBox="0 0 640 300" role="img" aria-labelledby="f2-t f2-d">
+<svg viewBox="0 0 640 310" role="img" aria-labelledby="f2-t f2-d">
 <title id="f2-t">A schema splitting into grammar-enforceable keywords and residue keywords, with the residue routed to a post-validator</title>
 <desc id="f2-d">A schema box on the left feeds two boxes. The top box, grammar-enforceable: types, required, enum, const, additionalProperties, nesting, regular patterns, bounded lengths, and this box feeds the decoder. The bottom box, residue: uniqueItems, numeric bounds on decimals, patterns with backreferences, dependentSchemas and dependentRequired, format semantics, contains with counts, if-then-else across properties, allOf and not, multipleOf, and this box feeds a post-validator that runs on the decoded output.</desc>
 <defs><marker id="f2-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
@@ -63,16 +63,17 @@ The keywords that drop are not arbitrary; each falls out for one of three reason
 <rect x="490" y="52" width="142" height="60" rx="8" class="viz-box-ink"/>
 <text x="561" y="78" text-anchor="middle" class="viz-on-ink">Decoder</text>
 <text x="561" y="96" text-anchor="middle" class="viz-on-ink">enforced per token</text>
-<rect x="200" y="176" width="250" height="88" rx="8" class="viz-box-accent"/>
-<text x="325" y="200" text-anchor="middle" class="viz-label">Residue</text>
-<text x="325" y="220" text-anchor="middle" class="viz-label-muted">uniqueItems, decimal bounds, backreferences,</text>
-<text x="325" y="238" text-anchor="middle" class="viz-label-muted">dependent keywords, if-then-else, format,</text>
-<text x="325" y="256" text-anchor="middle" class="viz-label-muted">contains counts, allOf, not, multipleOf</text>
+<rect x="200" y="176" width="250" height="104" rx="8" class="viz-box-accent"/>
+<text x="325" y="198" text-anchor="middle" class="viz-label">Residue</text>
+<text x="325" y="218" text-anchor="middle" class="viz-label-muted">uniqueItems, decimal bounds,</text>
+<text x="325" y="236" text-anchor="middle" class="viz-label-muted">backreferences, dependent keywords,</text>
+<text x="325" y="254" text-anchor="middle" class="viz-label-muted">if-then-else, format, contains counts,</text>
+<text x="325" y="272" text-anchor="middle" class="viz-label-muted">allOf, not, multipleOf</text>
 <line x1="452" y1="220" x2="486" y2="220" class="viz-arrow" marker-end="url(#f2-ah)"/>
 <rect x="490" y="190" width="142" height="60" rx="8" class="viz-box-ink"/>
 <text x="561" y="216" text-anchor="middle" class="viz-on-ink">Post-validator</text>
-<text x="561" y="234" text-anchor="middle" class="viz-on-ink">on the decoded output</text>
-<text x="320" y="290" text-anchor="middle" class="viz-tick">the residue is validated with the full schema after decoding; the rest is guaranteed</text>
+<text x="561" y="234" text-anchor="middle" class="viz-on-ink">on decoded output</text>
+<text x="320" y="298" text-anchor="middle" class="viz-tick">the residue is validated with the full schema after decoding; the rest is guaranteed</text>
 </svg>
 <figcaption>Illustrative: the split as the checklist applies it; which keywords land in the residue depends on the engine, and the list shown is the union across common ones.</figcaption>
 </figure>

@@ -1,6 +1,6 @@
 ---
 title: The text never leaves the phone
-date: 2026-09-17
+date: 2026-09-13
 summary: deAIfy strips the tells of machine writing on the device and calls a model only with the user's own key. Making that the default, not the fallback, changes three things at once.
 tags: Privacy, React Native, On-Device
 draft: false
@@ -27,7 +27,7 @@ The third is the account. There is nothing to sign up for, because there is noth
 <line x1="130" y1="74" x2="176" y2="74" class="viz-arrow" marker-end="url(#f1-ah)"/>
 <rect x="180" y="50" width="200" height="48" rx="8" class="viz-box-accent"/>
 <text x="280" y="70" text-anchor="middle" class="viz-label">Deterministic transforms</text>
-<text x="280" y="88" text-anchor="middle" class="viz-label-muted">dashes, quotes, hidden characters, fillers</text>
+<text x="280" y="88" text-anchor="middle" class="viz-label-muted">dashes, quotes, hidden characters</text>
 <line x1="382" y1="74" x2="428" y2="74" class="viz-arrow" marker-end="url(#f1-ah)"/>
 <rect x="432" y="50" width="200" height="48" rx="8" class="viz-box"/>
 <text x="532" y="70" text-anchor="middle" class="viz-label">Cleaned text</text>

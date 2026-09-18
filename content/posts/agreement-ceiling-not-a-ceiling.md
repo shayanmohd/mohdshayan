@@ -1,6 +1,6 @@
 ---
 title: The agreement ceiling is not a ceiling
-date: 2026-09-17
+date: 2026-05-15
 summary: Folk wisdom says a model cannot beat inter-annotator agreement. It can, because agreement compares two noisy people while the model is scored against a majority better than either.
 tags: Labelling, Data Quality, Statistics
 draft: false
@@ -19,7 +19,7 @@ Now build the gold label by majority vote of five annotators at 90 percent each.
 <title id="f1-t">Accuracy of a majority label against the number of annotators</title>
 <desc id="f1-d">Three lines over one, three, five and seven annotators. With annotators 90 percent accurate the majority label rises from 90 to 97.2 to 99.1 to 99.7 percent. At 80 percent it rises from 80 to 89.6 to 94.2 to 96.7. At 70 percent it rises from 70 to 78.4 to 83.7 to 87.4.</desc>
 <text x="0" y="18" class="viz-title">The majority is better than the people in it</text>
-<text x="0" y="36" class="viz-sub">Accuracy of a majority label, per cent, independent binary annotators</text>
+<text x="0" y="36" class="viz-sub">Majority-label accuracy, per cent, independent binary annotators</text>
 <line x1="380" y1="31" x2="394" y2="31" class="viz-s1"/><text x="400" y="35" class="viz-label-muted">p = 0.9</text>
 <line x1="470" y1="31" x2="484" y2="31" class="viz-s2"/><text x="490" y="35" class="viz-label-muted">p = 0.8</text>
 <line x1="560" y1="31" x2="574" y2="31" class="viz-s3"/><text x="580" y="35" class="viz-label-muted">p = 0.7</text>

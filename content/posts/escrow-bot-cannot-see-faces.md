@@ -1,6 +1,6 @@
 ---
 title: An escrow bot that cannot see faces
-date: 2026-09-18
+date: 2026-09-01
 summary: Anonymity in a mediated trade is not a property of the transport. It is a property of one table, the map from a relayed message to its sender, and every feature is judged by it.
 tags: Telegram, Privacy, System Design
 draft: false
@@ -92,19 +92,19 @@ A relay lives inside the platform's rate ceilings, and Telegram's [Bot API FAQ](
 <text x="0" y="36" class="viz-sub">Messages per second, log scale from 0.1 to 1,000, from the Bot API FAQ</text>
 <line x1="196" y1="52" x2="196" y2="188" class="viz-axis"/>
 <text x="186" y="73" text-anchor="end" class="viz-label">Same group</text>
-<path d="M196 58 H249 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/>
-<text x="269" y="73" class="viz-value">0.33, twenty a minute</text>
+<path d="M196 58 H238 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H196 Z" class="viz-f1"/>
+<text x="258" y="73" class="viz-value">0.33, twenty a minute</text>
 <text x="186" y="107" text-anchor="end" class="viz-label">One chat</text>
-<path d="M196 92 H297 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
-<text x="317" y="107" class="viz-value">about 1</text>
+<path d="M196 92 H277 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
+<text x="297" y="107" class="viz-value">about 1</text>
 <text x="186" y="141" text-anchor="end" class="viz-label">Bulk notifications</text>
-<path d="M196 126 H444 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
-<text x="464" y="141" class="viz-value">about 30</text>
+<path d="M196 126 H394 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
+<text x="414" y="141" class="viz-value">about 30</text>
 <text x="186" y="175" text-anchor="end" class="viz-label">Paid broadcast tier</text>
-<path d="M196 160 H596 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
-<text x="592" y="155" text-anchor="end" class="viz-value">up to 1,000</text>
+<path d="M196 160 H516 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H196 Z" class="viz-fgray"/>
+<text x="536" y="175" class="viz-value">up to 1,000</text>
 <text x="0" y="222" class="viz-label-muted">A pair of groups shares one twenty-a-minute budget each way, whatever the trade count.</text>
-<text x="0" y="246" class="viz-tick">one hundred pixels per decade</text>
+<text x="0" y="246" class="viz-tick">eighty pixels per decade</text>
 </svg>
 <figcaption>Source: the <a href="https://core.telegram.org/bots/faq">Telegram Bot API FAQ</a>, section on hitting limits, September 2026.</figcaption>
 </figure>

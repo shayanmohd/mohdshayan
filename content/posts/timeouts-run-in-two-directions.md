@@ -1,6 +1,6 @@
 ---
 title: Timeouts run in two directions
-date: 2026-09-17
+date: 2025-08-22
 summary: Through a proxy chain, idle timeouts must get longer as you go inward and deadlines must get shorter. Most timeout bugs are one of those staircases built the wrong way round.
 tags: Reverse Proxies, Node.js, Reliability
 draft: false
@@ -21,7 +21,7 @@ The deadline staircase must descend inward. Each hop's deadline must be shorter 
 <title id="f1-t">Documented default timeouts along a common chain</title>
 <desc id="f1-d">Four hops on the horizontal axis: an AWS application load balancer, nginx, a Node.js HTTP server and PostgreSQL. Two series on a logarithmic seconds axis. Idle timeouts: 60 at the load balancer, 75 at nginx, 5 at Node, which breaks the ascending rule and is highlighted. Deadlines: 60 at the load balancer, 60 at nginx, 300 at Node, and no limit at PostgreSQL, which breaks the descending rule and is highlighted.</desc>
 <text x="0" y="18" class="viz-title">Defaults, before anyone sets anything</text>
-<text x="0" y="36" class="viz-sub">Seconds, log scale; the two series should step in opposite directions</text>
+<text x="0" y="36" class="viz-sub">Seconds, log scale; the two series should step opposite ways</text>
 <line x1="380" y1="31" x2="394" y2="31" class="viz-s2"/><text x="400" y="35" class="viz-label-muted">idle timeout</text>
 <line x1="500" y1="31" x2="514" y2="31" class="viz-s3"/><text x="520" y="35" class="viz-label-muted">deadline</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">1,000</text>
@@ -44,7 +44,7 @@ The deadline staircase must descend inward. Each hop's deadline must be shorter 
 <circle cx="396" cy="92.1" r="6" class="viz-d4"/>
 <text x="396" y="80" text-anchor="middle" class="viz-value">300 s: outlives the proxy</text>
 <circle cx="532" cy="56" r="6" class="viz-d4"/>
-<text x="532" y="44" text-anchor="middle" class="viz-value">no limit</text>
+<text x="532" y="78" text-anchor="middle" class="viz-value">no limit</text>
 <text x="124" y="160" text-anchor="middle" class="viz-value">60</text>
 <text x="260" y="120" text-anchor="middle" class="viz-value">75 / 60</text>
 </svg>

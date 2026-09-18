@@ -1,6 +1,6 @@
 ---
 title: Publish the denominator
-date: 2026-09-17
+date: 2025-04-24
 summary: Impact reports count outputs and drop two numbers: how many were eligible, and what would have happened anyway. A metric with no baseline would not ship, so do not fund one.
 tags: Philanthropy, Measurement, Evidence
 draft: false
@@ -28,7 +28,7 @@ Every impact figure is published as a numerator over the eligible population, wi
 <rect x="440" y="50" width="192" height="80" rx="8" class="viz-box-accent"/>
 <text x="536" y="76" text-anchor="middle" class="viz-label">Outcome, counterfactual</text>
 <text x="536" y="96" text-anchor="middle" class="viz-label-muted">attendance up 10 points</text>
-<text x="536" y="116" text-anchor="middle" class="viz-tick">vs a group that did not move</text>
+<text x="536" y="116" text-anchor="middle" class="viz-tick">vs a group that stayed</text>
 <text x="320" y="292" text-anchor="middle" class="viz-label-muted">Each rung is honest to report. The report has to say which rung it is on.</text>
 </svg>
 <figcaption>Illustrative: the ladder as the rule uses it; the numbers are an example.</figcaption>
@@ -86,7 +86,7 @@ The rule becomes a template that fits on an index card and that I now ask for be
 <line x1="0" y1="104" x2="640" y2="104" class="viz-grid"/>
 <text x="20" y="132" class="viz-label">Reach</text>
 <text x="200" y="132" class="viz-label-muted">400 of 6,000 eligible, 6.7%</text>
-<text x="200" y="150" class="viz-tick">source: district enrolment register</text>
+<text x="200" y="150" class="viz-tick">source: enrolment register</text>
 <text x="440" y="132" class="viz-label-muted">how much of the problem</text>
 <text x="440" y="150" class="viz-label-muted">the programme touched</text>
 <line x1="0" y1="168" x2="640" y2="168" class="viz-grid"/>

@@ -1,6 +1,6 @@
 ---
 title: A citation is a claim about a passage
-date: 2026-09-17
+date: 2026-08-21
 summary: A citation marker asserts that this passage supports this sentence, and it fails on its own schedule. Make the model commit to spans, check them outside the model, drop the rest.
 tags: RAG, Grounding, Citations
 draft: false

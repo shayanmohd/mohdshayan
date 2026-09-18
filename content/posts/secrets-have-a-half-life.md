@@ -1,6 +1,6 @@
 ---
 title: Secrets have a half-life
-date: 2026-09-17
+date: 2026-03-05
 summary: Leaked credentials keep working for years. The number that matters is not how many leak but how fast a leaked one stops working, and a secrets programme should be built on that.
 tags: Secrets Management, CI/CD, Security
 draft: false
@@ -87,7 +87,7 @@ SocialSure's platform ships through a CI/CD pipeline into containers, and the Ha
 <text x="450" y="82" class="viz-label-muted">the default for every job</text>
 <line x1="0" y1="96" x2="640" y2="96" class="viz-grid"/>
 <text x="20" y="122" class="viz-label">Keys you issue yourself</text>
-<text x="300" y="122" class="viz-value">minutes, if automated</text>
+<text x="300" y="122" class="viz-value">minutes, scripted</text>
 <text x="450" y="122" class="viz-label-muted">rotate on a schedule</text>
 <line x1="0" y1="136" x2="640" y2="136" class="viz-grid"/>
 <text x="20" y="162" class="viz-label">Keys a vendor issues</text>

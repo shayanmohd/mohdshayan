@@ -1,6 +1,6 @@
 ---
 title: Treat the model like a game client
-date: 2026-09-17
+date: 2025-01-18
 summary: An agent's tool calls are intents from a client you do not control. Games solved that years ago: validate every intent on the host, and send each client only what it may see.
 tags: Agents, Tool Use, Security
 draft: false

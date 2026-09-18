@@ -42,8 +42,8 @@
       "description": "Shamir rebuilds the private key in one process every time you sign, so it protects the key at rest and abandons it when it matters. Threshold signatures never assemble it.",
       "url": "https://mohdshayan.com/blog/key-never-assembled/",
       "mainEntityOfPage": "https://mohdshayan.com/blog/key-never-assembled/",
-      "datePublished": "2026-09-18",
-      "dateModified": "2026-09-18",
+      "datePublished": "2026-09-06",
+      "dateModified": "2026-09-06",
       "author": {
         "@type": "Person",
         "@id": "https://mohdshayan.com/#person",
@@ -122,7 +122,7 @@
         <article>
         <section class="page-head pb-8">
             <div class="max-w-content mx-auto px-6">
-                <p class="mono-meta text-muted reveal">18 September 2026 <span class="mx-2">·</span> 5 min read</p>
+                <p class="mono-meta text-muted reveal">6 September 2026 <span class="mx-2">·</span> 5 min read</p>
                 <h1 class="h2 mt-3 balance reveal">The key that is never assembled</h1>
                 <p class="lead mt-5 max-w-2xl reveal d1">Shamir rebuilds the private key in one process every time you sign, so it protects the key at rest and abandons it when it matters. Threshold signatures never assemble it.</p>
             </div>
@@ -146,23 +146,23 @@
 <line x1="100" y1="80" x2="196" y2="118" class="viz-arrow" marker-end="url(#f1-ah)"/>
 <line x1="100" y1="126" x2="196" y2="126" class="viz-arrow" marker-end="url(#f1-ah)"/>
 <line x1="100" y1="172" x2="196" y2="134" class="viz-arrow" marker-end="url(#f1-ah)"/>
-<rect x="200" y="96" width="150" height="60" rx="8" class="viz-box-ink"/>
-<text x="275" y="120" text-anchor="middle" class="viz-on-ink">full key in memory</text>
-<text x="275" y="138" text-anchor="middle" class="viz-on-ink">the reconstruction moment</text>
-<circle cx="350" cy="96" r="8" class="viz-d4"/>
-<line x1="352" y1="126" x2="386" y2="126" class="viz-arrow" marker-end="url(#f1-ah)"/>
+<rect x="200" y="96" width="166" height="60" rx="8" class="viz-box-ink"/>
+<text x="283" y="120" text-anchor="middle" class="viz-on-ink">full key in memory</text>
+<text x="283" y="138" text-anchor="middle" class="viz-on-ink">the reconstruction moment</text>
+<circle cx="366" cy="96" r="8" class="viz-d4"/>
+<line x1="368" y1="126" x2="386" y2="126" class="viz-arrow" marker-end="url(#f1-ah)"/>
 <rect x="390" y="106" width="110" height="40" rx="8" class="viz-box"/><text x="445" y="131" text-anchor="middle" class="viz-label">signature</text>
 <text x="8" y="222" class="viz-tick">FROST: PARTIAL SIGNATURES, NO RECONSTRUCTION</text>
 <rect x="8" y="230" width="90" height="34" rx="8" class="viz-box-accent"/><text x="53" y="252" text-anchor="middle" class="viz-label">signer 1</text>
 <rect x="8" y="268" width="90" height="34" rx="8" class="viz-box-accent"/><text x="53" y="290" text-anchor="middle" class="viz-label">signer 2</text>
 <rect x="110" y="249" width="90" height="34" rx="8" class="viz-box-accent"/><text x="155" y="271" text-anchor="middle" class="viz-label">signer 3</text>
-<text x="53" y="318" class="viz-tick">each signs with its own share</text>
+<text x="8" y="318" class="viz-tick">each signs with its own share</text>
 <line x1="202" y1="266" x2="296" y2="266" class="viz-arrow" marker-end="url(#f1-ah)"/>
 <text x="249" y="256" text-anchor="middle" class="viz-tick">partials</text>
 <rect x="300" y="246" width="140" height="40" rx="8" class="viz-box"/><text x="370" y="271" text-anchor="middle" class="viz-label">aggregate</text>
 <line x1="442" y1="266" x2="476" y2="266" class="viz-arrow" marker-end="url(#f1-ah)"/>
 <rect x="480" y="246" width="110" height="40" rx="8" class="viz-box"/><text x="535" y="271" text-anchor="middle" class="viz-label">signature</text>
-<text x="370" y="310" text-anchor="middle" class="viz-label-muted">no box holds the full key, at any point, in either round</text>
+<text x="600" y="318" text-anchor="end" class="viz-label-muted">no box holds the full key, at any point, in either round</text>
 </svg>
 <figcaption>Illustrative: the two signing flows for a three-of-five threshold; the FROST flow is the two-round protocol of RFC 9591, simplified.</figcaption>
 </figure>
@@ -187,7 +187,7 @@
 <text x="230" y="126" class="viz-label-muted">non-interactive online phase, identifiable abort</text><text x="520" y="126" class="viz-value">none</text>
 <line x1="0" y1="140" x2="640" y2="140" class="viz-grid"/>
 <text x="20" y="168" class="viz-label">CGGMP21</text><text x="160" y="168" class="viz-label-muted">2021</text>
-<text x="230" y="168" class="viz-label-muted">last round only needs the message, proactive refresh</text><text x="520" y="168" class="viz-value">one</text>
+<text x="230" y="168" class="viz-label-muted">only the last round needs the message</text><text x="520" y="168" class="viz-value">one</text>
 <line x1="0" y1="182" x2="640" y2="182" class="viz-grid"/>
 <text x="20" y="210" class="viz-label">FROST, RFC 9591</text><text x="160" y="210" class="viz-label-muted">2024</text>
 <text x="230" y="210" class="viz-label-muted">two rounds, first can be preprocessed; Schnorr</text><text x="520" y="210" class="viz-value">one</text>

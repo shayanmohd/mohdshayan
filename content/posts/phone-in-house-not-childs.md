@@ -1,6 +1,6 @@
 ---
 title: The phone in the house is not the child's
-date: 2026-09-17
+date: 2026-02-08
 summary: About 90 percent of rural Indian teenagers have a smartphone at home; a third own one. Learning apps run on borrowed, shared devices, and that changes what offline-first means.
 tags: Digital Access, Education, Android
 draft: false

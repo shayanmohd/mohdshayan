@@ -17,7 +17,7 @@ The mechanism is in [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) and it i
 <title id="f1-t">Base fee response to a step in demand under the one-eighth cap, with the doubling and tenfold distances marked</title>
 <desc id="f1-d">A line rising from a base fee of 1 at block zero: with every block full, the base fee multiplies by 1.125 each block, reaching 2 at about block six and 10 at about block twenty, on a logarithmic axis where the line is straight. Vertical markers at six and twenty blocks show the doubling and tenfold distances, and a note says the lag is 72 seconds and about four minutes at twelve-second blocks.</desc>
 <text x="0" y="18" class="viz-title">Six blocks to double, twenty to rise tenfold</text>
-<text x="0" y="36" class="viz-sub">Base fee as a multiple of its starting value under sustained full blocks, log scale</text>
+<text x="0" y="36" class="viz-sub">Base fee as a multiple of its start under sustained full blocks, log scale</text>
 <line x1="440" y1="31" x2="454" y2="31" class="viz-s1"/><text x="460" y="35" class="viz-label-muted">base fee</text>
 <circle cx="540" cy="31" r="5" class="viz-d4"/><text x="550" y="35" class="viz-label-muted">distance</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">20x</text>
@@ -47,7 +47,7 @@ The mechanism is in [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) and it i
 The rule is easy to see in live data, because the base fee history is a standard call on any node. I pulled a day of blocks from a public RPC endpoint through [eth_feeHistory](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_feehistory), 7,168 blocks ending at block 26,000,047 on 18 September 2026, with a gas limit of 60 million, and looked for the sharpest rise within any twenty-block window. It came at block 25,996,624: a run of full blocks, gas used at or near the limit, took the base fee from 0.15 gwei to 0.55 in fourteen blocks, a factor of 3.6, and the blocks that fell below target in the middle of the run show as the small dips where the fee paused. Absolute fees on mainnet are tiny in 2026; the shape is what matters, and the shape is the one the arithmetic predicts.
 
 <figure class="chart">
-<svg viewBox="0 0 640 330" role="img" aria-labelledby="f2-t f2-d">
+<svg viewBox="0 0 640 346" role="img" aria-labelledby="f2-t f2-d">
 <title id="f2-t">Base fee per block across the sharpest rise in a day of mainnet blocks, 18 September 2026</title>
 <desc id="f2-d">A line over 45 consecutive blocks from 25,996,619 to 25,996,663. The base fee sits near 0.15 gwei for the first six blocks, then climbs steeply to 0.55 gwei by block 25,996,638 during a run of full blocks, dips briefly as a few blocks come in under target, and continues to about 0.9 gwei by the end of the window. Small marks below the line show blocks that were full.</desc>
 <text x="0" y="18" class="viz-title">A run of full blocks, and the fee climbing at the speed limit</text>
@@ -68,7 +68,7 @@ The rule is easy to see in live data, because the base fee history is a standard
 <polyline points="56,232.8 68.4,230.7 80.7,232.8 93.1,230.7 105.5,228.6 117.8,232.8 130.2,228.6 142.5,224.5 154.9,218.2 167.3,214.1 179.6,214.1 192,207.8 204.4,201.6 216.7,193.3 229.1,187 241.5,178.7 253.8,168.3 266.2,157.9 278.5,153.8 290.9,149.6 303.3,151.7 315.6,155.8 328,162.1 340.4,149.6 352.7,135 365.1,118.4 377.5,118.4 389.8,118.4 402.2,120.5 414.5,124.6 426.9,122.6 439.3,105.9 451.6,108 464,114.2 476.4,95.5 488.7,81 501.1,87.2 513.5,93.4 525.8,93.4 538.2,83.1 550.5,83.1 562.9,87.2 575.3,87.2 587.6,72.7 600,89.3" class="viz-s1"/>
 <circle cx="117.8" cy="232.8" r="4" class="viz-d4"/><text x="124" y="248" class="viz-value">0.15 gwei</text>
 <circle cx="290.9" cy="149.6" r="4" class="viz-d4"/><text x="298" y="146" class="viz-value">0.55, fourteen blocks later</text>
-<text x="0" y="330" class="viz-tick">pauses in the climb are blocks under target; every full block is a step of one eighth</text>
+<text x="0" y="336" class="viz-tick">pauses in the climb are blocks under target; every full block is a step of one eighth</text>
 </svg>
 <figcaption>Source: pulled by the author from a public Ethereum mainnet RPC via <a href="https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_feehistory">eth_feeHistory</a> on 18 September 2026; the window is the twenty-block span with the largest multiplicative rise in the preceding day.</figcaption>
 </figure>

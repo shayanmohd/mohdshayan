@@ -1,6 +1,6 @@
 ---
 title: The last passage that mattered
-date: 2026-09-17
+date: 2026-07-18
 summary: Retrieval depth is set by feel and never touched, yet every extra passage is prefill and latency on every turn. Measure the rank of the last passage an answer used, then set k.
 tags: RAG, Retrieval, Latency
 draft: false
@@ -19,7 +19,7 @@ So the curve of answer quality against k rises, peaks early, and then flattens o
 <title id="f1-t">Answer quality and prefill cost against retrieval depth</title>
 <desc id="f1-d">Two curves over retrieval depth from one to twenty. Answer quality rises steeply to a peak around three to five passages and then drifts downward. Prefill tokens rise in a straight line with depth. The region past the peak is where cost keeps rising and quality does not.</desc>
 <text x="0" y="18" class="viz-title">The knee, and what lies past it</text>
-<text x="0" y="36" class="viz-sub">Shape of the reported pattern; an illustrative drawing, not measured data</text>
+<text x="0" y="36" class="viz-sub">Shape of the reported pattern; a drawing, not measured data</text>
 <line x1="380" y1="31" x2="394" y2="31" class="viz-s1"/><text x="400" y="35" class="viz-label-muted">answer quality</text>
 <line x1="510" y1="31" x2="524" y2="31" class="viz-sgray"/><text x="530" y="35" class="viz-label-muted">prefill tokens</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/>

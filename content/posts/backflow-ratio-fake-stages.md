@@ -1,6 +1,6 @@
 ---
 title: The backflow ratio finds your fake stages
-date: 2026-09-17
+date: 2026-09-13
 summary: A pipeline stage should record a fact proven about a deal. When deals keep moving backwards out of a stage, it was recording a mood, and the proof is in a table every CRM keeps.
 tags: CRM, Sales Pipelines, Data Modelling
 draft: false
@@ -21,14 +21,14 @@ The vendors' defaults are not the problem, and they are worth looking at because
 <text x="0" y="18" class="viz-title">Out of the box, including closed states</text>
 <text x="0" y="36" class="viz-sub">Default pipeline stages per vendor, 2026 documentation</text>
 <line x1="56" y1="250" x2="600" y2="250" class="viz-axis"/>
-<path d="M148.7 60 V56 a4 4 0 0 1 4 -4 H168.7 a4 4 0 0 1 4 4 V250 H148.7 Z" class="viz-f1"/>
-<text x="160.7" y="44" text-anchor="middle" class="viz-value">10</text>
+<path d="M148.7 82.8 V79.3 a4 4 0 0 1 4 -4 H168.7 a4 4 0 0 1 4 4 V250 H148.7 Z" class="viz-f1"/>
+<text x="160.7" y="68.7" text-anchor="middle" class="viz-value">10</text>
 <text x="160.7" y="272" text-anchor="middle" class="viz-label-muted">Salesforce</text>
-<path d="M316 118.8 V114.8 a4 4 0 0 1 4 -4 H336 a4 4 0 0 1 4 4 V250 H316 Z" class="viz-f1"/>
-<text x="328" y="102.8" text-anchor="middle" class="viz-value">7</text>
+<path d="M316 134.5 V131 a4 4 0 0 1 4 -4 H336 a4 4 0 0 1 4 4 V250 H316 Z" class="viz-f1"/>
+<text x="328" y="120.5" text-anchor="middle" class="viz-value">7</text>
 <text x="328" y="272" text-anchor="middle" class="viz-label-muted">HubSpot</text>
-<path d="M483.3 79.6 V75.6 a4 4 0 0 1 4 -4 H503.3 a4 4 0 0 1 4 4 V250 H483.3 Z" class="viz-f1"/>
-<text x="495.3" y="63.6" text-anchor="middle" class="viz-value">9</text>
+<path d="M483.3 100 V96.5 a4 4 0 0 1 4 -4 H503.3 a4 4 0 0 1 4 4 V250 H483.3 Z" class="viz-f1"/>
+<text x="495.3" y="86" text-anchor="middle" class="viz-value">9</text>
 <text x="495.3" y="272" text-anchor="middle" class="viz-label-muted">Zoho</text>
 </svg>
 <figcaption>Source: <a href="https://knowledge.hubspot.com/object-settings/set-up-and-customize-pipelines">HubSpot's pipeline documentation</a>, <a href="https://www.salesforceben.com/complete-guide-tutorial-to-salesforce-opportunity-stages/">Salesforce Ben's guide to the default opportunity stages</a>, and <a href="https://help.zoho.com/portal/en/kb/crm/sales-force-automation/deal-management/articles/create-deals">Zoho CRM's deal documentation</a>.</figcaption>
@@ -101,12 +101,12 @@ That is the demotion the ratio points at. A leaky stage becomes a boolean with a
 <rect x="438" y="58" width="96" height="36" rx="6" class="viz-box"/><text x="486" y="81" text-anchor="middle" class="viz-label-muted">Negotiation</text>
 <rect x="544" y="58" width="96" height="36" rx="6" class="viz-box"/><text x="592" y="81" text-anchor="middle" class="viz-label-muted">Closed</text>
 <text x="0" y="132" class="viz-tick">AFTER: five stages and one field</text>
-<rect x="0" y="142" width="96" height="36" rx="6" class="viz-box"/><text x="48" y="165" text-anchor="middle" class="viz-label-muted">Lead</text>
-<rect x="106" y="142" width="96" height="36" rx="6" class="viz-box"/><text x="154" y="165" text-anchor="middle" class="viz-label-muted">Qualified</text>
-<rect x="212" y="142" width="96" height="36" rx="6" class="viz-box"/><text x="260" y="165" text-anchor="middle" class="viz-label-muted">Demo done</text>
-<rect x="318" y="142" width="96" height="36" rx="6" class="viz-box"/><text x="366" y="165" text-anchor="middle" class="viz-label-muted">Negotiation</text>
-<rect x="424" y="142" width="96" height="36" rx="6" class="viz-box"/><text x="472" y="165" text-anchor="middle" class="viz-label-muted">Closed</text>
-<rect x="530" y="142" width="110" height="36" rx="6" class="viz-box-ink"/><text x="585" y="160" text-anchor="middle" class="viz-on-ink">proposal_sent_at</text><text x="585" y="174" text-anchor="middle" class="viz-on-ink">2026-09-12 14:02</text>
+<rect x="0" y="142" width="90" height="36" rx="6" class="viz-box"/><text x="45" y="165" text-anchor="middle" class="viz-label-muted">Lead</text>
+<rect x="98" y="142" width="90" height="36" rx="6" class="viz-box"/><text x="143" y="165" text-anchor="middle" class="viz-label-muted">Qualified</text>
+<rect x="196" y="142" width="90" height="36" rx="6" class="viz-box"/><text x="241" y="165" text-anchor="middle" class="viz-label-muted">Demo done</text>
+<rect x="294" y="142" width="90" height="36" rx="6" class="viz-box"/><text x="339" y="165" text-anchor="middle" class="viz-label-muted">Negotiation</text>
+<rect x="392" y="142" width="90" height="36" rx="6" class="viz-box"/><text x="437" y="165" text-anchor="middle" class="viz-label-muted">Closed</text>
+<rect x="490" y="142" width="150" height="36" rx="6" class="viz-box-ink"/><text x="565" y="160" text-anchor="middle" class="viz-on-ink">proposal_sent_at</text><text x="565" y="174" text-anchor="middle" class="viz-on-ink">2026-09-12 14:02</text>
 <text x="0" y="214" class="viz-label-muted">The field cannot be moved backwards. It can only be set, and the date is the evidence.</text>
 </svg>
 <figcaption>Illustrative: the demotion the backflow ratio recommends for a stage that records an action rather than a fact.</figcaption>

@@ -1,6 +1,6 @@
 ---
 title: What a student workshop actually rewards
-date: 2026-09-17
+date: 2026-08-11
 summary: The ACL 2026 Student Research Workshop took 130 of 402 submissions. Its public process says what it selects for: one thing proved, one measured, one related to the field.
 tags: Research, ACL, Writing
 draft: false
@@ -52,11 +52,11 @@ A fourth feature hides in the archival split. Of the 130 accepted papers, 21 are
 <text x="0" y="18" class="viz-title">Submitted and accepted, 2026</text>
 <text x="0" y="36" class="viz-sub">Papers; 34.7% accepted, against 32.2% in 2025</text>
 <line x1="56" y1="250" x2="600" y2="250" class="viz-axis"/>
-<path d="M195.3 62 V58 a4 4 0 0 1 4 -4 H215.3 a4 4 0 0 1 4 4 V250 H195.3 Z" class="viz-fgray"/>
-<text x="207.3" y="46" text-anchor="middle" class="viz-value">402</text>
+<path d="M195.3 80.8 V77.2 a4 4 0 0 1 4 -4 H215.3 a4 4 0 0 1 4 4 V250 H195.3 Z" class="viz-fgray"/>
+<text x="207.3" y="66.4" text-anchor="middle" class="viz-value">402</text>
 <text x="207.3" y="272" text-anchor="middle" class="viz-label-muted">Submitted</text>
-<path d="M436.7 189.2 V185.2 a4 4 0 0 1 4 -4 H456.7 a4 4 0 0 1 4 4 V250 H436.7 Z" class="viz-f1"/>
-<text x="448.7" y="173.2" text-anchor="middle" class="viz-value">130</text>
+<path d="M436.7 195.3 V191.7 a4 4 0 0 1 4 -4 H456.7 a4 4 0 0 1 4 4 V250 H436.7 Z" class="viz-f1"/>
+<text x="448.7" y="180.9" text-anchor="middle" class="viz-value">130</text>
 <text x="448.7" y="272" text-anchor="middle" class="viz-label-muted">Accepted</text>
 <text x="470" y="215" class="viz-label-muted">109 archival</text>
 <text x="470" y="233" class="viz-label-muted">21 non-archival</text>

@@ -1,6 +1,6 @@
 ---
 title: Two dials on the rate limiter
-date: 2026-09-18
+date: 2026-09-17
 summary: A per-tenant limit stops tenants hurting each other; a per-principal limit stops one bug hurting you. They come from different numbers, and one dial with one number gives neither.
 tags: Rate Limiting, API Design, Multi-tenant SaaS
 draft: false
@@ -64,12 +64,12 @@ The per-tenant ceiling, the limit actually enforced, sits above the floor by exa
 <rect x="144" y="90" width="170" height="76" rx="8" class="viz-box-accent"/>
 <text x="229" y="114" text-anchor="middle" class="viz-label">Edge limiter</text>
 <text x="229" y="132" text-anchor="middle" class="viz-label-muted">keyed by tenant</text>
-<text x="229" y="150" text-anchor="middle" class="viz-tick">stops tenants hurting each other</text>
+<text x="229" y="150" text-anchor="middle" class="viz-tick">tenant against tenant</text>
 <line x1="316" y1="128" x2="346" y2="128" class="viz-arrow" marker-end="url(#f2-ah)"/>
 <rect x="350" y="90" width="170" height="76" rx="8" class="viz-box-accent"/>
 <text x="435" y="114" text-anchor="middle" class="viz-label">Application limiter</text>
 <text x="435" y="132" text-anchor="middle" class="viz-label-muted">keyed by user or key</text>
-<text x="435" y="150" text-anchor="middle" class="viz-tick">stops one bug hurting you</text>
+<text x="435" y="150" text-anchor="middle" class="viz-tick">contains one client's bug</text>
 <line x1="522" y1="128" x2="552" y2="128" class="viz-arrow" marker-end="url(#f2-ah)"/>
 <rect x="556" y="100" width="76" height="56" rx="8" class="viz-box-ink"/>
 <text x="594" y="132" text-anchor="middle" class="viz-on-ink">App</text>
@@ -78,7 +78,7 @@ The per-tenant ceiling, the limit actually enforced, sits above the floor by exa
 <text x="229" y="236" text-anchor="middle" class="viz-tick">the floor is the contract</text>
 <text x="435" y="200" text-anchor="middle" class="viz-label">the fastest legitimate client</text>
 <text x="435" y="218" text-anchor="middle" class="viz-label-muted">measured, with headroom</text>
-<text x="435" y="236" text-anchor="middle" class="viz-tick">a bug runs faster than any user</text>
+<text x="435" y="236" text-anchor="middle" class="viz-tick">a bug outruns any user</text>
 <text x="320" y="278" text-anchor="middle" class="viz-label-muted">One middleware with one number is one of these two, mislabelled as both.</text>
 </svg>
 <figcaption>Illustrative: the layering as I build it; the edge limiter is the one the contract references, the application limiter is the one that catches the retry loop.</figcaption>

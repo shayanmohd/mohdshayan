@@ -1,6 +1,6 @@
 ---
 title: Compound PCFGs leak context on purpose
-date: 2026-09-18
+date: 2026-02-03
 summary: A compound PCFG keeps the tree context-free so the inside algorithm still works, and lets context in through a per-sentence latent that rewrites rule probabilities.
 tags: Grammar Induction, PCFG, NLP
 draft: false
@@ -27,7 +27,7 @@ In the [compound PCFG paper](https://arxiv.org/abs/1906.10225), each sentence ge
 <rect x="30" y="200" width="90" height="34" rx="6" class="viz-box"/><text x="75" y="222" text-anchor="middle" class="viz-label-muted">subtree A</text>
 <rect x="140" y="200" width="90" height="34" rx="6" class="viz-box"/><text x="185" y="222" text-anchor="middle" class="viz-label-muted">subtree B</text>
 <text x="130" y="262" text-anchor="middle" class="viz-tick">A, B independent given roots</text>
-<text x="340" y="52" class="viz-tick">COMPOUND PCFG</text>
+<text x="316" y="52" class="viz-tick">COMPOUND PCFG</text>
 <rect x="420" y="40" width="100" height="34" rx="8" class="viz-box-accent"/>
 <text x="470" y="62" text-anchor="middle" class="viz-label">z, per sentence</text>
 <line x1="470" y1="76" x2="470" y2="96" class="viz-arrow" marker-end="url(#f1-ah)"/>
@@ -93,7 +93,7 @@ The reason the trick works, rather than merely being clever, is that the inside 
 <text x="564" y="86" text-anchor="middle" class="viz-on-ink">Inside algorithm</text>
 <text x="564" y="104" text-anchor="middle" class="viz-on-ink">trees summed exactly</text>
 <path d="M564 122 V170 H78 V124" class="viz-arrow" marker-end="url(#f3-ah)"/>
-<text x="320" y="164" text-anchor="middle" class="viz-tick">likelihood plus divergence to the prior: the objective for encoder and grammar</text>
+<text x="320" y="156" text-anchor="middle" class="viz-tick">likelihood plus divergence to the prior: the objective</text>
 <text x="320" y="210" text-anchor="middle" class="viz-label-muted">Only the continuous latent is approximated; the discrete structure is handled exactly.</text>
 </svg>
 <figcaption>Illustrative: the training loop as described in the paper, drawn to show that the inside algorithm runs unchanged inside it.</figcaption>

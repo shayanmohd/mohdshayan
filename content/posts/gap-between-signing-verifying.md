@@ -1,6 +1,6 @@
 ---
 title: The gap between signing and verifying
-date: 2026-09-18
+date: 2026-09-07
 summary: Signature checks fail far more often from re-serialisation than from cryptography: the sender signed one byte string and the receiver re-encoded it into another before checking.
 tags: Security, Signing, Webhooks
 draft: false
@@ -104,7 +104,7 @@ The verification code itself is three gates, and the order matters. The first is
 <line x1="140" y1="92" x2="160" y2="92" class="viz-arrow" marker-end="url(#f3-ah)"/>
 <rect x="164" y="60" width="140" height="64" rx="8" class="viz-box-accent"/>
 <text x="234" y="86" text-anchor="middle" class="viz-label">1. Signature</text>
-<text x="234" y="104" text-anchor="middle" class="viz-label-muted">constant-time compare</text>
+<text x="234" y="104" text-anchor="middle" class="viz-label-muted">constant-time check</text>
 <line x1="306" y1="92" x2="326" y2="92" class="viz-arrow" marker-end="url(#f3-ah)"/>
 <rect x="330" y="60" width="140" height="64" rx="8" class="viz-box-accent"/>
 <text x="400" y="86" text-anchor="middle" class="viz-label">2. Timestamp</text>

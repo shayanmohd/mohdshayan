@@ -1,6 +1,6 @@
 ---
 title: Play reads your manifest before your users do
-date: 2026-09-18
+date: 2025-12-27
 summary: Every permission line in an Android manifest is a promise Google Play reviews before a user sees the app, with less context than the user has. The account carries the risk.
 tags: Android, Google Play, Release Engineering
 draft: false
@@ -97,11 +97,11 @@ The ledger is not documentation for its own sake; it feeds the release process a
 <line x1="130" y1="90" x2="150" y2="90" class="viz-arrow" marker-end="url(#f3-ah)"/>
 <rect x="154" y="60" width="120" height="60" rx="8" class="viz-box"/>
 <text x="214" y="86" text-anchor="middle" class="viz-label">CI diff</text>
-<text x="214" y="104" text-anchor="middle" class="viz-label-muted">manifest against ledger</text>
+<text x="214" y="104" text-anchor="middle" class="viz-label-muted">manifest vs ledger</text>
 <line x1="276" y1="90" x2="296" y2="90" class="viz-arrow" marker-end="url(#f3-ah)"/>
 <rect x="300" y="60" width="120" height="60" rx="8" class="viz-box"/>
 <text x="360" y="86" text-anchor="middle" class="viz-label">Declarations</text>
-<text x="360" y="104" text-anchor="middle" class="viz-label-muted">filled from the ledger</text>
+<text x="360" y="104" text-anchor="middle" class="viz-label-muted">from the ledger</text>
 <line x1="422" y1="90" x2="442" y2="90" class="viz-arrow" marker-end="url(#f3-ah)"/>
 <rect x="446" y="60" width="120" height="60" rx="8" class="viz-box"/>
 <text x="506" y="86" text-anchor="middle" class="viz-label">Policy review</text>

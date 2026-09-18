@@ -1,6 +1,6 @@
 ---
 title: The fifth custom field is a table
-date: 2026-09-17
+date: 2026-09-16
 summary: Custom fields postpone a data model decision, and vendors sell the ceiling as a feature. Fields that are filled together and empty together are a table waiting to be named.
 tags: Data Modelling, CRM, PostgreSQL
 draft: false
@@ -20,17 +20,17 @@ Vendors sell the field limit as a feature, and the limits are generous enough th
 <text x="0" y="36" class="viz-sub">Custom fields allowed per module or object, log scale</text>
 <line x1="176" y1="52" x2="176" y2="188" class="viz-axis"/>
 <text x="166" y="73" text-anchor="end" class="viz-label">Zoho Standard</text>
-<path d="M176 58 H267 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
-<text x="287" y="73" class="viz-value">10</text>
+<path d="M176 58 H253 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="273" y="73" class="viz-value">10</text>
 <text x="166" y="107" text-anchor="end" class="viz-label">Zoho Professional</text>
-<path d="M176 92 H505 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
-<text x="525" y="107" class="viz-value">155</text>
+<path d="M176 92 H456 a4 4 0 0 1 4 4 V108 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="476" y="107" class="viz-value">155</text>
 <text x="166" y="141" text-anchor="end" class="viz-label">Zoho Enterprise</text>
-<path d="M176 126 H562 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
-<text x="582" y="141" class="viz-value">300</text>
+<path d="M176 126 H504 a4 4 0 0 1 4 4 V142 a4 4 0 0 1 -4 4 H176 Z" class="viz-fgray"/>
+<text x="524" y="141" class="viz-value">300</text>
 <text x="166" y="175" text-anchor="end" class="viz-label">HubSpot, per object</text>
-<path d="M176 160 H600 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/>
-<text x="596" y="155" text-anchor="end" class="viz-value">1,000</text>
+<path d="M176 160 H536 a4 4 0 0 1 4 4 V176 a4 4 0 0 1 -4 4 H176 Z" class="viz-f1"/>
+<text x="556" y="175" class="viz-value">1,000</text>
 <text x="0" y="222" class="viz-label-muted">Log scale; the bars are drawn so that each factor of ten adds the same length.</text>
 </svg>
 <figcaption>Source: <a href="https://help.zoho.com/portal/en/kb/crm/customize-crm-account/customizing-fields/articles/use-custom-fields">Zoho CRM's custom field documentation</a> and <a href="https://developers.hubspot.com/docs/api-reference/crm-limits-tracking-v3/limits/get-crm-v3-limits-custom-properties">HubSpot's limits reference</a>, September 2026.</figcaption>

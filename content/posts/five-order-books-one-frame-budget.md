@@ -1,6 +1,6 @@
 ---
 title: Five order books, one frame budget
-date: 2026-09-17
+date: 2026-09-08
 summary: A terminal on five venues receives more order-book updates than it can paint; rendering per message freezes the tab when a trader needs it. The unit of work is the frame.
 tags: WebSockets, Realtime, Frontend Performance
 draft: false
@@ -90,7 +90,7 @@ The instinct when behind is to work harder: process the queue faster, skip the p
 <title id="f3-t">Queue age over time during a burst, draining deltas versus flipping to a snapshot</title>
 <desc id="f3-d">Two lines over time. In delta mode, the age of the oldest unprocessed message rises through the burst and keeps rising after it, because the page cannot catch up. In snapshot mode, the age rises to the two-frame threshold, then drops to zero when the snapshot arrives, and stays low. A horizontal marker shows the two-frame threshold.</desc>
 <text x="0" y="18" class="viz-title">The backlog you drain versus the backlog you replace</text>
-<text x="0" y="36" class="viz-sub">Age of the oldest queued message, in frames, during a burst; illustrative shape</text>
+<text x="0" y="36" class="viz-sub">Age of the oldest queued message in frames during a burst</text>
 <line x1="380" y1="31" x2="394" y2="31" class="viz-s4"/><text x="400" y="35" class="viz-label-muted">drain deltas</text>
 <line x1="500" y1="31" x2="514" y2="31" class="viz-s1"/><text x="520" y="35" class="viz-label-muted">snapshot flip</text>
 <line x1="56" y1="60" x2="600" y2="60" class="viz-grid"/><text x="48" y="64" text-anchor="end" class="viz-tick">12</text>

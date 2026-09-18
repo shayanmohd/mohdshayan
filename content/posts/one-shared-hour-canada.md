@@ -1,6 +1,6 @@
 ---
 title: One shared hour with Canada is enough
-date: 2026-09-18
+date: 2026-08-24
 summary: From New Delhi, Kuala Lumpur overlaps my working day by six and a half hours and Dubai by seven and a half. Toronto and Vancouver overlap it by zero; the shared hour is made.
 tags: Remote Work, Contract Work, Time Zones
 draft: false
@@ -17,7 +17,7 @@ The overlaps are a computation on the [IANA time zone database](https://www.iana
 <title id="f1-t">Hours of overlap between a nine-to-six day in New Delhi and the same day in four cities, summer and winter</title>
 <desc id="f1-d">Horizontal bars in hours. Kuala Lumpur: 6.5 in both seasons. Dubai: 7.5 in both. Toronto: 0 in both. Vancouver: 0 in both. A second set of bars shows the Delhi day stretched to eight in the evening: Kuala Lumpur 6.5, Dubai 9, Toronto 1.5 in summer and 0.5 in winter, Vancouver 0 in both.</desc>
 <text x="0" y="18" class="viz-title">Two clients share most of my day; two share none of it</text>
-<text x="0" y="36" class="viz-sub">Hours in which both cities are inside a working day; Delhi day 09:00 to 18:00, or to 20:00</text>
+<text x="0" y="36" class="viz-sub">Hours when both cities are inside a working day, two Delhi days</text>
 <rect x="380" y="26" width="12" height="12" rx="3" class="viz-f1"/><text x="398" y="37" class="viz-label-muted">09:00 to 18:00</text>
 <rect x="510" y="26" width="12" height="12" rx="3" class="viz-f2"/><text x="528" y="37" class="viz-label-muted">to 20:00</text>
 <line x1="176" y1="52" x2="176" y2="290" class="viz-axis"/>
@@ -64,9 +64,9 @@ The ring below is how I picture it. Twenty-four hours around the circle, four wo
 <circle cx="320" cy="190" r="56" fill="none" class="viz-grid"/>
 <path d="M 285.9 145.6 A 56 56 0 0 1 375.5 197.3" fill="none" class="viz-sgray"/>
 <text x="320" y="56" text-anchor="middle" class="viz-tick">00:00</text>
-<text x="454" y="194" text-anchor="middle" class="viz-tick">06:00</text>
+<text x="466" y="194" text-anchor="middle" class="viz-tick">06:00</text>
 <text x="320" y="338" text-anchor="middle" class="viz-tick">12:00</text>
-<text x="186" y="194" text-anchor="middle" class="viz-tick">18:00</text>
+<text x="174" y="194" text-anchor="middle" class="viz-tick">18:00</text>
 <text x="8" y="120" class="viz-value">the shared hour:</text>
 <text x="8" y="140" class="viz-value">19:00 to 20:00 Delhi</text>
 <line x1="150" y1="132" x2="196" y2="150" class="viz-sgray"/>
@@ -97,14 +97,14 @@ The overlap ledger is the written list of activities that genuinely need both pa
 <text x="24" y="104" class="viz-label-muted">decisions with money attached</text>
 <text x="24" y="130" class="viz-label-muted">demos of working software</text>
 <text x="24" y="156" class="viz-label-muted">incidents, at whatever hour</text>
-<text x="24" y="200" class="viz-tick">three entries; a fourth needs one removed</text>
+<text x="24" y="200" class="viz-tick">three entries; a fourth removes one</text>
 <rect x="332" y="44" width="300" height="200" rx="8" class="viz-box"/>
 <text x="482" y="70" text-anchor="middle" class="viz-label">Asynchronous, 24-hour reply</text>
 <text x="348" y="104" class="viz-label-muted">status updates and progress</text>
 <text x="348" y="130" class="viz-label-muted">code review and design feedback</text>
 <text x="348" y="156" class="viz-label-muted">any question with a written answer</text>
 <text x="348" y="182" class="viz-label-muted">scheduling the shared hour itself</text>
-<text x="348" y="222" class="viz-tick">written well enough to be answered once</text>
+<text x="348" y="222" class="viz-tick">written to be answered once</text>
 <text x="320" y="280" text-anchor="middle" class="viz-label-muted">The left column is capped by rule, because the hour is paid for out of someone's evening.</text>
 </svg>
 <figcaption>Illustrative: the ledger as I keep it; the entries are the general categories, and clients see the same list.</figcaption>

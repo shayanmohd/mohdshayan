@@ -1,6 +1,6 @@
 ---
 title: German needs a third more room
-date: 2026-09-18
+date: 2026-03-25
 summary: Translating an app into nine languages is a layout problem before it is a language problem. Short labels grow by a third or more and plurals go from two forms to six.
 tags: Localisation, Android, UX
 draft: false

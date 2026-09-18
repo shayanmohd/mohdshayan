@@ -1,6 +1,6 @@
 ---
 title: Kubernetes is a payroll decision
-date: 2026-09-17
+date: 2026-07-11
 summary: For a team of a few engineers, the cost of Kubernetes is not compute. It is a second product with its own release train, and the question is who gets paged for it.
 tags: Kubernetes, Small Teams, Operations
 draft: false

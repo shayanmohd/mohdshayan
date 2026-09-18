@@ -1,6 +1,6 @@
 ---
 title: The pumping lemma as a model test
-date: 2026-09-18
+date: 2025-05-24
 summary: The pumping lemma is a doubling argument: a finite-memory recogniser that accepts a long string must accept it with the middle repeated. It tests a model for grammar versus memory.
 tags: Formal Languages, Generalisation, Transformers
 draft: false
@@ -92,7 +92,7 @@ The test that falls out of the lemma is what I call the doubling probe. Take a s
 <title id="f3-t">The doubling probe curve for a memoriser and for a grammar-learner</title>
 <desc id="f3-d">Accuracy against pump count on a log scale of one, two, four, eight, sixteen. A grammar-learner's line stays flat near one hundred percent. A memoriser's line stays high while the pumped string is within the training length, then falls off a cliff toward chance once the pumped length exceeds it. A vertical marker at the cliff is labelled as the model's effective memory.</desc>
 <text x="0" y="18" class="viz-title">Flat means the grammar; a cliff means the lengths</text>
-<text x="0" y="36" class="viz-sub">Accuracy on strings with the middle pumped, against pump count; illustrative curves</text>
+<text x="0" y="36" class="viz-sub">Accuracy on pumped strings by pump count; illustrative</text>
 <line x1="330" y1="31" x2="344" y2="31" class="viz-s1"/><text x="350" y="35" class="viz-label-muted">has the grammar</text>
 <line x1="490" y1="31" x2="504" y2="31" class="viz-s4"/><text x="510" y="35" class="viz-label-muted">memorised lengths</text>
 <line x1="56" y1="56" x2="600" y2="56" class="viz-grid"/><text x="48" y="60" text-anchor="end" class="viz-tick">100%</text>
@@ -107,7 +107,8 @@ The test that falls out of the lemma is what I call the doubling probe. Take a s
 <polyline points="56,60 192,61 328,62 464,63 600,64" class="viz-s1"/>
 <polyline points="56,60 192,64 260,80 328,150 396,215 464,240 600,250" class="viz-s4"/>
 <line x1="300" y1="56" x2="300" y2="264" class="viz-s4"/>
-<text x="308" y="252" class="viz-tick">the cliff: training length, effective memory</text>
+<text x="292" y="236" text-anchor="end" class="viz-tick">the cliff: training length,</text>
+<text x="292" y="252" text-anchor="end" class="viz-tick">effective memory</text>
 </svg>
 <figcaption>Illustrative: the two curves the probe can produce, constructed from the definitions in the text; the position of the cliff is what the probe measures.</figcaption>
 </figure>
