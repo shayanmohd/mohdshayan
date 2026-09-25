@@ -1,8 +1,9 @@
 ---
 title: Play reads your manifest before your users do
-date: 2025-12-27
+date: 2026-08-31
 summary: Every permission line in an Android manifest is a promise Google Play reviews before a user sees the app, with less context than the user has. The account carries the risk.
 tags: Android, Google Play, Release Engineering
+topic: Mobile & Games
 draft: false
 ---
 

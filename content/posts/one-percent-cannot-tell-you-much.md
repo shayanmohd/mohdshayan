@@ -1,8 +1,9 @@
 ---
 title: One percent of users cannot tell you much
-date: 2025-02-04
+date: 2026-08-30
 summary: A staged rollout is a statistical test, and at one percent the sample is too small to see the crash-rate rise Play penalises. Write each halt rule from what the stage can detect.
 tags: Android, Staged Rollouts, Release Engineering
+topic: Mobile & Games
 draft: false
 ---
 

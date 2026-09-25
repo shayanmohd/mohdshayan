@@ -1,8 +1,9 @@
 ---
 title: Base fee takes six blocks to double
-date: 2026-09-18
+date: 2026-09-23
 summary: EIP-1559 caps the base fee change at 12.5 percent a block, so it needs about six blocks to double and twenty to rise tenfold. In that lag the tip is the whole auction.
 tags: Gas, Ethereum, Fee Markets
+topic: Web3 & DeFi
 draft: false
 ---
 

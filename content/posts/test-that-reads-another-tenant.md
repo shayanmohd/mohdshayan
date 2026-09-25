@@ -3,6 +3,7 @@ title: The test that reads another tenant's rows
 date: 2026-09-17
 summary: Tenant isolation in a shared Postgres schema is only as trustworthy as the test that tries to break it. A generated probe turns a convention into a property CI enforces.
 tags: PostgreSQL, Multi-tenant SaaS, Testing
+topic: Backend Architecture
 draft: false
 ---
 

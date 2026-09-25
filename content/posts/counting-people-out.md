@@ -1,8 +1,9 @@
 ---
 title: Counting people out is the hard part
-date: 2025-03-27
+date: 2026-03-21
 summary: Gateless entry gives a perfect entry count and no exit count, so live occupancy is an estimate that drifts up all day. Show the drift, and let it decide when to count exits.
 tags: Ticketing, Analytics, Queueing
+topic: Product & Enterprise
 draft: false
 ---
 

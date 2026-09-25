@@ -3,6 +3,7 @@ title: Timeouts run in two directions
 date: 2025-08-22
 summary: Through a proxy chain, idle timeouts must get longer as you go inward and deadlines must get shorter. Most timeout bugs are one of those staircases built the wrong way round.
 tags: Reverse Proxies, Node.js, Reliability
+topic: DevOps & Cloud
 draft: false
 ---
 

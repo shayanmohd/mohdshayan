@@ -1,8 +1,9 @@
 ---
 title: Four bits are enough, three are not
-date: 2024-12-27
+date: 2025-02-15
 summary: Quantisation error is a group's range divided by its levels, and a few outlier weights set the range for everyone. Sixteen levels leave the bulk enough resolution; eight do not.
 tags: Quantisation, Linear Algebra, Inference
+topic: ML Foundations
 draft: false
 ---
 

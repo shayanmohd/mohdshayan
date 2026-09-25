@@ -1,8 +1,9 @@
 ---
 title: When the host leaves the table
-date: 2025-01-08
+date: 2026-07-06
 summary: Host-authoritative multiplayer has one weakness: the match lives in one player's process. Per-player secrecy and host migration pull in opposite directions. Choose on purpose.
 tags: Multiplayer, Photon, Netcode
+topic: Mobile & Games
 draft: false
 ---
 

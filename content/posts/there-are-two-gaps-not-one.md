@@ -3,6 +3,7 @@ title: There are two gaps, not one
 date: 2025-09-03
 summary: Every write-then-publish has two places to crash. The outbox pattern closes only the first, so a team that stops there has traded lost events for duplicated ones.
 tags: Event-Driven, PostgreSQL, Reliability
+topic: Backend Architecture
 draft: false
 ---
 

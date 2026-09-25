@@ -1,8 +1,9 @@
 ---
 title: The flash loan is free until it reverts
-date: 2025-05-14
+date: 2025-12-13
 summary: Aave's premium is the smallest cost a flash-loan arbitrageur pays. The real cost is gas burned on attempts that revert, and that cost depends on how the transaction was sent.
 tags: Flash Loans, Aave, MEV
+topic: Web3 & DeFi
 draft: false
 ---
 

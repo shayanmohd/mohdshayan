@@ -3,6 +3,7 @@ title: Every paper has one load-bearing number
 date: 2026-09-02
 summary: A paper's claim rests on one number that, a fifth worse, would have sunk it. Find that number first, ask four questions about how it was measured, and read the rest as context.
 tags: Research, Reading Papers, Evaluation
+topic: ML Foundations
 draft: false
 ---
 

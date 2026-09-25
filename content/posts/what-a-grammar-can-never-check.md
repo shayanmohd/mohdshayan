@@ -3,6 +3,7 @@ title: What a grammar can never check
 date: 2026-01-28
 summary: Constrained decoding guarantees an output's shape, never its reference. Equality of two strings is the copy language, which no grammar recognises; a checker after decoding must.
 tags: Structured Output, Formal Languages, Constrained Decoding
+topic: LLM Engineering
 draft: false
 ---
 

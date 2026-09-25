@@ -1,8 +1,9 @@
 ---
 title: The lockfile your pipeline never had
-date: 2026-01-02
+date: 2026-03-26
 summary: Package managers got lockfiles a decade ago; CI workflows did not, which is how one moved tag reached 23,000 repositories. Would your build survive the marketplace vanishing?
 tags: GitHub Actions, Supply Chain, CI/CD
+topic: DevOps & Cloud
 draft: false
 ---
 

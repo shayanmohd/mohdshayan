@@ -3,6 +3,7 @@ title: You pay for the context every turn
 date: 2026-09-18
 summary: In a retrieval chat the bill is input tokens: every turn resends the prompt, passages and history while the model writes a few hundred back. One ratio shows where the cost is.
 tags: Cost, Prompt Caching, RAG
+topic: LLM Engineering
 draft: false
 ---
 

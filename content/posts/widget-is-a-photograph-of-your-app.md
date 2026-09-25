@@ -3,6 +3,7 @@ title: A widget is a photograph of your app
 date: 2026-09-04
 summary: A home-screen widget is not a running view; it is a picture the launcher shows until you send a new one. Design for the age of the picture, not for the code that drew it.
 tags: Android, Jetpack Glance, UX
+topic: Mobile & Games
 draft: false
 ---
 

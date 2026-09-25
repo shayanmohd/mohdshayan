@@ -1,8 +1,9 @@
 ---
 title: One shared hour with Canada is enough
-date: 2026-08-24
+date: 2026-03-01
 summary: From New Delhi, Kuala Lumpur overlaps my working day by six and a half hours and Dubai by seven and a half. Toronto and Vancouver overlap it by zero; the shared hour is made.
 tags: Remote Work, Contract Work, Time Zones
+topic: Product & Enterprise
 draft: false
 ---
 

@@ -3,6 +3,7 @@ title: Autoscaling buys you the next spike
 date: 2025-11-17
 summary: Reactive autoscaling cannot serve the spike that triggers it. The new capacity arrives after a chain of delays that add up to minutes. What it buys is the spike after this one.
 tags: AWS, Autoscaling, Capacity
+topic: DevOps & Cloud
 draft: false
 ---
 

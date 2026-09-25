@@ -28,6 +28,7 @@ const posts = readdirSync('content/posts').filter(f => f.endsWith('.md')).map(f 
   return { slug, ...meta, body, prose, html: marked.parse(body), minutes: Math.max(1, Math.round(words / 230)), url: `${site.url}/blog/${slug}/` };
 }).sort((a, b) => (a.date < b.date ? 1 : -1));
 const published = posts.filter(p => !p.draft || INCLUDE_DRAFTS);
+for (const p of posts) if (!p.topic) console.warn(`warning: content/posts/${p.slug}.md has no topic, so sorting the blog by topic lists it under "Other"`);
 
 // ---------- shared shell ----------
 const NAV = [['/#about', 'About'], ['/#ventures', 'Ventures'], ['/#impact', 'Impact'], ['/#recognition', 'Recognition'], ['/#publications', 'Research'], ['/#projects', 'Work'], ['/blog/', 'Blog']];
@@ -188,9 +189,23 @@ const pageHead = (h1, lead, eyebrow = '') => `        <section class="page-head 
         </section>`;
 
 // ---------- blog index ----------
+// Sort options for the blog index; the default (first) matches the order the page is built in.
+const BLOG_SORTS = [['newest', 'Newest first'], ['oldest', 'Oldest first'], ['title', 'Title: A to Z'], ['topic', 'Topic'], ['longest', 'Longest read first'], ['shortest', 'Shortest read first']];
+
 function blogIndex() {
-  const list = published.length ? `            <ul class="ruled-list border-t border-hairline mt-4">
-${published.map(p => `                <li class="reveal">
+  // The sort bar stays hidden until site.js wires it up, so without JavaScript the list is simply newest first.
+  const sortBar = published.length > 1 ? `            <div class="blog-sort mt-4" hidden>
+                <label for="blog-sort" class="mono-meta text-muted">Sort by</label>
+                <span class="select-wrap">
+                    <select id="blog-sort" class="select">
+${BLOG_SORTS.map(([v, l]) => `                        <option value="${v}">${l}</option>`).join('\n')}
+                    </select>
+                    ${icon('caret-down', 'select-caret')}
+                </span>
+                <p id="blog-sort-status" class="sr-only" aria-live="polite"></p>
+            </div>\n` : '';
+  const list = published.length ? `${sortBar}            <ul id="post-list" class="ruled-list border-t border-hairline mt-4">
+${published.map(p => `                <li class="reveal" data-date="${p.date}" data-title="${esc(p.title)}" data-topic="${esc(p.topic || 'Other')}" data-minutes="${p.minutes}">
                     <div class="grid md:grid-cols-[200px_1fr] gap-x-10 gap-y-3">
                         <p class="mono-meta text-muted pt-1.5">${longDate(p.date)}<br>${p.minutes} min read</p>
                         <div>

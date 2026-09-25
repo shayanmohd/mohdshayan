@@ -3,6 +3,7 @@ title: The text never leaves the phone
 date: 2026-09-13
 summary: deAIfy strips the tells of machine writing on the device and calls a model only with the user's own key. Making that the default, not the fallback, changes three things at once.
 tags: Privacy, React Native, On-Device
+topic: Mobile & Games
 draft: false
 ---
 

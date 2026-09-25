@@ -1,8 +1,9 @@
 ---
 title: A book that looks alive can be dead
-date: 2024-12-08
+date: 2026-07-05
 summary: A local order book fed by WebSocket deltas keeps updating while being wrong. One dropped message desynchronises every level it touched, and a live stream proves nothing.
 tags: WebSockets, Order Books, CCXT
+topic: Web3 & DeFi
 draft: false
 ---
 

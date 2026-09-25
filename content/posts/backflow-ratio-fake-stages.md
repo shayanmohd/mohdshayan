@@ -3,6 +3,7 @@ title: The backflow ratio finds your fake stages
 date: 2026-09-13
 summary: A pipeline stage should record a fact proven about a deal. When deals keep moving backwards out of a stage, it was recording a mood, and the proof is in a table every CRM keeps.
 tags: CRM, Sales Pipelines, Data Modelling
+topic: Product & Enterprise
 draft: false
 ---
 

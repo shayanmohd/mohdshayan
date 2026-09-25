@@ -3,6 +3,7 @@ title: The fifth custom field is a table
 date: 2026-09-16
 summary: Custom fields postpone a data model decision, and vendors sell the ceiling as a feature. Fields that are filled together and empty together are a table waiting to be named.
 tags: Data Modelling, CRM, PostgreSQL
+topic: Product & Enterprise
 draft: false
 ---
 

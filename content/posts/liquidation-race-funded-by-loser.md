@@ -1,8 +1,9 @@
 ---
 title: A liquidation is a race funded by the loser
-date: 2026-05-02
+date: 2026-08-12
 summary: On Aave the liquidation bonus comes out of the borrower's collateral, so the race only runs when the bonus beats gas. Below that line positions rot into bad debt.
 tags: Aave, DeFi, Liquidations
+topic: Web3 & DeFi
 draft: false
 ---
 

@@ -1,8 +1,9 @@
 ---
 title: What Chomsky normal form costs you
-date: 2025-07-21
+date: 2026-03-23
 summary: Converting a grammar to Chomsky normal form is taught as a formality. It can multiply the rule count many times over, and the unit-rule step, not binarisation, does the damage.
 tags: Formal Languages, Parsing, Grammars
+topic: NLP & Parsing
 draft: false
 ---
 

@@ -3,6 +3,7 @@ title: The key that is never assembled
 date: 2026-09-06
 summary: Shamir rebuilds the private key in one process every time you sign, so it protects the key at rest and abandons it when it matters. Threshold signatures never assemble it.
 tags: Cryptography, MPC, Wallets
+topic: Security & Cryptography
 draft: false
 ---
 

@@ -3,6 +3,7 @@ title: Chain of thought is the memory transformers lack
 date: 2026-08-15
 summary: A fixed-depth transformer has no working memory that grows with the input, so it cannot recognise regular languages at any length. Chain of thought writes that memory as tokens.
 tags: Transformers, Chain Of Thought, Formal Languages
+topic: NLP & Parsing
 draft: false
 ---
 

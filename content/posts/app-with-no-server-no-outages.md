@@ -3,6 +3,7 @@ title: An app with no server has no outages
 date: 2026-09-05
 summary: Habits keeps every record in a Room database on the phone: no account, no sync, no backend. That removes whole categories of work and two things users want. Pricing both sides.
 tags: Android, Offline-First, Product Strategy
+topic: Mobile & Games
 draft: false
 ---
 

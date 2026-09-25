@@ -13,42 +13,60 @@
   </url>
   <url>
     <loc>https://mohdshayan.com/blog/</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-09-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/which-language-your-ai-fails-in/</loc>
-    <lastmod>2026-09-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/ticket-promise-with-clock/</loc>
-    <lastmod>2026-09-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/the-package-everyone-imports/</loc>
-    <lastmod>2026-09-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://mohdshayan.com/blog/the-free-tier-is-a-lease/</loc>
-    <lastmod>2026-09-18</lastmod>
+    <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/price-of-leaving-not-your-problem/</loc>
-    <lastmod>2026-09-18</lastmod>
+    <loc>https://mohdshayan.com/blog/capabilities-in-code-roles-in-rows/</loc>
+    <lastmod>2026-09-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://mohdshayan.com/blog/pipeline-cannot-replay-spreadsheet/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/base-fee-six-blocks-to-double/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/page-for-two-readers/</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/ticket-promise-with-clock/</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/price-of-leaving-not-your-problem/</loc>
+    <lastmod>2026-09-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/which-language-your-ai-fails-in/</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/the-package-everyone-imports/</loc>
     <lastmod>2026-09-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -60,25 +78,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/base-fee-six-blocks-to-double/</loc>
-    <lastmod>2026-09-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/two-dials-on-the-rate-limiter/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://mohdshayan.com/blog/test-that-reads-another-tenant/</loc>
-    <lastmod>2026-09-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/page-for-two-readers/</loc>
     <lastmod>2026-09-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -96,13 +96,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/capabilities-in-code-roles-in-rows/</loc>
+    <loc>https://mohdshayan.com/blog/two-dials-on-the-rate-limiter/</loc>
     <lastmod>2026-09-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/first-thing-quantised-model-forgets/</loc>
+    <loc>https://mohdshayan.com/blog/postgres-counts-processes-not-requests/</loc>
     <lastmod>2026-09-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -120,7 +120,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/custom-crm-wrong-answer/</loc>
+    <loc>https://mohdshayan.com/blog/idempotency-keys-pointed-other-way/</loc>
     <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -150,6 +150,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://mohdshayan.com/blog/engine-cannot-see-the-screen/</loc>
+    <lastmod>2026-09-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/install-script-is-the-attack/</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mohdshayan.com/blog/five-order-books-one-frame-budget/</loc>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
@@ -164,6 +176,12 @@
   <url>
     <loc>https://mohdshayan.com/blog/gap-between-signing-verifying/</loc>
     <lastmod>2026-09-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/treat-the-model-like-a-client/</loc>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -192,13 +210,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/eight-apps-one-release-spine/</loc>
-    <lastmod>2026-09-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/amm-limit-order-cannot-cancel/</loc>
+    <loc>https://mohdshayan.com/blog/the-keys-only-i-hold/</loc>
     <lastmod>2026-09-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -210,14 +222,44 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://mohdshayan.com/blog/custom-crm-wrong-answer/</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mohdshayan.com/blog/escrow-bot-cannot-see-faces/</loc>
     <lastmod>2026-09-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/one-shared-hour-canada/</loc>
-    <lastmod>2026-08-24</lastmod>
+    <loc>https://mohdshayan.com/blog/play-reads-your-manifest-first/</loc>
+    <lastmod>2026-08-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/one-percent-cannot-tell-you-much/</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/amm-limit-order-cannot-cancel/</loc>
+    <lastmod>2026-08-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/eight-apps-one-release-spine/</loc>
+    <lastmod>2026-08-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/first-thing-quantised-model-forgets/</loc>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -228,14 +270,32 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://mohdshayan.com/blog/solana-caller-writes-argument-list/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mohdshayan.com/blog/chain-of-thought-memory-transformers-lack/</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://mohdshayan.com/blog/liquidation-race-funded-by-loser/</loc>
+    <lastmod>2026-08-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mohdshayan.com/blog/student-workshop-actually-rewards/</loc>
     <lastmod>2026-08-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/backtest-saw-the-next-tick/</loc>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -264,14 +324,20 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/the-keys-only-i-hold/</loc>
-    <lastmod>2026-07-09</lastmod>
+    <loc>https://mohdshayan.com/blog/migration-tool-does-not-know-locks/</loc>
+    <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/migration-tool-does-not-know-locks/</loc>
-    <lastmod>2026-07-08</lastmod>
+    <loc>https://mohdshayan.com/blog/when-the-host-leaves-the-table/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/book-that-looks-alive/</loc>
+    <lastmod>2026-07-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -288,26 +354,20 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/solana-caller-writes-argument-list/</loc>
-    <lastmod>2026-06-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://mohdshayan.com/blog/estimates-count-open-questions/</loc>
     <lastmod>2026-06-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/four-parsers-one-grammar/</loc>
-    <lastmod>2026-06-06</lastmod>
+    <loc>https://mohdshayan.com/blog/what-the-letters-owe/</loc>
+    <lastmod>2026-06-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/idempotency-keys-pointed-other-way/</loc>
-    <lastmod>2026-06-04</lastmod>
+    <loc>https://mohdshayan.com/blog/four-parsers-one-grammar/</loc>
+    <lastmod>2026-06-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -324,20 +384,38 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/liquidation-race-funded-by-loser/</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://mohdshayan.com/blog/price-the-outage-not-hour/</loc>
-    <lastmod>2026-04-30</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/install-script-is-the-attack/</loc>
-    <lastmod>2026-04-19</lastmod>
+    <loc>https://mohdshayan.com/blog/what-hardware-backed-promises/</loc>
+    <lastmod>2026-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/aes-gcm-collision-horizon/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/german-needs-a-third-more-room/</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/cube-nobody-actually-pays/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/client-pays-for-the-research/</loc>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -348,8 +426,20 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/german-needs-a-third-more-room/</loc>
-    <lastmod>2026-03-25</lastmod>
+    <loc>https://mohdshayan.com/blog/ticket-does-not-need-blockchain/</loc>
+    <lastmod>2026-03-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/qr-ticket-bearer-token/</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/the-lockfile-your-pipeline-never-had/</loc>
+    <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -360,13 +450,37 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/backtest-saw-the-next-tick/</loc>
-    <lastmod>2026-03-22</lastmod>
+    <loc>https://mohdshayan.com/blog/what-chomsky-normal-form-costs/</loc>
+    <lastmod>2026-03-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://mohdshayan.com/blog/parse-that-quietly-became-zero/</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/counting-people-out/</loc>
+    <lastmod>2026-03-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/pumping-lemma-model-test/</loc>
+    <lastmod>2026-03-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/compound-pcfgs-leak-context/</loc>
+    <lastmod>2026-03-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/secrets-have-a-half-life/</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -378,26 +492,20 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/secrets-have-a-half-life/</loc>
-    <lastmod>2026-03-05</lastmod>
+    <loc>https://mohdshayan.com/blog/one-shared-hour-canada/</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/queue-that-joins-your-transaction/</loc>
+    <lastmod>2026-02-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://mohdshayan.com/blog/phone-in-house-not-childs/</loc>
     <lastmod>2026-02-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/compound-pcfgs-leak-context/</loc>
-    <lastmod>2026-02-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/queue-that-joins-your-transaction/</loc>
-    <lastmod>2026-01-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -420,26 +528,14 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/the-lockfile-your-pipeline-never-had/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/play-reads-your-manifest-first/</loc>
-    <lastmod>2025-12-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/cube-nobody-actually-pays/</loc>
-    <lastmod>2025-12-25</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://mohdshayan.com/blog/lora-adapter-poor-place-for-facts/</loc>
     <lastmod>2025-12-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mohdshayan.com/blog/flash-loan-free-until-it-reverts/</loc>
+    <lastmod>2025-12-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -468,44 +564,26 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://mohdshayan.com/blog/similarity-threshold-has-no-zero/</loc>
+    <lastmod>2025-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://mohdshayan.com/blog/timeouts-run-in-two-directions/</loc>
     <lastmod>2025-08-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/what-chomsky-normal-form-costs/</loc>
-    <lastmod>2025-07-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/aes-gcm-collision-horizon/</loc>
-    <lastmod>2025-07-10</lastmod>
+    <loc>https://mohdshayan.com/blog/number-grows-before-loss-spikes/</loc>
+    <lastmod>2025-07-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://mohdshayan.com/blog/restore-time-only-backup-metric/</loc>
     <lastmod>2025-06-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/pumping-lemma-model-test/</loc>
-    <lastmod>2025-05-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/ticket-does-not-need-blockchain/</loc>
-    <lastmod>2025-05-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/flash-loan-free-until-it-reverts/</loc>
-    <lastmod>2025-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -522,12 +600,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/qr-ticket-bearer-token/</loc>
-    <lastmod>2025-04-21</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://mohdshayan.com/blog/judge-shares-blind-spots/</loc>
     <lastmod>2025-04-20</lastmod>
     <changefreq>monthly</changefreq>
@@ -540,86 +612,14 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://mohdshayan.com/blog/counting-people-out/</loc>
-    <lastmod>2025-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/engine-cannot-see-the-screen/</loc>
-    <lastmod>2025-03-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/similarity-threshold-has-no-zero/</loc>
-    <lastmod>2025-03-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/postgres-counts-processes-not-requests/</loc>
-    <lastmod>2025-03-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/what-hardware-backed-promises/</loc>
-    <lastmod>2025-03-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/one-percent-cannot-tell-you-much/</loc>
-    <lastmod>2025-02-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/client-pays-for-the-research/</loc>
-    <lastmod>2025-02-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/treat-the-model-like-a-client/</loc>
-    <lastmod>2025-01-18</lastmod>
+    <loc>https://mohdshayan.com/blog/four-bits-enough-three-not/</loc>
+    <lastmod>2025-02-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://mohdshayan.com/blog/stale-is-a-feature/</loc>
     <lastmod>2025-01-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/when-the-host-leaves-the-table/</loc>
-    <lastmod>2025-01-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/number-grows-before-loss-spikes/</loc>
-    <lastmod>2025-01-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/four-bits-enough-three-not/</loc>
-    <lastmod>2024-12-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/book-that-looks-alive/</loc>
-    <lastmod>2024-12-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://mohdshayan.com/blog/what-the-letters-owe/</loc>
-    <lastmod>2024-12-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

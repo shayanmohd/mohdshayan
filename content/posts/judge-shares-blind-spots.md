@@ -3,6 +3,7 @@ title: The judge shares the defendant's blind spots
 date: 2025-04-20
 summary: An LLM judge is trained on nearly the same data as the model it grades, so their errors are correlated. Judge scores inflate on the hard items; sample the calibration set there.
 tags: Evaluation, LLM-as-Judge
+topic: LLM Engineering
 draft: false
 ---
 

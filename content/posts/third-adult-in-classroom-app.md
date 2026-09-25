@@ -3,6 +3,7 @@ title: The third adult in every classroom app
 date: 2025-11-10
 summary: AI tutors solve the content bottleneck, but the best Indian evidence for software tutoring came from staffed centres. The unpriced input is the adult who makes the child sit down.
 tags: Education, AI Tutors, Philanthropy
+topic: Founding & Impact
 draft: false
 ---
 

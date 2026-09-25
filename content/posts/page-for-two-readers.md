@@ -1,8 +1,9 @@
 ---
 title: Write the page for two readers
-date: 2026-09-17
+date: 2026-09-22
 summary: The 2026 evidence on llms.txt is in, and it says the file is barely read. Every crawler that matters reads the HTML and the structured data, so the work belongs in the page itself.
 tags: SEO, Static Sites, AI Crawlers
+topic: Product & Enterprise
 draft: false
 ---
 

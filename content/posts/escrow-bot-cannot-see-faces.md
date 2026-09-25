@@ -3,6 +3,7 @@ title: An escrow bot that cannot see faces
 date: 2026-09-01
 summary: Anonymity in a mediated trade is not a property of the transport. It is a property of one table, the map from a relayed message to its sender, and every feature is judged by it.
 tags: Telegram, Privacy, System Design
+topic: Security & Cryptography
 draft: false
 ---
 

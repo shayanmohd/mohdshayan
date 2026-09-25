@@ -3,6 +3,7 @@ title: The part of your schema no grammar checks
 date: 2026-09-11
 summary: A JSON Schema is compiled to a grammar for constrained decoding, and several keywords cannot survive the compilation. Know which, and validate that residue after decoding.
 tags: Structured Output, JSON Schema, Validation
+topic: NLP & Parsing
 draft: false
 ---
 

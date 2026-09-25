@@ -1,8 +1,9 @@
 ---
 title: The free tier is a lease
-date: 2026-09-18
+date: 2026-09-26
 summary: In June 2026 Oracle halved its Always Free Ampere allowance by editing a docs page, and over-limit instances were shut down. A free tier is a lease; place only what runs at half.
 tags: Oracle Cloud, Free Tier, LLM Serving
+topic: DevOps & Cloud
 draft: false
 ---
 

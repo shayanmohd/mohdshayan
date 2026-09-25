@@ -3,6 +3,7 @@ title: Fine-tuning taught it to sound sure
 date: 2026-03-24
 summary: Fine-tuning makes a model more accurate and less calibrated at once: cross-entropy keeps rewarding larger logits after the answers stop changing. Refit the temperature last.
 tags: Calibration, Fine-Tuning, Probability
+topic: ML Foundations
 draft: false
 ---
 

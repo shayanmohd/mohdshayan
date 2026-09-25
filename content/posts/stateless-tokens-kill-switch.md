@@ -3,6 +3,7 @@ title: Stateless tokens still need a kill switch
 date: 2026-09-07
 summary: Every token system has a revocation lag, and a JWT sets it to the token lifetime. Write the allowed lag down per endpoint class and the stateless debate turns into arithmetic.
 tags: Authentication, JWT, Security
+topic: Security & Cryptography
 draft: false
 ---
 

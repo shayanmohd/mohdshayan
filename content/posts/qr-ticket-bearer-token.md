@@ -1,8 +1,9 @@
 ---
 title: A QR ticket is a bearer token that walks
-date: 2025-04-21
+date: 2026-03-30
 summary: A signature on a ticket proves it was issued, not that it is unused. Replay protection is a state problem, and it lives in one atomic write at the moment of admission.
 tags: Security, QR Ticketing, System Design
+topic: Security & Cryptography
 draft: false
 ---
 

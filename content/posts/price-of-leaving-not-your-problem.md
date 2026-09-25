@@ -1,8 +1,9 @@
 ---
 title: The price of leaving is not your problem
-date: 2026-09-18
+date: 2026-09-20
 summary: The EU Data Act bans cloud switching charges from January 2027, and the big providers already waive exit egress. For a small SaaS the exit bill never mattered; serving does.
 tags: Cloud Cost, Egress, EU Data Act
+topic: DevOps & Cloud
 draft: false
 ---
 

@@ -3,6 +3,7 @@ title: The spread that survives the fees
 date: 2026-09-10
 summary: Most cross-venue spreads a detector flags are gross spreads. After two taker fees, two slippage terms, transfer cost and decay, the number that matters is what survives.
 tags: Arbitrage, Market Microstructure, Shayanomaly
+topic: Web3 & DeFi
 draft: false
 ---
 

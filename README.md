@@ -33,7 +33,7 @@ npm run build        # icons sprite + pages + compiled CSS
 
 ### Writing a post
 
-Create `content/posts/<slug>.md` with front matter (`title`, `date`, `summary`, `tags`, `draft`) and markdown below it. `draft: true` keeps a post out of the index and the RSS feed while still generating its page (marked `noindex`) so you can preview it. `npm run preview` builds with drafts included and serves the site locally.
+Create `content/posts/<slug>.md` with front matter (`title`, `date`, `summary`, `tags`, `topic`, `draft`) and markdown below it. `topic` is one of the blog's ten areas (Backend Architecture, DevOps & Cloud, Founding & Impact, LLM Engineering, ML Foundations, Mobile & Games, NLP & Parsing, Product & Enterprise, Security & Cryptography, Web3 & DeFi) and drives the "Topic" sort on the blog index. Give each post its own date, no earlier than anything the post cites or describes as current. `draft: true` keeps a post out of the index and the RSS feed while still generating its page (marked `noindex`) so you can preview it. `npm run preview` builds with drafts included and serves the site locally.
 
 ### Email subscriptions
 

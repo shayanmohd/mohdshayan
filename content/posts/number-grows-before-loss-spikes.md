@@ -1,8 +1,9 @@
 ---
 title: The number that grows before the loss spikes
-date: 2025-01-01
+date: 2025-07-28
 summary: Loss spikes in transformer runs are preceded by growth of the largest attention logit. QK-norm, z-loss and QK-clip bound that quantity, so log it rather than waiting for the loss.
 tags: Training Dynamics, Transformers, Numerics
+topic: ML Foundations
 draft: false
 ---
 

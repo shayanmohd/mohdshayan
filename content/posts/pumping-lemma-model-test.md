@@ -1,8 +1,9 @@
 ---
 title: The pumping lemma as a model test
-date: 2025-05-24
+date: 2026-03-20
 summary: The pumping lemma is a doubling argument: a finite-memory recogniser that accepts a long string must accept it with the middle repeated. It tests a model for grammar versus memory.
 tags: Formal Languages, Generalisation, Transformers
+topic: ML Foundations
 draft: false
 ---
 

@@ -1,8 +1,9 @@
 ---
 title: A ticket is a promise with a clock
-date: 2026-09-18
+date: 2026-09-21
 summary: Most SLA breaches are accounting failures: a clock paused by the wrong party, never resumed, or two running on one ticket. Give each state one clock and one actor who can stop it.
 tags: Ticketing, Service Desk, State Machines
+topic: Product & Enterprise
 draft: false
 ---
 

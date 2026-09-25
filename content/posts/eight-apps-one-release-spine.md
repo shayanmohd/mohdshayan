@@ -1,8 +1,9 @@
 ---
 title: Eight apps and one release spine
-date: 2026-09-04
+date: 2026-08-28
 summary: A portfolio of small apps is only cheaper than one big app if shipping each costs almost nothing. Play charges that cost per app, per year; a shared release system pays it once.
 tags: Android, Release Engineering, Product Strategy
+topic: Mobile & Games
 draft: false
 ---
 

@@ -1,8 +1,9 @@
 ---
 title: The client pays for the research
-date: 2025-02-01
+date: 2026-04-08
 summary: Contract work is not a distraction from the product if every contract is chosen for what it leaves behind. A rule for picking which paying work a small product company should take.
 tags: Founding, Consulting, Product Strategy
+topic: Founding & Impact
 draft: false
 ---
 

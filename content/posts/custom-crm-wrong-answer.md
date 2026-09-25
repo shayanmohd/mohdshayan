@@ -1,8 +1,9 @@
 ---
 title: When a custom CRM is the wrong answer
-date: 2026-09-12
+date: 2026-09-02
 summary: I build CRMs for a living. Most teams should not hire me. A custom CRM is justified by one missing verb, never by the price on the vendor's page.
 tags: CRM, Build Vs Buy, Contract Work
+topic: Product & Enterprise
 draft: false
 ---
 

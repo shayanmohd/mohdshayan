@@ -3,6 +3,7 @@ title: Nutrition has no app
 date: 2025-04-07
 summary: Technologists fund education because it looks like an information problem and skip nutrition because it does not. The evidence on school meals says that instinct is backwards.
 tags: Philanthropy, Nutrition, Education
+topic: Founding & Impact
 draft: false
 ---
 

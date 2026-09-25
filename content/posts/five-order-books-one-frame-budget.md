@@ -3,6 +3,7 @@ title: Five order books, one frame budget
 date: 2026-09-08
 summary: A terminal on five venues receives more order-book updates than it can paint; rendering per message freezes the tab when a trader needs it. The unit of work is the frame.
 tags: WebSockets, Realtime, Frontend Performance
+topic: Backend Architecture
 draft: false
 ---
 

@@ -1,8 +1,9 @@
 ---
 title: The engine cannot see the screen
-date: 2025-03-18
+date: 2026-09-09
 summary: A rules engine that compiles without the game framework is the cheapest anti-cheat, test suite and replay system you can build. Turup Chaal's is plain C#; the rest followed.
 tags: Unity, Architecture, Testing
+topic: Mobile & Games
 draft: false
 ---
 

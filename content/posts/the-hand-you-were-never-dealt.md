@@ -3,6 +3,7 @@ title: The hand you were never dealt
 date: 2026-09-05
 summary: How Turup Chaal stops card-game cheating by construction. The host validates every move and never sends a client a card it should not know about.
 tags: Multiplayer, Unity, Anti-cheat
+topic: Mobile & Games
 draft: false
 ---
 

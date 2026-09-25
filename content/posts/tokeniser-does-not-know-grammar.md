@@ -3,6 +3,7 @@ title: The tokeniser does not know your grammar
 date: 2026-01-17
 summary: Constrained decoding is sold as a parser masking logits, but the model emits tokens that ignore the parser's boundaries. The tokens that straddle a boundary set the cost.
 tags: Structured Output, Tokenisation, LLM Inference
+topic: NLP & Parsing
 draft: false
 ---
 

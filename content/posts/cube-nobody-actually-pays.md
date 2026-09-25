@@ -1,8 +1,9 @@
 ---
 title: The cube nobody actually pays
-date: 2025-12-25
+date: 2026-04-24
 summary: CYK is quoted as cubic in sentence length. For a treebank-scale grammar the grammar term dominates until sentences are longer than people write, so shrink the grammar first.
 tags: Parsing, Algorithms, NLP
+topic: NLP & Parsing
 draft: false
 ---
 

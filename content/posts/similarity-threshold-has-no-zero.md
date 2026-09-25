@@ -1,8 +1,9 @@
 ---
 title: Your similarity threshold has no zero
-date: 2025-03-08
+date: 2025-09-01
 summary: A cosine threshold of 0.8 is not 80 percent of anything. Every embedding model puts unrelated text at its own baseline, and a threshold only means something measured above it.
 tags: Embeddings, Vector Search, RAG
+topic: ML Foundations
 draft: false
 ---
 

@@ -109,4 +109,57 @@
       if (e.key === 'ArrowRight') show(idx + 1);
     });
   }
+
+  // Blog index sort: reorders the post list in place and keeps the choice in ?sort= so it survives back/forward and sharing
+  var sortSelect = document.getElementById('blog-sort');
+  var postList = document.getElementById('post-list');
+  if (sortSelect && postList) {
+    var rows = Array.prototype.slice.call(postList.children).filter(function (li) { return li.hasAttribute('data-date'); });
+    var collator = new Intl.Collator('en', { sensitivity: 'base', numeric: true });
+    var newest = function (a, b) { return a.dataset.date < b.dataset.date ? 1 : a.dataset.date > b.dataset.date ? -1 : 0; };
+    var sorts = {
+      newest: newest,
+      oldest: function (a, b) { return newest(b, a); },
+      title: function (a, b) { return collator.compare(a.dataset.title, b.dataset.title); },
+      topic: function (a, b) { return collator.compare(a.dataset.topic, b.dataset.topic) || newest(a, b); },
+      longest: function (a, b) { return b.dataset.minutes - a.dataset.minutes || newest(a, b); },
+      shortest: function (a, b) { return a.dataset.minutes - b.dataset.minutes || newest(a, b); }
+    };
+    var sortStatus = document.getElementById('blog-sort-status');
+    var applySort = function (key, announce) {
+      if (!sorts[key]) key = 'newest';
+      sortSelect.value = key;
+      Array.prototype.slice.call(postList.querySelectorAll('.sort-group')).forEach(function (g) { g.remove(); });
+      var frag = document.createDocumentFragment();
+      var group = null;
+      rows.slice().sort(sorts[key]).forEach(function (li) {
+        var title = li.querySelector('h2');
+        if (key === 'topic') {
+          // Topic headings are h2, so post titles drop to level 3 for assistive tech while grouped
+          title.setAttribute('aria-level', '3');
+          if (li.dataset.topic !== group) {
+            group = li.dataset.topic;
+            var count = rows.filter(function (r) { return r.dataset.topic === group; }).length;
+            var head = document.createElement('li');
+            head.className = 'sort-group';
+            head.innerHTML = '<h2 class="eyebrow"></h2><span class="mono-meta text-muted"></span>';
+            head.firstChild.textContent = group;
+            head.lastChild.textContent = count + (count === 1 ? ' essay' : ' essays');
+            frag.appendChild(head);
+          }
+        } else {
+          title.removeAttribute('aria-level');
+        }
+        frag.appendChild(li);
+      });
+      postList.appendChild(frag);
+      var url = new URL(window.location.href);
+      if (key === 'newest') url.searchParams.delete('sort'); else url.searchParams.set('sort', key);
+      history.replaceState(history.state, '', url);
+      if (announce && sortStatus) sortStatus.textContent = 'Posts sorted by ' + sortSelect.options[sortSelect.selectedIndex].text.toLowerCase() + '.';
+    };
+    sortSelect.addEventListener('change', function () { applySort(sortSelect.value, true); });
+    applySort(new URLSearchParams(window.location.search).get('sort'), false);
+    sortSelect.closest('.blog-sort').hidden = false;
+  }
 })();

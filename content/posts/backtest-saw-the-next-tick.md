@@ -1,8 +1,9 @@
 ---
 title: Your backtest saw the next tick
-date: 2026-03-22
+date: 2026-08-05
 summary: Most leakage in time-ordered data is not a leaked column but a leaked clock. Features joined by when an event happened, not when your system could have known it, leak the future.
 tags: Evaluation, Data Leakage, Time Series
+topic: ML Foundations
 draft: false
 ---
 

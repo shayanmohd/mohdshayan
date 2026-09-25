@@ -3,6 +3,7 @@ title: What a student workshop actually rewards
 date: 2026-08-11
 summary: The ACL 2026 Student Research Workshop took 130 of 402 submissions. Its public process says what it selects for: one thing proved, one measured, one related to the field.
 tags: Research, ACL, Writing
+topic: NLP & Parsing
 draft: false
 ---
 

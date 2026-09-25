@@ -1,8 +1,9 @@
 ---
 title: On Solana the caller writes your argument list
-date: 2026-06-17
+date: 2026-08-18
 summary: An EVM contract reads its own storage; a Solana program is handed every account it touches by the caller, so the account list is untrusted input. Count what you accept unchecked.
 tags: Solana, Anchor, Security
+topic: Web3 & DeFi
 draft: false
 ---
 

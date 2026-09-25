@@ -1,8 +1,9 @@
 ---
 title: Which language your AI fails in
-date: 2026-09-18
+date: 2026-09-19
 summary: Building AI in India means shipping a product that works in English and fails quietly in the languages most users think in. Find and publish the failure languages before users do.
 tags: AI Policy, India, Evaluation
+topic: Founding & Impact
 draft: false
 ---
 

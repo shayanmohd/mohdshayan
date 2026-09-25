@@ -3,6 +3,7 @@ title: Your upload key is disposable
 date: 2026-09-11
 summary: Under Play App Signing the two keys are different classes: the upload key proves you are you and can be reset; the signing key is what devices trust. In 2026 the split sharpened.
 tags: Android, Release Engineering, Post-Quantum
+topic: Mobile & Games
 draft: false
 ---
 

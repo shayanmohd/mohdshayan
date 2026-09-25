@@ -3,6 +3,7 @@ title: A LoRA adapter is a poor place for facts
 date: 2025-12-18
 summary: LoRA updates are low-rank and learn less new knowledge than full fine-tuning. Adapters hold format well and facts badly, and facts change faster than anyone retrains.
 tags: Fine-Tuning, LoRA, RAG
+topic: LLM Engineering
 draft: false
 ---
 

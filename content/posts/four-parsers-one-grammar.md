@@ -3,6 +3,7 @@ title: Four parsers, one grammar, no winner
 date: 2026-06-06
 summary: CYK, Earley, LR(1) and recursive descent are usually ranked by asymptotic cost, which is the wrong axis. The right axes are how often the grammar changes and how ambiguous it is.
 tags: Parsing, Structured Output, Algorithms
+topic: NLP & Parsing
 draft: false
 ---
 

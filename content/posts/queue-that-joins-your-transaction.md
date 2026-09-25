@@ -1,8 +1,9 @@
 ---
 title: The queue that joins your transaction
-date: 2026-01-30
+date: 2026-02-27
 summary: The reason to run background jobs from a Postgres table is not that it is cheaper than Redis. It is that the enqueue can share a transaction with the row that caused it.
 tags: PostgreSQL, Background Jobs, Redis
+topic: Backend Architecture
 draft: false
 ---
 

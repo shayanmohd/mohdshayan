@@ -3,6 +3,7 @@ title: Stale is a feature
 date: 2025-01-09
 summary: Most origins that fall over could have kept serving for hours if the CDN had been told a slightly old answer was acceptable. Write that tolerance down per route, in one header.
 tags: CDN, Caching, Cloudflare
+topic: DevOps & Cloud
 draft: false
 ---
 

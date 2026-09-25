@@ -1,8 +1,9 @@
 ---
 title: Postgres counts processes, not requests
-date: 2025-03-06
+date: 2026-09-14
 summary: Connection exhaustion under serverless is a topology problem. Postgres runs one backend per connection, every instance carries a pool, and the platform sets the instance count.
 tags: PostgreSQL, Serverless, Next.js
+topic: Backend Architecture
 draft: false
 ---
 

@@ -1,8 +1,9 @@
 ---
 title: Secrets have a half-life
-date: 2026-03-05
+date: 2026-03-17
 summary: Leaked credentials keep working for years. The number that matters is not how many leak but how fast a leaked one stops working, and a secrets programme should be built on that.
 tags: Secrets Management, CI/CD, Security
+topic: Security & Cryptography
 draft: false
 ---
 

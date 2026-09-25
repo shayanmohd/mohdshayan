@@ -1,8 +1,9 @@
 ---
 title: A pipeline you cannot replay is a spreadsheet
-date: 2026-09-18
+date: 2026-09-24
 summary: The real product of a CRM is the history of state changes. If it cannot show the pipeline exactly as it stood at nine last Monday, every historical report is a reconstruction.
 tags: Data Modelling, CRM, Databases
+topic: Product & Enterprise
 draft: false
 ---
 

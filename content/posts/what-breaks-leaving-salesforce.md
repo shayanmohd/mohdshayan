@@ -3,6 +3,7 @@ title: What breaks when you leave Salesforce
 date: 2026-04-03
 summary: Migration cost is about references, not rows. Contacts export cleanly. What breaks is the graph, and you can measure how much will break in an afternoon, before you quote.
 tags: CRM Migration, Data Modelling, Salesforce
+topic: Product & Enterprise
 draft: false
 ---
 

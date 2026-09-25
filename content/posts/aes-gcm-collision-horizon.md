@@ -1,8 +1,9 @@
 ---
 title: Every AES-GCM key has a collision horizon
-date: 2025-07-10
+date: 2026-05-06
 summary: With a random 96-bit nonce, AES-GCM's safety is a countdown, not a property. Compute the countdown for every key, and design so that it can never be reached.
 tags: Cryptography, AES-GCM, Android
+topic: Security & Cryptography
 draft: false
 ---
 

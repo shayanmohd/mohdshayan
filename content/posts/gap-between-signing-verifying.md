@@ -3,6 +3,7 @@ title: The gap between signing and verifying
 date: 2026-09-07
 summary: Signature checks fail far more often from re-serialisation than from cryptography: the sender signed one byte string and the receiver re-encoded it into another before checking.
 tags: Security, Signing, Webhooks
+topic: Security & Cryptography
 draft: false
 ---
 

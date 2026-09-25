@@ -3,6 +3,7 @@ title: The last passage that mattered
 date: 2026-07-18
 summary: Retrieval depth is set by feel and never touched, yet every extra passage is prefill and latency on every turn. Measure the rank of the last passage an answer used, then set k.
 tags: RAG, Retrieval, Latency
+topic: LLM Engineering
 draft: false
 ---
 

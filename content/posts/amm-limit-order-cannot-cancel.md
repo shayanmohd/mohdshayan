@@ -1,8 +1,9 @@
 ---
 title: An AMM is a limit order you cannot cancel
-date: 2026-09-03
+date: 2026-08-29
 summary: A constant-product pool is a continuum of resting limit orders, and the liquidity provider's defining disadvantage is that none of them can be pulled when the price moves.
 tags: AMM, DeFi, Market Making
+topic: Web3 & DeFi
 draft: false
 ---
 

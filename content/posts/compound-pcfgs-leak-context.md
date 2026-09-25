@@ -1,8 +1,9 @@
 ---
 title: Compound PCFGs leak context on purpose
-date: 2026-02-03
+date: 2026-03-19
 summary: A compound PCFG keeps the tree context-free so the inside algorithm still works, and lets context in through a per-sentence latent that rewrites rule probabilities.
 tags: Grammar Induction, PCFG, NLP
+topic: NLP & Parsing
 draft: false
 ---
 

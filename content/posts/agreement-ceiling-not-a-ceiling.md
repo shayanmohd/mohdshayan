@@ -3,6 +3,7 @@ title: The agreement ceiling is not a ceiling
 date: 2026-05-15
 summary: Folk wisdom says a model cannot beat inter-annotator agreement. It can, because agreement compares two noisy people while the model is scored against a majority better than either.
 tags: Labelling, Data Quality, Statistics
+topic: ML Foundations
 draft: false
 ---
 

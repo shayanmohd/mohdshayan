@@ -3,6 +3,7 @@ title: What happens when you stop giving
 date: 2026-07-14
 summary: Engineers give the way they ship: pilots, dashboards, scale. Children's needs recur, and the damage is done by a gift that stops. The first question is about the month after.
 tags: Philanthropy, Founding, Children
+topic: Founding & Impact
 draft: false
 ---
 

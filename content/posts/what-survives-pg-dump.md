@@ -3,6 +3,7 @@ title: What survives a pg_dump
 date: 2026-07-04
 summary: Disk encryption defends against a stolen drive; databases are breached by a dump run with the app's own credentials. Sort each column by whether it stays unreadable in that dump.
 tags: PostgreSQL, Encryption, Threat Modelling
+topic: Security & Cryptography
 draft: false
 ---
 

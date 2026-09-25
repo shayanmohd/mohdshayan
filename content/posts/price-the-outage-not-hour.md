@@ -1,8 +1,9 @@
 ---
 title: Price the outage, not the hour
-date: 2026-04-30
+date: 2026-05-13
 summary: For infrastructure and security work the hour is the wrong unit. The client is buying a lower probability of an expensive failure, which is what an insurer sells, with arithmetic.
 tags: Pricing, Consulting, Reliability
+topic: Founding & Impact
 draft: false
 ---
 

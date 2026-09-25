@@ -3,6 +3,7 @@ title: Publish the denominator
 date: 2025-04-24
 summary: Impact reports count outputs and drop two numbers: how many were eligible, and what would have happened anyway. A metric with no baseline would not ship, so do not fund one.
 tags: Philanthropy, Measurement, Evidence
+topic: Founding & Impact
 draft: false
 ---
 

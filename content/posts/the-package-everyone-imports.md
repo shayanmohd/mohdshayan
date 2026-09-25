@@ -3,6 +3,7 @@ title: The package everyone imports
 date: 2026-09-18
 summary: In a Turborepo monorepo, CI time is set by the few packages that change often and are imported everywhere: a task's cache key includes every dependency's hash. Find and split them.
 tags: Turborepo, Monorepos, CI
+topic: Backend Architecture
 draft: false
 ---
 

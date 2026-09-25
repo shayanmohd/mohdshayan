@@ -3,6 +3,7 @@ title: Every external call is a handover
 date: 2026-09-17
 summary: Reentrancy is a symptom. The event underneath is control leaving your contract while state is half-written. Count those moments per function and audit the count.
 tags: Solidity, Security, Audits
+topic: Web3 & DeFi
 draft: false
 ---
 

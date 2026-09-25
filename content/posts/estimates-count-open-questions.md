@@ -3,6 +3,7 @@ title: Estimates are a count of open questions
 date: 2026-06-12
 summary: Estimation error comes from the questions nobody asked, not from optimism about visible work. Price the questions, not the features; no fixed price while the client's stay open.
 tags: Contract Work, Estimation, Consulting
+topic: Product & Enterprise
 draft: false
 ---
 

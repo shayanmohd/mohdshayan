@@ -1,8 +1,9 @@
 ---
 title: The parse that quietly became zero
-date: 2026-03-17
+date: 2026-03-22
 summary: A Viterbi parse multiplies one probability per rule. In float32 the best parse of a typical sentence underflows to zero and the argmax is a tie. Log space is not an optimisation.
 tags: Parsing, Numerical Methods, NLP
+topic: NLP & Parsing
 draft: false
 ---
 

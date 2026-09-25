@@ -3,6 +3,7 @@ title: Your test set has been seen before
 date: 2025-05-03
 summary: Near-duplicates across the split boundary are the commonest reason a held-out score is not a generalisation score. Dedupe before you split, and report the overlap next to accuracy.
 tags: Data Pipelines, Evaluation, Deduplication
+topic: ML Foundations
 draft: false
 ---
 

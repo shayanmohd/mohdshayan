@@ -1,8 +1,9 @@
 ---
 title: The keys only I hold
-date: 2026-07-09
+date: 2026-09-03
 summary: For an engineer-founder the dangerous list is not the tasks only they can do but the credentials only they hold. Delegate by irreversibility, not by how often a key is used.
 tags: Founding, Security, Android
+topic: Founding & Impact
 draft: false
 ---
 

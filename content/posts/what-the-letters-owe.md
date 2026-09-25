@@ -1,8 +1,9 @@
 ---
 title: What the letters after my name owe
-date: 2024-12-04
+date: 2026-06-07
 summary: Postnominals like FRSA and FRGS are read as credentials, and they are not. Both societies began by owning a problem, and a fellowship is what the fellow owes that problem.
 tags: Fellowships, History, Philanthropy
+topic: Founding & Impact
 draft: false
 ---
 

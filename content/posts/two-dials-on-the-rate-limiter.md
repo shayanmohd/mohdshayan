@@ -1,8 +1,9 @@
 ---
 title: Two dials on the rate limiter
-date: 2026-09-17
+date: 2026-09-15
 summary: A per-tenant limit stops tenants hurting each other; a per-principal limit stops one bug hurting you. They come from different numbers, and one dial with one number gives neither.
 tags: Rate Limiting, API Design, Multi-tenant SaaS
+topic: Backend Architecture
 draft: false
 ---
 

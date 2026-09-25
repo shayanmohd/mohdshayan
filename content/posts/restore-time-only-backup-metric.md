@@ -3,6 +3,7 @@ title: Restore time is the only backup metric
 date: 2025-06-09
 summary: Backup success rate is a vanity number. The number that decides whether a company survives is how long a restore takes from nothing, and in every public postmortem it ran long.
 tags: Disaster Recovery, Backups, Postmortems
+topic: DevOps & Cloud
 draft: false
 ---
 
