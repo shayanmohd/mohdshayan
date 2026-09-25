@@ -231,10 +231,30 @@ ${subscribe(true)}
 }
 
 // ---------- post ----------
+// Right-hand column on wide screens (hidden below lg): a short author card that stays in view while reading.
+function postAside() {
+  return `                <aside class="post-aside hidden lg:block" aria-label="About the author">
+                    <div class="post-aside-inner">
+                        <div class="plate p-6 reveal">
+                            <img src="/assets/avatar-160.webp" alt="" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover bg-cream">
+                            <p class="font-display text-ink text-xl mt-4" style="font-weight:500;">Mohd Shayan</p>
+                            <p class="mono-meta text-muted mt-1">Product Engineer, AI Entrepreneur &amp; Philanthropist</p>
+                            <p class="text-body text-sm leading-relaxed mt-4">Founder &amp; CEO of <strong class="text-ink">SocialSure Private Limited</strong>, an AI-first company, building intelligent products and channeling that work into opportunity for children in need.</p>
+                            <a href="/#about" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-4 whitespace-nowrap">More about me ${icon('arrow-right', 'text-xs')}</a>
+                            <div class="flex justify-between mt-5">
+                    ${socialLinks('social')}
+                            </div>
+                        </div>
+                    </div>
+                </aside>`;
+}
+
 function postPage(p) {
   const body = `        <article>
 ${pageHead(esc(p.title), esc(p.summary), `${longDate(p.date)} <span class="mx-2">·</span> ${p.minutes} min read`)}
             <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="post-layout">
+                <div class="min-w-0">
                 <div class="prose">
 ${p.html}
                 </div>
@@ -242,6 +262,9 @@ ${p.html}
                 <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
                     <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">${icon('arrow-left', 'text-xs')} All writing</a>
                     <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+                </div>
+${postAside()}
                 </div>
 ${subscribe()}
             </div>

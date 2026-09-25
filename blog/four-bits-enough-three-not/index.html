@@ -129,6 +129,8 @@
             </div>
         </section>
             <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="post-layout">
+                <div class="min-w-0">
                 <div class="prose">
 <p>Everyone who serves language models learns the same rule of thumb: 8-bit weights are free, 4-bit weights are nearly free, and below 4 bits the model gets noticeably worse, fast. The rule is right, and the explanations offered for it are usually hand-waving about information content. The actual reason is arithmetic that fits on a napkin.</p>
 <p>Weight quantisation is rounding. The rounding error is the range of each group of weights divided by the number of levels available, and the range is set by the largest weight in the group, which is an outlier that almost nothing else in the group resembles. Sixteen levels leave enough of the range for the bulk of the weights after the outlier has taken its share. Eight do not. Everything published below 4 bits is, at bottom, a way of stopping the outlier from taxing everyone else.</p>
@@ -251,6 +253,27 @@
                 <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
                     <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
                     <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+                </div>
+                <aside class="post-aside hidden lg:block" aria-label="About the author">
+                    <div class="post-aside-inner">
+                        <div class="plate p-6 reveal">
+                            <img src="/assets/avatar-160.webp" alt="" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover bg-cream">
+                            <p class="font-display text-ink text-xl mt-4" style="font-weight:500;">Mohd Shayan</p>
+                            <p class="mono-meta text-muted mt-1">Product Engineer, AI Entrepreneur &amp; Philanthropist</p>
+                            <p class="text-body text-sm leading-relaxed mt-4">Founder &amp; CEO of <strong class="text-ink">SocialSure Private Limited</strong>, an AI-first company, building intelligent products and channeling that work into opportunity for children in need.</p>
+                            <a href="/#about" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-4 whitespace-nowrap">More about me <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg></a>
+                            <div class="flex justify-between mt-5">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
                 </div>
             <div class="plate p-8 md:p-10 mt-16 reveal">
                 <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>

@@ -417,6 +417,13 @@ article:hover .shot-mat img { transform: scale(1.02); }
 .select:focus-visible { outline: 2px solid var(--gold-text); outline-offset: 2px; border-color: var(--gold-text); }
 .select-caret { position: absolute; right: .8rem; top: 50%; transform: translateY(-50%); font-size: .75rem; color: var(--muted); pointer-events: none; }
 
+/* ---------- Blog post layout: article plus a right-hand column on wide screens ---------- */
+@media (min-width: 1024px) { .post-layout { display: grid; grid-template-columns: minmax(0, 1fr) 18rem; column-gap: 3.5rem; } }
+@media (min-width: 1280px) { .post-layout { column-gap: 5rem; } }
+/* The author card sticks below the fixed header whenever the viewport is tall enough to show all of it */
+@media (min-width: 1024px) and (min-height: 36rem) { .post-aside-inner { position: sticky; top: 6.5rem; } }
+.post-aside .social { width: 36px; height: 36px; flex-shrink: 0; }
+
 /* ---------- Long-form prose (blog posts) ---------- */
 .prose { font-size: 1.0625rem; line-height: 1.75; color: var(--body); max-width: 68ch; }
 .prose > * + * { margin-top: 1.25em; }
