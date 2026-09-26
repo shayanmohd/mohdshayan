@@ -50,6 +50,19 @@ Photographs and video from his work supporting children in need: https://mohdsha
 
 Browser-based demos of his software (CustomGlide CRM, QR ticketing, Shayanomaly, deAIfy, Wordle Plus, GTA6.LLC): https://mohdshayan.com/demo/
 
+## Free tools
+
+Free utilities built by Mohd Shayan that run entirely in the browser (nothing typed or uploaded leaves the device): https://mohdshayan.com/tools/. Each also has its own address at <name>.mohdshayan.com.
+
+- deAIfy (deaify.mohdshayan.com): removes AI writing tells (em dashes, curly quotes, hidden Unicode, stock phrases) with a live diff; optional rewrite with the user's own Claude or OpenAI key.
+- Commission Calculator (commission.mohdshayan.com): flat and tiered (graduated or retroactive) sales commission, base pay, splits, quota attainment, and the sales needed to reach a target.
+- GST Calculator (gst.mohdshayan.com): adds or removes Indian GST at any rate with the CGST, SGST and IGST split.
+- EMI Calculator (emi.mohdshayan.com): loan EMI, total interest, amortisation schedule and prepayment savings.
+- Margin Calculator (margin.mohdshayan.com): profit margin, markup and pricing for a target margin.
+- QR Code Generator (qr.mohdshayan.com): static QR codes for links, text, Wi-Fi, UPI payments, email, phone and contact cards, as PNG or SVG.
+- Image Compressor (compress.mohdshayan.com): compresses, resizes and converts images to WebP, JPEG or AVIF in the browser, with zip download.
+- Password Generator (password.mohdshayan.com): random passwords, EFF-wordlist passphrases and PINs from the Web Crypto API.
+
 ## Philanthropy
 
 Mohd Shayan is a philanthropist who supports children in need, focusing on education, nutrition and care, digital access, and creating opportunity so more children get a fair start.
@@ -67,6 +80,7 @@ Artificial Intelligence and AI/ML, machine learning and LLM fine-tuning, product
 
 - Website: https://mohdshayan.com
 - Blog: https://mohdshayan.com/blog/
+- Free tools: https://mohdshayan.com/tools/
 - RSS: https://mohdshayan.com/feed.xml
 - CustomGlide: https://customglide.org
 - LinkedIn: https://linkedin.com/in/shayanmohd

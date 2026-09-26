@@ -1,0 +1,150 @@
+        <section class="pb-10" aria-label="deAIfy">
+            <div class="max-w-content mx-auto px-6">
+                <div class="tool-panel">
+                    <div class="flex flex-wrap gap-x-8 gap-y-5 items-end">
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">Dashes become</legend>
+                            <div class="seg">
+                                <label><input type="radio" name="dashes" value="spacedHyphen" checked><span>A - B</span></label>
+                                <label><input type="radio" name="dashes" value="comma"><span>A, B</span></label>
+                                <label><input type="radio" name="dashes" value="hyphen"><span>A-B</span></label>
+                                <label><input type="radio" name="dashes" value="off"><span>Keep</span></label>
+                            </div>
+                        </fieldset>
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">Stock phrases</legend>
+                            <div class="seg">
+                                <label><input type="radio" name="filler" value="flag" checked><span>Highlight</span></label>
+                                <label><input type="radio" name="filler" value="soften"><span>Soften</span></label>
+                                <label><input type="radio" name="filler" value="off"><span>Ignore</span></label>
+                            </div>
+                        </fieldset>
+                        <div class="flex flex-wrap gap-x-6 gap-y-3 pb-2">
+                            <label class="check"><input type="checkbox" id="dx-quotes" checked> Straighten quotes</label>
+                            <label class="check"><input type="checkbox" id="dx-spaces" checked> Remove hidden characters</label>
+                            <label class="check"><input type="checkbox" id="dx-protect" checked> Protect code and links</label>
+                        </div>
+                    </div>
+
+                    <hr class="tool-divider">
+
+                    <div class="tool-grid even">
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3 min-h-[36px]">
+                                <label for="dx-in" class="field-label">Your text</label>
+                                <div class="flex items-center gap-4">
+                                    <button type="button" class="text-btn" id="dx-sample"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkle"></use></svg> Try an example</button>
+                                    <button type="button" class="text-btn" id="dx-clear" hidden><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-trash"></use></svg> Clear</button>
+                                </div>
+                            </div>
+                            <textarea id="dx-in" class="input" rows="14" placeholder="Paste or type the text you want to clean." autocomplete="off"></textarea>
+                            <p class="hint" id="dx-in-stats">0 words · 0 characters</p>
+                        </div>
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3 min-h-[36px]">
+                                <span class="field-label" id="dx-out-label">Cleaned text</span>
+                                <div class="seg" role="radiogroup" aria-label="Show">
+                                    <label><input type="radio" name="view" value="result" checked><span>Result</span></label>
+                                    <label><input type="radio" name="view" value="diff"><span>Changes</span></label>
+                                </div>
+                            </div>
+                            <p id="dx-ai-note" class="status-line ok flex items-center gap-2" hidden><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkle"></use></svg> <span>Showing the AI rewrite, cleaned with your settings.</span> <button type="button" class="text-btn" id="dx-ai-undo">Show the on-device result</button></p>
+                            <div id="dx-out" class="text-out" tabindex="0" role="region" aria-labelledby="dx-out-label"><span class="placeholder">Your cleaned text appears here as you type.</span></div>
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <div class="count-chips" id="dx-counts" aria-label="Changes by type"></div>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" class="icon-btn" id="dx-download" aria-label="Download as a text file" title="Download .txt"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-download-simple"></use></svg></button>
+                                    <button type="button" class="btn-ink btn-sm" id="dx-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy text</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="dx-live" class="sr-only" aria-live="polite"></p>
+                </div>
+
+                <details class="tool-panel disclosure mt-6" id="dx-ai">
+                    <summary>
+                        <span class="flex items-center gap-3">
+                            <span class="icon-sq wash shrink-0"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkle"></use></svg></span>
+                            <span>
+                                <span class="card-title block">Rewrite it with AI, using your own key</span>
+                                <span class="text-body text-sm">Optional. For a genuine rewrite rather than a cleanup, with Claude or GPT.</span>
+                            </span>
+                        </span>
+                        <svg class="icon caret" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg>
+                    </summary>
+                    <div class="mt-6 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+                        <div class="tool-stack">
+                            <fieldset class="field">
+                                <legend class="field-label mb-2">Provider</legend>
+                                <div class="seg">
+                                    <label><input type="radio" name="provider" value="anthropic" checked><span>Anthropic Claude</span></label>
+                                    <label><input type="radio" name="provider" value="openai"><span>OpenAI GPT</span></label>
+                                </div>
+                            </fieldset>
+                            <div class="field">
+                                <label for="dx-model" class="field-label">Model <span class="hint">pick or type any model ID</span></label>
+                                <input id="dx-model" class="input mono" list="dx-models" autocomplete="off" spellcheck="false">
+                                <datalist id="dx-models"></datalist>
+                            </div>
+                            <div class="field">
+                                <label for="dx-key" class="field-label">API key <a id="dx-key-link" class="hint sweep-link" href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer">Get a key</a></label>
+                                <div class="flex gap-2">
+                                    <input id="dx-key" class="input mono" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-...">
+                                    <button type="button" class="icon-btn h-[44px] w-[44px]" id="dx-key-show" aria-label="Show key" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-eye"></use></svg></button>
+                                </div>
+                                <label class="check mt-1"><input type="checkbox" id="dx-remember"> <span>Remember on this device<small>Otherwise the key is forgotten when you close this tab.</small></span></label>
+                            </div>
+                        </div>
+                        <div class="tool-stack">
+                            <div class="plate p-5 !shadow-none text-sm leading-relaxed text-body">
+                                <p class="flex items-start gap-2"><svg class="icon text-gold-deep mt-1 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-lock-simple"></use></svg><span>Your text and key go straight from this browser to the provider you pick. They never touch this website, and you pay the provider directly for what you use.</span></p>
+                                <p class="flex items-start gap-2 mt-3"><svg class="icon text-gold-deep mt-1 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-info"></use></svg><span>The key is kept only in this browser's storage, readable by this page. Use a key with a spending limit that you can revoke.</span></p>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-3">
+                                <button type="button" class="btn-ink" id="dx-rewrite"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkle"></use></svg> Rewrite my text</button>
+                                <button type="button" class="btn-ghost" id="dx-cancel" hidden>Cancel</button>
+                                <button type="button" class="text-btn" id="dx-forget">Forget saved key</button>
+                            </div>
+                            <p id="dx-ai-status" class="status-line" aria-live="polite"></p>
+                        </div>
+                    </div>
+                </details>
+
+                <p class="mono-meta text-muted mt-5 flex items-start gap-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> The cleanup runs on your device. Your text is never uploaded.</p>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">What it fixes</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">The four habits that make machine-assisted writing easy to spot, fixed without touching your meaning.</p>
+                    </div>
+                    <div class="ruled-grid sm:grid-cols-2">
+                        <div class="cell">
+                            <h3 class="card-title">Em and en dashes</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">The long dash is the most reliable tell. Swap it for the punctuation people actually type.</p>
+                            <p class="mono-meta mt-4"><span class="text-muted">fast—really fast</span> <span class="text-gold-deep">→ fast - really fast</span></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Curly quotes</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Typographic quotes and apostrophes rarely come from a keyboard. They become straight ones.</p>
+                            <p class="mono-meta mt-4"><span class="text-muted">“it’s ready”</span> <span class="text-gold-deep">→ "it's ready"</span></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Hidden characters</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Zero-width spaces, non-breaking spaces and byte-order marks are invisible but easy to detect.</p>
+                            <p class="mono-meta mt-4"><span class="text-muted">word[U+200B]word</span> <span class="text-gold-deep">→ wordword</span></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Stock phrases</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Highlight or soften the filler: delve, tapestry, leverage, moreover, and "it is important to note".</p>
+                            <p class="mono-meta mt-4"><span class="text-muted">we leverage it</span> <span class="text-gold-deep">→ we use it</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

@@ -1,0 +1,101 @@
+        <section class="pb-10" aria-label="EMI calculator">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-grid" id="emi-form" autocomplete="off" onsubmit="return false">
+                    <div class="tool-panel tool-stack">
+                        <div class="tool-panel-head">
+                            <h2 class="card-title">Your loan</h2>
+                            <div class="flex items-center gap-2">
+                                <label for="emi-cur" class="hint">Currency</label>
+                                <select id="emi-cur" class="input !h-9 !w-auto !text-[0.8125rem] font-mono"></select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="emi-amount" class="field-label">Loan amount <span class="hint" id="emi-amount-words"></span></label>
+                            <span class="affix"><span class="affix-text pre" data-cur-symbol>₹</span><input id="emi-amount" class="input" inputmode="decimal"></span>
+                            <input type="range" class="range" id="emi-amount-range" min="4" max="8" step="0.005" aria-hidden="true" tabindex="-1">
+                        </div>
+                        <div class="field">
+                            <label for="emi-rate" class="field-label">Interest rate <span class="hint">per year</span></label>
+                            <span class="affix"><input id="emi-rate" class="input has-post" inputmode="decimal" value="8.5"><span class="affix-text post">%</span></span>
+                            <input type="range" class="range" id="emi-rate-range" min="1" max="24" step="0.05" aria-hidden="true" tabindex="-1">
+                        </div>
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3">
+                                <label for="emi-term" class="field-label">Loan term</label>
+                                <div class="seg" role="radiogroup" aria-label="Term unit">
+                                    <label><input type="radio" name="unit" value="years" checked><span>Years</span></label>
+                                    <label><input type="radio" name="unit" value="months"><span>Months</span></label>
+                                </div>
+                            </div>
+                            <input id="emi-term" class="input" inputmode="numeric" value="20">
+                            <input type="range" class="range" id="emi-term-range" min="1" max="30" step="1" aria-hidden="true" tabindex="-1">
+                        </div>
+
+                        <hr class="tool-divider">
+                        <p class="eyebrow">Prepayment and dates <span class="text-muted normal-case tracking-normal">· optional</span></p>
+                        <div class="field-row two">
+                            <div class="field">
+                                <label for="emi-extra" class="field-label">Extra payment each month</label>
+                                <span class="affix"><span class="affix-text pre" data-cur-symbol>₹</span><input id="emi-extra" class="input" inputmode="decimal" placeholder="0"></span>
+                            </div>
+                            <div class="field">
+                                <label for="emi-start" class="field-label">First EMI month</label>
+                                <input id="emi-start" class="input" type="month">
+                            </div>
+                        </div>
+                        <p class="field-error" id="emi-error" role="alert"></p>
+                    </div>
+
+                    <div class="tool-aside">
+                        <div class="bezel">
+                            <div class="readout" aria-live="polite">
+                                <p class="readout-label">Monthly EMI</p>
+                                <p class="readout-value" id="emi-head">–</p>
+                                <p class="readout-sub" id="emi-head-sub"></p>
+                                <div class="split-bar" id="emi-split" role="img" aria-label="Share of principal and interest"><span style="background:#4b89e6"></span><span style="background:#b08a2e"></span></div>
+                                <div class="legend" id="emi-legend"></div>
+                                <dl class="readout-rows" id="emi-rows"></dl>
+                                <div class="flex flex-wrap gap-2 mt-5">
+                                    <button type="button" class="btn-ghost-dark" id="emi-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy summary</span></button>
+                                    <button type="button" class="btn-ghost-dark" id="emi-share"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="emi-live" class="sr-only" aria-live="polite"></p>
+                    </div>
+                </form>
+
+                <div class="tool-panel mt-6">
+                    <div class="tool-panel-head">
+                        <div>
+                            <h2 class="card-title">Where each year's payments go</h2>
+                            <p class="field-help mt-1" id="emi-chart-sub">Principal repaid and interest paid, year by year.</p>
+                        </div>
+                        <div class="legend on-paper !mt-0" aria-hidden="true">
+                            <span><i style="background:var(--viz-2)"></i>Principal</span>
+                            <span><i style="background:var(--viz-1)"></i>Interest</span>
+                        </div>
+                    </div>
+                    <div class="tool-chart relative mt-5" id="emi-chart"></div>
+                </div>
+
+                <div class="tool-panel mt-6">
+                    <div class="tool-panel-head">
+                        <h2 class="card-title">Amortisation schedule</h2>
+                        <div class="flex items-center gap-3">
+                            <div class="seg" role="radiogroup" aria-label="Group schedule by">
+                                <label><input type="radio" name="group" value="year" checked><span>Yearly</span></label>
+                                <label><input type="radio" name="group" value="month"><span>Monthly</span></label>
+                            </div>
+                            <button type="button" class="btn-ghost btn-sm" id="emi-csv"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-download-simple"></use></svg> CSV</button>
+                        </div>
+                    </div>
+                    <div class="table-scroll mt-4">
+                        <table class="data-table">
+                            <thead><tr><th scope="col" id="emi-col-period">Year</th><th scope="col">Principal</th><th scope="col">Interest</th><th scope="col">Total paid</th><th scope="col">Balance</th></tr></thead>
+                            <tbody id="emi-table"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>

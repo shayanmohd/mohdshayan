@@ -1,0 +1,105 @@
+        <section class="pb-10" aria-label="Commission calculator">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-grid" id="cm-form" autocomplete="off" onsubmit="return false">
+                    <div class="tool-panel tool-stack">
+                        <div class="tool-panel-head">
+                            <div class="seg" role="radiogroup" aria-label="What to work out">
+                                <label><input type="radio" name="mode" value="earn" checked><span>Earnings from sales</span></label>
+                                <label><input type="radio" name="mode" value="target"><span>Sales for a target</span></label>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <label for="cm-cur" class="hint">Currency</label>
+                                <select id="cm-cur" class="input !h-9 !w-auto !text-[0.8125rem] font-mono"></select>
+                            </div>
+                        </div>
+
+                        <div class="field-row two">
+                            <div class="field" data-mode="earn">
+                                <label for="cm-sales" class="field-label">Sales amount</label>
+                                <span class="affix"><span class="affix-text pre" data-cur-symbol>₹</span><input id="cm-sales" class="input" inputmode="decimal" value="7,50,000"></span>
+                            </div>
+                            <div class="field" data-mode="target" hidden>
+                                <label for="cm-target" class="field-label">Target earnings <span class="hint">base + commission</span></label>
+                                <span class="affix"><span class="affix-text pre" data-cur-symbol>₹</span><input id="cm-target" class="input" inputmode="decimal" value="60,000"></span>
+                            </div>
+                            <fieldset class="field">
+                                <legend class="field-label mb-2">Plan</legend>
+                                <div class="seg block">
+                                    <label><input type="radio" name="plan" value="flat"><span>Flat rate</span></label>
+                                    <label><input type="radio" name="plan" value="tiered" checked><span>Tiered</span></label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                        <div class="field-row two" data-plan="flat" hidden>
+                            <div class="field">
+                                <label for="cm-rate" class="field-label">Commission rate</label>
+                                <span class="affix"><input id="cm-rate" class="input has-post" inputmode="decimal" value="8"><span class="affix-text post">%</span></span>
+                            </div>
+                        </div>
+
+                        <div data-plan="tiered" class="tool-stack">
+                            <fieldset class="field">
+                                <legend class="field-label mb-2">Tier method</legend>
+                                <div class="seg">
+                                    <label><input type="radio" name="method" value="graduated" checked><span>Graduated</span></label>
+                                    <label><input type="radio" name="method" value="retroactive"><span>Retroactive</span></label>
+                                </div>
+                                <p class="field-help" id="cm-method-help">Each slice of sales earns its own tier's rate, like tax brackets.</p>
+                            </fieldset>
+                            <div>
+                                <div class="grid grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)_36px] sm:grid-cols-[7.5rem_minmax(0,1.3fr)_minmax(0,1fr)_36px] gap-x-3 pb-2 border-b border-hairline" aria-hidden="true">
+                                    <span class="hint hidden sm:block">From</span><span class="hint">Sales up to</span><span class="hint">Rate</span><span></span>
+                                </div>
+                                <ol id="cm-tiers" class="list-none m-0 p-0"></ol>
+                                <button type="button" class="text-btn mt-3" id="cm-add-tier"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-plus"></use></svg> Add a tier</button>
+                            </div>
+                        </div>
+
+                        <hr class="tool-divider">
+                        <p class="eyebrow">Pay and splits <span class="text-muted normal-case tracking-normal">· optional</span></p>
+                        <div class="field-row three">
+                            <div class="field">
+                                <label for="cm-base" class="field-label">Base pay</label>
+                                <span class="affix"><span class="affix-text pre" data-cur-symbol>₹</span><input id="cm-base" class="input" inputmode="decimal" placeholder="0"></span>
+                            </div>
+                            <div class="field">
+                                <label for="cm-share" class="field-label">Your share</label>
+                                <span class="affix"><input id="cm-share" class="input has-post" inputmode="decimal" value="100"><span class="affix-text post">%</span></span>
+                            </div>
+                            <div class="field">
+                                <label for="cm-quota" class="field-label">Quota</label>
+                                <span class="affix"><span class="affix-text pre" data-cur-symbol>₹</span><input id="cm-quota" class="input" inputmode="decimal" placeholder="None"></span>
+                            </div>
+                        </div>
+                        <p class="field-error" id="cm-error" role="alert"></p>
+                    </div>
+
+                    <div class="tool-aside">
+                        <div class="bezel">
+                            <div class="readout" aria-live="polite">
+                                <p class="readout-label" id="cm-headline-label">Your commission</p>
+                                <p class="readout-value" id="cm-headline">–</p>
+                                <p class="readout-sub" id="cm-headline-sub"></p>
+                                <dl class="readout-rows" id="cm-rows"></dl>
+                                <div class="flex flex-wrap gap-2 mt-5">
+                                    <button type="button" class="btn-ghost-dark" id="cm-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy summary</span></button>
+                                    <button type="button" class="btn-ghost-dark" id="cm-share-link"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-panel mt-4" id="cm-bands-panel">
+                            <h2 class="card-title">Breakdown</h2>
+                            <div class="table-scroll mt-3 !border-t-0">
+                                <table class="data-table">
+                                    <thead><tr><th scope="col">Band</th><th scope="col">Sales</th><th scope="col">Rate</th><th scope="col">Pays</th></tr></thead>
+                                    <tbody id="cm-bands"></tbody>
+                                </table>
+                            </div>
+                            <p class="field-help mt-3" id="cm-bands-note"></p>
+                        </div>
+                        <p id="cm-live" class="sr-only" aria-live="polite"></p>
+                    </div>
+                </form>
+            </div>
+        </section>

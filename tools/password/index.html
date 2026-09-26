@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator: Strong Random Passwords and Passphrases | Free</title>
+    <meta name="description" content="Free password generator that uses your device's secure random number generator. Strong random passwords, memorable passphrases from the EFF wordlist, and PINs, with an honest strength estimate. Nothing is stored or sent.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/tools/password/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mohdshayan.com/tools/password/">
+    <meta property="og:title" content="Password Generator: Strong Random Passwords and Passphrases | Free">
+    <meta property="og:description" content="Free password generator that uses your device's secure random number generator. Strong random passwords, memorable passphrases from the EFF wordlist, and PINs, with an honest strength estimate. Nothing is stored or sent.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Password Generator: Strong Random Passwords and Passphrases | Free">
+    <meta name="twitter:description" content="Free password generator that uses your device's secure random number generator. Strong random passwords, memorable passphrases from the EFF wordlist, and PINs, with an honest strength estimate. Nothing is stored or sent.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var m=document.cookie.match(/(?:^|; )theme=(dark|light)/);var s=m?m[1]:localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://mohdshayan.com/tools/password/#app",
+          "name": "Password Generator",
+          "url": "https://mohdshayan.com/tools/password/",
+          "description": "Free password generator that uses your device's secure random number generator. Strong random passwords, memorable passphrases from the EFF wordlist, and PINs, with an honest strength estimate. Nothing is stored or sent.",
+          "applicationCategory": "SecurityApplication",
+          "operatingSystem": "Any",
+          "browserRequirements": "Requires JavaScript",
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "author": {
+            "@type": "Person",
+            "@id": "https://mohdshayan.com/#person",
+            "name": "Mohd Shayan",
+            "url": "https://mohdshayan.com"
+          },
+          "publisher": {
+            "@type": "Person",
+            "@id": "https://mohdshayan.com/#person",
+            "name": "Mohd Shayan",
+            "url": "https://mohdshayan.com"
+          },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://mohdshayan.com/tools/password/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is it safe to use an online password generator?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "This one never sends a password anywhere: it is generated by your browser with the Web Crypto API (crypto.getRandomValues), the same source used for encryption keys, and it is not saved in the page address, in storage or in any log. You can load the page and switch off your connection before you generate, and it still works."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long should a password be?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "For accounts protected by a password manager, 16 to 20 random characters is plenty. For anything you must type or remember, a passphrase of five or six random words is easier to handle and just as hard to guess. Length matters more than symbols."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What does the strength estimate mean?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It is the entropy of the method in bits: how many guesses an attacker who knows exactly how the password was made would need. Every extra bit doubles the work. Around 70 bits or more resists offline cracking of a fast hash, and 80 bits or more is very strong. It assumes the password is used once and kept secret."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Where do the passphrase words come from?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "From the EFF Long Wordlist of 7,776 short, distinct and easy-to-type English words, published by the Electronic Frontier Foundation under CC BY 3.0 US. Each word adds about 12.9 bits of entropy."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Should I reuse a strong password?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Use a different password for every account and keep them in a password manager. A strong password that is reused is only as safe as the weakest site that stores it."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://mohdshayan.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Free tools",
+              "item": "https://mohdshayan.com/tools/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Password Generator",
+              "item": "https://mohdshayan.com/tools/password/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/tools/" class="nav-link active" aria-current="page">Tools</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/tools/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Tools</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <section class="page-head pb-8 md:pb-10">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 reveal">
+                    <a href="/tools/" class="chip-pill"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-toolbox"></use></svg> Free tools</a>
+                    <span class="mono-meta text-muted">password.mohdshayan.com</span>
+                </div>
+                <h1 class="h2 mt-4 max-w-3xl balance reveal">Strong passwords, generated on your device</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Random passwords, memorable passphrases and PINs, drawn from your browser's cryptographically secure random number generator. Nothing is stored, logged or sent anywhere.</p>
+            </div>
+        </section>
+        <section class="pb-10" aria-label="Password generator">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-grid" id="pw-form" autocomplete="off" onsubmit="return false">
+                    <div class="tool-aside lg:order-2">
+                        <div class="bezel">
+                            <div class="readout">
+                                <p class="readout-label" id="pw-kind">Password</p>
+                                <p class="secret mt-3 min-h-[2.2em]" id="pw-out" aria-label="Generated secret"></p>
+                                <div class="meter" id="pw-meter" data-level="0" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+                                <p class="readout-sub" id="pw-strength"></p>
+                                <div class="flex flex-wrap gap-2 mt-5">
+                                    <button type="button" class="btn-invert btn-sm" id="pw-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy</span></button>
+                                    <button type="button" class="btn-ghost-dark" id="pw-new"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrows-clockwise"></use></svg> New one</button>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="pw-live" class="sr-only" aria-live="polite"></p>
+                    </div>
+
+                    <div class="tool-panel tool-stack lg:order-1">
+                        <div class="seg block" role="radiogroup" aria-label="Kind">
+                            <label><input type="radio" name="kind" value="password" checked><span>Password</span></label>
+                            <label><input type="radio" name="kind" value="passphrase"><span>Passphrase</span></label>
+                            <label><input type="radio" name="kind" value="pin"><span>PIN</span></label>
+                        </div>
+
+                        <div data-kind="password" class="tool-stack">
+                            <div class="field">
+                                <label for="pw-length" class="field-label">Length <span class="hint"><output id="pw-length-out">20</output> characters</span></label>
+                                <input type="range" class="range" id="pw-length" min="8" max="64" step="1" value="20">
+                            </div>
+                            <div class="grid sm:grid-cols-2 gap-3">
+                                <label class="check"><input type="checkbox" id="pw-upper" checked> Capitals <span class="hint">A–Z</span></label>
+                                <label class="check"><input type="checkbox" id="pw-lower" checked> Lower case <span class="hint">a–z</span></label>
+                                <label class="check"><input type="checkbox" id="pw-digits" checked> Numbers <span class="hint">0–9</span></label>
+                                <label class="check"><input type="checkbox" id="pw-symbols" checked> Symbols <span class="hint">!@#$%</span></label>
+                            </div>
+                            <label class="check"><input type="checkbox" id="pw-lookalike"> <span>Avoid look-alike characters<small>Leaves out I, l, 1, |, O, 0 and o, for passwords you have to read out or type by hand.</small></span></label>
+                        </div>
+
+                        <div data-kind="passphrase" class="tool-stack" hidden>
+                            <div class="field">
+                                <label for="pw-words" class="field-label">Words <span class="hint"><output id="pw-words-out">6</output> words</span></label>
+                                <input type="range" class="range" id="pw-words" min="3" max="12" step="1" value="6">
+                            </div>
+                            <div class="field-row two">
+                                <div class="field">
+                                    <label for="pw-sep" class="field-label">Between words</label>
+                                    <select id="pw-sep" class="input">
+                                        <option value="-">Hyphen  a-b-c</option>
+                                        <option value=" ">Space  a b c</option>
+                                        <option value=".">Full stop  a.b.c</option>
+                                        <option value="_">Underscore  a_b_c</option>
+                                        <option value="">Nothing  abc</option>
+                                    </select>
+                                </div>
+                                <div class="grid gap-3 content-end pb-1">
+                                    <label class="check"><input type="checkbox" id="pw-cap"> Capitalise each word</label>
+                                    <label class="check"><input type="checkbox" id="pw-num"> Add a number</label>
+                                </div>
+                            </div>
+                            <p class="field-help">Words come from the EFF Long Wordlist (7,776 words, © Electronic Frontier Foundation, CC BY 3.0 US).</p>
+                        </div>
+
+                        <div data-kind="pin" class="tool-stack" hidden>
+                            <div class="field">
+                                <label for="pw-pin" class="field-label">Digits <span class="hint"><output id="pw-pin-out">6</output> digits</span></label>
+                                <input type="range" class="range" id="pw-pin" min="4" max="12" step="1" value="6">
+                            </div>
+                            <p class="field-help">PINs are only safe where the number of attempts is limited, such as a phone or bank card.</p>
+                        </div>
+
+                        <p class="mono-meta text-muted flex items-start gap-2 pt-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> Generated on your device with the Web Crypto API. Never stored, logged or sent.</p>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section class="py-16 md:py-20">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">Questions</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">Built by <a href="https://mohdshayan.com/" class="sweep-link text-ink">Mohd Shayan</a>. Found a problem or have an idea? <a href="mailto:contact@mohdshayan.com?subject=Password%20Generator" class="sweep-link text-ink">Send a note</a>.</p>
+                    </div>
+                    <div>
+                        <details class="faq" open>
+                            <summary>Is it safe to use an online password generator?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>This one never sends a password anywhere: it is generated by your browser with the Web Crypto API (<code>crypto.getRandomValues</code>), the same source used for encryption keys, and it is not saved in the page address, in storage or in any log. You can load the page and switch off your connection before you generate, and it still works.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>How long should a password be?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>For accounts protected by a password manager, 16 to 20 random characters is plenty. For anything you must type or remember, a passphrase of five or six random words is easier to handle and just as hard to guess. Length matters more than symbols.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>What does the strength estimate mean?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>It is the entropy of the method in bits: how many guesses an attacker who knows exactly how the password was made would need. Every extra bit doubles the work. Around 70 bits or more resists offline cracking of a fast hash, and 80 bits or more is very strong. It assumes the password is used once and kept secret.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>Where do the passphrase words come from?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>From the EFF Long Wordlist of 7,776 short, distinct and easy-to-type English words, published by the Electronic Frontier Foundation under CC BY 3.0 US. Each word adds about 12.9 bits of entropy.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>Should I reuse a strong password?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>No. Use a different password for every account and keep them in a password manager. A strong password that is reused is only as safe as the weakest site that stores it.</p></div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pb-24">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <h2 class="h3-serif" style="font-weight:500;">More free tools</h2>
+                    <a href="/tools/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">All tools <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg></a>
+                </div>
+                <div class="ruled-grid sm:grid-cols-2 lg:grid-cols-4 mt-6">
+                    <a href="/tools/qr/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-qr-code"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">QR Code Generator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Links, Wi-Fi logins, UPI payments and contact cards as crisp QR codes. PNG or SVG, no watermark, never expires.</p>
+                    </a>
+                    <a href="/tools/compress/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrows-in"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Image Compressor</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Shrink, resize and convert photos to WebP, JPEG or AVIF in your browser, then download them all as a zip.</p>
+                    </a>
+                    <a href="/tools/deaify/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-broom"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">deAIfy</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Strip em dashes, curly quotes, hidden characters and stock AI phrases from any text, with a live diff of every change.</p>
+                    </a>
+                    <a href="/tools/commission/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-hand-coins"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Commission Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Flat or tiered plans with base pay and splits, plus a reverse mode that finds the sales needed to hit a target.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/tools/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Free tools</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+    <script type="module" src="/assets/tools/password.js"></script>
+</body>
+</html>

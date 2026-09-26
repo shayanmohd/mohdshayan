@@ -1,0 +1,138 @@
+        <section class="pb-10" aria-label="QR code generator">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-grid" id="qr-form" autocomplete="off" onsubmit="return false">
+                    <div class="tool-panel tool-stack">
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">What should it hold?</legend>
+                            <div class="seg" id="qr-types">
+                                <label><input type="radio" name="type" value="url" checked><span><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg>Link</span></label>
+                                <label><input type="radio" name="type" value="text"><span><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-text-t"></use></svg>Text</span></label>
+                                <label><input type="radio" name="type" value="wifi"><span><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-wifi-high"></use></svg>Wi-Fi</span></label>
+                                <label><input type="radio" name="type" value="upi"><span><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-currency-inr"></use></svg>UPI</span></label>
+                                <label><input type="radio" name="type" value="email"><span><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg>Email</span></label>
+                                <label><input type="radio" name="type" value="phone"><span><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-phone"></use></svg>Call or SMS</span></label>
+                                <label><input type="radio" name="type" value="vcard"><span><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-user"></use></svg>Contact</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div data-type="url" class="field">
+                            <label for="qr-url" class="field-label">Link</label>
+                            <input id="qr-url" class="input" type="url" inputmode="url" placeholder="https://example.com" value="https://mohdshayan.com">
+                        </div>
+                        <div data-type="text" class="field" hidden>
+                            <label for="qr-text" class="field-label">Text <span class="hint" id="qr-text-count"></span></label>
+                            <textarea id="qr-text" class="input !min-h-[8rem]" rows="4" placeholder="Anything: a note, a code, an address."></textarea>
+                        </div>
+                        <div data-type="wifi" class="tool-stack" hidden>
+                            <div class="field-row two">
+                                <div class="field"><label for="qr-ssid" class="field-label">Network name (SSID)</label><input id="qr-ssid" class="input" placeholder="HomeNetwork"></div>
+                                <div class="field"><label for="qr-wpass" class="field-label">Password</label><input id="qr-wpass" class="input" type="text" spellcheck="false"></div>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+                                <div class="seg" role="radiogroup" aria-label="Security">
+                                    <label><input type="radio" name="auth" value="WPA" checked><span>WPA / WPA2 / WPA3</span></label>
+                                    <label><input type="radio" name="auth" value="WEP"><span>WEP</span></label>
+                                    <label><input type="radio" name="auth" value="nopass"><span>Open</span></label>
+                                </div>
+                                <label class="check"><input type="checkbox" id="qr-hidden"> Hidden network</label>
+                            </div>
+                        </div>
+                        <div data-type="upi" class="tool-stack" hidden>
+                            <div class="field-row two">
+                                <div class="field"><label for="qr-pa" class="field-label">UPI ID <span class="hint">receives the money</span></label><input id="qr-pa" class="input" placeholder="name@bank" spellcheck="false" autocapitalize="off"><p class="field-error" id="qr-pa-error"></p></div>
+                                <div class="field"><label for="qr-pn" class="field-label">Payee name</label><input id="qr-pn" class="input" placeholder="Shop or person"></div>
+                            </div>
+                            <div class="field-row two">
+                                <div class="field"><label for="qr-am" class="field-label">Amount <span class="hint">optional</span></label><span class="affix"><span class="affix-text pre">₹</span><input id="qr-am" class="input" style="padding-left:calc(1ch + 1.35rem)" inputmode="decimal" placeholder="Payer enters it"></span></div>
+                                <div class="field"><label for="qr-tn" class="field-label">Note <span class="hint">optional</span></label><input id="qr-tn" class="input" placeholder="Order 42" maxlength="80"></div>
+                            </div>
+                            <p class="field-help">Works with any UPI app. Scan it yourself with a small test payment before you print it.</p>
+                        </div>
+                        <div data-type="email" class="tool-stack" hidden>
+                            <div class="field-row two">
+                                <div class="field"><label for="qr-to" class="field-label">To</label><input id="qr-to" class="input" type="email" placeholder="you@example.com"></div>
+                                <div class="field"><label for="qr-subject" class="field-label">Subject</label><input id="qr-subject" class="input"></div>
+                            </div>
+                            <div class="field"><label for="qr-body" class="field-label">Message</label><textarea id="qr-body" class="input !min-h-[6rem]" rows="3"></textarea></div>
+                        </div>
+                        <div data-type="phone" class="tool-stack" hidden>
+                            <div class="seg" role="radiogroup" aria-label="Action">
+                                <label><input type="radio" name="dial" value="call" checked><span>Call</span></label>
+                                <label><input type="radio" name="dial" value="sms"><span>Text message</span></label>
+                            </div>
+                            <div class="field-row two">
+                                <div class="field"><label for="qr-number" class="field-label">Phone number <span class="hint">with country code</span></label><input id="qr-number" class="input" type="tel" placeholder="+91 98765 43210"></div>
+                                <div class="field" id="qr-sms-field" hidden><label for="qr-sms" class="field-label">Message</label><input id="qr-sms" class="input"></div>
+                            </div>
+                        </div>
+                        <div data-type="vcard" class="tool-stack" hidden>
+                            <div class="field-row two">
+                                <div class="field"><label for="qr-first" class="field-label">First name</label><input id="qr-first" class="input" autocomplete="off"></div>
+                                <div class="field"><label for="qr-last" class="field-label">Last name</label><input id="qr-last" class="input" autocomplete="off"></div>
+                                <div class="field"><label for="qr-tel" class="field-label">Phone</label><input id="qr-tel" class="input" type="tel"></div>
+                                <div class="field"><label for="qr-mail" class="field-label">Email</label><input id="qr-mail" class="input" type="email"></div>
+                                <div class="field"><label for="qr-org" class="field-label">Company</label><input id="qr-org" class="input"></div>
+                                <div class="field"><label for="qr-title" class="field-label">Job title</label><input id="qr-title" class="input"></div>
+                            </div>
+                            <div class="field"><label for="qr-web" class="field-label">Website</label><input id="qr-web" class="input" type="url" inputmode="url"></div>
+                        </div>
+
+                        <hr class="tool-divider">
+                        <p class="eyebrow">Style</p>
+                        <div class="field-row two">
+                            <div class="field">
+                                <span class="field-label">Colours</span>
+                                <div class="flex items-center gap-3">
+                                    <input id="qr-fg" class="input !w-14 shrink-0" type="color" value="#1a1814" aria-label="Code colour">
+                                    <input id="qr-bg" class="input !w-14 shrink-0" type="color" value="#ffffff" aria-label="Background colour">
+                                    <button type="button" class="text-btn" id="qr-reset"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrows-clockwise"></use></svg> Reset</button>
+                                </div>
+                            </div>
+                            <fieldset class="field">
+                                <legend class="field-label mb-2">Error correction</legend>
+                                <div class="seg" role="radiogroup">
+                                    <label title="Low: about 7% can be damaged"><input type="radio" name="ecc" value="L"><span>Low</span></label>
+                                    <label title="Medium: about 15%"><input type="radio" name="ecc" value="M" checked><span>Medium</span></label>
+                                    <label title="Quartile: about 25%"><input type="radio" name="ecc" value="Q"><span>Quartile</span></label>
+                                    <label title="High: about 30%"><input type="radio" name="ecc" value="H"><span>High</span></label>
+                                </div>
+                            </fieldset>
+                            <fieldset class="field">
+                                <legend class="field-label mb-2">Quiet margin</legend>
+                                <div class="seg" role="radiogroup">
+                                    <label><input type="radio" name="margin" value="4" checked><span>Standard</span></label>
+                                    <label><input type="radio" name="margin" value="2"><span>Slim</span></label>
+                                    <label><input type="radio" name="margin" value="0"><span>None</span></label>
+                                </div>
+                            </fieldset>
+                            <div class="field">
+                                <label for="qr-size" class="field-label">PNG size</label>
+                                <select id="qr-size" class="input">
+                                    <option value="512">About 512 px</option>
+                                    <option value="1024" selected>About 1024 px</option>
+                                    <option value="2048">About 2048 px (print)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-aside">
+                        <div class="tool-panel">
+                            <div class="qr-stage" id="qr-stage" aria-live="polite"></div>
+                            <p class="status-line mt-3" id="qr-meta"></p>
+                            <p class="field-error mt-1" id="qr-warn"></p>
+                            <div class="grid grid-cols-2 gap-2 mt-4">
+                                <button type="button" class="btn-ink" id="qr-png"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-download-simple"></use></svg> PNG</button>
+                                <button type="button" class="btn-ghost" id="qr-svg"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-download-simple"></use></svg> SVG</button>
+                            </div>
+                            <button type="button" class="btn-ghost w-full mt-2" id="qr-copy" hidden><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy image</span></button>
+                            <details class="mt-4">
+                                <summary class="text-btn cursor-pointer">What the code contains</summary>
+                                <pre class="mt-2 p-3 rounded-md bg-cream text-ink font-mono text-xs whitespace-pre-wrap break-all" id="qr-payload"></pre>
+                            </details>
+                        </div>
+                        <p id="qr-live" class="sr-only" aria-live="polite"></p>
+                    </div>
+                </form>
+            </div>
+        </section>

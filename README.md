@@ -24,12 +24,14 @@ The HTML is plain, but three assets are generated. After changing styles, icons,
 
 ```bash
 npm install          # once
-npm run build        # icons sprite + pages + compiled CSS
+npm run build        # icons sprite + vendored tool libraries + pages + compiled CSS
+npm test             # unit tests for the tools' logic
 ```
 
 - `src/site.css` is the stylesheet source (Tailwind directives plus the site's own CSS). `npm run build:css` compiles it to `assets/site.css`.
 - `scripts/build-icons.mjs` lists the Phosphor icons in use and writes `assets/icons.svg`. Add a name to the list, rebuild, and reference it with `<use href="/assets/icons.svg#i-name">`.
-- `scripts/build-pages.mjs` generates `/blog/`, each post, `/feed.xml`, `/philanthropy/`, and `/demo/` from `content/`.
+- `scripts/build-pages.mjs` generates `/blog/`, each post, `/feed.xml`, `/philanthropy/`, `/demo/` and `/tools/` from `content/`.
+- `scripts/build-tool-vendor.mjs` copies the QR encoder and the EFF passphrase wordlist from `node_modules` into `assets/tools/vendor/`.
 
 ### Writing a post
 
@@ -43,9 +45,11 @@ The blog ships an RSS feed at `/feed.xml`. For email delivery without a paid pla
 
 Add files to `assets/philanthropy/`, describe them in `content/philanthropy/gallery.json` (see the README in that folder), and rebuild.
 
-### Demo subdomain
+### Free tools and subdomains
 
-`/demo/` is a launcher for the live demos. To serve it at `demo.mohdshayan.com`, put the same page in its own repository with a `CNAME` file containing `demo.mohdshayan.com`, enable GitHub Pages there, and add a DNS `CNAME` record at Namecheap: host `demo`, value `shayanmohd.github.io`.
+`/tools/` is a hub of free, browser-only tools: deAIfy, commission, GST, EMI and margin calculators, a QR code generator, an image compressor and a password generator. Each is described in `content/tools.json`, with its interface in `content/tools/<slug>.html` and its script in `assets/tools/<slug>.js`; the pure logic lives in `assets/tools/lib/` and is covered by `npm test`. `npm run build:pages` also refreshes the tools section of the homepage.
+
+Every tool, and the demo hub, is also published at its own address (`deaify.mohdshayan.com`, `demo.mohdshayan.com`, ...). GitHub Pages serves one custom domain per repository, so `npm run build:subdomains` assembles a standalone copy of each page and the **Deploy subdomains** workflow pushes each to its own repository. Setup, DNS records and the deploy token are in [SUBDOMAINS.md](SUBDOMAINS.md).
 
 ## 🤖 AI/LLM Scraping Policy
 

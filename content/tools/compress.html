@@ -1,0 +1,74 @@
+        <section class="pb-10" aria-label="Image compressor">
+            <div class="max-w-content mx-auto px-6">
+                <div class="tool-panel">
+                    <label class="dropzone" id="cx-drop">
+                        <input type="file" id="cx-file" accept="image/jpeg,image/png,image/webp,image/avif,image/gif,image/bmp" multiple>
+                        <span class="icon-sq wash"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-upload-simple"></use></svg></span>
+                        <span class="card-title">Drop images here, or choose files</span>
+                        <span class="field-help">JPEG, PNG, WebP, AVIF or GIF. You can also paste an image. Nothing is uploaded.</span>
+                    </label>
+
+                    <div class="flex flex-wrap items-end gap-x-8 gap-y-5 mt-6">
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">Convert to</legend>
+                            <div class="seg" role="radiogroup">
+                                <label><input type="radio" name="format" value="image/webp" checked><span>WebP</span></label>
+                                <label><input type="radio" name="format" value="image/jpeg"><span>JPEG</span></label>
+                                <label><input type="radio" name="format" value="image/avif"><span>AVIF</span></label>
+                                <label><input type="radio" name="format" value="image/png"><span>PNG</span></label>
+                            </div>
+                        </fieldset>
+                        <div class="field min-w-[13rem] flex-1 max-w-sm">
+                            <label for="cx-quality" class="field-label">Quality <span class="hint" id="cx-quality-value">80</span></label>
+                            <input type="range" class="range" id="cx-quality" min="10" max="100" step="1" value="80">
+                        </div>
+                        <div class="field">
+                            <label for="cx-max" class="field-label">Longest side</label>
+                            <select id="cx-max" class="input !w-auto">
+                                <option value="0">Keep original size</option>
+                                <option value="3840">3840 px (4K)</option>
+                                <option value="2560">2560 px</option>
+                                <option value="1920" selected>1920 px (full HD)</option>
+                                <option value="1280">1280 px</option>
+                                <option value="800">800 px</option>
+                            </select>
+                        </div>
+                    </div>
+                    <p class="field-help mt-3" id="cx-format-help"></p>
+                </div>
+
+                <div class="tool-panel mt-6" id="cx-results" hidden>
+                    <div class="tool-panel-head">
+                        <div>
+                            <h2 class="card-title" id="cx-summary">0 images</h2>
+                            <p class="status-line mt-1" id="cx-status" aria-live="polite"></p>
+                        </div>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <button type="button" class="btn-ghost btn-sm" id="cx-clear"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-trash"></use></svg> Clear</button>
+                            <button type="button" class="btn-ink btn-sm" id="cx-zip"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-file-zip"></use></svg> Download all (.zip)</button>
+                        </div>
+                    </div>
+                    <ul class="file-list mt-4" id="cx-list"></ul>
+                </div>
+
+                <p class="mono-meta text-muted mt-5 flex items-start gap-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> Images are processed by your browser and never leave your device. Location and camera data are removed.</p>
+            </div>
+        </section>
+
+        <dialog class="sheet" id="cx-dialog" aria-labelledby="cx-dialog-title">
+            <div class="frame">
+                <div class="flex items-center justify-between gap-4 mb-3">
+                    <h2 class="card-title truncate" id="cx-dialog-title">Compare</h2>
+                    <button type="button" class="icon-btn" id="cx-dialog-close" aria-label="Close"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x"></use></svg></button>
+                </div>
+                <div class="compare" id="cx-compare">
+                    <img alt="Original" id="cx-before">
+                    <div class="after"><img alt="Compressed" id="cx-after"></div>
+                    <span class="handle" aria-hidden="true"></span>
+                    <span class="tag" style="left:.6rem" id="cx-tag-before">Original</span>
+                    <span class="tag" style="right:.6rem" id="cx-tag-after">Compressed</span>
+                </div>
+                <label for="cx-pos" class="sr-only">Slide to compare the original and the compressed image</label>
+                <input type="range" class="range mt-4" id="cx-pos" min="0" max="100" value="50">
+            </div>
+        </dialog>

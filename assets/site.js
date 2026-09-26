@@ -1,6 +1,6 @@
 // Shared behaviour for every page: theme toggle, mobile drawer, scroll reveal.
 (function () {
-  // Theme toggle (light is the designed default; choice persists in localStorage)
+  // Theme toggle (light is the designed default; the choice persists in localStorage and a cookie shared with the tool subdomains)
   var themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
     var themeIcon = themeToggle.querySelector('[data-theme-icon]');
@@ -11,7 +11,12 @@
       themeIcon.querySelector('use').setAttribute('href', dark ? '/assets/icons.svg#i-sun' : '/assets/icons.svg#i-moon');
       themeToggle.setAttribute('aria-pressed', String(dark));
       themeMetas.forEach(function (m) { m.setAttribute('content', dark ? '#14120e' : '#faf8f3'); });
-      if (persist) { try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {} }
+      if (persist) {
+        try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
+        // Shared with every *.mohdshayan.com tool site, which cannot read this origin's localStorage
+        var shared = /(^|\.)mohdshayan\.com$/.test(location.hostname) ? '; domain=.mohdshayan.com' : '';
+        document.cookie = 'theme=' + (dark ? 'dark' : 'light') + '; path=/; max-age=31536000; SameSite=Lax' + shared;
+      }
     };
     applyTheme(document.documentElement.getAttribute('data-theme') === 'dark', false);
     themeToggle.addEventListener('click', function () {
@@ -19,7 +24,7 @@
     });
     // Follow the OS if the visitor has never chosen explicitly
     try {
-      var stored = localStorage.getItem('theme');
+      var stored = /(?:^|; )theme=(dark|light)/.test(document.cookie) || localStorage.getItem('theme');
       if (!stored && window.matchMedia) window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) { applyTheme(e.matches, false); });
     } catch (e) {}
   }

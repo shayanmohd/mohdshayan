@@ -29,7 +29,7 @@
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <meta name="theme-color" content="#faf8f3">
     <meta name="msapplication-TileColor" content="#faf8f3">
-    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <script>(function(){try{var m=document.cookie.match(/(?:^|; )theme=(dark|light)/);var s=m?m[1]:localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
     <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/site.css">
@@ -103,6 +103,7 @@
                 <li><a href="/#publications" class="nav-link">Research</a></li>
                 <li><a href="/#projects" class="nav-link">Work</a></li>
                 <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/tools/" class="nav-link">Tools</a></li>
             </ul>
             <div class="flex items-center gap-3">
                 <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
@@ -127,6 +128,7 @@
                 <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
                 <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
                 <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/tools/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Tools</a>
                 <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
             </nav>
             <div class="mt-auto">
@@ -229,6 +231,7 @@
                     <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
                     <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
                     <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/tools/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Free tools</a></li>
                     <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
                     <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
                 </ul>

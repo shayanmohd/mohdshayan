@@ -1,6 +1,6 @@
 /** Tailwind config for mohdshayan.com. Compile with `npm run build:css`. */
 module.exports = {
-  content: ['./index.html', './blog/**/*.html', './philanthropy/**/*.html', './demo/**/*.html', './404.html'],
+  content: ['./index.html', './blog/**/*.html', './philanthropy/**/*.html', './demo/**/*.html', './subscribe/**/*.html', './tools/**/*.html', './assets/tools/*.js', './404.html'],
   theme: {
     extend: {
       colors: {

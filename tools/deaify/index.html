@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>deAIfy: Remove AI Writing Tells From Text, Free and Private</title>
+    <meta name="description" content="Free text cleaner that fixes em dashes, curly quotes, hidden Unicode and stock AI phrases like delve and moreover, with a live diff. Runs in your browser; nothing is uploaded.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/tools/deaify/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mohdshayan.com/tools/deaify/">
+    <meta property="og:title" content="deAIfy: Remove AI Writing Tells From Text, Free and Private">
+    <meta property="og:description" content="Free text cleaner that fixes em dashes, curly quotes, hidden Unicode and stock AI phrases like delve and moreover, with a live diff. Runs in your browser; nothing is uploaded.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="deAIfy: Remove AI Writing Tells From Text, Free and Private">
+    <meta name="twitter:description" content="Free text cleaner that fixes em dashes, curly quotes, hidden Unicode and stock AI phrases like delve and moreover, with a live diff. Runs in your browser; nothing is uploaded.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var m=document.cookie.match(/(?:^|; )theme=(dark|light)/);var s=m?m[1]:localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://mohdshayan.com/tools/deaify/#app",
+          "name": "deAIfy",
+          "url": "https://mohdshayan.com/tools/deaify/",
+          "description": "Free text cleaner that fixes em dashes, curly quotes, hidden Unicode and stock AI phrases like delve and moreover, with a live diff. Runs in your browser; nothing is uploaded.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "browserRequirements": "Requires JavaScript",
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "author": {
+            "@type": "Person",
+            "@id": "https://mohdshayan.com/#person",
+            "name": "Mohd Shayan",
+            "url": "https://mohdshayan.com"
+          },
+          "publisher": {
+            "@type": "Person",
+            "@id": "https://mohdshayan.com/#person",
+            "name": "Mohd Shayan",
+            "url": "https://mohdshayan.com"
+          },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://mohdshayan.com/tools/deaify/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is my text sent anywhere?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. The cleanup runs in your browser with plain JavaScript, and the page makes no network request with your text. The optional AI rewrite is the only exception: it sends your text straight from your browser to the provider you pick, with your own API key, and never through this site."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What exactly does deAIfy change?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Em and en dashes become a spaced hyphen, a comma, or a plain hyphen (your choice). Curly quotes and apostrophes become straight ones. Invisible characters such as zero-width spaces, non-breaking spaces and byte-order marks are removed or turned into normal spaces. Stock phrases such as delve, tapestry, moreover and it is important to note that are highlighted, or softened to plainer words. Code blocks, inline code and links are protected and never touched."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Will this make my text pass an AI detector?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No tool can honestly promise that, and deAIfy does not try to. It removes the mechanical tells that make writing feel machine-made. The best results come from reading the flagged phrases and rewriting them in your own voice."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between Flag and Soften?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Flag leaves your wording alone and highlights each stock phrase so you can decide what to do. Soften rewrites them automatically: buzzwords become plainer words (utilize becomes use) and empty transitions such as moreover are removed, with the punctuation around them repaired."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is deAIfy open source?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The same cleaning engine also ships as an Android and web app built with Expo. The source is on GitHub under the MIT licence."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://mohdshayan.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Free tools",
+              "item": "https://mohdshayan.com/tools/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "deAIfy",
+              "item": "https://mohdshayan.com/tools/deaify/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/tools/" class="nav-link active" aria-current="page">Tools</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/tools/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Tools</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <section class="page-head pb-8 md:pb-10">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 reveal">
+                    <a href="/tools/" class="chip-pill"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-toolbox"></use></svg> Free tools</a>
+                    <span class="mono-meta text-muted">deaify.mohdshayan.com</span>
+                </div>
+                <h1 class="h2 mt-4 max-w-3xl balance reveal">Make AI-assisted text read like <span class="text-gold-deep">you</span> wrote it</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Paste anything. deAIfy straightens the punctuation, removes invisible characters, and flags or softens the stock phrases that give machine writing away. It runs on your device, so your text is never uploaded.</p>
+            </div>
+        </section>
+        <section class="pb-10" aria-label="deAIfy">
+            <div class="max-w-content mx-auto px-6">
+                <div class="tool-panel">
+                    <div class="flex flex-wrap gap-x-8 gap-y-5 items-end">
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">Dashes become</legend>
+                            <div class="seg">
+                                <label><input type="radio" name="dashes" value="spacedHyphen" checked><span>A - B</span></label>
+                                <label><input type="radio" name="dashes" value="comma"><span>A, B</span></label>
+                                <label><input type="radio" name="dashes" value="hyphen"><span>A-B</span></label>
+                                <label><input type="radio" name="dashes" value="off"><span>Keep</span></label>
+                            </div>
+                        </fieldset>
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">Stock phrases</legend>
+                            <div class="seg">
+                                <label><input type="radio" name="filler" value="flag" checked><span>Highlight</span></label>
+                                <label><input type="radio" name="filler" value="soften"><span>Soften</span></label>
+                                <label><input type="radio" name="filler" value="off"><span>Ignore</span></label>
+                            </div>
+                        </fieldset>
+                        <div class="flex flex-wrap gap-x-6 gap-y-3 pb-2">
+                            <label class="check"><input type="checkbox" id="dx-quotes" checked> Straighten quotes</label>
+                            <label class="check"><input type="checkbox" id="dx-spaces" checked> Remove hidden characters</label>
+                            <label class="check"><input type="checkbox" id="dx-protect" checked> Protect code and links</label>
+                        </div>
+                    </div>
+
+                    <hr class="tool-divider">
+
+                    <div class="tool-grid even">
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3 min-h-[36px]">
+                                <label for="dx-in" class="field-label">Your text</label>
+                                <div class="flex items-center gap-4">
+                                    <button type="button" class="text-btn" id="dx-sample"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkle"></use></svg> Try an example</button>
+                                    <button type="button" class="text-btn" id="dx-clear" hidden><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-trash"></use></svg> Clear</button>
+                                </div>
+                            </div>
+                            <textarea id="dx-in" class="input" rows="14" placeholder="Paste or type the text you want to clean." autocomplete="off"></textarea>
+                            <p class="hint" id="dx-in-stats">0 words · 0 characters</p>
+                        </div>
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3 min-h-[36px]">
+                                <span class="field-label" id="dx-out-label">Cleaned text</span>
+                                <div class="seg" role="radiogroup" aria-label="Show">
+                                    <label><input type="radio" name="view" value="result" checked><span>Result</span></label>
+                                    <label><input type="radio" name="view" value="diff"><span>Changes</span></label>
+                                </div>
+                            </div>
+                            <p id="dx-ai-note" class="status-line ok flex items-center gap-2" hidden><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkle"></use></svg> <span>Showing the AI rewrite, cleaned with your settings.</span> <button type="button" class="text-btn" id="dx-ai-undo">Show the on-device result</button></p>
+                            <div id="dx-out" class="text-out" tabindex="0" role="region" aria-labelledby="dx-out-label"><span class="placeholder">Your cleaned text appears here as you type.</span></div>
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <div class="count-chips" id="dx-counts" aria-label="Changes by type"></div>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" class="icon-btn" id="dx-download" aria-label="Download as a text file" title="Download .txt"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-download-simple"></use></svg></button>
+                                    <button type="button" class="btn-ink btn-sm" id="dx-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy text</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="dx-live" class="sr-only" aria-live="polite"></p>
+                </div>
+
+                <details class="tool-panel disclosure mt-6" id="dx-ai">
+                    <summary>
+                        <span class="flex items-center gap-3">
+                            <span class="icon-sq wash shrink-0"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkle"></use></svg></span>
+                            <span>
+                                <span class="card-title block">Rewrite it with AI, using your own key</span>
+                                <span class="text-body text-sm">Optional. For a genuine rewrite rather than a cleanup, with Claude or GPT.</span>
+                            </span>
+                        </span>
+                        <svg class="icon caret" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg>
+                    </summary>
+                    <div class="mt-6 grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+                        <div class="tool-stack">
+                            <fieldset class="field">
+                                <legend class="field-label mb-2">Provider</legend>
+                                <div class="seg">
+                                    <label><input type="radio" name="provider" value="anthropic" checked><span>Anthropic Claude</span></label>
+                                    <label><input type="radio" name="provider" value="openai"><span>OpenAI GPT</span></label>
+                                </div>
+                            </fieldset>
+                            <div class="field">
+                                <label for="dx-model" class="field-label">Model <span class="hint">pick or type any model ID</span></label>
+                                <input id="dx-model" class="input mono" list="dx-models" autocomplete="off" spellcheck="false">
+                                <datalist id="dx-models"></datalist>
+                            </div>
+                            <div class="field">
+                                <label for="dx-key" class="field-label">API key <a id="dx-key-link" class="hint sweep-link" href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener noreferrer">Get a key</a></label>
+                                <div class="flex gap-2">
+                                    <input id="dx-key" class="input mono" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-...">
+                                    <button type="button" class="icon-btn h-[44px] w-[44px]" id="dx-key-show" aria-label="Show key" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-eye"></use></svg></button>
+                                </div>
+                                <label class="check mt-1"><input type="checkbox" id="dx-remember"> <span>Remember on this device<small>Otherwise the key is forgotten when you close this tab.</small></span></label>
+                            </div>
+                        </div>
+                        <div class="tool-stack">
+                            <div class="plate p-5 !shadow-none text-sm leading-relaxed text-body">
+                                <p class="flex items-start gap-2"><svg class="icon text-gold-deep mt-1 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-lock-simple"></use></svg><span>Your text and key go straight from this browser to the provider you pick. They never touch this website, and you pay the provider directly for what you use.</span></p>
+                                <p class="flex items-start gap-2 mt-3"><svg class="icon text-gold-deep mt-1 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-info"></use></svg><span>The key is kept only in this browser's storage, readable by this page. Use a key with a spending limit that you can revoke.</span></p>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-3">
+                                <button type="button" class="btn-ink" id="dx-rewrite"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkle"></use></svg> Rewrite my text</button>
+                                <button type="button" class="btn-ghost" id="dx-cancel" hidden>Cancel</button>
+                                <button type="button" class="text-btn" id="dx-forget">Forget saved key</button>
+                            </div>
+                            <p id="dx-ai-status" class="status-line" aria-live="polite"></p>
+                        </div>
+                    </div>
+                </details>
+
+                <p class="mono-meta text-muted mt-5 flex items-start gap-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> The cleanup runs on your device. Your text is never uploaded.</p>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">What it fixes</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">The four habits that make machine-assisted writing easy to spot, fixed without touching your meaning.</p>
+                    </div>
+                    <div class="ruled-grid sm:grid-cols-2">
+                        <div class="cell">
+                            <h3 class="card-title">Em and en dashes</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">The long dash is the most reliable tell. Swap it for the punctuation people actually type.</p>
+                            <p class="mono-meta mt-4"><span class="text-muted">fast—really fast</span> <span class="text-gold-deep">→ fast - really fast</span></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Curly quotes</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Typographic quotes and apostrophes rarely come from a keyboard. They become straight ones.</p>
+                            <p class="mono-meta mt-4"><span class="text-muted">“it’s ready”</span> <span class="text-gold-deep">→ "it's ready"</span></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Hidden characters</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Zero-width spaces, non-breaking spaces and byte-order marks are invisible but easy to detect.</p>
+                            <p class="mono-meta mt-4"><span class="text-muted">word[U+200B]word</span> <span class="text-gold-deep">→ wordword</span></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Stock phrases</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Highlight or soften the filler: delve, tapestry, leverage, moreover, and "it is important to note".</p>
+                            <p class="mono-meta mt-4"><span class="text-muted">we leverage it</span> <span class="text-gold-deep">→ we use it</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 md:py-20">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">Questions</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">Built by <a href="https://mohdshayan.com/" class="sweep-link text-ink">Mohd Shayan</a>. Found a problem or have an idea? <a href="mailto:contact@mohdshayan.com?subject=deAIfy" class="sweep-link text-ink">Send a note</a>.</p>
+                    </div>
+                    <div>
+                        <details class="faq" open>
+                            <summary>Is my text sent anywhere?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>No. The cleanup runs in your browser with plain JavaScript, and the page makes no network request with your text. The optional AI rewrite is the only exception: it sends your text straight from your browser to the provider you pick, with your own API key, and never through this site.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>What exactly does deAIfy change?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>Em and en dashes become a spaced hyphen, a comma, or a plain hyphen (your choice). Curly quotes and apostrophes become straight ones. Invisible characters such as zero-width spaces, non-breaking spaces and byte-order marks are removed or turned into normal spaces. Stock phrases such as <em>delve</em>, <em>tapestry</em>, <em>moreover</em> and <em>it is important to note that</em> are highlighted, or softened to plainer words. Code blocks, inline code and links are protected and never touched.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>Will this make my text pass an AI detector?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>No tool can honestly promise that, and deAIfy does not try to. It removes the mechanical tells that make writing feel machine-made. The best results come from reading the flagged phrases and rewriting them in your own voice.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>What is the difference between Flag and Soften?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>Flag leaves your wording alone and highlights each stock phrase so you can decide what to do. Soften rewrites them automatically: buzzwords become plainer words (<em>utilize</em> becomes <em>use</em>) and empty transitions such as <em>moreover</em> are removed, with the punctuation around them repaired.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>Is deAIfy open source?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>Yes. The same cleaning engine also ships as an Android and web app built with Expo. The source is on <a href="https://github.com/shayanmohd/deAIfy" target="_blank" rel="noopener noreferrer">GitHub</a> under the MIT licence.</p></div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pb-24">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <h2 class="h3-serif" style="font-weight:500;">More free tools</h2>
+                    <a href="/tools/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">All tools <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg></a>
+                </div>
+                <div class="ruled-grid sm:grid-cols-2 lg:grid-cols-4 mt-6">
+                    <a href="/tools/commission/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-hand-coins"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Commission Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Flat or tiered plans with base pay and splits, plus a reverse mode that finds the sales needed to hit a target.</p>
+                    </a>
+                    <a href="/tools/gst/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-receipt"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">GST Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Add or remove GST at any rate, with the CGST, SGST and IGST split ready for an invoice.</p>
+                    </a>
+                    <a href="/tools/emi/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-bank"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">EMI Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Monthly EMI, total interest, a full amortisation schedule, and exactly what prepaying saves.</p>
+                    </a>
+                    <a href="/tools/margin/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-chart-pie-slice"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Margin Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Margin, markup and profit from cost and price, or the selling price you need for a target margin.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/tools/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Free tools</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+    <script type="module" src="/assets/tools/deaify.js"></script>
+</body>
+</html>

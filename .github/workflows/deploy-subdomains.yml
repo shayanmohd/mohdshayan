@@ -1,0 +1,60 @@
+name: Deploy subdomains
+
+# Publishes demo.mohdshayan.com and every free tool (<slug>.mohdshayan.com) to its own repository,
+# because GitHub Pages serves one custom domain per repository. The main site itself is unaffected.
+# Setup (once): add a SUBDOMAINS_TOKEN repository secret and the DNS records listed in SUBDOMAINS.md.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/**'
+      - 'demo/**'
+      - 'assets/**'
+      - '404.html'
+      - 'favicon.png'
+      - 'content/tools.json'
+      - 'scripts/build-subdomains.mjs'
+      - 'scripts/publish-subdomains.sh'
+      - '.github/workflows/deploy-subdomains.yml'
+  workflow_dispatch:
+    inputs:
+      hosts:
+        description: 'Only these hosts, space separated (for example: deaify.mohdshayan.com). Empty publishes all.'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-subdomains
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.SUBDOMAINS_TOKEN }}
+      OWNER: ${{ github.repository_owner }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # The pages are committed already built, so this only copies and rewrites files: no npm install needed
+      - name: Assemble the subdomain sites
+        run: node scripts/build-subdomains.mjs
+
+      - name: Publish each site to its repository
+        if: env.GH_TOKEN != ''
+        env:
+          HOSTS: ${{ github.event.inputs.hosts }}
+        # HOSTS is split on spaces on purpose; it reaches the shell as data, never as script text
+        run: bash scripts/publish-subdomains.sh $HOSTS
+
+      - name: Explain why nothing was published
+        if: env.GH_TOKEN == ''
+        run: echo "::notice title=Subdomains not published::Add a SUBDOMAINS_TOKEN repository secret to publish them (see SUBDOMAINS.md). The sites were assembled successfully."

@@ -1,0 +1,158 @@
+{
+  "note": "Free tools. Each entry becomes /tools/<slug>/ (UI from content/tools/<slug>.html, script /assets/tools/<slug>.js) and a standalone site at https://<slug>.mohdshayan.com/ (npm run build:subdomains). FAQ answers may use inline HTML; they are also published as FAQPage structured data with tags stripped.",
+  "categories": ["Writing", "Business & money", "Everyday utilities"],
+  "tools": [
+    {
+      "slug": "deaify",
+      "name": "deAIfy",
+      "category": "Writing",
+      "icon": "broom",
+      "appCategory": "UtilitiesApplication",
+      "title": "deAIfy: Remove AI Writing Tells From Text, Free and Private",
+      "description": "Free text cleaner that fixes em dashes, curly quotes, hidden Unicode and stock AI phrases like delve and moreover, with a live diff. Runs in your browser; nothing is uploaded.",
+      "summary": "Strip em dashes, curly quotes, hidden characters and stock AI phrases from any text, with a live diff of every change.",
+      "h1": "Make AI-assisted text read like <span class=\"text-gold-deep\">you</span> wrote it",
+      "lead": "Paste anything. deAIfy straightens the punctuation, removes invisible characters, and flags or softens the stock phrases that give machine writing away. It runs on your device, so your text is never uploaded.",
+      "faq": [
+        { "q": "Is my text sent anywhere?", "a": "No. The cleanup runs in your browser with plain JavaScript, and the page makes no network request with your text. The optional AI rewrite is the only exception: it sends your text straight from your browser to the provider you pick, with your own API key, and never through this site." },
+        { "q": "What exactly does deAIfy change?", "a": "Em and en dashes become a spaced hyphen, a comma, or a plain hyphen (your choice). Curly quotes and apostrophes become straight ones. Invisible characters such as zero-width spaces, non-breaking spaces and byte-order marks are removed or turned into normal spaces. Stock phrases such as <em>delve</em>, <em>tapestry</em>, <em>moreover</em> and <em>it is important to note that</em> are highlighted, or softened to plainer words. Code blocks, inline code and links are protected and never touched." },
+        { "q": "Will this make my text pass an AI detector?", "a": "No tool can honestly promise that, and deAIfy does not try to. It removes the mechanical tells that make writing feel machine-made. The best results come from reading the flagged phrases and rewriting them in your own voice." },
+        { "q": "What is the difference between Flag and Soften?", "a": "Flag leaves your wording alone and highlights each stock phrase so you can decide what to do. Soften rewrites them automatically: buzzwords become plainer words (<em>utilize</em> becomes <em>use</em>) and empty transitions such as <em>moreover</em> are removed, with the punctuation around them repaired." },
+        { "q": "Is deAIfy open source?", "a": "Yes. The same cleaning engine also ships as an Android and web app built with Expo. The source is on <a href=\"https://github.com/shayanmohd/deAIfy\" target=\"_blank\" rel=\"noopener noreferrer\">GitHub</a> under the MIT licence." }
+      ]
+    },
+    {
+      "slug": "commission",
+      "name": "Commission Calculator",
+      "category": "Business & money",
+      "icon": "hand-coins",
+      "appCategory": "FinanceApplication",
+      "title": "Commission Calculator: Flat, Tiered and Target Sales | Free",
+      "description": "Free sales commission calculator for flat and tiered plans, with graduated or retroactive tiers, base salary, splits and quota attainment. Work backwards from a target to the sales it takes.",
+      "summary": "Flat or tiered plans with base pay and splits, plus a reverse mode that finds the sales needed to hit a target.",
+      "h1": "Commission calculator for flat and tiered plans",
+      "lead": "Work out exactly what a deal pays. Model a flat rate or a tiered plan, add base salary and splits, or start from the earnings you want and find the sales it takes to get there.",
+      "faq": [
+        { "q": "How do I calculate commission?", "a": "For a flat plan, multiply the sales amount by the commission rate: ₹5,00,000 of sales at 8% pays ₹40,000. For a tiered plan, the answer depends on how the tiers apply, which is what the Tier method switch controls." },
+        { "q": "What is the difference between graduated and retroactive tiers?", "a": "<strong>Graduated</strong> (also called marginal or stepped) pays each slice of sales at its own tier's rate, like income tax brackets. <strong>Retroactive</strong> pays the whole amount at the rate of the highest tier reached, so crossing a threshold lifts the rate on every sale in the period. Retroactive plans pay more above each threshold and create a sharp jump at it." },
+        { "q": "How are splits and base salary handled?", "a": "The commission is calculated on the full sales amount first. <em>Your share</em> then applies to that commission, for example 50% when a deal is split with a co-seller or a brokerage. Base salary is added on top to give total earnings for the period." },
+        { "q": "How does the target mode work?", "a": "Enter the total you want to earn. The calculator takes away your base salary, grosses the remainder up by your share, and solves the plan for the smallest sales amount that pays at least that much. With retroactive tiers the answer can land exactly on a tier threshold, because that is where the rate jumps." },
+        { "q": "Is anything I enter saved?", "a": "No. Everything is calculated in your browser. If you press <em>Copy link</em>, the figures are written into the part of the address after the # sign, which browsers never send to a server, so you can bookmark or share a calculation." }
+      ]
+    },
+    {
+      "slug": "gst",
+      "name": "GST Calculator",
+      "category": "Business & money",
+      "icon": "receipt",
+      "appCategory": "FinanceApplication",
+      "title": "GST Calculator India: Add or Remove GST, CGST SGST IGST | Free",
+      "description": "Free GST calculator for India. Add GST to a price or remove it from an inclusive amount, at 3%, 5%, 18%, 40% or any rate, with the CGST, SGST and IGST split for invoices.",
+      "summary": "Add or remove GST at any rate, with the CGST, SGST and IGST split ready for an invoice.",
+      "h1": "GST calculator with the CGST, SGST and IGST split",
+      "lead": "Add GST to a price or take it out of an inclusive amount. Pick the rate and whether the supply is within a state or between states, and get the tax split the way an invoice needs it.",
+      "faq": [
+        { "q": "How do I add GST to a price?", "a": "Multiply the price by the rate and add it on: GST = price × rate ÷ 100, and total = price + GST. ₹1,000 at 18% is ₹180 of GST and ₹1,180 in total." },
+        { "q": "How do I remove GST from an inclusive amount?", "a": "Divide by one plus the rate: price before tax = amount ÷ (1 + rate ÷ 100). The GST is the difference. ₹1,180 including 18% GST is ₹1,000 plus ₹180 of GST. Taking 18% off ₹1,180 directly would give the wrong answer." },
+        { "q": "When is it CGST and SGST, and when is it IGST?", "a": "A supply within one state (intra-state) is taxed as CGST plus SGST, each at half the rate. For a Union Territory without its own legislature, UTGST replaces SGST. A supply between states, an import or an export (inter-state) carries IGST at the full rate." },
+        { "q": "Which GST rates apply now?", "a": "Since the rate rationalisation that took effect on 22 September 2025, most goods and services fall under 5% or 18%, with 40% for a short list of luxury and sin goods, and special rates such as 3% for gold and 0.25% for rough diamonds. Rates depend on the HSN or SAC code of what you sell, so confirm yours in the official rate schedules. Use <em>Custom</em> for any other rate, including 12% or 28% on older invoices." },
+        { "q": "How is rounding handled?", "a": "Each figure is shown to two decimal places (paise). CGST and SGST are each half of the total tax, so an odd paisa can appear in rounding. Invoices usually round the final total to the nearest rupee as a separate round-off line." }
+      ]
+    },
+    {
+      "slug": "emi",
+      "name": "EMI Calculator",
+      "category": "Business & money",
+      "icon": "bank",
+      "appCategory": "FinanceApplication",
+      "title": "EMI Calculator: Monthly Loan EMI, Amortisation and Prepayment | Free",
+      "description": "Free EMI calculator for home, car and personal loans. See the monthly EMI, total interest, a year-by-year amortisation schedule, and how much an extra monthly payment saves.",
+      "summary": "Monthly EMI, total interest, a full amortisation schedule, and exactly what prepaying saves.",
+      "h1": "EMI calculator with amortisation and prepayment",
+      "lead": "Enter the loan, the rate and the term to see your monthly instalment and where every payment goes. Add an extra monthly payment to see how much interest and time it saves.",
+      "faq": [
+        { "q": "How is EMI calculated?", "a": "EMI = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1), where P is the loan amount, r is the monthly interest rate (annual rate ÷ 12 ÷ 100) and n is the number of monthly instalments. A ₹30 lakh loan at 8.5% for 20 years works out to an EMI of about ₹26,035." },
+        { "q": "Why is most of my early EMI interest?", "a": "Interest is charged on the balance still owed. At the start the balance is at its largest, so most of each EMI goes to interest and only a little reduces the principal. As the balance falls the split reverses, which the schedule and chart show year by year." },
+        { "q": "How does prepayment help?", "a": "Any extra amount goes straight to the principal, so every later month is charged interest on a smaller balance. With the EMI unchanged the loan simply finishes early. Even a small extra payment each month can save a large share of the total interest on a long loan." },
+        { "q": "Does this work for floating-rate loans?", "a": "It assumes one rate for the whole term. For a floating-rate loan, treat the result as an estimate at today's rate and recalculate when the rate changes. Lenders usually keep the EMI fixed and change the tenure instead." },
+        { "q": "Are processing fees and insurance included?", "a": "No. The calculator covers principal and interest only. Processing fees, insurance and other charges add to the true cost of a loan, so ask your lender for the annual percentage rate (APR) when comparing offers." }
+      ]
+    },
+    {
+      "slug": "margin",
+      "name": "Margin Calculator",
+      "category": "Business & money",
+      "icon": "chart-pie-slice",
+      "appCategory": "FinanceApplication",
+      "title": "Profit Margin and Markup Calculator: Price From Target Margin | Free",
+      "description": "Free profit margin calculator. Get gross margin, markup and profit from cost and price, or the selling price you need to hit a target margin or markup.",
+      "summary": "Margin, markup and profit from cost and price, or the selling price you need for a target margin.",
+      "h1": "Profit margin and markup calculator",
+      "lead": "Know what you actually keep. Start from cost and price, or from the margin or markup you want, and see the price, the profit, and both percentages side by side.",
+      "faq": [
+        { "q": "What is the difference between margin and markup?", "a": "Both compare profit with something else. <strong>Margin</strong> is profit as a share of the selling price. <strong>Markup</strong> is profit as a share of the cost. An item that costs ₹100 and sells for ₹150 has a profit of ₹50: a 33.3% margin and a 50% markup." },
+        { "q": "How do I calculate profit margin?", "a": "Margin = (price − cost) ÷ price × 100. Markup = (price − cost) ÷ cost × 100." },
+        { "q": "How do I price for a target margin?", "a": "Divide the cost by one minus the margin: price = cost ÷ (1 − margin ÷ 100). For a 40% margin on a ₹60 cost, the price is ₹60 ÷ 0.6 = ₹100. Adding 40% to the cost instead would give ₹84, which is only a 28.6% margin." },
+        { "q": "Can margin be more than 100%?", "a": "No. Margin can approach 100% but never reach it, because profit can never be larger than the price. Markup has no ceiling: selling a ₹10 item for ₹50 is a 400% markup but an 80% margin." },
+        { "q": "Should cost include tax?", "a": "Use the cost and price you actually keep. If you charge GST and claim input credit, work with amounts before GST on both sides, since the tax passes through to the government." }
+      ]
+    },
+    {
+      "slug": "qr",
+      "name": "QR Code Generator",
+      "category": "Everyday utilities",
+      "icon": "qr-code",
+      "appCategory": "UtilitiesApplication",
+      "title": "Free QR Code Generator: Links, Wi-Fi, UPI, vCard | No Expiry",
+      "description": "Free QR code generator for links, text, Wi-Fi, UPI payments, email, phone and contact cards. Custom colours, PNG and SVG downloads, no watermark, no sign-up, and codes that never expire.",
+      "summary": "Links, Wi-Fi logins, UPI payments and contact cards as crisp QR codes. PNG or SVG, no watermark, never expires.",
+      "h1": "QR codes that never expire",
+      "lead": "Make a QR code for a link, a Wi-Fi network, a UPI payment or a contact card. It is generated in your browser and holds your data directly, with no redirect service in between, so it keeps working forever.",
+      "faq": [
+        { "q": "Do these QR codes expire?", "a": "No. They are static codes: the link, Wi-Fi details or payment information are stored inside the pattern itself. Many free generators create dynamic codes that point at their own redirect server and stop working when a trial ends. These cannot, because there is no server involved." },
+        { "q": "How do I make a UPI payment QR code?", "a": "Choose UPI, enter the UPI ID that should receive the money (for example <em>name@bank</em>) and the payee name. Add an amount to fix it, or leave it empty so the payer types one. Any UPI app, such as Google Pay, PhonePe, Paytm or BHIM, can scan it. Scan it yourself with a small test payment before you print it." },
+        { "q": "Which error correction level should I choose?", "a": "Higher levels let a code survive smudges, folds and logos placed on top, at the cost of a denser pattern. Medium suits most uses. Choose Quartile or High for printed codes that might be damaged, and Low to keep a long payload scannable at a small size." },
+        { "q": "How big should a printed QR code be?", "a": "A common rule is a width of at least a tenth of the scanning distance, and never under about 2 cm. Keep the quiet margin around the code, keep strong contrast, and use dark modules on a light background: many scanners cannot read inverted codes." },
+        { "q": "Is my Wi-Fi password safe?", "a": "The code is made on your device and nothing is uploaded. Remember that anyone who can scan the finished code can read the password inside it, so treat a printed Wi-Fi code like the password itself." }
+      ]
+    },
+    {
+      "slug": "compress",
+      "name": "Image Compressor",
+      "category": "Everyday utilities",
+      "icon": "arrows-in",
+      "appCategory": "MultimediaApplication",
+      "title": "Image Compressor: Shrink JPEG, PNG and WebP Without Uploading | Free",
+      "description": "Free image compressor that runs in your browser. Shrink and resize JPEG, PNG and WebP photos, convert to WebP or AVIF, strip location data, and download in bulk as a zip. Nothing is uploaded.",
+      "summary": "Shrink, resize and convert photos to WebP, JPEG or AVIF in your browser, then download them all as a zip.",
+      "h1": "Compress images without uploading them",
+      "lead": "Drop in photos and screenshots to shrink, resize and convert them on your own device. Compare before and after, then download one file or the whole batch as a zip.",
+      "faq": [
+        { "q": "Are my images uploaded?", "a": "No. Images are decoded and re-encoded by your browser's own image engine, on your device. They never leave it, which also makes the tool fast and lets it work offline once the page has loaded." },
+        { "q": "Which format should I choose?", "a": "WebP is the best default for the web: it is widely supported and usually much smaller than JPEG at the same quality. AVIF is smaller still where your browser can encode it. Use JPEG when a site or app only accepts JPEG, and PNG for screenshots or graphics that need sharp edges or transparency." },
+        { "q": "What quality setting should I use?", "a": "Between 70 and 85 suits most photos: files shrink a lot with no visible difference. Use the before and after view to check. Lower settings save more but can blur fine detail and add blockiness around text." },
+        { "q": "Does it remove location and camera data?", "a": "Yes. Re-encoding keeps only the pixels, so EXIF metadata such as GPS location, camera model and timestamps is dropped. That makes compressed photos safer to share publicly." },
+        { "q": "Why did a file get bigger?", "a": "Some images are already well compressed, and converting a small PNG graphic to a photo format can also add size. When the result would be larger than the original in the same format, the tool keeps the original and marks it <em>already optimised</em>." }
+      ]
+    },
+    {
+      "slug": "password",
+      "name": "Password Generator",
+      "category": "Everyday utilities",
+      "icon": "password",
+      "appCategory": "SecurityApplication",
+      "title": "Password Generator: Strong Random Passwords and Passphrases | Free",
+      "description": "Free password generator that uses your device's secure random number generator. Strong random passwords, memorable passphrases from the EFF wordlist, and PINs, with an honest strength estimate. Nothing is stored or sent.",
+      "summary": "Strong random passwords, memorable passphrases and PINs from your device's secure random number generator.",
+      "h1": "Strong passwords, generated on your device",
+      "lead": "Random passwords, memorable passphrases and PINs, drawn from your browser's cryptographically secure random number generator. Nothing is stored, logged or sent anywhere.",
+      "faq": [
+        { "q": "Is it safe to use an online password generator?", "a": "This one never sends a password anywhere: it is generated by your browser with the Web Crypto API (<code>crypto.getRandomValues</code>), the same source used for encryption keys, and it is not saved in the page address, in storage or in any log. You can load the page and switch off your connection before you generate, and it still works." },
+        { "q": "How long should a password be?", "a": "For accounts protected by a password manager, 16 to 20 random characters is plenty. For anything you must type or remember, a passphrase of five or six random words is easier to handle and just as hard to guess. Length matters more than symbols." },
+        { "q": "What does the strength estimate mean?", "a": "It is the entropy of the method in bits: how many guesses an attacker who knows exactly how the password was made would need. Every extra bit doubles the work. Around 70 bits or more resists offline cracking of a fast hash, and 80 bits or more is very strong. It assumes the password is used once and kept secret." },
+        { "q": "Where do the passphrase words come from?", "a": "From the EFF Long Wordlist of 7,776 short, distinct and easy-to-type English words, published by the Electronic Frontier Foundation under CC BY 3.0 US. Each word adds about 12.9 bits of entropy." },
+        { "q": "Should I reuse a strong password?", "a": "No. Use a different password for every account and keep them in a password manager. A strong password that is reused is only as safe as the weakest site that stores it." }
+      ]
+    }
+  ]
+}

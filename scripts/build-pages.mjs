@@ -1,4 +1,5 @@
-// Generates /blog/, /blog/<slug>/, /feed.xml, /philanthropy/ and /demo/ from content/.
+// Generates /blog/, /blog/<slug>/, /feed.xml, /philanthropy/, /demo/ and /tools/ from content/,
+// and refreshes the free-tools section of index.html between its <!-- tools:start --> / <!-- tools:end --> markers.
 // Posts are markdown with front matter in content/posts. `--drafts` includes draft posts (local preview).
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { marked } from 'marked';
@@ -31,7 +32,7 @@ const published = posts.filter(p => !p.draft || INCLUDE_DRAFTS);
 for (const p of posts) if (!p.topic) console.warn(`warning: content/posts/${p.slug}.md has no topic, so sorting the blog by topic lists it under "Other"`);
 
 // ---------- shared shell ----------
-const NAV = [['/#about', 'About'], ['/#ventures', 'Ventures'], ['/#impact', 'Impact'], ['/#recognition', 'Recognition'], ['/#publications', 'Research'], ['/#projects', 'Work'], ['/blog/', 'Blog']];
+const NAV = [['/#about', 'About'], ['/#ventures', 'Ventures'], ['/#impact', 'Impact'], ['/#recognition', 'Recognition'], ['/#publications', 'Research'], ['/#projects', 'Work'], ['/blog/', 'Blog'], ['/tools/', 'Tools']];
 const DRAWER_NAV = [...NAV, ['/philanthropy/', 'Philanthropy']];
 const SOCIAL = [['mailto:contact@mohdshayan.com', 'Email', 'envelope-simple'], ['https://www.linkedin.com/in/shayanmohd', 'LinkedIn', 'linkedin-logo'], ['https://github.com/shayanmohd', 'GitHub', 'github-logo'], ['https://instagram.com/mohdshayanx', 'Instagram', 'instagram-logo'], ['https://x.com/mohdshayanX', 'X (Twitter)', 'x-logo'], ['https://www.reddit.com/user/mohdshayan', 'Reddit', 'reddit-logo']];
 const socialLinks = (cls) => SOCIAL.map(([h, l, i]) => `<a href="${h}"${h.startsWith('http') ? ' target="_blank" rel="noopener noreferrer"' : ''} class="${cls}" aria-label="${l}">${icon(i)}</a>`).join('\n                    ');
@@ -82,7 +83,7 @@ function footer() {
             <div>
                 <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
                 <ul class="space-y-3 text-sm">
-${[['/#about', 'About'], ['/#ventures', 'Ventures'], ['/#impact', 'Impact'], ['/#recognition', 'Recognition'], ['/#publications', 'Research'], ['/#projects', 'Work'], ['/blog/', 'Blog'], ['/philanthropy/', 'Philanthropy'], ['https://demo.mohdshayan.com/', 'Demos']].map(([h, l]) => `                    <li><a href="${h}" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">${l}</a></li>`).join('\n')}
+${[['/#about', 'About'], ['/#ventures', 'Ventures'], ['/#impact', 'Impact'], ['/#recognition', 'Recognition'], ['/#publications', 'Research'], ['/#projects', 'Work'], ['/blog/', 'Blog'], ['/tools/', 'Free tools'], ['/philanthropy/', 'Philanthropy'], ['https://demo.mohdshayan.com/', 'Demos']].map(([h, l]) => `                    <li><a href="${h}" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">${l}</a></li>`).join('\n')}
                 </ul>
             </div>
             <div>
@@ -104,7 +105,7 @@ ${[['/#about', 'About'], ['/#ventures', 'Ventures'], ['/#impact', 'Impact'], ['/
         <div class="gilt-edge" aria-hidden="true"></div>
     </footer>`;
 }
-function shell({ title, description, path, active, body, jsonld, noindex = false, image = `${site.url}/assets/portrait.jpg`, canonical }) {
+function shell({ title, description, path, active, body, jsonld, noindex = false, image = `${site.url}/assets/portrait.jpg`, canonical, scripts = [] }) {
   canonical = canonical || `${site.url}${path}`;
   return `<!DOCTYPE html>
 <html lang="en">
@@ -137,7 +138,7 @@ function shell({ title, description, path, active, body, jsonld, noindex = false
     <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
     <meta name="theme-color" content="#faf8f3">
     <meta name="msapplication-TileColor" content="#faf8f3">
-    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <script>(function(){try{var m=document.cookie.match(/(?:^|; )theme=(dark|light)/);var s=m?m[1]:localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
     <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/site.css">
@@ -156,7 +157,7 @@ ${body}
     </main>
 ${footer()}
     <script src="/assets/site.js" defer></script>
-</body>
+${scripts.map(src => `    <script type="module" src="${src}"></script>\n`).join('')}</body>
 </html>
 `;
 }
@@ -396,6 +397,151 @@ ${subscribe(true, false).replace('mt-12', 'mt-4')}
   return shell({ title: 'Subscribe | Mohd Shayan', description: 'Get new posts by Mohd Shayan by email or in a feed reader.', path: '/subscribe/', active: '', body });
 }
 
+// ---------- free tools ----------
+// Registry: content/tools.json. Each tool's UI lives in content/tools/<slug>.html and its script in /assets/tools/<slug>.js.
+// A tool's home is https://<slug>.mohdshayan.com/ (built by scripts/build-subdomains.mjs from the page written here).
+// Until those subdomains resolve, set tools.subdomains to false in content/site.json: links and canonicals then stay on /tools/<slug>/.
+const toolsData = JSON.parse(readFileSync('content/tools.json', 'utf8'));
+const TOOLS = toolsData.tools;
+const onSubdomains = Boolean(site.tools && site.tools.subdomains);
+const toolHost = t => `${t.slug}.mohdshayan.com`;
+const toolHome = t => `https://${toolHost(t)}/`;
+const toolHref = t => (onSubdomains ? toolHome(t) : `/tools/${t.slug}/`);
+const toolCanonical = t => (onSubdomains ? toolHome(t) : `${site.url}/tools/${t.slug}/`);
+const stripTags = h => String(h).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+const ORIGIN = { '@type': 'Person', '@id': `${site.url}/#person`, name: site.author, url: site.url };
+
+function toolRow(t) {
+  return `                    <li>
+                        <a href="${toolHref(t)}" class="tool-row grid grid-cols-[40px_minmax(0,1fr)] md:grid-cols-[40px_minmax(0,16rem)_minmax(0,1fr)_auto] gap-x-5 gap-y-2 items-start reveal">
+                            <span class="icon-sq wash">${icon(t.icon)}</span>
+                            <span class="min-w-0">
+                                <span class="card-title text-lg block"><span class="sweep-target">${esc(t.name)}</span></span>
+                                <span class="mono-meta text-gold-deep block mt-1">${toolHost(t)}</span>
+                            </span>
+                            <span class="text-body text-[0.9375rem] leading-relaxed col-start-2 md:col-start-auto md:pt-0.5">${esc(t.summary)}</span>
+                            <span class="hidden md:inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap pt-1">Open ${icon('arrow-right', 'text-xs')}</span>
+                        </a>
+                    </li>`;
+}
+
+function toolsIndex() {
+  const groups = toolsData.categories.map(c => [c, TOOLS.filter(t => t.category === c)]).filter(([, list]) => list.length);
+  const promises = [
+    ['shield-check', 'Private by design', 'Everything runs in your browser. What you type, paste or drop in stays on your device.'],
+    ['sparkle', 'Free, with no catch', 'No sign-up, no watermark, no limits, and no trial that runs out.'],
+    ['github-logo', 'Open source', 'The code behind every tool is <a href="https://github.com/shayanmohd/mohdshayan" target="_blank" rel="noopener noreferrer" class="sweep-link text-ink">public on GitHub</a>, so you can read exactly what it does.'],
+  ];
+  const body = `${pageHead('Free <span class="text-gold-deep">tools</span>', 'Small, fast utilities, free for anyone to use. Each one runs entirely in your browser and lives at its own address.')}
+        <section class="pb-24">
+            <div class="max-w-content mx-auto px-6">
+                <div class="ruled-grid md:grid-cols-3 reveal">
+${promises.map(([ic, h, p]) => `                    <div class="cell">
+                        <div class="icon-sq mb-5">${icon(ic)}</div>
+                        <h2 class="card-title mb-2">${h}</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed">${p}</p>
+                    </div>`).join('\n')}
+                </div>
+${groups.map(([c, list]) => `                <h2 class="eyebrow mt-16 reveal">${esc(c)}</h2>
+                <ul class="ruled-list border-t border-hairline mt-4">
+${list.map(toolRow).join('\n')}
+                </ul>`).join('\n')}
+                <div class="plate p-8 md:p-10 mt-16 flex flex-col md:flex-row md:items-center justify-between gap-6 reveal">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">Missing a tool you need?</h2>
+                        <p class="text-body mt-2 max-w-xl">Suggest one. The most useful ideas get built and added here, free for everyone.</p>
+                    </div>
+                    <a href="mailto:contact@mohdshayan.com?subject=Tool%20suggestion" class="btn-ink shrink-0">${icon('envelope-simple')} Suggest a tool</a>
+                </div>
+            </div>
+        </section>`;
+  return shell({ title: 'Free Online Tools | Mohd Shayan', description: 'Free, private tools by Mohd Shayan that run in your browser: deAIfy, commission, GST, EMI and margin calculators, a QR code generator, an image compressor and a password generator.', path: '/tools/', active: '/tools/', body,
+    jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', '@id': `${site.url}/tools/#page`, url: `${site.url}/tools/`, name: 'Free tools', about: { '@id': `${site.url}/#person` }, inLanguage: 'en',
+      hasPart: TOOLS.map(t => ({ '@type': 'WebApplication', name: t.name, url: toolCanonical(t), applicationCategory: t.appCategory, operatingSystem: 'Any', isAccessibleForFree: true })) } });
+}
+
+function relatedTools(t) {
+  const others = TOOLS.filter(o => o.slug !== t.slug);
+  const picks = [...others.filter(o => o.category === t.category), ...others.filter(o => o.category !== t.category)].slice(0, 4);
+  return picks.map(o => `                    <a href="${toolHref(o)}" class="cell block group">
+                        <div class="icon-sq wash mb-4">${icon(o.icon)}</div>
+                        <h3 class="card-title"><span class="sweep-target">${esc(o.name)}</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">${esc(o.summary)}</p>
+                    </a>`).join('\n');
+}
+
+function toolPage(t) {
+  const ui = readFileSync(`content/tools/${t.slug}.html`, 'utf8').trimEnd();
+  const canonical = toolCanonical(t);
+  const body = `        <section class="page-head pb-8 md:pb-10">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 reveal">
+                    <a href="/tools/" class="chip-pill">${icon('toolbox', 'text-xs')} Free tools</a>
+                    <span class="mono-meta text-muted">${toolHost(t)}</span>
+                </div>
+                <h1 class="h2 mt-4 max-w-3xl balance reveal">${t.h1}</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">${t.lead}</p>
+            </div>
+        </section>
+${ui}
+        <section class="py-16 md:py-20">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">Questions</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">Built by <a href="${site.url}/" class="sweep-link text-ink">Mohd Shayan</a>. Found a problem or have an idea? <a href="mailto:contact@mohdshayan.com?subject=${encodeURIComponent(t.name)}" class="sweep-link text-ink">Send a note</a>.</p>
+                    </div>
+                    <div>
+${t.faq.map((f, i) => `                        <details class="faq"${i === 0 ? ' open' : ''}>
+                            <summary>${f.q}${icon('caret-down')}</summary>
+                            <div class="faq-body"><p>${f.a}</p></div>
+                        </details>`).join('\n')}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pb-24">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <h2 class="h3-serif" style="font-weight:500;">More free tools</h2>
+                    <a href="/tools/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">All tools ${icon('arrow-right', 'text-xs')}</a>
+                </div>
+                <div class="ruled-grid sm:grid-cols-2 lg:grid-cols-4 mt-6">
+${relatedTools(t)}
+                </div>
+            </div>
+        </section>`;
+  return shell({ title: t.title, description: t.description, path: `/tools/${t.slug}/`, active: '/tools/', body, canonical, scripts: [`/assets/tools/${t.slug}.js`],
+    jsonld: { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'WebApplication', '@id': `${canonical}#app`, name: t.name, url: canonical, description: t.description, applicationCategory: t.appCategory, operatingSystem: 'Any', browserRequirements: 'Requires JavaScript',
+        isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' }, author: ORIGIN, publisher: ORIGIN, inLanguage: 'en' },
+      { '@type': 'FAQPage', '@id': `${canonical}#faq`, mainEntity: t.faq.map(f => ({ '@type': 'Question', name: stripTags(f.q), acceptedAnswer: { '@type': 'Answer', text: stripTags(f.a) } })) },
+      { '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+        { '@type': 'ListItem', position: 2, name: 'Free tools', item: `${site.url}/tools/` },
+        { '@type': 'ListItem', position: 3, name: t.name, item: canonical } ] },
+    ] } });
+}
+
+// The homepage keeps its hand-written markup; only the region between the markers is regenerated.
+function homepageTools(html) {
+  const start = '<!-- tools:start -->', end = '<!-- tools:end -->';
+  const a = html.indexOf(start), b = html.indexOf(end);
+  if (a < 0 || b < a) { console.warn('warning: index.html has no tools markers, so the homepage tools section was not refreshed'); return html; }
+  const cells = TOOLS.map(t => `                <a href="${toolHref(t)}" class="cell block">
+                    <div class="icon-sq wash mb-5">${icon(t.icon)}</div>
+                    <h3 class="card-title"><span class="sweep-target">${esc(t.name)}</span></h3>
+                    <p class="mono-meta text-gold-deep mt-1">${toolHost(t)}</p>
+                    <p class="text-body text-[0.9375rem] leading-relaxed mt-3">${esc(t.summary)}</p>
+                </a>`).join('\n');
+  return `${html.slice(0, a + start.length)}
+            <div class="ruled-grid sm:grid-cols-2 lg:grid-cols-4 mt-12 reveal">
+${cells}
+            </div>
+            ${html.slice(b)}`;
+}
+
 // ---------- sitemap (regenerated every build so published posts are always listed) ----------
 function sitemap() {
   const live = posts.filter(p => !p.draft);
@@ -414,6 +560,8 @@ ${[
     ...live.map(p => url(p.url, { lastmod: p.date, changefreq: 'monthly', priority: '0.7' })),
     url(`${site.url}/philanthropy/`, { changefreq: 'monthly', priority: '0.7' }),
     url(`${site.url}/subscribe/`, { changefreq: 'yearly', priority: '0.4' }),
+    url(`${site.url}/tools/`, { changefreq: 'monthly', priority: '0.8' }),
+    ...(onSubdomains ? [] : TOOLS.map(t => url(toolCanonical(t), { changefreq: 'monthly', priority: '0.7' }))),
   ].join('\n')}
 </urlset>
 `;
@@ -427,5 +575,8 @@ out('feed.xml', feed());
 out('subscribe/index.html', subscribePage());
 out('philanthropy/index.html', galleryPage());
 out('demo/index.html', demoPage());
+out('tools/index.html', toolsIndex());
+for (const t of TOOLS) out(`tools/${t.slug}/index.html`, toolPage(t));
+out('index.html', homepageTools(readFileSync('index.html', 'utf8')));
 out('sitemap.xml', sitemap());
 console.log(`pages: ${posts.length} post(s) (${posts.filter(p => p.draft).length} draft), drafts ${INCLUDE_DRAFTS ? 'included' : 'hidden'} from index/feed`);

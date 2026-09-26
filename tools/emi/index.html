@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EMI Calculator: Monthly Loan EMI, Amortisation and Prepayment | Free</title>
+    <meta name="description" content="Free EMI calculator for home, car and personal loans. See the monthly EMI, total interest, a year-by-year amortisation schedule, and how much an extra monthly payment saves.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/tools/emi/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mohdshayan.com/tools/emi/">
+    <meta property="og:title" content="EMI Calculator: Monthly Loan EMI, Amortisation and Prepayment | Free">
+    <meta property="og:description" content="Free EMI calculator for home, car and personal loans. See the monthly EMI, total interest, a year-by-year amortisation schedule, and how much an extra monthly payment saves.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EMI Calculator: Monthly Loan EMI, Amortisation and Prepayment | Free">
+    <meta name="twitter:description" content="Free EMI calculator for home, car and personal loans. See the monthly EMI, total interest, a year-by-year amortisation schedule, and how much an extra monthly payment saves.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var m=document.cookie.match(/(?:^|; )theme=(dark|light)/);var s=m?m[1]:localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://mohdshayan.com/tools/emi/#app",
+          "name": "EMI Calculator",
+          "url": "https://mohdshayan.com/tools/emi/",
+          "description": "Free EMI calculator for home, car and personal loans. See the monthly EMI, total interest, a year-by-year amortisation schedule, and how much an extra monthly payment saves.",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Any",
+          "browserRequirements": "Requires JavaScript",
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "author": {
+            "@type": "Person",
+            "@id": "https://mohdshayan.com/#person",
+            "name": "Mohd Shayan",
+            "url": "https://mohdshayan.com"
+          },
+          "publisher": {
+            "@type": "Person",
+            "@id": "https://mohdshayan.com/#person",
+            "name": "Mohd Shayan",
+            "url": "https://mohdshayan.com"
+          },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://mohdshayan.com/tools/emi/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How is EMI calculated?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "EMI = P × r × (1 + r)n ÷ ((1 + r)n − 1), where P is the loan amount, r is the monthly interest rate (annual rate ÷ 12 ÷ 100) and n is the number of monthly instalments. A ₹30 lakh loan at 8.5% for 20 years works out to an EMI of about ₹26,035."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why is most of my early EMI interest?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Interest is charged on the balance still owed. At the start the balance is at its largest, so most of each EMI goes to interest and only a little reduces the principal. As the balance falls the split reverses, which the schedule and chart show year by year."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How does prepayment help?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Any extra amount goes straight to the principal, so every later month is charged interest on a smaller balance. With the EMI unchanged the loan simply finishes early. Even a small extra payment each month can save a large share of the total interest on a long loan."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does this work for floating-rate loans?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "It assumes one rate for the whole term. For a floating-rate loan, treat the result as an estimate at today's rate and recalculate when the rate changes. Lenders usually keep the EMI fixed and change the tenure instead."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Are processing fees and insurance included?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. The calculator covers principal and interest only. Processing fees, insurance and other charges add to the true cost of a loan, so ask your lender for the annual percentage rate (APR) when comparing offers."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://mohdshayan.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Free tools",
+              "item": "https://mohdshayan.com/tools/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "EMI Calculator",
+              "item": "https://mohdshayan.com/tools/emi/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/tools/" class="nav-link active" aria-current="page">Tools</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/tools/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Tools</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <section class="page-head pb-8 md:pb-10">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 reveal">
+                    <a href="/tools/" class="chip-pill"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-toolbox"></use></svg> Free tools</a>
+                    <span class="mono-meta text-muted">emi.mohdshayan.com</span>
+                </div>
+                <h1 class="h2 mt-4 max-w-3xl balance reveal">EMI calculator with amortisation and prepayment</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Enter the loan, the rate and the term to see your monthly instalment and where every payment goes. Add an extra monthly payment to see how much interest and time it saves.</p>
+            </div>
+        </section>
+        <section class="pb-10" aria-label="EMI calculator">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-grid" id="emi-form" autocomplete="off" onsubmit="return false">
+                    <div class="tool-panel tool-stack">
+                        <div class="tool-panel-head">
+                            <h2 class="card-title">Your loan</h2>
+                            <div class="flex items-center gap-2">
+                                <label for="emi-cur" class="hint">Currency</label>
+                                <select id="emi-cur" class="input !h-9 !w-auto !text-[0.8125rem] font-mono"></select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="emi-amount" class="field-label">Loan amount <span class="hint" id="emi-amount-words"></span></label>
+                            <span class="affix"><span class="affix-text pre" data-cur-symbol>₹</span><input id="emi-amount" class="input" inputmode="decimal"></span>
+                            <input type="range" class="range" id="emi-amount-range" min="4" max="8" step="0.005" aria-hidden="true" tabindex="-1">
+                        </div>
+                        <div class="field">
+                            <label for="emi-rate" class="field-label">Interest rate <span class="hint">per year</span></label>
+                            <span class="affix"><input id="emi-rate" class="input has-post" inputmode="decimal" value="8.5"><span class="affix-text post">%</span></span>
+                            <input type="range" class="range" id="emi-rate-range" min="1" max="24" step="0.05" aria-hidden="true" tabindex="-1">
+                        </div>
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3">
+                                <label for="emi-term" class="field-label">Loan term</label>
+                                <div class="seg" role="radiogroup" aria-label="Term unit">
+                                    <label><input type="radio" name="unit" value="years" checked><span>Years</span></label>
+                                    <label><input type="radio" name="unit" value="months"><span>Months</span></label>
+                                </div>
+                            </div>
+                            <input id="emi-term" class="input" inputmode="numeric" value="20">
+                            <input type="range" class="range" id="emi-term-range" min="1" max="30" step="1" aria-hidden="true" tabindex="-1">
+                        </div>
+
+                        <hr class="tool-divider">
+                        <p class="eyebrow">Prepayment and dates <span class="text-muted normal-case tracking-normal">· optional</span></p>
+                        <div class="field-row two">
+                            <div class="field">
+                                <label for="emi-extra" class="field-label">Extra payment each month</label>
+                                <span class="affix"><span class="affix-text pre" data-cur-symbol>₹</span><input id="emi-extra" class="input" inputmode="decimal" placeholder="0"></span>
+                            </div>
+                            <div class="field">
+                                <label for="emi-start" class="field-label">First EMI month</label>
+                                <input id="emi-start" class="input" type="month">
+                            </div>
+                        </div>
+                        <p class="field-error" id="emi-error" role="alert"></p>
+                    </div>
+
+                    <div class="tool-aside">
+                        <div class="bezel">
+                            <div class="readout" aria-live="polite">
+                                <p class="readout-label">Monthly EMI</p>
+                                <p class="readout-value" id="emi-head">–</p>
+                                <p class="readout-sub" id="emi-head-sub"></p>
+                                <div class="split-bar" id="emi-split" role="img" aria-label="Share of principal and interest"><span style="background:#4b89e6"></span><span style="background:#b08a2e"></span></div>
+                                <div class="legend" id="emi-legend"></div>
+                                <dl class="readout-rows" id="emi-rows"></dl>
+                                <div class="flex flex-wrap gap-2 mt-5">
+                                    <button type="button" class="btn-ghost-dark" id="emi-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy summary</span></button>
+                                    <button type="button" class="btn-ghost-dark" id="emi-share"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="emi-live" class="sr-only" aria-live="polite"></p>
+                    </div>
+                </form>
+
+                <div class="tool-panel mt-6">
+                    <div class="tool-panel-head">
+                        <div>
+                            <h2 class="card-title">Where each year's payments go</h2>
+                            <p class="field-help mt-1" id="emi-chart-sub">Principal repaid and interest paid, year by year.</p>
+                        </div>
+                        <div class="legend on-paper !mt-0" aria-hidden="true">
+                            <span><i style="background:var(--viz-2)"></i>Principal</span>
+                            <span><i style="background:var(--viz-1)"></i>Interest</span>
+                        </div>
+                    </div>
+                    <div class="tool-chart relative mt-5" id="emi-chart"></div>
+                </div>
+
+                <div class="tool-panel mt-6">
+                    <div class="tool-panel-head">
+                        <h2 class="card-title">Amortisation schedule</h2>
+                        <div class="flex items-center gap-3">
+                            <div class="seg" role="radiogroup" aria-label="Group schedule by">
+                                <label><input type="radio" name="group" value="year" checked><span>Yearly</span></label>
+                                <label><input type="radio" name="group" value="month"><span>Monthly</span></label>
+                            </div>
+                            <button type="button" class="btn-ghost btn-sm" id="emi-csv"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-download-simple"></use></svg> CSV</button>
+                        </div>
+                    </div>
+                    <div class="table-scroll mt-4">
+                        <table class="data-table">
+                            <thead><tr><th scope="col" id="emi-col-period">Year</th><th scope="col">Principal</th><th scope="col">Interest</th><th scope="col">Total paid</th><th scope="col">Balance</th></tr></thead>
+                            <tbody id="emi-table"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 md:py-20">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">Questions</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">Built by <a href="https://mohdshayan.com/" class="sweep-link text-ink">Mohd Shayan</a>. Found a problem or have an idea? <a href="mailto:contact@mohdshayan.com?subject=EMI%20Calculator" class="sweep-link text-ink">Send a note</a>.</p>
+                    </div>
+                    <div>
+                        <details class="faq" open>
+                            <summary>How is EMI calculated?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>EMI = P × r × (1 + r)<sup>n</sup> ÷ ((1 + r)<sup>n</sup> − 1), where P is the loan amount, r is the monthly interest rate (annual rate ÷ 12 ÷ 100) and n is the number of monthly instalments. A ₹30 lakh loan at 8.5% for 20 years works out to an EMI of about ₹26,035.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>Why is most of my early EMI interest?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>Interest is charged on the balance still owed. At the start the balance is at its largest, so most of each EMI goes to interest and only a little reduces the principal. As the balance falls the split reverses, which the schedule and chart show year by year.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>How does prepayment help?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>Any extra amount goes straight to the principal, so every later month is charged interest on a smaller balance. With the EMI unchanged the loan simply finishes early. Even a small extra payment each month can save a large share of the total interest on a long loan.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>Does this work for floating-rate loans?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>It assumes one rate for the whole term. For a floating-rate loan, treat the result as an estimate at today's rate and recalculate when the rate changes. Lenders usually keep the EMI fixed and change the tenure instead.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>Are processing fees and insurance included?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>No. The calculator covers principal and interest only. Processing fees, insurance and other charges add to the true cost of a loan, so ask your lender for the annual percentage rate (APR) when comparing offers.</p></div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pb-24">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <h2 class="h3-serif" style="font-weight:500;">More free tools</h2>
+                    <a href="/tools/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">All tools <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg></a>
+                </div>
+                <div class="ruled-grid sm:grid-cols-2 lg:grid-cols-4 mt-6">
+                    <a href="/tools/commission/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-hand-coins"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Commission Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Flat or tiered plans with base pay and splits, plus a reverse mode that finds the sales needed to hit a target.</p>
+                    </a>
+                    <a href="/tools/gst/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-receipt"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">GST Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Add or remove GST at any rate, with the CGST, SGST and IGST split ready for an invoice.</p>
+                    </a>
+                    <a href="/tools/margin/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-chart-pie-slice"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Margin Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Margin, markup and profit from cost and price, or the selling price you need for a target margin.</p>
+                    </a>
+                    <a href="/tools/deaify/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-broom"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">deAIfy</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Strip em dashes, curly quotes, hidden characters and stock AI phrases from any text, with a live diff of every change.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/tools/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Free tools</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+    <script type="module" src="/assets/tools/emi.js"></script>
+</body>
+</html>

@@ -297,7 +297,9 @@
     <script>
       (function () {
         try {
-          var stored = localStorage.getItem('theme');
+          // A cookie on .mohdshayan.com carries the choice to the tool subdomains; localStorage is the older per-site copy
+          var fromCookie = document.cookie.match(/(?:^|; )theme=(dark|light)/);
+          var stored = fromCookie ? fromCookie[1] : localStorage.getItem('theme');
           var dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
           if (dark) document.documentElement.setAttribute('data-theme', 'dark');
         } catch (e) {}
@@ -344,6 +346,7 @@
                 <li><a href="#publications" class="nav-link">Research</a></li>
                 <li><a href="#projects" class="nav-link">Work</a></li>
                 <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/tools/" class="nav-link">Tools</a></li>
             </ul>
 
             <div class="flex items-center gap-3">
@@ -371,6 +374,7 @@
                 <a href="#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
                 <a href="#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
                 <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/tools/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Tools</a>
                 <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
             </nav>
             <div class="mt-auto">
@@ -1170,6 +1174,74 @@
         </div>
     </section>
 
+    <!-- ============ FREE TOOLS (cells regenerated from content/tools.json by npm run build:pages) ============ -->
+    <section id="tools" class="py-20 md:py-[6.5rem] bg-cream">
+        <div class="max-w-content mx-auto px-6">
+            <hr class="section-rule reveal">
+            <div class="grid lg:grid-cols-[1fr_auto] gap-6 items-end mt-8">
+                <div class="max-w-2xl reveal">
+                    <h2 class="h2 balance">Free <span class="text-gold-deep">Tools</span></h2>
+                    <p class="lead mt-5">Small utilities Mohd Shayan builds and gives away. Each one runs entirely in the browser, keeps what you enter on your device, and lives at its own address.</p>
+                </div>
+                <a href="/tools/" class="btn-ghost justify-self-start lg:justify-self-end reveal d1">
+                    Browse all tools <span class="btn-icon" aria-hidden="true"><svg class="icon"><use href="/assets/icons.svg#i-arrow-right"></use></svg></span>
+                </a>
+            </div>
+            <!-- tools:start -->
+            <div class="ruled-grid sm:grid-cols-2 lg:grid-cols-4 mt-12 reveal">
+                <a href="/tools/deaify/" class="cell block">
+                    <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-broom"></use></svg></div>
+                    <h3 class="card-title"><span class="sweep-target">deAIfy</span></h3>
+                    <p class="mono-meta text-gold-deep mt-1">deaify.mohdshayan.com</p>
+                    <p class="text-body text-[0.9375rem] leading-relaxed mt-3">Strip em dashes, curly quotes, hidden characters and stock AI phrases from any text, with a live diff of every change.</p>
+                </a>
+                <a href="/tools/commission/" class="cell block">
+                    <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-hand-coins"></use></svg></div>
+                    <h3 class="card-title"><span class="sweep-target">Commission Calculator</span></h3>
+                    <p class="mono-meta text-gold-deep mt-1">commission.mohdshayan.com</p>
+                    <p class="text-body text-[0.9375rem] leading-relaxed mt-3">Flat or tiered plans with base pay and splits, plus a reverse mode that finds the sales needed to hit a target.</p>
+                </a>
+                <a href="/tools/gst/" class="cell block">
+                    <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-receipt"></use></svg></div>
+                    <h3 class="card-title"><span class="sweep-target">GST Calculator</span></h3>
+                    <p class="mono-meta text-gold-deep mt-1">gst.mohdshayan.com</p>
+                    <p class="text-body text-[0.9375rem] leading-relaxed mt-3">Add or remove GST at any rate, with the CGST, SGST and IGST split ready for an invoice.</p>
+                </a>
+                <a href="/tools/emi/" class="cell block">
+                    <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-bank"></use></svg></div>
+                    <h3 class="card-title"><span class="sweep-target">EMI Calculator</span></h3>
+                    <p class="mono-meta text-gold-deep mt-1">emi.mohdshayan.com</p>
+                    <p class="text-body text-[0.9375rem] leading-relaxed mt-3">Monthly EMI, total interest, a full amortisation schedule, and exactly what prepaying saves.</p>
+                </a>
+                <a href="/tools/margin/" class="cell block">
+                    <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-chart-pie-slice"></use></svg></div>
+                    <h3 class="card-title"><span class="sweep-target">Margin Calculator</span></h3>
+                    <p class="mono-meta text-gold-deep mt-1">margin.mohdshayan.com</p>
+                    <p class="text-body text-[0.9375rem] leading-relaxed mt-3">Margin, markup and profit from cost and price, or the selling price you need for a target margin.</p>
+                </a>
+                <a href="/tools/qr/" class="cell block">
+                    <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-qr-code"></use></svg></div>
+                    <h3 class="card-title"><span class="sweep-target">QR Code Generator</span></h3>
+                    <p class="mono-meta text-gold-deep mt-1">qr.mohdshayan.com</p>
+                    <p class="text-body text-[0.9375rem] leading-relaxed mt-3">Links, Wi-Fi logins, UPI payments and contact cards as crisp QR codes. PNG or SVG, no watermark, never expires.</p>
+                </a>
+                <a href="/tools/compress/" class="cell block">
+                    <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrows-in"></use></svg></div>
+                    <h3 class="card-title"><span class="sweep-target">Image Compressor</span></h3>
+                    <p class="mono-meta text-gold-deep mt-1">compress.mohdshayan.com</p>
+                    <p class="text-body text-[0.9375rem] leading-relaxed mt-3">Shrink, resize and convert photos to WebP, JPEG or AVIF in your browser, then download them all as a zip.</p>
+                </a>
+                <a href="/tools/password/" class="cell block">
+                    <div class="icon-sq wash mb-5"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-password"></use></svg></div>
+                    <h3 class="card-title"><span class="sweep-target">Password Generator</span></h3>
+                    <p class="mono-meta text-gold-deep mt-1">password.mohdshayan.com</p>
+                    <p class="text-body text-[0.9375rem] leading-relaxed mt-3">Strong random passwords, memorable passphrases and PINs from your device's secure random number generator.</p>
+                </a>
+            </div>
+            <!-- tools:end -->
+        </div>
+    </section>
+
     <!-- ============ CONTACT ============ -->
     <section id="contact" class="py-16 md:py-24 bg-dark gilt-top">
         <div class="max-w-content mx-auto px-6">
@@ -1247,6 +1319,7 @@
                     <li><a href="#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
                     <li><a href="#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
                     <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/tools/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Free tools</a></li>
                     <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
                     <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
                 </ul>

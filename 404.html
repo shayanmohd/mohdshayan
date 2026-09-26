@@ -13,7 +13,7 @@
     <title>Page not found | Mohd Shayan</title>
     <meta name="robots" content="noindex">
     <meta name="theme-color" content="#faf8f3">
-    <script>(function(){try{var s=localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <script>(function(){try{var m=document.cookie.match(/(?:^|; )theme=(dark|light)/);var s=m?m[1]:localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
     <link rel="stylesheet" href="/assets/site.css">
     <link rel="shortcut icon" href="/favicon.png" type="image/png">
 </head>
