@@ -398,16 +398,12 @@ ${subscribe(true, false).replace('mt-12', 'mt-4')}
 }
 
 // ---------- free tools ----------
-// Registry: content/tools.json. Each tool's UI lives in content/tools/<slug>.html and its script in /assets/tools/<slug>.js.
-// A tool's home is https://<slug>.mohdshayan.com/ (built by scripts/build-subdomains.mjs from the page written here).
-// Until those subdomains resolve, set tools.subdomains to false in content/site.json: links and canonicals then stay on /tools/<slug>/.
+// Registry: content/tools.json. Each tool lives at /tools/<slug>/, with its UI in content/tools/<slug>.html
+// and its script in /assets/tools/<slug>.js.
 const toolsData = JSON.parse(readFileSync('content/tools.json', 'utf8'));
 const TOOLS = toolsData.tools;
-const onSubdomains = Boolean(site.tools && site.tools.subdomains);
-const toolHost = t => `${t.slug}.mohdshayan.com`;
-const toolHome = t => `https://${toolHost(t)}/`;
-const toolHref = t => (onSubdomains ? toolHome(t) : `/tools/${t.slug}/`);
-const toolCanonical = t => (onSubdomains ? toolHome(t) : `${site.url}/tools/${t.slug}/`);
+const toolHref = t => `/tools/${t.slug}/`;
+const toolCanonical = t => `${site.url}/tools/${t.slug}/`;
 const stripTags = h => String(h).replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 const ORIGIN = { '@type': 'Person', '@id': `${site.url}/#person`, name: site.author, url: site.url };
 
@@ -417,7 +413,6 @@ function toolRow(t) {
                             <span class="icon-sq wash">${icon(t.icon)}</span>
                             <span class="min-w-0">
                                 <span class="card-title text-lg block"><span class="sweep-target">${esc(t.name)}</span></span>
-                                <span class="mono-meta text-gold-deep block mt-1">${toolHost(t)}</span>
                             </span>
                             <span class="text-body text-[0.9375rem] leading-relaxed col-start-2 md:col-start-auto md:pt-0.5">${esc(t.summary)}</span>
                             <span class="hidden md:inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap pt-1">Open ${icon('arrow-right', 'text-xs')}</span>
@@ -432,7 +427,7 @@ function toolsIndex() {
     ['sparkle', 'Free, with no catch', 'No sign-up, no watermark, no limits, and no trial that runs out.'],
     ['github-logo', 'Open source', 'The code behind every tool is <a href="https://github.com/shayanmohd/mohdshayan" target="_blank" rel="noopener noreferrer" class="sweep-link text-ink">public on GitHub</a>, so you can read exactly what it does.'],
   ];
-  const body = `${pageHead('Free <span class="text-gold-deep">tools</span>', 'Small, fast utilities, free for anyone to use. Each one runs entirely in your browser and lives at its own address.')}
+  const body = `${pageHead('Free <span class="text-gold-deep">tools</span>', 'Small, fast utilities, free for anyone to use. Each one runs entirely in your browser, so what you enter stays on your device.')}
         <section class="pb-24">
             <div class="max-w-content mx-auto px-6">
                 <div class="ruled-grid md:grid-cols-3 reveal">
@@ -477,7 +472,7 @@ function toolPage(t) {
             <div class="max-w-content mx-auto px-6">
                 <div class="flex flex-wrap items-center gap-x-4 gap-y-2 reveal">
                     <a href="/tools/" class="chip-pill">${icon('toolbox', 'text-xs')} Free tools</a>
-                    <span class="mono-meta text-muted">${toolHost(t)}</span>
+                    <span class="mono-meta text-muted">${esc(t.category)}</span>
                 </div>
                 <h1 class="h2 mt-4 max-w-3xl balance reveal">${t.h1}</h1>
                 <p class="lead mt-5 max-w-2xl reveal d1">${t.lead}</p>
@@ -512,7 +507,7 @@ ${relatedTools(t)}
                 </div>
             </div>
         </section>`;
-  return shell({ title: t.title, description: t.description, path: `/tools/${t.slug}/`, active: '/tools/', body, canonical, scripts: [`/assets/tools/${t.slug}.js`],
+  return shell({ title: t.title, description: t.description, path: `/tools/${t.slug}/`, active: '/tools/', body, scripts: [`/assets/tools/${t.slug}.js`],
     jsonld: { '@context': 'https://schema.org', '@graph': [
       { '@type': 'WebApplication', '@id': `${canonical}#app`, name: t.name, url: canonical, description: t.description, applicationCategory: t.appCategory, operatingSystem: 'Any', browserRequirements: 'Requires JavaScript',
         isAccessibleForFree: true, offers: { '@type': 'Offer', price: '0', priceCurrency: 'INR' }, author: ORIGIN, publisher: ORIGIN, inLanguage: 'en' },
@@ -532,7 +527,7 @@ function homepageTools(html) {
   const cells = TOOLS.map(t => `                <a href="${toolHref(t)}" class="cell block">
                     <div class="icon-sq wash mb-5">${icon(t.icon)}</div>
                     <h3 class="card-title"><span class="sweep-target">${esc(t.name)}</span></h3>
-                    <p class="mono-meta text-gold-deep mt-1">${toolHost(t)}</p>
+                    <p class="mono-meta text-gold-deep mt-1">${esc(t.category)}</p>
                     <p class="text-body text-[0.9375rem] leading-relaxed mt-3">${esc(t.summary)}</p>
                 </a>`).join('\n');
   return `${html.slice(0, a + start.length)}
@@ -561,7 +556,7 @@ ${[
     url(`${site.url}/philanthropy/`, { changefreq: 'monthly', priority: '0.7' }),
     url(`${site.url}/subscribe/`, { changefreq: 'yearly', priority: '0.4' }),
     url(`${site.url}/tools/`, { changefreq: 'monthly', priority: '0.8' }),
-    ...(onSubdomains ? [] : TOOLS.map(t => url(toolCanonical(t), { changefreq: 'monthly', priority: '0.7' }))),
+    ...TOOLS.map(t => url(toolCanonical(t), { changefreq: 'monthly', priority: '0.7' })),
   ].join('\n')}
 </urlset>
 `;

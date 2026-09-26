@@ -13,8 +13,7 @@
     "preview": "node scripts/build-pages.mjs --drafts && npm run build:css && python3 -m http.server 8000",
     "publish": "node scripts/publish-post.mjs",
     "build:vendor": "node scripts/build-tool-vendor.mjs",
-    "test": "node --test --disable-warning=MODULE_TYPELESS_PACKAGE_JSON \"tests/*.test.mjs\"",
-    "build:subdomains": "node scripts/build-subdomains.mjs"
+    "test": "node --test --disable-warning=MODULE_TYPELESS_PACKAGE_JSON \"tests/*.test.mjs\""
   },
   "keywords": [
     "portfolio",

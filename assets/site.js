@@ -1,6 +1,6 @@
 // Shared behaviour for every page: theme toggle, mobile drawer, scroll reveal.
 (function () {
-  // Theme toggle (light is the designed default; the choice persists in localStorage and a cookie shared with the tool subdomains)
+  // Theme toggle (light is the designed default; the choice persists in localStorage and a cookie shared with subdomains such as demo.mohdshayan.com)
   var themeToggle = document.getElementById('theme-toggle');
   if (themeToggle) {
     var themeIcon = themeToggle.querySelector('[data-theme-icon]');
@@ -13,7 +13,7 @@
       themeMetas.forEach(function (m) { m.setAttribute('content', dark ? '#14120e' : '#faf8f3'); });
       if (persist) {
         try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch (e) {}
-        // Shared with every *.mohdshayan.com tool site, which cannot read this origin's localStorage
+        // Shared with every *.mohdshayan.com site, which cannot read this origin's localStorage
         var shared = /(^|\.)mohdshayan\.com$/.test(location.hostname) ? '; domain=.mohdshayan.com' : '';
         document.cookie = 'theme=' + (dark ? 'dark' : 'light') + '; path=/; max-age=31536000; SameSite=Lax' + shared;
       }

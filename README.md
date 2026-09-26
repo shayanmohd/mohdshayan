@@ -45,11 +45,13 @@ The blog ships an RSS feed at `/feed.xml`. For email delivery without a paid pla
 
 Add files to `assets/philanthropy/`, describe them in `content/philanthropy/gallery.json` (see the README in that folder), and rebuild.
 
-### Free tools and subdomains
+### Free tools
 
-`/tools/` is a hub of free, browser-only tools: deAIfy, commission, GST, EMI and margin calculators, a QR code generator, an image compressor and a password generator. Each is described in `content/tools.json`, with its interface in `content/tools/<slug>.html` and its script in `assets/tools/<slug>.js`; the pure logic lives in `assets/tools/lib/` and is covered by `npm test`. `npm run build:pages` also refreshes the tools section of the homepage.
+`/tools/` is a hub of free, browser-only tools, each at `/tools/<slug>/`: deAIfy, commission, GST, EMI and margin calculators, a QR code generator, an image compressor and a password generator. Each is described in `content/tools.json`, with its interface in `content/tools/<slug>.html` and its script in `assets/tools/<slug>.js`; the pure logic lives in `assets/tools/lib/` and is covered by `npm test`. `npm run build:pages` also refreshes the tools section of the homepage. To add a tool, add an entry to `content/tools.json`, write those two files, and run `npm run build && npm test`.
 
-Every tool, and the demo hub, is also published at its own address (`deaify.mohdshayan.com`, `demo.mohdshayan.com`, ...). GitHub Pages serves one custom domain per repository, so `npm run build:subdomains` assembles a standalone copy of each page and the **Deploy subdomains** workflow pushes each to its own repository. Setup, DNS records and the deploy token are in [SUBDOMAINS.md](SUBDOMAINS.md).
+### Demo subdomain
+
+`/demo/` is a launcher for the live demos. To serve it at `demo.mohdshayan.com`, put the same page in its own repository with a `CNAME` file containing `demo.mohdshayan.com`, enable GitHub Pages there, and add a DNS `CNAME` record at Namecheap: host `demo`, value `shayanmohd.github.io`.
 
 ## 🤖 AI/LLM Scraping Policy
 

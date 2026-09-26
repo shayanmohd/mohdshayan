@@ -52,16 +52,16 @@ Browser-based demos of his software (CustomGlide CRM, QR ticketing, Shayanomaly,
 
 ## Free tools
 
-Free utilities built by Mohd Shayan that run entirely in the browser (nothing typed or uploaded leaves the device): https://mohdshayan.com/tools/. Each also has its own address at <name>.mohdshayan.com.
+Free utilities built by Mohd Shayan that run entirely in the browser (nothing typed or uploaded leaves the device): https://mohdshayan.com/tools/
 
-- deAIfy (deaify.mohdshayan.com): removes AI writing tells (em dashes, curly quotes, hidden Unicode, stock phrases) with a live diff; optional rewrite with the user's own Claude or OpenAI key.
-- Commission Calculator (commission.mohdshayan.com): flat and tiered (graduated or retroactive) sales commission, base pay, splits, quota attainment, and the sales needed to reach a target.
-- GST Calculator (gst.mohdshayan.com): adds or removes Indian GST at any rate with the CGST, SGST and IGST split.
-- EMI Calculator (emi.mohdshayan.com): loan EMI, total interest, amortisation schedule and prepayment savings.
-- Margin Calculator (margin.mohdshayan.com): profit margin, markup and pricing for a target margin.
-- QR Code Generator (qr.mohdshayan.com): static QR codes for links, text, Wi-Fi, UPI payments, email, phone and contact cards, as PNG or SVG.
-- Image Compressor (compress.mohdshayan.com): compresses, resizes and converts images to WebP, JPEG or AVIF in the browser, with zip download.
-- Password Generator (password.mohdshayan.com): random passwords, EFF-wordlist passphrases and PINs from the Web Crypto API.
+- deAIfy (https://mohdshayan.com/tools/deaify/): removes AI writing tells (em dashes, curly quotes, hidden Unicode, stock phrases) with a live diff; optional rewrite with the user's own Claude or OpenAI key.
+- Commission Calculator (https://mohdshayan.com/tools/commission/): flat and tiered (graduated or retroactive) sales commission, base pay, splits, quota attainment, and the sales needed to reach a target.
+- GST Calculator (https://mohdshayan.com/tools/gst/): adds or removes Indian GST at any rate with the CGST, SGST and IGST split.
+- EMI Calculator (https://mohdshayan.com/tools/emi/): loan EMI, total interest, amortisation schedule and prepayment savings.
+- Margin Calculator (https://mohdshayan.com/tools/margin/): profit margin, markup and pricing for a target margin.
+- QR Code Generator (https://mohdshayan.com/tools/qr/): static QR codes for links, text, Wi-Fi, UPI payments, email, phone and contact cards, as PNG or SVG.
+- Image Compressor (https://mohdshayan.com/tools/compress/): compresses, resizes and converts images to WebP, JPEG or AVIF in the browser, with zip download.
+- Password Generator (https://mohdshayan.com/tools/password/): random passwords, EFF-wordlist passphrases and PINs from the Web Crypto API.
 
 ## Philanthropy
 

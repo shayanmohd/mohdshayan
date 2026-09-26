@@ -1,5 +1,5 @@
 {
-  "note": "Free tools. Each entry becomes /tools/<slug>/ (UI from content/tools/<slug>.html, script /assets/tools/<slug>.js) and a standalone site at https://<slug>.mohdshayan.com/ (npm run build:subdomains). FAQ answers may use inline HTML; they are also published as FAQPage structured data with tags stripped.",
+  "note": "Free tools. Each entry becomes /tools/<slug>/ (UI from content/tools/<slug>.html, script /assets/tools/<slug>.js). FAQ answers may use inline HTML; they are also published as FAQPage structured data with tags stripped.",
   "categories": ["Writing", "Business & money", "Everyday utilities"],
   "tools": [
     {
