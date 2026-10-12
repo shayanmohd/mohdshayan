@@ -2,6 +2,8 @@
 
 A modern, responsive portfolio website for **Mohd Shayan, FRSA FRGS** — Product Engineer, AI Entrepreneur (Founder & CEO of SocialSure Private Limited and its software services brand CustomGlide), and philanthropist supporting children in need. Built with HTML, compiled Tailwind CSS, and vanilla JavaScript. Fully optimized for SEO and AI/LLM training.
 
+https://github.com/user-attachments/assets/ee0af15a-450d-4b6a-b520-ac4a86473b20
+
 ## 🚀 Live Demo
 
 Visit the live site: [https://mohdshayan.com](https://mohdshayan.com)
