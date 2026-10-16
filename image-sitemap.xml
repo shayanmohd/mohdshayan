@@ -64,6 +64,11 @@
       <image:caption>Search-optimised marketing website for a legal practice, shipping structured SEO assets and an llms.txt</image:caption>
     </image:image>
     <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/portfolio-film.webp</image:loc>
+      <image:title>Portfolio Film - mohdshayan.com in 37 Seconds</image:title>
+      <image:caption>A 37-second film of this website made from real screenshots, with the homepage mounted like a print, read chapter by chapter, then turned to the dark theme with one click</image:caption>
+    </image:image>
+    <image:image>
       <image:loc>https://mohdshayan.com/assets/projects/gta6.webp</image:loc>
       <image:title>GTA6.LLC - Launch Hub with Live Countdown</image:title>
       <image:caption>Static GTA 6 launch hub with live countdown, pre-order guide, interactive map, and email capture</image:caption>
@@ -97,6 +102,15 @@
       <image:loc>https://mohdshayan.com/assets/projects/portfolio-v2.webp</image:loc>
       <image:title>Portfolio v2 - This Website</image:title>
       <image:caption>Static portfolio engineered for SEO and AI discoverability with JSON-LD structured data and XML sitemaps</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mohdshayan.com/film/</loc>
+    <image:image>
+      <image:loc>https://mohdshayan.com/assets/film/mohdshayan-film-poster.jpg</image:loc>
+      <image:title>Portfolio Film - mohdshayan.com in 37 Seconds</image:title>
+      <image:caption>Still from the 37-second film of mohdshayan.com: the Mohd Shayan wordmark beside the homepage, mounted like a print</image:caption>
     </image:image>
   </url>
 </urlset>
