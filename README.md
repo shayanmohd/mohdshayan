@@ -32,7 +32,7 @@ npm test             # unit tests for the tools' logic
 
 - `src/site.css` is the stylesheet source (Tailwind directives plus the site's own CSS). `npm run build:css` compiles it to `assets/site.css`.
 - `scripts/build-icons.mjs` lists the Phosphor icons in use and writes `assets/icons.svg`. Add a name to the list, rebuild, and reference it with `<use href="/assets/icons.svg#i-name">`.
-- `scripts/build-pages.mjs` generates `/blog/`, each post, `/feed.xml`, `/philanthropy/`, `/demo/` and `/tools/` from `content/`.
+- `scripts/build-pages.mjs` generates `/blog/`, each post, `/feed.xml`, `/philanthropy/`, `/demo/` and `/tools/` from `content/`, plus `/film/`.
 - `scripts/build-tool-vendor.mjs` copies the QR encoder and the EFF passphrase wordlist from `node_modules` into `assets/tools/vendor/`.
 
 ### Writing a post
@@ -46,6 +46,10 @@ The blog ships an RSS feed at `/feed.xml`. For email delivery without a paid pla
 ### Philanthropy photos and video
 
 Add files to `assets/philanthropy/`, describe them in `content/philanthropy/gallery.json` (see the README in that folder), and rebuild.
+
+### Portfolio film
+
+`/film/` plays the 37-second film of the site, and the "Portfolio Film" card in Featured Projects links to it. The MP4, its poster and the 1200×630 sharing card live in `assets/film/`, the card image is `assets/projects/portfolio-film.webp` (with a `-640` copy), and the page and its chapter list are `filmPage()` in `scripts/build-pages.mjs`. To replace the film, overwrite those files under the same names (1920×1080 at 60 fps, H.264 with AAC at 48 kHz, faststart, under 10 MB) and rebuild. If the cut changes, also update the chapter list, `duration` and `uploadDate` (the new cut's first release) in `filmPage()`, and the length wherever it is written out: `git grep -nE '37[- ][Ss]econd'` finds every mention, including the hand-written ones in `index.html`, `llms.txt`, `image-sitemap.xml` and this README.
 
 ### Free tools
 

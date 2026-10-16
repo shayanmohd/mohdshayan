@@ -665,6 +665,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://mohdshayan.com/film/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://mohdshayan.com/subscribe/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>

@@ -57,6 +57,10 @@ Photographs and video from his work supporting children in need: https://mohdsha
 
 Browser-based demos of his software (CustomGlide CRM, QR ticketing, Shayanomaly, deAIfy, Wordle Plus, GTA6.LLC): https://mohdshayan.com/demo/
 
+## Portfolio film
+
+A 37-second film of this website, made from real screenshots of its About, Ventures, Impact, Recognition, Research, Work and Writing sections, ending on the dark theme: https://mohdshayan.com/film/
+
 ## Free tools
 
 Free utilities built by Mohd Shayan that run entirely in the browser (nothing typed or uploaded leaves the device): https://mohdshayan.com/tools/
@@ -100,6 +104,7 @@ Artificial Intelligence and AI/ML, machine learning and LLM fine-tuning, product
 - Website: https://mohdshayan.com
 - Blog: https://mohdshayan.com/blog/
 - Free tools: https://mohdshayan.com/tools/
+- Portfolio film: https://mohdshayan.com/film/
 - RSS: https://mohdshayan.com/feed.xml
 - CustomGlide: https://customglide.org
 - LinkedIn: https://linkedin.com/in/shayanmohd

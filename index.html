@@ -73,7 +73,8 @@
           "hasPart": [
             { "@type": "Blog", "@id": "https://mohdshayan.com/blog/#blog", "url": "https://mohdshayan.com/blog/", "name": "Mohd Shayan: Writing" },
             { "@type": "CollectionPage", "@id": "https://mohdshayan.com/philanthropy/#page", "url": "https://mohdshayan.com/philanthropy/", "name": "Philanthropy" },
-            { "@type": "CollectionPage", "@id": "https://mohdshayan.com/demo/#page", "url": "https://mohdshayan.com/demo/", "name": "Live demos" }
+            { "@type": "CollectionPage", "@id": "https://mohdshayan.com/demo/#page", "url": "https://mohdshayan.com/demo/", "name": "Live demos" },
+            { "@type": "WebPage", "@id": "https://mohdshayan.com/film/#page", "url": "https://mohdshayan.com/film/", "name": "Portfolio Film" }
           ]
         },
         {
@@ -1066,8 +1067,31 @@
                     </div>
                 </article>
 
-                <!-- GTA6.LLC -->
+                <!-- Portfolio Film -->
                 <article class="plate overflow-hidden flex flex-col reveal d3">
+                    <div class="p-4 pb-0">
+                        <div class="shot-mat">
+                            <img src="assets/projects/portfolio-film.webp" srcset="assets/projects/portfolio-film-640.webp 640w, assets/projects/portfolio-film.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="Still from Portfolio Film: the Mohd Shayan wordmark beside the homepage, mounted like a print" loading="lazy" width="1200" height="750"
+                                 class="w-full aspect-[16/10] object-cover object-top">
+                        </div>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <div class="flex items-start justify-between gap-3 mb-2">
+                            <h3 class="card-title text-lg"><span class="sweep-target">Portfolio Film</span></h3>
+                            <span class="chip-mini shrink-0 mt-0.5">Motion</span>
+                        </div>
+                        <p class="text-body text-[0.9375rem] leading-relaxed flex-1">A 37-second film of this site, made from real screenshots: the homepage mounted like a print, read chapter by chapter, and turned to the dark theme with one click.</p>
+                        <div class="flex flex-wrap gap-2 my-5">
+                            <span class="tag-chip">GSAP</span><span class="tag-chip">Playwright</span><span class="tag-chip">FFmpeg</span>
+                        </div>
+                        <a href="/film/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">
+                            <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-play"></use></svg> Watch the Film <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- GTA6.LLC (collapsed) -->
+                <article class="plate overflow-hidden flex-col reveal project-more">
                     <div class="p-4 pb-0">
                         <div class="shot-mat">
                             <img src="assets/projects/gta6.webp" srcset="assets/projects/gta6-640.webp 640w, assets/projects/gta6.webp 1200w" sizes="(min-width:1024px) 19.25rem, (min-width:768px) calc(50vw - 4.5rem), calc(100vw - 5.25rem)" alt="GTA6.LLC launch hub with a live countdown" loading="lazy" width="1200" height="750"
@@ -1194,7 +1218,7 @@
 
             <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4 reveal">
                 <button id="projects-toggle" type="button" class="btn-ghost font-mono uppercase tracking-[0.08em] !text-[0.8125rem]" aria-expanded="false" aria-controls="projects-grid">
-                    <span data-toggle-label>View all 13 projects</span>
+                    <span data-toggle-label>View all 14 projects</span>
                     <svg class="icon text-xs transition-transform duration-300" data-toggle-chevron aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg>
                 </button>
                 <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="btn-ghost font-mono uppercase tracking-[0.08em] !text-[0.8125rem]">
@@ -1390,7 +1414,7 @@
                 projGrid.classList.toggle('is-expanded', expanded);
                 projToggle.setAttribute('aria-expanded', String(expanded));
                 if (chevron) chevron.style.transform = expanded ? 'rotate(180deg)' : '';
-                if (toggleLabel) toggleLabel.textContent = expanded ? 'Show fewer projects' : 'View all 13 projects';
+                if (toggleLabel) toggleLabel.textContent = expanded ? 'Show fewer projects' : 'View all 14 projects';
                 if (expanded) {
                     // Staggered fade-in for the newly revealed cards
                     moreCards.forEach((el, i) => {

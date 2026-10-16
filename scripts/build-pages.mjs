@@ -1,4 +1,4 @@
-// Generates /blog/, /blog/<slug>/, /feed.xml, /philanthropy/, /demo/ and /tools/ from content/,
+// Generates /blog/, /blog/<slug>/, /feed.xml, /philanthropy/, /demo/ and /tools/ from content/, plus /film/,
 // and refreshes the free-tools section of index.html between its <!-- tools:start --> / <!-- tools:end --> markers.
 // Posts are markdown with front matter in content/posts. `--drafts` includes draft posts (local preview).
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
@@ -397,6 +397,67 @@ ${subscribe(true, false).replace('mt-12', 'mt-4')}
   return shell({ title: 'Subscribe | Mohd Shayan', description: 'Get new posts by Mohd Shayan by email or in a feed reader.', path: '/subscribe/', active: '', body });
 }
 
+// ---------- film ----------
+// The 37-second film of the site. The MP4, its poster and the 1200x630 sharing card live in assets/film/;
+// the homepage card image is assets/projects/portfolio-film.webp. Chapter times are when each chapter's title is on
+// screen, rounded to the nearest second.
+function filmPage() {
+  const page = `${site.url}/film/`;
+  const media = `${site.url}/assets/film/mohdshayan-film`;
+  const description = 'A 37-second film of mohdshayan.com, made from real screenshots: About, Ventures, Impact, Recognition, Research, Work and Writing, then the dark theme with one click.';
+  const chapters = [
+    [0, 'The gilt full stop lands, then the name, with three roles above it: Product Engineer, AI Entrepreneur, Philanthropist.'],
+    [3, 'The homepage rises from the paper, mounted like a print.'],
+    [8, 'It settles into the frame, beside an index of seven chapters.'],
+    [12, '<span class="text-ink font-[550]">About:</span> engineer at heart. The bio and the AI, FRSA and FRGS ledger.'],
+    [15, '<span class="text-ink font-[550]">Ventures:</span> entrepreneur by drive. SocialSure Private Limited.'],
+    [18, '<span class="text-ink font-[550]">Impact:</span> philanthropist by conviction. Giving back to children in need.'],
+    [21, '<span class="text-ink font-[550]">Recognition:</span> fellowships of the Royal Society of Arts and the Royal Geographical Society.'],
+    [24, '<span class="text-ink font-[550]">Research:</span> the ACL 2026 Student Research Workshop paper on the CYK algorithm.'],
+    [27, '<span class="text-ink font-[550]">Work:</span> the featured projects.'],
+    [30, '<span class="text-ink font-[550]">Writing:</span> the blog, newest post first.'],
+    [34, 'One click on the theme toggle turns the page dark, and all seven chapters in the index light up.'],
+    [35, 'The name and its three roles return above the index, and the address mohdshayan.com appears below.'],
+  ];
+  const rows = chapters.map(([s, text]) => `                        <li class="grid grid-cols-[3.5rem_1fr] gap-4 py-3 border-b border-hairline">
+                            <time datetime="PT${s}S" class="font-mono text-sm text-muted tabular-nums pt-0.5">0:${String(s).padStart(2, '0')}</time>
+                            <p class="text-body text-[0.9375rem] leading-relaxed">${text}</p>
+                        </li>`).join('\n');
+  const body = `${pageHead('Portfolio Film', 'A 37-second film of this site, made from real screenshots: its seven chapters, then the dark theme with one click.')}
+        <section class="pb-24">
+            <div class="max-w-content mx-auto px-6">
+                <figure class="film-player reveal d2">
+                    <div class="print-frame">
+                        <div class="print-mat">
+                            <video controls playsinline preload="metadata" width="1920" height="1080" poster="/assets/film/mohdshayan-film-poster.jpg" class="w-full aspect-video bg-cream" aria-label="Portfolio Film">
+                                <source src="/assets/film/mohdshayan-film.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <figcaption class="mono-meta text-muted mt-4">37&nbsp;seconds · 1920&nbsp;×&nbsp;1080 · 60&nbsp;fps · music and sound effects, no&nbsp;narration</figcaption>
+                </figure>
+                <div class="max-w-2xl mt-14 reveal">
+                    <h2 class="h3-serif" style="font-weight:500;">In the film</h2>
+                    <ol class="mt-4 border-t border-hairline">
+${rows}
+                    </ol>
+                    <a href="/#projects" class="btn-ghost mt-10">View Work <span class="btn-icon" aria-hidden="true">${icon('arrow-right')}</span></a>
+                </div>
+            </div>
+        </section>`;
+  return shell({ title: 'Portfolio Film | Mohd Shayan', description, path: '/film/', active: '', body, image: `${media}-og.jpg`,
+    jsonld: { '@context': 'https://schema.org', '@graph': [
+      { '@type': 'WebPage', '@id': `${page}#page`, url: page, name: 'Portfolio Film', description, isPartOf: { '@id': `${site.url}/#website` },
+        about: { '@id': `${site.url}/#person` }, mainEntity: { '@id': `${page}#video` }, primaryImageOfPage: `${media}-poster.jpg`, inLanguage: 'en' },
+      { '@type': 'VideoObject', '@id': `${page}#video`, name: 'Portfolio Film: mohdshayan.com in 37 seconds', description,
+        thumbnailUrl: [`${media}-poster.jpg`, `${media}-og.jpg`], contentUrl: `${media}.mp4`, uploadDate: '2026-10-12T17:33:35+05:30',
+        duration: 'PT37.5S', encodingFormat: 'video/mp4', author: ORIGIN, publisher: ORIGIN, inLanguage: 'en' },
+      { '@type': 'BreadcrumbList', itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+        { '@type': 'ListItem', position: 2, name: 'Portfolio Film', item: page } ] },
+    ] } });
+}
+
 // ---------- free tools ----------
 // Registry: content/tools.json. Each tool lives at /tools/<slug>/, with its UI in content/tools/<slug>.html
 // and its script in /assets/tools/<slug>.js.
@@ -554,6 +615,7 @@ ${[
     url(`${site.url}/blog/`, { lastmod: newest, changefreq: 'weekly', priority: '0.8' }),
     ...live.map(p => url(p.url, { lastmod: p.date, changefreq: 'monthly', priority: '0.7' })),
     url(`${site.url}/philanthropy/`, { changefreq: 'monthly', priority: '0.7' }),
+    url(`${site.url}/film/`, { changefreq: 'yearly', priority: '0.6' }),
     url(`${site.url}/subscribe/`, { changefreq: 'yearly', priority: '0.4' }),
     url(`${site.url}/tools/`, { changefreq: 'monthly', priority: '0.8' }),
     ...TOOLS.map(t => url(toolCanonical(t), { changefreq: 'monthly', priority: '0.7' })),
@@ -570,6 +632,7 @@ out('feed.xml', feed());
 out('subscribe/index.html', subscribePage());
 out('philanthropy/index.html', galleryPage());
 out('demo/index.html', demoPage());
+out('film/index.html', filmPage());
 out('tools/index.html', toolsIndex());
 for (const t of TOOLS) out(`tools/${t.slug}/index.html`, toolPage(t));
 out('index.html', homepageTools(readFileSync('index.html', 'utf8')));

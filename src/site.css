@@ -243,6 +243,10 @@ strong, b { font-weight: 550; }
 .print-mat { border-radius: 8px; overflow: hidden; }
 .print-mat img { transition: transform .7s var(--ease); }
 .print-frame:hover .print-mat img { transform: scale(1.02); }
+/* /film/: the mat clips a focused video's own ring, so draw it on the mat */
+.print-mat:has(video:focus-visible) { outline: 2px solid var(--gold-text); outline-offset: 2px; }
+/* /film/: on desktop, keep the whole player (controls included) on the first screen */
+@media (min-width: 1024px) { .film-player { max-width: max(40rem, calc((100svh - 22rem) * 16 / 9)); } }
 
 /* ---------- Buttons ---------- */
 .btn-ink, .btn-ghost, .btn-invert, .btn-ghost-dark { display: inline-flex; align-items: center; justify-content: center;
