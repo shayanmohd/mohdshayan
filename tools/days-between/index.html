@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Days Between Dates Calculator: Working Days, Add Days | Free</title>
+    <meta name="description" content="Free date calculator. Count the days, weeks, months and working days between two dates, or add and subtract days, months and years. Runs in your browser.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/tools/days-between/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mohdshayan.com/tools/days-between/">
+    <meta property="og:title" content="Days Between Dates Calculator: Working Days, Add Days | Free">
+    <meta property="og:description" content="Free date calculator. Count the days, weeks, months and working days between two dates, or add and subtract days, months and years. Runs in your browser.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Days Between Dates Calculator: Working Days, Add Days | Free">
+    <meta name="twitter:description" content="Free date calculator. Count the days, weeks, months and working days between two dates, or add and subtract days, months and years. Runs in your browser.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var m=document.cookie.match(/(?:^|; )theme=(dark|light)/);var s=m?m[1]:localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://mohdshayan.com/tools/days-between/#app",
+          "name": "Days Between Dates",
+          "url": "https://mohdshayan.com/tools/days-between/",
+          "description": "Free date calculator. Count the days, weeks, months and working days between two dates, or add and subtract days, months and years. Runs in your browser.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "browserRequirements": "Requires JavaScript",
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "author": {
+            "@type": "Person",
+            "@id": "https://mohdshayan.com/#person",
+            "name": "Mohd Shayan",
+            "url": "https://mohdshayan.com"
+          },
+          "publisher": {
+            "@type": "Person",
+            "@id": "https://mohdshayan.com/#person",
+            "name": "Mohd Shayan",
+            "url": "https://mohdshayan.com"
+          },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://mohdshayan.com/tools/days-between/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Does the count include the end day?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Not unless you tick Include the end day. By default the count runs from the start date up to, but not including, the end date, so 1 January to 2 January is 1 day and 1 January to 31 January is 30 days. With the end day included the same span is 31 days, which is how you would count the days of a holiday that covers both dates. The setting applies to every figure, including the working and weekend days."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How are the months and years worked out?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "In whole calendar months from the start date, then the days left over. 15 March to 10 April 2025 is 26 days, because the month would only be complete on 15 April. When the start date's day of the month does not exist in a later month, that month runs to its last day: 31 January to 28 February 2025 counts as 1 month, and 31 January to 1 March as 1 month and 1 day. Weeks are simpler: the total days divided by 7, with the remainder shown as days."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What counts as a working day?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Monday to Friday. Saturdays and Sundays are weekend days, and the two figures always add up to the total. Public holidays are not removed, because they differ by country and state, so take off any that fall inside your span. Monday 6 October to Friday 10 October 2025 is 4 working days, or 5 with the end day included."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is 31 January plus one month?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "28 February, or 29 February in a leap year. Adding months or years keeps the same day of the month wherever it exists and otherwise stops at the last day of the month: 31 January 2026 plus 1 month is 28 February 2026, 31 March plus 1 month is 30 April, and 29 February 2024 plus 1 year is 28 February 2025. The result tells you when this has happened. Days and weeks never need it, so 30 days is always exactly 30 days."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why do some date calculators come out a day short?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Many count by subtracting two midnight timestamps and dividing by 86,400,000, the milliseconds in a day. Across a daylight-saving change a local day is 23 or 25 hours long, so the division gives something like 29.96 and the count rounds the wrong way. This tool anchors every date at noon UTC, where there is no daylight saving, and counts whole days from there, so you get the same answer in every time zone. Dates are treated as calendar days only: the time of day is never involved."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://mohdshayan.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Free tools",
+              "item": "https://mohdshayan.com/tools/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Days Between Dates",
+              "item": "https://mohdshayan.com/tools/days-between/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/tools/" class="nav-link active" aria-current="page">Tools</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/tools/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Tools</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <section class="page-head pb-8 md:pb-10">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 reveal">
+                    <a href="/tools/" class="chip-pill"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-toolbox"></use></svg> Free tools</a>
+                    <span class="mono-meta text-muted">Everyday utilities</span>
+                </div>
+                <h1 class="h2 mt-4 max-w-3xl balance reveal">Count the days between two dates, or <span class="text-gold-deep">add days</span> to one</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Enter two dates to get the days, weeks, months and working days between them, or move a date forward or back by days, weeks, months or years. Everything is worked out in your browser and the dates are never sent anywhere.</p>
+            </div>
+        </section>
+        <section class="pb-10" aria-label="Days between dates">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-grid" id="db-form" autocomplete="off" onsubmit="return false" action="/tools/days-between/">
+                    <div class="tool-panel tool-stack">
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">What do you want to work out?</legend>
+                            <div class="seg block">
+                                <label><input type="radio" name="mode" value="diff" checked><span>Days between</span></label>
+                                <label><input type="radio" name="mode" value="shift"><span>Add or subtract</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="tool-stack" id="db-diff">
+                            <div class="field-row two">
+                                <div class="field">
+                                    <label for="db-start" class="field-label">Start date <span class="hint" id="db-start-day"></span></label>
+                                    <input id="db-start" class="input" type="date" max="9999-12-31">
+                                </div>
+                                <div class="field">
+                                    <label for="db-end" class="field-label">End date <span class="hint" id="db-end-day"></span></label>
+                                    <input id="db-end" class="input" type="date" max="9999-12-31">
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+                                <label class="check"><input type="checkbox" id="db-include"> Include the end day</label>
+                                <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+                                    <button type="button" class="text-btn" id="db-end-today"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-calendar-dots"></use></svg> End today</button>
+                                    <button type="button" class="text-btn" id="db-swap"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrows-left-right"></use></svg> Swap dates</button>
+                                </div>
+                            </div>
+                            <p class="field-help">Counts run from the start date up to, but not including, the end date. Tick the box to count the end day as well.</p>
+                        </div>
+
+                        <div class="tool-stack" id="db-shift" hidden>
+                            <div class="field">
+                                <label for="db-from" class="field-label">Start date <span class="hint" id="db-from-day"></span></label>
+                                <input id="db-from" class="input" type="date" max="9999-12-31">
+                            </div>
+                            <div class="field-row two">
+                                <fieldset class="field">
+                                    <legend class="field-label mb-2">Direction</legend>
+                                    <div class="seg block">
+                                        <label><input type="radio" name="op" value="add" checked><span>Add</span></label>
+                                        <label><input type="radio" name="op" value="subtract"><span>Subtract</span></label>
+                                    </div>
+                                </fieldset>
+                                <div class="field">
+                                    <label for="db-amount" class="field-label">How many</label>
+                                    <input id="db-amount" class="input" inputmode="numeric" value="30">
+                                </div>
+                            </div>
+                            <fieldset class="field">
+                                <legend class="field-label mb-2">Unit</legend>
+                                <div class="seg block wrap-sm">
+                                    <label><input type="radio" name="unit" value="days" checked><span>Days</span></label>
+                                    <label><input type="radio" name="unit" value="weeks"><span>Weeks</span></label>
+                                    <label><input type="radio" name="unit" value="months"><span>Months</span></label>
+                                    <label><input type="radio" name="unit" value="years"><span>Years</span></label>
+                                </div>
+                            </fieldset>
+                            <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+                                <p class="field-help">Months and years step through the calendar. When the start day does not exist in the month you land in, the result stops at that month's last day.</p>
+                                <button type="button" class="text-btn shrink-0" id="db-from-today"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-calendar-dots"></use></svg> Start today</button>
+                            </div>
+                        </div>
+                        <p class="field-error" id="db-error" role="alert"></p>
+                    </div>
+
+                    <div class="tool-aside">
+                        <div class="bezel">
+                            <div class="readout" aria-live="polite">
+                                <p class="readout-label" id="db-head-label">Total days</p>
+                                <p class="readout-value" id="db-head"></p>
+                                <p class="readout-sub" id="db-head-sub"></p>
+                                <dl class="readout-rows" id="db-rows"></dl>
+                                <p class="readout-sub" id="db-note" hidden></p>
+                                <div class="flex flex-wrap gap-2 mt-5">
+                                    <button type="button" class="btn-ghost-dark" id="db-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy result</span></button>
+                                    <button type="button" class="btn-ghost-dark" id="db-share"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="db-live" class="sr-only" aria-live="polite"></p>
+                    </div>
+                </form>
+
+                <p class="mono-meta text-muted mt-5 flex items-start gap-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> Everything is worked out in your browser. The dates you enter are never sent anywhere.</p>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">From today</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs" id="db-glance-sub">Where the spans people look up most often land. The day rows are exact; the month and year rows step through the calendar.</p>
+                    </div>
+                    <div class="tool-panel">
+                        <div class="table-scroll !max-h-none !border-t-0">
+                            <table class="data-table" id="db-glance">
+                                <thead><tr><th scope="col">Span</th><th scope="col">Date</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 md:py-20">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">Questions</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">Built by <a href="https://mohdshayan.com/" class="sweep-link text-ink">Mohd Shayan</a>. Found a problem or have an idea? <a href="mailto:contact@mohdshayan.com?subject=Days%20Between%20Dates" class="sweep-link text-ink">Send a note</a>.</p>
+                    </div>
+                    <div>
+                        <details class="faq" open>
+                            <summary>Does the count include the end day?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>Not unless you tick <em>Include the end day</em>. By default the count runs from the start date up to, but not including, the end date, so 1 January to 2 January is 1 day and 1 January to 31 January is 30 days. With the end day included the same span is 31 days, which is how you would count the days of a holiday that covers both dates. The setting applies to every figure, including the working and weekend days.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>How are the months and years worked out?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>In whole calendar months from the start date, then the days left over. 15 March to 10 April 2025 is 26 days, because the month would only be complete on 15 April. When the start date's day of the month does not exist in a later month, that month runs to its last day: 31 January to 28 February 2025 counts as 1 month, and 31 January to 1 March as 1 month and 1 day. Weeks are simpler: the total days divided by 7, with the remainder shown as days.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>What counts as a working day?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>Monday to Friday. Saturdays and Sundays are weekend days, and the two figures always add up to the total. Public holidays are not removed, because they differ by country and state, so take off any that fall inside your span. Monday 6 October to Friday 10 October 2025 is 4 working days, or 5 with the end day included.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>What is 31 January plus one month?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>28 February, or 29 February in a leap year. Adding months or years keeps the same day of the month wherever it exists and otherwise stops at the last day of the month: 31 January 2026 plus 1 month is 28 February 2026, 31 March plus 1 month is 30 April, and 29 February 2024 plus 1 year is 28 February 2025. The result tells you when this has happened. Days and weeks never need it, so 30 days is always exactly 30 days.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>Why do some date calculators come out a day short?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>Many count by subtracting two midnight timestamps and dividing by 86,400,000, the milliseconds in a day. Across a daylight-saving change a local day is 23 or 25 hours long, so the division gives something like 29.96 and the count rounds the wrong way. This tool anchors every date at noon UTC, where there is no daylight saving, and counts whole days from there, so you get the same answer in every time zone. Dates are treated as calendar days only: the time of day is never involved.</p></div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pb-24">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <h2 class="h3-serif" style="font-weight:500;">More free tools</h2>
+                    <a href="/tools/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">All tools <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg></a>
+                </div>
+                <div class="ruled-grid sm:grid-cols-2 lg:grid-cols-4 mt-6">
+                    <a href="/tools/qr/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-qr-code"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">QR Code Generator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Links, Wi-Fi logins, UPI payments and contact cards as crisp QR codes. PNG or SVG, no watermark, never expires.</p>
+                    </a>
+                    <a href="/tools/compress/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrows-in"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Image Compressor</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Shrink, resize and convert photos to WebP, JPEG or AVIF in your browser, then download them all as a zip.</p>
+                    </a>
+                    <a href="/tools/password/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-password"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Password Generator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Strong random passwords, memorable passphrases and PINs from your device's secure random number generator.</p>
+                    </a>
+                    <a href="/tools/age/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-cake"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Age Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Exact age in years, months and days, the totals in weeks, days and hours, the weekday of birth, and the next birthday.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/tools/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Free tools</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+    <script type="module" src="/assets/tools/days-between.js"></script>
+</body>
+</html>

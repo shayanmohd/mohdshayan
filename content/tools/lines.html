@@ -1,0 +1,129 @@
+        <section class="pb-10" aria-label="Duplicate line remover">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-panel" id="ln-form" autocomplete="off" onsubmit="return false" action="/tools/lines/">
+                    <div class="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-[1.25fr_1fr_1.25fr]">
+                        <fieldset class="field">
+                            <legend class="field-label mb-3">Clean up</legend>
+                            <div class="grid gap-3">
+                                <label class="check"><input type="checkbox" id="ln-dedupe" checked> <span>Remove duplicate lines<small>Keeps the first copy of each line.</small></span></label>
+                                <label class="check pl-7" id="ln-case-label"><input type="checkbox" id="ln-case" checked> <span>Case-sensitive<small>Apple and apple differ.</small></span></label>
+                                <label class="check pl-7" id="ln-space-label"><input type="checkbox" id="ln-space" checked> Ignore surrounding whitespace when comparing</label>
+                                <label class="check"><input type="checkbox" id="ln-trim"> Trim whitespace from each line</label>
+                                <label class="check"><input type="checkbox" id="ln-empty"> <span>Remove empty lines<small>Lines of only spaces or tabs count as empty.</small></span></label>
+                            </div>
+                        </fieldset>
+                        <fieldset class="field">
+                            <legend class="field-label mb-3">Order</legend>
+                            <div class="grid gap-4">
+                                <div class="field">
+                                    <label for="ln-sort" class="field-label">Sort</label>
+                                    <select id="ln-sort" class="input">
+                                        <option value="none" selected>Keep the order</option>
+                                        <option value="az">A to Z</option>
+                                        <option value="za">Z to A</option>
+                                        <option value="short">Shortest first</option>
+                                        <option value="long">Longest first</option>
+                                        <option value="natural">Natural (file2 before file10)</option>
+                                        <option value="random">Random shuffle</option>
+                                    </select>
+                                </div>
+                                <label class="check"><input type="checkbox" id="ln-reverse"> Reverse order</label>
+                            </div>
+                        </fieldset>
+                        <fieldset class="field">
+                            <legend class="field-label mb-3">Add to each line</legend>
+                            <div class="grid gap-4">
+                                <label class="check"><input type="checkbox" id="ln-number"> Line numbers <span class="hint">1. 2. 3.</span></label>
+                                <div class="field-row two">
+                                    <div class="field">
+                                        <label for="ln-prefix" class="field-label">Prefix</label>
+                                        <input id="ln-prefix" class="input mono" spellcheck="false" placeholder="- ">
+                                    </div>
+                                    <div class="field">
+                                        <label for="ln-suffix" class="field-label">Suffix</label>
+                                        <input id="ln-suffix" class="input mono" spellcheck="false" placeholder=",">
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <p class="field-help mt-5">Applied in this order: trim, remove empty lines, remove duplicates, sort, reverse, number, then prefix and suffix.</p>
+
+                    <hr class="tool-divider">
+
+                    <div class="tool-grid even">
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3 min-h-[36px]">
+                                <label for="ln-in" class="field-label">Your lines</label>
+                                <div class="flex items-center gap-4">
+                                    <button type="button" class="text-btn" id="ln-sample"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkle"></use></svg> Try an example</button>
+                                    <button type="button" class="text-btn" id="ln-clear" hidden><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-trash"></use></svg> Clear</button>
+                                </div>
+                            </div>
+                            <textarea id="ln-in" class="input mono" rows="16" placeholder="Paste or type your list, one item per line." spellcheck="false"></textarea>
+                            <p class="hint" id="ln-in-stats">0 lines · 0 characters</p>
+                        </div>
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3 min-h-[36px]">
+                                <label for="ln-out" class="field-label">Result</label>
+                            </div>
+                            <textarea id="ln-out" class="input mono" rows="16" readonly spellcheck="false" placeholder="Your cleaned lines appear here as you type."></textarea>
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <div class="count-chips" id="ln-stats" role="group" aria-label="What changed"></div>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" class="icon-btn" id="ln-download" aria-label="Download as a text file" title="Download .txt"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-download-simple"></use></svg></button>
+                                    <button type="button" class="btn-ink btn-sm" id="ln-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy result</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="ln-live" class="sr-only" aria-live="polite"></p>
+                </form>
+
+                <p class="mono-meta text-muted mt-5 flex items-start gap-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> Everything runs on your device. Your text is never uploaded.</p>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">The order things happen in</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">The options always run in the same seven steps, whichever you tick first. That is why trimmed lines dedupe properly, and why line numbers run 1, 2, 3 down the finished list.</p>
+                    </div>
+                    <div class="tool-panel">
+                        <ol class="divide-y divide-hairline">
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">1</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Trim whitespace</p><p class="text-body text-sm leading-relaxed mt-1">Spaces and tabs at the start and end of every line are removed, so the steps that follow see the bare text.</p></div>
+                            </li>
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">2</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Remove empty lines</p><p class="text-body text-sm leading-relaxed mt-1">Lines with nothing in them, or nothing but spaces and tabs, are dropped and counted as empty removed.</p></div>
+                            </li>
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">3</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Remove duplicates</p><p class="text-body text-sm leading-relaxed mt-1">The first copy of each line stays where it is and later copies are dropped, compared with or without case and surrounding whitespace.</p></div>
+                            </li>
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">4</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Sort</p><p class="text-body text-sm leading-relaxed mt-1">A to Z, Z to A, by length, naturally so that file2 comes before file10, or shuffled with the browser's secure random number generator. Lines that tie keep their order.</p></div>
+                            </li>
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">5</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Reverse</p><p class="text-body text-sm leading-relaxed mt-1">The whole list is turned upside down, after any sort, so the last line comes first.</p></div>
+                            </li>
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">6</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Number</p><p class="text-body text-sm leading-relaxed mt-1">Each line gets its position in the finished order, written as <code class="mono-meta">1. </code>, <code class="mono-meta">2. </code> and so on.</p></div>
+                            </li>
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">7</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Prefix and suffix</p><p class="text-body text-sm leading-relaxed mt-1">Your prefix goes in front of every line and your suffix after it, outside the line number, so a prefix of <code class="mono-meta">- </code> gives <code class="mono-meta">- 1. apple</code>.</p></div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>

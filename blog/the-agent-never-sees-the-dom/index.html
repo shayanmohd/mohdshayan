@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The agent never sees the DOM | Mohd Shayan</title>
+    <meta name="description" content="Kamapathy hands an agent a bounded text view of a page, 4,000 characters and 40 controls by default, and a fixed set of routes. That view is a product decision with a budget.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/the-agent-never-sees-the-dom/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/the-agent-never-sees-the-dom/">
+    <meta property="og:title" content="The agent never sees the DOM | Mohd Shayan">
+    <meta property="og:description" content="Kamapathy hands an agent a bounded text view of a page, 4,000 characters and 40 controls by default, and a fixed set of routes. That view is a product decision with a budget.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The agent never sees the DOM | Mohd Shayan">
+    <meta name="twitter:description" content="Kamapathy hands an agent a bounded text view of a page, 4,000 characters and 40 controls by default, and a fixed set of routes. That view is a product decision with a budget.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var m=document.cookie.match(/(?:^|; )theme=(dark|light)/);var s=m?m[1]:localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/the-agent-never-sees-the-dom/#post",
+      "headline": "The agent never sees the DOM",
+      "description": "Kamapathy hands an agent a bounded text view of a page, 4,000 characters and 40 controls by default, and a fixed set of routes. That view is a product decision with a budget.",
+      "url": "https://mohdshayan.com/blog/the-agent-never-sees-the-dom/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/the-agent-never-sees-the-dom/",
+      "datePublished": "2026-10-12",
+      "dateModified": "2026-10-12",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "AI Agents, Browser Automation, Electron",
+      "inLanguage": "en",
+      "wordCount": 1401
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+                <li><a href="/tools/" class="nav-link">Tools</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/tools/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Tools</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">12 October 2026 <span class="mx-2">·</span> 6 min read</p>
+                <h1 class="h2 mt-3 balance reveal">The agent never sees the DOM</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Kamapathy hands an agent a bounded text view of a page, 4,000 characters and 40 controls by default, and a fixed set of routes. That view is a product decision with a budget.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="post-layout">
+                <div class="min-w-0">
+                <div class="prose">
+<p>When an agent asks Kamapathy to look at a page, it does not get the DOM. Kamapathy is the desktop browser I built for a person to share with their agents, and the agent&#39;s whole view of a page is a bounded text snapshot: URL, title, visible text, then controls with short refs such as <code>@e5</code>, capped by default at 4,000 characters and 40 controls. The agent acts through a fixed set of routes against those refs, and nothing it writes runs inside the page. Building it taught me that what an agent sees is a product decision with a budget, and the odd calls are where the decision shows: text under <code>aria-hidden</code> is kept, controls under it are dropped, and a password field reports only that it holds a value.</p>
+<h2>What the agent gets</h2>
+<p>The repository keeps the real captures from its benchmark run, so I can show one. This is the form builder page of the local fixture site, from <code>tests/fixtures/benchmarks/kamapathy-form.txt</code>, all 535 characters of it:</p>
+<pre><code>Create a form
+http://127.0.0.1:3000/forms/new
+
+Kamapathy form lab
+Overview
+Create a form
+Interaction lab
+Reference page
+Create a form
+Form title
+Description
+Template
+Create form
+Local test fixture. Submissions remain on this machine and are discarded when the server closes.
+
+Controls:
+@e1 a &quot;Overview&quot;
+@e2 a &quot;Create a form&quot;
+@e3 a &quot;Interaction lab&quot;
+@e4 a &quot;Reference page&quot;
+@e5 input &quot;Form title&quot;
+@e6 textarea &quot;Description&quot;
+@e7 select &quot;Template&quot;
+  &quot;feedback&quot;: &quot;Product feedback&quot;
+  &quot;research&quot;: &quot;Research request&quot;
+@e8 button &quot;Create form&quot;
+</code></pre>
+<p>Everything the agent needs is there: the labels, the select&#39;s exact option values and a ref for each control. The agent pipes the title into <code>fill TAB_ID @e5 --stdin</code>, pipes <code>research</code> into <code>fill TAB_ID @e7 --stdin</code>, and sends <code>click TAB_ID @e8</code>, or all three as one batch. What is missing is deliberate: no tree, no attribute dump (a control keeps type, role, state and, in JSON, a CSS selector), no scripts, no styles, no bounding boxes. It reads through open shadow roots and same-origin frames, and lists a cross-origin frame as a control that refuses every action, so the agent knows there is content it cannot read.</p>
+<h2>The budget</h2>
+<p>In <code>electron/automation.ts</code> a compact snapshot allows 4,000 characters of text and 40 controls, and a full one 24,000 and 100, which are also the caps. In <code>electron/automation-dom.ts</code> a label is cut at 80 characters in compact mode and 200 in full, a select lists at most 20 options, and a whole snapshot at most 100 options across its selects. Whatever falls outside sets a <code>truncated</code> flag, and <code>omittedControls</code> counts the controls left out, so the agent can scope the next snapshot to a CSS selector.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 310" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">Default snapshot budgets in compact and full mode</title>
+<desc id="f1-d">Three pairs of horizontal bars. Text characters: compact 4,000 against full 24,000. Controls: compact 40 against full 100. Label characters: compact 80 against full 200. Each pair is drawn to its own scale, with the full bar at 380 pixels.</desc>
+<text x="0" y="18" class="viz-title">Compact is the default; full is six times the text</text>
+<text x="0" y="36" class="viz-sub">Default snapshot budgets in compact and full mode, each pair to its own scale</text>
+<line x1="150" y1="52" x2="150" y2="272" class="viz-axis"/>
+<text x="0" y="62" class="viz-label">Text characters</text>
+<text x="140" y="82" text-anchor="end" class="viz-label-muted">compact</text>
+<rect x="150" y="70" width="63.3" height="16" rx="3" class="viz-f1"/>
+<text x="221" y="82" class="viz-value">4,000</text>
+<text x="140" y="106" text-anchor="end" class="viz-label-muted">full</text>
+<rect x="150" y="94" width="380" height="16" rx="3" class="viz-fgray"/>
+<text x="538" y="106" class="viz-value">24,000</text>
+<text x="0" y="140" class="viz-label">Controls</text>
+<text x="140" y="160" text-anchor="end" class="viz-label-muted">compact</text>
+<rect x="150" y="148" width="152" height="16" rx="3" class="viz-f1"/>
+<text x="310" y="160" class="viz-value">40</text>
+<text x="140" y="184" text-anchor="end" class="viz-label-muted">full</text>
+<rect x="150" y="172" width="380" height="16" rx="3" class="viz-fgray"/>
+<text x="538" y="184" class="viz-value">100</text>
+<text x="0" y="218" class="viz-label">Label characters</text>
+<text x="140" y="238" text-anchor="end" class="viz-label-muted">compact</text>
+<rect x="150" y="226" width="152" height="16" rx="3" class="viz-f1"/>
+<text x="310" y="238" class="viz-value">80</text>
+<text x="140" y="262" text-anchor="end" class="viz-label-muted">full</text>
+<rect x="150" y="250" width="380" height="16" rx="3" class="viz-fgray"/>
+<text x="538" y="262" class="viz-value">200</text>
+<text x="0" y="296" class="viz-label-muted">Full-mode bars are 380 pixels; each compact bar shares its pair's scale.</text>
+</svg>
+<figcaption>Source: the defaults and caps in <a href="https://github.com/shayanmohd/kamapathy/blob/main/electron/automation.ts">electron/automation.ts</a> (lines 137 to 149) and the label limit in <a href="https://github.com/shayanmohd/kamapathy/blob/main/electron/automation-dom.ts">electron/automation-dom.ts</a> (line 1286), read on 12 October 2026.</figcaption>
+</figure>
+
+<p>When a page holds more controls than the budget, which survive is a second decision, made in code: controls inside open dialogs, popups, listboxes and menus first, then controls on screen inside fixed or sticky bars, then the rest of the screen, then tall pinned columns such as a navigation sidebar, then everything else. That rule is why a snapshot of a modal shows the modal and not forty navigation links.</p>
+<p>The budget is what the agent pays for, so I measured it. The repository keeps four full-mode captures of the fixture site, which <code>docs/benchmark-results.json</code> dates to 11 September 2026 on a pre-release 0.1.0 build, and <code>scripts/benchmark.mjs</code> counts them through js-tiktoken 1.0.21 with <code>o200k_base</code>, an encoding from <a href="https://github.com/openai/tiktoken">tiktoken</a>, &quot;a fast BPE tokeniser for use with OpenAI&#39;s models&quot;. That JSON came from earlier drafts whose hashes match none of the committed files, so on 12 October 2026 I re-ran the count on the committed files. The form builder costs 149 tokens, the created form 248, the receipt 156 and a reference page with 18 notes 1,056: 1,609 for all four. The skill&#39;s instructions cost more: <code>SKILL.md</code> is 1,493 tokens, <code>references/actions.md</code> 2,617 and <code>references/connection.md</code> 842, 4,952 for the three files the script counts, and <code>references/scripting.md</code>, which <code>SKILL.md</code> sends the agent to, adds 2,247 the script never counts. The instructions for looking at a page cost at least three times what four pages cost.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 376" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">Tokens per fixture page snapshot and per skill instruction file</title>
+<desc id="f2-d">Horizontal bars of tokens under the o200k_base encoding, counted on 12 October 2026 from the committed files. Four snapshots: form builder 149, created form 248, receipt 156, reference page with 18 notes 1,056, totalling 1,609. Four skill files: SKILL.md 1,493, actions.md 2,617, connection.md 842 and, in grey because the repository's script leaves it out, scripting.md 2,247; 4,952 for the three the script counts and 7,199 for all four.</desc>
+<text x="0" y="18" class="viz-title">Reading the instructions costs more than reading the pages</text>
+<text x="0" y="36" class="viz-sub">Tokens per full-mode snapshot of four fixture pages, and per skill instruction file</text>
+<text x="0" y="60" class="viz-label-muted">Four fixture pages, 1,609 tokens together</text>
+<line x1="190" y1="66" x2="190" y2="180" class="viz-axis"/>
+<text x="180" y="83" text-anchor="end" class="viz-label">Form builder</text>
+<rect x="190" y="68" width="20.9" height="20" rx="3" class="viz-f1"/>
+<text x="219" y="83" class="viz-value">149</text>
+<text x="180" y="113" text-anchor="end" class="viz-label">Created form</text>
+<rect x="190" y="98" width="34.7" height="20" rx="3" class="viz-f1"/>
+<text x="233" y="113" class="viz-value">248</text>
+<text x="180" y="143" text-anchor="end" class="viz-label">Receipt</text>
+<rect x="190" y="128" width="21.8" height="20" rx="3" class="viz-f1"/>
+<text x="220" y="143" class="viz-value">156</text>
+<text x="180" y="173" text-anchor="end" class="viz-label">Reference, 18 notes</text>
+<rect x="190" y="158" width="147.8" height="20" rx="3" class="viz-f1"/>
+<text x="346" y="173" class="viz-value">1,056</text>
+<text x="0" y="204" class="viz-label-muted">Four skill instruction files, 7,199 tokens together</text>
+<line x1="190" y1="210" x2="190" y2="324" class="viz-axis"/>
+<text x="180" y="227" text-anchor="end" class="viz-label">SKILL.md</text>
+<rect x="190" y="212" width="209" height="20" rx="3" class="viz-f2"/>
+<text x="407" y="227" class="viz-value">1,493</text>
+<text x="180" y="257" text-anchor="end" class="viz-label">actions.md</text>
+<rect x="190" y="242" width="366.4" height="20" rx="3" class="viz-f2"/>
+<text x="564" y="257" class="viz-value">2,617</text>
+<text x="180" y="287" text-anchor="end" class="viz-label">connection.md</text>
+<rect x="190" y="272" width="117.9" height="20" rx="3" class="viz-f2"/>
+<text x="316" y="287" class="viz-value">842</text>
+<text x="180" y="317" text-anchor="end" class="viz-label">scripting.md</text>
+<rect x="190" y="302" width="314.6" height="20" rx="3" class="viz-fgray"/>
+<text x="513" y="317" class="viz-value">2,247</text>
+<text x="0" y="346" class="viz-label-muted">0.14 pixels per token, o200k_base, committed files counted on 12 October 2026</text>
+<text x="0" y="364" class="viz-label-muted">Grey: scripting.md, which SKILL.md points to and the script never counts</text>
+</svg>
+<figcaption>Source: the captures in <a href="https://github.com/shayanmohd/kamapathy/tree/main/tests/fixtures/benchmarks">tests/fixtures/benchmarks</a> and the files in <a href="https://github.com/shayanmohd/kamapathy/tree/main/skills/kamapathy">skills/kamapathy</a>, counted on 12 October 2026 with the method in <a href="https://github.com/shayanmohd/kamapathy/blob/main/scripts/benchmark.mjs">scripts/benchmark.mjs</a> (js-tiktoken 1.0.21, o200k_base). <a href="https://github.com/shayanmohd/kamapathy/blob/main/docs/benchmark-results.json">docs/benchmark-results.json</a> dates the captures to 11 September 2026 on a 0.1.0 build, fifteen days before the <a href="https://github.com/shayanmohd/kamapathy/releases">v0.1.0 release</a>, and records 1,605 tokens for the pages and 2,463 for three skill files from earlier drafts; the method's exclusions are in <a href="https://github.com/shayanmohd/kamapathy/blob/main/docs/benchmarks.md">docs/benchmarks.md</a>.</figcaption>
+</figure>
+
+<p>None of the pages reached full mode&#39;s 24,000-character or 100-control limits, so compact mode would cost the same or less. As <code>docs/benchmarks.md</code> says, the numbers exclude the model&#39;s reasoning, its commands, tool schemas, screenshots, caching and latency: they measure the observation, not the task.</p>
+<h2>The odd calls</h2>
+<p>Three edge cases look wrong until you know why.</p>
+<p>The first is <code>aria-hidden</code>. The attribute, as <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-hidden">MDN</a> puts it, &quot;hides content from assistive technology but doesn&#39;t visually hide anything&quot;, and component libraries put visible field labels and questions inside it. So the page text includes rendered text under <code>aria-hidden</code>; a snapshot that followed the accessibility tree would drop the question above a group of radio buttons. Controls under <code>aria-hidden</code> stay excluded, because an open modal hides the page behind it that way, and an agent offered forty links from behind a dialog will click one.</p>
+<p>The second is secrets. A field reports only that its value is hidden when it is a password input, when its name or id contains a token such as <code>pwd</code>, <code>otp</code>, <code>cvc</code> or <code>pin</code>, when its <code>autocomplete</code> is <code>current-password</code>, <code>new-password</code>, <code>one-time-code</code> or any <code>cc-</code> value, or when a stylesheet masks it with <code>-webkit-text-security</code>. Once judged secret a field stays secret, so a &quot;show password&quot; toggle does not leak it on the next snapshot. The security notes state the limit: a site can echo a value in ordinary text, and the snapshot does not pretend to redact that.</p>
+<p>The third is what the snapshot is not. Playwright&#39;s aria snapshots, in <a href="https://playwright.dev/docs/aria-snapshots">its documentation</a>, &quot;provide a YAML representation of the accessibility tree of a page&quot;. Kamapathy&#39;s docs say its snapshots are &quot;bounded DOM summaries, not accessibility tree exports&quot;. The snapshot is a cheap, truncated model for a language model, which would read an icon font&#39;s <code>arrow_drop_down</code> as a word, so those are dropped, and which has to be told a select option&#39;s exact value, so that is printed. The differences are decisions, not gaps.</p>
+<h2>Nothing the model wrote runs in the page</h2>
+<figure class="chart">
+<svg viewBox="0 0 640 320" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">The observe and act loop between a page, Kamapathy and the model</title>
+<desc id="f3-d">A loop of six boxes. Observing: the web page feeds a fixed snapshot function running in an isolated world, which produces bounded text with refs, capped at 4,000 characters and 40 controls, which the model reads. Acting: the model sends one documented route such as click, fill or batch, which becomes native Chromium input back to the page. A dark box below lists what never crosses the socket: JavaScript evaluation, the Chrome DevTools Protocol, Node.js, a shell and the filesystem.</desc>
+<defs><marker id="f3-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 L10 5 L0 10 Z" class="viz-arrowhead"/></marker></defs>
+<text x="0" y="18" class="viz-title">One fixed function out, one documented route back</text>
+<rect x="8" y="48" width="172" height="60" rx="8" class="viz-box"/>
+<text x="94" y="74" text-anchor="middle" class="viz-label">Web page</text>
+<text x="94" y="92" text-anchor="middle" class="viz-label-muted">DOM, scripts, styles</text>
+<text x="205" y="70" text-anchor="middle" class="viz-tick">observe</text>
+<line x1="182" y1="78" x2="228" y2="78" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<rect x="234" y="48" width="172" height="60" rx="8" class="viz-box-accent"/>
+<text x="320" y="74" text-anchor="middle" class="viz-label">Snapshot function</text>
+<text x="320" y="92" text-anchor="middle" class="viz-label-muted">fixed code, world 1001</text>
+<line x1="408" y1="78" x2="454" y2="78" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<rect x="460" y="48" width="172" height="60" rx="8" class="viz-box-accent"/>
+<text x="546" y="74" text-anchor="middle" class="viz-label">Bounded text</text>
+<text x="546" y="92" text-anchor="middle" class="viz-label-muted">4,000 chars, 40 @refs</text>
+<line x1="546" y1="110" x2="546" y2="156" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="554" y="136" class="viz-tick">snapshot</text>
+<rect x="460" y="160" width="172" height="60" rx="8" class="viz-box"/>
+<text x="546" y="186" text-anchor="middle" class="viz-label">The model</text>
+<text x="546" y="204" text-anchor="middle" class="viz-label-muted">reads text, picks a ref</text>
+<text x="435" y="182" text-anchor="middle" class="viz-tick">act</text>
+<line x1="458" y1="190" x2="412" y2="190" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<rect x="234" y="160" width="172" height="60" rx="8" class="viz-box-accent"/>
+<text x="320" y="186" text-anchor="middle" class="viz-label">One documented route</text>
+<text x="320" y="204" text-anchor="middle" class="viz-label-muted">click @e5, fill, batch</text>
+<line x1="232" y1="190" x2="186" y2="190" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<rect x="8" y="160" width="172" height="60" rx="8" class="viz-box"/>
+<text x="94" y="186" text-anchor="middle" class="viz-label">Chromium input</text>
+<text x="94" y="204" text-anchor="middle" class="viz-label-muted">native mouse and keys</text>
+<line x1="94" y1="158" x2="94" y2="112" class="viz-arrow" marker-end="url(#f3-ah)"/>
+<text x="102" y="136" class="viz-tick">click @e5</text>
+<rect x="8" y="250" width="624" height="56" rx="8" class="viz-box-ink"/>
+<text x="320" y="274" text-anchor="middle" class="viz-on-ink">What never crosses the socket</text>
+<text x="320" y="294" text-anchor="middle" class="viz-on-ink">JavaScript eval, CDP, Node.js, shell, filesystem</text>
+</svg>
+<figcaption>Illustrative: the loop drawn as structure, from the route table and isolation notes in <a href="https://github.com/shayanmohd/kamapathy/blob/main/docs/automation.md">docs/automation.md</a>; the budget on the bounded text box is the compact default.</figcaption>
+</figure>
+
+<p>The other half of the boundary is what goes back. Every observation runs the same fixed function through Electron&#39;s <code>executeJavaScriptInIsolatedWorld</code>, which <a href="https://www.electronjs.org/docs/latest/api/web-contents">the Electron docs</a> describe as working &quot;like executeJavaScript but evaluates scripts in an isolated context&quot;. There is exactly one such call in the main process, in <code>electron/automation.ts</code>, and it runs a function defined in the source, with the operation name and the agent&#39;s arguments passed as JSON-encoded values: data in that call, never code. The docs list what is absent: no arbitrary JavaScript, no Chrome DevTools Protocol, no Node.js, no shell, no filesystem. The skill tells the model the same thing: one documented route per call, and &quot;nothing runs inside the page&quot;.</p>
+<p>The transport is as narrow as the view. The server listens on a Unix socket in a per-profile directory created with mode 0o700, the socket file set to 0o600 once open; on Windows it is a named pipe called <code>kamapathy-</code> followed by 16 random bytes, new on every start. There is no token: the operating system account is the trust boundary, and nothing running as another account can open the socket.</p>
+<h2>A view is a decision</h2>
+<p>The DOM is not the page as a person sees it, and the accessibility tree is not the page as a model needs it. Either one, handed over whole, is a bigger prompt and a larger surface that still leaves the model to find the Save button among three hundred nodes. Deciding that the agent gets 4,000 characters, 40 controls, 80-character labels, 20 options per select and nothing executable is deciding what the agent is for: filling the form in front of it, in a page the person can watch and take over. The cost is real and the docs list it: closed shadow roots, PDF documents, canvas editors and JavaScript dialogs are out of reach, and the agent hands those to the person.</p>
+<p>Kamapathy is at version 0.2.0 on Electron 44 and React 19, MIT licensed, an early preview with unsigned installers (read on 12 October 2026). The code, fixtures and benchmark script are in the <a href="https://github.com/shayanmohd/kamapathy">repository on GitHub</a>. If you build a tool for agents, write down the budget first. The model will see whatever you give it, and the moment you can quote the snapshot in full, as I did above, you have decided what it is allowed to know.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">AI Agents</span><span class="tag-chip">Browser Automation</span><span class="tag-chip">Electron</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+                </div>
+                <aside class="post-aside hidden lg:block" aria-label="About the author">
+                    <div class="post-aside-inner">
+                        <div class="plate p-6 reveal">
+                            <img src="/assets/avatar-160.webp" alt="" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover bg-cream">
+                            <p class="font-display text-ink text-xl mt-4" style="font-weight:500;">Mohd Shayan</p>
+                            <p class="mono-meta text-muted mt-1">Product Engineer, AI Entrepreneur &amp; Philanthropist</p>
+                            <p class="text-body text-sm leading-relaxed mt-4">Founder &amp; CEO of <strong class="text-ink">SocialSure Private Limited</strong>, an AI-first company, building intelligent products and channeling that work into opportunity for children in need.</p>
+                            <a href="/#about" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-4 whitespace-nowrap">More about me <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg></a>
+                            <div class="flex justify-between mt-5">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/tools/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Free tools</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

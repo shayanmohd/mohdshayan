@@ -15,6 +15,7 @@ const ICONS = [
   'toolbox','broom','hand-coins','receipt','bank','chart-pie-slice','arrows-in','password','copy','download-simple',
   'trash','plus','arrows-clockwise','eye','eye-slash','upload-simple','shield-check','info',
   'wifi-high','phone','text-t','user','currency-inr','lock-simple','sparkle','file-zip',
+  'trend-up','coins','percent','text-align-left','text-aa','list-dashes','cake','ruler','calendar-dots','brackets-curly','binary','fingerprint',  'arrows-down-up','arrows-left-right','sort-ascending','swap','text-indent',
 ];
 const base = join(dirname(fileURLToPath(import.meta.url)), '..', 'node_modules', '@phosphor-icons', 'core') + '/';
 const symbols = ICONS.map(name => {

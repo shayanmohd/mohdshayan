@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compound Interest Calculator With Regular Contributions | Free</title>
+    <meta name="description" content="Free compound interest calculator with daily to yearly compounding, regular contributions and a year-by-year table of interest earned. Runs in your browser.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/tools/compound-interest/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mohdshayan.com/tools/compound-interest/">
+    <meta property="og:title" content="Compound Interest Calculator With Regular Contributions | Free">
+    <meta property="og:description" content="Free compound interest calculator with daily to yearly compounding, regular contributions and a year-by-year table of interest earned. Runs in your browser.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Compound Interest Calculator With Regular Contributions | Free">
+    <meta name="twitter:description" content="Free compound interest calculator with daily to yearly compounding, regular contributions and a year-by-year table of interest earned. Runs in your browser.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var m=document.cookie.match(/(?:^|; )theme=(dark|light)/);var s=m?m[1]:localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://mohdshayan.com/tools/compound-interest/#app",
+          "name": "Compound Interest Calculator",
+          "url": "https://mohdshayan.com/tools/compound-interest/",
+          "description": "Free compound interest calculator with daily to yearly compounding, regular contributions and a year-by-year table of interest earned. Runs in your browser.",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Any",
+          "browserRequirements": "Requires JavaScript",
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "author": {
+            "@type": "Person",
+            "@id": "https://mohdshayan.com/#person",
+            "name": "Mohd Shayan",
+            "url": "https://mohdshayan.com"
+          },
+          "publisher": {
+            "@type": "Person",
+            "@id": "https://mohdshayan.com/#person",
+            "name": "Mohd Shayan",
+            "url": "https://mohdshayan.com"
+          },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://mohdshayan.com/tools/compound-interest/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How is compound interest calculated?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A = P × (1 + r ÷ n)n × t, where P is the starting amount, r the annual rate as a decimal, n how many times a year interest is compounded and t the time in years. ₹1,00,000 at 8% for 10 years compounded yearly is ₹1,00,000 × 1.0810 = ₹2,15,892.50, so ₹1,15,892.50 of interest. Compounded monthly instead, n is 12 and the exponent 120, which gives ₹2,21,964.02."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What does the compounding frequency change?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "How soon earned interest starts earning interest of its own. The nominal rate stays the same, but the effective annual rate rises a little with each step: 8% compounded half-yearly is 8.16% a year, quarterly 8.243%, monthly 8.3% and daily 8.328%. Bank fixed deposits in India usually compound quarterly and PPF yearly, so pick the frequency your product uses."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How are regular contributions worked out?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Each contribution is added at the start or the end of its month or year and then grows at the rate for the time left, which is the annuity formula: contribution × ((1 + i)N − 1) ÷ i, where i is the rate per contribution period and N the number of contributions, times (1 + i) when paying at the start. ₹5,000 a month at 12% for 10 years, compounded monthly and paid at the end of each month, grows to ₹11,50,193.45 from ₹6,00,000 put in; paid at the start of each month it reaches ₹11,61,695.38. If interest compounds less often than you contribute, each contribution grows at the equivalent rate for its own months."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between compound and simple interest?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Simple interest is paid on the original deposit only: interest = P × r × t, so ₹1,00,000 at 8% for 10 years earns ₹80,000. Compound interest is also paid on the interest already earned, which is why the same deposit earns ₹1,15,892.50 with yearly compounding. The gap starts small and widens every year, so compounding matters most over long terms. The simple interest line in the results gives each contribution simple interest for the time it is invested."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How long does money take to double?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Divide 72 by the rate for a quick estimate: about 9 years at 8%, about 6 at 12%. The exact answer with yearly compounding is log 2 ÷ log(1 + r), which at 8% is 9.006 years: after 9 full years ₹1,00,000 has become ₹1,99,900.46, just short of double. Set the term to 9 years and then 10 to see it cross."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://mohdshayan.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Free tools",
+              "item": "https://mohdshayan.com/tools/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Compound Interest Calculator",
+              "item": "https://mohdshayan.com/tools/compound-interest/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/tools/" class="nav-link active" aria-current="page">Tools</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/tools/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Tools</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <section class="page-head pb-8 md:pb-10">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 reveal">
+                    <a href="/tools/" class="chip-pill"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-toolbox"></use></svg> Free tools</a>
+                    <span class="mono-meta text-muted">Business &amp; money</span>
+                </div>
+                <h1 class="h2 mt-4 max-w-3xl balance reveal">Compound interest calculator with regular <span class="text-gold-deep">contributions</span></h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Enter a deposit, a rate and a term to see what it grows to, how much of that is interest, and what each year adds, with monthly or yearly contributions if you make them. It is all calculated in your browser, so nothing you enter is sent anywhere.</p>
+            </div>
+        </section>
+        <section class="pb-10" aria-label="Compound interest calculator">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-grid" id="ci-form" autocomplete="off" onsubmit="return false" action="/tools/compound-interest/">
+                    <div class="tool-panel tool-stack">
+                        <div class="tool-panel-head">
+                            <h2 class="card-title">Your deposit</h2>
+                            <div class="flex items-center gap-2">
+                                <label for="ci-cur" class="hint">Currency</label>
+                                <select id="ci-cur" class="input !h-9 !w-auto !text-[0.8125rem] font-mono"></select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="ci-principal" class="field-label">Starting amount <span class="hint" id="ci-principal-words"></span></label>
+                            <span class="affix"><span class="affix-text pre" data-cur-symbol>₹</span><input id="ci-principal" class="input" inputmode="decimal"></span>
+                        </div>
+                        <div class="field-row three">
+                            <div class="field">
+                                <label for="ci-rate" class="field-label">Interest rate <span class="hint">per year</span></label>
+                                <span class="affix"><input id="ci-rate" class="input has-post" inputmode="decimal" value="8"><span class="affix-text post">%</span></span>
+                            </div>
+                            <div class="field">
+                                <label for="ci-years" class="field-label">Years</label>
+                                <input id="ci-years" class="input" inputmode="numeric" value="10">
+                            </div>
+                            <div class="field">
+                                <label for="ci-months" class="field-label">Months <span class="hint">0 to 11</span></label>
+                                <input id="ci-months" class="input" inputmode="numeric" value="0">
+                            </div>
+                        </div>
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">Interest compounded</legend>
+                            <div class="seg block wrap-sm">
+                                <label><input type="radio" name="freq" value="365"><span>Daily</span></label>
+                                <label><input type="radio" name="freq" value="12"><span>Monthly</span></label>
+                                <label><input type="radio" name="freq" value="4"><span>Quarterly</span></label>
+                                <label><input type="radio" name="freq" value="2"><span>Half-yearly</span></label>
+                                <label><input type="radio" name="freq" value="1" checked><span>Yearly</span></label>
+                            </div>
+                            <p class="field-help">How often earned interest is added to the balance and starts earning itself. Bank fixed deposits in India usually compound quarterly and PPF yearly; check the terms of your product.</p>
+                        </fieldset>
+
+                        <hr class="tool-divider">
+                        <p class="eyebrow">Regular contributions <span class="text-muted normal-case tracking-normal">· optional</span></p>
+                        <div class="field-row two">
+                            <div class="field">
+                                <label for="ci-contrib" class="field-label">Amount added each time</label>
+                                <span class="affix"><span class="affix-text pre" data-cur-symbol>₹</span><input id="ci-contrib" class="input" inputmode="decimal" placeholder="0"></span>
+                            </div>
+                            <fieldset class="field">
+                                <legend class="field-label mb-2">How often</legend>
+                                <div class="seg block">
+                                    <label><input type="radio" name="cfreq" value="12" checked><span>Every month</span></label>
+                                    <label><input type="radio" name="cfreq" value="1"><span>Every year</span></label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">Paid at the</legend>
+                            <div class="seg block">
+                                <label><input type="radio" name="when" value="end" checked><span>End of each period</span></label>
+                                <label><input type="radio" name="when" value="start"><span>Start of each period</span></label>
+                            </div>
+                            <p class="field-help">Paying at the start gives every contribution one extra period of growth, the way a SIP debited on the first of the month does.</p>
+                        </fieldset>
+                        <p class="field-error" id="ci-error" role="alert"></p>
+                    </div>
+
+                    <div class="tool-aside">
+                        <div class="bezel">
+                            <div class="readout" aria-live="polite">
+                                <p class="readout-label">Final amount</p>
+                                <p class="readout-value" id="ci-head">&ndash;</p>
+                                <p class="readout-sub" id="ci-head-sub"></p>
+                                <div class="split-bar" id="ci-split" role="img" aria-label="Share of starting amount, contributions and interest in the final amount"><span style="background:#4b89e6"></span><span style="background:#22987a"></span><span style="background:#b08a2e"></span></div>
+                                <div class="legend" id="ci-legend"></div>
+                                <dl class="readout-rows" id="ci-rows"></dl>
+                                <div class="flex flex-wrap gap-2 mt-5">
+                                    <button type="button" class="btn-ghost-dark" id="ci-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy summary</span></button>
+                                    <button type="button" class="btn-ghost-dark" id="ci-share"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-panel mt-4">
+                            <h2 class="card-title">How it was worked out</h2>
+                            <p class="mono-meta text-body mt-3 leading-relaxed" id="ci-formula"></p>
+                        </div>
+                        <p id="ci-live" class="sr-only" aria-live="polite"></p>
+                    </div>
+                </form>
+
+                <div class="tool-panel mt-6">
+                    <div class="tool-panel-head">
+                        <h2 class="card-title">Year by year</h2>
+                        <p class="field-help" id="ci-table-sub">Opening balance, money added, interest earned and closing balance for each year of the term.</p>
+                    </div>
+                    <div class="table-scroll mt-4">
+                        <table class="data-table">
+                            <thead><tr><th scope="col">Year</th><th scope="col">Opening</th><th scope="col">Contributions</th><th scope="col">Interest</th><th scope="col">Closing</th></tr></thead>
+                            <tbody id="ci-table"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p class="mono-meta text-muted mt-5 flex items-start gap-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> Calculated on your device. Nothing you enter is sent anywhere; Copy link puts the figures after the # in the address, which browsers never send to a server.</p>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">Compounding frequency at a glance</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">Your deposit, rate, term and contributions at each frequency. Compounding more often lifts the effective annual rate a little; the gap grows with the rate and the term.</p>
+                    </div>
+                    <div class="tool-panel">
+                        <div class="table-scroll !max-h-none !border-t-0">
+                            <table class="data-table" id="ci-glance">
+                                <thead><tr><th scope="col">Compounded</th><th scope="col">Times a year</th><th scope="col">Effective rate</th><th scope="col">Interest</th><th scope="col">Final amount</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 md:py-20">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">Questions</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">Built by <a href="https://mohdshayan.com/" class="sweep-link text-ink">Mohd Shayan</a>. Found a problem or have an idea? <a href="mailto:contact@mohdshayan.com?subject=Compound%20Interest%20Calculator" class="sweep-link text-ink">Send a note</a>.</p>
+                    </div>
+                    <div>
+                        <details class="faq" open>
+                            <summary>How is compound interest calculated?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>A = P × (1 + r ÷ n)<sup>n × t</sup>, where P is the starting amount, r the annual rate as a decimal, n how many times a year interest is compounded and t the time in years. ₹1,00,000 at 8% for 10 years compounded yearly is ₹1,00,000 × 1.08<sup>10</sup> = ₹2,15,892.50, so ₹1,15,892.50 of interest. Compounded monthly instead, n is 12 and the exponent 120, which gives ₹2,21,964.02.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>What does the compounding frequency change?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>How soon earned interest starts earning interest of its own. The nominal rate stays the same, but the effective annual rate rises a little with each step: 8% compounded half-yearly is 8.16% a year, quarterly 8.243%, monthly 8.3% and daily 8.328%. Bank fixed deposits in India usually compound quarterly and PPF yearly, so pick the frequency your product uses.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>How are regular contributions worked out?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>Each contribution is added at the start or the end of its month or year and then grows at the rate for the time left, which is the annuity formula: contribution × ((1 + i)<sup>N</sup> − 1) ÷ i, where i is the rate per contribution period and N the number of contributions, times (1 + i) when paying at the start. ₹5,000 a month at 12% for 10 years, compounded monthly and paid at the end of each month, grows to ₹11,50,193.45 from ₹6,00,000 put in; paid at the start of each month it reaches ₹11,61,695.38. If interest compounds less often than you contribute, each contribution grows at the equivalent rate for its own months.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>What is the difference between compound and simple interest?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>Simple interest is paid on the original deposit only: interest = P × r × t, so ₹1,00,000 at 8% for 10 years earns ₹80,000. Compound interest is also paid on the interest already earned, which is why the same deposit earns ₹1,15,892.50 with yearly compounding. The gap starts small and widens every year, so compounding matters most over long terms. The simple interest line in the results gives each contribution simple interest for the time it is invested.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>How long does money take to double?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>Divide 72 by the rate for a quick estimate: about 9 years at 8%, about 6 at 12%. The exact answer with yearly compounding is log 2 ÷ log(1 + r), which at 8% is 9.006 years: after 9 full years ₹1,00,000 has become ₹1,99,900.46, just short of double. Set the term to 9 years and then 10 to see it cross.</p></div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pb-24">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <h2 class="h3-serif" style="font-weight:500;">More free tools</h2>
+                    <a href="/tools/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">All tools <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg></a>
+                </div>
+                <div class="ruled-grid sm:grid-cols-2 lg:grid-cols-4 mt-6">
+                    <a href="/tools/commission/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-hand-coins"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Commission Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Flat or tiered plans with base pay and splits, plus a reverse mode that finds the sales needed to hit a target.</p>
+                    </a>
+                    <a href="/tools/gst/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-receipt"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">GST Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Add or remove GST at any rate, with the CGST, SGST and IGST split ready for an invoice.</p>
+                    </a>
+                    <a href="/tools/emi/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-bank"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">EMI Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Monthly EMI, total interest, a full amortisation schedule, and exactly what prepaying saves.</p>
+                    </a>
+                    <a href="/tools/margin/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-chart-pie-slice"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Margin Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Margin, markup and profit from cost and price, or the selling price you need for a target margin.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/tools/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Free tools</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+    <script type="module" src="/assets/tools/compound-interest.js"></script>
+</body>
+</html>

@@ -34,6 +34,11 @@
       <image:caption>Portfolio showcasing applied AI/ML, Web3, fullstack web development, DevOps, and product engineering projects</image:caption>
     </image:image>
     <image:image>
+      <image:loc>https://mohdshayan.com/assets/projects/kamapathy.webp</image:loc>
+      <image:title>Kamapathy - Desktop Browser Shared With AI Agents</image:title>
+      <image:caption>Open-source desktop browser for macOS, Windows and Linux where AI agents browse in spaces of their own, in plain sight, and the person can take over with one click</image:caption>
+    </image:image>
+    <image:image>
       <image:loc>https://mohdshayan.com/assets/projects/shayanomaly.webp</image:loc>
       <image:title>Shayanomaly - Web3 Quantitative Trading Terminal</image:title>
       <image:caption>Browser-based trading terminal streaming live order books from five exchanges with cross-venue arbitrage detection</image:caption>

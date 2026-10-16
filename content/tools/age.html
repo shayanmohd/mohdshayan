@@ -1,0 +1,76 @@
+        <section class="pb-10" aria-label="Age calculator">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-grid" id="age-form" autocomplete="off" onsubmit="return false" action="/tools/age/">
+                    <div class="tool-panel tool-stack">
+                        <div class="field">
+                            <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
+                                <label for="age-dob" class="field-label" id="age-dob-label">Date of birth</label>
+                                <div class="seg" role="radiogroup" aria-label="How to enter the date of birth">
+                                    <label><input type="radio" name="entry" value="pick" checked><span>Calendar</span></label>
+                                    <label><input type="radio" name="entry" value="type"><span>Typed</span></label>
+                                </div>
+                            </div>
+                            <input id="age-dob" class="input" type="date" max="9999-12-31">
+                            <div class="field" id="age-typed" hidden>
+                                <input id="age-dob-text" class="input" type="text" placeholder="14 March 1990" aria-labelledby="age-dob-label" aria-describedby="age-typed-help age-dob-error" spellcheck="false">
+                                <p class="field-help" id="age-typed-help">Day first: 14/03/1990, 14-03-1990 or 1990-03-14, or write the month out, as in 14 March 1990. Use a four-digit year.</p>
+                                <p class="field-error" id="age-dob-error"></p>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3">
+                                <label for="age-on" class="field-label">Age on</label>
+                                <button type="button" class="text-btn" id="age-today"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-calendar-blank"></use></svg> Today</button>
+                            </div>
+                            <input id="age-on" class="input" type="date" max="9999-12-31">
+                            <p class="field-help">Today, from your device's clock and time zone. Change it to see the age on any other day, past or future.</p>
+                        </div>
+                        <p class="field-error" id="age-error" role="alert"></p>
+                    </div>
+
+                    <div class="tool-aside">
+                        <div class="bezel">
+                            <div class="readout" aria-live="polite">
+                                <p class="readout-label" id="age-head-label">Age</p>
+                                <p class="readout-value" id="age-head"></p>
+                                <p class="readout-sub" id="age-head-sub"></p>
+                                <dl class="readout-rows" id="age-rows"></dl>
+                                <div class="flex flex-wrap gap-2 mt-5">
+                                    <button type="button" class="btn-ghost-dark" id="age-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy summary</span></button>
+                                    <button type="button" class="btn-ghost-dark" id="age-share"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-panel mt-4" aria-live="polite">
+                            <div class="flex items-center gap-3">
+                                <span class="icon-sq wash shrink-0"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-cake"></use></svg></span>
+                                <h2 class="card-title">Next birthday</h2>
+                            </div>
+                            <p class="display-m mt-4" id="age-next"></p>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2" id="age-next-sub"></p>
+                        </div>
+                        <p id="age-live" class="sr-only" aria-live="polite"></p>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">The next ten birthdays</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">The weekday each one falls on and how far away it is, counted from the date above.</p>
+                    </div>
+                    <div class="tool-panel">
+                        <div class="table-scroll !max-h-none !border-t-0">
+                            <table class="data-table" id="age-ahead">
+                                <thead><tr><th scope="col">Birthday</th><th scope="col">Turning</th><th scope="col">Days away</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

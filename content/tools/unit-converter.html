@@ -1,0 +1,127 @@
+        <section class="pb-10" aria-label="Unit converter">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-grid" id="uc-form" autocomplete="off" onsubmit="return false" action="/tools/unit-converter/">
+                    <div class="tool-panel tool-stack">
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">What are you converting?</legend>
+                            <div class="seg" id="uc-categories" role="radiogroup"></div>
+                        </fieldset>
+                        <div class="field">
+                            <label for="uc-from-value" class="field-label">From</label>
+                            <div class="grid gap-3 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+                                <input id="uc-from-value" class="input !h-[52px] !text-lg" inputmode="decimal" value="5">
+                                <select id="uc-from" class="input !h-[52px]" aria-label="Unit to convert from"></select>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <span class="flex-1 h-px bg-hairline" aria-hidden="true"></span>
+                            <button type="button" class="icon-btn" id="uc-swap" aria-label="Swap the units"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrows-down-up"></use></svg></button>
+                            <span class="flex-1 h-px bg-hairline" aria-hidden="true"></span>
+                        </div>
+                        <div class="field">
+                            <label for="uc-to-value" class="field-label">To <span class="hint">type here for the reverse</span></label>
+                            <div class="grid gap-3 sm:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+                                <input id="uc-to-value" class="input !h-[52px] !text-lg" inputmode="decimal">
+                                <select id="uc-to" class="input !h-[52px]" aria-label="Unit to convert to"></select>
+                            </div>
+                        </div>
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">Significant figures</legend>
+                            <div class="seg" id="uc-precision" role="radiogroup"></div>
+                            <p class="field-help">Rounding for display only. The maths behind every figure uses the full, exact factors.</p>
+                        </fieldset>
+                    </div>
+
+                    <div class="tool-aside">
+                        <div class="bezel">
+                            <div class="readout" aria-live="polite">
+                                <p class="readout-label" id="uc-head-label">Feet to centimetres</p>
+                                <p class="readout-value" id="uc-head">152.4 cm</p>
+                                <p class="readout-sub" id="uc-head-sub">5 ft = 152.4 cm</p>
+                                <dl class="readout-rows" id="uc-rows"></dl>
+                                <div class="flex flex-wrap gap-2 mt-5">
+                                    <button type="button" class="btn-ghost-dark" id="uc-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy result</span></button>
+                                    <button type="button" class="btn-ghost-dark" id="uc-share"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-panel mt-4">
+                            <h2 class="card-title">How it was worked out</h2>
+                            <p class="mono-meta text-body mt-3 leading-relaxed" id="uc-formula"></p>
+                        </div>
+                        <p id="uc-live" class="sr-only" aria-live="polite"></p>
+                    </div>
+                </form>
+
+                <div class="tool-panel mt-6">
+                    <div class="tool-panel-head">
+                        <div>
+                            <h2 class="card-title" id="uc-table-title">5 ft in every length unit</h2>
+                            <p class="field-help mt-1">The same amount in each unit of the category, at the precision chosen above.</p>
+                        </div>
+                    </div>
+                    <div class="table-scroll mt-4 !max-h-none">
+                        <table class="data-table" id="uc-table">
+                            <thead><tr><th scope="col">Unit</th><th scope="col">Value</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <p class="mono-meta text-muted mt-5 flex items-start gap-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> Everything is worked out on your device. Nothing you type is sent anywhere.</p>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">Where the factors come from</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">Each unit is defined once, from the agreement or standard that fixes it. None of the factors is rounded, so the only rounding is the one you choose for display.</p>
+                    </div>
+                    <div class="ruled-grid sm:grid-cols-2">
+                        <div class="cell">
+                            <h3 class="card-title">Length</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">1 inch is 25.4 mm exactly, fixed by the international yard and pound agreement of 1959. The foot (12 in), yard (3 ft) and mile (1,760 yd) follow from it: this is the international foot, not the US survey foot of 1200/3937 m, which the US retired at the end of 2022. The nautical mile has been 1,852 m exactly since 1929.</p>
+                            <p class="mono-meta mt-4 text-gold-deep" data-eg="1|mi|m"></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Weight</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">1 pound is 0.45359237 kg exactly, from the same 1959 agreement. An ounce is a sixteenth of a pound, a stone is 14 pounds, and a tonne is 1,000 kg. Strictly these are units of mass; weight is the everyday word for them.</p>
+                            <p class="mono-meta mt-4 text-gold-deep" data-eg="1|st|kg"></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Temperature</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Kelvin is the base. Celsius adds 273.15 to reach it; Fahrenheit adds 459.67 and multiplies by 5/9. The offset goes on before the factor, so temperatures take the same route through the base unit as everything else, and the familiar °F = °C × 9/5 + 32 falls out of it.</p>
+                            <p class="mono-meta mt-4 text-gold-deep" data-eg="68|f|c"></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Area</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Each unit is the square of its length unit: a square inch is 25.4² = 645.16 mm². An acre is 4,840 square yards, which makes it 4,046.8564224 m² exactly, and a hectare is 10,000 m².</p>
+                            <p class="mono-meta mt-4 text-gold-deep" data-eg="1|ac|m2"></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Volume</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">1 US gallon is 231 cubic inches, which is 3.785411784 L exactly. The quart, pint, cup, fluid ounce, tablespoon and teaspoon are 1/4, 1/8, 1/16, 1/128, 1/256 and 1/768 of it. The UK gallon is 4.54609 L exactly, set by the Weights and Measures Act 1985.</p>
+                            <p class="mono-meta mt-4 text-gold-deep" data-eg="1|gal|l"></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Speed</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Length over time. A mile per hour is 1,609.344 m in 3,600 s, which is 0.44704 m/s exactly. A knot is one nautical mile per hour. 1 km/h is 5/18 m/s, a fraction with no finite decimal form, so it is kept as a fraction rather than cut short.</p>
+                            <p class="mono-meta mt-4 text-gold-deep" data-eg="1|mph|mps"></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Data</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">A byte is 8 bits. KB, MB, GB and TB go up by 1,000 at each step, as the SI prefixes say and as drives are labelled. KiB, MiB, GiB and TiB go up by 1,024, the binary prefixes of IEC 80000-13, which is how Windows and many Linux tools report sizes; macOS, iOS and Android count in thousands.</p>
+                            <p class="mono-meta mt-4 text-gold-deep" data-eg="1|tb|gib"></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Rounding</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Results are shown to the number of significant figures you pick, from 3 to 12, counted from the first non-zero digit, with trailing zeros dropped. The maths always runs at full precision, so the setting changes how much of the answer you see, never the answer. A figure that would need more than 20 decimal places is shown as a power of ten.</p>
+                            <p class="mono-meta mt-4 text-gold-deep" data-eg="100|kmh|mph" data-live></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

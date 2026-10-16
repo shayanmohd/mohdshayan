@@ -38,6 +38,13 @@ CustomGlide is the software services brand of SocialSure Private Limited, founde
 
 Mohd Shayan's undergraduate research paper, "Implementation and Analysis of the CYK Algorithm for Context-Free Grammar Recognition: Algorithmic Complexity, Probabilistic Extensions, and Theoretical Boundaries," was selected for the ACL 2026 Student Research Workshop. Supervised by Dr. Laxminarayan Das at Delhi Technological University, it covers a deterministic CYK parser with a measured cubic-time complexity profile, a probabilistic Viterbi extension for ambiguity resolution, and Pumping-Lemma proofs on the limits of context-free recognition.
 
+## Kamapathy
+
+Kamapathy is an open-source desktop browser built by Mohd Shayan for sharing a browser with AI agents. Each agent works in a space of its own, in plain sight, using the person's sign-ins, and the person can take over with one click and hand control back. It is Chromium underneath, with a small interface on top and a local API that Claude Code, Codex, Cursor or any agent that can run a command can drive. macOS, Windows and Linux; MIT licensed; no account and no telemetry.
+
+- Website and download: https://kamapathy.app
+- Source code: https://github.com/shayanmohd/kamapathy
+
 ## Writing
 
 Mohd Shayan publishes essays and notes on engineering, AI, and building technology with purpose at https://mohdshayan.com/blog/. RSS feed: https://mohdshayan.com/feed.xml
@@ -62,6 +69,18 @@ Free utilities built by Mohd Shayan that run entirely in the browser (nothing ty
 - QR Code Generator (https://mohdshayan.com/tools/qr/): static QR codes for links, text, Wi-Fi, UPI payments, email, phone and contact cards, as PNG or SVG.
 - Image Compressor (https://mohdshayan.com/tools/compress/): compresses, resizes and converts images to WebP, JPEG or AVIF in the browser, with zip download.
 - Password Generator (https://mohdshayan.com/tools/password/): random passwords, EFF-wordlist passphrases and PINs from the Web Crypto API.
+- SIP Calculator (https://mohdshayan.com/tools/sip/): Maturity value of a monthly SIP with step-up and inflation, a lump sum, or the monthly amount a goal needs, year by year.
+- Compound Interest Calculator (https://mohdshayan.com/tools/compound-interest/): Growth of a deposit at any compounding frequency, with monthly or yearly contributions, year by year, against simple interest.
+- Percentage Calculator (https://mohdshayan.com/tools/percentage/): Percent of a number, what percent one is of another, percentage change, a figure raised or cut by a percent, and reverse percentages.
+- Word Counter (https://mohdshayan.com/tools/word-counter/): Words, characters, sentences, reading and speaking time, and the words you use most, counted as you type in any language.
+- Case Converter (https://mohdshayan.com/tools/case-converter/): Switch text between sentence, title, upper and lower case, or camelCase, snake_case and kebab-case for code, with line breaks kept.
+- Duplicate Line Remover (https://mohdshayan.com/tools/lines/): Remove duplicate and empty lines, then trim, sort, shuffle, reverse, number or prefix every line, with live counts of what changed.
+- Age Calculator (https://mohdshayan.com/tools/age/): Exact age in years, months and days, the totals in weeks, days and hours, the weekday of birth, and the next birthday.
+- Unit Converter (https://mohdshayan.com/tools/unit-converter/): Length, weight, temperature, area, volume, speed and data, converted through exact factors with a table of every unit.
+- Days Between Dates (https://mohdshayan.com/tools/days-between/): Count the days, weeks, months and working days between two dates, or add and subtract days, weeks, months and years from a date.
+- JSON Formatter (https://mohdshayan.com/tools/json/): Pretty-print, minify, validate and sort JSON, with the first error pinpointed by line and column. Nothing is uploaded.
+- Base64 & URL Encoder (https://mohdshayan.com/tools/encode/): Base64, URL encoding, HTML entities and hex, both directions and UTF-8 correct, with URL-safe Base64 and padding options.
+- Hash & UUID Generator (https://mohdshayan.com/tools/hash/): MD5 and SHA digests of text or any file, a checksum compare field, and up to 100 random UUIDs, all computed on your device.
 
 ## Philanthropy
 

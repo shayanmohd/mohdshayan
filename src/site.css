@@ -444,6 +444,8 @@ article:hover .shot-mat img { transform: scale(1.02); }
 .prose li + li { margin-top: .4em; }
 .prose blockquote { font-family: var(--font-display); font-style: italic; font-size: 1.35rem; line-height: 1.4; color: var(--ink); border-left: 2px solid #c19a3d; padding-left: 1.25rem; }
 .prose code { font-family: var(--font-mono); font-variant-ligatures: none; font-size: .875em; background: var(--cream); border: 1px solid var(--hairline-soft); border-radius: 4px; padding: .1em .4em; color: var(--ink); }
+/* Long file paths and identifiers in inline code may break rather than push the page sideways on phones */
+.prose :not(pre) > code { overflow-wrap: anywhere; }
 .prose pre { font-variant-ligatures: none; background: var(--dark); color: #f5f2ea; border-radius: 12px; padding: 1.25rem 1.5rem; overflow-x: auto; font-size: .875rem; line-height: 1.6; border-top: 2px solid #8a6410; }
 .prose pre code { background: transparent; border: 0; padding: 0; color: inherit; font-size: inherit; }
 .prose img { border-radius: 8px; border: 1px solid var(--hairline); }
@@ -617,7 +619,7 @@ input[type="color"].input::-moz-color-swatch { border: 0; border-radius: 3px; }
     transition: color .2s var(--ease), border-color .2s var(--ease); }
 .icon-btn:hover { color: var(--gold-text); border-color: var(--gold-text); }
 .icon-btn:disabled, .btn-ink:disabled, .btn-ghost:disabled { opacity: .45; cursor: not-allowed; }
-.text-btn { display: inline-flex; align-items: center; gap: .4rem; font-size: .8125rem; font-weight: 550; color: var(--gold-text); }
+.text-btn { display: inline-flex; align-items: center; gap: .4rem; min-height: 1.5rem; font-size: .8125rem; font-weight: 550; color: var(--gold-text); }
 .text-btn:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* Result readout: a dark plate seated in the site's bezel */

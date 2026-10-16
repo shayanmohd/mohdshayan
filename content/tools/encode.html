@@ -1,0 +1,102 @@
+        <section class="pb-10" aria-label="Base64 and URL encoder">
+            <div class="max-w-content mx-auto px-6">
+                <div class="tool-panel">
+                    <div class="flex flex-wrap gap-x-8 gap-y-5 items-end">
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">Codec</legend>
+                            <div class="seg wrap-sm">
+                                <label><input type="radio" name="codec" value="base64" checked><span>Base64</span></label>
+                                <label><input type="radio" name="codec" value="url"><span>URL</span></label>
+                                <label><input type="radio" name="codec" value="html"><span>HTML entities</span></label>
+                                <label><input type="radio" name="codec" value="hex"><span>Hex</span></label>
+                            </div>
+                        </fieldset>
+                        <div data-codec="base64" class="flex flex-wrap gap-x-6 gap-y-3 pb-2">
+                            <label class="check"><input type="checkbox" id="en-urlsafe"> <span>URL-safe alphabet<small>- and _ instead of + and /</small></span></label>
+                            <label class="check"><input type="checkbox" id="en-nopad"> <span>Drop the = padding<small>As JWTs and most URL-safe uses do</small></span></label>
+                        </div>
+                        <fieldset data-codec="url" class="field" hidden>
+                            <legend class="field-label mb-2">Encode as</legend>
+                            <div class="seg">
+                                <label><input type="radio" name="urlmode" value="component" checked><span>A value</span></label>
+                                <label><input type="radio" name="urlmode" value="whole"><span>A whole URL</span></label>
+                            </div>
+                        </fieldset>
+                        <div data-codec="html" class="flex flex-wrap gap-x-8 gap-y-5 items-end" hidden>
+                            <fieldset class="field">
+                                <legend class="field-label mb-2">Entity style</legend>
+                                <div class="seg">
+                                    <label><input type="radio" name="style" value="named" checked><span>Named &amp;eacute;</span></label>
+                                    <label><input type="radio" name="style" value="decimal"><span>Decimal &amp;#233;</span></label>
+                                    <label><input type="radio" name="style" value="hex"><span>Hex &amp;#xE9;</span></label>
+                                </div>
+                            </fieldset>
+                            <label class="check pb-2"><input type="checkbox" id="en-nonascii" checked> <span>Also encode non-ASCII characters<small>Accents, symbols and emoji, not only &amp; &lt; &gt; " and '</small></span></label>
+                        </div>
+                        <div data-codec="hex" class="pb-2" hidden>
+                            <label class="check"><input type="checkbox" id="en-spaced"> <span>Space between bytes<small>48 65 6c rather than 48656c</small></span></label>
+                        </div>
+                    </div>
+                    <p class="field-help mt-3" id="en-codec-help"></p>
+
+                    <hr class="tool-divider">
+
+                    <div class="tool-grid even">
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3 min-h-[36px]">
+                                <label for="en-in" class="field-label">Input</label>
+                                <div class="flex items-center gap-4">
+                                    <button type="button" class="text-btn" id="en-sample"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkle"></use></svg> Try an example</button>
+                                    <button type="button" class="text-btn" id="en-clear" hidden><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-trash"></use></svg> Clear</button>
+                                </div>
+                            </div>
+                            <textarea id="en-in" class="input mono" rows="10" placeholder="Paste text to encode, or encoded text to decode." autocomplete="off" spellcheck="false" aria-describedby="en-status"></textarea>
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <p class="hint" id="en-in-stats">0 characters · 0 bytes</p>
+                                <div class="chips" role="group" aria-label="Direction">
+                                    <button type="button" class="chip-btn" id="en-encode" aria-pressed="true">Encode</button>
+                                    <button type="button" class="chip-btn" id="en-decode" aria-pressed="false">Decode</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="flex items-center min-h-[36px]">
+                                <label for="en-out" class="field-label">Output</label>
+                            </div>
+                            <textarea id="en-out" class="input mono" rows="10" readonly spellcheck="false" placeholder="The result appears here as you type."></textarea>
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <p class="status-line" id="en-status" aria-live="polite"></p>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" class="icon-btn" id="en-swap" aria-label="Swap: make the output the input" title="Swap"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-swap"></use></svg></button>
+                                    <button type="button" class="icon-btn" id="en-download" aria-label="Download as a text file" title="Download .txt"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-download-simple"></use></svg></button>
+                                    <button type="button" class="btn-ink btn-sm" id="en-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy output</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="en-live" class="sr-only" aria-live="polite"></p>
+                </div>
+
+                <p class="mono-meta text-muted mt-5 flex items-start gap-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> Encoded and decoded on your device. Nothing you paste is sent anywhere.</p>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">One text, every codec</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">What <em>/search?q=Tom &amp; Jerry's café</em> becomes in each codec. The two URL rows show what a whole URL keeps that a value does not: the / ? = and &amp; that give it its structure.</p>
+                    </div>
+                    <div class="tool-panel">
+                        <div class="table-scroll !max-h-none !border-t-0">
+                            <table class="data-table" id="en-glance">
+                                <thead><tr><th scope="col">Codec</th><th scope="col" class="!text-left">Result</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

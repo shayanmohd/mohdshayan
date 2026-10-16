@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duplicate Line Remover: Dedupe, Sort and Clean Any List | Free</title>
+    <meta name="description" content="Free duplicate line remover: trim, drop empty lines, sort A to Z or naturally, shuffle, reverse and number any list. Runs in your browser; nothing is uploaded.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/tools/lines/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mohdshayan.com/tools/lines/">
+    <meta property="og:title" content="Duplicate Line Remover: Dedupe, Sort and Clean Any List | Free">
+    <meta property="og:description" content="Free duplicate line remover: trim, drop empty lines, sort A to Z or naturally, shuffle, reverse and number any list. Runs in your browser; nothing is uploaded.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Duplicate Line Remover: Dedupe, Sort and Clean Any List | Free">
+    <meta name="twitter:description" content="Free duplicate line remover: trim, drop empty lines, sort A to Z or naturally, shuffle, reverse and number any list. Runs in your browser; nothing is uploaded.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var m=document.cookie.match(/(?:^|; )theme=(dark|light)/);var s=m?m[1]:localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebApplication",
+          "@id": "https://mohdshayan.com/tools/lines/#app",
+          "name": "Duplicate Line Remover",
+          "url": "https://mohdshayan.com/tools/lines/",
+          "description": "Free duplicate line remover: trim, drop empty lines, sort A to Z or naturally, shuffle, reverse and number any list. Runs in your browser; nothing is uploaded.",
+          "applicationCategory": "UtilitiesApplication",
+          "operatingSystem": "Any",
+          "browserRequirements": "Requires JavaScript",
+          "isAccessibleForFree": true,
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "INR"
+          },
+          "author": {
+            "@type": "Person",
+            "@id": "https://mohdshayan.com/#person",
+            "name": "Mohd Shayan",
+            "url": "https://mohdshayan.com"
+          },
+          "publisher": {
+            "@type": "Person",
+            "@id": "https://mohdshayan.com/#person",
+            "name": "Mohd Shayan",
+            "url": "https://mohdshayan.com"
+          },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://mohdshayan.com/tools/lines/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Which duplicate is kept, and does case matter?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "The first copy of a line stays exactly where it is, with its original spelling and spacing, and every later copy is removed. With Case-sensitive on, Apple and apple are different lines: the list apple, Apple, banana, apple keeps apple, Apple and banana, removing one duplicate. Switch it off and the same list keeps only apple and banana, removing two."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "In what order are the options applied?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Always the same seven steps: trim, remove empty lines, remove duplicates, sort, reverse, number, then prefix and suffix. The order matters. Trimming first means apple and apple&nbsp; count as one line. Numbering after sorting means the numbers run 1, 2, 3 down the finished list. The prefix goes on last, so a prefix of -&nbsp; with numbering gives - 1. apple."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What is the difference between A to Z and natural sort?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A to Z sorts in dictionary order, so apple comes before Banana instead of every capital jumping to the front, but it compares digits one character at a time: img1.png, img10.png, img2.png. Natural sort reads each run of digits as a number and gives img1.png, img2.png, img10.png, which is what you want for file names and version numbers. Random shuffle is a Fisher-Yates shuffle fed by crypto.getRandomValues, so every order is equally likely."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How are spaces and empty lines handled?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Trim whitespace removes spaces and tabs from both ends of every line. Ignore surrounding whitespace when comparing treats apple&nbsp; as a duplicate of apple while leaving the surviving line exactly as you typed it. Remove empty lines drops blank lines and lines that hold only spaces or tabs, and reports them as empty removed. Without it, blank lines are ordinary lines, so duplicate removal keeps the first blank line and drops the rest."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is my list uploaded, and how long can it be?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No. Everything happens in your browser with plain JavaScript, and the page makes no network request with your text. Copying and downloading are done by the browser on your device too. Processing a 50,000-line list takes a fraction of a second on an ordinary laptop; drawing that much text into the two boxes is what keeps the browser busiest. The practical limit is how much text your browser can hold in a text box."
+              }
+            }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://mohdshayan.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Free tools",
+              "item": "https://mohdshayan.com/tools/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Duplicate Line Remover",
+              "item": "https://mohdshayan.com/tools/lines/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link">Blog</a></li>
+                <li><a href="/tools/" class="nav-link active" aria-current="page">Tools</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/tools/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Tools</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <section class="page-head pb-8 md:pb-10">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 reveal">
+                    <a href="/tools/" class="chip-pill"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-toolbox"></use></svg> Free tools</a>
+                    <span class="mono-meta text-muted">Writing</span>
+                </div>
+                <h1 class="h2 mt-4 max-w-3xl balance reveal">Remove duplicate lines and <span class="text-gold-deep">tidy</span> any list</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Paste a list and get it back without duplicates or blank lines, trimmed, sorted and numbered the way you want. It all runs on your device, so your text is never uploaded.</p>
+            </div>
+        </section>
+        <section class="pb-10" aria-label="Duplicate line remover">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-panel" id="ln-form" autocomplete="off" onsubmit="return false" action="/tools/lines/">
+                    <div class="grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-[1.25fr_1fr_1.25fr]">
+                        <fieldset class="field">
+                            <legend class="field-label mb-3">Clean up</legend>
+                            <div class="grid gap-3">
+                                <label class="check"><input type="checkbox" id="ln-dedupe" checked> <span>Remove duplicate lines<small>Keeps the first copy of each line.</small></span></label>
+                                <label class="check pl-7" id="ln-case-label"><input type="checkbox" id="ln-case" checked> <span>Case-sensitive<small>Apple and apple differ.</small></span></label>
+                                <label class="check pl-7" id="ln-space-label"><input type="checkbox" id="ln-space" checked> Ignore surrounding whitespace when comparing</label>
+                                <label class="check"><input type="checkbox" id="ln-trim"> Trim whitespace from each line</label>
+                                <label class="check"><input type="checkbox" id="ln-empty"> <span>Remove empty lines<small>Lines of only spaces or tabs count as empty.</small></span></label>
+                            </div>
+                        </fieldset>
+                        <fieldset class="field">
+                            <legend class="field-label mb-3">Order</legend>
+                            <div class="grid gap-4">
+                                <div class="field">
+                                    <label for="ln-sort" class="field-label">Sort</label>
+                                    <select id="ln-sort" class="input">
+                                        <option value="none" selected>Keep the order</option>
+                                        <option value="az">A to Z</option>
+                                        <option value="za">Z to A</option>
+                                        <option value="short">Shortest first</option>
+                                        <option value="long">Longest first</option>
+                                        <option value="natural">Natural (file2 before file10)</option>
+                                        <option value="random">Random shuffle</option>
+                                    </select>
+                                </div>
+                                <label class="check"><input type="checkbox" id="ln-reverse"> Reverse order</label>
+                            </div>
+                        </fieldset>
+                        <fieldset class="field">
+                            <legend class="field-label mb-3">Add to each line</legend>
+                            <div class="grid gap-4">
+                                <label class="check"><input type="checkbox" id="ln-number"> Line numbers <span class="hint">1. 2. 3.</span></label>
+                                <div class="field-row two">
+                                    <div class="field">
+                                        <label for="ln-prefix" class="field-label">Prefix</label>
+                                        <input id="ln-prefix" class="input mono" spellcheck="false" placeholder="- ">
+                                    </div>
+                                    <div class="field">
+                                        <label for="ln-suffix" class="field-label">Suffix</label>
+                                        <input id="ln-suffix" class="input mono" spellcheck="false" placeholder=",">
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <p class="field-help mt-5">Applied in this order: trim, remove empty lines, remove duplicates, sort, reverse, number, then prefix and suffix.</p>
+
+                    <hr class="tool-divider">
+
+                    <div class="tool-grid even">
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3 min-h-[36px]">
+                                <label for="ln-in" class="field-label">Your lines</label>
+                                <div class="flex items-center gap-4">
+                                    <button type="button" class="text-btn" id="ln-sample"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkle"></use></svg> Try an example</button>
+                                    <button type="button" class="text-btn" id="ln-clear" hidden><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-trash"></use></svg> Clear</button>
+                                </div>
+                            </div>
+                            <textarea id="ln-in" class="input mono" rows="16" placeholder="Paste or type your list, one item per line." spellcheck="false"></textarea>
+                            <p class="hint" id="ln-in-stats">0 lines · 0 characters</p>
+                        </div>
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3 min-h-[36px]">
+                                <label for="ln-out" class="field-label">Result</label>
+                            </div>
+                            <textarea id="ln-out" class="input mono" rows="16" readonly spellcheck="false" placeholder="Your cleaned lines appear here as you type."></textarea>
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <div class="count-chips" id="ln-stats" role="group" aria-label="What changed"></div>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" class="icon-btn" id="ln-download" aria-label="Download as a text file" title="Download .txt"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-download-simple"></use></svg></button>
+                                    <button type="button" class="btn-ink btn-sm" id="ln-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy result</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="ln-live" class="sr-only" aria-live="polite"></p>
+                </form>
+
+                <p class="mono-meta text-muted mt-5 flex items-start gap-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> Everything runs on your device. Your text is never uploaded.</p>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">The order things happen in</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">The options always run in the same seven steps, whichever you tick first. That is why trimmed lines dedupe properly, and why line numbers run 1, 2, 3 down the finished list.</p>
+                    </div>
+                    <div class="tool-panel">
+                        <ol class="divide-y divide-hairline">
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">1</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Trim whitespace</p><p class="text-body text-sm leading-relaxed mt-1">Spaces and tabs at the start and end of every line are removed, so the steps that follow see the bare text.</p></div>
+                            </li>
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">2</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Remove empty lines</p><p class="text-body text-sm leading-relaxed mt-1">Lines with nothing in them, or nothing but spaces and tabs, are dropped and counted as empty removed.</p></div>
+                            </li>
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">3</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Remove duplicates</p><p class="text-body text-sm leading-relaxed mt-1">The first copy of each line stays where it is and later copies are dropped, compared with or without case and surrounding whitespace.</p></div>
+                            </li>
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">4</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Sort</p><p class="text-body text-sm leading-relaxed mt-1">A to Z, Z to A, by length, naturally so that file2 comes before file10, or shuffled with the browser's secure random number generator. Lines that tie keep their order.</p></div>
+                            </li>
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">5</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Reverse</p><p class="text-body text-sm leading-relaxed mt-1">The whole list is turned upside down, after any sort, so the last line comes first.</p></div>
+                            </li>
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">6</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Number</p><p class="text-body text-sm leading-relaxed mt-1">Each line gets its position in the finished order, written as <code class="mono-meta">1. </code>, <code class="mono-meta">2. </code> and so on.</p></div>
+                            </li>
+                            <li class="flex gap-5 py-4 first:pt-0 last:pb-0">
+                                <span class="mono-meta text-gold-deep w-5 shrink-0 pt-0.5">7</span>
+                                <div><p class="text-ink font-[550] text-[0.9375rem]">Prefix and suffix</p><p class="text-body text-sm leading-relaxed mt-1">Your prefix goes in front of every line and your suffix after it, outside the line number, so a prefix of <code class="mono-meta">- </code> gives <code class="mono-meta">- 1. apple</code>.</p></div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-16 md:py-20">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">Questions</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">Built by <a href="https://mohdshayan.com/" class="sweep-link text-ink">Mohd Shayan</a>. Found a problem or have an idea? <a href="mailto:contact@mohdshayan.com?subject=Duplicate%20Line%20Remover" class="sweep-link text-ink">Send a note</a>.</p>
+                    </div>
+                    <div>
+                        <details class="faq" open>
+                            <summary>Which duplicate is kept, and does case matter?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>The first copy of a line stays exactly where it is, with its original spelling and spacing, and every later copy is removed. With <em>Case-sensitive</em> on, <code>Apple</code> and <code>apple</code> are different lines: the list <code>apple, Apple, banana, apple</code> keeps apple, Apple and banana, removing one duplicate. Switch it off and the same list keeps only apple and banana, removing two.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>In what order are the options applied?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>Always the same seven steps: trim, remove empty lines, remove duplicates, sort, reverse, number, then prefix and suffix. The order matters. Trimming first means <code>apple</code> and <code>apple&nbsp;</code> count as one line. Numbering after sorting means the numbers run 1, 2, 3 down the finished list. The prefix goes on last, so a prefix of <code>-&nbsp;</code> with numbering gives <code>- 1. apple</code>.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>What is the difference between A to Z and natural sort?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>A to Z sorts in dictionary order, so apple comes before Banana instead of every capital jumping to the front, but it compares digits one character at a time: img1.png, img10.png, img2.png. Natural sort reads each run of digits as a number and gives img1.png, img2.png, img10.png, which is what you want for file names and version numbers. Random shuffle is a Fisher-Yates shuffle fed by <code>crypto.getRandomValues</code>, so every order is equally likely.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>How are spaces and empty lines handled?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p><em>Trim whitespace</em> removes spaces and tabs from both ends of every line. <em>Ignore surrounding whitespace when comparing</em> treats <code>apple&nbsp;</code> as a duplicate of <code>apple</code> while leaving the surviving line exactly as you typed it. <em>Remove empty lines</em> drops blank lines and lines that hold only spaces or tabs, and reports them as empty removed. Without it, blank lines are ordinary lines, so duplicate removal keeps the first blank line and drops the rest.</p></div>
+                        </details>
+                        <details class="faq">
+                            <summary>Is my list uploaded, and how long can it be?<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-caret-down"></use></svg></summary>
+                            <div class="faq-body"><p>No. Everything happens in your browser with plain JavaScript, and the page makes no network request with your text. Copying and downloading are done by the browser on your device too. Processing a 50,000-line list takes a fraction of a second on an ordinary laptop; drawing that much text into the two boxes is what keeps the browser busiest. The practical limit is how much text your browser can hold in a text box.</p></div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="pb-24">
+            <div class="max-w-content mx-auto px-6">
+                <div class="flex flex-wrap items-end justify-between gap-4">
+                    <h2 class="h3-serif" style="font-weight:500;">More free tools</h2>
+                    <a href="/tools/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap">All tools <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg></a>
+                </div>
+                <div class="ruled-grid sm:grid-cols-2 lg:grid-cols-4 mt-6">
+                    <a href="/tools/deaify/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-broom"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">deAIfy</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Strip em dashes, curly quotes, hidden characters and stock AI phrases from any text, with a live diff of every change.</p>
+                    </a>
+                    <a href="/tools/word-counter/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-text-align-left"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Word Counter</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Words, characters, sentences, reading and speaking time, and the words you use most, counted as you type in any language.</p>
+                    </a>
+                    <a href="/tools/case-converter/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-text-aa"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Case Converter</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Switch text between sentence, title, upper and lower case, or camelCase, snake_case and kebab-case for code, with line breaks kept.</p>
+                    </a>
+                    <a href="/tools/commission/" class="cell block group">
+                        <div class="icon-sq wash mb-4"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-hand-coins"></use></svg></div>
+                        <h3 class="card-title"><span class="sweep-target">Commission Calculator</span></h3>
+                        <p class="text-body text-sm leading-relaxed mt-2">Flat or tiered plans with base pay and splits, plus a reverse mode that finds the sales needed to hit a target.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/tools/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Free tools</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+    <script type="module" src="/assets/tools/lines.js"></script>
+</body>
+</html>

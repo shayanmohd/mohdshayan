@@ -1,0 +1,60 @@
+        <section class="pb-10" aria-label="Case converter">
+            <div class="max-w-content mx-auto px-6">
+                <div class="tool-panel">
+                    <div class="field">
+                        <div class="flex items-center justify-between gap-3 min-h-[36px]">
+                            <label for="cc-in" class="field-label">Your text</label>
+                            <div class="flex items-center gap-4">
+                                <button type="button" class="text-btn" id="cc-sample"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkle"></use></svg> Try an example</button>
+                                <button type="button" class="text-btn" id="cc-clear" hidden><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-trash"></use></svg> Clear</button>
+                            </div>
+                        </div>
+                        <textarea id="cc-in" class="input" rows="8" placeholder="Paste or type the text you want to convert." autocomplete="off"></textarea>
+                        <p class="hint" id="cc-in-stats">0 words · 0 characters</p>
+                    </div>
+
+                    <fieldset class="field mt-6">
+                        <legend class="field-label mb-2">Convert to</legend>
+                        <div class="seg" id="cc-cases"></div>
+                        <p class="field-help">The code cases, from camelCase to dot.case, convert each line on its own and split words on spaces, punctuation and camel boundaries, so <em>userID number</em> becomes <em>user_id_number</em>.</p>
+                    </fieldset>
+
+                    <div class="field mt-6">
+                        <div class="flex items-center min-h-[36px]">
+                            <label for="cc-out" class="field-label">Converted text</label>
+                        </div>
+                        <textarea id="cc-out" class="input" rows="8" readonly spellcheck="false" placeholder="The converted text appears here as you type."></textarea>
+                        <div class="flex flex-wrap items-center justify-between gap-3">
+                            <p class="hint" id="cc-out-stats">0 words · 0 characters</p>
+                            <div class="flex items-center gap-2">
+                                <button type="button" class="icon-btn" id="cc-download" aria-label="Download as a text file" title="Download .txt"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-download-simple"></use></svg></button>
+                                <button type="button" class="btn-ink btn-sm" id="cc-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy text</span></button>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="cc-live" class="sr-only" aria-live="polite"></p>
+                </div>
+
+                <p class="mono-meta text-muted mt-5 flex items-start gap-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> Converted on your device. Your text is never uploaded.</p>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">The thirteen cases</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">What <em>Hello world, from the Case Converter</em> becomes in each case. Title Case keeps <em>the</em> lower; Capitalised Case does not.</p>
+                    </div>
+                    <div class="tool-panel">
+                        <div class="table-scroll !max-h-none !border-t-0">
+                            <table class="data-table" id="cc-glance">
+                                <thead><tr><th scope="col">Case</th><th scope="col" class="!text-left">Result</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

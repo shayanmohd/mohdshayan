@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PW8CPWM6');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two cards tell you nothing | Mohd Shayan</title>
+    <meta name="description" content="Keyfob splits a recovery phrase into guardian cards with Shamir sharing over the AES field. Below the threshold every phrase stays equally likely, and a test proves it from outside the app.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://mohdshayan.com/blog/two-cards-tell-you-nothing/">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mohdshayan.com/blog/two-cards-tell-you-nothing/">
+    <meta property="og:title" content="Two cards tell you nothing | Mohd Shayan">
+    <meta property="og:description" content="Keyfob splits a recovery phrase into guardian cards with Shamir sharing over the AES field. Below the threshold every phrase stays equally likely, and a test proves it from outside the app.">
+    <meta property="og:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <meta property="og:site_name" content="Mohd Shayan">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Two cards tell you nothing | Mohd Shayan">
+    <meta name="twitter:description" content="Keyfob splits a recovery phrase into guardian cards with Shamir sharing over the AES field. Below the threshold every phrase stays equally likely, and a test proves it from outside the app.">
+    <meta name="twitter:image" content="https://mohdshayan.com/assets/portrait.jpg">
+    <link rel="alternate" type="application/rss+xml" title="Mohd Shayan" href="https://mohdshayan.com/feed.xml">
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+    <meta name="theme-color" content="#faf8f3">
+    <meta name="msapplication-TileColor" content="#faf8f3">
+    <script>(function(){try{var m=document.cookie.match(/(?:^|; )theme=(dark|light)/);var s=m?m[1]:localStorage.getItem('theme');var d=s?s==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;if(d){document.documentElement.setAttribute('data-theme','dark');}}catch(e){}})();</script>
+    <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/assets/site.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": "https://mohdshayan.com/blog/two-cards-tell-you-nothing/#post",
+      "headline": "Two cards tell you nothing",
+      "description": "Keyfob splits a recovery phrase into guardian cards with Shamir sharing over the AES field. Below the threshold every phrase stays equally likely, and a test proves it from outside the app.",
+      "url": "https://mohdshayan.com/blog/two-cards-tell-you-nothing/",
+      "mainEntityOfPage": "https://mohdshayan.com/blog/two-cards-tell-you-nothing/",
+      "datePublished": "2026-10-13",
+      "dateModified": "2026-10-13",
+      "author": {
+        "@type": "Person",
+        "@id": "https://mohdshayan.com/#person",
+        "name": "Mohd Shayan",
+        "url": "https://mohdshayan.com"
+      },
+      "publisher": {
+        "@id": "https://mohdshayan.com/#person"
+      },
+      "isPartOf": {
+        "@id": "https://mohdshayan.com/blog/#blog"
+      },
+      "keywords": "Cryptography, Secret Sharing, Android",
+      "inLanguage": "en",
+      "wordCount": 1396
+    }
+    </script>
+</head>
+<body class="bg-paper text-body antialiased">
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important;}</style></noscript>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW8CPWM6"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <a href="#main" class="skip-link">Skip to content</a>
+    <header id="nav" class="fixed top-0 inset-x-0 z-50 gilt-top border-b border-hairline nav-glass backdrop-blur-md">
+        <nav class="max-w-content mx-auto px-6 h-16 flex items-center justify-between relative" aria-label="Primary">
+            <a href="/" class="font-display text-ink text-xl tracking-tight" style="font-weight:500;">Mohd Shayan<span class="text-gold-deep">.</span></a>
+            <ul class="hidden lg:flex items-center gap-8">
+                <li><a href="/#about" class="nav-link">About</a></li>
+                <li><a href="/#ventures" class="nav-link">Ventures</a></li>
+                <li><a href="/#impact" class="nav-link">Impact</a></li>
+                <li><a href="/#recognition" class="nav-link">Recognition</a></li>
+                <li><a href="/#publications" class="nav-link">Research</a></li>
+                <li><a href="/#projects" class="nav-link">Work</a></li>
+                <li><a href="/blog/" class="nav-link active" aria-current="page">Blog</a></li>
+                <li><a href="/tools/" class="nav-link">Tools</a></li>
+            </ul>
+            <div class="flex items-center gap-3">
+                <button id="theme-toggle" class="text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Dark mode" aria-pressed="false">
+                    <svg class="icon text-sm" aria-hidden="true" data-theme-icon><use href="/assets/icons.svg#i-moon"></use></svg>
+                </button>
+                <a href="/#contact" class="hidden lg:inline-flex btn-ink btn-ink-sm">Let's Talk</a>
+                <button id="menu-btn" class="lg:hidden text-ink w-10 h-10 grid place-items-center rounded-full border border-hairline hover:border-hairline-strong transition-colors" aria-label="Menu" aria-expanded="false" aria-controls="drawer">
+                    <span class="burger" aria-hidden="true"><span></span><span></span><span></span></span>
+                </button>
+            </div>
+            <span id="progress" aria-hidden="true"></span>
+        </nav>
+    </header>
+    <div id="drawer" class="fixed inset-x-0 top-[66px] bottom-0 z-40 lg:hidden">
+        <aside class="panel px-7 pt-6 pb-7 flex flex-col" role="dialog" aria-modal="true" aria-label="Navigation">
+            <nav class="flex flex-col">
+                <a href="/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Home</a>
+                <a href="/#about" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">About</a>
+                <a href="/#ventures" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Ventures</a>
+                <a href="/#impact" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Impact</a>
+                <a href="/#recognition" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Recognition</a>
+                <a href="/#publications" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Research</a>
+                <a href="/#projects" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Work</a>
+                <a href="/blog/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Blog</a>
+                <a href="/tools/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Tools</a>
+                <a href="/philanthropy/" class="drawer-link font-display text-ink text-[2rem] py-4 border-b border-hairline-soft" style="font-weight:400;">Philanthropy</a>
+            </nav>
+            <div class="mt-auto">
+                <a href="/#contact" class="drawer-link btn-ink w-full">Let's Talk</a>
+                <div class="drawer-link flex items-center gap-2 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <main id="main">
+        <article>
+        <section class="page-head pb-8">
+            <div class="max-w-content mx-auto px-6">
+                <p class="mono-meta text-muted reveal">13 October 2026 <span class="mx-2">·</span> 6 min read</p>
+                <h1 class="h2 mt-3 balance reveal">Two cards tell you nothing</h1>
+                <p class="lead mt-5 max-w-2xl reveal d1">Keyfob splits a recovery phrase into guardian cards with Shamir sharing over the AES field. Below the threshold every phrase stays equally likely, and a test proves it from outside the app.</p>
+            </div>
+        </section>
+            <div class="max-w-content mx-auto px-6 pb-24">
+                <div class="post-layout">
+                <div class="min-w-0">
+                <div class="prose">
+<p>Keyfob is a small Android app that turns one BIP-39 recovery phrase into guardian cards, so that, by default, any three of five rebuild the phrase and any two rebuild nothing. The arithmetic is Shamir secret sharing over the field of 256 elements, one byte at a time, and the title is exact: below the threshold, every possible phrase is as likely as it was before the cards existed. Building it taught me that for a tool like this the test is the product. A guardian of a 24-word phrase holds 27 words and has to take it on trust that they are useless alone and sufficient in company, so the repository carries a proof that does not trust the app, and the card format is where every usability decision has to pass through the arithmetic.</p>
+<h2>A curve through the secret</h2>
+<p>Shamir&#39;s scheme is from a two-page paper of 1979, How to share a secret, in Communications of the ACM 22(11), pages 612 to 613, doi 10.1145/359168.359176, cited through <a href="https://en.wikipedia.org/wiki/Shamir%27s_secret_sharing">Wikipedia</a>. Treat the secret as a number, choose a random polynomial whose constant term is that number, and hand each guardian one point on it. Any k points fix a polynomial of degree at most k minus 1, and its value at x equals zero is the secret; with fewer than k, in Wikipedia&#39;s words, &quot;no information about the secret can be gained from any number of shares below the threshold&quot;. That is a stronger promise than encryption makes: an encrypted file is a puzzle that a faster computer gets closer to, and two cards of a three-of-five plan are consistent with every possible phrase.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 290" role="img" aria-labelledby="f1-t f1-d">
+<title id="f1-t">A degree-two curve through the secret, fixed by three points and left open by two</title>
+<desc id="f1-d">Two panels. On the left, one curve passes through the secret at x equals zero and through five points at x equals one to five, one per guardian card; any three of the points determine the curve. On the right, only the points at x equals two and four are known, and five different curves pass through both, each crossing x equals zero at a different height, so the secret could be any of them.</desc>
+<text x="0" y="18" class="viz-title">Three points fix the curve, two leave it open</text>
+<text x="0" y="36" class="viz-sub">A degree-two curve through the secret at x = 0; each guardian card is one point on it</text>
+<text x="50" y="58" class="viz-label">Three of five cards</text>
+<line x1="50" y1="64" x2="50" y2="240" class="viz-axis"/>
+<line x1="50" y1="240" x2="270" y2="240" class="viz-axis"/>
+<path d="M50 170 Q158 83.6 266 128.4" class="viz-s1"/>
+<circle cx="50" cy="170" r="5" class="viz-d1"/>
+<text x="44" y="174" text-anchor="end" class="viz-label">secret</text>
+<circle cx="90" cy="142.5" r="4" class="viz-d1"/>
+<circle cx="130" cy="124" r="4" class="viz-d1"/>
+<circle cx="170" cy="114.5" r="4" class="viz-d1"/>
+<circle cx="210" cy="114" r="4" class="viz-d1"/>
+<circle cx="250" cy="122.5" r="4" class="viz-d1"/>
+<text x="50" y="258" text-anchor="middle" class="viz-tick">0</text>
+<text x="90" y="258" text-anchor="middle" class="viz-tick">1</text>
+<text x="130" y="258" text-anchor="middle" class="viz-tick">2</text>
+<text x="170" y="258" text-anchor="middle" class="viz-tick">3</text>
+<text x="210" y="258" text-anchor="middle" class="viz-tick">4</text>
+<text x="250" y="258" text-anchor="middle" class="viz-tick">5</text>
+<text x="50" y="278" class="viz-label-muted">any three points give one curve</text>
+<text x="370" y="58" class="viz-label">Two of five cards</text>
+<line x1="370" y1="64" x2="370" y2="240" class="viz-axis"/>
+<line x1="370" y1="240" x2="590" y2="240" class="viz-axis"/>
+<path d="M370 206 Q478 46.7 586 149.8" class="viz-sgray"/>
+<path d="M370 170 Q478 83.6 586 128.4" class="viz-sgray"/>
+<path d="M370 134 Q478 120.5 586 107" class="viz-sgray"/>
+<path d="M370 102 Q478 153.3 586 88" class="viz-sgray"/>
+<path d="M370 70 Q478 186.1 586 68.9" class="viz-sgray"/>
+<circle cx="370" cy="206" r="3.5" class="viz-dgray"/>
+<circle cx="370" cy="170" r="3.5" class="viz-dgray"/>
+<circle cx="370" cy="134" r="3.5" class="viz-dgray"/>
+<circle cx="370" cy="102" r="3.5" class="viz-dgray"/>
+<circle cx="370" cy="70" r="3.5" class="viz-dgray"/>
+<circle cx="450" cy="124" r="5" class="viz-d1"/>
+<circle cx="530" cy="114" r="5" class="viz-d1"/>
+<text x="370" y="258" text-anchor="middle" class="viz-tick">0</text>
+<text x="450" y="258" text-anchor="middle" class="viz-tick">2</text>
+<text x="530" y="258" text-anchor="middle" class="viz-tick">4</text>
+<text x="370" y="278" class="viz-label-muted">the secret could be any of these</text>
+</svg>
+<figcaption>Illustrative: the curves are drawn to shape over the real numbers. Keyfob works in GF(256), where a curve is a table of 256 values rather than a line on a page, but the counting argument is the same.</figcaption>
+</figure>
+
+<p>Keyfob does this in GF(2^8), the field AES uses. <code>web/js/shamir.js</code> reduces modulo x^8 + x^4 + x^3 + x + 1, equation 4.3 in section 4.2 of <a href="https://csrc.nist.gov/pubs/fips/197/final">FIPS 197</a>, whose current revision is dated 9 May 2023 (read on 12 October 2026). It is also the field of <a href="https://github.com/satoshilabs/slips/blob/master/slip-0039.md">SLIP-0039</a>, the SatoshiLabs mnemonic standard, which applies the scheme &quot;separately to each byte of the shared secret&quot; and caps groups and members at 16 each; Keyfob&#39;s card format is its own. Working byte by byte means a share is exactly as long as the secret: 32 bytes for the entropy behind a 24-word phrase.</p>
+<p>Log tables for the field are built by multiplying repeatedly by a generator, and the obvious choice, 2, is not one here: doubling walks a cycle of only 51 elements, so the tables are built by multiplying by 3, which visits all 255 non-zero elements once; I confirmed both orders on 12 October 2026. <code>split</code> draws fresh random coefficients for every byte position from <code>crypto.getRandomValues</code>, and <code>combine</code> interpolates at x equals zero and refuses a card numbered 0 or two cards with the same number.</p>
+<h2>The proof does not trust the app</h2>
+<p>The file that matters most is <code>test/00-crypto-proof.js</code>, and its first rule is that nothing in it trusts the app&#39;s own word. It starts from a known 24-word phrase, beginning congress, stadium, chest, whose 256 bits of entropy are checked against the phrase with Node&#39;s own crypto module, BIP-39 checksum included. It carries its own GF(256), written from the field definition, its own Lagrange interpolation, and a <code>readCard</code> that reads a card the way the estate document tells a stranger to: eleven bits per word, card number first, SHA-256 over the body, compare two bytes.</p>
+<p>Then it does everything twice. The app&#39;s module splits the phrase three of five into five cards of 27 words. Node, on its own, decodes all five and interpolates each of the ten subsets of three: all ten return the entropy. It interpolates each of the ten pairs: none does. The same twenty subsets then go through the app&#39;s own <code>fromCard</code> and <code>combine</code>, and the 24 words have to come back, word for word, from every triple and no pair. It also runs the module&#39;s <code>selfTest</code> at 400 rounds rather than the default 120, and refuses to pass unless at least 1,600 reconstructions were checked.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 320" role="img" aria-labelledby="f2-t f2-d">
+<title id="f2-t">All ten triples of a three-of-five plan rebuilt the phrase and none of the ten pairs did</title>
+<desc id="f2-d">A grid of twenty boxes. On the left, the ten combinations of three cards out of five, from 1 plus 2 plus 3 to 3 plus 4 plus 5, all filled, each rebuilding the known 24-word phrase. On the right, the ten combinations of two cards, from 1 plus 2 to 4 plus 5, drawn as empty outlines, none rebuilding it. Cards 1, 3 and 5 were also typed into the real screens.</desc>
+<text x="0" y="18" class="viz-title">Every triple rebuilt the phrase, no pair did</text>
+<text x="0" y="36" class="viz-sub">A 3 of 5 plan over a known 24-word phrase, every subset of three cards and of two</text>
+<text x="0" y="64" class="viz-label">Three cards, 10 of 10 rebuild it</text>
+<text x="330" y="64" class="viz-label">Two cards, 0 of 10</text>
+<rect x="0" y="74" width="140" height="30" rx="6" class="viz-f1"/><text x="70" y="94" text-anchor="middle" class="viz-onfill">1 + 2 + 3</text>
+<rect x="150" y="74" width="140" height="30" rx="6" class="viz-f1"/><text x="220" y="94" text-anchor="middle" class="viz-onfill">1 + 4 + 5</text>
+<rect x="0" y="112" width="140" height="30" rx="6" class="viz-f1"/><text x="70" y="132" text-anchor="middle" class="viz-onfill">1 + 2 + 4</text>
+<rect x="150" y="112" width="140" height="30" rx="6" class="viz-f1"/><text x="220" y="132" text-anchor="middle" class="viz-onfill">2 + 3 + 4</text>
+<rect x="0" y="150" width="140" height="30" rx="6" class="viz-f1"/><text x="70" y="170" text-anchor="middle" class="viz-onfill">1 + 2 + 5</text>
+<rect x="150" y="150" width="140" height="30" rx="6" class="viz-f1"/><text x="220" y="170" text-anchor="middle" class="viz-onfill">2 + 3 + 5</text>
+<rect x="0" y="188" width="140" height="30" rx="6" class="viz-f1"/><text x="70" y="208" text-anchor="middle" class="viz-onfill">1 + 3 + 4</text>
+<rect x="150" y="188" width="140" height="30" rx="6" class="viz-f1"/><text x="220" y="208" text-anchor="middle" class="viz-onfill">2 + 4 + 5</text>
+<rect x="0" y="226" width="140" height="30" rx="6" class="viz-f1"/><text x="70" y="246" text-anchor="middle" class="viz-onfill">1 + 3 + 5</text>
+<rect x="150" y="226" width="140" height="30" rx="6" class="viz-f1"/><text x="220" y="246" text-anchor="middle" class="viz-onfill">3 + 4 + 5</text>
+<rect x="330" y="74" width="140" height="30" rx="6" class="viz-box"/><text x="400" y="94" text-anchor="middle" class="viz-label-muted">1 + 2</text>
+<rect x="480" y="74" width="140" height="30" rx="6" class="viz-box"/><text x="550" y="94" text-anchor="middle" class="viz-label-muted">2 + 4</text>
+<rect x="330" y="112" width="140" height="30" rx="6" class="viz-box"/><text x="400" y="132" text-anchor="middle" class="viz-label-muted">1 + 3</text>
+<rect x="480" y="112" width="140" height="30" rx="6" class="viz-box"/><text x="550" y="132" text-anchor="middle" class="viz-label-muted">2 + 5</text>
+<rect x="330" y="150" width="140" height="30" rx="6" class="viz-box"/><text x="400" y="170" text-anchor="middle" class="viz-label-muted">1 + 4</text>
+<rect x="480" y="150" width="140" height="30" rx="6" class="viz-box"/><text x="550" y="170" text-anchor="middle" class="viz-label-muted">3 + 4</text>
+<rect x="330" y="188" width="140" height="30" rx="6" class="viz-box"/><text x="400" y="208" text-anchor="middle" class="viz-label-muted">1 + 5</text>
+<rect x="480" y="188" width="140" height="30" rx="6" class="viz-box"/><text x="550" y="208" text-anchor="middle" class="viz-label-muted">3 + 5</text>
+<rect x="330" y="226" width="140" height="30" rx="6" class="viz-box"/><text x="400" y="246" text-anchor="middle" class="viz-label-muted">2 + 3</text>
+<rect x="480" y="226" width="140" height="30" rx="6" class="viz-box"/><text x="550" y="246" text-anchor="middle" class="viz-label-muted">4 + 5</text>
+<text x="0" y="282" class="viz-label-muted">Cards 1, 3 and 5 were also typed into the real screens and returned the 24 words.</text>
+<text x="0" y="304" class="viz-tick">checked twice: an independent GF(256) in Node, then the app's own combine</text>
+</svg>
+<figcaption>Source: <a href="https://github.com/shayanmohd/keyfob/blob/main/test/00-crypto-proof.js">test/00-crypto-proof.js</a> in the Keyfob repository, which fails unless all ten triples and none of the ten pairs rebuild the phrase; the same counts came back when I ran the modules in Node on 12 October 2026.</figcaption>
+</figure>
+
+<p>Two cards do not fail loudly. A line through two points still crosses zero somewhere, so a pair returns 32 bytes that make a 24-word phrase with a valid checksum. In my Node run on 12 October 2026, cards 1 and 2 gave a phrase beginning soon, refuse, uniform, derive, and nothing in it says it is wrong. That is what &quot;no information&quot; looks like, and it is why the gather screen waits for the threshold number of cards before calling <code>combine</code>, then checks the result against a four-byte fingerprint of the original phrase.</p>
+<p>One word of card 1 swapped for another real word: refused, and by the checksum, not by accident. The same card with its last word missing: refused, told that a card for this size of phrase is 27 words and you entered 26. A word not on the list: refused, naming the position. Finally the test drives the real screens in a headless browser, through a harness outside the repository: it types the phrase, accepts the default three of five, counts 27 words on each card, then types cards 1, 3 and 5 into the gather screen and reads the 24 words off the result.</p>
+<h2>Where the words meet the arithmetic</h2>
+<p>Nobody copies 32 bytes out by hand, so the card format is where the usability decisions live. Keyfob writes a card in the same 2048 words a recovery phrase uses. <a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki">BIP-39</a> fixes the packing, eleven bits per word with each word an index from 0 to 2047, and its list is built so that the first four letters are enough, which lets the app finish a word as you type. The list in <code>web/js/bip39.js</code> has 2048 words with 2048 distinct four-letter prefixes, and it lives in the file because the app declares no internet permission.</p>
+<p>The payload is five bytes around the share: the card number, the secret length, one byte holding the threshold and the total (m minus 1 in the high nibble, n minus 1 in the low, which is where the limit of 16 comes from), the share bytes, then the first two bytes of SHA-256 over everything before them. Packed eleven bits to a word and padded with zeros to a whole word, a card for a 24-word phrase is 27 words, the ceiling of (32 + 5) × 8 / 11.</p>
+<figure class="chart">
+<svg viewBox="0 0 640 320" role="img" aria-labelledby="f3-t f3-d">
+<title id="f3-t">Words per guardian card against words per recovery phrase, for the five BIP-39 phrase lengths</title>
+<desc id="f3-d">Paired horizontal bars. A 12-word phrase gives a 16-word card; 15 gives 19; 18 gives 22; 21 gives 24; 24 gives 27. The card bar is longer in every row by the five header and checksum bytes packed into eleven-bit words.</desc>
+<text x="0" y="18" class="viz-title">The card is a few words longer than the phrase</text>
+<text x="0" y="36" class="viz-sub">Phrase words against card words; the difference is five header and checksum bytes</text>
+<rect x="0" y="47" width="12" height="12" rx="3" class="viz-fgray"/><text x="18" y="57" class="viz-label-muted">recovery phrase</text>
+<rect x="150" y="47" width="12" height="12" rx="3" class="viz-f1"/><text x="168" y="57" class="viz-label-muted">guardian card</text>
+<line x1="116" y1="66" x2="116" y2="262" class="viz-axis"/>
+<text x="106" y="90" text-anchor="end" class="viz-label">12-word phrase</text>
+<rect x="116" y="70" width="216" height="12" rx="3" class="viz-fgray"/><text x="338" y="80" class="viz-value">12</text>
+<rect x="116" y="86" width="288" height="12" rx="3" class="viz-f1"/><text x="410" y="96" class="viz-value">16</text>
+<text x="106" y="130" text-anchor="end" class="viz-label">15-word phrase</text>
+<rect x="116" y="110" width="270" height="12" rx="3" class="viz-fgray"/><text x="392" y="120" class="viz-value">15</text>
+<rect x="116" y="126" width="342" height="12" rx="3" class="viz-f1"/><text x="464" y="136" class="viz-value">19</text>
+<text x="106" y="170" text-anchor="end" class="viz-label">18-word phrase</text>
+<rect x="116" y="150" width="324" height="12" rx="3" class="viz-fgray"/><text x="446" y="160" class="viz-value">18</text>
+<rect x="116" y="166" width="396" height="12" rx="3" class="viz-f1"/><text x="518" y="176" class="viz-value">22</text>
+<text x="106" y="210" text-anchor="end" class="viz-label">21-word phrase</text>
+<rect x="116" y="190" width="378" height="12" rx="3" class="viz-fgray"/><text x="500" y="200" class="viz-value">21</text>
+<rect x="116" y="206" width="432" height="12" rx="3" class="viz-f1"/><text x="554" y="216" class="viz-value">24</text>
+<text x="106" y="250" text-anchor="end" class="viz-label">24-word phrase</text>
+<rect x="116" y="230" width="432" height="12" rx="3" class="viz-fgray"/><text x="554" y="240" class="viz-value">24</text>
+<rect x="116" y="246" width="486" height="12" rx="3" class="viz-f1"/><text x="608" y="256" class="viz-value">27</text>
+<text x="0" y="288" class="viz-label-muted">Eighteen pixels per word; a card is ceil((bytes + 5) × 8 / 11) words.</text>
+<text x="0" y="306" class="viz-tick">a 21-word phrase packs to exactly 24 words; the other sizes pad the last word</text>
+</svg>
+<figcaption>Source: the wordCount function in <a href="https://github.com/shayanmohd/keyfob/blob/main/web/js/shamir.js">web/js/shamir.js</a>; phrase lengths from the <a href="https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki">BIP-39</a> table, 128 to 256 bits of entropy giving 12 to 24 words.</figcaption>
+</figure>
+
+<p>Two of those decisions are worth defending. The card number goes first so that two cards from one set differ from their first word, which is what stops a guardian copying out the wrong one; for a 24-word phrase, card k always opens with the word at zero-based index 8k + 1, so the five cards in my run began abuse, acquire, add, aerobic and ahead. The two-byte checksum is sixteen bits, so a damaged card slips through by luck once in 65,536 tries, and it costs one word on a 27-word card, two on the three shortest sizes. It is what turns &quot;something is wrong with these cards&quot; into &quot;every word is real, but the card fails its own checksum&quot;. The reader accepts only the five BIP-39 secret lengths, so random real words decode to nothing.</p>
+<p>Keyfob is not a wallet: it never sees an address, a balance or a transaction, and the manifest in the <a href="https://github.com/shayanmohd/keyfob">Keyfob repository</a> asks for one permission, VIBRATE, with backups switched off and no INTERNET permission. The whole app is plain HTML, CSS and JavaScript in <code>web/</code>, no build step, no dependencies, inside a thin Kotlin WebView shell. All of this is true of the repository at its last commit, 7 September 2026, read on 12 October 2026.</p>
+<h2>The test is the product</h2>
+<p>Nobody will ever see two cards tell them nothing; the only observable event is a rebuild, and a rebuild looks the same whether the pairs are safe or not. If the random coefficients were weak, or a field bug made some pairs informative, every screen would still render and every drill would still pass. In the repository the proof is the second of two commits, two days after the screens, and it should have been the first file. For a tool whose purpose is a property you cannot see, the test is not a quality step after the product. It is the product, and the app is the part a guardian can hold.</p>
+
+                </div>
+                <div class="flex flex-wrap gap-2 mt-10 reveal"><span class="tag-chip">Cryptography</span><span class="tag-chip">Secret Sharing</span><span class="tag-chip">Android</span></div>
+                <div class="border-t border-hairline mt-12 pt-8 flex flex-wrap items-center justify-between gap-4 reveal">
+                    <a href="/blog/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-left"></use></svg> All writing</a>
+                    <p class="mono-meta text-muted">Written by Mohd Shayan</p>
+                </div>
+                </div>
+                <aside class="post-aside hidden lg:block" aria-label="About the author">
+                    <div class="post-aside-inner">
+                        <div class="plate p-6 reveal">
+                            <img src="/assets/avatar-160.webp" alt="" width="64" height="64" loading="lazy" decoding="async" class="w-16 h-16 rounded-full object-cover bg-cream">
+                            <p class="font-display text-ink text-xl mt-4" style="font-weight:500;">Mohd Shayan</p>
+                            <p class="mono-meta text-muted mt-1">Product Engineer, AI Entrepreneur &amp; Philanthropist</p>
+                            <p class="text-body text-sm leading-relaxed mt-4">Founder &amp; CEO of <strong class="text-ink">SocialSure Private Limited</strong>, an AI-first company, building intelligent products and channeling that work into opportunity for children in need.</p>
+                            <a href="/#about" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-4 whitespace-nowrap">More about me <svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-arrow-right"></use></svg></a>
+                            <div class="flex justify-between mt-5">
+                    <a href="mailto:contact@mohdshayan.com" class="social" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+                </div>
+            <div class="plate p-8 md:p-10 mt-16 reveal">
+                <h2 class="h3-serif" style="font-weight:500;">Get new posts by email</h2>
+                <p class="text-body mt-2 max-w-xl">Occasional essays on engineering, AI, and building for the people technology leaves behind.</p>
+                <form class="subscribe flex flex-col sm:flex-row gap-3 mt-6 max-w-md" action="https://api.follow.it/subscription-form/OXc0eEZBSU9VTkI0cmI3WEI0cEtmU3FMcXVEclJEdHcwYnZGeTI4UmNWL3NZckpiK1FOTXgrQ0VNT09rS29ieks3bkxnTC9UeFFEQVdjRFFKbWFKNG1wNUhFQnBVZnVqT2FNbGxSSnRMT1Q3OW9yTUhQYVJNTXpxdzlvOGFYaHN8TmtrMnZyaE5OVnBmRi8xNlo5Qmd6bTZqOWlRbmF6cnNWeXYxNW0vS1FhZz0=/8" method="post" target="_blank" rel="noopener">
+                    <label for="nl-email" class="sr-only">Email address</label>
+                    <input type="email" name="email" id="nl-email" placeholder="you@example.com" required autocomplete="email">
+                    <button type="submit" class="btn-ink shrink-0">Subscribe</button>
+                </form>
+                <p class="mono-meta text-muted mt-3">One email per new post. Unsubscribe any time.</p>
+                <a href="/subscribe/" class="sweep-link inline-flex items-center gap-2 text-gold-deep font-[550] text-sm mt-5 whitespace-nowrap"><svg class="icon text-xs" aria-hidden="true"><use href="/assets/icons.svg#i-rss"></use></svg> Subscribe with RSS</a>
+            </div>
+            </div>
+        </article>
+    </main>
+    <footer class="bg-dark-3 border-t border-white/[0.08]">
+        <div class="max-w-content mx-auto px-6 py-14 grid gap-10 md:grid-cols-[1.6fr_1fr_1fr]">
+            <div>
+                <a href="/" class="font-display text-2xl" style="color:#f5f2ea; font-weight:400;">Mohd Shayan<span class="text-gold-bright">.</span></a>
+                <p class="text-sm mt-3 max-w-xs leading-relaxed" style="color:rgba(245,242,234,0.55);">Product Engineer, AI Entrepreneur &amp; Philanthropist. Building technology with purpose.</p>
+                <div class="flex gap-3 mt-6">
+                    <a href="mailto:contact@mohdshayan.com" class="social social-dark" aria-label="Email"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-envelope-simple"></use></svg></a>
+                    <a href="https://www.linkedin.com/in/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-linkedin-logo"></use></svg></a>
+                    <a href="https://github.com/shayanmohd" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-github-logo"></use></svg></a>
+                    <a href="https://instagram.com/mohdshayanx" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-instagram-logo"></use></svg></a>
+                    <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
+                    <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
+                </div>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Explore</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="/#about" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">About</a></li>
+                    <li><a href="/#ventures" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Ventures</a></li>
+                    <li><a href="/#impact" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Impact</a></li>
+                    <li><a href="/#recognition" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Recognition</a></li>
+                    <li><a href="/#publications" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Research</a></li>
+                    <li><a href="/#projects" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Work</a></li>
+                    <li><a href="/blog/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Blog</a></li>
+                    <li><a href="/tools/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Free tools</a></li>
+                    <li><a href="/philanthropy/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Philanthropy</a></li>
+                    <li><a href="https://demo.mohdshayan.com/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Demos</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.08em] text-gold-bright mb-5">Connect</p>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="mailto:contact@mohdshayan.com" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">contact@mohdshayan.com</a></li>
+                    <li><a href="tel:+918920038741" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">+91 89200 38741</a></li>
+                    <li><a href="/uploads/resume.pdf" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);" download>Download Résumé</a></li>
+                    <li><a href="/subscribe/" class="sweep-link on-dark transition-colors" style="color:rgba(245,242,234,0.66);">Subscribe</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-white/[0.08]">
+            <div class="max-w-content mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 font-mono text-xs" style="color:rgba(245,242,234,0.4);">
+                <span>© 2026 Mohd Shayan, FRSA FRGS. All rights reserved.</span>
+                <span>mohdshayan.com</span>
+            </div>
+        </div>
+        <div class="gilt-edge" aria-hidden="true"></div>
+    </footer>
+    <script src="/assets/site.js" defer></script>
+</body>
+</html>

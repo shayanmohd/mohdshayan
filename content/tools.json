@@ -1,9 +1,10 @@
 {
-  "note": "Free tools. Each entry becomes /tools/<slug>/ (UI from content/tools/<slug>.html, script /assets/tools/<slug>.js). FAQ answers may use inline HTML; they are also published as FAQPage structured data with tags stripped.",
-  "categories": ["Writing", "Business & money", "Everyday utilities"],
+  "note": "Free tools. Each entry becomes /tools/<slug>/ (UI from content/tools/<slug>.html, script /assets/tools/<slug>.js). FAQ answers may use inline HTML; they are also published as FAQPage structured data with tags stripped. \"featured\": true puts a tool on the homepage; the rest appear only on /tools/.",
+  "categories": ["Writing", "Business & money", "Everyday utilities", "Developer"],
   "tools": [
     {
       "slug": "deaify",
+      "featured": true,
       "name": "deAIfy",
       "category": "Writing",
       "icon": "broom",
@@ -23,6 +24,7 @@
     },
     {
       "slug": "commission",
+      "featured": true,
       "name": "Commission Calculator",
       "category": "Business & money",
       "icon": "hand-coins",
@@ -42,6 +44,7 @@
     },
     {
       "slug": "gst",
+      "featured": true,
       "name": "GST Calculator",
       "category": "Business & money",
       "icon": "receipt",
@@ -61,6 +64,7 @@
     },
     {
       "slug": "emi",
+      "featured": true,
       "name": "EMI Calculator",
       "category": "Business & money",
       "icon": "bank",
@@ -80,6 +84,7 @@
     },
     {
       "slug": "margin",
+      "featured": true,
       "name": "Margin Calculator",
       "category": "Business & money",
       "icon": "chart-pie-slice",
@@ -99,6 +104,7 @@
     },
     {
       "slug": "qr",
+      "featured": true,
       "name": "QR Code Generator",
       "category": "Everyday utilities",
       "icon": "qr-code",
@@ -118,6 +124,7 @@
     },
     {
       "slug": "compress",
+      "featured": true,
       "name": "Image Compressor",
       "category": "Everyday utilities",
       "icon": "arrows-in",
@@ -137,6 +144,7 @@
     },
     {
       "slug": "password",
+      "featured": true,
       "name": "Password Generator",
       "category": "Everyday utilities",
       "icon": "password",
@@ -152,6 +160,234 @@
         { "q": "What does the strength estimate mean?", "a": "It is the entropy of the method in bits: how many guesses an attacker who knows exactly how the password was made would need. Every extra bit doubles the work. Around 70 bits or more resists offline cracking of a fast hash, and 80 bits or more is very strong. It assumes the password is used once and kept secret." },
         { "q": "Where do the passphrase words come from?", "a": "From the EFF Long Wordlist of 7,776 short, distinct and easy-to-type English words, published by the Electronic Frontier Foundation under CC BY 3.0 US. Each word adds about 12.9 bits of entropy." },
         { "q": "Should I reuse a strong password?", "a": "No. Use a different password for every account and keep them in a password manager. A strong password that is reused is only as safe as the weakest site that stores it." }
+      ]
+    },
+    {
+      "slug": "sip",
+      "name": "SIP Calculator",
+      "category": "Business & money",
+      "icon": "trend-up",
+      "appCategory": "FinanceApplication",
+      "title": "SIP Calculator: Maturity Value, Step-Up and Goal Planner | Free",
+      "description": "Free SIP calculator with annual step-up, value in today's money, lump sum and goal modes, and a year-by-year table. Runs in your browser; nothing is uploaded.",
+      "summary": "Maturity value of a monthly SIP with step-up and inflation, a lump sum, or the monthly amount a goal needs, year by year.",
+      "h1": "SIP calculator with step-up, inflation and <span class=\"text-gold-deep\">goal</span> planning",
+      "lead": "Enter what you invest each month, the return you expect and for how long, and see what it grows into, year by year. Add an annual step-up or an inflation rate, start from a lump sum instead, or work backwards from the amount you want to reach. Everything is calculated in your browser, and nothing you enter is sent anywhere.",
+      "faq": [
+        { "q": "How is the SIP maturity value calculated?", "a": "Each instalment is invested at the start of its month and compounds monthly, so FV = P × ((1 + i)<sup>n</sup> − 1) ÷ i × (1 + i), where P is the monthly amount, i is the monthly rate (annual rate ÷ 12 ÷ 100) and n is the number of months. ₹5,000 a month at 12% for 10 years has i = 0.01 and n = 120, which gives about ₹11,61,695 from ₹6,00,000 invested." },
+        { "q": "What does the annual step-up do?", "a": "It raises the monthly amount by a fixed percentage after every 12 months, the way a step-up SIP keeps pace with a rising salary. With a 10% step-up, ₹5,000 a month becomes ₹5,500 in the second year, ₹6,050 in the third and about ₹11,790 in the tenth. At 12% over 10 years that grows to about ₹16,87,163 from ₹9,56,245 invested, against ₹11,61,695 without the step-up." },
+        { "q": "How much should I invest each month to reach a goal?", "a": "Goal mode turns the maturity formula round: P = FV × i ÷ (((1 + i)<sup>n</sup> − 1) × (1 + i)). To reach ₹1 crore in 20 years at 12%, i = 0.01 and n = 240, so P is about ₹10,009 a month. The year-by-year table then shows how that SIP builds up to the target." },
+        { "q": "Is a lump sum compounded monthly or yearly?", "a": "You choose, and the formula panel states which. Yearly, the default, uses FV = A × (1 + r)<sup>years</sup>, the way fund returns (CAGR) are quoted: ₹1,00,000 at 12% for 10 years becomes ₹3,10,585. Monthly uses FV = A × (1 + r ÷ 12)<sup>months</sup> and gives ₹3,30,039 for the same figures, because each month's growth starts earning growth of its own." },
+        { "q": "What does the value in today's money mean?", "a": "Enter an inflation rate and the maturity value is also shown divided by (1 + inflation)<sup>years</sup>, which is what that sum would buy today. ₹11,61,695 after 10 years of 6% inflation is worth about ₹6,48,685 in today's money. The return you enter is an assumption, not a promise: market returns vary from year to year, and fund expenses, exit loads and tax are not included." }
+      ]
+    },
+    {
+      "slug": "compound-interest",
+      "name": "Compound Interest Calculator",
+      "category": "Business & money",
+      "icon": "coins",
+      "appCategory": "FinanceApplication",
+      "title": "Compound Interest Calculator With Regular Contributions | Free",
+      "description": "Free compound interest calculator with daily to yearly compounding, regular contributions and a year-by-year table of interest earned. Runs in your browser.",
+      "summary": "Growth of a deposit at any compounding frequency, with monthly or yearly contributions, year by year, against simple interest.",
+      "h1": "Compound interest calculator with regular <span class=\"text-gold-deep\">contributions</span>",
+      "lead": "Enter a deposit, a rate and a term to see what it grows to, how much of that is interest, and what each year adds, with monthly or yearly contributions if you make them. It is all calculated in your browser, so nothing you enter is sent anywhere.",
+      "faq": [
+        { "q": "How is compound interest calculated?", "a": "A = P × (1 + r ÷ n)<sup>n × t</sup>, where P is the starting amount, r the annual rate as a decimal, n how many times a year interest is compounded and t the time in years. ₹1,00,000 at 8% for 10 years compounded yearly is ₹1,00,000 × 1.08<sup>10</sup> = ₹2,15,892.50, so ₹1,15,892.50 of interest. Compounded monthly instead, n is 12 and the exponent 120, which gives ₹2,21,964.02." },
+        { "q": "What does the compounding frequency change?", "a": "How soon earned interest starts earning interest of its own. The nominal rate stays the same, but the effective annual rate rises a little with each step: 8% compounded half-yearly is 8.16% a year, quarterly 8.243%, monthly 8.3% and daily 8.328%. Bank fixed deposits in India usually compound quarterly and PPF yearly, so pick the frequency your product uses." },
+        { "q": "How are regular contributions worked out?", "a": "Each contribution is added at the start or the end of its month or year and then grows at the rate for the time left, which is the annuity formula: contribution × ((1 + i)<sup>N</sup> − 1) ÷ i, where i is the rate per contribution period and N the number of contributions, times (1 + i) when paying at the start. ₹5,000 a month at 12% for 10 years, compounded monthly and paid at the end of each month, grows to ₹11,50,193.45 from ₹6,00,000 put in; paid at the start of each month it reaches ₹11,61,695.38. If interest compounds less often than you contribute, each contribution grows at the equivalent rate for its own months." },
+        { "q": "What is the difference between compound and simple interest?", "a": "Simple interest is paid on the original deposit only: interest = P × r × t, so ₹1,00,000 at 8% for 10 years earns ₹80,000. Compound interest is also paid on the interest already earned, which is why the same deposit earns ₹1,15,892.50 with yearly compounding. The gap starts small and widens every year, so compounding matters most over long terms. The simple interest line in the results gives each contribution simple interest for the time it is invested." },
+        { "q": "How long does money take to double?", "a": "Divide 72 by the rate for a quick estimate: about 9 years at 8%, about 6 at 12%. The exact answer with yearly compounding is log 2 ÷ log(1 + r), which at 8% is 9.006 years: after 9 full years ₹1,00,000 has become ₹1,99,900.46, just short of double. Set the term to 9 years and then 10 to see it cross." }
+      ]
+    },
+    {
+      "slug": "percentage",
+      "name": "Percentage Calculator",
+      "category": "Business & money",
+      "icon": "percent",
+      "appCategory": "UtilitiesApplication",
+      "title": "Percentage Calculator: Percent Of, Change and Reverse | Free",
+      "description": "Free percentage calculator: percent of a number, X as a percent of Y, percentage change, raise or cut by a percent, reverse percentage. Runs in your browser.",
+      "summary": "Percent of a number, what percent one is of another, percentage change, a figure raised or cut by a percent, and reverse percentages.",
+      "h1": "Five percentage calculators on <span class=\"text-gold-deep\">one</span> page",
+      "lead": "Work out a percentage of a number, what percent one number is of another, the change between two figures, a number raised or lowered by a percentage, or the whole behind a part. Every answer appears as you type with its working shown, and nothing you enter is sent anywhere: the maths runs in your browser.",
+      "faq": [
+        { "q": "How do I work out a percentage of a number?", "a": "Multiply the number by the percentage and divide by 100: 15% of 200 is 200 × 15 ÷ 100 = 30. Turning the percentage into a decimal first gives the same answer, 200 × 0.15 = 30. For mental maths, 10% is the number with its decimal point moved one place to the left, so 10% of 200 is 20, 5% is half of that, and 15% is the two added together." },
+        { "q": "How do I find what percentage one number is of another?", "a": "Divide the first number by the second and multiply by 100: 30 ÷ 200 × 100 = 15, so 30 is 15% of 200. The order matters: 200 ÷ 30 × 100 is 666.67%, which answers a different question. Put the part you are asking about first and the whole it belongs to second, such as marks scored out of marks available." },
+        { "q": "How is percentage change calculated?", "a": "Take the starting value away from the new one, divide by the starting value and multiply by 100. From 200 to 250 is (250 − 200) ÷ 200 × 100 = 25%, an increase. Going back from 250 to 200 is (200 − 250) ÷ 250 × 100 = −20%, a decrease: the same 50 is a smaller share of 250 than of 200, so a rise and the fall that undoes it are never the same percentage. The calculator divides by the size of the starting value, so a move from −50 to −25 reads as a 50% increase. A change from zero has no percentage, because any amount is infinitely more than nothing, and the calculator says so instead of showing a number." },
+        { "q": "How do I find the original number from a percentage?", "a": "Divide the amount you know by the percentage it represents and multiply by 100. If 30 is 15% of something, that something is 30 ÷ 15 × 100 = 200. The same method removes a tax or a mark-up: a price of 1,180 that includes 18% tax is 118% of the pre-tax price, so the pre-tax price is 1,180 ÷ 118 × 100 = 1,000. Taking 18% off 1,180 instead gives 967.6, which is wrong, because the 18% was charged on 1,000, not on 1,180." },
+        { "q": "What is the difference between a percentage and a percentage point?", "a": "A percentage point is the plain difference between two percentages; a percentage change compares that difference with the starting figure. An interest rate that goes from 4% to 5% has risen by 1 percentage point but by 25%, because 1 is a quarter of 4. Rates, poll results and market shares are usually reported in points. To get the percentage change between two rates, enter them as plain numbers in the change calculator; the point change is one taken away from the other." }
+      ]
+    },
+    {
+      "slug": "word-counter",
+      "name": "Word Counter",
+      "category": "Writing",
+      "icon": "text-align-left",
+      "appCategory": "UtilitiesApplication",
+      "title": "Word Counter: Words, Characters, Reading Time and Density | Free",
+      "description": "Free word counter that runs in your browser: words, characters, sentences, paragraphs, reading and speaking time, and keyword density. Nothing is uploaded.",
+      "summary": "Words, characters, sentences, reading and speaking time, and the words you use most, counted as you type in any language.",
+      "h1": "Count words, characters and reading time as you <span class=\"text-gold-deep\">type</span>",
+      "lead": "Paste or type anything and watch the counts update: words, characters, sentences, paragraphs, reading and speaking time, and the words you use most. It all runs on your device, so your text is never uploaded or stored.",
+      "faq": [
+        { "q": "Is my text sent or saved anywhere?", "a": "No. Every count is worked out by JavaScript running in your browser, and the page makes no network request with your text. Nothing is written to storage either, so the box is empty again when you come back. To keep the figures, press <em>Copy stats</em> and paste them wherever you like." },
+        { "q": "How are words counted?", "a": "The text is split with your browser's Unicode word segmenter, so Hindi, Arabic, accented and other non-Latin text count correctly. A hyphenated word such as <em>well-known</em> counts as one, a contraction such as <em>don't</em> counts as one, and a number such as <em>1,000.50</em> counts as a word. Punctuation, symbols and emoji are not words. So <em>The 3-point plan costs 1,000.50 rupees, or 25% of 2026's budget.</em> is 11 words. Unique words ignore capitalisation: <em>The</em> and <em>the</em> are the same word." },
+        { "q": "What counts as a character, a sentence, a paragraph or a line?", "a": "Characters are Unicode code points, so an emoji or an accented letter counts once; spaces and line breaks are characters too, which is why there is a second figure without spaces. A sentence ends at a full stop, question mark or exclamation mark (or the Devanagari danda and the Arabic question mark) followed by a space and anything other than a lowercase letter, or at a line break. So <em>e.g. this</em> stays in one sentence, while <em>Mr. Smith</em> is counted as two. A paragraph is a block of text separated from the next by a blank line. Lines are counted the way a text editor numbers them, blank lines included." },
+        { "q": "How are reading and speaking times worked out?", "a": "Reading time divides the word count by 230 words per minute, the pace used for the reading times on this site's blog. Speaking time divides it by 150 words per minute, a comfortable pace for a talk or a voice-over. Both are rounded to the nearest second. 575 words take 2 min 30 sec to read and 3 min 50 sec to say aloud; 1,000 words take 4 min 21 sec and 6 min 40 sec." },
+        { "q": "What is keyword density, and what are stop words?", "a": "Keyword density is how often a word appears as a share of all the words in the text: a word used 31 times in 575 words has a density of 5.39%. The table lists the ten most used words. Function words such as <em>the</em>, <em>and</em>, <em>of</em> and <em>it's</em>, from a list of 178 common English words, are left out so that the words that carry your meaning rise to the top. Tick <em>Include stop words</em> to count them as well." }
+      ]
+    },
+    {
+      "slug": "case-converter",
+      "name": "Case Converter",
+      "category": "Writing",
+      "icon": "text-aa",
+      "appCategory": "UtilitiesApplication",
+      "title": "Case Converter: Sentence, Title, camelCase, snake_case | Free",
+      "description": "Free case converter with thirteen cases: sentence, title, upper, lower, camelCase, snake_case, kebab-case and more. Runs in your browser; nothing is uploaded.",
+      "summary": "Switch text between sentence, title, upper and lower case, or camelCase, snake_case and kebab-case for code, with line breaks kept.",
+      "h1": "Change the <span class=\"text-gold-deep\">case</span> of any text",
+      "lead": "Paste your text, pick one of thirteen cases, from Sentence case to snake_case, and copy or download the result. It all runs on your device, so your text is never uploaded.",
+      "faq": [
+        { "q": "Is my text sent anywhere?", "a": "No. The conversion is plain JavaScript running in your browser, and the page makes no network request with your text. Nothing is stored either: reload the page and it starts empty." },
+        { "q": "What is the difference between Title Case and Capitalised Case?", "a": "Title Case capitalises every word except the short ones (a, an, and, the, of, in, on, at, to, for, or, but, nor), which stay lower unless they begin or end a line or follow a full stop, question mark, exclamation mark or colon. Capitalised Case capitalises every word. <em>the lord of the rings</em> becomes <em>The Lord of the Rings</em> in Title Case and <em>The Lord Of The Rings</em> in Capitalised Case." },
+        { "q": "How do camelCase, snake_case and the other code cases split words?", "a": "Each line is split on spaces, punctuation and the boundaries already inside camel-cased words, then the pieces are lowered and joined. <em>userID number</em> becomes <em>user_id_number</em>, <em>XMLHttpRequest</em> becomes <em>xml_http_request</em>, and <em>version 2.0 (beta)</em> becomes <em>version_2_0_beta</em>. An apostrophe inside a word is dropped rather than split, so <em>don't stop</em> becomes <em>dont_stop</em>. Every line is converted on its own, so a list stays a list." },
+        { "q": "What does Sentence case do with names and acronyms?", "a": "It lowers everything, then capitalises the first word of each line and the first word after a full stop, question mark or exclamation mark that is followed by a space. It does not know names, the pronoun I or acronyms, so <em>i met Mohd at NASA</em> becomes <em>I met mohd at nasa</em>, and the word after an abbreviation such as <em>e.g.</em> is capitalised. Check those by hand." },
+        { "q": "Does it work with accents and other alphabets?", "a": "Yes. Letters are converted with the browser's Unicode case rules, so <em>café</em> becomes <em>CAFÉ</em>, <em>straße</em> becomes <em>STRASSE</em>, and Greek or Cyrillic text converts like any other. Scripts without upper and lower case, such as Devanagari, Arabic and Chinese, are left exactly as they are, and line breaks are always kept." }
+      ]
+    },
+    {
+      "slug": "lines",
+      "name": "Duplicate Line Remover",
+      "category": "Writing",
+      "icon": "list-dashes",
+      "appCategory": "UtilitiesApplication",
+      "title": "Duplicate Line Remover: Dedupe, Sort and Clean Any List | Free",
+      "description": "Free duplicate line remover: trim, drop empty lines, sort A to Z or naturally, shuffle, reverse and number any list. Runs in your browser; nothing is uploaded.",
+      "summary": "Remove duplicate and empty lines, trim, sort, shuffle, reverse, number or prefix every line, with live counts of what changed.",
+      "h1": "Remove duplicate lines and <span class=\"text-gold-deep\">tidy</span> any list",
+      "lead": "Paste a list and get it back without duplicates or blank lines, trimmed, sorted and numbered the way you want. It all runs on your device, so your text is never uploaded.",
+      "faq": [
+        { "q": "Which duplicate is kept, and does case matter?", "a": "The first copy of a line stays exactly where it is, with its original spelling and spacing, and every later copy is removed. With <em>Case-sensitive</em> on, <code>Apple</code> and <code>apple</code> are different lines: the list <code>apple, Apple, banana, apple</code> keeps apple, Apple and banana, removing one duplicate. Switch it off and the same list keeps only apple and banana, removing two." },
+        { "q": "In what order are the options applied?", "a": "Always the same seven steps: trim, remove empty lines, remove duplicates, sort, reverse, number, then prefix and suffix. The order matters. Trimming first means <code>apple</code> and <code>apple&nbsp;</code> count as one line. Numbering after sorting means the numbers run 1, 2, 3 down the finished list. The prefix goes on last, so a prefix of <code>-&nbsp;</code> with numbering gives <code>- 1. apple</code>." },
+        { "q": "What is the difference between A to Z and natural sort?", "a": "A to Z sorts in dictionary order, so apple comes before Banana instead of every capital jumping to the front, but it compares digits one character at a time: img1.png, img10.png, img2.png. Natural sort reads each run of digits as a number and gives img1.png, img2.png, img10.png, which is what you want for file names and version numbers. Random shuffle is a Fisher-Yates shuffle fed by <code>crypto.getRandomValues</code>, so every order is equally likely." },
+        { "q": "How are spaces and empty lines handled?", "a": "<em>Trim whitespace</em> removes spaces and tabs from both ends of every line. <em>Ignore surrounding whitespace when comparing</em> treats <code>apple&nbsp;</code> as a duplicate of <code>apple</code> while leaving the surviving line exactly as you typed it. <em>Remove empty lines</em> drops blank lines and lines that hold only spaces or tabs, and reports them as empty removed. Without it, blank lines are ordinary lines, so duplicate removal keeps the first blank line and drops the rest." },
+        { "q": "Is my list uploaded, and how long can it be?", "a": "No. Everything happens in your browser with plain JavaScript, and the page makes no network request with your text. Copying and downloading are done by the browser on your device too. Processing a 50,000-line list takes a fraction of a second on an ordinary laptop; drawing that much text into the two boxes is what keeps the browser busiest. The practical limit is how much text your browser can hold in a text box." }
+      ]
+    },
+    {
+      "slug": "age",
+      "name": "Age Calculator",
+      "category": "Everyday utilities",
+      "icon": "cake",
+      "appCategory": "UtilitiesApplication",
+      "title": "Age Calculator: Years, Months, Days and Next Birthday | Free",
+      "description": "Free age calculator: exact age in years, months and days, total weeks, days and hours, the weekday of birth and the next birthday. Runs in your browser.",
+      "summary": "Exact age in years, months and days, the totals in weeks, days and hours, the weekday of birth, and the next birthday.",
+      "h1": "Your exact age, down to the <span class=\"text-gold-deep\">day</span>",
+      "lead": "Enter a date of birth and the date to count to, today unless you change it, for the age in years, months and days, the totals in weeks, days and hours, the weekday of birth and the next birthday. Both dates stay in your browser and are never sent anywhere.",
+      "faq": [
+        { "q": "How is the age in years, months and days worked out?", "a": "Whole years are counted first, then whole months, then the days left over, by stepping the birthday forward through the real calendar. Someone born on 14 March 1990 is 36 years, 6 months and 28 days old on 12 October 2026: 36 years reach 14 March 2026, 6 more months reach 14 September 2026, and 28 days remain. There is no 365.25-day year or 30-day month anywhere in the maths; every month has its true length and each leap day counts as a day." },
+        { "q": "What if I was born on 29 February?", "a": "In a leap year the birthday is 29 February. In a common year the calculator treats 28 February as the birthday, so a year of age is added on the last day of February rather than on 1 March. Someone born on 29 February 2000 turns 26 on Saturday 28 February 2026, has their next birthday on Sunday 28 February 2027, and is back on 29 February in 2028, a Tuesday. Some legal systems use 1 March in a common year instead; this calculator uses 28 February throughout." },
+        { "q": "Why does a birthday near the end of a month give an odd count?", "a": "When the day of birth does not exist in a later month, that month is counted on its last day. Someone born on 31 January is 1 month old on 28 February in a common year (29 February in a leap year) and 1 month and 1 day old on 1 March. The total in days is unaffected: 31 January 2025 to 1 March 2025 is 29 days, or 4 weeks and 1 day, however the months are counted." },
+        { "q": "How are the totals in months, weeks, days and hours calculated?", "a": "Total days is the exact number of calendar days between the two dates, leap days included, taken from the calendar rather than from an average year. Weeks are that figure divided by 7 with the remainder shown in days, and hours are the days times 24: the calculator works with dates, not times of birth, so both days are taken to start at midnight. 14 March 1990 to 12 October 2026 is 13,361 days, which is 1,908 weeks and 5 days, or 320,664 hours. Total months is the whole months counted the same way as the age, with the leftover days beside it." },
+        { "q": "Is anything I enter saved or sent anywhere?", "a": "No. The dates are read by JavaScript in your browser, and the page makes no network request with them. <em>Today</em> comes from your device's clock and time zone. If you press <em>Copy link</em>, both dates are written after the # in the page address, which browsers never send to a server, so you can bookmark the result or send it to someone." }
+      ]
+    },
+    {
+      "slug": "unit-converter",
+      "name": "Unit Converter",
+      "category": "Everyday utilities",
+      "icon": "ruler",
+      "appCategory": "UtilitiesApplication",
+      "title": "Unit Converter: Length, Weight, Temperature, Volume, Data | Free",
+      "description": "Free unit converter for length, weight, temperature, area, volume, speed and data, using exact factors, with a table of every unit. Runs in your browser.",
+      "summary": "Length, weight, temperature, area, volume, speed and data, converted through exact factors with a table of every unit.",
+      "h1": "Unit converter that shows its <span class=\"text-gold-deep\">working</span>",
+      "lead": "Convert length, weight, temperature, area, volume, speed and data. Every factor is an exact definition, the working is shown beside the result, and nothing you type leaves your browser.",
+      "faq": [
+        { "q": "How does the converter work out an answer?", "a": "Every unit is stored once as its size in the category's base unit, taken from its exact definition: 1 inch is 0.0254 m, 1 pound is 0.45359237 kg, 1 US gallon is 3.785411784 L. A value is multiplied by the size of the unit it is in and divided by the size of the unit you want. 5 feet is 5 × 0.3048 = 1.524 m, and 1.524 ÷ 0.01 = 152.4 cm. The route is shown beside every result, so you can check it." },
+        { "q": "How are temperatures converted?", "a": "Through kelvin, with an offset added before the scale factor. Celsius adds 273.15. Fahrenheit adds 459.67 and multiplies by 5/9. So 68 °F is (68 + 459.67) × 5/9 = 293.15 K, and 293.15 − 273.15 = 20 °C. Body temperature of 98.6 °F works out to exactly 37 °C, and minus 40 is the same temperature on both scales." },
+        { "q": "What does the significant figures setting do?", "a": "It sets how many digits are shown, counted from the first non-zero one, so at 6 figures 152.4 stays 152.4, 0.0328084 is shown in full and 1,609.344 becomes 1,609.34. Pick 8 or more to see an exact definition such as a mile in metres without rounding. It changes only the display: the maths always uses the full factors, and the value you typed is never rounded." },
+        { "q": "Why do GB and GiB give different answers?", "a": "KB, MB, GB and TB use powers of 1,000, as the SI prefixes define them and as drives are labelled. KiB, MiB, GiB and TiB use powers of 1,024, the binary units of IEC 80000-13, which is how Windows and many Linux tools report sizes; macOS, iOS and Android count in thousands. A 1 TB drive holds 1,000,000,000,000 bytes, which is 931.323 GiB: the gap you see when a new drive looks smaller than the box said." },
+        { "q": "Which gallon, cup and spoon does it use?", "a": "The US customary ones, all defined as fractions of the US gallon of 3.785411784 L: a cup is 236.588 mL, a fluid ounce 29.5735 mL, a tablespoon 14.7868 mL and a teaspoon 4.92892 mL. The UK gallon is a separate unit of 4.54609 L, about 20% larger than the US gallon. Metric recipes use a 5 mL teaspoon, a 15 mL tablespoon and a 250 mL cup, close enough for cooking but not the same." }
+      ]
+    },
+    {
+      "slug": "days-between",
+      "name": "Days Between Dates",
+      "category": "Everyday utilities",
+      "icon": "calendar-dots",
+      "appCategory": "UtilitiesApplication",
+      "title": "Days Between Dates Calculator: Working Days, Add Days | Free",
+      "description": "Free date calculator. Count the days, weeks, months and working days between two dates, or add and subtract days, months and years. Runs in your browser.",
+      "summary": "Count the days, weeks, months and working days between two dates, or add and subtract days, weeks, months and years from a date.",
+      "h1": "Count the days between two dates, or <span class=\"text-gold-deep\">add days</span> to one",
+      "lead": "Enter two dates to get the days, weeks, months and working days between them, or move a date forward or back by days, weeks, months or years. Everything is worked out in your browser and the dates are never sent anywhere.",
+      "faq": [
+        { "q": "Does the count include the end day?", "a": "Not unless you tick <em>Include the end day</em>. By default the count runs from the start date up to, but not including, the end date, so 1 January to 2 January is 1 day and 1 January to 31 January is 30 days. With the end day included the same span is 31 days, which is how you would count the days of a holiday that covers both dates. The setting applies to every figure, including the working and weekend days." },
+        { "q": "How are the months and years worked out?", "a": "In whole calendar months from the start date, then the days left over. 15 March to 10 April 2025 is 26 days, because the month would only be complete on 15 April. When the start date's day of the month does not exist in a later month, that month runs to its last day: 31 January to 28 February 2025 counts as 1 month, and 31 January to 1 March as 1 month and 1 day. Weeks are simpler: the total days divided by 7, with the remainder shown as days." },
+        { "q": "What counts as a working day?", "a": "Monday to Friday. Saturdays and Sundays are weekend days, and the two figures always add up to the total. Public holidays are not removed, because they differ by country and state, so take off any that fall inside your span. Monday 6 October to Friday 10 October 2025 is 4 working days, or 5 with the end day included." },
+        { "q": "What is 31 January plus one month?", "a": "28 February, or 29 February in a leap year. Adding months or years keeps the same day of the month wherever it exists and otherwise stops at the last day of the month: 31 January 2026 plus 1 month is 28 February 2026, 31 March plus 1 month is 30 April, and 29 February 2024 plus 1 year is 28 February 2025. The result tells you when this has happened. Days and weeks never need it, so 30 days is always exactly 30 days." },
+        { "q": "Why do some date calculators come out a day short?", "a": "Many count by subtracting two midnight timestamps and dividing by 86,400,000, the milliseconds in a day. Across a daylight-saving change a local day is 23 or 25 hours long, so the division gives something like 29.96 and the count rounds the wrong way. This tool anchors every date at noon UTC, where there is no daylight saving, and counts whole days from there, so you get the same answer in every time zone. Dates are treated as calendar days only: the time of day is never involved." }
+      ]
+    },
+    {
+      "slug": "json",
+      "name": "JSON Formatter",
+      "category": "Developer",
+      "icon": "brackets-curly",
+      "appCategory": "DeveloperApplication",
+      "title": "JSON Formatter and Validator: Beautify, Minify, Sort Keys | Free",
+      "description": "Free JSON formatter and validator that runs in your browser. Pretty-print, minify, sort keys and see the first error by line and column. Nothing is uploaded.",
+      "summary": "Pretty-print, minify, validate and sort JSON, with the first error pinpointed by line and column. Nothing is uploaded.",
+      "h1": "Format, validate and minify JSON without <span class=\"text-gold-deep\">uploading</span> it",
+      "lead": "Paste JSON to pretty-print it with the indent you like, minify it, or check it and see exactly where the first mistake is. Everything runs in your browser, nothing is uploaded, and keys stay in their original order unless you ask to sort them.",
+      "faq": [
+        { "q": "Is my JSON uploaded anywhere?", "a": "No. Formatting, minifying, sorting and validation run in your browser with plain JavaScript, and the page makes no network request with your text. Nothing is stored either: the box is empty again when you come back. That is also why a 5 MB document is fine: there is no upload to wait for, only the work your own device does when you press a button. A result longer than 200,000 characters is shown in part, to keep the page quick, while Copy and Download always use the whole result." },
+        { "q": "What does Format change?", "a": "Only the whitespace between values. The formatter works on the text itself rather than through <code>JSON.parse</code>, so numbers stay exactly as written (<code>1.0</code> stays <code>1.0</code> and <code>1e400</code> is not turned into null), unicode escapes stay escapes, keys keep their original order and even duplicate keys survive. Minify removes every space, tab and line break outside strings and nothing else." },
+        { "q": "How much does Minify save?", "a": "It depends on how much whitespace the document carries. The example on this page is 269 bytes as pasted and 221 bytes minified, a saving of 48 bytes or 17.8%; formatted with 2 spaces it is 329 bytes, so minifying that formatted text saves 108 bytes or 32.8%. Deeply nested documents with short values save the most. A document that is mostly long strings saves little, because nothing inside a string is touched. The result line shows the bytes in, the bytes out and the percentage saved." },
+        { "q": "How do I read the error message?", "a": "Validation stops at the first problem and gives its line and column, both counted from 1, with an excerpt of that line in which the offending character is highlighted. Press <em>Go to line</em> to put the cursor there. For <code>[1, 2,]</code> it reports line 1, column 6: Trailing comma: remove the comma before ]. The usual culprits are trailing commas, single quotes, unquoted keys, comments and a missing comma between two values, none of which JSON allows." },
+        { "q": "How are keys sorted?", "a": "Only when you press Sort keys; Format and Minify never move a key. Sorting applies at every depth, so nested objects are sorted too, while arrays keep their order. Keys are compared by their character codes, the same order JavaScript's <code>sort()</code> uses, so <code>B</code> comes before <code>a</code> and <code>10</code> before <code>9</code>. A key that appears twice keeps both copies in their original relative order." }
+      ]
+    },
+    {
+      "slug": "encode",
+      "name": "Base64 & URL Encoder",
+      "category": "Developer",
+      "icon": "binary",
+      "appCategory": "DeveloperApplication",
+      "title": "Base64, URL, HTML Entity and Hex Encoder and Decoder | Free",
+      "description": "Free Base64, URL, HTML entity and hex encoder and decoder. UTF-8 correct, with URL-safe Base64 for JWTs. Runs in your browser; nothing is uploaded.",
+      "summary": "Base64, URL encoding, HTML entities and hex, both directions and UTF-8 correct, with URL-safe Base64 and padding options.",
+      "h1": "Base64, URL, HTML entity and hex <span class=\"text-gold-deep\">encoder</span> and decoder",
+      "lead": "Paste text or an encoded string and convert it either way: Base64 (standard or URL-safe), percent-encoding for a value or a whole URL, HTML entities, and hex. Everything runs on your device, so nothing you paste is sent anywhere.",
+      "faq": [
+        { "q": "Is anything I paste sent anywhere?", "a": "No. Every codec is plain JavaScript running in your browser, and the page makes no network request with your text. Copy puts the result on your clipboard only when you press the button, and Download saves a file on your own device. Once the page has loaded it works offline." },
+        { "q": "How does Base64 handle emoji, Hindi and other non-ASCII text?", "a": "The text is turned into UTF-8 bytes first and those bytes are encoded, which is what every modern system expects. <em>नमस्ते</em> is 6 characters but 18 bytes, so its Base64 is 24 characters: <code>4KSo4KSu4KS44KWN4KSk4KWH</code>. A single 😀 is 4 bytes and becomes <code>8J+YgA==</code>. The Hex codec shows the same bytes as digits, two per byte. Decoding goes the other way, and if the bytes turn out not to be UTF-8 text, as with an image or a signature, it says so and shows them as hex." },
+        { "q": "What are URL-safe Base64 and padding?", "a": "Standard Base64 uses + and /, which have meanings of their own in URLs and file names. The URL-safe alphabet from RFC 4648 section 5 swaps them for - and _. The = padding only brings the length up to a multiple of 4; JSON Web Tokens and most URL-safe uses leave it off, which is what <em>Drop the = padding</em> does. The decoder accepts either alphabet, with or without padding, and ignores spaces and line breaks, so a wrapped or pasted value decodes as it is." },
+        { "q": "When should I encode a value, and when a whole URL?", "a": "<em>A value</em> (<code>encodeURIComponent</code>) escapes everything except letters, digits and <code>- _ . ! ~ * ' ( )</code>, so <em>Tom &amp; Jerry</em> becomes <code>Tom%20%26%20Jerry</code> and can sit safely inside a query string. <em>A whole URL</em> (<code>encodeURI</code>) also leaves <code>; , / ? : @ &amp; = + $ #</code> alone because they give the URL its structure, so <code>https://example.com/?q=Tom &amp; Jerry</code> becomes <code>https://example.com/?q=Tom%20&amp;%20Jerry</code>, which a server reads as two parameters. Encode each value first, then build the URL. A space is always %20 here; the + that form submissions use for a space is left as it is when decoding." },
+        { "q": "Which HTML entities does it encode and decode?", "a": "Encoding always covers the five characters that break HTML, &amp; &lt; &gt; \" and ', written as <code>&amp;amp; &amp;lt; &amp;gt; &amp;quot;</code> and <code>&amp;#39;</code> (HTML 4 does not define <code>&amp;apos;</code>). With <em>Also encode non-ASCII characters</em> on, every character above ASCII is encoded too: as a named entity where the HTML standard defines one, such as <code>&amp;eacute;</code> or <code>&amp;rarr;</code>, and as a number otherwise. Decoding knows every named reference in the HTML standard, all 2,125 of them, plus decimal and hex numbers, the legacy names browsers accept without a semicolon such as <code>&amp;copy</code>, and the browser quirk that reads <code>&amp;#150;</code> as an en dash. An unknown name is left as it is." }
+      ]
+    },
+    {
+      "slug": "hash",
+      "name": "Hash & UUID Generator",
+      "category": "Developer",
+      "icon": "fingerprint",
+      "appCategory": "DeveloperApplication",
+      "title": "Hash & UUID Generator: MD5, SHA-256, SHA-512 and UUID v4 | Free",
+      "description": "Free MD5, SHA-1, SHA-256, SHA-384 and SHA-512 hashes for text and files, a checksum compare field and random UUIDs. Runs in your browser; nothing is uploaded.",
+      "summary": "MD5 and SHA digests of text or any file, a checksum compare field, and up to 100 random UUIDs, all computed on your device.",
+      "h1": "Hash and UUID generator that works on your <span class=\"text-gold-deep\">device</span>",
+      "lead": "Paste text or drop a file to get its MD5, SHA-1, SHA-256, SHA-384 and SHA-512 at once, check them against a published checksum, and generate up to 100 version 4 UUIDs. Everything is computed in your browser, so nothing you enter is uploaded.",
+      "faq": [
+        { "q": "Is my text or file uploaded?", "a": "No. The SHA digests come from your browser's own Web Crypto API and MD5 is computed by plain JavaScript on this page, so the page makes no network request with your data. A file is read into memory on your device and hashed there. You can load the page, go offline, and it still works." },
+        { "q": "Why does my hash differ from the terminal or another tool?", "a": "Almost always a newline or an encoding. This tool hashes exactly the bytes you typed, as UTF-8, with nothing added: the MD5 of <code>hello</code> is 5d41402abc4b2a76b9719d911017c592. But <code>echo hello | md5sum</code> hashes <code>hello</code> plus a newline and gives b1946ac92492d2347c6235b4d2611184. Use <code>printf '%s' hello | md5sum</code> or <code>echo -n</code> to match. Windows line endings, a trailing space, a byte-order mark or a different encoding such as UTF-16 change the digest in the same way." },
+        { "q": "Is MD5 still safe to use?", "a": "It depends on the job. As a checksum, to spot a corrupted download, a failed copy or a duplicate file, MD5 is fine: an accidental change will not produce the same 128-bit digest. It is not safe where someone could choose the input, because collisions (two different files with one MD5) can be made to order, so it should not stand behind signatures, certificates or software updates; use SHA-256 there. And no fast hash, MD5 or SHA-256, should ever store a password: a graphics card tries billions of guesses a second, so a leaked table of MD5 passwords is cracked in hours. Passwords belong in a slow, salted algorithm built for them, such as bcrypt, scrypt or Argon2." },
+        { "q": "How do I check a downloaded file against a published checksum?", "a": "Drop the file into the tool, then paste the checksum from the download page into <em>Compare with a known hash</em>. The tool says which algorithm it matches, whatever its case, and it understands whole lines copied from <code>sha256sum</code> or <code>shasum</code> output, such as <code>d7a8fb...  installer.iso</code>. A match means the file arrived byte for byte as published. No match means the file is damaged, altered or a different version, so do not run it until you know why." },
+        { "q": "What is a version 4 UUID, and could two ever be the same?", "a": "A UUID is a 128-bit identifier written as 32 hex digits in five groups, such as 3f2504e0-4f89-41d3-9a0c-0305e82c3301. Version 4 means the value is random: six bits are fixed to mark the version (the 4 at the start of the third group) and the variant (8, 9, a or b at the start of the fourth), and the other 122 come from your browser's cryptographically secure random number generator. A repeat is possible in theory but not in practice: you would have to generate about 2.7 quintillion UUIDs before the odds of a single duplicate reached 50%, so they are safe to use as database keys and file names without checking." }
       ]
     }
   ]

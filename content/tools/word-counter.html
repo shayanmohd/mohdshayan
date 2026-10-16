@@ -1,0 +1,80 @@
+        <section class="pb-10" aria-label="Word counter">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-grid" id="wc-form" autocomplete="off" onsubmit="return false" action="/tools/word-counter/">
+                    <div class="tool-panel">
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3 min-h-[36px]">
+                                <label for="wc-in" class="field-label">Your text</label>
+                                <button type="button" class="text-btn" id="wc-clear" hidden><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-trash"></use></svg> Clear</button>
+                            </div>
+                            <textarea id="wc-in" class="input" rows="20" placeholder="Type or paste your text here. Every count updates as you write." autocomplete="off"></textarea>
+                            <p class="field-help">Counts words in any language or script. A hyphenated word counts as one, a number counts as a word, and punctuation does not.</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-aside">
+                        <div class="bezel">
+                            <div class="readout" aria-live="polite">
+                                <p class="readout-label">Words</p>
+                                <p class="readout-value" id="wc-words">0</p>
+                                <p class="readout-sub" id="wc-sub">Type or paste text to see the counts.</p>
+                                <dl class="readout-rows" id="wc-rows" hidden>
+                                    <div><dt>Characters</dt><dd id="wc-characters">0</dd></div>
+                                    <div><dt>Characters without spaces</dt><dd id="wc-no-spaces">0</dd></div>
+                                    <div><dt>Sentences</dt><dd id="wc-sentences">0</dd></div>
+                                    <div><dt>Paragraphs</dt><dd id="wc-paragraphs">0</dd></div>
+                                    <div><dt>Lines</dt><dd id="wc-lines">0</dd></div>
+                                    <div><dt>Unique words</dt><dd id="wc-unique">0</dd></div>
+                                    <div><dt>Average word length</dt><dd id="wc-average">0</dd></div>
+                                    <div><dt>Longest word</dt><dd id="wc-longest"></dd></div>
+                                    <div><dt>Reading time (230 wpm)</dt><dd id="wc-reading">0 sec</dd></div>
+                                    <div><dt>Speaking time (150 wpm)</dt><dd id="wc-speaking">0 sec</dd></div>
+                                </dl>
+                                <div class="flex flex-wrap gap-2 mt-5">
+                                    <button type="button" class="btn-ghost-dark" id="wc-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy stats</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="wc-live" class="sr-only" aria-live="polite"></p>
+                    </div>
+                </form>
+
+                <div class="tool-panel mt-6">
+                    <div class="grid lg:grid-cols-[1fr_2fr] gap-6 lg:gap-12">
+                        <div>
+                            <h2 class="card-title">Most used words</h2>
+                            <p class="field-help mt-2">The ten words you use most, each with its share of all the words in the text. Common words such as <em>the</em>, <em>and</em> and <em>of</em> are left out until you include them.</p>
+                            <label class="check mt-4"><input type="checkbox" id="wc-stop"> Include stop words</label>
+                        </div>
+                        <div class="table-scroll !max-h-none" aria-live="polite">
+                            <table class="data-table" id="wc-table">
+                                <thead><tr><th scope="col">Word</th><th scope="col">Count</th><th scope="col">Density</th></tr></thead>
+                                <tbody><tr><td colspan="3" class="!whitespace-normal text-muted">Type or paste text to see which words you use most.</td></tr></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="mono-meta text-muted mt-5 flex items-start gap-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> Counted on your device. Your text is never uploaded or stored, and the box is empty again when you come back.</p>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">Reading time at a glance</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">How long common lengths take to read silently at 230 words per minute, or to say aloud at 150.</p>
+                    </div>
+                    <div class="tool-panel">
+                        <div class="table-scroll !max-h-none !border-t-0">
+                            <table class="data-table" id="wc-glance">
+                                <thead><tr class="max-sm:grid max-sm:grid-cols-[3rem_1fr_1fr]"><th scope="col" class="max-sm:hidden">About the length of</th><th scope="col" class="max-sm:!px-0">Words</th><th scope="col" class="max-sm:!px-0">Reading</th><th scope="col" class="max-sm:!px-0">Speaking</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

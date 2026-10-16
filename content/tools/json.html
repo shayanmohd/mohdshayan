@@ -1,0 +1,87 @@
+        <section class="pb-10" aria-label="JSON formatter">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-panel" id="js-form" autocomplete="off" onsubmit="return false" action="/tools/json/">
+                    <div class="flex flex-wrap items-end gap-x-8 gap-y-5">
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">Indent with</legend>
+                            <div class="seg" id="js-indents"></div>
+                        </fieldset>
+                        <div class="flex flex-wrap items-center gap-2 pb-[3px]">
+                            <button type="button" class="btn-ink btn-sm" id="js-format"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-text-indent"></use></svg> Format</button>
+                            <button type="button" class="btn-ghost btn-sm" id="js-minify"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrows-in"></use></svg> Minify</button>
+                            <button type="button" class="btn-ghost btn-sm" id="js-sort"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sort-ascending"></use></svg> Sort keys</button>
+                            <button type="button" class="btn-ghost btn-sm" id="js-validate"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-check"></use></svg> Validate</button>
+                        </div>
+                    </div>
+                    <p class="field-help mt-3">Format and Sort keys use the indent you pick. Minify removes every space and line break outside strings. Keys stay in their original order unless you press Sort keys.</p>
+
+                    <hr class="tool-divider">
+
+                    <div class="tool-grid even">
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3 min-h-[36px]">
+                                <label for="js-in" class="field-label">Your JSON</label>
+                                <div class="flex items-center gap-4">
+                                    <button type="button" class="text-btn" id="js-sample"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-sparkle"></use></svg> Try an example</button>
+                                    <button type="button" class="text-btn" id="js-clear" hidden><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-trash"></use></svg> Clear</button>
+                                </div>
+                            </div>
+                            <textarea id="js-in" class="input mono" rows="18" placeholder="Paste or type JSON here, then press Format, Minify, Sort keys or Validate." spellcheck="false" autocapitalize="off" autocorrect="off" aria-describedby="js-in-stats js-error"></textarea>
+                            <p class="hint" id="js-in-stats">0 bytes · 0 lines</p>
+                            <div class="field-error" id="js-error" role="alert"></div>
+                        </div>
+                        <div class="field">
+                            <div class="flex items-center justify-between gap-3 min-h-[36px]">
+                                <label for="js-out" class="field-label">Result</label>
+                                <span class="hint" id="js-out-stats"></span>
+                            </div>
+                            <textarea id="js-out" class="input mono" rows="18" readonly spellcheck="false" placeholder="The result appears here."></textarea>
+                            <div class="flex flex-wrap items-center justify-between gap-3">
+                                <p class="status-line" id="js-status" aria-live="polite"></p>
+                                <div class="flex items-center gap-2">
+                                    <button type="button" class="icon-btn" id="js-download" aria-label="Download as a .json file" title="Download .json" disabled><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-download-simple"></use></svg></button>
+                                    <button type="button" class="btn-ink btn-sm" id="js-copy" disabled><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy result</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="js-live" class="sr-only" aria-live="polite"></p>
+                </form>
+
+                <p class="mono-meta text-muted mt-5 flex items-start gap-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> Everything runs on your device. Your JSON is never uploaded or stored.</p>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">What each button does</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">The formatter works on the text itself rather than through JSON.parse, so a number written as 1.0 stays 1.0, escapes stay escapes, and keys move only when you ask.</p>
+                    </div>
+                    <div class="ruled-grid sm:grid-cols-2">
+                        <div class="cell">
+                            <h3 class="card-title">Format</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Rewrites the whitespace between values with your indent, one value per line, and changes nothing else.</p>
+                            <p class="mono-meta mt-4"><span class="text-muted">{"a":[1,2]}</span> <span class="text-gold-deep">→ {<br>&nbsp;&nbsp;"a": [<br>&nbsp;&nbsp;&nbsp;&nbsp;1,<br>&nbsp;&nbsp;&nbsp;&nbsp;2<br>&nbsp;&nbsp;]<br>}</span></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Minify</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Removes every space, tab and line break outside strings: the smallest text that still parses to the same value.</p>
+                            <p class="mono-meta mt-4"><span class="text-muted">{ "a": [ 1, 2 ] }</span> <span class="text-gold-deep">→ {"a":[1,2]}</span></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Sort keys</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Orders the keys of every object by character code, at every depth, then formats. Arrays keep their order.</p>
+                            <p class="mono-meta mt-4"><span class="text-muted">{"b":1,"a":{"d":1,"c":2}}</span> <span class="text-gold-deep">→ {<br>&nbsp;&nbsp;"a": {<br>&nbsp;&nbsp;&nbsp;&nbsp;"c": 2,<br>&nbsp;&nbsp;&nbsp;&nbsp;"d": 1<br>&nbsp;&nbsp;},<br>&nbsp;&nbsp;"b": 1<br>}</span></p>
+                        </div>
+                        <div class="cell">
+                            <h3 class="card-title">Validate</h3>
+                            <p class="text-body text-[0.9375rem] leading-relaxed mt-2">Checks the whole document and reports the first problem with its line, its column and an excerpt of that line.</p>
+                            <p class="mono-meta mt-4"><span class="text-muted">[1, 2,]</span> <span class="text-gold-deep">→ Line 1, column 6. Trailing comma</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

@@ -450,7 +450,7 @@ ${list.map(toolRow).join('\n')}
                 </div>
             </div>
         </section>`;
-  return shell({ title: 'Free Online Tools | Mohd Shayan', description: 'Free, private tools by Mohd Shayan that run in your browser: deAIfy, commission, GST, EMI and margin calculators, a QR code generator, an image compressor and a password generator.', path: '/tools/', active: '/tools/', body,
+  return shell({ title: 'Free Online Tools | Mohd Shayan', description: `${TOOLS.length} free, private tools by Mohd Shayan that run in your browser: finance calculators, writing helpers, everyday utilities and developer tools. Nothing you enter leaves your device.`, path: '/tools/', active: '/tools/', body,
     jsonld: { '@context': 'https://schema.org', '@type': 'CollectionPage', '@id': `${site.url}/tools/#page`, url: `${site.url}/tools/`, name: 'Free tools', about: { '@id': `${site.url}/#person` }, inLanguage: 'en',
       hasPart: TOOLS.map(t => ({ '@type': 'WebApplication', name: t.name, url: toolCanonical(t), applicationCategory: t.appCategory, operatingSystem: 'Any', isAccessibleForFree: true })) } });
 }
@@ -524,7 +524,7 @@ function homepageTools(html) {
   const start = '<!-- tools:start -->', end = '<!-- tools:end -->';
   const a = html.indexOf(start), b = html.indexOf(end);
   if (a < 0 || b < a) { console.warn('warning: index.html has no tools markers, so the homepage tools section was not refreshed'); return html; }
-  const cells = TOOLS.map(t => `                <a href="${toolHref(t)}" class="cell block">
+  const cells = TOOLS.filter(t => t.featured).map(t => `                <a href="${toolHref(t)}" class="cell block">
                     <div class="icon-sq wash mb-5">${icon(t.icon)}</div>
                     <h3 class="card-title"><span class="sweep-target">${esc(t.name)}</span></h3>
                     <p class="mono-meta text-gold-deep mt-1">${esc(t.category)}</p>

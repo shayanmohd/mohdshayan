@@ -1,0 +1,188 @@
+        <section class="pb-10" aria-label="Percentage calculators">
+            <div class="max-w-content mx-auto px-6">
+                <form class="grid gap-6" id="pc-form" autocomplete="off" onsubmit="return false" action="/tools/percentage/">
+                    <section class="tool-panel" data-calc="of" aria-labelledby="pc-of-title">
+                        <div class="grid gap-5 lg:grid-cols-2 lg:gap-8 items-start">
+                            <div class="tool-stack">
+                                <div>
+                                    <h2 class="card-title" id="pc-of-title">What is X% of Y?</h2>
+                                    <p class="field-help mt-1">A share of a number: a 15% tip on a bill of 200, or 18% tax on 1,000.</p>
+                                </div>
+                                <div class="field-row two">
+                                    <div class="field">
+                                        <label for="pc-of-a" class="field-label">Percentage <span class="hint">X</span></label>
+                                        <span class="affix"><input id="pc-of-a" class="input has-post" inputmode="decimal" value="15" data-a><span class="affix-text post">%</span></span>
+                                    </div>
+                                    <div class="field">
+                                        <label for="pc-of-b" class="field-label">Of the number <span class="hint">Y</span></label>
+                                        <input id="pc-of-b" class="input" inputmode="decimal" value="200" data-b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bezel">
+                                <div class="readout" aria-live="polite">
+                                    <p class="readout-label" data-head-label>15% of 200</p>
+                                    <p class="readout-value" data-head>30</p>
+                                    <p class="readout-sub font-mono" data-sub>200 × 15 ÷ 100 = 30</p>
+                                    <div class="flex flex-wrap gap-2 mt-5">
+                                        <button type="button" class="btn-ghost-dark" data-copy><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy result</span></button>
+                                        <button type="button" class="btn-ghost-dark" data-link><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="tool-panel" data-calc="what" aria-labelledby="pc-what-title">
+                        <div class="grid gap-5 lg:grid-cols-2 lg:gap-8 items-start">
+                            <div class="tool-stack">
+                                <div>
+                                    <h2 class="card-title" id="pc-what-title">X is what percent of Y?</h2>
+                                    <p class="field-help mt-1">A part as a share of the whole: marks out of a total, or sales from one product out of all sales.</p>
+                                </div>
+                                <div class="field-row two">
+                                    <div class="field">
+                                        <label for="pc-what-a" class="field-label">Number <span class="hint">X</span></label>
+                                        <input id="pc-what-a" class="input" inputmode="decimal" value="30" data-a>
+                                    </div>
+                                    <div class="field">
+                                        <label for="pc-what-b" class="field-label">Out of <span class="hint">Y</span></label>
+                                        <input id="pc-what-b" class="input" inputmode="decimal" value="200" data-b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bezel">
+                                <div class="readout" aria-live="polite">
+                                    <p class="readout-label" data-head-label>30 as a percentage of 200</p>
+                                    <p class="readout-value" data-head>15%</p>
+                                    <p class="readout-sub font-mono" data-sub>30 ÷ 200 × 100 = 15</p>
+                                    <div class="flex flex-wrap gap-2 mt-5">
+                                        <button type="button" class="btn-ghost-dark" data-copy><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy result</span></button>
+                                        <button type="button" class="btn-ghost-dark" data-link><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="tool-panel" data-calc="change" aria-labelledby="pc-change-title">
+                        <div class="grid gap-5 lg:grid-cols-2 lg:gap-8 items-start">
+                            <div class="tool-stack">
+                                <div>
+                                    <h2 class="card-title" id="pc-change-title">Percentage change from A to B</h2>
+                                    <p class="field-help mt-1">How much a figure has risen or fallen, measured against where it started. Negative values are fine: the change is compared with the size of the starting value, so it always reads the right way up.</p>
+                                </div>
+                                <div class="field-row two">
+                                    <div class="field">
+                                        <label for="pc-change-a" class="field-label">From <span class="hint">A</span></label>
+                                        <input id="pc-change-a" class="input" inputmode="decimal" value="200" data-a>
+                                    </div>
+                                    <div class="field">
+                                        <label for="pc-change-b" class="field-label">To <span class="hint">B</span></label>
+                                        <input id="pc-change-b" class="input" inputmode="decimal" value="250" data-b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bezel">
+                                <div class="readout" aria-live="polite">
+                                    <p class="readout-label" data-head-label>Change from 200 to 250</p>
+                                    <p class="readout-value" data-head>25% increase</p>
+                                    <p class="readout-sub font-mono" data-sub>(250 − 200) ÷ 200 × 100 = 25</p>
+                                    <div class="flex flex-wrap gap-2 mt-5">
+                                        <button type="button" class="btn-ghost-dark" data-copy><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy result</span></button>
+                                        <button type="button" class="btn-ghost-dark" data-link><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="tool-panel" data-calc="adjust" aria-labelledby="pc-adjust-title">
+                        <div class="grid gap-5 lg:grid-cols-2 lg:gap-8 items-start">
+                            <div class="tool-stack">
+                                <div>
+                                    <h2 class="card-title" id="pc-adjust-title">Increase or decrease Y by X%</h2>
+                                    <p class="field-help mt-1">Both answers at once: the number after a rise of that percentage, and after a cut of the same percentage. A price after tax, or after a discount.</p>
+                                </div>
+                                <div class="field-row two">
+                                    <div class="field">
+                                        <label for="pc-adjust-a" class="field-label">Number <span class="hint">Y</span></label>
+                                        <input id="pc-adjust-a" class="input" inputmode="decimal" value="200" data-a>
+                                    </div>
+                                    <div class="field">
+                                        <label for="pc-adjust-b" class="field-label">Percentage <span class="hint">X</span></label>
+                                        <span class="affix"><input id="pc-adjust-b" class="input has-post" inputmode="decimal" value="15" data-b><span class="affix-text post">%</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bezel">
+                                <div class="readout" aria-live="polite">
+                                    <p class="readout-label" data-head-label>200 increased by 15%</p>
+                                    <p class="readout-value" data-head>230</p>
+                                    <p class="readout-label mt-4" data-head-label2>200 decreased by 15%</p>
+                                    <p class="readout-value" data-head2>170</p>
+                                    <p class="readout-sub font-mono" data-sub>15% of 200 = 30 · 200 + 30 = 230 · 200 − 30 = 170</p>
+                                    <div class="flex flex-wrap gap-2 mt-5">
+                                        <button type="button" class="btn-ghost-dark" data-copy><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy result</span></button>
+                                        <button type="button" class="btn-ghost-dark" data-link><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="tool-panel" data-calc="reverse" aria-labelledby="pc-reverse-title">
+                        <div class="grid gap-5 lg:grid-cols-2 lg:gap-8 items-start">
+                            <div class="tool-stack">
+                                <div>
+                                    <h2 class="card-title" id="pc-reverse-title">Y is X% of what?</h2>
+                                    <p class="field-help mt-1">The whole, when you know a part and the percentage it makes up: the price before tax behind a total, or the full mark when 30 marks scored 15%.</p>
+                                </div>
+                                <div class="field-row two">
+                                    <div class="field">
+                                        <label for="pc-reverse-a" class="field-label">Number <span class="hint">Y</span></label>
+                                        <input id="pc-reverse-a" class="input" inputmode="decimal" value="30" data-a>
+                                    </div>
+                                    <div class="field">
+                                        <label for="pc-reverse-b" class="field-label">Is this percentage <span class="hint">X</span></label>
+                                        <span class="affix"><input id="pc-reverse-b" class="input has-post" inputmode="decimal" value="15" data-b><span class="affix-text post">%</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bezel">
+                                <div class="readout" aria-live="polite">
+                                    <p class="readout-label" data-head-label>30 is 15% of</p>
+                                    <p class="readout-value" data-head>200</p>
+                                    <p class="readout-sub font-mono" data-sub>30 ÷ 15 × 100 = 200</p>
+                                    <div class="flex flex-wrap gap-2 mt-5">
+                                        <button type="button" class="btn-ghost-dark" data-copy><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy result</span></button>
+                                        <button type="button" class="btn-ghost-dark" data-link><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <p id="pc-live" class="sr-only" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">Fractions as percentages</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">The fractions that come up most, as the percentage and the decimal they stand for. Each row is the second calculator at work: the top of the fraction as a percentage of the bottom.</p>
+                    </div>
+                    <div class="tool-panel">
+                        <div class="table-scroll !max-h-none !border-t-0">
+                            <table class="data-table" id="pc-fractions">
+                                <thead><tr><th scope="col">Fraction</th><th scope="col">Percentage</th><th scope="col">Decimal</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

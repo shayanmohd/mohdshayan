@@ -1,0 +1,138 @@
+        <section class="pb-10" aria-label="SIP calculator">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-grid" id="sip-form" action="/tools/sip/" autocomplete="off" onsubmit="return false">
+                    <div class="tool-panel tool-stack">
+                        <div class="tool-panel-head">
+                            <div class="seg" role="radiogroup" aria-label="What to work out">
+                                <label><input type="radio" name="mode" value="sip" checked><span>Monthly SIP</span></label>
+                                <label><input type="radio" name="mode" value="lump"><span>Lump sum</span></label>
+                                <label><input type="radio" name="mode" value="goal"><span>Goal</span></label>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <label for="sip-cur" class="hint">Currency</label>
+                                <select id="sip-cur" class="input !h-9 !w-auto !text-[0.8125rem] font-mono"></select>
+                            </div>
+                        </div>
+
+                        <div class="field" data-mode="sip">
+                            <label for="sip-amount" class="field-label">Monthly investment <span class="hint" id="sip-amount-words"></span></label>
+                            <span class="affix"><span class="affix-text pre" data-cur-symbol>₹</span><input id="sip-amount" class="input" inputmode="decimal"></span>
+                            <input type="range" class="range" id="sip-amount-range" min="2" max="6" step="0.005" aria-hidden="true" tabindex="-1">
+                        </div>
+                        <div class="field" data-mode="lump" hidden>
+                            <label for="sip-lump" class="field-label">One-time investment <span class="hint" id="sip-lump-words"></span></label>
+                            <span class="affix"><span class="affix-text pre" data-cur-symbol>₹</span><input id="sip-lump" class="input" inputmode="decimal"></span>
+                            <input type="range" class="range" id="sip-lump-range" min="3" max="8" step="0.005" aria-hidden="true" tabindex="-1">
+                        </div>
+                        <div class="field" data-mode="goal" hidden>
+                            <label for="sip-goal" class="field-label">Target amount <span class="hint" id="sip-goal-words"></span></label>
+                            <span class="affix"><span class="affix-text pre" data-cur-symbol>₹</span><input id="sip-goal" class="input" inputmode="decimal"></span>
+                            <input type="range" class="range" id="sip-goal-range" min="4" max="9" step="0.005" aria-hidden="true" tabindex="-1">
+                        </div>
+
+                        <div class="field-row two">
+                            <div class="field">
+                                <label for="sip-rate" class="field-label">Expected return <span class="hint">per year</span></label>
+                                <span class="affix"><input id="sip-rate" class="input has-post" inputmode="decimal" value="12"><span class="affix-text post">%</span></span>
+                                <input type="range" class="range" id="sip-rate-range" min="1" max="30" step="0.1" aria-hidden="true" tabindex="-1">
+                            </div>
+                            <div class="field">
+                                <div class="flex items-center justify-between gap-3">
+                                    <label for="sip-term" class="field-label">Duration</label>
+                                    <div class="seg" role="radiogroup" aria-label="Duration unit">
+                                        <label><input type="radio" name="unit" value="years" checked><span>Years</span></label>
+                                        <label><input type="radio" name="unit" value="months"><span>Months</span></label>
+                                    </div>
+                                </div>
+                                <input id="sip-term" class="input" inputmode="numeric" value="10">
+                                <input type="range" class="range" id="sip-term-range" min="1" max="50" step="1" aria-hidden="true" tabindex="-1">
+                            </div>
+                        </div>
+
+                        <fieldset class="field" data-mode="lump" hidden>
+                            <legend class="field-label mb-2">Compounding</legend>
+                            <div class="seg">
+                                <label><input type="radio" name="compounding" value="yearly" checked><span>Yearly</span></label>
+                                <label><input type="radio" name="compounding" value="monthly"><span>Monthly</span></label>
+                            </div>
+                            <p class="field-help" id="sip-compounding-help">Compounds once a year, the way fund returns (CAGR) are quoted.</p>
+                        </fieldset>
+
+                        <div class="tool-stack" data-mode="sip lump">
+                            <hr class="tool-divider">
+                            <p class="eyebrow"><span id="sip-optional-label">Step-up and inflation</span> <span class="text-muted normal-case tracking-normal">· optional</span></p>
+                            <div class="field-row two">
+                                <div class="field" data-mode="sip">
+                                    <label for="sip-stepup" class="field-label">Annual step-up</label>
+                                    <span class="affix"><input id="sip-stepup" class="input has-post" inputmode="decimal" placeholder="0"><span class="affix-text post">%</span></span>
+                                    <p class="field-help">Raises the monthly amount by this much after every 12 months.</p>
+                                </div>
+                                <div class="field">
+                                    <label for="sip-inflation" class="field-label">Expected inflation</label>
+                                    <span class="affix"><input id="sip-inflation" class="input has-post" inputmode="decimal" placeholder="0"><span class="affix-text post">%</span></span>
+                                    <p class="field-help">Shows what the maturity value would buy in today's money.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="field-error" id="sip-error" role="alert"></p>
+                    </div>
+
+                    <div class="tool-aside">
+                        <div class="bezel">
+                            <div class="readout" aria-live="polite">
+                                <p class="readout-label" id="sip-head-label">Maturity value</p>
+                                <p class="readout-value" id="sip-head"></p>
+                                <p class="readout-sub" id="sip-head-sub"></p>
+                                <div class="split-bar" id="sip-split" role="img" aria-label="Share of invested amount and returns"><span style="background:#4b89e6"></span><span style="background:#b08a2e"></span></div>
+                                <div class="legend" id="sip-legend"></div>
+                                <dl class="readout-rows" id="sip-rows"></dl>
+                                <div class="flex flex-wrap gap-2 mt-5">
+                                    <button type="button" class="btn-ghost-dark" id="sip-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy summary</span></button>
+                                    <button type="button" class="btn-ghost-dark" id="sip-share"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tool-panel mt-4">
+                            <h2 class="card-title">How it was worked out</h2>
+                            <p class="mono-meta text-body mt-3 leading-relaxed" id="sip-formula"></p>
+                        </div>
+                        <p id="sip-live" class="sr-only" aria-live="polite"></p>
+                    </div>
+                </form>
+
+                <div class="tool-panel mt-6">
+                    <div class="tool-panel-head">
+                        <div>
+                            <h2 class="card-title">Year by year</h2>
+                            <p class="field-help mt-1" id="sip-table-sub">What has gone in so far and what it is worth at the end of each year.</p>
+                        </div>
+                    </div>
+                    <div class="table-scroll mt-4">
+                        <table class="data-table">
+                            <thead><tr><th scope="col">Year</th><th scope="col">Invested so far</th><th scope="col">Returns</th><th scope="col">Value at year end</th></tr></thead>
+                            <tbody id="sip-table"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;" id="sip-ref-title">What 5,000 a month becomes</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs">The maturity value of a fixed monthly SIP, with no step-up, at each expected annual return.</p>
+                    </div>
+                    <div class="tool-panel">
+                        <div class="table-scroll !max-h-none !border-t-0">
+                            <table class="data-table" id="sip-ref">
+                                <thead><tr><th scope="col">Term</th><th scope="col">Invested</th><th scope="col">8%</th><th scope="col">10%</th><th scope="col">12%</th><th scope="col">15%</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

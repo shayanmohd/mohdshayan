@@ -49,7 +49,7 @@ Add files to `assets/philanthropy/`, describe them in `content/philanthropy/gall
 
 ### Free tools
 
-`/tools/` is a hub of free, browser-only tools, each at `/tools/<slug>/`: deAIfy, commission, GST, EMI and margin calculators, a QR code generator, an image compressor and a password generator. Each is described in `content/tools.json`, with its interface in `content/tools/<slug>.html` and its script in `assets/tools/<slug>.js`; the pure logic lives in `assets/tools/lib/` and is covered by `npm test`. `npm run build:pages` also refreshes the tools section of the homepage. To add a tool, add an entry to `content/tools.json`, write those two files, and run `npm run build && npm test`.
+`/tools/` is a hub of free, browser-only tools, each at `/tools/<slug>/`, in four groups: Writing (deAIfy, word counter, case converter, duplicate line remover), Business & money (commission, GST, EMI, margin, SIP, compound interest and percentage calculators), Everyday utilities (QR codes, image compressor, passwords, age calculator, unit converter, days between dates) and Developer (JSON formatter, Base64 and URL encoder, hash and UUID generator). Each is described in `content/tools.json` (`"featured": true` also puts it on the homepage), with its interface in `content/tools/<slug>.html` and its script in `assets/tools/<slug>.js`; the pure logic lives in `assets/tools/lib/` and is covered by `npm test`. `npm run build:pages` also refreshes the tools section of the homepage. To add a tool, add an entry to `content/tools.json`, write those two files, and run `npm run build && npm test`.
 
 ### Demo subdomain
 

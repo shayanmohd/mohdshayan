@@ -1,0 +1,109 @@
+        <section class="pb-10" aria-label="Days between dates">
+            <div class="max-w-content mx-auto px-6">
+                <form class="tool-grid" id="db-form" autocomplete="off" onsubmit="return false" action="/tools/days-between/">
+                    <div class="tool-panel tool-stack">
+                        <fieldset class="field">
+                            <legend class="field-label mb-2">What do you want to work out?</legend>
+                            <div class="seg block">
+                                <label><input type="radio" name="mode" value="diff" checked><span>Days between</span></label>
+                                <label><input type="radio" name="mode" value="shift"><span>Add or subtract</span></label>
+                            </div>
+                        </fieldset>
+
+                        <div class="tool-stack" id="db-diff">
+                            <div class="field-row two">
+                                <div class="field">
+                                    <label for="db-start" class="field-label">Start date <span class="hint" id="db-start-day"></span></label>
+                                    <input id="db-start" class="input" type="date" max="9999-12-31">
+                                </div>
+                                <div class="field">
+                                    <label for="db-end" class="field-label">End date <span class="hint" id="db-end-day"></span></label>
+                                    <input id="db-end" class="input" type="date" max="9999-12-31">
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+                                <label class="check"><input type="checkbox" id="db-include"> Include the end day</label>
+                                <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+                                    <button type="button" class="text-btn" id="db-end-today"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-calendar-dots"></use></svg> End today</button>
+                                    <button type="button" class="text-btn" id="db-swap"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-arrows-left-right"></use></svg> Swap dates</button>
+                                </div>
+                            </div>
+                            <p class="field-help">Counts run from the start date up to, but not including, the end date. Tick the box to count the end day as well.</p>
+                        </div>
+
+                        <div class="tool-stack" id="db-shift" hidden>
+                            <div class="field">
+                                <label for="db-from" class="field-label">Start date <span class="hint" id="db-from-day"></span></label>
+                                <input id="db-from" class="input" type="date" max="9999-12-31">
+                            </div>
+                            <div class="field-row two">
+                                <fieldset class="field">
+                                    <legend class="field-label mb-2">Direction</legend>
+                                    <div class="seg block">
+                                        <label><input type="radio" name="op" value="add" checked><span>Add</span></label>
+                                        <label><input type="radio" name="op" value="subtract"><span>Subtract</span></label>
+                                    </div>
+                                </fieldset>
+                                <div class="field">
+                                    <label for="db-amount" class="field-label">How many</label>
+                                    <input id="db-amount" class="input" inputmode="numeric" value="30">
+                                </div>
+                            </div>
+                            <fieldset class="field">
+                                <legend class="field-label mb-2">Unit</legend>
+                                <div class="seg block wrap-sm">
+                                    <label><input type="radio" name="unit" value="days" checked><span>Days</span></label>
+                                    <label><input type="radio" name="unit" value="weeks"><span>Weeks</span></label>
+                                    <label><input type="radio" name="unit" value="months"><span>Months</span></label>
+                                    <label><input type="radio" name="unit" value="years"><span>Years</span></label>
+                                </div>
+                            </fieldset>
+                            <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+                                <p class="field-help">Months and years step through the calendar. When the start day does not exist in the month you land in, the result stops at that month's last day.</p>
+                                <button type="button" class="text-btn shrink-0" id="db-from-today"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-calendar-dots"></use></svg> Start today</button>
+                            </div>
+                        </div>
+                        <p class="field-error" id="db-error" role="alert"></p>
+                    </div>
+
+                    <div class="tool-aside">
+                        <div class="bezel">
+                            <div class="readout" aria-live="polite">
+                                <p class="readout-label" id="db-head-label">Total days</p>
+                                <p class="readout-value" id="db-head"></p>
+                                <p class="readout-sub" id="db-head-sub"></p>
+                                <dl class="readout-rows" id="db-rows"></dl>
+                                <p class="readout-sub" id="db-note" hidden></p>
+                                <div class="flex flex-wrap gap-2 mt-5">
+                                    <button type="button" class="btn-ghost-dark" id="db-copy"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-copy"></use></svg> <span data-label>Copy result</span></button>
+                                    <button type="button" class="btn-ghost-dark" id="db-share"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-link"></use></svg> <span data-label>Copy link</span></button>
+                                </div>
+                            </div>
+                        </div>
+                        <p id="db-live" class="sr-only" aria-live="polite"></p>
+                    </div>
+                </form>
+
+                <p class="mono-meta text-muted mt-5 flex items-start gap-2"><svg class="icon mt-0.5 shrink-0" aria-hidden="true"><use href="/assets/icons.svg#i-shield-check"></use></svg> Everything is worked out in your browser. The dates you enter are never sent anywhere.</p>
+            </div>
+        </section>
+
+        <section class="pb-6">
+            <div class="max-w-content mx-auto px-6">
+                <hr class="section-rule">
+                <div class="grid lg:grid-cols-[1fr_2fr] gap-8 lg:gap-14 mt-10">
+                    <div>
+                        <h2 class="h3-serif" style="font-weight:500;">From today</h2>
+                        <p class="text-body text-[0.9375rem] leading-relaxed mt-3 max-w-xs" id="db-glance-sub">Where the spans people look up most often land. The day rows are exact; the month and year rows step through the calendar.</p>
+                    </div>
+                    <div class="tool-panel">
+                        <div class="table-scroll !max-h-none !border-t-0">
+                            <table class="data-table" id="db-glance">
+                                <thead><tr><th scope="col">Span</th><th scope="col">Date</th></tr></thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
