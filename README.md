@@ -98,8 +98,9 @@ mohd-shayan-portfolio/
 ├── llms.txt            # Concise factual bio for AI assistants / answer engines
 ├── humans.txt          # Authorship credits
 ├── assets/
-│   ├── portrait.jpg    # Hero portrait
-│   └── avatar.jpg      # About-section photo
+│   ├── portrait.jpg    # Social preview and structured-data image
+│   ├── portrait-hero-*.webp    # Hero photo
+│   └── portrait-garden-*.webp  # Photo beside the contact section
 ├── uploads/
 │   └── resume.pdf      # CV/Resume
 ├── README.md           # This file

@@ -318,7 +318,7 @@
     <!-- Preconnect & Fonts -->
     <link rel="preload" href="/assets/fonts/newsreader-normal-200-800-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/geist-normal-100-900-latin.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/assets/portrait-720.webp" as="image" type="image/webp" imagesrcset="/assets/portrait-720.webp 720w, /assets/portrait-1100.webp 1100w" imagesizes="(min-width: 1024px) 352px, (min-width: 640px) 288px, 256px">
+    <link rel="preload" href="/assets/portrait-hero-720.webp" as="image" type="image/webp" imagesrcset="/assets/portrait-hero-720.webp 720w, /assets/portrait-hero-1100.webp 1100w" imagesizes="(min-width: 1024px) 352px, (min-width: 640px) 288px, 256px">
 
 
     <!-- Compiled stylesheet (npm run build:css) -->
@@ -418,9 +418,9 @@
                 <figure class="w-64 sm:w-72 lg:w-[22rem]">
                     <div class="print-frame">
                         <div class="print-mat">
-                            <img src="/assets/portrait-720.webp" srcset="/assets/portrait-720.webp 720w, /assets/portrait-1100.webp 1100w" sizes="(min-width: 1024px) 352px, (min-width: 640px) 288px, 256px"
+                            <img src="/assets/portrait-hero-720.webp" srcset="/assets/portrait-hero-720.webp 720w, /assets/portrait-hero-1100.webp 1100w" sizes="(min-width: 1024px) 352px, (min-width: 640px) 288px, 256px"
                                  alt="Portrait of Mohd Shayan"
-                                 width="720" height="886" fetchpriority="high" decoding="async"
+                                 width="720" height="900" fetchpriority="high" decoding="async"
                                  class="w-full aspect-[4/5] object-cover object-center bg-cream">
                         </div>
                     </div>
@@ -459,21 +459,9 @@
                 <p class="lead mt-5">An engineer who became a founder, and a founder who builds for the people technology too often leaves behind.</p>
             </div>
 
-            <div class="grid lg:grid-cols-5 gap-8 lg:gap-12 mt-12 items-start">
-                <!-- Portrait: mounted print -->
-                <div class="lg:col-span-2 reveal">
-                    <figure class="max-w-md mx-auto lg:max-w-none lg:mx-0">
-                        <div class="print-frame">
-                            <div class="print-mat">
-                                <img src="assets/avatar.jpg" alt="Mohd Shayan, portrait" loading="lazy" width="423" height="408"
-                                     class="w-full aspect-[4/5] lg:aspect-auto lg:h-[26rem] object-cover object-center bg-cream">
-                            </div>
-                        </div>
-                    </figure>
-                </div>
-
+            <div class="mt-12">
                 <!-- Bio plate -->
-                <div class="lg:col-span-3 reveal d1">
+                <div class="reveal d1">
                     <div class="max-w-[62ch] lg:pt-2">
                         <p class="drop-cap leading-[1.65] text-[1.03125rem] mb-5">
                             Mohd Shayan is a <strong class="text-ink">product engineer</strong> and Mathematics &amp; Computing graduate from Delhi Technological University who turned a love of building into an enterprise. As founder of <span class="text-gold-deep font-[550]">SocialSure Private Limited</span>, he leads an AI-first company shaping the next generation of intelligent products.
@@ -1321,11 +1309,9 @@
                         <a href="https://x.com/mohdshayanX" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="X (Twitter)"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-x-logo"></use></svg></a>
                         <a href="https://www.reddit.com/user/mohdshayan" target="_blank" rel="noopener noreferrer" class="social social-dark" aria-label="Reddit"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#i-reddit-logo"></use></svg></a>
                     </div>
-                </div>
 
-                <!-- Quick facts: machined well -->
-                <div class="reveal d1 min-w-0">
-                    <div class="well p-7 sm:p-8">
+                    <!-- Quick facts: machined well -->
+                    <div class="well p-7 sm:p-8 mt-10">
                         <div class="flex items-start justify-between gap-6 py-3.5 border-b border-white/[0.08]">
                             <p class="mono-meta uppercase shrink-0 whitespace-nowrap" style="color:rgba(245,242,234,0.5);">Based in</p>
                             <p class="mono-meta text-right" style="color:#f5f2ea;">New Delhi, India · working globally</p>
@@ -1343,6 +1329,20 @@
                             <p class="mono-meta text-right" style="color:#f5f2ea;">FRSA · FRGS</p>
                         </div>
                     </div>
+                </div>
+
+                <!-- Portrait: mounted print, closing the page as the hero opens it -->
+                <div class="reveal d1 min-w-0">
+                    <figure class="max-w-sm mx-auto lg:max-w-none">
+                        <div class="well p-2">
+                            <div class="print-mat">
+                                <img src="/assets/portrait-garden-640.webp" srcset="/assets/portrait-garden-640.webp 640w, /assets/portrait-garden-1100.webp 1100w" sizes="(min-width: 1024px) 26rem, 24rem"
+                                     alt="Mohd Shayan in sunglasses, hands on his hips, in front of a flowering hedge"
+                                     width="640" height="640" loading="lazy" decoding="async"
+                                     class="w-full aspect-square object-cover object-center">
+                            </div>
+                        </div>
+                    </figure>
                 </div>
             </div>
         </div>
