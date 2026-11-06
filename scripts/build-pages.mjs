@@ -1,5 +1,6 @@
 // Generates /blog/, /blog/<slug>/, /feed.xml, /philanthropy/, /demo/ and /tools/ from content/, plus /film/,
-// and refreshes the free-tools section of index.html between its <!-- tools:start --> / <!-- tools:end --> markers.
+// and refreshes the free-tools and latest-writing sections of index.html between their <!-- tools:start --> / <!-- tools:end -->
+// and <!-- blog:start --> / <!-- blog:end --> markers.
 // Posts are markdown with front matter in content/posts. `--drafts` includes draft posts (local preview).
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'node:fs';
 import { marked } from 'marked';
@@ -635,6 +636,24 @@ out('demo/index.html', demoPage());
 out('film/index.html', filmPage());
 out('tools/index.html', toolsIndex());
 for (const t of TOOLS) out(`tools/${t.slug}/index.html`, toolPage(t));
-out('index.html', homepageTools(readFileSync('index.html', 'utf8')));
+// The three newest published posts, as cards between the homepage's blog markers.
+function homepageBlog(html) {
+  const start = '<!-- blog:start -->', end = '<!-- blog:end -->';
+  const a = html.indexOf(start), b = html.indexOf(end);
+  if (a < 0 || b < a) { console.warn('warning: index.html has no blog markers, so the homepage writing section was not refreshed'); return html; }
+  const cells = posts.filter(p => !p.draft).slice(0, 3).map(p => `                <a href="/blog/${p.slug}/" class="cell block">
+                    <p class="mono-meta text-muted">${longDate(p.date)} · ${p.minutes} min read</p>
+                    <h3 class="card-title text-lg mt-3"><span class="sweep-target">${esc(p.title)}</span></h3>
+                    <p class="mono-meta text-gold-deep mt-1">${esc(p.topic || '')}</p>
+                    <p class="text-body text-[0.9375rem] leading-relaxed mt-3">${esc(p.summary)}</p>
+                </a>`).join('\n');
+  return `${html.slice(0, a + start.length)}
+            <div class="ruled-grid md:grid-cols-3 mt-12 reveal">
+${cells}
+            </div>
+            ${html.slice(b)}`;
+}
+
+out('index.html', homepageBlog(homepageTools(readFileSync('index.html', 'utf8'))));
 out('sitemap.xml', sitemap());
 console.log(`pages: ${posts.length} post(s) (${posts.filter(p => p.draft).length} draft), drafts ${INCLUDE_DRAFTS ? 'included' : 'hidden'} from index/feed`);
